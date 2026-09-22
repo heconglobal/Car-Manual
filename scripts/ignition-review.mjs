@@ -1,0 +1,33 @@
+import {chromium} from '@playwright/test';
+import config from '../playwright.config.js';
+import {writeFile} from 'node:fs/promises';
+const browser=await chromium.launch(config.use.launchOptions);
+try{
+ const page=await browser.newPage({viewport:{width:1600,height:1060},reducedMotion:'reduce'});
+ page.setDefaultTimeout(180000);page.setDefaultNavigationTimeout(120000);
+ const errors=[];page.on('pageerror',e=>{errors.push(e.message);console.log(e.message);});
+ await page.goto('http://127.0.0.1:5185/');await page.waitForFunction(()=>window.__fiero&&document.querySelector('canvas').dataset.lighting==='hdr');console.log('Vehicle loaded');
+ const settle=()=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+ const capture=async name=>{await settle();await page.screenshot({path:`artifacts/${name}.png`});console.log('Captured '+name);};
+ await page.getByRole('searchbox').fill('ICM');
+ await page.locator('.part-button[data-part="eng-icm"]').click();
+ await page.getByRole('button',{name:'Isolate',exact:true}).click();
+ await page.getByRole('button',{name:'Focus part',exact:true}).click();
+ await capture('ignition-icm');
+ await page.locator('#systems [data-assembly="distributor-detail"]').click();
+ await page.getByRole('button',{name:'Reset view',exact:true}).click();await capture('ignition-distributor-assembled');
+ await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await capture('ignition-distributor-exploded');
+ await page.locator('#systems [data-assembly="coil-detail"]').click();
+ await page.getByRole('button',{name:'Reset view',exact:true}).click();await capture('ignition-coil');
+ await page.locator('#systems [data-assembly="plug-wires"]').click();
+ await page.locator('.part-button[data-part="eng-spark-rear-1"]').click();
+ await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();await capture('ignition-spark-plug');
+ await page.locator('#systems [data-assembly="engine"]').click();await page.getByRole('button',{name:'Reset view',exact:true}).click();await capture('engine-with-ignition');
+ await page.locator('#systems [data-assembly="engine-controls"]').click();await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await capture('engine-controls-exploded');
+ await page.locator('#systems [data-assembly="lubrication"]').click();await page.getByRole('button',{name:'Reset view',exact:true}).click();
+ await page.locator('.part-button[data-part="eng-pan"]').click();await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();await capture('engine-oil-pan');
+ await page.locator('#systems [data-assembly="head-rear"]').click();await page.getByRole('button',{name:'Reset view',exact:true}).click();
+ await page.locator('.part-button[data-part="eng-rear-head"]').click();await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();await capture('engine-head-casting');
+ const result={date:new Date().toISOString(),errors,engineParts:await page.evaluate(()=>window.__fiero.enginePartCount),stats:await page.evaluate(()=>window.__fiero.getModelStats())};
+ await writeFile('artifacts/ignition-review.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));if(errors.length)process.exitCode=1;
+}finally{await browser.close();}

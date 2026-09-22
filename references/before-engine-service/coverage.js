@@ -1,0 +1,12 @@
+// An audit of known gaps, not a claim to have enumerated the complete BOM.
+export const coverageAudit=[
+ {system:'Body & chassis',modeled:'Exterior skins, glazing, roof variants, spoiler previews, headlamp mechanisms and space frame.',remaining:'Door internals, locks, hinges, weatherstrip profiles, panel retainers and exact structural stampings.'},
+ {system:'Engine & intake',modeled:'Block and rotating parts, valve gear, intake, oil system, timing drive, sensors, fuel tubes, PCV and EGR.',remaining:'Measured castings, all oil/coolant passages, complete gasket and fastener inventory, exhaust shields and accessory internals.'},
+ {system:'Ignition & electrical',modeled:'Detailed distributor stack, ICM, pickup, remote coil, plugs, HT leads, primary/EST leads and tach filter; vehicle lamps, battery and alternator.',remaining:'Verified factory lead routes and cylinder mapping, full vehicle loom, ground straps, junctions, switches, relay/fuse internals and exact distributor variant.'},
+ {system:'Transmission & clutch',modeled:'External manual transaxle, clutch location, drive axles, shift cables and hydraulic layout.',remaining:'Four-speed gears, shafts, bearings, synchronizers, differential, clutch internals, seals and mounting hardware.'},
+ {system:'Suspension & steering',modeled:'Cradle, arms, springs, struts, steering rack and stabilizer.',remaining:'Detailed ball joints, bushings, bearings, mounts, steering internals and verified WS6 spring/anti-roll-bar dimensions.'},
+ {system:'Brakes & wheels',modeled:'Wheel and tire envelopes, rotors, caliper locations, master cylinder, booster and spare.',remaining:'Caliper internals, pads, rear parking-brake mechanism, complete hoses/hard lines, hubs, bearings, seals and exact wheel surfaces.'},
+ {system:'Cooling & climate',modeled:'Radiator/fan, long coolant pipes, thermostat housing and recovery tank.',remaining:'Water-pump internals, precise hoses/clamps, heater core, HVAC box/ducts, A/C compressor, condenser, accumulator and option-specific plumbing.'},
+ {system:'Fuel & exhaust',modeled:'Tank envelope, schematic supply route/exhaust, engine rails/injectors and cold-start components.',remaining:'Tank internals, pump/sender, fuel filter, evaporative canister, filler/vent hoses, catalyst and complete exhaust mountings.'},
+ {system:'Interior & controls',modeled:'Seats, dashboard, instruments, steering wheel, shifter and pedals.',remaining:'Seat frames/tracks, instrument internals, switch mechanisms, belts, trim attachments and optional accessory hardware.'},
+];

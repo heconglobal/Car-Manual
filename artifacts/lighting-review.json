@@ -1,0 +1,24 @@
+{
+  "date": "2026-09-22T04:18:51.721Z",
+  "seconds": 167.457,
+  "status": "passed",
+  "errors": [],
+  "images": [],
+  "captures": [
+    "lighting-front-vehicle",
+    "lighting-dash-controls",
+    "lighting-dash-controls-exploded",
+    "lighting-rear-left-assembled",
+    "lighting-rear-left-exploded",
+    "lighting-2057-bulb",
+    "lighting-front-left-assembled",
+    "lighting-front-left-exploded",
+    "lighting-marker-front-left-assembled",
+    "lighting-marker-front-left-exploded",
+    "lighting-dome-assembled",
+    "lighting-dome-exploded",
+    "lighting-console-assembled",
+    "lighting-console-exploded",
+    "lighting-dome-mobile"
+  ]
+}

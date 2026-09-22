@@ -1,0 +1,15 @@
+{
+  "date": "2026-09-22T03:40:46.259Z",
+  "parts": 103,
+  "closedHoodInterference": "passed",
+  "toleranceMetres": 0.0025,
+  "maximum": {
+    "id": "hl-right-upper-bezel",
+    "maxAboveHood": 0.0017011278667146135,
+    "where": [
+      0.6320000290870667,
+      0.7103385329246521,
+      -1.3844400644302368
+    ]
+  }
+}

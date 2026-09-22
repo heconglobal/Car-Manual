@@ -1,0 +1,71 @@
+{
+  "date": "2026-09-22T03:42:27.641Z",
+  "models": {
+    "engine": {
+      "parts": 315,
+      "meshes": 481,
+      "triangles": 1147440
+    },
+    "transmission": {
+      "parts": 95,
+      "meshes": 149,
+      "triangles": 469528
+    },
+    "cooling": {
+      "parts": 36,
+      "meshes": 61,
+      "triangles": 208340
+    },
+    "brakes": {
+      "parts": 212,
+      "meshes": 286,
+      "triangles": 466580
+    },
+    "suspension": {
+      "parts": 216,
+      "meshes": 282,
+      "triangles": 418076
+    },
+    "fuel": {
+      "parts": 53,
+      "meshes": 73,
+      "triangles": 167590
+    },
+    "exhaust": {
+      "parts": 44,
+      "meshes": 150,
+      "triangles": 344468
+    },
+    "body": {
+      "parts": 111,
+      "meshes": 203,
+      "triangles": 640574
+    },
+    "headlights": {
+      "parts": 103,
+      "meshes": 268,
+      "triangles": 730044
+    },
+    "hvac": {
+      "parts": 64,
+      "meshes": 125,
+      "triangles": 227386
+    },
+    "vehicle": {
+      "parts": 82,
+      "meshes": 703,
+      "triangles": 4027650
+    }
+  },
+  "headlights": "passed: dual poses, real bucket rotation, early four-cushion gears, fixed motors/relays, independent cover, LHD identity and low raised envelope",
+  "brakes": "passed: measured nominal friction bands, distinct front/rear caliper callouts, upward bleeders, corner identity and left-hand-drive controls",
+  "body": "passed: shared surface ownership, independent rocker/glass/trim groups, forward hood and deck hinges, LHD release, crossed torque rods below backlight, lock retainer alignment",
+  "exhaust": "passed: early pellet-bed inventory/order, driver crossover, passenger intermediate pipe, independent left/right tailpipes and spring hangers",
+  "fuel": "passed: driver filler/canister, separate feed/return, passenger filter, pump/strainer within early tank envelope",
+  "suspension": "passed: separate front shocks, corner sides, upper-joint orientation, rear strut inventory, manual rack asymmetry",
+  "hvac": "passed: passenger-side module, coaxial blower, LHD outlets/control knob, C41/C60 geometry alternatives, electric C60 mode control and no duplicate whole-car core",
+  "leftHandDrive": "passed: signed component positions, front/rear and positive determinant",
+  "detailParts": 1249,
+  "ignitionParts": 39,
+  "engineControls": 21
+}

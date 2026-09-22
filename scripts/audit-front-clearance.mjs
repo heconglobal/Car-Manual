@@ -1,0 +1,7 @@
+import assert from 'node:assert/strict';
+import {writeFile} from 'node:fs/promises';
+import * as T from 'three';
+globalThis.document={createElement:()=>({getContext:()=>({createImageData:(w,h)=>({data:new Uint8ClampedArray(w*h*4)}),putImageData(){},fillRect(){},strokeRect(){},fillText(){}})})};
+const {createCoolingDetail}=await import('../src/cooling-detail.js');const {headlightHoodPoint}=await import('../src/headlight-detail.js');const model=createCoolingDetail();model.root.updateMatrixWorld(true);const results=[];
+for(const [id,g]of model.groups){if(!id.startsWith('cool-'))continue;let max=-Infinity,point;g.traverse(m=>{if(!m.isMesh)return;const a=m.geometry.attributes.position;for(let i=0;i<a.count;i++){const p=new T.Vector3().fromBufferAttribute(a,i).applyMatrix4(m.matrixWorld);if(Math.abs(p.x)>.64||p.z< -1.786||p.z>-.65)continue;const diff=p.y-headlightHoodPoint((p.x/.659+1)/2,(p.z+1.786)/1.176)[1];if(diff>max){max=diff;point=p.toArray();}}});if(Number.isFinite(max))results.push({id,maxAboveHood:max,point});}
+results.sort((a,b)=>b.maxAboveHood-a.maxAboveHood);console.log(JSON.stringify(results.slice(0,8),null,2));assert(results.length);assert(results[0].maxAboveHood<-.002,'cooling hardware must sit at least 2 mm below the modeled hood');await writeFile('artifacts/front-clearance-audit.json',JSON.stringify({date:new Date().toISOString(),status:'passed',scope:'Cooling hardware versus reconstructed closed hood; not a factory fit certification',results},null,2)+'\n');

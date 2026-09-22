@@ -1,7 +1,7 @@
 name: Deploy manual to Pages
 on:
   push:
-    branches: [main]
+    branches: [perf/mobile-rendering]
   workflow_dispatch:
 permissions:
   contents: read

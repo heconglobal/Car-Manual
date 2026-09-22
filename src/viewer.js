@@ -30,15 +30,17 @@ import {createBrakeDetail} from './brake-detail.js';
 export function createViewer(container, onSelect) {
  const scene=new T.Scene();scene.background=new T.Color('#dededb');scene.fog=new T.Fog('#dededb',12,22);
  const camera=new T.PerspectiveCamera(37,1,.03,60);
- const renderer=new T.WebGLRenderer({antialias:true,alpha:false,preserveDrawingBuffer:true});
+ const mobileRenderer=window.matchMedia('(pointer: coarse)').matches||/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+ const renderer=new T.WebGLRenderer({antialias:!mobileRenderer,alpha:false,preserveDrawingBuffer:!mobileRenderer});
  const gl=renderer.getContext(),debugInfo=gl.getExtension('WEBGL_debug_renderer_info');const softwareRenderer=debugInfo&&/SwiftShader|llvmpipe|Software/i.test(gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL));
- // Software GL cannot sustain the additional full-scene passes used by
+ const lightweightRenderer=mobileRenderer||softwareRenderer;
+ // Mobile GPUs and software GL avoid the additional scene passes used by
  // transmission, variance shadows, MSAA and SSAO at the same time. Keep the
  // complete geometry and PBR surfaces, with a cheaper raster path on that
- // renderer. Hardware rendering retains the studio-quality settings.
- renderer.setPixelRatio(Math.min(window.devicePixelRatio,softwareRenderer?1:2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=softwareRenderer?T.PCFSoftShadowMap:T.VSMShadowMap;
+ // renderer. Desktop hardware retains the studio-quality settings.
+ renderer.setPixelRatio(Math.min(window.devicePixelRatio,lightweightRenderer?1:2));renderer.shadowMap.enabled=!mobileRenderer;renderer.shadowMap.type=softwareRenderer?T.PCFSoftShadowMap:T.VSMShadowMap;
  renderer.transmissionResolutionScale=softwareRenderer?.5:1;
- renderer.domElement.dataset.renderProfile=softwareRenderer?'software':'studio';
+ renderer.domElement.dataset.renderProfile=mobileRenderer?'mobile':softwareRenderer?'software':'studio';
  renderer.shadowMap.autoUpdate=false;
  renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=.9;
  renderer.domElement.setAttribute('aria-label','Interactive 3D model of the 1985 Pontiac Fiero. Drag to orbit, scroll to zoom. Components can also be selected in the assembly list.');
@@ -46,15 +48,15 @@ export function createViewer(container, onSelect) {
  const pmrem=new T.PMREMGenerator(renderer);const env=new RoomEnvironment();let envMap=pmrem.fromScene(env,.015);scene.environment=envMap.texture;env.dispose();
  scene.environmentRotation.set(.4,.65,0);
  const hemisphere=new T.HemisphereLight('#e9f2ff','#595654',.55);scene.add(hemisphere);
- const sun=new T.DirectionalLight('#fff5e7',1.3);sun.position.set(-3,7,-4);sun.castShadow=true;sun.shadow.mapSize.set(softwareRenderer?1024:2048,softwareRenderer?1024:2048);sun.shadow.camera.left=-4;sun.shadow.camera.right=4;sun.shadow.camera.top=4;sun.shadow.camera.bottom=-4;sun.shadow.normalBias=.003;sun.shadow.radius=10;sun.shadow.blurSamples=8;scene.add(sun,sun.target);
+ const sun=new T.DirectionalLight('#fff5e7',1.3);sun.position.set(-3,7,-4);sun.castShadow=!mobileRenderer;sun.shadow.mapSize.set(softwareRenderer?1024:2048,softwareRenderer?1024:2048);sun.shadow.camera.left=-4;sun.shadow.camera.right=4;sun.shadow.camera.top=4;sun.shadow.camera.bottom=-4;sun.shadow.normalBias=.003;sun.shadow.radius=10;sun.shadow.blurSamples=8;scene.add(sun,sun.target);
  const fill=new T.DirectionalLight('#d0deff',.55);fill.position.set(4,3,4);scene.add(fill);
  const floor=new T.Mesh(new T.PlaneGeometry(40,40),new T.MeshStandardMaterial({color:'#dededb',roughness:.57,metalness:.07}));floor.rotation.x=-Math.PI/2;floor.position.y=-.008;floor.receiveShadow=true;scene.add(floor);
  const grid=new T.GridHelper(12,48,'#9da7a5','#bcc4c1');grid.position.y=-.005;grid.material.transparent=true;grid.material.opacity=.18;grid.visible=false;scene.add(grid);
  function prepareSoftwareSurfaces(model){
-  if(!softwareRenderer)return;
+  if(!lightweightRenderer)return;
   model.traverse(o=>{if(!o.isMesh||!o.material.transmission)return;
    // Alpha glazing avoids a second complete scene render on software GL.
-   // Keep PBR reflections and all lens/filament geometry; hardware uses IOR.
+   // Keep PBR reflections and lens/filament geometry; desktop hardware uses IOR.
    const m=o.material;m.transmission=0;m.transparent=true;
    m.opacity=m.opacity<1?m.opacity:o.userData.materialName==='instrumentLens'?.08:o.userData.materialName==='glass'?.22:.30;
    m.depthWrite=false;m.needsUpdate=true;
@@ -67,11 +69,15 @@ export function createViewer(container, onSelect) {
  const currentGroups=()=>current.assembly?inspection.groups:groups;
  const currentParts=()=>current.assembly?detailParts.filter(p=>p.family===familyFor(current.assembly).id):parts;
  const currentRoot=()=>current.assembly?inspection.root:root;
+ // Mobile renders directly: do not allocate unused HDR/MSAA/SSAO targets.
+ let composer=null,occlusion=null,output=null,antialias=null;
+ if(!mobileRenderer){
  const target=new T.WebGLRenderTarget(1,1,{type:T.HalfFloatType,samples:softwareRenderer?0:4});
- const composer=new EffectComposer(renderer,target);composer.addPass(new RenderPass(scene,camera));
- const occlusion=new SSAOPass(scene,camera,1,1,16);occlusion.kernelRadius=.13;occlusion.minDistance=.000025;occlusion.maxDistance=.004;composer.addPass(occlusion);
- const output=new OutputPass();composer.addPass(output);
- const antialias=new ShaderPass(FXAAShader);antialias.enabled=!!softwareRenderer;composer.addPass(antialias);
+ composer=new EffectComposer(renderer,target);composer.addPass(new RenderPass(scene,camera));
+ occlusion=new SSAOPass(scene,camera,1,1,16);occlusion.kernelRadius=.13;occlusion.minDistance=.000025;occlusion.maxDistance=.004;composer.addPass(occlusion);
+ output=new OutputPass();composer.addPass(output);
+ antialias=new ShaderPass(FXAAShader);antialias.enabled=!!softwareRenderer;composer.addPass(antialias);
+ }
  const dimensions=new T.Group();scene.add(dimensions);
  const dimensionLine=(points)=>{const g=new T.BufferGeometry().setFromPoints(points.map(p=>new T.Vector3(...p)));dimensions.add(new T.Line(g,new T.LineBasicMaterial({color:'#617b72'})));};
  dimensionLine([[1.04,.03,-2.041],[1.15,.03,-2.041],[1.15,.03,2.041],[1.04,.03,2.041]]);
@@ -83,7 +89,8 @@ export function createViewer(container, onSelect) {
  camera.position.set(...presets.home);
  let cameraGoal=null,targetGoal=null,current={system:'all',selected:null,hideBody:false,isolate:false,explode:0,labels:false,wireframe:false},frame=0,disposed=false,dirty=true;
  let lastConfiguration='',inspectionRadius=.1,lastViewKey='',lastSceneKey='';
- new HDRLoader().load(`${import.meta.env.BASE_URL}assets/studio_small_09_1k.hdr`,texture=>{if(disposed){texture.dispose();return;}const next=pmrem.fromEquirectangular(texture);texture.dispose();envMap.dispose();envMap=next;scene.environment=next.texture;scene.environmentIntensity=.85;pmrem.dispose();dirty=true;renderer.domElement.dataset.lighting='hdr';},undefined,()=>{pmrem.dispose();renderer.domElement.dataset.lighting='fallback';});
+ if(mobileRenderer){pmrem.dispose();renderer.domElement.dataset.lighting='room';}
+ else new HDRLoader().load(`${import.meta.env.BASE_URL}assets/studio_small_09_1k.hdr`,texture=>{if(disposed){texture.dispose();return;}const next=pmrem.fromEquirectangular(texture);texture.dispose();envMap.dispose();envMap=next;scene.environment=next.texture;scene.environmentIntensity=.85;pmrem.dispose();dirty=true;renderer.domElement.dataset.lighting='hdr';},undefined,()=>{pmrem.dispose();renderer.domElement.dataset.lighting='fallback';});
  const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  const labelLayer=document.createElement('div');labelLayer.className='model-labels';container.append(labelLayer);
  const labels=new Map();
@@ -96,7 +103,7 @@ export function createViewer(container, onSelect) {
  function visibleBounds(g,target=new T.Box3()){target.makeEmpty();g.traverseVisible(o=>{if(o.isMesh){if(!o.geometry.boundingBox)o.geometry.computeBoundingBox();target.union(o.geometry.boundingBox.clone().applyMatrix4(o.matrixWorld));}});return target;}
  renderer.domElement.addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY};cameraGoal=null;targetGoal=null;});
  renderer.domElement.addEventListener('pointerup',e=>{if(down&&Math.hypot(e.clientX-down.x,e.clientY-down.y)<5){const hit=pointer(e);if(hit)onSelect(hit.object.userData.partId);}down=null;});
- renderer.domElement.addEventListener('pointermove',e=>{renderer.domElement.style.cursor=pointer(e)?'pointer':'grab';});
+ renderer.domElement.addEventListener('pointermove',e=>{if(e.pointerType==='mouse')renderer.domElement.style.cursor=pointer(e)?'pointer':'grab';});
  renderer.domElement.addEventListener('keydown',e=>{
   if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-','='].includes(e.key))return;e.preventDefault();cameraGoal=null;targetGoal=null;
   const delta=camera.position.clone().sub(controls.target);const spherical=new T.Spherical().setFromVector3(delta);
@@ -212,7 +219,7 @@ export function createViewer(container, onSelect) {
   const g=currentGroups().get(id);if(!g)return;currentRoot().updateMatrixWorld(true);const bounds=visibleBounds(g);if(bounds.isEmpty())return;if(current.assembly)bounds.translate(engineGoal(g).sub(g.position));const centre=bounds.getCenter(new T.Vector3());const size=bounds.getSize(new T.Vector3()).length();
   const direction=id.startsWith('eng-rocker-')?new T.Vector3(-.55,1.2,id.includes('-front-')?-1:1).normalize():id==='eng-icm'?new T.Vector3(-.6,1.2,1.7).normalize():camera.position.clone().sub(controls.target).normalize();targetGoal=centre;cameraGoal=centre.clone().addScaledVector(direction,T.MathUtils.clamp(size*2.1,current.assembly?.028:1.1,7));
  }
- function resize() {const {width,height}=container.getBoundingClientRect();if(!width||!height)return;camera.aspect=width/height;camera.updateProjectionMatrix();renderer.setSize(width,height);composer.setSize(width,height);const ratio=renderer.getPixelRatio();antialias.uniforms.resolution.value.set(1/(width*ratio),1/(height*ratio));dirty=true;}
+ function resize() {const {width,height}=container.getBoundingClientRect();if(!width||!height)return;camera.aspect=width/height;camera.updateProjectionMatrix();renderer.setSize(width,height);composer?.setSize(width,height);const ratio=renderer.getPixelRatio();antialias?.uniforms.resolution.value.set(1/(width*ratio),1/(height*ratio));dirty=true;}
  const observer=new ResizeObserver(resize);observer.observe(container);resize();
  const overviewLabels=['engine-block','radiator','wheels','steering-wheel'];const temp=new T.Vector3(),bounds=new T.Box3();
  let finishFirstFrame;const ready=new Promise(resolve=>{finishFirstFrame=resolve;});
@@ -227,13 +234,14 @@ export function createViewer(container, onSelect) {
   for(const part of currentParts()){const el=labels.get(part.id),g=currentGroups().get(part.id);const eligible=current.labels&&g.visible&&(part.id===current.selected||(current.assembly?shown<6:current.system==='all'?overviewLabels.includes(part.id):part.system===current.system&&shown<6));
    if(!eligible){el.hidden=true;continue;}shown++;visibleBounds(g,bounds);if(bounds.isEmpty()){el.hidden=true;continue;}bounds.getCenter(temp);temp.y=bounds.max.y+.07;temp.project(camera);el.hidden=temp.z>1||temp.z< -1||Math.abs(temp.x)>.93||Math.abs(temp.y)>.88;if(!el.hidden){el.style.left=`${(temp.x*.5+.5)*rect.width}px`;el.style.top=`${(-temp.y*.5+.5)*rect.height}px`;el.classList.toggle('selected',part.id===current.selected);}
   }
-  occlusion.enabled=!softwareRenderer&&!current.wireframe&&(current.assembly?(current.assemblyExplode||0)<.01:current.system==='all'&&!current.isolate&&!current.hideBody&&current.explode<.01);
+  if(occlusion){occlusion.enabled=!softwareRenderer&&!current.wireframe&&(current.assembly?(current.assemblyExplode||0)<.01:current.system==='all'&&!current.isolate&&!current.hideBody&&current.explode<.01);
   // Contact shading follows part scale; a car-sized kernel overwhelms tiny
   // service hardware. Depth thresholds are normalized to the camera range.
   occlusion.kernelRadius=current.assembly?T.MathUtils.clamp(inspectionRadius*.10,.001,.016):.13;
   occlusion.minDistance=current.assembly?.000001:.000025;occlusion.maxDistance=current.assembly?occlusion.kernelRadius*1.5/(camera.far-camera.near):.004;
-  renderer.shadowMap.enabled=!current.wireframe;
-  if(current.wireframe)renderer.render(scene,camera);else composer.render();
+  }
+  renderer.shadowMap.enabled=!mobileRenderer&&!current.wireframe;
+  if(mobileRenderer||current.wireframe)renderer.render(scene,camera);else composer.render();
   if(finishFirstFrame){renderer.domElement.dataset.ready='true';finishFirstFrame();finishFirstFrame=null;}
  }
  update(current);
@@ -242,5 +250,5 @@ export function createViewer(container, onSelect) {
  const start=()=>{if(!disposed)frame=requestAnimationFrame(animate);};
  if(document.readyState==='complete')start();else window.addEventListener('load',start,{once:true});
  function getPartBounds(id){const g=detailPartById.has(id)?inspections.get(detailPartById.get(id).family)?.groups.get(id):groups.get(id);if(!g)return null;scene.updateMatrixWorld(true);const b=visibleBounds(g);return b.isEmpty()?null:{min:b.min.toArray(),max:b.max.toArray()};}
- return {ready,update,view,focus,frameAssembly,resize,getCamera:()=>({position:camera.position.toArray(),target:controls.target.toArray(),fov:camera.fov}),restoreCamera:s=>{setCameraFov(s.fov??37);cameraGoal=new T.Vector3(...s.position);targetGoal=new T.Vector3(...s.target);dirty=true;},getVisibleParts:()=>[...currentGroups()].filter(([,g])=>g.visible).map(([id])=>id),getState:()=>({...current}),getPartCount:()=>groups.size,getPartBounds,getModelStats:()=>{let meshes=0,triangles=0;currentRoot().traverseVisible(o=>{if(o.isMesh){meshes++;triangles+=(o.geometry.index?.count||o.geometry.attributes.position.count)/3;}});return{meshes,triangles};},dispose(){disposed=true;window.removeEventListener('load',start);cancelAnimationFrame(frame);observer.disconnect();controls.dispose();scene.traverse(o=>{o.geometry?.dispose();if(o.material)for(const m of new Set([...[o.material].flat(),o.userData.surfaceMaterial,o.userData.ghostMaterial,o.userData.wireMaterial].filter(Boolean)))m.dispose();});occlusion.dispose();output.dispose();antialias.dispose();composer.dispose();envMap.dispose();pmrem.dispose();renderer.dispose();}};
+ return {ready,update,view,focus,frameAssembly,resize,getCamera:()=>({position:camera.position.toArray(),target:controls.target.toArray(),fov:camera.fov}),restoreCamera:s=>{setCameraFov(s.fov??37);cameraGoal=new T.Vector3(...s.position);targetGoal=new T.Vector3(...s.target);dirty=true;},getVisibleParts:()=>[...currentGroups()].filter(([,g])=>g.visible).map(([id])=>id),getState:()=>({...current}),getPartCount:()=>groups.size,getPartBounds,getModelStats:()=>{let meshes=0,triangles=0;currentRoot().traverseVisible(o=>{if(o.isMesh){meshes++;triangles+=(o.geometry.index?.count||o.geometry.attributes.position.count)/3;}});return{meshes,triangles};},dispose(){disposed=true;window.removeEventListener('load',start);cancelAnimationFrame(frame);observer.disconnect();controls.dispose();scene.traverse(o=>{o.geometry?.dispose();if(o.material)for(const m of new Set([...[o.material].flat(),o.userData.surfaceMaterial,o.userData.ghostMaterial,o.userData.wireMaterial].filter(Boolean)))m.dispose();});occlusion?.dispose();output?.dispose();antialias?.dispose();composer?.dispose();envMap.dispose();pmrem.dispose();renderer.dispose();}};
 }

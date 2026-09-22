@@ -7,10 +7,10 @@ export function electricalTools(h){
  function plate(id,w,ht,d,p,mat='plastic',holes=[],radius=.005){const s=rounded(w,ht,radius);for(const hole of holes){const path=new T.Path();path.absarc(hole[0],hole[1],hole[2],0,Math.PI*2,true);s.holes.push(path);}const g=new T.ExtrudeGeometry(s,{depth:d,bevelEnabled:true,bevelSize:Math.min(.0005,d/4),bevelThickness:Math.min(.0004,d/4),bevelSegments:2,curveSegments:16});g.translate(0,0,-d/2);return add(id,g,mat,p);}
  function frame(id,w,ht,wall,d,p,mat='plastic',radius=.008){const s=rounded(w,ht,radius);s.holes.push(rounded(w-2*wall,ht-2*wall,Math.max(.001,radius-wall),T.Path));const g=new T.ExtrudeGeometry(s,{depth:d,bevelEnabled:true,bevelSize:.00035,bevelThickness:.0003,bevelSegments:2,curveSegments:16});g.translate(0,0,-d/2);return add(id,g,mat,p);}
  function sleeve(id,r,b,l,p,mat='zinc',axis='z'){const sh=new T.Shape();sh.absarc(0,0,r,0,Math.PI*2,false);const hole=new T.Path();hole.absarc(0,0,b,0,Math.PI*2,true);sh.holes.push(hole);const g=new T.ExtrudeGeometry(sh,{depth:l,bevelEnabled:false,curveSegments:32});g.translate(0,0,-l/2);if(axis==='x')g.rotateY(Math.PI/2);if(axis==='y')g.rotateX(Math.PI/2);return add(id,g,mat,p);}
- function screw(id,p,r=.003,length=.012,axis='z'){
+ function screw(id,p,r=.003,length=.012,axis='z',direction=-1){
   const sh=new T.Shape();sh.absarc(0,0,r,0,Math.PI*2,false);const recess=new T.Path();for(let i=0;i<=72;i++){const a=-i/72*Math.PI*2,rr=r*(.40+.11*Math.cos(6*a));i?recess.lineTo(Math.cos(a)*rr,Math.sin(a)*rr):recess.moveTo(Math.cos(a)*rr,Math.sin(a)*rr);}recess.closePath();sh.holes.push(recess);
   const g=new T.ExtrudeGeometry(sh,{depth:.002,bevelEnabled:true,bevelSize:.0002,bevelThickness:.0002,bevelSegments:2,curveSegments:24});if(axis==='x')g.rotateY(Math.PI/2);if(axis==='y')g.rotateX(-Math.PI/2);add(id,g,'zinc',p);
-  const rot=axis==='z'?[Math.PI/2,0,0]:axis==='x'?[0,0,Math.PI/2]:[0,0,0],k={x:0,y:1,z:2}[axis],q=[...p];q[k]-=length/2;cyl(id,r*.50,length,q,'zinc',rot);const bottom=[...p];bottom[k]-=.0002;cyl(id,r*.52,.0004,bottom,'dark',rot);
+  const rot=axis==='z'?[Math.PI/2,0,0]:axis==='x'?[0,0,Math.PI/2]:[0,0,0],k={x:0,y:1,z:2}[axis],q=[...p];q[k]+=direction*length/2;cyl(id,r*.50,length,q,'zinc',rot);const bottom=[...p];bottom[k]-=.0002;cyl(id,r*.52,.0004,bottom,'dark',rot);
  }
  function bulb(id,p,type='2057'){
   const big=['2057','1156'].includes(type),r=big?.013:type==='906'?.0075:type==='70'?.0032:.005,base=big?.015:type==='906'?.011:.008;

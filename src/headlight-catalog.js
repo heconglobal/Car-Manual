@@ -1,9 +1,10 @@
+import {mvma1985} from './factory-specifications.js';
 export const headlightSource='https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=69';
 export const headlightDiy='https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=37';
 export const headlightMotorSource='https://www.rodneydickman.com/product_info.php?products_id=230';
 export const headlightSections=[{id:'headlight-system',name:'1985 headlight assemblies'}];
 export const headlightParts=[];
-function part(key,section,name,description,spread,callout=null,sourceUrl=headlightSource){headlightParts.push({id:'hl-'+key,section:'headlight-'+section,system:'electrical',name,description,spread,callout,source:sourceUrl===headlightSource?'GM 22P · front lamps':sourceUrl===headlightDiy?'1985 Pontiac DIY · 2-28 / 2-29':sourceUrl===headlightMotorSource?'Early motor construction · supplier reference':'Pontiac 1986 service · 8A-102',sourceUrl,location:headlightSections.find(s=>s.id==='headlight-'+section).name,referenceNote:'1984–86 motor architecture; original 1985 application. Profiles, dimensions, tooth counts, contact geometry and linkage travel remain reconstructed. The two poses show end positions, not calibrated motion. Exploding a sealed lamp or riveted motor illustrates construction, not a service sequence.'});}
+function part(key,section,name,description,spread,callout=null,sourceUrl=headlightSource){headlightParts.push({id:'hl-'+key,section:'headlight-'+section,system:'electrical',name,description,spread,callout,source:sourceUrl===headlightSource?'GM 22P · front lamps':sourceUrl===headlightDiy?'1985 Pontiac DIY · 2-28 / 2-29':sourceUrl===headlightMotorSource?'Early motor construction · supplier reference':'Pontiac 1986 service · 8A-102',sourceUrl,location:headlightSections.find(s=>s.id==='headlight-'+section).name,referenceNote:'1984–86 motor architecture; original 1985 application. Profiles, dimensions, tooth counts, contact geometry and linkage travel remain reconstructed. Bulb-center height and lateral offset follow 1985 nominal data; the constant-length reconstructed linkage is checked through its travel. Production hard points, motor stops and cover contact remain unmeasured. Exploding a sealed lamp or riveted motor illustrates construction, not a service sequence.'});}
 for(const [side,s,label]of [['left',1,'Driver / LH'],['right',-1,'Passenger / RH']]){
  headlightSections.push({id:'headlight-'+side,parent:'headlight-system',name:label+' headlight',spread:[s*.22,0,0]});
  for(const [key,name,spread]of [['lamp','Sealed beam, aim & bucket',[0,.10,-.15]],['door','Cover, hinge & lift linkage',[0,.20,.06]],['motor','1984–86 lift motor',[s*-.15,0,.08]]])headlightSections.push({id:`headlight-${side}-${key}`,parent:'headlight-'+side,name:label+' · '+name,spread});
@@ -32,7 +33,7 @@ for(const [side,s,label]of [['left',1,'Driver / LH'],['right',-1,'Passenger / RH
  ['mount','door','Motor / bucket mounting bracket','Open formed bracket and paired bucket supports, separate from motor and rotating bucket.',[0,-.14,.08],9],
  ['mount-bolts','door','Assembly mounting fasteners','Independent mounting nuts, washers and motor attachment screws.',[s*.18,-.14,.08],19],
  ['crank','door','Motor output crank arm','Short crank on the actuator output shaft, independent of the longer operating link.',[s*-.08,-.02,-.05],8],
- ['link','door','Bucket operating link','Formed operating arm connecting the output crank to the bucket. Endpoint poses are illustrative.',[s*.08,0,-.10],8],
+ ['link','door','Bucket operating link','Formed operating arm connecting the output crank to the bucket. A constant-length link now joins a solved crank position to the bucket in both poses; original hard points remain reconstructed.',[s*.08,0,-.10],8],
  ['link-clip','door','Link retaining clip & washers','Spring retaining clip and washers at the crank/link joint.',[s*.13,0,-.10],34],
  ['housing','motor','Early actuator gearcase','Open black case and motor cradle. Original actuator assembly: '+(side==='left'?'22039672 (LH).':'22039673 (RH).'),[-s*.08,0,0],35],
  ['case-half','motor','Gearcase outer half','Separate riveted case half with output-shaft bore and mounting flange.',[s*.15,0,0],35],
@@ -87,3 +88,5 @@ for(const [key,name,description,spread] of [
  part(key,'controls',name,description,spread,null,controlSource);
  const p=headlightParts.at(-1);p.source='GM service · lighting / column controls';p.referenceNote='1986 GM service 8A-12 and 8A-100 provide adjacent-year component relationships. 1985 owner instructions corroborate separate headlamp, panel-illumination and beam controls. Local dimensions, contacts and connector cavities are reconstructions; no 1985 pinout or electrical test values are certified.';
 }
+
+for(const side of ['left','right'])headlightParts.find(p=>p.id==='hl-'+side+'-lens').serviceReference={title:'1985 nominal raised headlamp position',rows:[['Bulb-center height','709 mm above ground at curb mass'],['Lateral bulb-center offset','511 mm from vehicle centerline']],links:[['Pontiac 1985 specifications · printed24',mvma1985+'#page=26']],note:'These two nominal datums are applied to the raised model. Bucket pivot, motor crank, connecting link, cover contact and stop angles remain reconstructions; the mechanism is not factory dimensional CAD.'};

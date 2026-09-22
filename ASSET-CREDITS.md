@@ -16,7 +16,7 @@ All vehicle meshes, procedural surface textures, lettering and interface graphic
 - **1985 Pontiac Fiero Do-It-Yourself manual**, Pontiac / General Motors, hosted by FieroInfo: https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf.
   - Printed 1-4 through 1-6: structural layout and exploded body illustrations.
   - Printed 2-4, 2-14 and 2-16: front service compartment, clutch-fluid reservoir and V6 air-cleaner placement.
-  - Printed 2-28 / 2-29: headlamp cover, black plastic bezel, sealed-beam lens, reflector, retainers and motor layout. Figures used for shape reference; the replacement procedure is not implemented as a validated guide.
+  - Printed 2-28 through 2-30: headlamp cover, black plastic bezel, sealed-beam lens, reflector, retainers and motor layout; replacement sequence paraphrased with direct part references. Physical removal paths and workshop validation remain outstanding.
   - Printed 3-2: overall dimensions, wheelbase and track widths.
   - Printed 3-3: wheel dimensions and exterior reference view. The pictured aero nose is GT; it is not used as the SE nose.
 - **1985 Pontiac Fiero Canadian brochure**, Pontiac / General Motors, hosted by XR793: https://xr793.com/wp-content/uploads/2018/10/1985-Pontiac-Fiero-Cdn.pdf.
@@ -95,3 +95,11 @@ HVAC geometry: locally authored native meshes from GM 22P CD PDF 252–255, 261,
 ## Headlight detail pass
 
 Original native meshes for the 1985 early headlamp assemblies, including cover/bucket poses, lamp optics, actuator construction and relays. Reference evidence and application limits: [headlight reconstruction](references/headlight-reconstruction.md). Factory illustrations and supplier photographs were inspected for structure only; no downloaded reference photograph is distributed as a rendered component, texture or background.
+
+## Electrical, nominal specifications and instrument pass — 2026-09-22
+
+The [original 1985 owner manual](https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FOwners+Manuals%2F1985%2F1985+Fiero+Owners+Manual.pdf), GM 22P and the [Pontiac MVMA specification form issued September 1, 1984](https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FMotor+Vehicle+Specifcations%2F1985-86+Pontiac+Fiero.PDF) support the new lamps, charging equipment, fuse block, early cluster and selected engine/transaxle/headlamp datums. See `references/electrical-reconstruction.md`, `wiring-reconstruction.md`, `instrument-reconstruction.md` and `1985-mvma-research.md` for inspected pages and exclusions. Native meshes and procedural text/materials remain locally authored; no scans or component photos ship in the app.
+
+## Distribution notices
+
+`public/THIRD-PARTY-NOTICES.txt` is copied into the production output. It contains the installed Three.js MIT text, Vite core notice for the runtime preload helper and the Studio Small 09 source / CC0 attribution. Poly Haven’s asset page and licensing page were checked on September 22, 2026; the asset identifies Sergej Majboroda as author. `scripts/audit-distribution.mjs` checks the built notice, identical lighting asset and exclusion of reference scans, photographs and imported vehicle meshes from `dist/`.

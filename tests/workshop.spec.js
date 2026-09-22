@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { parts, sources } from '../src/data.js';
+import { parts, sources, tours } from '../src/data.js';
+import {defaultConfiguration} from '../src/configuration.js';
+import {detailAvailable} from '../src/inspection-catalog.js';
 
 test('renders 3D vehicle without runtime errors or external image requests',async({page})=>{
  const errors=[];const images=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.resourceType()==='image')images.push(r.url());});
@@ -16,12 +18,12 @@ test('system filtering, global search, focus, isolation and reset work',async({p
  for(const id of ['body','engine','drivetrain','suspension','brakes','cooling','fuel','electrical','interior']){
   await page.locator(`[data-system="${id}"]`).click();await expect(page.locator('canvas')).toHaveAttribute('data-system',id);expect(await page.locator('.part-button').count()).toBeGreaterThan(0);
  }
- await page.getByRole('searchbox').fill('radiator');await expect(page.locator('.part-button')).toHaveCount(2);
+ await page.getByRole('searchbox').fill('radiator');await expect(page.locator('.part-button[data-part="radiator"]')).toBeVisible();await expect(page.locator('.part-button[data-part="cool-core"]')).toHaveCount(1);
  await page.locator('.part-button[data-part="radiator"]').click();await expect(page.locator('.component-heading')).toContainText('Radiator & fan');await expect(page.locator('canvas')).toHaveAttribute('data-selected','radiator');
  await page.getByRole('button',{name:'Isolate',exact:true}).click();expect(await page.evaluate(()=>window.__fiero.getModelState().isolate)).toBe(true);
  await page.getByRole('button',{name:'Show context',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();
  await page.getByRole('button',{name:'Reset view',exact:true}).click();await expect(page.locator('canvas')).toHaveAttribute('data-system','all');await expect(page.locator('canvas')).toHaveAttribute('data-selected','');await expect(page.getByRole('searchbox')).toHaveValue('');
- await page.getByRole('searchbox').fill('nonexistent-part-xyz');await expect(page.locator('.empty-state')).toBeVisible();await page.locator('#clear-search').click();await expect(page.locator('.part-button')).toHaveCount(parts.length);
+ await page.getByRole('searchbox').fill('nonexistent-part-xyz');await expect(page.locator('.empty-state')).toBeVisible();await page.locator('#clear-search').click();await expect(page.locator('.part-button')).toHaveCount(parts.filter(p=>detailAvailable(p,defaultConfiguration)).length);
 });
 
 test('camera presets and keyboard controls update the viewer',async({page})=>{
@@ -49,7 +51,7 @@ for(const id of ['orientation','air-cleaner','suspension'])test(`${id} tour adva
   await page.locator('[data-tab="tours"]').click();await page.locator(`#inspector-content [data-tour="${id}"]`).click();await expect(page.locator('.tour-progress .current')).toHaveText('1');
   await expect(page.locator('.notice')).toContainText('not a validated repair procedure');
   await page.locator('[data-action="next-step"]').click();await page.locator('[data-action="prev-step"]').click();await expect(page.locator('.tour-progress .current')).toHaveText('1');
-  for(let i=1;i<5;i++)await page.locator('[data-action="next-step"]').click();await expect(page.locator('.tour-progress .current')).toHaveText('5');await page.locator('[data-action="next-step"]').click();await expect(page.locator('.tour-card')).toHaveCount(3);
+  for(let i=1;i<5;i++)await page.locator('[data-action="next-step"]').click();await expect(page.locator('.tour-progress .current')).toHaveText('5');await page.locator('[data-action="next-step"]').click();await expect(page.locator('.tour-card')).toHaveCount(tours.length);
 });
 
 test('specification provenance and source dialog remain accessible',async({page})=>{

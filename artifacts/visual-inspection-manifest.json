@@ -1,0 +1,201 @@
+{
+  "reviewedAt": "2026-09-22T10:38:31.823942+00:00",
+  "sourceSha256": "b2019702353965532ff3dcd7d8016da9555acf341514d85704bcced93b67718c",
+  "applicationSha256": "bac39907dbcc78a2567f657c959bbbe6c24bf5a68f42839fa5fea8c97be096ff",
+  "status": "development visual inspection; not final acceptance",
+  "captures": [
+    {
+      "file": "shared-powertrain-whole-car.png",
+      "sha256": "8a78fe31c985c583cb36966dda005e5b46ce4e643f5b0987f44e7a64e225a61e",
+      "capturedAt": "2026-09-22T09:04:51.019671+00:00"
+    },
+    {
+      "file": "shared-powertrain-installed.png",
+      "sha256": "41f57dbd977a5d2a2933addba9bde019043a68d77a0fa754e40e7f5545b8c0d4",
+      "capturedAt": "2026-09-22T09:05:13.743241+00:00"
+    },
+    {
+      "file": "shared-powertrain-engine.png",
+      "sha256": "e704855fa828b2dfc760ccfb24dbca67c18c56927c3b926d33814323bba17733",
+      "capturedAt": "2026-09-22T09:05:33.102611+00:00"
+    },
+    {
+      "file": "shared-powertrain-engine-exploded.png",
+      "sha256": "47d834676a981da8c3ab89445db4b9afca2c6bf9ae71aa8b63d63b58a1ae3495",
+      "capturedAt": "2026-09-22T09:05:37.618935+00:00"
+    },
+    {
+      "file": "body-decklid-assembled.png",
+      "sha256": "eb9509eaff0fb65b80fcef52ace5445611b690f279fa9dd7be5156b05e7fe40b",
+      "capturedAt": "2026-09-22T09:08:02.532820+00:00"
+    },
+    {
+      "file": "body-driver-door-exploded.png",
+      "sha256": "7922333673a2ad1af00043b570e0cf21abd0f5037e4099b1b91d5619675230b0",
+      "capturedAt": "2026-09-22T09:08:12.199628+00:00"
+    },
+    {
+      "file": "body-hardware-mobile.png",
+      "sha256": "6c82ec654bbfc452aa32ec07ca741ce4711d263e1080cdfde59038916338cf63",
+      "capturedAt": "2026-09-22T09:09:27.580729+00:00"
+    },
+    {
+      "file": "brakes-front-caliper-assembled.png",
+      "sha256": "bd9114b64abf9f24df4c2ceda59721ddd6ae0250a1f9820abe608e91027d380b",
+      "capturedAt": "2026-09-22T09:11:51.238761+00:00"
+    },
+    {
+      "file": "brakes-rear-caliper-exploded.png",
+      "sha256": "6400cef3facacd9670985886c4927f0018c0596f1b5f9a9d7d476d8e9700ac88",
+      "capturedAt": "2026-09-22T09:12:07.363785+00:00"
+    },
+    {
+      "file": "brakes-master-exploded.png",
+      "sha256": "2821abd3e5ce47a28f02652c3b2aebb86e8b0b41027b2684c5f2b456faa0ea1a",
+      "capturedAt": "2026-09-22T09:12:22.669593+00:00"
+    },
+    {
+      "file": "native-windows-vehicle.png",
+      "sha256": "b770063f36695a07097d8eb8e76938e875525b076f6d7c32bde13bf2db96f4b1",
+      "capturedAt": "2026-09-22T09:27:31.346154+00:00",
+      "renderer": "Native Windows Edge / Intel UHD / Direct3D11"
+    },
+    {
+      "file": "native-windows-engine-65.png",
+      "sha256": "39cc11ae5f7bd0d70f49e4a8d919839926c69839970e3b74e548e453a75e724a",
+      "capturedAt": "2026-09-22T09:27:46.171894+00:00",
+      "renderer": "Native Windows Edge / Intel UHD / Direct3D11"
+    },
+    {
+      "file": "native-windows-engine-exploded.png",
+      "sha256": "4ae25c531fc9aecdae658b6e1e695858a96424476d29b61eb9f1d7df659b3de5",
+      "capturedAt": "2026-09-22T09:27:47.900490+00:00",
+      "renderer": "Native Windows Edge / Intel UHD / Direct3D11"
+    },
+    {
+      "file": "engine-mobile.png",
+      "sha256": "ef6e4925bea74ef96e6e5218e5e8e8a9ced097b11907c532f82adf54216f1660",
+      "capturedAt": "2026-09-22T09:34:56.277911+00:00"
+    },
+    {
+      "file": "exhaust-complete-assembled.png",
+      "sha256": "69b76df3e408bb47be9f29437d1bb9f82db0d3676836162c98a5ebce5e881029",
+      "capturedAt": "2026-09-22T09:37:09.493521+00:00"
+    },
+    {
+      "file": "exhaust-crossover-assembled.png",
+      "sha256": "6a255dd01a150f54bd7d9a7fad34ea87bfed553741978214eb4dca6930f1ec95",
+      "capturedAt": "2026-09-22T09:37:17.882142+00:00"
+    },
+    {
+      "file": "wiring-cluster-assembled.png",
+      "sha256": "ebdb592aebd122be683aaaae9918528bd89da7c5f84f4bb569ab7be0eb7815c7",
+      "capturedAt": "2026-09-22T09:25:29.760184+00:00"
+    },
+    {
+      "file": "headlight-left-assembled.png",
+      "sha256": "d867946a23197df545793b6adb9ff2731d6e86b66b6415f226dd3771c0af6f4f",
+      "capturedAt": "2026-09-22T09:43:47.860159+00:00"
+    },
+    {
+      "file": "headlight-motor-exploded.png",
+      "sha256": "28f934f00391c0c30857bad9aaea2a2917b59e4c062df750b876a608bb427f63",
+      "capturedAt": "2026-09-22T09:44:14.755427+00:00"
+    },
+    {
+      "file": "headlight-cover-closed.png",
+      "sha256": "e0631d9924408e038dd3386c87e0d4ec80bf6c594298f79d14e145e106debff6",
+      "capturedAt": "2026-09-22T09:44:25.898494+00:00"
+    },
+    {
+      "file": "headlight-right-assembled.png",
+      "sha256": "7c8545c11105ff51e000f43c3aa7998d73012e8cc44e5d54cee8e455f583e846",
+      "capturedAt": "2026-09-22T09:43:55.443745+00:00"
+    },
+    {
+      "file": "headlight-right-exploded.png",
+      "sha256": "0042a439f6007ffd441037494ea92f44554c076fee7bc42567ba041e40580d37",
+      "capturedAt": "2026-09-22T09:43:57.736800+00:00"
+    },
+    {
+      "file": "headlight-mobile-cushion.png",
+      "sha256": "b2ca20f16f836c1506ccebee96f998a273c88e9adab7ef9e1b1736200baa0928",
+      "capturedAt": "2026-09-22T09:45:40.042145+00:00"
+    },
+    {
+      "file": "ignition-mobile.png",
+      "sha256": "5ff3bf5a926e667649fe7c5d38a1016617798bdda537d9541168d67cf4edff7f",
+      "capturedAt": "2026-09-22T09:53:24.685837+00:00"
+    },
+    {
+      "file": "service-water-pump-exploded.png",
+      "sha256": "bd8a8b704dc38116065e25e5d5a88666eaf64423b81b49b2288b96ef36a67941",
+      "capturedAt": "2026-09-22T09:29:38.778950+00:00"
+    },
+    {
+      "file": "hvac-c41-assembled.png",
+      "sha256": "72fe82266d6d3fe12ad557928debc17a2a970400feefd5274283b6bdad3aca98",
+      "capturedAt": "2026-09-22T09:47:37.473706+00:00"
+    },
+    {
+      "file": "headlamp-procedure-spring.png",
+      "sha256": "7d8b240b13b96f03e61bb84e96e7bd1422060f9954c34aa0c82155bff0027729",
+      "capturedAt": "2026-09-22T09:58:02.670785+00:00"
+    },
+    {
+      "file": "headlamp-procedure-mobile.png",
+      "sha256": "c912788d8351a65c9436a588ae152a2b0e6c779aa832bc7387ad6aeb344bf05d",
+      "capturedAt": "2026-09-22T09:58:09.124880+00:00"
+    },
+    {
+      "file": "suspension-front-assembled.png",
+      "sha256": "3a6a56dc2eff8b839a0b319f50960fc8feba2c341cb9b6256a87dda8f03bed7e",
+      "capturedAt": "2026-09-22T10:01:03.961427+00:00"
+    },
+    {
+      "file": "steering-rack-exploded.png",
+      "sha256": "17a6b452a4bae68d71a3159e0d8df3be21559caecbf2010b2414d117ac34c21f",
+      "capturedAt": "2026-09-22T10:01:40.222720+00:00"
+    },
+    {
+      "file": "transmission-assembled.png",
+      "sha256": "30dc16d4152021722c53e88880398445b38db4afaf33ac2113150de0d4b74d10",
+      "capturedAt": "2026-09-22T10:04:37.824563+00:00"
+    },
+    {
+      "file": "cooling-complete-circuit.png",
+      "sha256": "dada4d4e9812377e50f9fd60c08c76a3b2474e4fc53f7af356e88b76290646ad",
+      "capturedAt": "2026-09-22T10:05:09.900144+00:00"
+    },
+    {
+      "file": "transmission-clutch-assembled.png",
+      "sha256": "1749579fbaa9306c3950adadd92df45f96a0d791407d756f32fe8491ae649b11",
+      "capturedAt": "2026-09-22T10:04:58.713650+00:00"
+    },
+    {
+      "file": "lhd-controls-from-front.png",
+      "sha256": "6cdc32ea4ff294636dd53b274e92fb107fe43b4606bb838056ed4c8e81aa6082",
+      "capturedAt": "2026-09-22T10:06:22.070663+00:00"
+    },
+    {
+      "file": "valve-gear-assembled.png",
+      "sha256": "9d0479b0cb60370598e8af11b3a64d864de6457ab02733181450c6f12dca431c",
+      "capturedAt": "2026-09-22T10:09:40.775058+00:00"
+    },
+    {
+      "file": "valve-gear-exploded.png",
+      "sha256": "cc0b5bfa2e2491e15b9eab35a6425d15329af657534e42d11dbac1bdee2f08f9",
+      "capturedAt": "2026-09-22T10:09:42.762258+00:00"
+    },
+    {
+      "file": "valve-rocker-detail.png",
+      "sha256": "4f2ec05a88c8b9fd8dfe4c229380f11a14c5cd77a27c30a0c24f9dd8c91a039b",
+      "capturedAt": "2026-09-22T10:09:46.013058+00:00"
+    },
+    {
+      "file": "mobile-explorer.png",
+      "sha256": "cfe410580ff4e8737956114f1e106b56876f17bc46054f96e374bf3b7417c0ae",
+      "capturedAt": "2026-09-22T10:37:15.629820+00:00"
+    }
+  ]
+}

@@ -2,6 +2,8 @@
 
 Open http://localhost:5185/ in a WebGL-capable browser.
 
+**Final acceptance is pending.** See the [current verification report](artifacts/current-UAT.md) and [all 20 areas mapped to test coverage](artifacts/checklist-test-matrix.md). The checklist requires complete parts/geometry/manual coverage; this walkthrough alone does not establish it.
+
 This UAT evaluates the **interactive 3D experience and the revised appearance**. Factory overall dimensions anchor the reconstruction; detailed component contours and service procedures remain unverified. The requested photorealistic, fully accurate model is not signed off. Record appearance issues under **Model accuracy** in the UAT tab.
 
 ## New headlight review
@@ -15,6 +17,10 @@ This UAT evaluates the **interactive 3D experience and the revised appearance**.
 
 Treat this as geometry/interaction review. Local profiles, gear ratios, optical tooling, every circuit and calibrated motion remain pending; the full car is not yet accepted as photorealistic or factory-dimensional.
 
+## Headlamp factory-sequence guide
+
+Open Guides → Replace a sealed headlamp. Check the T-15/Phillips/hook tools, blue-wire isolation before lamp removal, unchanged aiming screws, two-piece retainer, bezel screw torque and the final lamp-on / blue-wire reconnect / lamp-off order. Steps highlight native parts in the driver-side assembly. Use Previous and numbered steps, finish, and verify the prior selection and headlight preview return. Repeat from an existing component scope and at phone width. While the guide is active, select a part from another scope, change a persistent option, and return Home; temporary raised-headlight state must not leak into saved preview settings, and the next guide must return to its actual starting view. The guide follows the 1985 text; reconstructed geometry does not establish removal clearance.
+
 ## Acceptance walkthrough
 
 1. Confirm the header identifies the 1985 Fiero SE 2M6, four-speed manual and WS6 configuration.
@@ -24,7 +30,7 @@ Treat this as geometry/interaction review. Local profiles, gear ratios, optical 
 5. Click a visible component directly in the 3D model. Confirm the inspector opens that component. The component list is the keyboard-accessible equivalent.
 6. Use Focus part, Isolate / Show context, Hide body panels, labels and wireframe. Reset view should restore the assembled full vehicle.
 7. Move the exploded-view slider to 100%, then back to 0%. Components should move smoothly and return to their assembled positions.
-8. In Guides, complete all three tours. Check Previous, numbered-step buttons, Next step, Finish tour and All guides.
+8. In Guides, complete the three orientation tours and the headlamp service guide. Check Previous, numbered-step buttons, Next step, Finish tour and All guides.
 9. In Specs, review the separation between NHTSA-confirmed identity, owner configuration and pending service data. Open and close the reference library.
 10. In UAT, check an item and save a note. Reload and confirm both persist. Export feedback and confirm a JSON file is downloaded.
 11. At phone width, open the assembly menu, search and select a part, then scroll to its inspector. Confirm there is no horizontal page overflow.
@@ -45,7 +51,7 @@ Treat this as geometry/interaction review. Local profiles, gear ratios, optical 
 
 22. From the vehicle search, enter **ICM** and select **Ignition control module (ICM)**. It should open **Distributor & ICM**. Focus and isolate the module; orbit to inspect its mounting holes, heat-transfer plate, terminals and connector shrouds. Return to the assembly, then explode the cap, rotor, pickup, pole piece, shaft, seals and gear. Check these against the GM distributor illustration linked in the inspector.
 
-23. Open **Ignition & tune-up**. Inspect the external coil, bracket, primary harness, four-circuit EST connector and tach filter. In **Spark plugs & HT leads**, select individual plugs and wires; the high-voltage coil lead must be distinct from the low-voltage coil-to-ICM harness. Position labels are not a firing-order guide. Repeat ICM search and vehicle return on a phone, including a short viewport where the assembly panel itself needs to scroll.
+23. Open **Ignition & tune-up**. Inspect the external coil, bracket, primary harness, four-circuit EST connector and tach filter. In **Spark plugs & HT leads**, select individual plugs and wires; the high-voltage coil lead must be distinct from the low-voltage coil-to-ICM harness. Cylinder identities and firing order are sourced; cap clocking and high-tension routing remain unverified. Repeat ICM search and vehicle return on a phone, including a short viewport where the assembly panel itself needs to scroll.
 
 24. Open **Sensors, valves & lines**. Inspect the TPS, IAC, MAP sensor, PCV, cold-start injector/seals/tube, fuel lines, injector loom and EGR components. Compare the displayed geometry with each linked factory figure; record missing parts and inaccurate forms. Open **Reference library → Parts coverage** to review the known gaps across the car.
 
@@ -57,6 +63,7 @@ Use the UAT tab to record observations, bugs, geometry corrections or feature re
 
 ## Known limitations
 
+- The installed engine now shares the detailed engine geometry with rigid placement. Review its new packaging, belt and connections; the installation angle, mounts, castings and complete clearances remain reconstructed. See `references/shared-powertrain-reconstruction.md`.
 - Full measured vehicle geometry, every internal engine/transmission part and a complete fastener inventory are not yet available. Engine internals and ignition components are now selectable, with reconstruction limits recorded in their inspectors.
 - Body shape, wheel design, cockpit details, castings and routing are reconstructed. Surface accuracy and photorealism still need further work and review.
 - Exterior red, roof configuration and unprovided accessory options are not confirmed.
@@ -84,7 +91,7 @@ Use the UAT tab to record observations, bugs, geometry corrections or feature re
 5. On mobile, open the assembly menu, search for a new part, inspect it, and return. Both side views and the orbit tools should remain accessible without overlap.
 6. Choose **Options → Cabin** for the driver-seat view. Check that the speedometer is left of the tachometer, the turn-signal stalk is outboard on the left, and the HVAC controls sit above the radio. Reset, then inspect the rear and intake lettering for readable orientation.
 
-This increment contains 95 transmission/clutch and 36 cooling selectable parts or grouped sets, alongside the 315 engine entries. It is an illustrated reconstruction. Gear profiles, local casting dimensions, fan variant, exact routing and many remaining vehicle systems are unfinished; passing this UAT does not establish a complete photorealistic replica or validate repair procedures.
+This increment contains 95 transmission/clutch and 36 cooling selectable parts or grouped sets, alongside the 320 engine entries. It is an illustrated reconstruction. Gear profiles, local casting dimensions, fan variant, exact routing and many remaining vehicle systems are unfinished; passing this UAT does not establish a complete photorealistic replica or validate repair procedures.
 
 ## Brake inspection increment
 

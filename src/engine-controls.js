@@ -1,3 +1,5 @@
+import {bankOffset} from './engine-layout.js';
+import {l44Nominal} from './factory-specifications.js';
 import * as T from 'three';
 const manual='https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf';
 const rows=[
@@ -71,7 +73,7 @@ export function buildEngineControls(h){
  tube(id('injector-harness'),[[-.15,1.405,-.092],[0,1.41,-.10],[.14,1.405,-.092]],.006,'wire');
  for(let i=0;i<55;i++){const x=-.15+i*.0054;ring(id('injector-harness'),.006,.001,[x,1.407,-.096],'silicone');}
  for(const s of [-1,1])for(let c=1;c<=3;c++){
-  const x=(c-2)*.105;box(id('injector-harness'),[.015,.016,.017],[x,1.402,s*.072],'phenolic');
+  const x=((c-2)*l44Nominal.borePitch+bankOffset(s));box(id('injector-harness'),[.015,.016,.017],[x,1.402,s*.072],'phenolic');
   tube(id('injector-harness'),[[x,1.409,-.096],[x+.015,1.42,0],[x,1.412,s*.072]],.0025,'wire');
   box(id('injector-harness'),[.009,.002,.019],[x,1.410,s*.072],'zinc');
  }

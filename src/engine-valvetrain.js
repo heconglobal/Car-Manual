@@ -1,10 +1,11 @@
+import {l44Nominal,cylinderNumber} from './factory-specifications.js';
 import * as T from 'three';
 const gm='https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_P22.pdf#page=17';
 export const valveHardwareParts=[];
 function part(id,section,name,description,spread,callout){valveHardwareParts.push({id:`eng-${id}`,section,system:'engine',name,description,spread,callout,location:section.includes('front')?'Cabin-side cylinder head':'Trunk-side cylinder head',source:'GM 22P · H-22',sourceUrl:gm,aliases:'valve gear cylinder head rebuild '+id.replaceAll('-',' '),referenceNote:'GM H-23 distinguishes the exhaust stem shield from the retained intake stem seal. Local profiles, installed heights and fastener dimensions are reconstructed; no clearance or torque specification is implied.'});}
 for(const [bank,s] of [['front',-1],['rear',1]])for(let c=1;c<=3;c++){
- const section=`head-${bank}`,label=`${s<0?'Cabin':'Trunk'}-side position ${c}`,dx=(c-2)*.075;
- part(`pushrod-guide-${bank}-${c}`,section,`${label} pushrod guide plate`,'Formed paired guide plate with stud openings and two open pushrod slots. Position labels are viewer positions, not firing order.',[dx,.085,-s*.12],65);
+ const section=`head-${bank}`,label=`${s<0?'Cabin':'Trunk'}-side cylinder ${cylinderNumber(bank,c)}`,dx=(c-2)*.075;
+ part(`pushrod-guide-${bank}-${c}`,section,`${label} pushrod guide plate`,'Formed paired guide plate with stud openings and two open pushrod slots. Cylinder identity follows the Pontiac bank layout; this guide-plate shape remains reconstructed.',[dx,.085,-s*.12],65);
  for(const type of ['intake','exhaust']){
   const tag=`${bank}-${c}-${type}`,name=`${label} ${type}`,valveSection=`valve-${tag}`;
   part(`spring-retainer-${tag}`,valveSection,`${name} spring retainer`,'Separate stepped steel spring cap with a tapered keeper bore.',[dx,.225,s*.17],43);
@@ -25,7 +26,7 @@ export function buildValveHardware(h,bank,s,at){
  };
  const hole=(shape,x,z,r)=>{const path=new T.Path();path.absarc(x,z,r,0,Math.PI*2,true);shape.holes.push(path);};
  for(let c=1;c<=3;c++){
-  const cx=(c-2)*.105,pivotZ=-s*.007;
+  const cx=(c-2)*l44Nominal.borePitch,pivotZ=-s*.007;
   // One stamped guide locates both pushrods for this cylinder position.
   // Its two slots remain open so the plate is not a solid block around rods.
   const shape=new T.Shape(),points=[[-.041,-.043],[-.030,-.043],[-.030,-.027],[-.020,-.027],[-.020,-.043],[.020,-.043],[.020,-.027],[.030,-.027],[.030,-.043],[.041,-.043],[.041,.008],[-.041,.008]];

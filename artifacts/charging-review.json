@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-22T04:36:42.757Z",
+  "seconds": 275.853,
+  "status": "passed",
+  "parts": 62,
+  "errors": [],
+  "images": [],
+  "captures": [
+    "vehicle-hood-clearance-fixed",
+    "charging-battery-assembled",
+    "charging-battery-assembled",
+    "charging-battery-exploded",
+    "charging-starter-assembled",
+    "charging-starter-exploded",
+    "charging-alternator-assembled",
+    "charging-alternator-exploded",
+    "charging-claw-rotor",
+    "charging-rear-frame",
+    "charging-mobile-generator",
+    "lighting-dome-refined"
+  ]
+}

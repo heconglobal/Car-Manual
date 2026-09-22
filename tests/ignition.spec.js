@@ -13,7 +13,7 @@ test('global ICM search opens the nested distributor, separates parts and restor
  await expect(page.locator('.component-heading')).toContainText('Ignition control module');
  await expect(page.locator('.part-button')).toHaveCount(engineMembers('distributor-detail').length);
  await expect(page.locator('#inspector-content')).toContainText('1103633');
- await expect(page.locator('#inspector-content a[target="_blank"]')).toHaveAttribute('href',/page=65/);
+ await expect(page.locator('#inspector-content a[target="_blank"]').first()).toHaveAttribute('href',/page=65/);
  await page.getByRole('button',{name:'Reset view',exact:true}).click();
  const settle=()=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
  await settle();

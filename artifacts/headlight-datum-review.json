@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-22T05:38:02.601Z",
+  "status": "passed",
+  "seconds": 135.745,
+  "errors": [],
+  "captures": [
+    "headlights-nominal-closed",
+    "headlights-nominal-raised",
+    "headlights-nominal-left-raised",
+    "headlights-nominal-left-closed",
+    "headlights-nominal-exploded"
+  ]
+}

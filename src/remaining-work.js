@@ -2,10 +2,10 @@
 // known to be needed on the owner's physical car. No category is certified
 // complete merely because its geometry can be inspected.
 export const remainingWork=[
- {name:'Headlights',stage:'Current modeling pass',assembly:'headlight-system',items:[
+ {name:'Headlights',stage:'Nominal bulb position and reconstructed linkage checked; factory calibration remains',assembly:'headlight-system',items:[
   'Check the new LH/RH lamp, cover, linkage, early motor and relay breakdown in UAT.',
   'Verify measured cover/bucket profiles, actuator case dimensions, exact gear teeth/ratios, brush/contact shapes and all retainers.',
-  'Calibrate hinge/crank travel and clearances through the full movement; current raised/closed views are endpoint reconstructions.',
+  'Calibrate hinge/crank travel and clearances through the full movement; nominal bulb position and constant-length reconstructed linkage are checked, while production pivots, cover contact and motor stops remain unverified.',
   'Complete the 1985 headlight switch, dimmer linkage, circuit pinouts, fusible links and factory harness routing; validate aiming and diagnostic procedures.'
  ]},
  {name:'Other exterior and interior lighting',stage:'Detailed assemblies added; verification remains',assembly:'lighting-system',items:[
@@ -13,12 +13,12 @@ export const remainingWork=[
   'Rear stop/turn/tail and reverse lamps: separate chambers, lens sections, reflectors, bulbs, sockets, seals and fasteners.',
   'License lamps, courtesy lamps, dome/map lighting and instrument illumination; correct factory option variants.'
  ]},
- {name:'Battery, starting and charging',stage:'Detail missing',items:[
+ {name:'Battery, starting and charging',stage:'Detailed assemblies added; verification remains',assembly:'charging-system',items:[
   'Battery case/caps, terminals, tray, hold-down and vent/insulation details; complete positive/negative cables and ground straps.',
   'Original starter: housing, solenoid, drive, armature/brushes, mounting and cable interfaces.',
   'Alternator: cast housings, rotor/stator, bearings, regulator/rectifier, brushes, pulley, fan and brackets; original belt routing.'
  ]},
- {name:'Vehicle wiring, switches and instruments',stage:'Detail missing',items:[
+ {name:'Vehicle wiring, switches and instruments',stage:'Cluster, fuse panel, ECM, junction and flashers added; coverage remains incomplete',assembly:'wiring-system',items:[
   'Complete body/engine/dash harnesses, branch lengths, connectors, terminal cavities, grommets, clips, junctions and grounds.',
   'Fuse block, fusible links, relay bases, ignition switch, stop/reverse/clutch switches and horn assemblies/circuit.',
   'Instrument housings, circuit boards, speedometer/tachometer/gauges and warning lamps; correct 1985 pinouts and circuit links.'
@@ -89,7 +89,7 @@ export const remainingWork=[
   'Rear-window defroster grid/terminals, switch, relay, wiring and original-option application.'
  ]},
  {name:'Body panels, roof and structure',stage:'Modeled; specification audit remains',assembly:'body-system',items:[
-  'Measured panel curvature, sections, datums and gaps: front/rear fascias, hood, front fenders, doors, rockers, quarters and rear roof clip. Resolve the existing dark strip visible across the front hood area.',
+  'Measured panel curvature, sections, datums and gaps: front/rear fascias, hood, front fenders, doors, rockers, quarters and rear roof clip. Radiator-to-hood interference has been corrected and checked; measured factory placement remains unverified.',
   'Refine A/B/C pillars, small sail windows, recessed rear window, decklid/vents and rear bumper geometry against source dimensions.',
   'Complete space-frame stampings, weld/joint locations, bulkheads, floor/tunnel, rails, bumper beams and energy absorbers.',
   'Fascia supports, wheelhouse liners, air deflectors, seals and every verified panel retainer.',

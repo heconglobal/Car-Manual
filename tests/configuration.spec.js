@@ -9,10 +9,10 @@ test('preview choices change geometry, persist, and leave the VIN record intact'
  await page.getByRole('button',{name:'Configure',exact:true}).click();
  await page.locator('[data-config="headlights"]').check();
  const raised=await page.evaluate(()=>window.__fiero.getPartBounds('headlights'));
- expect(raised.max[1]-closed.max[1]).toBeGreaterThan(.12);
+ expect(raised.max[1]-closed.max[1]).toBeGreaterThan(.08);
  // Prevent the previous overly tall pod from returning. This is a visual
  // reconstruction regression bound, not a claimed factory measurement.
- expect(raised.max[1]).toBeLessThan(.89);
+ expect(raised.max[1]).toBeLessThan(.82);
  const plainDeck=await page.evaluate(()=>window.__fiero.getPartBounds('decklid'));
  await page.locator('#config-deck').selectOption('wing');
  const wingDeck=await page.evaluate(()=>window.__fiero.getPartBounds('decklid'));

@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test';
 import {detailMembers,detailAvailable} from '../src/inspection-catalog.js';
 test('heater and C60 previews share native cores and show distinct controls, motors and refrigeration parts',async({page})=>{
- test.setTimeout(840000);page.setDefaultTimeout(45000);const errors=[],images=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.resourceType()==='image')images.push(r.url());});
+ test.setTimeout(840000);page.setDefaultTimeout(45000);page.setDefaultNavigationTimeout(240000);const errors=[],images=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.resourceType()==='image')images.push(r.url());});
  await page.goto('/');await page.waitForFunction(()=>window.__fiero&&document.querySelector('canvas').dataset.ready==='true',null,{timeout:180000});await expect(page.locator('#loading')).toHaveCount(0);
  const capture=async name=>{await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await page.screenshot({path:`artifacts/${name}.png`});console.log('Captured '+name);};
  const scope=async id=>{await page.locator(`#systems [data-assembly="${id}"]`).click();await expect(page.locator('canvas')).toHaveAttribute('data-assembly',id);};const reset=()=>page.getByRole('button',{name:'Reset view',exact:true}).click();

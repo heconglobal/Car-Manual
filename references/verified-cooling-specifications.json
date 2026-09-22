@@ -1,0 +1,56 @@
+{
+  "reviewedAt": "2026-09-22",
+  "vehicle": "1985 Fiero L44 / VIN engine code 9",
+  "status": "factory-reference transcription; not complete interactive procedure",
+  "sources": {
+    "owners": {
+      "file": "1985-owners-boomtastic.pdf",
+      "pdfPage": 92,
+      "printedPage": "6-4"
+    },
+    "mvma": {
+      "file": "1985-86-specifications.pdf",
+      "pdfPage": 7,
+      "printedPage": "5"
+    },
+    "diy": {
+      "file": "1985-fiero-diy.pdf",
+      "pdfPages": [
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "printedPages": "2-37 through 2-41"
+    }
+  },
+  "values": [
+    {
+      "name": "Approximate total cooling capacity",
+      "value": 13.0,
+      "unit": "L",
+      "source": "owners",
+      "condition": "VIN engine code 9; does not state the amount that will drain during a particular repair"
+    },
+    {
+      "name": "Radiator cap nominal relief",
+      "value": 103.4,
+      "unit": "kPa",
+      "equivalent": "15 psi",
+      "source": "mvma"
+    },
+    {
+      "name": "Coolant-pipe drain plug tightening",
+      "value": 12,
+      "unit": "N·m",
+      "equivalent": "8 lb·ft",
+      "source": "diy",
+      "pdfPage": 49,
+      "appliesTo": "underbody coolant-pipe drain plugs only; not radiator drain valve, cap or engine block plug"
+    }
+  ],
+  "rejectedInference": "The 13.3 L manual-transmission/A-C entry belongs to VIN engine code R (four-cylinder), not the L44 V6 row. Do not apply it to this car.",
+  "procedureReview": "All 20 numbered factory coolant replacement steps inspected. Distinguish the recovery bottle, radiator pressure cap and thermostat housing cap; keep the thermostat out during the specified filling/purge stages; follow the full original sequence and cap-release prerequisites. The original publication includes flushing and reservoir cleaning, which must not be silently omitted when presenting its complete replacement procedure.",
+  "limits": "The 1985 GM 1825-M coolant specification is a historical factory requirement. This record does not establish a current product recommendation or a substitute procedure. Original production fan/shroud variant remains an option/application question."
+}

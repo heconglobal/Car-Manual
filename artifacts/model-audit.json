@@ -1,15 +1,21 @@
 {
-  "date": "2026-09-22T03:42:27.641Z",
+  "date": "2026-09-22T09:02:03.881Z",
+  "sourceSha256": "b2019702353965532ff3dcd7d8016da9555acf341514d85704bcced93b67718c",
   "models": {
+    "wiring": {
+      "parts": 99,
+      "meshes": 287,
+      "triangles": 548586
+    },
     "engine": {
-      "parts": 315,
-      "meshes": 481,
-      "triangles": 1147440
+      "parts": 320,
+      "meshes": 501,
+      "triangles": 1236818
     },
     "transmission": {
       "parts": 95,
       "meshes": 149,
-      "triangles": 469528
+      "triangles": 471928
     },
     "cooling": {
       "parts": 36,
@@ -38,13 +44,23 @@
     },
     "body": {
       "parts": 111,
-      "meshes": 203,
-      "triangles": 640574
+      "meshes": 198,
+      "triangles": 631159
+    },
+    "charging": {
+      "parts": 62,
+      "meshes": 122,
+      "triangles": 231388
+    },
+    "lighting": {
+      "parts": 108,
+      "meshes": 269,
+      "triangles": 380444
     },
     "headlights": {
-      "parts": 103,
-      "meshes": 268,
-      "triangles": 730044
+      "parts": 118,
+      "meshes": 298,
+      "triangles": 775580
     },
     "hvac": {
       "parts": 64,
@@ -52,9 +68,9 @@
       "triangles": 227386
     },
     "vehicle": {
-      "parts": 82,
-      "meshes": 703,
-      "triangles": 4027650
+      "parts": 94,
+      "meshes": 1113,
+      "triangles": 5293635
     }
   },
   "headlights": "passed: dual poses, real bucket rotation, early four-cushion gears, fixed motors/relays, independent cover, LHD identity and low raised envelope",
@@ -65,7 +81,7 @@
   "suspension": "passed: separate front shocks, corner sides, upper-joint orientation, rear strut inventory, manual rack asymmetry",
   "hvac": "passed: passenger-side module, coaxial blower, LHD outlets/control knob, C41/C60 geometry alternatives, electric C60 mode control and no duplicate whole-car core",
   "leftHandDrive": "passed: signed component positions, front/rear and positive determinant",
-  "detailParts": 1249,
-  "ignitionParts": 39,
+  "detailParts": 1538,
+  "ignitionParts": 43,
   "engineControls": 21
 }

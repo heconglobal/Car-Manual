@@ -28,10 +28,12 @@ The production bundle is in `dist/`. Assets are bundled locally; no external fon
 
 ## UAT scope
 
-- Headlight explorer: 103 selections across both lamp/aiming, independent cover/linkage and early motor assemblies, plus relays/harness. Shared raised/closed geometry preserves the low exterior profile.
+- Headlight explorer: 118 selections across both lamp/aiming, independent cover/linkage and early motor assemblies, plus relays/harness. Shared raised/closed geometry preserves the low exterior profile.
+- Electrical explorers: 108 lighting entries, 62 battery/starter/alternator selections and 99 wiring/instrument selections, including the original 1985 cluster, fuse panel, ECM, flashers and junctions.
+- Selected Pontiac 1985 nominal data now anchors cylinder pitch, final-drive tooth counts, clutch facing diameters and headlamp bulb-center placement.
 - [Remaining work](REMAINING-WORK.md): 20 areas / 73 development tasks, also available from the in-app reference library and UAT panel.
 
-- 82 selectable 3D component groups across nine vehicle systems, including separate rear glass, sail appliques, rear roof clip and engine-deck vent grilles.
+- 94 selectable 3D component groups across nine vehicle systems, including separate rear glass, sail appliques, rear roof clip and engine-deck vent grilles.
 - Heater/ventilation explorer: 64 entries across C41 and C60 alternatives, including blower, case/doors, ducts, controls and optional evaporator/accumulator. Exact case tooling and full refrigeration/wiring remain incomplete.
 - Body-panel explorer: 111 selections including the preserved skins, separate rockers/door trim/glass, hood stay and latch, decklid torque rods, door hinges, liners and attachment sets.
 - Exhaust explorer: 44 selections including the early pellet catalyst cutaway, crossover, shields, muffler and supports.
@@ -39,9 +41,9 @@ The production bundle is in `dist/`. Assets are bundled locally; no external fon
 - Suspension/steering explorer: 216 selections including formed control arms, separate front shocks, rear strut stacks, toe links, manual rack internals and steering damper.
 - Braking explorer: 212 selections across four corners, master/booster, hydraulic lines, parking cables and pedal scopes; see `references/brake-reconstruction.md`.
 - Transmission/clutch and cooling explorers: 95 and 36 selections, with independent explosions and US left-hand-drive placement.
-- Engine component explorer: 315 selectable parts and grouped sets, ten main subassembly views plus nineteen nested service views, an independent explode slider, component inspection / isolation and return to the previous vehicle view.
+- Engine component explorer: 320 selectable parts and grouped sets, ten main subassembly views plus nineteen nested service views, an independent explode slider, component inspection / isolation and return to the previous vehicle view.
 - Curved SE bumper-pad / notchback exterior, reconstructed from factory references and anchored to published dimensions. Roof/pillars, convex side skins, Hi-Tech wheels and lowered raised headlamps were further refined using the supplied four-angle reference images; see `references/roof-side-wheel-refinement.md`.
-- Physical paint, glass, metal, rubber and upholstery materials; local CC0 studio lighting and contact shading.
+- Physical paint, glass, metal, rubber and upholstery materials; local CC0 studio lighting and contact shading. Software GL uses alpha glazing, filtered shadows and FXAA to reduce redraw costs; hardware retains transmission and SSAO.
 - Detailed reconstructed V6, four-speed transaxle, wheels, suspension and integrated-headrest cabin geometry.
 - Options panel: 18 appearance / equipment controls, plus raised headlights, window position, studio theme and dimension guides. Choices persist locally and are included in feedback exports.
 - Solid, glass and removed-glass roof states; plain deck, luggage carrier and GT-style wing previews.
@@ -49,7 +51,7 @@ The production bundle is in `dist/`. Assets are bundled locally; no external fon
 - Mouse, touch and keyboard camera controls; perspective, front, rear, side and top views.
 - System filtering, global component search, direct 3D picking, part focus and isolation.
 - Body visibility, labels, wireframe and continuously adjustable exploded views.
-- Three guided tours, including an air-cleaner assembly demonstration.
+- Four guides: three assembly/orientation tours and a source-checked 1985 headlamp replacement sequence with linked 3D parts.
 - Vehicle specification record distinguishing source-confirmed identity from pending technical values.
 - Source library and explicit model / content coverage.
 - Browser-local UAT checklist and feedback, with JSON export.
@@ -63,7 +65,7 @@ The geometry is reconstructed from factory illustrations. Wheelbase, track spaci
 
 NHTSA confirms the 1985 Pontiac Fiero SE, 2.8L V6, Pontiac assembly plant and valid check digit. The original manual transmission and WS6 are owner-reported. The factory brochure supports the V6 / four-speed combination. Pontiac's 1985 section 6E3 identifies the L44 / VIN engine code 9. The intake inspector includes the 1985–86 upper-plenum number from the November 1990 GM 22P catalog with its page and applicability. Most part numbers, exact factory service values and repair procedures remain unverified; they are not inferred from approximate geometry.
 
-Some fasteners, grooves, cast ribs, tread and switches are modeled, but they are not a complete measured parts inventory. The separate engine explorer includes reconstructed internal parts; exact casting contours, running kinematics, measured transmission profiles, full accessory systems, wiring pinouts, hose routes and collision-valid repair animations remain to be produced. Guided tours are orientation and assembly demonstrations, not instructions for carrying out a repair.
+Some fasteners, grooves, cast ribs, tread and switches are modeled, but they are not a complete measured parts inventory. The separate engine explorer includes reconstructed internal parts; exact casting contours, running kinematics, measured transmission profiles, full accessory systems, wiring pinouts, hose routes and collision-valid repair animations remain to be produced. Three guides are orientation/assembly demonstrations. The headlamp guide follows the original 1985 replacement sequence, while its reconstructed geometry does not certify removal clearances.
 
 Option previews do not establish bolt-on compatibility. Ten additional factory alternatives are listed as reference-only until their hardware and dependencies are modeled. The Canadian brochure is evidence of period choices, not this individual car's build sheet. See [geometry provenance](references/geometry-provenance.md) and [asset credits](ASSET-CREDITS.md).
 
@@ -77,12 +79,12 @@ Playwright uses a cached Chromium executable on this workstation, with software 
 
 Tests cover actual WebGL rendering, zero photo requests, system filtering, global search, camera and model controls, direct 3D picking, all tour navigation, specification provenance, feedback persistence and export, mobile layout, option-driven geometry changes, saved configuration recovery and unchanged VIN identity. Tests on software WebGL allow extra time for physical-material shader compilation.
 
-Screenshots: `artifacts/`. Test report: `playwright-report/index.html` after a run.
+Screenshots: `artifacts/`. Latest run: `playwright-report/index.html` and `artifacts/full-regression.json`. Archive a finished run before changing source/tests with `node scripts/archive-regression.mjs`; `node scripts/acceptance-status.mjs` requires a passing result for every current test file on the identical application/dependencies/configuration. Full and targeted runs remain separate in `artifacts/regression-history/`, with combined coverage in `artifacts/regression-summary.json`. A partial, stale, skipped or flaky result cannot satisfy the gate.
 
 ## Project layout
 
 - `src/data.js`: vehicle identity, component catalogue, provenance, tour steps and UAT checklist.
-- `src/lighting.js`: reconstructed headlamp covers, bezels, sealed-beam optics and first-generation actuator layout, referenced to factory DIY 2-28 / 2-29 and GM 22P K-17 / K-18.
+- `src/headlight-detail.js`, `src/headlight-catalog.js`: native early headlamp assemblies, controls, motors and endpoint poses, referenced to factory DIY 2-28–2-30 and the early GM catalog applications.
 - `src/structure.js`: formed steel frame reconstruction from factory DIY 1-4 / 1-5, including floor pans, pillars, rails, bulkheads and wheelhouses.
 - `src/model.js`: stable assembly IDs, model construction, configuration and exploded offsets.
 - `src/body.js`: reconstructed body surfaces, glazing, exterior trim and roof / deck variants.
@@ -99,7 +101,10 @@ Screenshots: `artifacts/`. Test report: `playwright-report/index.html` after a r
 - `src/viewer.js`: rendering, picking, camera, labels, visibility and exploded transforms.
 - `src/main.js`: interface, state, tour navigation and local feedback storage.
 - `src/style.css`: responsive workshop interface.
-- `tests/workshop.spec.js`: browser acceptance checks.
+- `src/service-guides.js`: source-checked headlamp replacement steps and direct component references.
+- `tests/`: 31 browser scenarios across component families, guides and workshop behavior.
+- `scripts/acceptance-status.mjs`: evidence ledger plus current-source geometry/browser acceptance gate.
+- `scripts/audit-model.mjs`: every catalog entry, finite geometry, picking identity and selected assembly interfaces.
 - `UAT.md`: tester instructions and release limitations.
 - `scripts/visual-review.mjs`: captures front, rear, side and perspective views for inspection.
 - `scripts/detail-review.mjs`: captures the isolated frame and raised headlamps, and records browser errors / visible geometry statistics.
@@ -118,7 +123,7 @@ No generated visual detail should be treated as evidence for a service value or 
 
 ## Ignition and tune-up detail update
 
-Search **ICM** from the vehicle, or choose **Ignition & tune-up parts**. The engine now contains 315 selectable parts/sets, including 39 ignition items and 21 sensors, valves and line assemblies. **Distributor & ICM** opens a further breakdown of the cap, rotor, module, pickup, shaft and retaining hardware. Electrical now includes vehicle-level distributor, coil/harness and plug/lead entries. **Back to vehicle** restores the prior context.
+Search **ICM** from the vehicle, or choose **Ignition & tune-up parts**. The engine now contains 320 selectable parts/sets, including 43 ignition items and 21 sensors, valves and line assemblies. **Distributor & ICM** opens a further breakdown of the cap, rotor, module, pickup, shaft and retaining hardware. Electrical now includes vehicle-level distributor, coil/harness and plug/lead entries. **Back to vehicle** restores the prior context.
 
 Each plug also includes the original six-cylinder gap, torque, socket and period AC-type references from the 1985 Pontiac DIY manual.
 
@@ -126,10 +131,14 @@ See [research and accuracy limits](references/ignition-reconstruction.md), [spec
 
 ## Cooling, lubrication and valve-gear increment
 
-The engine explorer now has **315 selectable parts and grouped sets**. The thermostat, water pump, dipstick and A/C oil-pressure sender have their own service scopes. Each of the twelve valve positions also has an eleven-item scope with separate keepers, retainer, seals, rocker stud and nut. The two heads retain their own paired pushrod guide plates.
+The engine explorer now has **320 selectable parts and grouped sets**. The thermostat, water pump, dipstick and A/C oil-pressure sender have their own service scopes. Each of the twelve valve positions also has an eleven-item scope with separate keepers, retainer, seals, rocker stud and nut. The two heads retain their own paired pushrod guide plates.
 
-Select **Cooling system → Thermostat & filler housing → Explode this assembly**, or search **dipstick**, **oil-pressure sender**, **spring retainer** or **rocker stud**. The whole-car and explorer thermostat use the same authored geometry.
+Select **Cooling system → Thermostat & filler housing → Explode this assembly**, or search **dipstick**, **oil-pressure sender**, **spring retainer** or **rocker stud**. The whole-car engine now shares its exterior surfaces with the component explorer without nonuniform scaling. The thermostat, manifold and flywheel relationships use the same assembly datums; see the [shared powertrain reconstruction](references/shared-powertrain-reconstruction.md). Production mounting positions and complete fits remain unverified.
 
 Sources and remaining limits are recorded in [engine-service-reconstruction.md](references/engine-service-reconstruction.md) and [valve-gear-reconstruction.md](references/valve-gear-reconstruction.md). These additions are not a claim of a complete photorealistic vehicle or measured factory CAD.
 
-Transmission/cooling update: **446 detail selections** across three explorer families (315 engine, 95 transmission/clutch, 36 cooling), plus 67 overlapping vehicle assembly records. Shared surfaces connect the new detailed exteriors to the complete car. The US left-hand-drive correction fixes the previous mirrored coordinate convention across the whole car and detail explorers, including lettering and explosion offsets; driver/passenger camera views make orientation explicit. See [reconstruction notes](references/transmission-cooling-reconstruction.md), [UAT](UAT.md), and [remaining work](references/full-vehicle-worklist.md). The whole-car photorealistic target remains unfinished.
+Transmission/cooling explorers now contain **451 detail selections** (320 engine, 95 transmission/clutch, 36 cooling). Across all 13 families there are 1,538 detail selections, plus 94 overlapping vehicle assembly records. Shared surfaces connect many detailed exteriors to the complete car. The engine now shares its castings and exterior details without stretching; the transaxle receives a rigid placement around the retained differential datum. That installation angle remains reconstructed. The US left-hand-drive correction fixes the previous mirrored coordinate convention across the whole car and detail explorers, including lettering and explosion offsets; driver/passenger camera views make orientation explicit. See [reconstruction notes](references/transmission-cooling-reconstruction.md), [UAT](UAT.md), and [remaining work](references/full-vehicle-worklist.md). The whole-car photorealistic target remains unfinished.
+
+## Current review evidence
+
+`artifacts/current-UAT.md` reports current acceptance and browser-test status. `artifacts/cross-view-scale-review.json` compares installed and detailed engine vertices and records selected assembly/clearance checks; it does not certify every internal fit or production mount. `artifacts/visual-inspection-manifest.json` identifies the screenshots actually inspected by file hash, while `artifacts/visual-review-findings.md` records the remaining surface issues. Reference-link reachability and local PDF page bounds are checked separately by `scripts/audit-reference-links.mjs` and `scripts/audit-reference-pages.mjs`; neither validates every technical statement.

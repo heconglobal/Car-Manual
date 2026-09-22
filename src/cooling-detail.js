@@ -1,3 +1,5 @@
+import {engineToVehicle,pumpInletEngine,pumpHeaterReturnEngine} from './powertrain-layout.js';
+import {upperEngineDrop} from './engine-layout.js';
 import {buildHvacCore} from './hvac-detail.js';
 import {correctLegacyHandedness} from './vehicle-frame.js';
 import * as T from 'three';
@@ -12,10 +14,10 @@ const legacyCoolantRoutes={
  'pipe-right':[[-.64,.235,-1.25],[-.665,.205,-1.10],[-.665,.205,.53],[-.57,.27,.81]],
  'front-inlet':[[.442,.5373,-1.6988],[.52,.534,-1.58],[.60,.40,-1.43],[.64,.235,-1.25]],
  'front-outlet':[[-.442,.2567,-1.6621],[-.49,.274,-1.55],[-.60,.27,-1.43],[-.64,.235,-1.25]],
- 'rear-inlet':[[-.55,.695,1.235],[-.57,.65,1.15],[-.49,.59,1.02],[-.43,.55,.92]],
+ 'rear-inlet':[engineToVehicle([-.276,1.440-upperEngineDrop,.05]),[-.45,.65,1.06],[-.49,.59,1.02],[-.43,.55,.92]],
  'crossover':[[-.43,.55,.92],[-.19,.53,.82],[.22,.50,.79],[.45,.42,.78]],
  'rear-coupler':[[.45,.42,.78],[.50,.39,.78],[.56,.33,.79],[.58,.27,.81]],
- 'rear-outlet':[[-.57,.27,.81],[-.53,.31,.89],[-.50,.38,1.02],[-.49,.46,1.12]],
+ 'rear-outlet':[[-.57,.27,.81],[-.53,.31,.89],[-.50,.38,1.02],engineToVehicle(pumpInletEngine)],
 };
 export const coolantRoutes=Object.fromEntries(Object.entries(legacyCoolantRoutes).map(([id,points])=>[id,points.map(([x,y,z])=>[-x,y,z])]));
 export function coolingMaterials(base=createMaterials()){
@@ -93,5 +95,5 @@ export function buildCooling(h){
   tube(id('heater-pipes'),[[x,.31,-.56],[x,.215,-.36],[x,.215,.54],[x-.04,.35,.73]],i?.008:.009,'blue');
   tube(id('heater-hoses'),[[i?-.19:-.35,.642,-.678],[i?-.20:-.35,.44,-.65],[x,.31,-.56]],.011,'rubber');
  }
- tube(id('heater-hoses'),[[-.18,.35,.73],[-.21,.48,.88],[-.28,.64,1.10]],.011,'rubber');tube(id('heater-hoses'),[[-.22,.35,.73],[-.43,.38,.85],[-.52,.52,1.11]],.010,'rubber');
+ tube(id('heater-hoses'),[[-.18,.35,.73],[-.21,.48,.88],engineToVehicle([-.15,1.34-upperEngineDrop,.08])],.011,'rubber');tube(id('heater-hoses'),[[-.22,.35,.73],[-.43,.38,.85],engineToVehicle(pumpHeaterReturnEngine)],.010,'rubber');
 }

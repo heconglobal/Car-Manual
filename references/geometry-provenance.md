@@ -1,5 +1,9 @@
 # Geometry provenance — visual review 0.2
 
+Current inventory (September 22): 94 vehicle records and 1,538 detail selections across 13 families. This document also preserves earlier milestone notes; their counts are historical. Current source/acceptance status is in [the acceptance ledger](../artifacts/acceptance-status.json).
+
+Selected nominal datums now applied in their dedicated explorers: 111.8 mm cylinder pitch, 84/23 final-drive teeth, 232/155 mm clutch facing, and raised headlamp bulb centers at 709 mm height / 511 mm lateral offset. See [factory reference research](1985-mvma-research.md). These corrections do not establish the dimensional accuracy of unmeasured surfaces or mechanisms. The installed engine now shares unscaled detailed geometry; 224 mm deck height and 44 mm bank offset use the GM production V6 blueprint. Installed angle and mounts remain reconstructed; see [shared powertrain notes](shared-powertrain-reconstruction.md).
+
 The geometry is a reconstruction from factory illustrations. It is **not factory CAD, a scan, or a fully dimensioned engineering model**. No field measurements of this specific car are available. More polygons and reflective materials do not change that status.
 
 | Area | Evidence used | Current status |
@@ -16,7 +20,7 @@ The geometry is a reconstruction from factory illustrations. It is **not factory
 | Rear roof / sail / backlight / engine lid | GM 22P H-8, 1985 brochure, four supplied reference images | Separate small framed appliques ahead of broad painted pillars, smaller recessed glass, raised-center lid and separate vent grilles; contours remain reconstructed. See [rear-body refinement](rear-body-refinement.md) |
 | Steel space frame | Factory DIY 1-4 / 1-5 | Formed channel sections, open door apertures, floor pans, tunnel, wheelhouses, strut-tower shoulders and bulkheads reconstructed. No measured alignment points or structural calculations |
 | Engine and four-speed transaxle | Factory illustrations and packaging | Reconstructed castings and assembly layout; internals, exact cast dimensions and mounting points unverified |
-| Engine component explorer | GM 22P H-19 / H-22 exploded illustrations | 210 selectable parts / sets across ten main and three nested ignition views, including reconstructed internals. Shapes and separation paths are approximate; see [engine explorer coverage](engine-explorer.md) |
+| Engine component explorer | GM 22P H-19 / H-22 exploded illustrations | 320 selectable parts / sets across the expanded engine and nested service scopes, including reconstructed internals. Shapes and separation paths are approximate; see [engine explorer coverage](engine-explorer.md) |
 | L44 upper plenum | GM 22P H-22 / H-23, item 6 | 1985–86 catalog reference 10033120 added with date and applicability; this does not validate the mesh's local dimensions |
 | Pop-up headlamps | Factory DIY 2-28 / 2-29; GM 22P K-17 / K-18 | Rebuilt hinged covers, curved black bezels, recessed sealed-beam reflectors, glass relief and first-generation actuator layout. Lamp envelope, hinge angle, linkage and fastener coordinates are approximate |
 | Cabin | Brochure PDF p.4 | Reconstructed instrument pod, buckets, integrated headrests and controls; not measured upholstery or switchgear |
@@ -42,7 +46,7 @@ The geometry is a reconstruction from factory illustrations. It is **not factory
 
 ## Accuracy acceptance still outstanding
 
-The rear-body revision adds six independently selectable assemblies, bringing the current total to 63. Earlier counts above describe their respective historical passes.
+The rear-body revision adds six independently selectable assemblies, bringing that milestone’s total to 63. Earlier counts above describe their respective historical passes.
 
 - Independent overlay / silhouette comparison against dimensioned orthographic references.
 - Correct high-detail castings, wheel face, dashboard, underbody and all hidden hardware.

@@ -1,3 +1,4 @@
+import {mvma1985,m17Nominal} from './factory-specifications.js';
 // Component identity follows GM 22P's 1985–86 MY8/M17 plate. Numbered
 // callouts below deliberately use the separately linked 1986 service plate.
 export const transmissionSource='https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf';
@@ -27,3 +28,8 @@ for(const row of [['fork34','Third / fourth shift fork',68,[.05,.09,0]],['fork12
 for(const row of [['flywheel','Manual-engine flywheel & ring gear',3,[-.24,0,0]],['disc','Sprung clutch driven plate',2,[-.14,0,0]],['pressure','Pressure plate & cover',1,[-.06,0,0]],['release-bearing','Clutch release bearing',6,[.04,0,0]],['cover-bolts','Clutch cover bolts & lockwashers',8,[.02,.08,0]],['flywheel-bolts','Flywheel bolt set',5,[-.30,0,0]],['release-fork','Clutch release fork & shaft',75,[.06,.10,0]],['fork-bearings','Clutch fork shaft bearings',74,[.06,.17,0]],['fork-seal','Clutch fork shaft seal',73,[.06,.24,0]]]){
  add(row[0],'clutch',...row.slice(1));const p=transmissionParts.at(-1);if(!row[0].startsWith('fork')&&row[0]!=='release-fork'){p.source='GM 22P · clutch cover & plate';p.sourceUrl=transmissionPartsSource+'#page=40';p.referenceNote='The 1985–86 V6 driven plate is distinguished from the later five-speed application in this factory table. Springs, facing slots and local dimensions are reconstructed.';}
 }
+
+for(const key of ['tx-output-shaft','tx-ring-gear'])Object.assign(transmissionParts.find(p=>p.id===key),{serviceReference:{title:'1985 L44 / M17 final drive',rows:[['Final-drive pinion','23 teeth'],['Final-drive ring gear','84 teeth'],['Nominal ratio','3.65:1 (84/23)']],links:[['Pontiac 1985 final-drive specification',mvma1985+'#page=11']],note:'Factory tooth counts are applied to the model. Tooth profiles, helix angles, pitch diameters and running mesh remain reconstructed.'}});
+Object.assign(transmissionParts.find(p=>p.id==='tx-disc'),{serviceReference:{title:'1985 L44 four-speed clutch facing',rows:[['Outside diameter','232.0 mm'],['Inside diameter','155.0 mm'],['Factory facing reference','14087220']],links:[['Pontiac 1985 clutch specification',mvma1985+'#page=10']],note:'These nominal facing diameters are applied to the model. Carrier form, spring pockets, rivet pattern, slots and pressure-plate casting remain reconstructed.'}});
+
+for(const key of ['tx-output-shaft','tx-ring-gear'])transmissionParts.find(p=>p.id===key).referenceNote='Final-drive tooth counts follow Pontiac 1985 MVMA printed9: pinion23, ring84. Profiles, helix, pitch dimensions and the other speed-gear tooth counts remain reconstructed. This is not manufacturing geometry.';

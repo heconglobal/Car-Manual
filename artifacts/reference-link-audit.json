@@ -1,0 +1,258 @@
+{
+  "date": "2026-09-22T09:01:43.515Z",
+  "status": "passed-after-retry",
+  "uniqueDocuments": 15,
+  "reachable": 15,
+  "results": [
+    {
+      "url": "https://cdn11.bigcommerce.com/s-ragx7opcj4/content/files/1985-pontiac-fiero-service-manual-sample1.jpg?t=1663030449",
+      "fragments": [],
+      "httpStatus": 206,
+      "finalUrl": "https://cdn11.bigcommerce.com/s-ragx7opcj4/content/files/1985-pontiac-fiero-service-manual-sample1.jpg?t=1663030449",
+      "contentType": "image/jpeg",
+      "formatOkay": true,
+      "status": "reachable"
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf",
+      "fragments": [
+        "#page=67",
+        "#page=68",
+        "#page=69",
+        "#page=7",
+        "#page=79",
+        "#page=8",
+        "#page=80",
+        "#page=83",
+        "#page=84",
+        "#page=85",
+        "#page=92",
+        "#page=93",
+        "#page=94"
+      ],
+      "httpStatus": 206,
+      "finalUrl": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf",
+      "contentType": "application/pdf",
+      "formatOkay": true,
+      "status": "reachable"
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf",
+      "fragments": [
+        "#page=13",
+        "#page=31",
+        "#page=33",
+        "#page=35",
+        "#page=37",
+        "#page=38",
+        "#page=39",
+        "#page=41",
+        "#page=48",
+        "#page=59",
+        "#page=60"
+      ],
+      "httpStatus": 206,
+      "finalUrl": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf",
+      "contentType": "application/pdf",
+      "formatOkay": true,
+      "status": "reachable"
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf",
+      "fragments": [
+        "#page=1038",
+        "#page=1208",
+        "#page=1209",
+        "#page=1214",
+        "#page=1248",
+        "#page=1249",
+        "#page=1250",
+        "#page=1251",
+        "#page=245",
+        "#page=318",
+        "#page=364",
+        "#page=395",
+        "#page=706",
+        "#page=708",
+        "#page=802",
+        "#page=886",
+        "#page=995"
+      ],
+      "httpStatus": 206,
+      "finalUrl": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf",
+      "contentType": "application/pdf",
+      "formatOkay": true,
+      "status": "reachable"
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf",
+      "fragments": [
+        "#page=115",
+        "#page=122",
+        "#page=123",
+        "#page=128",
+        "#page=166",
+        "#page=170",
+        "#page=171",
+        "#page=172",
+        "#page=177",
+        "#page=182",
+        "#page=193",
+        "#page=194",
+        "#page=197",
+        "#page=219",
+        "#page=237",
+        "#page=252",
+        "#page=254",
+        "#page=261",
+        "#page=263",
+        "#page=278",
+        "#page=280",
+        "#page=289",
+        "#page=300",
+        "#page=336",
+        "#page=343",
+        "#page=40",
+        "#page=51",
+        "#page=56",
+        "#page=58",
+        "#page=61",
+        "#page=65",
+        "#page=67",
+        "#page=69",
+        "#page=72",
+        "#page=79"
+      ],
+      "httpStatus": 206,
+      "finalUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf",
+      "contentType": "application/pdf",
+      "formatOkay": true,
+      "status": "reachable"
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_P22.pdf",
+      "fragments": [
+        "#page=14",
+        "#page=17",
+        "#page=18",
+        "#page=19"
+      ],
+      "httpStatus": 206,
+      "finalUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_P22.pdf",
+      "contentType": "application/pdf",
+      "formatOkay": true,
+      "status": "reachable"
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/Chevrolet_60V6_Power_Manual.pdf",
+      "fragments": [
+        "#page=6"
+      ],
+      "httpStatus": 206,
+      "finalUrl": "https://fieroinfo.com/manuals/Chevrolet_60V6_Power_Manual.pdf",
+      "contentType": "application/pdf",
+      "formatOkay": true,
+      "status": "reachable"
+    },
+    {
+      "url": "https://motorad.com/part/211-195/",
+      "fragments": [],
+      "httpStatus": 200,
+      "finalUrl": "https://motorad.com/part/211-195/",
+      "contentType": "text/html; charset=UTF-8",
+      "formatOkay": true,
+      "status": "reachable"
+    },
+    {
+      "url": "https://polyhaven.com/a/studio_small_09",
+      "fragments": [],
+      "httpStatus": 200,
+      "finalUrl": "https://polyhaven.com/a/studio_small_09",
+      "contentType": "text/html; charset=utf-8",
+      "formatOkay": true,
+      "status": "reachable"
+    },
+    {
+      "url": "https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/1G2PF3796FP217611?format=json&modelyear=1985",
+      "fragments": [],
+      "httpStatus": 206,
+      "finalUrl": "https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/1G2PF3796FP217611?format=json&modelyear=1985",
+      "contentType": "application/json",
+      "formatOkay": true,
+      "status": "reachable"
+    },
+    {
+      "url": "https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FMotor+Vehicle+Specifcations%2F1985-86+Pontiac+Fiero.PDF",
+      "fragments": [
+        "#page=10",
+        "#page=11",
+        "#page=26",
+        "#page=5"
+      ],
+      "httpStatus": 200,
+      "finalUrl": "https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FMotor+Vehicle+Specifcations%2F1985-86+Pontiac+Fiero.PDF",
+      "contentType": "application/pdf",
+      "formatOkay": true,
+      "status": "reachable"
+    },
+    {
+      "url": "https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FOwners+Manuals%2F1985%2F1985+Fiero+Owners+Manual.pdf",
+      "fragments": [
+        "#page=32",
+        "#page=93"
+      ],
+      "status": "reachable",
+      "error": "This operation was aborted",
+      "attempts": [
+        {
+          "url": "https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FOwners+Manuals%2F1985%2F1985+Fiero+Owners+Manual.pdf",
+          "fragments": [
+            "#page=32",
+            "#page=93"
+          ],
+          "status": "needs-review",
+          "error": "This operation was aborted"
+        },
+        {
+          "startedAt": "2026-09-22T09:02:41.540Z",
+          "finishedAt": "2026-09-22T09:02:57.081Z",
+          "httpStatus": 200,
+          "contentType": "application/pdf",
+          "formatOkay": true
+        }
+      ],
+      "httpStatus": 200,
+      "formatOkay": true,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.detroitironis.com/1985-pontiac-fiero-service-manual-print.html",
+      "fragments": [],
+      "httpStatus": 206,
+      "finalUrl": "https://www.detroitironis.com/1985-pontiac-fiero-service-manual-print.html",
+      "contentType": "text/html; Charset=UTF-8",
+      "formatOkay": true,
+      "status": "reachable"
+    },
+    {
+      "url": "https://www.rodneydickman.com/product_info.php?products_id=230",
+      "fragments": [],
+      "httpStatus": 200,
+      "finalUrl": "https://www.rodneydickman.com/product_info.php?products_id=230",
+      "contentType": "text/html; charset=UTF-8",
+      "formatOkay": true,
+      "status": "reachable"
+    },
+    {
+      "url": "https://xr793.com/wp-content/uploads/2018/10/1985-Pontiac-Fiero-Cdn.pdf",
+      "fragments": [],
+      "httpStatus": 206,
+      "finalUrl": "https://xr793.com/wp-content/uploads/2018/10/1985-Pontiac-Fiero-Cdn.pdf",
+      "contentType": "application/pdf",
+      "formatOkay": true,
+      "status": "reachable"
+    }
+  ],
+  "limits": "Reachability and PDF signature check only. Does not verify source claims, full download integrity, fragment destinations, copyright or applicability to the original vehicle. Some sites may block automated requests.",
+  "retriedAt": "2026-09-22T09:02:57.083Z"
+}

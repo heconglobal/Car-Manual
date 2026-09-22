@@ -1,0 +1,79 @@
+{
+  "reviewedAt": "2026-09-22T08:59:18.730Z",
+  "sourceSha256": "b2019702353965532ff3dcd7d8016da9555acf341514d85704bcced93b67718c",
+  "status": "passed",
+  "sharedParts": 124,
+  "valveVerticesChecked": 817014,
+  "verticesCompared": 1436964,
+  "maximumVertexErrorMetres": 6.15012634316075e-8,
+  "checks": [
+    "unit-scale rigid placement in vehicle",
+    "shared engine/clutch flywheel",
+    "44 mm bank stagger and 224 mm deck planes",
+    "engine/clutch/input-axis alignment",
+    "differential retained at rear axle datum",
+    "manifold/crossover endpoints and shared manifold envelopes",
+    "shared alternator position",
+    "sampled closed-deck clearance",
+    "both banks intake/exhaust gear under valve covers",
+    "continuous accessory belt wrap around all three pulley envelopes"
+  ],
+  "deckChecks": [
+    {
+      "side": -1,
+      "measured": 0.22400002000064628
+    },
+    {
+      "side": 1,
+      "measured": 0.22400000771723724
+    }
+  ],
+  "deckClearance": [
+    {
+      "id": "intake",
+      "samples": 567,
+      "minGap": 0.10198974086689194
+    },
+    {
+      "id": "heads",
+      "samples": 829,
+      "minGap": 0.05940992410652046
+    },
+    {
+      "id": "thermostat",
+      "samples": 599,
+      "minGap": 0.056073826225584544
+    },
+    {
+      "id": "distributor",
+      "samples": 897,
+      "minGap": 0.17159240665890396
+    },
+    {
+      "id": "ignition-coil",
+      "samples": 69,
+      "minGap": 0.10199539894109266
+    },
+    {
+      "id": "ignition-leads",
+      "samples": 605,
+      "minGap": 0.04493665293495419
+    },
+    {
+      "id": "engine-controls",
+      "samples": 2902,
+      "minGap": 0.019969903203523653
+    },
+    {
+      "id": "alternator",
+      "samples": 0,
+      "minGap": null
+    },
+    {
+      "id": "air-lid",
+      "samples": 0,
+      "minGap": null
+    }
+  ],
+  "limits": "Cross-view consistency and listed datums only. Installed powertrain angle, mount locations, casting profiles, full cradle/shaft/cable/hose interfaces, internal fit and all motion remain reconstructed or unverified."
+}

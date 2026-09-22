@@ -28,3 +28,9 @@ Local factory PDFs were visually inspected. Working page renders and supplier im
 103 selections include grouped fasteners and construction subdivisions; they do not constitute a complete factory BOM. Exact dimensions, original lamp optical tooling/markings, every connector/retainer, full 1985 circuits, gear ratios, brush/limit-switch geometry and travel clearances remain pending. No repair torque, aiming setting, wiring pinout or motor rebuilding procedure is certified by the 3D model.
 
 See [remaining work](../REMAINING-WORK.md) for the vehicle-wide development backlog and [current UAT](../artifacts/current-UAT.md) for executed validation.
+
+## September22 nominal-position and linkage correction
+
+The newly inspected Pontiac1985 MVMA specification form, printed24 /PDF26, supplies a709 mm bulb-center height at curb mass and511 mm lateral offset. The lamp is now upright at those datums. Its independent cover is lower in the raised pose. The bucket moved rearward12 mm within the reconstructed aperture after a sweep audit identified bezel interference at35–55% travel. That fore/aft placement and all mechanism hard points remain reconstructed, not sourced production dimensions.
+
+The crank and link now use a circle-intersection solution with fixed32 mm crank radius and86 mm connecting link through101 sampled poses. Those two lengths are reconstruction parameters, not GM dimensions. Bucket/hood clearance is checked at21 positions; gear-pocket support and the open shaft bore remain ray-checked. This supersedes the independently authored old crank endpoints above. The UI still shows raised/closed end states; full cover contact, actuator stop travel and manufacturing tolerance validation remain unfinished. Current headlight catalog:118 selections including the dash/column controls.

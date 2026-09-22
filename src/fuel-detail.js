@@ -1,4 +1,6 @@
 import * as T from 'three';
+import {engineToVehicle} from './powertrain-layout.js';
+import {upperEngineDrop} from './engine-layout.js';
 import {mergeVertices} from 'three/addons/utils/BufferGeometryUtils.js';
 import {createMaterials} from './materials.js';
 import {geometryTools} from './geometry.js';
@@ -82,8 +84,8 @@ function buildFiller(h){
 }
 const routes={
  feed:[[-.015,.455,.54],[-.10,.419,.60],[-.20,.32,.565]],return:[[.015,.455,.54],[-.09,.414,.57],[-.16,.32,.62],[-.20,.34,.70]],
- 'feed-hose':[[-.235,.326,.680],[-.28,.37,.73],[-.30,.48,.75],[-.24,.615,.90],[-.17,.687,1.04]],
- 'return-hose':[[-.20,.34,.70],[-.23,.41,.76],[-.14,.57,.84],[-.13,.68,1.055]],
+ 'feed-hose':[[-.235,.326,.680],[-.28,.37,.73],[-.30,.48,.75],[-.34,.49,.89],engineToVehicle([-.23,1.30-upperEngineDrop,-.085])],
+ 'return-hose':[[-.20,.34,.70],[-.23,.41,.76],[-.33,.48,.87],engineToVehicle([-.23,1.30-upperEngineDrop,-.108])],
 };
 export const fuelRoutes=Object.fromEntries(Object.entries(routes).map(([k,p])=>[k,p.map(([x,y,z])=>[-x,y,z])]));
 function buildPlumbing(h){

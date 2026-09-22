@@ -1,3 +1,4 @@
+import {m17Nominal} from './factory-specifications.js';
 import {correctLegacyHandedness} from './vehicle-frame.js';
 import * as T from 'three';
 import {createMaterials} from './materials.js';
@@ -8,7 +9,8 @@ import {transmissionParts,transmissionSections} from './transmission-catalog.js'
 // vehicle-frame.js converts it to physical -X / driver side at the boundary.
 // 76 mm shaft spacing is the factory family designation. Remaining local
 // dimensions, tooth profiles and casting contours are visual reconstructions.
-export const transaxleDatum={input:[.59,0],output:[.514,0],differential:[.424,.064],vehicleOffset:[.16,-.12,1.1225]};
+import {transaxleDatum} from './powertrain-layout.js';
+export {transaxleDatum} from './powertrain-layout.js';
 export function transmissionMaterials(base=createMaterials()){
  const mats={...base};for(const k of ['castAluminum','rotor','iron','rubber'])mats[k]=base[k].clone();
  mats.castAluminum.roughness=.57;mats.castAluminum.metalness=.72;
@@ -57,7 +59,7 @@ export function buildTransmission(h){
  // The shaft order follows section 7B1-4, with 1/2 on the output and 3/4 on input.
  cyl(id('input-shaft'),.010,.39,I(.195),'rotor');spline(id('input-shaft'),.012,.051,14,I(.025));
  for(const [x,r,n] of [[.17,.019,18],[.26,.027,24]])gear(id('input-shaft'),r,.024,n,I(x),.22);
- cyl(id('output-shaft'),.012,.30,O(.247),'rotor');spline(id('output-shaft'),.015,.18,20,O(.24));gear(id('output-shaft'),.025,.026,20,O(.115),-.2);
+ cyl(id('output-shaft'),.012,.30,O(.247),'rotor');spline(id('output-shaft'),.015,.18,20,O(.24));gear(id('output-shaft'),.025,.026,m17Nominal.finalPinionTeeth,O(.115),-.2);
  for(const [key,x,r,n,axis,helix] of [['first-output',.17,.060,56,O,-.22],['second-output',.26,.052,48,O,-.22],['third-output',.304,.0435,38,O,-.22],['fourth-output',.365,.0355,32,O,-.22],['third-input',.304,.0345,30,I,.22],['fourth-input',.365,.043,38,I,.22]]){gear(id(key),r,.021,n,axis(x),helix);annulus(id(key),r*.74,.013,.023,axis(x));}
  for(const [key,x,axis] of [['sync34',.336,I],['sync12',.216,O]]){spline(id(key),.026,.025,36,axis(x));annulus(id(key),.030,.024,.024,axis(x));for(const s of [-1,1])annulus(id(key),.033,.026,.005,axis(x+s*.010));}
  for(const [key,x,axis] of [['block3',.318,I],['block4',.351,I],['block1',.195,O],['block2',.240,O]]){gear(id(key),.029,.004,36,axis(x),0,'gold',.022);annulus(id(key),.025,.022,.008,axis(x),'gold');}
@@ -72,7 +74,7 @@ export function buildTransmission(h){
  // Open differential carrier: windows reveal bevel pinions and side gears.
  for(const x of [.065,.17])annulus(id('diff-carrier'),.049,.019,.014,D(x),'iron');
  for(const s of [-1,1])surface(id('diff-carrier'),36,12,(u,v)=>{const a=s>0?u*.9-.45:u*.9+Math.PI-.45;const r=.043+.008*Math.sin(v*Math.PI);return [.068+v*.10,dy+Math.cos(a)*r,dz+Math.sin(a)*r];},'iron');
- gear(id('ring-gear'),.090,.023,72,D(.104),.18,'rotor',.040);annulus(id('ring-gear'),.075,.040,.009,D(.123),'iron');
+ gear(id('ring-gear'),.090,.023,m17Nominal.finalRingTeeth,D(.104),.18,'rotor',.040);annulus(id('ring-gear'),.075,.040,.009,D(.123),'iron');
  for(let i=0;i<8;i++){const a=i*Math.PI/4;bolt(id('ring-bolts'),[.132,dy+Math.cos(a)*.057,dz+Math.sin(a)*.057],.005,'x');}
  for(const x of [.05,.19])bearing(id('diff-bearings'),.031,.019,.014,D(x));annulus(id('diff-shim'),.032,.020,.0015,D(.201),'zinc');gear(id('speed-drive'),.036,.009,38,D(.036),.10,'pickupPlastic',.02);
  cyl(id('diff-pin'),.005,.086,D(.12),'rotor',[0,0,0]);bolt(id('diff-pin-screw'),[.12,dy+.052,dz],.003);annulus(id('diff-pin-washer'),.0045,.002,.001,[.12,dy+.048,dz],'zinc',[0,0,Math.PI/2]);
@@ -88,13 +90,20 @@ export function buildTransmission(h){
  box(id('detent-lever'),[.035,.009,.023],[.23,.700,.007],'iron');spring(id('detent-spring'),[.23,.716,.007],.006,.022,'y',5,.001);bolt(id('detent-bolt'),[.23,.734,.007],.005);
  box(id('interlock'),[.025,.019,.021],[.252,.688,.01],'iron');annulus(id('shift-shim'),.009,.006,.0015,[.29,.712,.008]);tube(id('reverse-lever'),[[.23,.707,-.020],[.23,.675,-.030],[.21,.65,.045]],.004,'iron');cyl(id('reverse-stud'),.005,.032,[.23,.687,-.02],'rotor',[0,0,0]);spring(id('inhibitor'),[.27,.707,-.027],.007,.020,'x',6);for(const x of [.257,.283])annulus(id('inhibitor'),.009,.004,.002,[x,.707,-.027]);for(const x of [.22,.27])cyl(id('roll-pins'),.0017,.021,[x,.696,.017],'dark',[0,0,0]);bolt(id('rail-screw'),[.390,.681,.008],.003,'x');box(id('oil-guide'),[.031,.002,.050],[.36,.653,.035],'plastic',[.2,0,0],{},.001);
  // Clutch has two friction faces, spring hub and slotted diaphragm cover.
- annulus(id('flywheel'),.145,.018,.020,I(-.018),'iron');annulus(id('flywheel'),.125,.019,.003,I(-.006),'rotor');gear(id('flywheel'),.149,.010,142,I(-.025),0,'rotor',.132);
- annulus(id('disc'),.109,.040,.004,I(.008),'dark');spline(id('disc'),.017,.030,14,I(.008));annulus(id('disc'),.061,.017,.002,I(.008),'zinc');
- for(const s of [-1,1])for(let i=0;i<16;i++){const a=i/16*Math.PI*2;arc(id('disc'),.091,.0018,I(.008+s*.003),a+.022,a+Math.PI/8-.022,'rubber',.017);for(const r of [.081,.10])cyl(id('disc'),.0018,.0008,[.008+s*.004,iy+Math.cos(a+.10)*r,Math.sin(a+.10)*r],'copper');}
+ buildFlywheel(h,id('flywheel'),I(-.018));
+ annulus(id('disc'),m17Nominal.clutchFacingOuter/2,m17Nominal.clutchFacingInner/2,.004,I(.008),'dark');spline(id('disc'),.017,.030,14,I(.008));annulus(id('disc'),.061,.017,.002,I(.008),'zinc');
+ for(const s of [-1,1])for(let i=0;i<16;i++){const a=i/16*Math.PI*2;arc(id('disc'),(m17Nominal.clutchFacingOuter+m17Nominal.clutchFacingInner)/4,.0018,I(.008+s*.003),a+.022,a+Math.PI/8-.022,'rubber',(m17Nominal.clutchFacingOuter-m17Nominal.clutchFacingInner)/4-.001);for(const r of [.081,.10])cyl(id('disc'),.0018,.0008,[.008+s*.004,iy+Math.cos(a+.10)*r,Math.sin(a+.10)*r],'copper');}
  for(let i=0;i<6;i++){const a=i*Math.PI/3;spring(id('disc'),[.008,iy+Math.cos(a)*.044,Math.sin(a)*.044],.005,.021,[0,-Math.sin(a),Math.cos(a)],5,.0013);}
- annulus(id('pressure'),.110,.06,.015,I(.026),'iron');annulus(id('pressure'),.121,.094,.011,I(.040),'zinc');
+ annulus(id('pressure'),m17Nominal.clutchFacingOuter/2,.076,.015,I(.026),'iron');annulus(id('pressure'),.121,.094,.011,I(.040),'zinc');
  for(let i=0;i<18;i++){const a=i/18*Math.PI*2;surface(id('pressure'),3,8,(u,v)=>{const r=.027+v*.066,ang=a+(u-.5)*.22;return[.059-v*.017,iy+Math.cos(ang)*r,Math.sin(ang)*r];},'dark');}
  for(let i=0;i<6;i++){const a=i*Math.PI/3;surface(id('pressure'),8,12,(u,v)=>{const ang=a+(u-.5)*.25,r=.113;return[.016+v*.024,iy+Math.cos(ang)*r,Math.sin(ang)*r];},'zinc');bolt(id('cover-bolts'),[.025,iy+Math.cos(a)*.119,Math.sin(a)*.119],.005,'x');bolt(id('flywheel-bolts'),[-.003,iy+Math.cos(a)*.028,Math.sin(a)*.028],.005,'x');}
  bearing(id('release-bearing'),.034,.017,.019,I(.077));annulus(id('release-bearing'),.027,.017,.022,I(.074),'dark');
  arc(id('release-fork'),.035,.007,I(.082),-.6,Math.PI+.6,'iron');cyl(id('release-fork'),.007,.19,[.083,.66,-.015],'rotor',[0,0,0]);for(const y of [.575,.742])annulus(id('fork-bearings'),.011,.007,.012,[.083,y,-.015],'gold',[0,0,Math.PI/2]);annulus(id('fork-seal'),.012,.007,.005,[.083,.755,-.015],'rubber',[0,0,Math.PI/2]);
+}
+
+// Same flywheel in the engine and clutch explorers. The ring profile remains
+// reconstructed; sharing prevents differing diameters/tooth counts by view.
+export function buildFlywheel(h,id,centre){
+ const {annulus,gear}=mechanicalTools(h),at=dx=>[centre[0]+dx,centre[1],centre[2]];
+ annulus(id,.145,.018,.020,centre,'iron');annulus(id,.125,.019,.003,at(.012),'rotor');gear(id,.149,.010,142,at(-.007),0,'rotor',.132);
 }

@@ -1,3 +1,5 @@
+import {createWiringDetail} from './wiring-detail.js';
+import {createChargingDetail} from './charging-detail.js';
 import {createLightingDetail} from './lighting-detail.js';
 import {createHeadlightDetail} from './headlight-detail.js';
 import {createHvacDetail} from './hvac-detail.js';
@@ -11,6 +13,8 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { SSAOPass } from 'three/addons/postprocessing/SSAOPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { FXAAShader } from 'three/addons/shaders/FXAAShader.js';
 import { textMaterial } from './materials.js';
 import { createVehicle } from './model.js';
 import { parts } from './data.js';
@@ -28,7 +32,13 @@ export function createViewer(container, onSelect) {
  const camera=new T.PerspectiveCamera(37,1,.03,60);
  const renderer=new T.WebGLRenderer({antialias:true,alpha:false,preserveDrawingBuffer:true});
  const gl=renderer.getContext(),debugInfo=gl.getExtension('WEBGL_debug_renderer_info');const softwareRenderer=debugInfo&&/SwiftShader|llvmpipe|Software/i.test(gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL));
- renderer.setPixelRatio(Math.min(window.devicePixelRatio,softwareRenderer?1:2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.VSMShadowMap;
+ // Software GL cannot sustain the additional full-scene passes used by
+ // transmission, variance shadows, MSAA and SSAO at the same time. Keep the
+ // complete geometry and PBR surfaces, with a cheaper raster path on that
+ // renderer. Hardware rendering retains the studio-quality settings.
+ renderer.setPixelRatio(Math.min(window.devicePixelRatio,softwareRenderer?1:2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=softwareRenderer?T.PCFSoftShadowMap:T.VSMShadowMap;
+ renderer.transmissionResolutionScale=softwareRenderer?.5:1;
+ renderer.domElement.dataset.renderProfile=softwareRenderer?'software':'studio';
  renderer.shadowMap.autoUpdate=false;
  renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=.9;
  renderer.domElement.setAttribute('aria-label','Interactive 3D model of the 1985 Pontiac Fiero. Drag to orbit, scroll to zoom. Components can also be selected in the assembly list.');
@@ -40,16 +50,28 @@ export function createViewer(container, onSelect) {
  const fill=new T.DirectionalLight('#d0deff',.55);fill.position.set(4,3,4);scene.add(fill);
  const floor=new T.Mesh(new T.PlaneGeometry(40,40),new T.MeshStandardMaterial({color:'#dededb',roughness:.57,metalness:.07}));floor.rotation.x=-Math.PI/2;floor.position.y=-.008;floor.receiveShadow=true;scene.add(floor);
  const grid=new T.GridHelper(12,48,'#9da7a5','#bcc4c1');grid.position.y=-.005;grid.material.transparent=true;grid.material.opacity=.18;grid.visible=false;scene.add(grid);
- const {root,groups,configure}=createVehicle();scene.add(root);
+ function prepareSoftwareSurfaces(model){
+  if(!softwareRenderer)return;
+  model.traverse(o=>{if(!o.isMesh||!o.material.transmission)return;
+   // Alpha glazing avoids a second complete scene render on software GL.
+   // Keep PBR reflections and all lens/filament geometry; hardware uses IOR.
+   const m=o.material;m.transmission=0;m.transparent=true;
+   m.opacity=m.opacity<1?m.opacity:o.userData.materialName==='instrumentLens'?.08:o.userData.materialName==='glass'?.22:.30;
+   m.depthWrite=false;m.needsUpdate=true;
+   if(o.userData.original)Object.assign(o.userData.original,{opacity:m.opacity,transparent:true});
+  });
+ }
+ const {root,groups,configure}=createVehicle();prepareSoftwareSurfaces(root);scene.add(root);
  let inspection=null;const inspections=new Map();
- const builders={'lighting-system':createLightingDetail,'headlight-system':createHeadlightDetail,'hvac-system':createHvacDetail,'body-system':createBodyDetail,'exhaust-system':createExhaustDetail,'fuel-system':createFuelDetail,'suspension-system':createSuspensionDetail,engine:createEngineDetail,transmission:createTransmissionDetail,'cooling-system':createCoolingDetail,'braking-system':createBrakeDetail};
+ const builders={'wiring-system':createWiringDetail,'charging-system':createChargingDetail,'lighting-system':createLightingDetail,'headlight-system':createHeadlightDetail,'hvac-system':createHvacDetail,'body-system':createBodyDetail,'exhaust-system':createExhaustDetail,'fuel-system':createFuelDetail,'suspension-system':createSuspensionDetail,engine:createEngineDetail,transmission:createTransmissionDetail,'cooling-system':createCoolingDetail,'braking-system':createBrakeDetail};
  const currentGroups=()=>current.assembly?inspection.groups:groups;
  const currentParts=()=>current.assembly?detailParts.filter(p=>p.family===familyFor(current.assembly).id):parts;
  const currentRoot=()=>current.assembly?inspection.root:root;
- const target=new T.WebGLRenderTarget(1,1,{type:T.HalfFloatType,samples:4});
+ const target=new T.WebGLRenderTarget(1,1,{type:T.HalfFloatType,samples:softwareRenderer?0:4});
  const composer=new EffectComposer(renderer,target);composer.addPass(new RenderPass(scene,camera));
  const occlusion=new SSAOPass(scene,camera,1,1,16);occlusion.kernelRadius=.13;occlusion.minDistance=.000025;occlusion.maxDistance=.004;composer.addPass(occlusion);
  const output=new OutputPass();composer.addPass(output);
+ const antialias=new ShaderPass(FXAAShader);antialias.enabled=!!softwareRenderer;composer.addPass(antialias);
  const dimensions=new T.Group();scene.add(dimensions);
  const dimensionLine=(points)=>{const g=new T.BufferGeometry().setFromPoints(points.map(p=>new T.Vector3(...p)));dimensions.add(new T.Line(g,new T.LineBasicMaterial({color:'#617b72'})));};
  dimensionLine([[1.04,.03,-2.041],[1.15,.03,-2.041],[1.15,.03,2.041],[1.04,.03,2.041]]);
@@ -60,7 +82,7 @@ export function createViewer(container, onSelect) {
  const presets={home:[-4.9,2.35,-6.1],front:[.1,1.30,-7.1],rear:[-4.6,2.25,5.8],side:[-7.6,1.35,0],passenger:[7.6,1.35,0],top:[0,7.8,.001]};
  camera.position.set(...presets.home);
  let cameraGoal=null,targetGoal=null,current={system:'all',selected:null,hideBody:false,isolate:false,explode:0,labels:false,wireframe:false},frame=0,disposed=false,dirty=true;
- let lastConfiguration='',inspectionRadius=.1;
+ let lastConfiguration='',inspectionRadius=.1,lastViewKey='',lastSceneKey='';
  new HDRLoader().load('/assets/studio_small_09_1k.hdr',texture=>{if(disposed){texture.dispose();return;}const next=pmrem.fromEquirectangular(texture);texture.dispose();envMap.dispose();envMap=next;scene.environment=next.texture;scene.environmentIntensity=.85;pmrem.dispose();dirty=true;renderer.domElement.dataset.lighting='hdr';},undefined,()=>{pmrem.dispose();renderer.domElement.dataset.lighting='fallback';});
  const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  const labelLayer=document.createElement('div');labelLayer.className='model-labels';container.append(labelLayer);
@@ -82,9 +104,17 @@ export function createViewer(container, onSelect) {
   if(e.key==='+'||e.key==='=')spherical.radius*=.9;if(e.key==='-')spherical.radius*=1.1;spherical.phi=T.MathUtils.clamp(spherical.phi,.02,Math.PI*.92);spherical.radius=T.MathUtils.clamp(spherical.radius,current.assembly?.012:.45,12);camera.position.copy(controls.target).add(new T.Vector3().setFromSpherical(spherical));
  });
  function update(next) {
+  const merged={...current,...next};
+  const sceneKey=JSON.stringify([merged.assembly,merged.system,merged.hideBody,merged.isolate,merged.isolate?merged.selected:null,merged.explode,merged.assemblyExplode,merged.wireframe,merged.configuration]);
+  const viewKey=JSON.stringify([sceneKey,merged.selected,merged.labels]);
+  // Typing in search, changing inspector tabs and opening the mobile menu
+  // do not change the 3D scene. Avoid redrawing millions of hidden surfaces
+  // for each UI update, especially while a user is trying to select a part.
+  if(viewKey===lastViewKey){current=merged;return;}
+  const sceneChanged=sceneKey!==lastSceneKey;lastViewKey=viewKey;lastSceneKey=sceneKey;
   dirty=true;
-  renderer.shadowMap.needsUpdate=true;
-  if(next.assembly){const family=familyFor(next.assembly).id;if(!inspections.has(family)){const model=builders[family]();inspections.set(family,model);scene.add(model.root);}inspection=inspections.get(family);}
+  if(sceneChanged)renderer.shadowMap.needsUpdate=true;
+  if(next.assembly){const family=familyFor(next.assembly).id;if(!inspections.has(family)){const model=builders[family]();prepareSoftwareSurfaces(model.root);inspections.set(family,model);scene.add(model.root);}inspection=inspections.get(family);}
   current={...current,...next};
   controls.minDistance=current.assembly?.012:.45;camera.near=current.assembly?.001:.03;camera.updateProjectionMatrix();
   root.visible=!current.assembly;floor.visible=!current.assembly;for(const [family,model] of inspections)model.root.visible=!!current.assembly&&family===familyFor(current.assembly).id;
@@ -115,7 +145,7 @@ export function createViewer(container, onSelect) {
   }
   renderer.domElement.dataset.system=current.system;renderer.domElement.dataset.selected=current.selected||'';
   renderer.domElement.dataset.assembly=current.assembly||'';renderer.domElement.dataset.driveLayout='LHD';
-  fitInspectionShadow();
+  if(sceneChanged)fitInspectionShadow();
  }
  function fitInspectionShadow(){
   const sc=sun.shadow.camera;
@@ -155,6 +185,8 @@ export function createViewer(container, onSelect) {
    if(corner)return[corner[1]==='l'?-1.6:1.6,.85,corner[0]==='f'?.9:-.9];
    if(['brake-master','brake-booster','brake-hydraulics'].includes(current.assembly))return[-1.5,.9,-1.2];
   }
+  if(family==='wiring-system')return current.assembly==='wiring-cluster'?[.15,.1,2]:current.assembly==='wiring-ecm'?[1.1,.6,-1.8]:current.assembly==='wiring-fuses'?[-.5,-.8,1.5]:[-.8,.7,1.8];
+  if(family==='charging-system')return current.assembly==='charging-alternator'?[1.7,.6,.8]:current.assembly==='charging-starter'?[-1.5,.7,-1.1]:[1.1,.8,1.5];
   if(family==='lighting-system')return current.assembly.includes('front-')?[-.6,.4,-1.8]:current.assembly.includes('marker-')?[current.assembly.endsWith('left')?-1.8:1.8,.5,.4]:['lighting-dome','lighting-courtesy','lighting-console'].includes(current.assembly)?[-.7,-1.5,.8]:[-.6,.5,1.8];
   if(current.assembly==='headlight-controls')return[-.7,.45,1.8];
   if(family==='headlight-system')return current.assembly.endsWith('-motor')?[current.assembly.includes('-left-')?-1.6:1.6,.9,-1.0]:[-.8,.6,-1.7];
@@ -180,7 +212,7 @@ export function createViewer(container, onSelect) {
   const g=currentGroups().get(id);if(!g)return;currentRoot().updateMatrixWorld(true);const bounds=visibleBounds(g);if(bounds.isEmpty())return;if(current.assembly)bounds.translate(engineGoal(g).sub(g.position));const centre=bounds.getCenter(new T.Vector3());const size=bounds.getSize(new T.Vector3()).length();
   const direction=id.startsWith('eng-rocker-')?new T.Vector3(-.55,1.2,id.includes('-front-')?-1:1).normalize():id==='eng-icm'?new T.Vector3(-.6,1.2,1.7).normalize():camera.position.clone().sub(controls.target).normalize();targetGoal=centre;cameraGoal=centre.clone().addScaledVector(direction,T.MathUtils.clamp(size*2.1,current.assembly?.028:1.1,7));
  }
- function resize() {const {width,height}=container.getBoundingClientRect();if(!width||!height)return;camera.aspect=width/height;camera.updateProjectionMatrix();renderer.setSize(width,height);composer.setSize(width,height);dirty=true;}
+ function resize() {const {width,height}=container.getBoundingClientRect();if(!width||!height)return;camera.aspect=width/height;camera.updateProjectionMatrix();renderer.setSize(width,height);composer.setSize(width,height);const ratio=renderer.getPixelRatio();antialias.uniforms.resolution.value.set(1/(width*ratio),1/(height*ratio));dirty=true;}
  const observer=new ResizeObserver(resize);observer.observe(container);resize();
  const overviewLabels=['engine-block','radiator','wheels','steering-wheel'];const temp=new T.Vector3(),bounds=new T.Box3();
  let finishFirstFrame;const ready=new Promise(resolve=>{finishFirstFrame=resolve;});
@@ -195,7 +227,7 @@ export function createViewer(container, onSelect) {
   for(const part of currentParts()){const el=labels.get(part.id),g=currentGroups().get(part.id);const eligible=current.labels&&g.visible&&(part.id===current.selected||(current.assembly?shown<6:current.system==='all'?overviewLabels.includes(part.id):part.system===current.system&&shown<6));
    if(!eligible){el.hidden=true;continue;}shown++;visibleBounds(g,bounds);if(bounds.isEmpty()){el.hidden=true;continue;}bounds.getCenter(temp);temp.y=bounds.max.y+.07;temp.project(camera);el.hidden=temp.z>1||temp.z< -1||Math.abs(temp.x)>.93||Math.abs(temp.y)>.88;if(!el.hidden){el.style.left=`${(temp.x*.5+.5)*rect.width}px`;el.style.top=`${(-temp.y*.5+.5)*rect.height}px`;el.classList.toggle('selected',part.id===current.selected);}
   }
-  occlusion.enabled=!current.wireframe&&(current.assembly?(current.assemblyExplode||0)<.01:current.system==='all'&&!current.isolate&&!current.hideBody&&current.explode<.01);
+  occlusion.enabled=!softwareRenderer&&!current.wireframe&&(current.assembly?(current.assemblyExplode||0)<.01:current.system==='all'&&!current.isolate&&!current.hideBody&&current.explode<.01);
   // Contact shading follows part scale; a car-sized kernel overwhelms tiny
   // service hardware. Depth thresholds are normalized to the camera range.
   occlusion.kernelRadius=current.assembly?T.MathUtils.clamp(inspectionRadius*.10,.001,.016):.13;
@@ -210,5 +242,5 @@ export function createViewer(container, onSelect) {
  const start=()=>{if(!disposed)frame=requestAnimationFrame(animate);};
  if(document.readyState==='complete')start();else window.addEventListener('load',start,{once:true});
  function getPartBounds(id){const g=detailPartById.has(id)?inspections.get(detailPartById.get(id).family)?.groups.get(id):groups.get(id);if(!g)return null;scene.updateMatrixWorld(true);const b=visibleBounds(g);return b.isEmpty()?null:{min:b.min.toArray(),max:b.max.toArray()};}
- return {ready,update,view,focus,frameAssembly,resize,getCamera:()=>({position:camera.position.toArray(),target:controls.target.toArray(),fov:camera.fov}),restoreCamera:s=>{setCameraFov(s.fov??37);cameraGoal=new T.Vector3(...s.position);targetGoal=new T.Vector3(...s.target);dirty=true;},getVisibleParts:()=>[...currentGroups()].filter(([,g])=>g.visible).map(([id])=>id),getState:()=>({...current}),getPartCount:()=>groups.size,getPartBounds,getModelStats:()=>{let meshes=0,triangles=0;currentRoot().traverseVisible(o=>{if(o.isMesh){meshes++;triangles+=(o.geometry.index?.count||o.geometry.attributes.position.count)/3;}});return{meshes,triangles};},dispose(){disposed=true;window.removeEventListener('load',start);cancelAnimationFrame(frame);observer.disconnect();controls.dispose();scene.traverse(o=>{o.geometry?.dispose();if(o.material)for(const m of new Set([...[o.material].flat(),o.userData.surfaceMaterial,o.userData.ghostMaterial,o.userData.wireMaterial].filter(Boolean)))m.dispose();});occlusion.dispose();output.dispose();composer.dispose();envMap.dispose();pmrem.dispose();renderer.dispose();}};
+ return {ready,update,view,focus,frameAssembly,resize,getCamera:()=>({position:camera.position.toArray(),target:controls.target.toArray(),fov:camera.fov}),restoreCamera:s=>{setCameraFov(s.fov??37);cameraGoal=new T.Vector3(...s.position);targetGoal=new T.Vector3(...s.target);dirty=true;},getVisibleParts:()=>[...currentGroups()].filter(([,g])=>g.visible).map(([id])=>id),getState:()=>({...current}),getPartCount:()=>groups.size,getPartBounds,getModelStats:()=>{let meshes=0,triangles=0;currentRoot().traverseVisible(o=>{if(o.isMesh){meshes++;triangles+=(o.geometry.index?.count||o.geometry.attributes.position.count)/3;}});return{meshes,triangles};},dispose(){disposed=true;window.removeEventListener('load',start);cancelAnimationFrame(frame);observer.disconnect();controls.dispose();scene.traverse(o=>{o.geometry?.dispose();if(o.material)for(const m of new Set([...[o.material].flat(),o.userData.surfaceMaterial,o.userData.ghostMaterial,o.userData.wireMaterial].filter(Boolean)))m.dispose();});occlusion.dispose();output.dispose();antialias.dispose();composer.dispose();envMap.dispose();pmrem.dispose();renderer.dispose();}};
 }

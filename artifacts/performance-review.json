@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-22T05:21:04.545Z",
+  "status": "passed",
+  "profile": "software",
+  "timings": {
+    "initialReady": 97.149,
+    "settle": 13.932,
+    "mobileSelection": 13.981,
+    "returnVehicle": 14.44
+  },
+  "seconds": 143.404,
+  "errors": []
+}

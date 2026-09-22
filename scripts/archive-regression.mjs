@@ -1,0 +1,11 @@
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {regressionManifest} from './regression-evidence.mjs';
+const path=process.argv[2]||'artifacts/full-regression.json';
+const report=JSON.parse(await readFile(path,'utf8')),manifest=regressionManifest();
+assert.equal(report.config?.metadata?.sourceSha256,manifest.sourceSha256,'Archive before changing the source or tests; cannot assign current source to a stale report.');
+assert(manifest.newestInputMtime<=Date.parse(report.stats.startTime),'Application or test files changed after this run began; cannot archive as unchanged-source evidence.');
+const name=report.stats.startTime.replaceAll(':','-')+'-'+manifest.sourceSha256.slice(0,12);
+await mkdir('artifacts/regression-history',{recursive:true});
+await writeFile('artifacts/regression-history/'+name+'.json',JSON.stringify({manifest,report},null,2)+'\n',{flag:'wx'});
+console.log('Archived raw browser results and exact source manifest: '+name);

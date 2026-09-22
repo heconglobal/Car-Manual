@@ -1,0 +1,20 @@
+# Evidence needed for full acceptance
+
+The requested completion criterion remains all 73 requirements finished and tested. A selectable mesh, source link, or passing interaction test is not enough to establish a measured original component. The current ledger keeps those distinctions explicit.
+
+| Requirement area | Available evidence | Remaining evidence or work |
+| --- | --- | --- |
+| Headlight dimensions and travel | Original 1985 lamp-center datums; GM component drawings; DIY replacement sequence; reconstructed linkage and hood sweep checks | Production pivot coordinates, bucket/cover/case sections, reduction-gear tooth counts and profiles, contact/brush geometry, door contact and calibrated stops |
+| Lighting and electrical units | 1985 bulb/fuse tables and early cluster face; GM exploded component illustrations; 1985 EST circuits | Lens tooling and optics, castings, board populations, original 1985 complete circuits, harness lengths, clip coordinates and verified installed applications |
+| Engine and transaxle | Selected bore/pitch/stroke, firing order, final-drive teeth, clutch sizes; exploded factory drawings | Complete cast surfaces and passages, sealing interfaces, running clearances, speed-gear teeth and involute profiles, bearing fits, production mounts and routing |
+| Chassis, body and cabin | Factory overall envelope and track/wheelbase; original parts illustrations; owner photographs of visible exterior | Measured panel sections, body alignment datums, complete hidden stampings/fasteners, calibrated suspension/steering travel, window/lock/seat/column mechanisms and all related interfaces |
+| Original equipment and swaps | VIN identity, owner-reported manual/WS6/originality, period options and dated catalog applications | Individual RPO/build records and physical identifiers where multiple original variants exist; complete option hardware and verified compatibility |
+| Repair content | 1985 DIY, 1985 alternative 6E3 diagnostic publication, owner manual, adjacent-year full service manual | Complete source-checked procedure library linked to every necessary modeled part, correct variant applicability, tools and prerequisite operations, final checks and physical workshop validation |
+
+The source search on September 22, 2026 located free original 1985 DIY, owner and 6E3 material and Pontiac nominal specifications. A full free 1985 chassis/body manual and a measured full-vehicle CAD set have not been obtained. Published paid reprints were identified but not purchased because the user requested free resources. Adjacent-year and secondary material is identified as such rather than silently treated as exact 1985 evidence.
+
+The existing factory documents and exterior photographs cannot uniquely determine every hidden casting, wire route or internal mechanism. Filling those gaps with more visually elaborate guesses would not satisfy the factory-spec acceptance criterion. The remaining list also includes unfinished modeling and interaction work; evidence limitations do not imply that all feasible implementation has been completed.
+
+Research pointers: [free factory-manual archive](https://www.fieroinfo.com/manuals/), [1985 factory reprint identification and public sample pages](https://www.themotorbookstore.com/1985-pontiac-fiero-service-manual.html), and the page-specific records elsewhere in `references/`. No source listing is treated as blanket content verification or permission to redistribute scans.
+
+A direct check of the public [Boomtastic 1985 Factory Service Manual folder](https://www.boomtastic.com/files/?dir=Service+Manuals,+Guides,+and+Tips/Service+Manuals/Repair+Manuals/1985+Factory+Service+Manual) found only the 6E3 emissions/drivability volume already held locally. The folder title does not establish availability of the complete chassis/body manual. Its public 3D-print folder lists a 1988 GT model and several small replacement accessories; it is not a measured, original 1985 SE vehicle CAD set. No account-only material was accessed or paid material purchased.

@@ -1,3 +1,6 @@
+import {bankOffset,headStackCorrection} from './engine-layout.js';
+import {enginePlacement,engineToVehicle} from './powertrain-layout.js';
+import {l44Nominal} from './factory-specifications.js';
 import * as T from 'three';
 import {createMaterials} from './materials.js';
 import {geometryTools} from './geometry.js';
@@ -22,8 +25,8 @@ function tools(h){
 // explorer. These engine coordinates match the existing bank/head datum.
 export function buildExhaustManifold(h,bank,ids){
  const {tube,ring,cyl,bolt}=h,{pipe,flange,sleeve}=tools(h),s=bank==='front'?-1:1;
- const portY=1.05+.315*Math.cos(Math.PI/6)-.099*.5,portZ=s*(.315*.5+.099*Math.cos(Math.PI/6)),y=portY-.04,z=portZ+s*.058;
- for(const x of [-.105,0,.105]){
+ const portY=1.05+(.315-headStackCorrection)*Math.cos(Math.PI/6)-.099*.5,portZ=s*((.315-headStackCorrection)*.5+.099*Math.cos(Math.PI/6)),y=portY-.04,z=portZ+s*.058;
+ for(const x of [-l44Nominal.borePitch,0,l44Nominal.borePitch].map(x=>x+bankOffset(s))){
   const port=[x,portY,portZ],join=[x,y,z];pipe(ids.manifold,[port,[x,portY-.021,portZ+s*.034],join],.017);
   flange(ids.manifold,port,[0,0,s],.015,.028,'metal',.005);
   const f=flange(ids.gaskets,[x,portY,portZ-s*.003],[0,0,s],.0155,.028,'dark',.001);
@@ -35,8 +38,9 @@ export function buildExhaustManifold(h,bank,ids){
  cyl(ids.manifold,.020,.0015,[-.126,y,z],'metal');flange(ids.manifold,[.205,y,z],[1,0,0],.0185,.033);
  sleeve(ids.manifold,.021,.0185,.012,[.199,y,z],'metal');
 }
-const enginePlacement=new T.Matrix4().makeScale(1.6,.6856,1.3);enginePlacement.setPosition(-.11,-.2923,1.17);
-export const exhaustDatum={manifoldOutlets:{front:[-.218,.55323,.77809],rear:[-.218,.55323,1.56191]},converter:[0,.264,.715],muffler:[0,.274,1.74]};
+export const manifoldOutlet=bank=>{const s=bank==='front'?-1:1;return [.205,1.05+(.315-headStackCorrection)*Math.cos(Math.PI/6)-.099*.5-.04,s*((.315-headStackCorrection)*.5+.099*Math.cos(Math.PI/6)+.058)];};
+const outlets=Object.fromEntries(['front','rear'].map(bank=>[bank,engineToVehicle(manifoldOutlet(bank))]));
+export const exhaustDatum={manifoldOutlets:Object.fromEntries(Object.entries(outlets).map(([bank,[x,y,z]])=>[bank,[-x,y,z]])),converter:[0,.264,.715],muffler:[0,.274,1.74]};
 export function buildExhaust(h){
  // Build shared manifolds in temporary groups, then place at the vehicle bank
  // datum. All subsequent pipes are authored in the legacy vehicle frame.
@@ -45,8 +49,8 @@ export function buildExhaust(h){
  buildCrossover(h);buildCatalyst(h);buildRear(h);
 }
 const crossRoutes={
- front:[[.218,.55323,.77809],[.30,.548,.783],[.35,.522,.85],[.37,.492,1.00]],
- rear:[[.218,.55323,1.56191],[.32,.55,1.56],[.37,.53,1.41],[.385,.518,1.17],[.37,.492,1.00]],
+ front:[outlets.front,[.30,outlets.front[1],outlets.front[2]],[.35,.522,.85],[.37,.492,1.00]],
+ rear:[outlets.rear,[.32,outlets.rear[1],outlets.rear[2]],[.37,.53,1.41],[.385,.518,1.17],[.37,.492,1.00]],
  outlet:[[.37,.492,1.00],[.39,.438,.94],[.39,.393,.90]],
  down:[[.39,.393,.90],[.39,.32,.84],[.36,.261,.735],[.265,.261,.715]],
  intermediate:[[-.265,.261,.715],[-.385,.260,.72],[-.48,.255,.81],[-.51,.252,1.15],[-.49,.266,1.46],[-.39,.312,1.67],[-.275,.315,1.74]],
@@ -55,7 +59,7 @@ export const exhaustRoutes=Object.fromEntries(Object.entries(crossRoutes).map(([
 function buildCrossover(h){
  const {surface,box,bolt,tube,cyl}=h,{pipe,flange,sleeve,spring}=tools(h),id=k=>'ex-cross-'+k;
  for(const key of ['front','rear','outlet'])pipe(id('pipe'),crossRoutes[key],.024);
- for(const z of [.77809,1.56191]){flange(id('pipe'),[.225,.55323,z],[1,0,0],.022,.033);for(const dz of [-.033,.033]){cyl(id('manifold-bolts'),.004,.035,[.222,.55323,z+dz],'zinc');bolt(id('manifold-bolts'),[.246,.55323,z+dz],.007,'x');}}
+ for(const [x,y,z] of Object.values(outlets)){flange(id('pipe'),[x+.007,y,z],[1,0,0],.022,.033);for(const dz of [-.033,.033]){cyl(id('manifold-bolts'),.004,.035,[x+.004,y,z+dz],'zinc');bolt(id('manifold-bolts'),[x+.028,y,z+dz],.007,'x');}}
  const p=[.39,.393,.90];flange(id('pipe'),p,[0,1,0],.023,.050);sleeve(id('seal'),.032,.023,.011,[p[0],p[1]-.008,p[2]],'dark',[0,1,0]);flange(id('front-pipe'),[p[0],p[1]-.015,p[2]],[0,1,0],.024,.050);pipe(id('front-pipe'),crossRoutes.down,.027);
  for(const x of [.34,.44]){cyl(id('joint-bolts'),.005,.077,[x,.362,.90],'zinc',[0,0,0]);bolt(id('joint-bolts'),[x,.325,.90],.009);spring(id('joint-springs'),[x,.351,.90],.012,.040,'y',7,.002,'zinc');}
  for(const [key,route] of [['front-shield',crossRoutes.front],['rear-shield',crossRoutes.rear]]){

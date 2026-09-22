@@ -1,15 +1,229 @@
 {
-  "date": "2026-09-22T03:40:46.259Z",
-  "parts": 103,
+  "date": "2026-09-22T09:03:00.519Z",
+  "parts": 118,
   "closedHoodInterference": "passed",
+  "reconstructedLinkagePoses": 101,
+  "bucketSweep": [
+    {
+      "lift": 0,
+      "maxOutsideAperture": -0.04860833883882487,
+      "where": [
+        -0.6175000071525574,
+        0.6636803501747437,
+        -1.3678474042326778
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.05,
+      "maxOutsideAperture": -0.04873204125988817,
+      "where": [
+        -0.6175000071525574,
+        0.6635580138662235,
+        -1.3678400738589684
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.1,
+      "maxOutsideAperture": -0.04887958178835361,
+      "where": [
+        -0.6175000071525574,
+        0.6634078842992002,
+        -1.367853966257185
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.15,
+      "maxOutsideAperture": -0.04904767889242112,
+      "where": [
+        -0.6175000071525574,
+        0.6632333414310471,
+        -1.3678885527262823
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.2,
+      "maxOutsideAperture": -0.049232116059599096,
+      "where": [
+        -0.6175000071525574,
+        0.663038495134589,
+        -1.3679444040386288
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.25,
+      "maxOutsideAperture": -0.049545552516124025,
+      "where": [
+        -0.6175000071525574,
+        0.6627726803441499,
+        -1.3676888681392199
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.3,
+      "maxOutsideAperture": -0.049737101701438524,
+      "where": [
+        -0.6175000071525574,
+        0.6625650081721131,
+        -1.3677753882039738
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.35,
+      "maxOutsideAperture": -0.049934592380203924,
+      "where": [
+        -0.6175000071525574,
+        0.6623466448187778,
+        -1.367887389035496
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.4,
+      "maxOutsideAperture": -0.05024488644183078,
+      "where": [
+        -0.6175000071525574,
+        0.662079194472037,
+        -1.3676574847797736
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.45,
+      "maxOutsideAperture": -0.050437166366258945,
+      "where": [
+        -0.6175000071525574,
+        0.661859358158172,
+        -1.3678053594720891
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.5,
+      "maxOutsideAperture": -0.050625622877292,
+      "where": [
+        -0.6175000071525574,
+        0.6616377854219989,
+        -1.3679830507586361
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.55,
+      "maxOutsideAperture": -0.05092702144971506,
+      "where": [
+        -0.6175000071525574,
+        0.6613743589103822,
+        -1.3677793028437157
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.6,
+      "maxOutsideAperture": -0.05109819513767655,
+      "where": [
+        -0.6175000071525574,
+        0.6611627632096292,
+        -1.367996195613136
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.65,
+      "maxOutsideAperture": -0.05139550969922291,
+      "where": [
+        -0.6175000071525574,
+        0.660900148062277,
+        -1.3678100105135043
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.7,
+      "maxOutsideAperture": -0.051697693648773746,
+      "where": [
+        -0.6175000071525574,
+        0.6606308253774982,
+        -1.3676336673865976
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.75,
+      "maxOutsideAperture": -0.05183421899925089,
+      "where": [
+        -0.6175000071525574,
+        0.6604451662343939,
+        -1.3678973261131417
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.8,
+      "maxOutsideAperture": -0.05212973827203904,
+      "where": [
+        -0.6175000071525574,
+        0.6601793848892524,
+        -1.3677377537123876
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.85,
+      "maxOutsideAperture": -0.052429123066777494,
+      "where": [
+        -0.6175000071525574,
+        0.6599078826189047,
+        -1.3675881221926347
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.9,
+      "maxOutsideAperture": -0.0525221131870337,
+      "where": [
+        -0.6175000071525574,
+        0.6597574981197649,
+        -1.3678961130774379
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 0.95,
+      "maxOutsideAperture": -0.05281246609788548,
+      "where": [
+        -0.6175000071525574,
+        0.6594921425576693,
+        -1.3677619794221416
+      ],
+      "part": "hl-left-bucket"
+    },
+    {
+      "lift": 1,
+      "maxOutsideAperture": -0.05310575083305602,
+      "where": [
+        -0.6175000071525574,
+        0.6592220067977905,
+        -1.3676377534866333
+      ],
+      "part": "hl-left-bucket"
+    }
+  ],
   "toleranceMetres": 0.0025,
   "maximum": {
-    "id": "hl-right-upper-bezel",
-    "maxAboveHood": 0.0017011278667146135,
+    "id": "hl-right-hinge",
+    "maxAboveHood": -0.002545152318029875,
     "where": [
-      0.6320000290870667,
-      0.7103385329246521,
-      -1.3844400644302368
+      0.4114149212837219,
+      0.7136030793190002,
+      -1.4114453792572021
     ]
-  }
+  },
+  "limits": "Reconstructed hard points and sampled bucket/hood clearance; cover contact, production dimensions and motor stops remain unverified."
 }

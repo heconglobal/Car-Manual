@@ -5,7 +5,7 @@ test('individual valve gear separates small hardware and preserves the correct s
  test.setTimeout(300000);
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('/');await page.waitForFunction(()=>window.__fiero);
- await page.getByRole('searchbox').fill('trunk-side position 2 intake spring retainer');
+ await page.getByRole('searchbox').fill('trunk-side cylinder 3 intake spring retainer');
  await page.locator('.part-button[data-part="eng-spring-retainer-rear-2-intake"]').click();
  await expect(page.locator('canvas')).toHaveAttribute('data-assembly','valve-rear-2-intake');
  await expect(page.locator('.part-button')).toHaveCount(11);

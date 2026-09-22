@@ -1,0 +1,160 @@
+{
+  "manifest": {
+    "capturedAt": "2026-09-22T06:52:35.106Z",
+    "sourceSha256": "d873bc28c6914b707c14af6792d874756039ba44c53a80de7540588a775f2562",
+    "applicationSha256": "292172a3382937628d9d30a086f1d1513d1c512337abf494891ec97edeb0aa6e",
+    "testFiles": {
+      "body-hardware.spec.js": "24b614104877cf0b10b04be60d48ababe46ee22175d33db6ade180a7e5bc8e9d",
+      "brakes.spec.js": "f1195a86b80545fd1eb9578946da480aa33e2775b258b5b8f3eca6cb6c88e125",
+      "configuration.spec.js": "88254f68c446f555661395e7310f93047342dfaae6a891e8f79d684fee5d8cac",
+      "electrical.spec.js": "b3c3610e7fdf2ec04f7b8fe7e5cefa8be782d0764ce0575e4592396d05978c56",
+      "engine-service.spec.js": "e3e7deca44f16a8fcb6093ed503ea01a035776b7e0246ebece5cd3e0c8f19e6e",
+      "engine.spec.js": "d835929251fdf52eaab25b3d6d7a7fe8b1279938713a0e007077e6384459b525",
+      "exhaust.spec.js": "942e6ced8d9e7902427f668fc421e447da1417ec4741f4ddab096e3782eaab86",
+      "fuel.spec.js": "855c51895b37fee5ab862293191a195457f16d700866bea41d8c90039c4584d4",
+      "headlights.spec.js": "afa882d3504ad71177c7b4409bddc17808cfbf4bddafcf997650222fbb43af4d",
+      "hvac.spec.js": "835318b1a7b085f68e5a605e381285405b66b31f5215ab114c68f4beb3f3551f",
+      "ignition.spec.js": "26b85b075ee9d1e426121a87486e716fe9e4968d4729b827f7f7015d86040127",
+      "rear-body.spec.js": "aa8e63a6d9f5816a6775f9a18358d35a64b955303962b6040ecbb101a5b0deba",
+      "service-guides.spec.js": "0c6be5dd2cd1ad64b59a3cf9abed7b4345a2bd9ec30468ad66348807f4d4b91c",
+      "suspension.spec.js": "27e4d61da57b4333af13614c6a2b30ee05bb1f378cb197b0de3124b14c2fc890",
+      "transmission-cooling.spec.js": "c21d94f16185813d5a3618637c651a27ead9478233740f2e7c8fad4d573dcf4b",
+      "valve-gear.spec.js": "603a19658e11b924e65d789c925440d057ddd21fce02bbf19527f7c2bf899d74",
+      "workshop.spec.js": "f63d9d0936dcb83393dcf5eabf40d8b69c70bfdc2c54ec951a4761e359976a5d"
+    },
+    "newestInputMtime": 1790059694253.14
+  },
+  "report": {
+    "config": {
+      "argv": [
+        "/home/hesh913/.nvm/versions/node/v24.13.1/bin/node",
+        "/home/hesh913/fiero-3d-manual/node_modules/.bin/playwright",
+        "test",
+        "tests/service-guides.spec.js"
+      ],
+      "configFile": "/home/hesh913/fiero-3d-manual/playwright.config.js",
+      "rootDir": "/home/hesh913/fiero-3d-manual/tests",
+      "failOnFlakyTests": false,
+      "forbidOnly": false,
+      "fullyParallel": false,
+      "globalSetup": null,
+      "globalTeardown": null,
+      "globalTimeout": 0,
+      "grep": {},
+      "grepInvert": null,
+      "maxFailures": 0,
+      "metadata": {
+        "sourceSha256": "d873bc28c6914b707c14af6792d874756039ba44c53a80de7540588a775f2562",
+        "actualWorkers": 1
+      },
+      "preserveOutput": "always",
+      "projects": [
+        {
+          "outputDir": "/home/hesh913/fiero-3d-manual/test-results",
+          "repeatEach": 1,
+          "retries": 0,
+          "metadata": {
+            "sourceSha256": "d873bc28c6914b707c14af6792d874756039ba44c53a80de7540588a775f2562",
+            "actualWorkers": 1
+          },
+          "id": "",
+          "name": "",
+          "testDir": "/home/hesh913/fiero-3d-manual/tests",
+          "testIgnore": [],
+          "testMatch": [
+            "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+          ],
+          "timeout": 240000
+        }
+      ],
+      "quiet": false,
+      "reporter": [
+        [
+          "list",
+          null
+        ],
+        [
+          "html",
+          {
+            "open": "never"
+          }
+        ],
+        [
+          "json",
+          {
+            "outputFile": "artifacts/full-regression.json"
+          }
+        ]
+      ],
+      "reportSlowTests": {
+        "max": 5,
+        "threshold": 300000
+      },
+      "shard": null,
+      "tags": [],
+      "updateSnapshots": "missing",
+      "updateSourceMethod": "patch",
+      "version": "1.63.0",
+      "workers": 1,
+      "webServer": {
+        "command": "npm run dev",
+        "url": "http://127.0.0.1:5185",
+        "reuseExistingServer": true,
+        "timeout": 30000
+      }
+    },
+    "suites": [
+      {
+        "title": "service-guides.spec.js",
+        "file": "service-guides.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "factory headlamp guide highlights real parts, preserves relay reconnection order and restores the previous view",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 480000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 187967,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-22T06:48:28.033Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "c7206cff0445fc369ee2-8e223a453949edd39cd7",
+            "file": "service-guides.spec.js",
+            "line": 3,
+            "column": 1
+          }
+        ]
+      }
+    ],
+    "errors": [],
+    "stats": {
+      "startTime": "2026-09-22T06:48:25.060Z",
+      "duration": 196958.024,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  }
+}

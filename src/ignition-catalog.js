@@ -1,10 +1,25 @@
+import {cylinderNumber,cylinderReference,mvma1985} from './factory-specifications.js';
 // Factory relationship references. Profiles and routing are reconstructed;
 // catalog callouts identify assemblies, not current replacement part numbers.
 export const ignitionReferences={
  distributor:{label:'GM parts illustration K-13 · L44 distributor',url:'https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=65'},
- est:{label:'1985 Pontiac 6E3-90 / 91 · EST, figure 38',url:'https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf#page=91'},
+ est:{label:'1985 Pontiac 6E3-90 / 91 · EST, figure 38',url:'https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf#page=92'},
  coil:{label:'GM 22P H-22 · L44 coil and mounting hardware',url:'https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_P22.pdf#page=17'},
  harness:{label:'The Fiero Store · reproduced V6 distributor harness',url:'https://www.fierostore.com/85-88-V6-Coil-To-Distributor-Wire/productinfo/62523/'},
+};
+// Transcribed from the original 1985 Pontiac figure 38 and checked against
+// figure 2 (printed 6E3-5). Connector letters are not inferred from colors.
+export const estCircuits=[
+ {key:'a',cavity:'A',module:'G',circuit:453,color:'Black / red',base:'wire',stripe:'red',ecm:'B3',name:'Reference ground'},
+ {key:'b',cavity:'B',module:'B',circuit:424,color:'Tan / black',base:'wireTan',stripe:'wire',ecm:'D5',name:'Bypass'},
+ {key:'c',cavity:'C',module:'R',circuit:430,color:'Purple / white',base:'wirePurple',stripe:'wireWhite',ecm:'B5',name:'Distributor reference'},
+ {key:'d',cavity:'D',module:'E',circuit:423,color:'White',base:'wireWhite',ecm:'B4',name:'Electronic spark timing'},
+];
+export const estReference={
+ title:'1985 L44 · ICM / ECM circuit identification',
+ rows:estCircuits.map(c=>[`${c.cavity} / module ${c.module}`,`${c.name} · CKT ${c.circuit} · ${c.color} · ECM ${c.ecm}`]),
+ links:[['Pontiac figure 38 · connector orientation and circuits',ignitionReferences.est.url],['Pontiac figure 2 · ECM wiring','https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf#page=8']],
+ note:'The factory drawing identifies A–D at the distributor connector. Confirm the connector view in figure 38 before probing; mating and wire-entry views are opposite. The 3D wire branches stop at the engine loom and do not represent measured lengths or a complete diagnostic procedure.',
 };
 // Inspected directly in the scanned 1985 Pontiac DIY manual, PDF 31 / 60.
 // Historical factory reference, not a claim of current replacement availability.
@@ -50,7 +65,9 @@ export const ignitionParts=rows.map(([id,section,name,description,spread,callout
  referenceNote:section==='distributor-detail'?distributorNote:'External shapes and connections are reconstructed. Exact dimensions, wire lengths and installed part numbers are not verified.',
  aliases:id==='icm'?'ignition module ignition control module HEI EST electronics tune up rebuild':id==='pickup-coil'?'pick-up coil pickup magnetic sensor stator tune up rebuild':`${name} ignition tune up`,
 }));
+for(const id of ['eng-icm','eng-est-harness'])ignitionParts.find(p=>p.id===id).serviceReference=estReference;
+for(const [i,c] of estCircuits.entries())ignitionParts.push({id:`eng-est-${c.key}`,section:'coil-detail',system:'electrical',name:`EST ${c.cavity} · ${c.name} · circuit ${c.circuit}`,description:`${c.color} lead between distributor cavity ${c.cavity} (module ${c.module}) and ECM ${c.ecm}. The visible segment terminates at the engine loom; the factory circuit assignment is verified, but routing and dimensions are reconstructed.`,spread:[.23+i*.045,.06+i*.025,-.12],location:'Distributor four-way connector',source:ignitionReferences.est.label,sourceUrl:ignitionReferences.est.url,serviceReference:estReference,aliases:`ICM EST circuit ${c.circuit} ${c.ecm} ${c.name} ${c.color}`});
 for(const [bank,s] of [['front',-1],['rear',1]])for(let c=1;c<=3;c++){
- const where=`${s<0?'Cabin':'Trunk'}-side position ${c}`,tag=`${bank}-${c}`;
- ignitionParts.push({id:`eng-wire-${tag}`,section:'plug-wires',system:'electrical',name:`${where} spark-plug wire`,description:'Individual high-tension lead with a distributor boot and a long spark-plug boot. Position labels identify model instances, not factory cylinder numbers or firing order. Routing is reconstructed, not an installation diagram.',location:'Between distributor cap and cylinder head',spread:[(c-2)*.055,.11,s*.14],source:ignitionReferences.est.label,sourceUrl:ignitionReferences.est.url,aliases:'ignition leads cables lines wires tune up'});
+ const where=`${s<0?'Cabin':'Trunk'}-side cylinder ${cylinderNumber(bank,c)}`,tag=`${bank}-${c}`;
+ ignitionParts.push({id:`eng-wire-${tag}`,section:'plug-wires',system:'electrical',name:`${where} spark-plug wire`,description:'Individual high-tension lead with a distributor boot and a long spark-plug boot. Cylinder identity follows the Pontiac bank layout. Cap clocking and routing are reconstructed, not an installation diagram.',location:'Between distributor cap and cylinder head',spread:[(c-2)*.055,.11,s*.14],source:ignitionReferences.est.label,sourceUrl:ignitionReferences.est.url,cylinder:cylinderNumber(bank,c),serviceReference:cylinderReference,aliases:'ignition leads cables lines wires tune up'});
 }

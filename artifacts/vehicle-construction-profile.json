@@ -1,0 +1,13 @@
+{
+  "startedAt": "2026-09-22T10:22:00.363Z",
+  "finishedAt": "2026-09-22T10:23:28.020Z",
+  "sourceSha256": "b2019702353965532ff3dcd7d8016da9555acf341514d85704bcced93b67718c",
+  "moduleImportMs": 862.5546899999999,
+  "vehicleConstructionMs": 83011.648625,
+  "meshes": 1113,
+  "triangles": 5293635,
+  "uniqueGeometries": 1113,
+  "uniqueMaterials": 1113,
+  "node": "v24.13.1",
+  "limits": "One Node CPU construction probe with stubbed canvas drawing during concurrent browser regression. Excludes real texture rasterization, browser layout, GPU upload/shader compilation and draw cost. Not a device performance acceptance or isolated benchmark."
+}

@@ -1,0 +1,33 @@
+import {test,expect} from '@playwright/test';
+import {detailMembers} from '../src/inspection-catalog.js';
+
+test('early suspension and manual steering remain selectable, asymmetric and reachable on mobile',async({page})=>{
+ test.setTimeout(720000);
+ const errors=[],images=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.resourceType()==='image')images.push(r.url());});
+ await page.goto('/');await page.waitForFunction(()=>window.__fiero);
+ const settle=()=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+ const capture=async name=>{await settle();await page.screenshot({path:`artifacts/${name}.png`});console.log('Captured '+name);};
+ const scope=async id=>{await page.locator(`#systems [data-assembly="${id}"]`).click();await expect(page.locator('canvas')).toHaveAttribute('data-assembly',id);};
+ const reset=async()=>page.getByRole('button',{name:'Reset view',exact:true}).click();
+ await page.locator('#systems [data-system="suspension"]').click();await page.locator('.part-button[data-part="front-arms"]').click();await page.getByRole('button',{name:'Explode this assembly',exact:true}).click();
+ await expect(page.locator('canvas')).toHaveAttribute('data-assembly','susp-front');await reset();await capture('suspension-front-assembled');
+ await scope('susp-fl');await scope('susp-fl-arms');await reset();await capture('suspension-front-arms-assembled');
+ expect((await page.evaluate(()=>window.__fiero.getVisibleParts())).sort()).toEqual(detailMembers('susp-fl-arms').map(p=>p.id).sort());
+ await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await capture('suspension-front-arms-exploded');
+ await page.locator('.part-button[data-part="su-fl-upper-boot"]').click();await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();expect(await page.evaluate(()=>window.__fiero.getVisibleParts())).toEqual(['su-fl-upper-boot']);
+ await scope('susp-fl-spring');await reset();await capture('suspension-front-coil-shock');
+ await scope('susp-front');await scope('susp-stabilizer');await reset();await page.locator('.part-button[data-part="su-stab-bar"]').click();await expect(page.locator('.part-service-reference')).toContainText('23 mm');await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await capture('suspension-stabilizer-exploded');
+ await scope('susp-rear');await scope('susp-rl');await scope('susp-rl-spring');await reset();await capture('suspension-rear-strut-assembled');await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await capture('suspension-rear-strut-exploded');
+ await scope('susp-rl-toe');await reset();await capture('suspension-rear-toe');
+ await scope('susp-rack');await reset();await capture('steering-rack-assembled');
+ const pinion=await page.evaluate(()=>window.__fiero.getPartBounds('su-rack-pinion'));expect(pinion.max[0]).toBeLessThan(0);
+ await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await capture('steering-rack-exploded');
+ await scope('susp-rear');await scope('susp-cradle');await reset();await capture('suspension-cradle');
+ await scope('braking-system');await scope('brake-front');await scope('brake-fl');await scope('brake-fl-caliper');await reset();await capture('brakes-front-caliper-refined');
+ await scope('brake-hydraulics');await scope('brake-master');await reset();await capture('brakes-master-refined');
+ await scope('brake-rear');await scope('brake-rl');await scope('brake-rl-hub');await reset();await page.locator('.part-button[data-part="br-rl-rotor"]').click();await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();await capture('brakes-rear-rotor-refined');
+ await page.getByRole('button',{name:'Back to vehicle',exact:false}).click();await expect(page.locator('canvas')).toHaveAttribute('data-selected','front-arms');await reset();await capture('vehicle-after-suspension');
+ await page.setViewportSize({width:390,height:700});await page.getByRole('button',{name:'Open assemblies',exact:true}).click();await page.getByRole('searchbox').fill('Right rear strut jounce bumper');await page.locator('.part-button[data-part="su-rr-jounce"]').click();await expect(page.locator('canvas')).toHaveAttribute('data-assembly','susp-rr-spring');
+ await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();await settle();await page.screenshot({path:'artifacts/suspension-mobile.png',fullPage:true});
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await expect(page.locator('.sidebar')).not.toHaveClass(/mobile-open/);expect(errors).toEqual([]);expect(images).toEqual([]);
+});

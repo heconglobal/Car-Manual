@@ -1,0 +1,14 @@
+{
+  "date": "2026-09-22T03:43:15.834Z",
+  "seconds": 105.863,
+  "errors": [],
+  "captures": [
+    "headlight-motor-final-assembled",
+    "headlight-motor-final-exploded",
+    "headlight-gear-final-pockets",
+    "headlight-gearcase-final-cavity",
+    "headlight-rh-motor-final-exploded",
+    "headlight-mobile-final-canvas"
+  ],
+  "status": "passed"
+}

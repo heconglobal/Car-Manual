@@ -1,0 +1,21 @@
+import {test,expect} from '@playwright/test';
+import {detailMembers} from '../src/inspection-catalog.js';
+test('early V6 fuel supply exposes pump, sender, filler, filter and vapor parts',async({page})=>{
+ test.setTimeout(720000);const errors=[],images=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.resourceType()==='image')images.push(r.url());});
+ await page.goto('/');await page.waitForFunction(()=>window.__fiero&&document.querySelector('canvas').dataset.ready==='true',null,{timeout:180000});
+ const settle=()=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+ const capture=async name=>{await settle();await page.screenshot({path:`artifacts/${name}.png`});console.log('Captured '+name);};
+ const scope=async id=>{await page.locator(`#systems [data-assembly="${id}"]`).click();await expect(page.locator('canvas')).toHaveAttribute('data-assembly',id);};
+ const reset=async()=>page.getByRole('button',{name:'Reset view',exact:true}).click();
+ await page.locator('#systems [data-system="fuel"]').click();await page.locator('.part-button[data-part="fuel-pump"]').click();await page.getByRole('button',{name:'Explode this assembly',exact:true}).click();await reset();await capture('fuel-sender-assembled');
+ expect((await page.evaluate(()=>window.__fiero.getVisibleParts())).sort()).toEqual(detailMembers('fuel-sender').map(p=>p.id).sort());
+ await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await capture('fuel-sender-exploded');await page.locator('.part-button[data-part="fu-sender-strainer"]').click();await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();expect(await page.evaluate(()=>window.__fiero.getVisibleParts())).toEqual(['fu-sender-strainer']);
+ await scope('fuel-tank');await reset();await capture('fuel-tank-assembled');await page.locator('.part-button[data-part="fu-tank-upper"]').click();await expect(page.locator('#inspector-content')).toContainText('welded');await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await capture('fuel-tank-cutaway');
+ await scope('fuel-filler');await reset();await capture('fuel-filler');const filler=await page.evaluate(()=>window.__fiero.getPartBounds('fu-filler-cap'));expect(filler.max[0]).toBeLessThan(0);
+ await scope('fuel-plumbing');await reset();await capture('fuel-pipes-filter');const filter=await page.evaluate(()=>window.__fiero.getPartBounds('fu-line-filter'));expect(filter.min[0]).toBeGreaterThan(0);
+ await scope('fuel-vapor');await reset();await capture('fuel-vapor-system');await scope('fuel-system');await reset();await capture('fuel-complete-system');
+ await scope('suspension-system');await scope('susp-front');await scope('susp-fl');await scope('susp-fl-arms');await reset();await capture('suspension-arms-refined');
+ await scope('susp-rear');await scope('susp-rl');await scope('susp-rl-spring');await reset();await capture('suspension-strut-refined');await scope('susp-rear');await scope('susp-cradle');await reset();await capture('suspension-cradle-refined');
+ await page.getByRole('button',{name:'Back to vehicle',exact:false}).click();await expect(page.locator('canvas')).toHaveAttribute('data-selected','fuel-pump');await reset();await capture('vehicle-after-fuel');
+ await page.setViewportSize({width:390,height:700});await page.getByRole('button',{name:'Open assemblies',exact:true}).click();await page.getByRole('searchbox').fill('Fuel-level float arm');await page.locator('.part-button[data-part="fu-sender-float-arm"]').click();await expect(page.locator('canvas')).toHaveAttribute('data-assembly','fuel-sender');await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();await settle();await page.screenshot({path:'artifacts/fuel-mobile.png',fullPage:true});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);expect(errors).toEqual([]);expect(images).toEqual([]);
+});

@@ -1,0 +1,48 @@
+{
+  "date": "2026-09-21T19:19:30.568Z",
+  "errors": [],
+  "captures": [
+    {
+      "name": "service-complete-engine",
+      "stats": {
+        "meshes": 477,
+        "triangles": 1111360
+      }
+    },
+    {
+      "name": "service-cylinder-head-exploded",
+      "stats": {
+        "meshes": 97,
+        "triangles": 211036
+      }
+    },
+    {
+      "name": "service-final-rocker",
+      "stats": {
+        "meshes": 2,
+        "triangles": 11584
+      }
+    },
+    {
+      "name": "service-final-pump",
+      "stats": {
+        "meshes": 8,
+        "triangles": 20208
+      }
+    },
+    {
+      "name": "service-filler-neck-bore",
+      "stats": {
+        "meshes": 3,
+        "triangles": 26728
+      }
+    },
+    {
+      "name": "vehicle-after-engine-service",
+      "stats": {
+        "meshes": 325,
+        "triangles": 1174510
+      }
+    }
+  ]
+}

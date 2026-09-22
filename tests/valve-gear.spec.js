@@ -1,0 +1,33 @@
+import {test,expect} from '@playwright/test';
+import {engineMembers} from '../src/engine-catalog.js';
+
+test('individual valve gear separates small hardware and preserves the correct stem-seal variant',async({page})=>{
+ test.setTimeout(300000);
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('/');await page.waitForFunction(()=>window.__fiero);
+ await page.getByRole('searchbox').fill('trunk-side position 2 intake spring retainer');
+ await page.locator('.part-button[data-part="eng-spring-retainer-rear-2-intake"]').click();
+ await expect(page.locator('canvas')).toHaveAttribute('data-assembly','valve-rear-2-intake');
+ await expect(page.locator('.part-button')).toHaveCount(11);
+ await expect(page.locator('.part-button[data-part="eng-stem-seal-rear-2-intake"]')).toHaveCount(1);
+ await expect(page.locator('.part-button[data-part^="eng-stem-shield-"]')).toHaveCount(0);
+ await page.getByRole('button',{name:'Reset view',exact:true}).click();
+ const settle=()=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+ await settle();await page.screenshot({path:'artifacts/valve-gear-assembled.png'});
+ const before=await page.evaluate(()=>window.__fiero.getPartBounds('eng-valve-keepers-rear-2-intake'));
+ await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await settle();
+ const after=await page.evaluate(()=>window.__fiero.getPartBounds('eng-valve-keepers-rear-2-intake'));
+ expect(after.min[1]-before.min[1]).toBeCloseTo(.275,3);
+ await page.screenshot({path:'artifacts/valve-gear-exploded.png'});
+ await page.locator('.part-button[data-part="eng-rocker-rear-2-intake"]').click();await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();await settle();await page.screenshot({path:'artifacts/valve-rocker-detail.png'});
+ await page.locator('#systems [data-assembly="valve-rear-2-exhaust"]').click();
+ expect((await page.evaluate(()=>window.__fiero.getVisibleParts())).sort()).toEqual(engineMembers('valve-rear-2-exhaust').map(p=>p.id).sort());
+ await expect(page.locator('.part-button[data-part="eng-stem-shield-rear-2-exhaust"]')).toHaveCount(1);
+ await expect(page.locator('.part-button[data-part^="eng-stem-seal-"]')).toHaveCount(0);
+ await page.locator('.part-button[data-part="eng-valve-keepers-rear-2-exhaust"]').click();await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();await settle();await page.screenshot({path:'artifacts/valve-keepers-detail.png'});
+ await page.locator('#systems [data-assembly="head-rear"]').click();
+ expect((await page.evaluate(()=>window.__fiero.getVisibleParts())).sort()).toEqual(engineMembers('head-rear').map(p=>p.id).sort());
+ await page.getByRole('button',{name:'Back to vehicle',exact:false}).click();
+ expect(await page.evaluate(()=>window.__fiero.getState().assembly)).toBeNull();
+ expect(errors).toEqual([]);
+});

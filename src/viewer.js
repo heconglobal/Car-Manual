@@ -83,7 +83,7 @@ export function createViewer(container, onSelect) {
  camera.position.set(...presets.home);
  let cameraGoal=null,targetGoal=null,current={system:'all',selected:null,hideBody:false,isolate:false,explode:0,labels:false,wireframe:false},frame=0,disposed=false,dirty=true;
  let lastConfiguration='',inspectionRadius=.1,lastViewKey='',lastSceneKey='';
- new HDRLoader().load('/assets/studio_small_09_1k.hdr',texture=>{if(disposed){texture.dispose();return;}const next=pmrem.fromEquirectangular(texture);texture.dispose();envMap.dispose();envMap=next;scene.environment=next.texture;scene.environmentIntensity=.85;pmrem.dispose();dirty=true;renderer.domElement.dataset.lighting='hdr';},undefined,()=>{pmrem.dispose();renderer.domElement.dataset.lighting='fallback';});
+ new HDRLoader().load(`${import.meta.env.BASE_URL}assets/studio_small_09_1k.hdr`,texture=>{if(disposed){texture.dispose();return;}const next=pmrem.fromEquirectangular(texture);texture.dispose();envMap.dispose();envMap=next;scene.environment=next.texture;scene.environmentIntensity=.85;pmrem.dispose();dirty=true;renderer.domElement.dataset.lighting='hdr';},undefined,()=>{pmrem.dispose();renderer.domElement.dataset.lighting='fallback';});
  const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  const labelLayer=document.createElement('div');labelLayer.className='model-labels';container.append(labelLayer);
  const labels=new Map();

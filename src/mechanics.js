@@ -1,54 +1,25 @@
 import { buildWheelFace } from './wheels.js';
 import * as T from 'three';
+import {engineToVehicle,transmissionAttachment,installationAngle} from './powertrain-layout.js';
+import {upperEngineDrop} from './engine-layout.js';
 import { buildStructure } from './structure.js';
 
 export function buildMechanics(h){
  const {add,box,cyl,tube,surface,profile,bolt,label,ring}=h;
  buildStructure(h);
- // V6 block and separated heads / valve covers.
- box('engine-block',[.50,.28,.37],[.11,.49,1.17],'iron');
- cyl('engine-block',.16,.51,[.11,.45,1.17],'iron');
- for(const z of [.99,1.34]){
-  box('engine-block',[.54,.19,.19],[.11,.61,z],'iron',[z<1.1?-.35:.35,0,0]);
-  box('heads',[.59,.105,.21],[.11,.713,z],'metal',[z<1.1?-.31:.31,0,0]);
-  box('heads',[.592,.052,.197],[.11,.779,z],'red',[z<1.1?-.25:.25,0,0],{finish:'enginePaint'},.024);
-  for(let i=0;i<4;i++){const dz=-.054+i*.036,a=z<1.1?-.25:.25;box('heads',[.48,.006,.008],[.11,.779+.026*Math.cos(a)-dz*Math.sin(a)+.003,z+.026*Math.sin(a)+dz*Math.cos(a)],'alloy',[a,0,0]);}
-  for(const x of [-.15,.37])for(const dz of [-.074,.074])bolt('heads',[x,.813,z+dz],.006);
-  for(let i=0;i<3;i++){
-   const x=-.065+i*.17;cyl('engine-block',.040,.020,[x,.53,z<1.1?.957:1.383],'gold',[Math.PI/2,0,0]);
-  }
- }
- box('intake',[.405,.061,.215],[.12,.889,1.17],'red',[],{finish:'enginePaint'},.023);
- for(const x of [-.05,.12,.29])for(const z of [1.01,1.33]){
-  tube('intake',[[x,.741,z],[x,.797,z],[x,.819,1.17]],.028,'metal');
-  tube('intake',[[x,.809,z],[x,.863,z<1.17?z+.05:z-.05],[x,.875,1.17]],.037,'red',{finish:'enginePaint'});
- }
- label('intake','FIERO',[.245,.072],[.12,.922,1.17],[-Math.PI/2,0,0],{background:'#ae181b',foreground:'#d1d4d5',font:'italic bold 75px Arial'});
- for(const z of [1.077,1.264])box('intake',[.30,.004,.007],[.12,.923,z],'alloy');
- cyl('intake',.041,.093,[-.135,.87,1.17],'metal');
- for(const z of [1.06,1.28])for(const x of [-.025,.27])bolt('intake',[x,.923,z],.005);
- cyl('heads',.031,.023,[.29,.824,1.335],'blackPaint',[0,0,0]);
- label('heads','OIL',[.030,.016],[.29,.838,1.335],[-Math.PI/2,0,0],{font:'bold 65px Arial',foreground:'#c4c1b0'});
- box('oil-pan',[.43,.13,.28],[.11,.273,1.17],'metal',[],{},.035);
- box('oil-pan',[.50,.018,.35],[.11,.34,1.17],'metal');
- for(let i=0;i<6;i++)for(const z of [.998,1.34])bolt('oil-pan',[-.095+i*.08,.35,z],.004);
- bolt('oil-pan',[.12,.226,1.315],.01,'z');
- cyl('engine-block',.039,.085,[.36,.34,1.0],'dark',[0,0,.28]);
- // Accessory pulleys, a continuous belt path and cast brackets.
- const pulleys=[[.43,1.15,.087],[.59,1.36,.071],[.70,1.0,.062]];
- for(const [y,z,r] of pulleys){cyl('engine-block',r,.034,[.413,y,z],'dark');ring('engine-block',r,.007,[.434,y,z],'rubber');bolt('engine-block',[.441,y,z],.009,'x');}
- tube('engine-block',[[.447,.43,1.062],[.447,.346,1.14],[.447,.392,1.215],[.447,.587,1.434],[.447,.66,1.36],[.447,.75,1.037],[.447,.727,.944],[.447,.645,.974],[.447,.43,1.062]],.008,'rubber');
+ // Engine exterior geometry comes from the same builder as its explorer.
  // Air cleaner: close-fitting can, pleated paper element and stamped lid.
- cyl('air-cleaner',.117,.155,[.568,.674,.783],'blackPaint',[0,0,0]);
- ring('air-cleaner',.118,.007,[.568,.749,.783],'dark',[Math.PI/2,0,0]);
- cyl('air-filter',.106,.065,[.568,.747,.783],'amber',[0,0,0]);
- for(let i=0;i<64;i++){const a=i/64*Math.PI*2;box('air-filter',[.002,.062,.008],[.568+Math.cos(a)*.105,.747,.783+Math.sin(a)*.105],'amber',[0,-a,0]);}
- for(const y of [.712,.782])ring('air-filter',.102,.007,[.568,y,.783],'rubber',[Math.PI/2,0,0]);
- cyl('air-lid',.119,.015,[.568,.797,.783],'blackPaint',[0,0,0],.111);
- cyl('air-lid',.016,.012,[.568,.813,.783],'dark',[0,0,0]);
- box('air-lid',[.039,.007,.012],[.568,.821,.783],'alloy');
- tube('intake-duct',[[.47,.73,.783],[.34,.773,.8],[.24,.83,.98],[.19,.87,1.09],[.135,.87,1.17]],.038,'rubber');
- for(let i=0;i<7;i++)ring('intake-duct',.039,.004,[.33-i*.013,.784+i*.007,.82+i*.023],'rubber',[0,-.5,-.1]);
+ cyl('air-cleaner',.117,.155,[.568,.534,.783],'blackPaint',[0,0,0]);
+ ring('air-cleaner',.118,.007,[.568,.609,.783],'dark',[Math.PI/2,0,0]);
+ cyl('air-filter',.106,.065,[.568,.607,.783],'amber',[0,0,0]);
+ for(let i=0;i<64;i++){const a=i/64*Math.PI*2;box('air-filter',[.002,.062,.008],[.568+Math.cos(a)*.105,.607,.783+Math.sin(a)*.105],'amber',[0,-a,0]);}
+ for(const y of [.572,.642])ring('air-filter',.102,.007,[.568,y,.783],'rubber',[Math.PI/2,0,0]);
+ cyl('air-lid',.119,.015,[.568,.657,.783],'blackPaint',[0,0,0],.111);
+ cyl('air-lid',.016,.012,[.568,.673,.783],'dark',[0,0,0]);
+ box('air-lid',[.039,.007,.012],[.568,.681,.783],'alloy');
+ const throttleInlet=engineToVehicle([.228,1.49-upperEngineDrop,0]);
+ tube('intake-duct',[[.47,.59,.783],[.39,.64,.80],[.30,.68,.89],[throttleInlet[0]+.045,throttleInlet[1],throttleInlet[2]],throttleInlet],.027,'rubber');
+ for(let i=0;i<7;i++)ring('intake-duct',.028,.003,[.37-i*.013,.65+i*.004,.82+i*.011],'rubber',[0,-.5,-.1]);
  // Clutch and transaxle: cast bell, case lobes, ribs and fasteners.
  // Independent, unequal halfshafts from the left-mounted differential.
  for(const [side,inner,outer] of [['left',.365,.70],['right',.19,-.70]]){
@@ -59,9 +30,9 @@ export function buildMechanics(h){
    for(const dx of [-.029,.029])ring('axles',.028*scale,.0018,[x+dx,.305,innerZ],'zinc');
   }
  }
- tube('shift-linkage',[[.045,.4,.0],[.03,.36,.46],[.31,.42,.8],[.43,.55,1.15]],.009,'rubber');
- tube('shift-linkage',[[-.045,.4,.0],[.12,.37,.44],[.39,.45,.8],[.46,.55,1.19]],.009,'rubber');
- box('shift-linkage',[.073,.017,.105],[.43,.56,1.16],'metal');
+ tube('shift-linkage',[[.045,.4,.0],[.03,.36,.46],[.31,.42,.8],transmissionAttachment([.43,.55,1.15])],.009,'rubber');
+ tube('shift-linkage',[[-.045,.4,.0],[.12,.37,.44],[.39,.45,.8],transmissionAttachment([.46,.55,1.19])],.009,'rubber');
+ box('shift-linkage',[.073,.017,.105],transmissionAttachment([.43,.56,1.16]),'metal',[installationAngle,0,0]);
  // Suspension and steering surfaces are shared with their component explorer.
  // Lathed tire sidewalls and machined 14-inch wheels at factory axle spacing.
  const tireProfile=[[-.102,.178],[-.112,.191],[-.109,.239],[-.096,.29],[-.079,.307],[.079,.307],[.096,.29],[.109,.239],[.112,.191],[.102,.178]];
@@ -95,10 +66,10 @@ export function buildMechanics(h){
  cyl('clutch-hydraulics',.023,.14,[.59,.578,-.737],'metal',[Math.PI/2,0,0]);
  cyl('clutch-hydraulics',.033,.081,[.59,.632,-.728],'reservoir',[0,0,0]);
  cyl('clutch-hydraulics',.037,.013,[.59,.678,-.728],'plastic',[0,0,0]);
- tube('clutch-hydraulics',[[.59,.56,-.80],[.60,.32,-.76],[.61,.25,.55],[.48,.36,.80],[.45,.53,1.09]],.003,'metal');
- cyl('clutch-hydraulics',.021,.132,[.45,.541,1.13],'metal',[Math.PI/2,0,0]);
- cyl('clutch-hydraulics',.011,.067,[.45,.541,1.224],'alloy',[Math.PI/2,0,0]);
- box('clutch-hydraulics',[.074,.017,.069],[.45,.518,1.14],'dark');
+ tube('clutch-hydraulics',[[.59,.56,-.80],[.60,.32,-.76],[.61,.25,.55],[.48,.36,.80],transmissionAttachment([.45,.53,1.09])],.003,'metal');
+ cyl('clutch-hydraulics',.021,.132,transmissionAttachment([.45,.541,1.13]),'metal',[Math.PI/2+installationAngle,0,0]);
+ cyl('clutch-hydraulics',.011,.067,transmissionAttachment([.45,.541,1.224]),'alloy',[Math.PI/2+installationAngle,0,0]);
+ box('clutch-hydraulics',[.074,.017,.069],transmissionAttachment([.45,.518,1.14]),'dark',[installationAngle,0,0]);
  box('washer-reservoir',[.16,.155,.245],[.43,.43,-1.24],'reservoir',[],{},.034);
  cyl('washer-reservoir',.031,.024,[.43,.518,-1.29],'plastic',[0,0,0]);
  cyl('washer-reservoir',.017,.055,[.50,.412,-1.15],'plastic',[0,0,0]);
@@ -106,21 +77,15 @@ export function buildMechanics(h){
  // Detailed thermostat assembly is shared with the engine explorer.
  // Exhaust geometry is shared with its dedicated component explorer.
  // Battery, charging components, power harness and optional equipment.
- box('battery',[.225,.192,.157],[-.58,.652,.79],'plastic',[],{},.009);box('battery',[.238,.028,.17],[-.58,.757,.79],'dark');
- for(const x of [-.642,-.518]){cyl('battery',.013,.022,[x,.784,.79],'metal',[0,0,0]);tube('battery',[[x,.795,.79],[x,.793,.91],[x+.03,.68,1.06]],.008,x<-.6?'red':'rubber');}
- label('battery','DELCO',[.122,.043],[-.58,.687,.708],[0,Math.PI,0],{background:'#161a1c',foreground:'#ddddcf',font:'bold italic 60px Arial'});
- for(const z of [.735,.81,.845])box('battery',[.16,.008,.005],[-.58,.777,z],'plastic');
- cyl('alternator',.073,.10,[.46,.59,1.36],'metal');
- for(let i=0;i<14;i++){const a=i/14*Math.PI*2;box('alternator',[.09,.009,.015],[.46,.59+Math.cos(a)*.071,1.36+Math.sin(a)*.071],'metal',[a,0,0]);}
- cyl('alternator',.033,.017,[.53,.59,1.36],'dark');
+ // Battery, starter and generator are shared with their detail explorer.
  tube('harness',[[-.58,.66,.79],[-.45,.62,.64],[.54,.52,.58],[.55,.32,-.59],[.59,.48,-1.55]],.014,'wire');
  for(const x of [-.10,.11,.31])tube('harness',[[.54,.52,.58],[x,.60,.8],[x,.74,1.05]],.006,'wire');
  for(let i=0;i<8;i++)box('harness',[.020,.023,.008],[.55,.34,-.45+i*.095],'rubber');
  // Optional compressor and condenser are attached to related existing records.
- cyl('alternator',.069,.17,[.43,.38,.93],'metal',[0,0,Math.PI/2],.069,{option:'airConditioning',value:true});
- cyl('alternator',.067,.034,[.53,.38,.93],'dark',[0,0,Math.PI/2],.067,{option:'airConditioning',value:true});
+ cyl('ac-compressor',.069,.17,engineToVehicle([-.24,1.03,-.18]),'metal',[0,0,Math.PI/2],.069,{option:'airConditioning',value:true});
+ cyl('ac-compressor',.067,.034,engineToVehicle([-.34,1.03,-.18]),'dark',[0,0,Math.PI/2],.067,{option:'airConditioning',value:true});
  box('radiator',[.64,.30,.027],[0,.456,-1.78],'metal',[-.13,0,0],{option:'airConditioning',value:true});
- tube('coolant-pipes',[[.42,.40,.94],[.51,.28,.8],[.49,.18,-1.45],[.25,.4,-1.79]],.009,'metal',{option:'airConditioning',value:true});
+ tube('coolant-pipes',[engineToVehicle([-.24,1.03,-.18]),[-.51,.28,.8],[-.49,.18,-1.45],[-.25,.4,-1.79]],.009,'metal',{option:'airConditioning',value:true});
  cyl('shift-linkage',.057,.070,[.59,.637,1.64],'dark',[Math.PI/2,0,0],.057,{option:'cruise',value:true});
  tube('shift-linkage',[[.59,.637,1.64],[.42,.72,1.48],[.01,.82,1.20]],.006,'rubber',{option:'cruise',value:true});
 }
@@ -147,19 +112,7 @@ export function buildInterior(h){
  }
  box('dashboard',[1.27,.132,.218],[0,.721,-.545],'vinyl',[],{},.038);
  box('dashboard',[1.16,.19,.105],[0,.598,-.505],'vinyl');
- box('dashboard',[.431,.195,.12],[.345,.820,-.425],'plastic',[-.12,0,0],{},.018);
- box('dashboard',[.395,.151,.008],[.345,.82,-.356],'metal',[-.12,0,0],{},.006);
- function gauge(x,y,z,labelText,max){
-  cyl('dashboard',.054,.009,[x,y,z],'dark',[Math.PI/2,0,0]);
-  ring('dashboard',.052,.0017,[x,y,z+.008],'alloy',[0,0,0]);
-  for(let i=0;i<15;i++){const a=(-.77+i/14*1.54)*Math.PI;box('dashboard',[.0014,.007,.002],[x+Math.sin(a)*.044,y+Math.cos(a)*.044,z+.009],'white',[0,0,-a],{},.0004);}
-  box('dashboard',[.002,.035,.002],[x+.009,y+.013,z+.010],'indicator',[0,0,-.58]);
-  label('dashboard',labelText,[.041,.010],[x,y-.021,z+.011],[0,0,0],{width:256,height:64,foreground:'#bebcb0',font:'50px Arial'});
- }
- // Preserve the original instrument ordering after the final LHD conversion:
- // speedometer to the driver's left, tachometer to the right (1985 brochure p4).
- gauge(.427,.825,-.345,'MPH',85);gauge(.247,.825,-.345,'RPM',6);
- for(const x of [.325,.359])box('dashboard',[.020,.032,.004],[x,.838,-.342],'dark');
+ // The original 1985 instrument pod is shared with the wiring explorer.
  box('dashboard',[.197,.31,.127],[0,.572,-.455],'plastic',[-.05,0,0],{},.012);
  box('dashboard',[.176,.281,.006],[0,.574,-.382],'metal');
  // Vent outlets are shared with the HVAC explorer.

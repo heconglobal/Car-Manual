@@ -1,0 +1,250 @@
+{
+  "reviewedAt": "2026-09-22",
+  "policy": "Only mark complete after all wording of the requirement is satisfied. Test passes for selection/explosion do not certify original geometry, electrical operation or service procedures. Evidence refers to actual inspected sources and executed reports; open items retain their original scope.",
+  "items": {
+    "01.1": {
+      "status": "partial",
+      "progress": "The current-source full run passes the LH/RH headlight scenario and the nine-step headlamp guide scenario. Both assembled/exploded lamps, motor, closed cover and mobile guide states were visually inspected; 118 selections are available. This is development verification, not owner sign-off or complete dimensional acceptance.",
+      "evidence": [
+        "artifacts/model-audit.json",
+        "references/headlight-reconstruction.md",
+        "artifacts/regression-history/2026-09-22T09-05-41.350Z-b20197023539.json",
+        "artifacts/visual-inspection-manifest.json"
+      ],
+      "remaining": "Owner UAT of the expanded pair, controls and early mechanism is still pending."
+    },
+    "01.4": {
+      "status": "partial",
+      "progress": "Driver switch, PARK button, panel dimmer, transistor, beam switch/rod and plugs added.",
+      "evidence": [
+        "artifacts/lighting-review.json",
+        "artifacts/electrical-geometry-audit.json"
+      ],
+      "remaining": "Full 1985 circuits, harness routing, calibrated dimmer linkage, aiming and diagnostic procedure validation."
+    },
+    "02.1": {
+      "status": "partial",
+      "progress": "Separate native front lamp and four marker assemblies replace surface proxies; lamp types checked in the 1985 DIY and owner manuals.",
+      "evidence": [
+        "artifacts/lighting-review.json",
+        "references/electrical-reconstruction.md"
+      ],
+      "remaining": "Measured housings, original optical tooling, dimensions, seals and final visual acceptance."
+    },
+    "02.2": {
+      "status": "partial",
+      "progress": "1984\u201385 rear housings, inner red/clear lenses, outer lens, three chambers, two 2057 bulbs and inboard 1156 per side added.",
+      "evidence": [
+        "artifacts/lighting-review.json",
+        "references/electrical-reconstruction.md"
+      ],
+      "remaining": "Measured lens optics/case profiles and assembled rear appearance acceptance."
+    },
+    "02.3": {
+      "status": "partial",
+      "progress": "License, four overhead lamps, two manual-console lamps and optional courtesy/compartment assemblies added.",
+      "evidence": [
+        "artifacts/lighting-review.json",
+        "artifacts/charging-review.json"
+      ],
+      "remaining": "Full instrument illumination, original option identities, exact dimensions and circuit routing."
+    },
+    "03.1": {
+      "status": "partial",
+      "progress": "Side-terminal battery, tray, retainer, heat shield, cables and braid replace the top-post placeholder.",
+      "evidence": [
+        "artifacts/charging-review.json",
+        "artifacts/electrical-geometry-audit.json"
+      ],
+      "remaining": "Measured battery/tray geometry, original appearance, complete cable routes and interface validation."
+    },
+    "03.2": {
+      "status": "partial",
+      "progress": "22 starter/solenoid construction selections, including armature, field coils, brushes, fork, clutch and pinion.",
+      "evidence": [
+        "artifacts/charging-review.json",
+        "references/electrical-reconstruction.md"
+      ],
+      "remaining": "Installed original stamping, exact drive tooth count, casting forms, fits and mounting coordinates."
+    },
+    "03.3": {
+      "status": "partial",
+      "progress": "27 generator/bracket selections share geometry with the engine and vehicle; separate rotor/stator, brushes, rectifiers and regulator.",
+      "evidence": [
+        "artifacts/charging-review.json",
+        "artifacts/electrical-geometry-audit.json"
+      ],
+      "remaining": "Original 66/94 A application, correct fan revision, measured castings and belt alignment/routing."
+    },
+    "04.1": {
+      "status": "partial",
+      "progress": "ECM 24/32-cavity plugs, enclosure/calibration access, junction studs and ground eyelets added.",
+      "evidence": [
+        "references/wiring-reconstruction.md",
+        "artifacts/wiring-audit.json"
+      ],
+      "remaining": "Complete harness branch lengths, actual terminal population, grommets/clips, full pinouts and measured connector forms."
+    },
+    "04.2": {
+      "status": "partial",
+      "progress": "17-position fuse panel, contacts, carrier/hinge/releases, separate flashers and horn relay added.",
+      "evidence": [
+        "references/wiring-reconstruction.md",
+        "artifacts/wiring-audit.json"
+      ],
+      "remaining": "Fusible links, ignition/brake/reverse/clutch switches, horn units and complete validated circuits."
+    },
+    "05.2": {
+      "status": "partial",
+      "progress": "Four EST leads now independently selectable with verified A/G/453/B3, B/B/424/D5, C/R/430/B5 and D/E/423/B4 assignments. Cylinder bank identities and 1\u20132\u20133\u20134\u20135\u20136 firing order now have factory references.",
+      "evidence": [
+        "references/wiring-reconstruction.md",
+        "artifacts/wiring-audit.json"
+      ],
+      "remaining": "Exact HT cap clocking/routing, separators and complete primary wiring/grounds."
+    },
+    "13.2": {
+      "status": "partial",
+      "progress": "Radiator package and front hose endpoints corrected to remove interference with the accepted hood; minimum checked gap 6.3906 mm.",
+      "evidence": [
+        "artifacts/front-clearance-audit.json",
+        "artifacts/vehicle-hood-clearance-fixed.png"
+      ],
+      "remaining": "Measured production mounting datum, all pipe/hose bends, clamp coordinates and full clearances."
+    },
+    "17.1": {
+      "status": "partial",
+      "progress": "The dark hood strip was identified as protruding radiator support/filler hardware and corrected.",
+      "evidence": [
+        "artifacts/front-clearance-audit.json",
+        "artifacts/vehicle-hood-clearance-fixed.png"
+      ],
+      "remaining": "Measured panel sections, datums, curvature and gaps throughout the car."
+    },
+    "20.1": {
+      "status": "partial",
+      "progress": "Intact 1985 owner manual acquired; fuse ratings, bulb identities and EST terminal assignments inspected and recorded.",
+      "evidence": [
+        "references/wiring-reconstruction.md",
+        "references/electrical-reconstruction.md"
+      ],
+      "remaining": "All other identities, applications, quantities, torque, clearance, fluid and maintenance values across the full inventory."
+    },
+    "20.3": {
+      "status": "partial",
+      "progress": "Shared engine geometry preserves its dimensions in the car; differential datum is retained and flywheel/clutch axes coincide. Both banks valve-cover containment, belt wrap and sampled deck clearances are checked separately. Production mount coordinates, complete routing and full motion remain unverified.",
+      "evidence": [
+        "artifacts/model-audit.json",
+        "artifacts/wiring-audit.json",
+        "artifacts/front-clearance-audit.json",
+        "artifacts/cross-view-scale-review.json"
+      ],
+      "remaining": "Calibrated full travel, complete routing and clash checks throughout the vehicle."
+    },
+    "20.4": {
+      "status": "partial",
+      "progress": "Electrical/charging desktop and mobile reviews executed; expanded full regression run is tracked separately. Software-renderer redraw cost reduced and mobile selection rechecked; original-layout instruments reviewed on desktop and mobile. A limited native Windows Edge / Intel UHD Direct3D11 session captured the vehicle and engine without browser exceptions; its three images were inspected. A Node construction probe took about 83 seconds; CPU sampling identifies substantial geometry construction, copying and handedness transformation costs before rendering. The full current-source browser run passes all 31 scenarios, with zero failed, skipped or flaky outcomes; raw outcomes and the exact source manifest are archived.",
+      "evidence": [
+        "artifacts/lighting-review.json",
+        "artifacts/charging-review.json",
+        "artifacts/native-windows-review-initial.json",
+        "artifacts/native-windows-all-families-interrupted.json",
+        "artifacts/vehicle-construction-profile.json",
+        "artifacts/model-construction-hotspots.json",
+        "artifacts/regression-history/2026-09-22T09-05-41.350Z-b20197023539.json",
+        "artifacts/visual-inspection-manifest.json",
+        "artifacts/checklist-test-matrix.md",
+        "artifacts/performance-followup.md"
+      ],
+      "remaining": "Photoreal surface acceptance for every component, full device performance review and outstanding system-specific checks. Native initial readiness was approximately 97 seconds during concurrent regression. Broad native hardware/device testing and startup performance remain unresolved; the follow-up all-family capture run was interrupted."
+    },
+    "01.2": {
+      "status": "partial",
+      "progress": "Nominal bulb center anchored at 709 mm above ground and 511 mm from vehicle centerline using Pontiac 1985 specifications.",
+      "evidence": [
+        "references/1985-mvma-research.md",
+        "artifacts/headlight-clearance-audit.json"
+      ],
+      "remaining": "Measured bucket/cover/motor profiles, production pivots, original gear counts/ratios and complete retainers."
+    },
+    "01.3": {
+      "status": "partial",
+      "progress": "Reconstructed operating link now retains constant length in 101 solved poses; sampled bucket clearance through the hood aperture is checked.",
+      "evidence": [
+        "artifacts/headlight-clearance-audit.json"
+      ],
+      "remaining": "Measured production hard points, motor end stops, cover contact and full mechanism interference calibration."
+    },
+    "04.3": {
+      "status": "partial",
+      "progress": "47 native cluster selections add the original 1985 face arrangement, individual pointers, ten warning windows/bulb units, pod/lens and mounting sets.",
+      "evidence": [
+        "references/instrument-reconstruction.md",
+        "artifacts/instrument-review.json",
+        "artifacts/factory-datums-audit.json"
+      ],
+      "remaining": "Measured instrument forms, complete movements/circuit boards, exact 1985 pinouts and electrical operation."
+    },
+    "06.1": {
+      "status": "partial",
+      "progress": "GM production V6 blueprint inspected: 224 mm block deck height and 44 mm correctly oriented bank stagger now supplement the shared 111.8 mm cylinder pitch. Bore/piston and head-stack geometry corrected; installed engine now shares the detailed surfaces.",
+      "evidence": [
+        "references/1985-mvma-research.md",
+        "artifacts/factory-datums-audit.json",
+        "references/shared-powertrain-reconstruction.md"
+      ],
+      "remaining": "Measured L44 block/head/plenum castings, all ports/chambers/passages, sealing faces and complete internal fit validation."
+    },
+    "07.1": {
+      "status": "partial",
+      "progress": "Final-drive mesh sections now contain the factory-specified 84 ring teeth and 23 pinion teeth; clutch facing corrected to nominal 232/155 mm.",
+      "evidence": [
+        "references/1985-mvma-research.md",
+        "artifacts/factory-datums-audit.json"
+      ],
+      "remaining": "Individual speed-gear tooth counts, measured involute/helix profiles, synchronizer fits and case contours."
+    },
+    "20.2": {
+      "status": "partial",
+      "progress": "Nine-step headlamp replacement guide cross-checked against 1985 Pontiac DIY printed 2-28 through 2-30, with native 3D part references, tools, motor isolation, aiming preservation, bezel torque and relay reconnection order. Expanded desktop/mobile regression passes in the current 31-scenario full run, including cross-assembly selection, saved configuration and return navigation.",
+      "evidence": [
+        "src/service-guides.js",
+        "references/headlight-service-guide.md",
+        "tests/service-guides.spec.js",
+        "artifacts/regression-history/2026-09-22T06-48-25.060Z-d873bc28c691.json",
+        "artifacts/regression-history/2026-09-22T09-05-41.350Z-b20197023539.json"
+      ],
+      "remaining": "Remaining procedures for every other system, exact removal paths and physical workshop validation."
+    },
+    "13.3": {
+      "status": "partial",
+      "progress": "1985 owner VIN-code-9 row confirms approximate 13.0 L capacity; original Pontiac nominal form confirms 103.4 kPa / 15 psi cap pressure. All factory coolant replacement pages inspected, including pipe-plug torque and staged thermostat/cap handling. Four-cylinder 13.3 L entry excluded.",
+      "evidence": [
+        "references/verified-cooling-specifications.json",
+        "references/engine-service-reconstruction.md"
+      ],
+      "remaining": "Integrate the complete source-checked filling/bleeding procedure into the interactive manual, verify every referenced part and validate the finished guide."
+    },
+    "20.5": {
+      "status": "partial",
+      "progress": "Native mesh/procedural-surface provenance recorded; Three.js/Vite notices and identified CC0 lighting asset now ship in the production package. Distribution audit passed with no reference scans, component photos or imported car meshes.",
+      "evidence": [
+        "ASSET-CREDITS.md",
+        "public/THIRD-PARTY-NOTICES.txt",
+        "artifacts/distribution-audit.json",
+        "references/acceptance-evidence-gaps.md"
+      ],
+      "remaining": "Resolve measured geometry and complete original-application evidence throughout the model before any full photorealistic factory-spec claim. Current reference evidence remains insufficient for several production surfaces, hidden mechanisms and variants."
+    },
+    "06.4": {
+      "status": "partial",
+      "progress": "Nonuniform installed engine scaling and coarse duplicate block/head/intake removed. Shared exterior geometry, flywheel, rigid engine/transaxle placement, belt wrap and selected hose/cable connections implemented; geometry checks recorded separately.",
+      "evidence": [
+        "references/shared-powertrain-reconstruction.md",
+        "artifacts/cross-view-scale-review.json",
+        "artifacts/engine-timing-audit.json"
+      ],
+      "remaining": "Production mounts, complete gaskets/fasteners and internal fits remain unverified. In particular, the timing builder still has a 131 mm cam/crank separation versus the GM blueprint\u2019s 159.03 mm; shaft, bearings, sprocket, chain, cover and valve-gear interfaces need a coordinated correction."
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test';
 import {detailMembers} from '../src/inspection-catalog.js';
 test('early V6 exhaust exposes period catalyst, spring joints, supports and finish previews',async({page})=>{
- test.setTimeout(840000);page.setDefaultTimeout(45000);const errors=[],images=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.resourceType()==='image')images.push(r.url());});
+ test.setTimeout(840000);page.setDefaultTimeout(45000);page.setDefaultNavigationTimeout(240000);const errors=[],images=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.resourceType()==='image')images.push(r.url());});
  await page.goto('/');await page.waitForFunction(()=>window.__fiero&&document.querySelector('canvas').dataset.ready==='true',null,{timeout:180000});await expect(page.locator('#loading')).toHaveCount(0);
  const settle=()=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
  const capture=async name=>{await settle();await page.screenshot({path:`artifacts/${name}.png`});console.log('Captured '+name);};

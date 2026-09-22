@@ -1,0 +1,39 @@
+{
+  "reviewedAt": "2026-09-22T10:12:40.244Z",
+  "sourceSha256": "b2019702353965532ff3dcd7d8016da9555acf341514d85704bcced93b67718c",
+  "status": "failed",
+  "source": "https://fieroinfo.com/manuals/Chevrolet_60V6_Power_Manual.pdf#page=6",
+  "crankAxis": {
+    "y": 1.050000011920929,
+    "z": 0,
+    "samples": 288
+  },
+  "camAxis": {
+    "y": 1.1810000538825989,
+    "z": 0,
+    "samples": 288
+  },
+  "checks": [
+    {
+      "name": "Camshaft/crankshaft centre separation",
+      "actualMetres": 0.13100004196166992,
+      "expectedMetres": 0.15903,
+      "toleranceMetres": 0.000002,
+      "passed": false
+    },
+    {
+      "name": "eng-cam-bearings concentric with camshaft",
+      "errorMetres": 5.960464477539063e-8,
+      "toleranceMetres": 0.000002,
+      "passed": true
+    },
+    {
+      "name": "eng-cam-gear concentric with camshaft",
+      "errorMetres": 5.960464477539063e-8,
+      "toleranceMetres": 0.000002,
+      "passed": true
+    }
+  ],
+  "limits": "GM production-family nominal, not a complete L44 timing or valve-train certification. Tooth counts/profiles, chain pitch/tension, cam phases, lifter interfaces and cover clearance still need verification.",
+  "requiredCorrection": "Correct the shaft, bearings, sprocket, chain, cover and associated valve-gear interfaces coherently. Moving only the shaft would create new assembly errors."
+}

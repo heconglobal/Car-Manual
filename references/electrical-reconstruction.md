@@ -28,3 +28,11 @@ Opaque front/rear fascia and bumper-pad surfaces are opened at the lamp aperture
 No source inspected provides measured mold surfaces, all lens prism angles, original wire cut lengths, switch-contact coordinates or full vehicle collision/travel measurements. Catalog callouts establish identity and arrangement, not manufacturing dimensions. Local geometry therefore remains reconstructed. Every related backlog task stays open until its listed modeling, dimensional, procedural and test requirements are all satisfied.
 
 The public fieroinfo 1985 owner-manual download returned a 9,442,792-byte PDF with a header declaring 33,867,178 bytes; PyMuPDF recovered zero pages. The alternate Boomtastic URL returned 404. Neither download is accepted as a valid locally inspected manual.
+
+## Subsequent verification and source recovery
+
+The charging browser review passed on 2026-09-22 at 04:36:42 UTC, covering battery/starter/generator selection, assembled/exploded states, isolated rotor/rear frame and mobile layout, with no browser errors or image requests. Screenshots are named in `artifacts/charging-review.json` and were visually inspected. The refined overhead lamp and the corrected hood clearance were also inspected in that run.
+
+The owner’s manual was recovered from Boomtastic’s reorganized file center: `references/1985-owners-boomtastic.pdf` is an intact 107-page copy (33,867,178 bytes). Printed 6-4 / PDF 92 corroborates the bulb identities. The earlier 9,442,792-byte FieroInfo file remains a failed, truncated download, not evidence. See `wiring-reconstruction.md` for the working URL and fuse/ECM additions.
+
+The radiator package was moved downward by 52 mm to eliminate the upper support and filler cap protruding through the accepted hood. The adjacent hose endpoints were adjusted with it. `artifacts/front-clearance-audit.json` records a minimum modeled hood gap of 6.3906 mm. This resolves a visual interference; it is not a claim to have measured the production radiator mounting datum.

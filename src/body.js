@@ -18,9 +18,9 @@ export function buildBody(h){
  // Open apertures remain visible when the headlamps are raised.
  hoodPatch(-.659,.659,-1.786,-1.692,48,6);
  hoodPatch(-.659,.659,-1.368,-.61,48,32);
- hoodPatch(-.38,.38,-1.692,-1.368,30,18);
- hoodPatch(-.659,-.65,-1.692,-1.368,2,18);
- hoodPatch(.65,.659,-1.692,-1.368,2,18);
+ hoodPatch(-.376,.376,-1.692,-1.368,30,18);
+ hoodPatch(-.659,-.646,-1.692,-1.368,2,18);
+ hoodPatch(.646,.659,-1.692,-1.368,2,18);
  for(const u of [0,1])tube('hood',Array.from({length:24},(_,i)=>hoodPoint(u,i/23)),.0022,'rubber');
  for(const v of [0,1])tube('hood',Array.from({length:24},(_,i)=>hoodPoint(i/23,v)),.0022,'rubber');
  // Nose crest — surface decal authored as geometry, not a photograph.

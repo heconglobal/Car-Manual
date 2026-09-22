@@ -1,3 +1,4 @@
+import {l44Nominal} from './factory-specifications.js';
 import * as T from 'three';
 
 export function buildCylinderHead(h,bank,s,at){
@@ -10,14 +11,14 @@ export function buildCylinderHead(h,bank,s,at){
  };
  const face=outline();
  for(let c=1;c<=3;c++)for(const [dx,z] of [[-.025,s*.017],[.025,s*.017]]){
-  const hole=new T.Path();hole.absarc((c-2)*.105+dx,z,.014,0,Math.PI*2,true);face.holes.push(hole);
+  const hole=new T.Path();hole.absarc((c-2)*l44Nominal.borePitch+dx,z,.014,0,Math.PI*2,true);face.holes.push(hole);
  }
- const base=new T.ExtrudeGeometry(face,{depth:.043,bevelEnabled:true,bevelSize:.002,bevelThickness:.002,bevelSegments:3,curveSegments:24});base.rotateX(-Math.PI/2);h.add(id,base,'iron',at(0,.291),rot);
- const N=128,levels=[[.333,0],[.349,.001],[.375,.003],[.400,.003],[.400,.013],[.372,.013],[.347,.012],[.335,.011]],positions=[],uv=[],indices=[];
+ const base=new T.ExtrudeGeometry(face,{depth:.023,bevelEnabled:true,bevelSize:.002,bevelThickness:.002,bevelSegments:3,curveSegments:24});base.rotateX(-Math.PI/2);h.add(id,base,'iron',at(0,.316),rot);
+ const N=128,levels=[[.339,0],[.349,.001],[.375,.003],[.402,.003],[.402,.013],[.372,.013],[.347,.012],[.341,.011]],positions=[],uv=[],indices=[];
  for(let j=0;j<levels.length;j++){
   const [y,inset]=levels[j],points=outline(inset).getSpacedPoints(N);
   for(let i=0;i<=N;i++){
-   const p=points[i],castLobe=Math.exp(-(((p.x+.105)/.040)**2))+Math.exp(-((p.x/.040)**2))+Math.exp(-(((p.x-.105)/.040)**2));
+   const p=points[i],castLobe=Math.exp(-(((p.x+l44Nominal.borePitch)/.040)**2))+Math.exp(-((p.x/.040)**2))+Math.exp(-(((p.x-l44Nominal.borePitch)/.040)**2));
    const weight=Math.max(0,1-Math.abs(y-.367)/.04),z=p.y+Math.sign(p.y)*.004*castLobe*weight;
    positions.push(...at(p.x,y,z));uv.push(i/N,j/(levels.length-1));
   }
@@ -25,7 +26,7 @@ export function buildCylinderHead(h,bank,s,at){
  for(let j=0;j<levels.length-1;j++)for(let i=0;i<N;i++){const a=j*(N+1)+i,b=a+1,c=a+N+1;indices.push(a,b,c,b,c+1,c);}
  const wall=new T.BufferGeometry();wall.setAttribute('position',new T.Float32BufferAttribute(positions,3));wall.setAttribute('uv',new T.Float32BufferAttribute(uv,2));wall.setIndex(indices);wall.computeVertexNormals();h.add(id,wall,'iron').material.side=T.DoubleSide;
  for(let c=1;c<=3;c++)for(const dx of [-.025,.025]){
-  const x=(c-2)*.105+dx;
+  const x=(c-2)*l44Nominal.borePitch+dx;
   h.cyl(id,.014,.010,at(x,.337,s*.017),'iron',rot);
   h.ring(id,.006,.0015,at(x,.344,s*.017),'rotor',[Math.PI/2+s*Math.PI/6,0,0]);
  }
@@ -98,8 +99,8 @@ export function refineBlockCasting(h,bankPoint){
  // Cast webs around each bore, core-plug rims and end bosses reduce the flat
  // block silhouette while keeping the open crankcase and cylinder bores.
  for(const s of [-1,1])for(let c=1;c<=3;c++){
-  const x=(c-2)*.105;
-  for(const dx of [-.046,.046])h.tube('eng-block',[bankPoint(x+dx,.09,s*.032,s),bankPoint(x+dx,.16,s*.052,s),bankPoint(x+dx,.245,s*.057,s)],.007,'iron');
+  const x=(c-2)*l44Nominal.borePitch;
+  for(const dx of [-.046,.046])h.tube('eng-block',[bankPoint(x+dx,.09,s*.032,s),bankPoint(x+dx,.16,s*.052,s),bankPoint(x+dx,.217,s*.057,s)],.007,'iron');
   h.ring('eng-block',.0238,.0028,[x,1.14,s*.137],'iron',[0,0,0]);
   h.box('eng-block',[.068,.028,.018],[x,1.07,s*.135],'iron',[s*.18,0,0],{},.009);
  }

@@ -34,7 +34,7 @@ export function geometryTools(groups,mats){
   for(const g of groups.values()){
    const buckets=new Map();
    for(const m of [...g.children]){
-    if(!m.isMesh)continue;const key=JSON.stringify([m.userData.materialName,m.userData.option,m.userData.value,m.userData.finish,m.material.side]);
+    if(!m.isMesh)continue;const key=JSON.stringify([m.userData.materialName,m.userData.option,m.userData.value,m.userData.finish,m.material.side,m.userData.detailPartId]);
     if(!buckets.has(key))buckets.set(key,[]);buckets.get(key).push(m);
    }
    for(const batch of buckets.values()){

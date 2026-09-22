@@ -1,0 +1,71 @@
+import {test,expect} from '@playwright/test';
+import {tours} from '../src/data.js';
+test('factory headlamp guide highlights real parts, preserves relay reconnection order and restores the previous view',async({page})=>{
+ test.setTimeout(480000);page.setDefaultTimeout(60000);page.setDefaultNavigationTimeout(240000);
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('/');await page.waitForFunction(()=>document.querySelector('canvas')?.dataset.ready==='true',null,{timeout:240000});
+ await page.getByRole('searchbox').fill('radiator');await page.locator('.part-button[data-part="radiator"]').click();
+ const before=await page.evaluate(()=>({state:window.__fiero.getState(),camera:window.__fiero.getCamera()}));
+ await page.locator('[data-tab="tours"]').click();await page.locator('[data-tour="headlight-replacement"]').click();
+ await expect(page.locator('canvas')).toHaveAttribute('data-assembly','headlight-left');
+ expect(await page.evaluate(()=>window.__fiero.getState().configuration.headlights)).toBe(true);
+ await expect(page.locator('#inspector-content')).toContainText('T-15');
+ await page.locator('[data-action="next-step"]').click();
+ await expect(page.locator('canvas')).toHaveAttribute('data-selected','hl-left-motor-leads');
+ await expect(page.locator('.step-description')).toContainText('must remain raised');
+ await page.locator('[data-action="prev-step"]').click();await expect(page.locator('.tour-progress .current')).toHaveText('1');
+ await page.locator('.tour-progress [data-step="4"]').click();
+ await expect(page.locator('canvas')).toHaveAttribute('data-selected','hl-left-aim-spring');
+ await expect(page.locator('.step-description')).toContainText('Leave aiming screws unchanged');
+ await expect(page.locator('#inspector-content a')).toHaveAttribute('href',/#page=38$/);
+ await page.getByRole('button',{name:'Inspect this part',exact:true}).click();
+ expect(await page.evaluate(()=>window.__fiero.getVisibleParts())).toEqual(['hl-left-aim-spring']);
+ await page.screenshot({path:'artifacts/headlamp-procedure-spring.png'});
+ await page.getByRole('button',{name:'Show assembly',exact:true}).click();
+ expect((await page.evaluate(()=>window.__fiero.getVisibleParts())).length).toBeGreaterThan(30);
+ await page.locator('.tour-progress [data-step="7"]').click();await expect(page.locator('.step-description')).toContainText('8 N·m');
+ await page.setViewportSize({width:390,height:700});await page.locator('[data-action="next-step"]').click();
+ const finalText=await page.locator('.step-description').textContent();
+ expect(finalText.indexOf('Switch headlights on')).toBeLessThan(finalText.indexOf('reconnect blue'));
+ expect(finalText.indexOf('reconnect blue')).toBeLessThan(finalText.indexOf('then switch off'));
+ await expect(page.locator('#inspector-content a')).toHaveAttribute('href',/#page=39$/);
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+ await page.evaluate(()=>window.scrollTo(0,0));await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+ await page.screenshot({path:'artifacts/headlamp-procedure-mobile.png',fullPage:true});
+ await page.locator('[data-action="next-step"]').click();await expect(page.locator('.tour-card')).toHaveCount(tours.length);
+ const after=await page.evaluate(()=>window.__fiero.getState());
+ for(const key of ['assembly','selected','query','explode','isolate'])expect(after[key]).toEqual(before.state[key]);
+ expect(after.configuration.headlights).toBe(before.state.configuration.headlights);
+ // Starting from an existing component scope must also return to that scope.
+ await page.setViewportSize({width:1440,height:1000});await page.locator('[data-tab="component"]').click();
+ await page.getByRole('button',{name:'Explode this assembly',exact:true}).click();
+ const assemblyBefore=await page.evaluate(()=>window.__fiero.getState().assembly);
+ await page.locator('[data-tab="tours"]').click();await page.locator('[data-tour="headlight-replacement"]').click();
+ await page.locator('[data-action="exit-tour"]').click();
+ await expect(page.locator('canvas')).toHaveAttribute('data-assembly',assemblyBefore);
+ expect(await page.evaluate(()=>window.__fiero.getState().configuration.headlights)).toBe(before.state.configuration.headlights);
+ // Leaving the walkthrough via a part must open that part's real scope,
+ // even when the guide was launched from another component family.
+ await page.locator('[data-tour="headlight-replacement"]').click();
+ await page.locator('.part-button[data-part="hl-left-lens"]').click();
+ await expect(page.locator('canvas')).toHaveAttribute('data-assembly','headlight-left-lamp');
+ await expect(page.locator('canvas')).toHaveAttribute('data-selected','hl-left-lens');
+ expect(await page.evaluate(()=>window.__fiero.getPartBounds('hl-left-lens'))).not.toBeNull();
+ // Preview edits must never persist the guide's temporary raised pose.
+ await page.locator('[data-tab="tours"]').click();await page.locator('[data-tour="headlight-replacement"]').click();
+ await page.getByRole('button',{name:'Configure',exact:true}).click();
+ await page.locator('[data-config="lampGroup"]').check();
+ expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('fiero-configuration-v2')).headlights)).toBe(before.state.configuration.headlights);
+ await page.locator('[data-tab="tours"]').click();await page.locator('[data-action="exit-tour"]').click();
+ expect(await page.evaluate(()=>window.__fiero.getState().configuration.lampGroup)).toBe(true);
+ // A home navigation must end the old guide and discard its return snapshot.
+ await page.locator('[data-tour="headlight-replacement"]').click();
+ await page.getByRole('link',{name:'Fiero Workshop home'}).click();
+ const home=await page.evaluate(()=>window.__fiero.getState());
+ expect(home.assembly).toBeNull();expect(home.tour).toBeNull();
+ expect(home.configuration.headlights).toBe(before.state.configuration.headlights);
+ await page.locator('[data-tab="tours"]').click();await page.locator('[data-tour="headlight-replacement"]').click();
+ await page.locator('[data-action="exit-tour"]').click();
+ expect(await page.evaluate(()=>window.__fiero.getState().assembly)).toBeNull();
+ expect(errors).toEqual([]);
+});

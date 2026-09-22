@@ -1,4 +1,5 @@
 import * as T from 'three';
+import {transmissionPlacement} from './powertrain-layout.js';
 import {geometryTools} from './geometry.js';
 import {transmissionParts} from './transmission-catalog.js';
 import {buildTransmission,transaxleDatum,transmissionMaterials} from './transmission-detail.js';
@@ -10,7 +11,7 @@ import {buildCooling,coolingMaterials} from './cooling-detail.js';
 export function buildVehiclePowertrain(groups,materials){
  const trans=new Map(transmissionParts.map(p=>[p.id,new T.Group()]));
  const th=geometryTools(trans,transmissionMaterials(materials));buildTransmission(th);th.optimize();
- const transform=new T.Matrix4().makeTranslation(...transaxleDatum.vehicleOffset);
+ const transform=transmissionPlacement;
  for(const p of transmissionParts){
   const target=p.section==='trans-clutch'?'clutch':'gearbox',destination=groups.get(target);destination.scale.set(1,1,1);
   // Exterior housings conceal internals in the car; keep the detailed internals

@@ -1,10 +1,13 @@
+import {lampNominal,mvma1985} from './factory-specifications.js';
+import {headlightPose,headlightLinkPose} from './headlight-kinematics.js';
+export {headlightPose} from './headlight-kinematics.js';
 import * as T from 'three';
 import {createMaterials} from './materials.js';
 import {geometryTools} from './geometry.js';
 import {mechanicalTools} from './mechanical-geometry.js';
 import {correctLegacyHandedness} from './vehicle-frame.js';
 import {headlightParts,headlightSections} from './headlight-catalog.js';
-export const headlightPose={pivotY:.700,pivotZ:-1.375,closedAngle:-.74};
+
 export function headlightHoodPoint(u,v){const a=u*2-1;return[a*.659,.625+.193*v+.013*(1-a*a)+.019*Math.sin(v*Math.PI)+.007*Math.exp(-(((Math.abs(a*.659)-.42)/.055)**2))*Math.sin(v*Math.PI),-1.786+1.176*v];}
 export function headlightMaterials(base=createMaterials()){
  const m={...base};for(const k of ['plastic','dark','metal','rubber','phenolic']){m[k]=base[k].clone();m[k].bumpScale=.000025;}m.plastic.roughness=.45;m.dark.roughness=.39;
@@ -27,12 +30,18 @@ function lampTools(h){
 }
 const signedPower=(n,p)=>Math.sign(n)*Math.abs(n)**p;
 const outline=(a,w,h)=>[w/2*signedPower(Math.cos(a),1/3),h/2*signedPower(Math.sin(a),1/3)];
-export function buildHeadlights(h,groups){for(const [side,s]of [['left',1],['right',-1]]){buildLamp(h,side,s);buildDoor(h,groups,side,s);buildMotor(h,side,s);duplicateClosedBucket(groups,side);}buildRelays(h);buildControls(h);}
+export function buildHeadlights(h,groups){for(const [side,s]of [['left',1],['right',-1]]){buildLamp(h,side,s);lowerBucket(groups,side);buildDoor(h,groups,side,s);buildMotor(h,side,s);duplicateClosedBucket(groups,side);}buildRelays(h);buildControls(h);}
+// Retain the sealed beam's upright aiming plane while lowering the whole
+// bucket and its fixed pivot to the sourced bulb-center height. Do not squash
+// the lamp or tilt its optical axis simply to reduce the pop-up silhouette.
+function lowerBucket(groups,side){
+ for(const p of headlightParts.filter(p=>p.section===`headlight-${side}-lamp`))for(const m of groups.get(p.id).children){m.updateMatrix();m.geometry.applyMatrix4(m.matrix);m.geometry.translate(0,lampNominal.bulbCenterHeight-.753,0);m.position.set(0,0,0);m.rotation.set(0,0,0);m.scale.set(1,1,1);}
+}
 function buildLamp(h,side,s){
- const {box,cyl,tube,surface,ring}=h,{plate,sleeve,frame,screw}=lampTools(h),{spring}=mechanicalTools(h),id=k=>'hl-'+side+'-'+k,x=s*.515,cy=.753,z=-1.660;
+ const {box,cyl,tube,surface,ring}=h,{plate,sleeve,frame,screw}=lampTools(h),{spring}=mechanicalTools(h),id=k=>'hl-'+side+'-'+k,x=s*lampNominal.bulbCenterOffset,cy=.753,z=-1.648;
  surface(id('upper-bezel'),96,8,(u,v)=>{const a=u*Math.PI*2,o=outline(a,.240,.194),n=outline(a,.204,.146);return[x+o[0]*(1-v)+n[0]*v,cy+o[1]*(1-v)+n[1]*v,z+.014*Math.sin(v*Math.PI)];},'plastic');
- for(const edge of[-1,1])surface(id('upper-bezel'),28,16,(u,v)=>{const bottom=.653+.061*u,top=.851*(1-u)+.714*u;return[x+edge*(.120-.005*u+.002*Math.sin(v*Math.PI)),bottom+(top-bottom)*v,z+.285*u];},'plastic');
- surface(id('lower-bezel'),24,8,(u,v)=>[x+(u-.5)*.235,.656+.058*v,z+.283*v],'plastic');tube(id('lower-bezel'),[[x-.116,.656,z],[x,.654,z],[x+.116,.656,z]],.0025,'plastic');
+ for(const edge of[-1,1])surface(id('upper-bezel'),28,16,(u,v)=>{const bottom=.653+.061*u,top=.851*(1-u)+.714*u;return[x+edge*(.120-.005*u+.002*Math.sin(v*Math.PI)),bottom+(top-bottom)*v,z+.273*u];},'plastic');
+ surface(id('lower-bezel'),24,8,(u,v)=>[x+(u-.5)*.235,.656+.058*v,z+.271*v],'plastic');tube(id('lower-bezel'),[[x-.116,.656,z],[x,.654,z],[x+.116,.656,z]],.0025,'plastic');
  surface(id('reflector'),96,22,(u,v)=>{const p=outline(u*Math.PI*2,.198,.140);return[x+p[0]*v,cy+p[1]*v,z+.018+.062*(1-v*v)];},'chrome');
  surface(id('lens'),96,20,(u,v)=>{const p=outline(u*Math.PI*2,.198,.140);return[x+p[0]*v,cy+p[1]*v,z-.004*(1-v*v)];},'headlampGlass');
  tube(id('lens'),Array.from({length:97},(_,i)=>{const p=outline(i/96*Math.PI*2,.198,.140);return[x+p[0],cy+p[1],z+.001];}),.0015,'headlampFlute');
@@ -50,16 +59,17 @@ function buildLamp(h,side,s){
  const sp=[x+s*.088,cy-.061,z+.037];spring(id('aim-spring'),sp,.003,.031,[0,0,1],10,.0006,'zinc');tube(id('aim-spring'),[[sp[0],sp[1],sp[2]-.016],[sp[0]-.007*s,sp[1]-.008,sp[2]-.026],[sp[0]-.009*s,sp[1]-.004,sp[2]-.026]],.0007,'zinc');
  plate(id('bucket'),[[-.115,-.086],[.115,-.086],[.115,.093],[-.115,.093]],[[0,0,.067],[.030,.089,.003],[-s*.111,0,.003]],.002,[x,cy,z+.055],'dark');
  for(const edge of[-1,1]){plate(id('bucket'),[[.01,-.012],[-.18,-.04],[-.23,-.020],[-.23,.003],[-.15,.011],[.01,.052]],[[-.22,0,.005]],.003,[x+edge*.105,.700,-1.595],'dark','x');cyl(id('pivot-bolts'),.004,.025,[x+edge*.117,.700,-1.375],'zinc');sleeve(id('pivot-bolts'),.008,.004,.0015,[x+edge*.12,.700,-1.375],'zinc');screw(id('pivot-bolts'),[x+edge*.126,.700,-1.375],.006,'x');}
+ tube(id('bucket'),[[x-s*.105,.700,-1.375],[x-s*.128,.700,-1.465]],.004,'dark');sleeve(id('bucket'),.008,.003,.005,[x-s*.128,.700,-1.465],'dark');
  for(const edge of[-1,1]){screw(id('bezel-screws'),[x+edge*.108,cy+.081,z-.001],.0035);screw(id('bezel-screws'),[x+edge*.120,.691,-1.51],.0035,'x');}
 }
 // Duplicate all moving bucket pieces through one rigid transform. The door
 // has its own poses, and fixed pivots, brackets, motors and relays stay put.
 function duplicateClosedBucket(groups,side){const moving=headlightParts.filter(p=>p.section===`headlight-${side}-lamp`&& !p.id.endsWith('pivot-bolts'));const {pivotY:y,pivotZ:z,closedAngle:a}=headlightPose;const matrix=new T.Matrix4().makeTranslation(0,y,z).multiply(new T.Matrix4().makeRotationX(a)).multiply(new T.Matrix4().makeTranslation(0,-y,-z));for(const p of moving)for(const m of [...groups.get(p.id).children]){m.userData.option='headlights';m.userData.value=true;const down=m.clone();down.geometry=m.geometry.clone();down.material=m.material.clone();down.userData={...m.userData,original:{...m.userData.original,color:m.userData.original.color.clone(),emissive:m.userData.original.emissive.clone()},value:false};m.updateMatrix();down.geometry.applyMatrix4(m.matrix).applyMatrix4(matrix);down.position.set(0,0,0);down.rotation.set(0,0,0);down.scale.set(1,1,1);groups.get(p.id).add(down);}}
 function buildDoor(h,groups,side,s){
- const {box,cyl,tube,surface}=h,{plate,sleeve,screw,rod}=lampTools(h),{spring}=mechanicalTools(h),id=k=>'hl-'+side+'-'+k,x=s*.515,mx=x-s*.160;
+ const {box,cyl,tube,surface}=h,{plate,sleeve,screw,rod}=lampTools(h),{spring}=mechanicalTools(h),id=k=>'hl-'+side+'-'+k,x=s*lampNominal.bulbCenterOffset,mx=x-s*.160;
  for(const raised of[false,true]){
   const f={option:'headlights',value:raised};
-  const cp=(u,v)=>{if(raised)return[x+(u-.5)*.258,.711+Math.sin(.46)*.318*(1-v)+.003*Math.sin(u*Math.PI),-1.375-Math.cos(.46)*.318*(1-v)];const p=headlightHoodPoint(((x+(u-.5)*.258)/.659+1)/2,(-1.685+v*.31+1.786)/1.176);p[1]+=.001;return p;};
+  const cp=(u,v)=>{if(raised)return[x+(u-.5)*.258,.711+Math.sin(headlightPose.coverRaisedAngle)*.318*(1-v)+.003*Math.sin(u*Math.PI),-1.375-Math.cos(headlightPose.coverRaisedAngle)*.318*(1-v)];const p=headlightHoodPoint(((x+(u-.5)*.258)/.659+1)/2,(-1.685+v*.31+1.786)/1.176);p[1]+=.001;return p;};
   surface(id('cover'),18,24,cp,'red',f);surface(id('cover'),18,12,(u,v)=>{const p=cp(u,v);p[1]-=.003;return p;},'dark',f);for(const u of[0,1])tube(id('cover'),Array.from({length:16},(_,i)=>cp(u,i/15)),.002,'red',f);
   // Narrow structural ribs leave the filler open; no opaque block fills the
   // headlight cavity in the closed pose.
@@ -68,12 +78,12 @@ function buildDoor(h,groups,side,s){
   for(const u of[.11,.89])for(const v of[.15,.85]){const p=cp(u,v);p[1]-=.01;cyl(id('cover-fasteners'),.003,.007,p,'plastic',[0,0,0],.003,f);}
   for(const u of[.22,.78]){const p=cp(u,.72);p[1]-=.014;box(id('filler'),[.017,.008,.025],p,'rubber',[],f,.003);}
   for(const u of[.12,.88]){const pts=[cp(u,.7),cp(u,.92),[x+(u-.5)*.258,.705,-1.368]];pts[0][1]-=.015;pts[1][1]-=.009;tube(id('hinge'),pts,.005,'dark',f);}
-  const a=[mx+s*.032,.542,-1.467],b=raised?[mx+s*.032,.572,-1.455]:[mx+s*.032,.524,-1.493],c=raised?[x-s*.103,.706,-1.538]:[x-s*.103,.600,-1.515];
+  const pose=headlightLinkPose(raised?1:0),linkX=x-s*.128,a=[linkX,...pose.motor],b=[linkX,...pose.crank],c=[linkX,...pose.bucket];
   for(const key of['crank','link','link-clip']){const before=groups.get(id(key)).children.length;if(key==='crank')rod(id(key),a,b,.017);if(key==='link')rod(id(key),b,c,.015);if(key==='link-clip'){sleeve(id(key),.006,.003,.0015,b,'zinc');tube(id(key),[[b[0]+s*.002,b[1]-.005,b[2]-.004],[b[0]+s*.002,b[1]+.006,b[2]],[b[0]+s*.002,b[1]-.005,b[2]+.004]],.0008,'zinc');}for(const m of groups.get(id(key)).children.slice(before))Object.assign(m.userData,f);}
  }
  tube(id('hinge'),[[x-.110,.704,-1.372],[x+.110,.704,-1.372]],.0045,'dark');spring(id('door-spring'),[x+s*.091,.699,-1.372],.008,.022,'x',8,.0011,'dark');tube(id('door-spring'),[[x+s*.085,.699,-1.38],[x+s*.085,.693,-1.386],[x+s*.085,.688,-1.407]],.0011,'dark');
  for(const dx of[-.105,.105]){
-  plate(id('mount'),[[-.015,-.025],[.025,-.060],[.13,-.135],[.26,-.145],[.27,-.113],[.20,-.088],[.005,.006]],[[.012,-.020,.005],[.225,-.127,.006]],.003,[x+dx,.700,-1.39],'dark','x');
+  plate(id('mount'),[[-.025,-.052],[-.005,-.060],[.025,-.060],[.13,-.135],[.26,-.145],[.27,-.113],[.20,-.088],[.005,.006],[-.015,-.025],[-.025,-.033]],[[-.015,-.044,.0045],[.012,-.020,.005],[.225,-.127,.006]],.003,[x+dx,.700,-1.39],'dark','x');
   box(id('mount'),[.040,.003,.057],[x+dx,.625,-1.444],'dark',[],{},.003);for(const z of[-1.421,-1.467])screw(id('mount-bolts'),[x+dx,.629,z],.005,'y');
  }
  box(id('mount'),[.227,.003,.035],[x,.604,-1.447],'dark',[],{},.003);plate(id('mount'),[[-.072,-.018],[.070,-.018],[.070,.019],[-.072,.019]],[[0,0,.016]],.003,[mx,.548,-1.415],'dark','x');
@@ -88,7 +98,7 @@ function headlightGear(h,...args){
  const clean=new T.BufferGeometry();for(const [key,a]of Object.entries(g.attributes))clean.setAttribute(key,new T.Float32BufferAttribute(arrays[key],a.itemSize));m.geometry=clean;if(g!==original)g.dispose();original.dispose();return meshes;
 }
 function buildMotor(h,side,s){
- const {add,box,cyl,tube,ring,surface}=h,{plate,sleeve,screw}=lampTools(h),{annulus}=mechanicalTools(h),gear=(...args)=>headlightGear(h,...args),id=k=>'hl-'+side+'-'+k,x=s*.515-s*.160,z=-1.403,gy=.542,gz=-1.467;
+ const {add,box,cyl,tube,ring,surface}=h,{plate,sleeve,screw}=lampTools(h),{annulus}=mechanicalTools(h),gear=(...args)=>headlightGear(h,...args),id=k=>'hl-'+side+'-'+k,x=s*lampNominal.bulbCenterOffset-s*.160,z=-1.403,gy=.542,gz=-1.467;
  // Outline follows the opened early motor reference: vertical armature at
  // the rear, large output gear forward, smaller metal intermediate below.
  const boundary=[[-.028,.128],[.023,.128],[.031,.101],[.030,.022],[.027,-.052],[.010,-.070],[-.018,-.069],[-.065,-.036],[-.083,-.033],[-.096,-.020],[-.103,-.003],[-.101,.014],[-.092,.029],[-.077,.037],[-.059,.038],[-.042,.030],[-.032,.031],[-.028,.068]];

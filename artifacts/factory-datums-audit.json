@@ -1,0 +1,14 @@
+{
+  "date": "2026-09-22T09:02:51.746Z",
+  "status": "passed",
+  "checks": [
+    "six piston centers ray-checked against their cylinder bore walls",
+    "111.8 mm cylinder pitch at piston and plug centers",
+    "physical cylinder bank numbering and LHD pulley end",
+    "84 ring / 23 pinion teeth counted from mesh sections",
+    "232 mm clutch facing envelope",
+    "1985 gauge ordering and embedded oil scale",
+    "ten separate indicator windows and bulb units"
+  ],
+  "limits": "Selected nominal dimensions and layout only; not complete casting, full harness, kinematic or service certification."
+}

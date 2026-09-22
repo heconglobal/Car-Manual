@@ -1,4 +1,5 @@
 import * as T from 'three';
+import {pumpInletEngine} from './powertrain-layout.js';
 
 // Authored solid geometry. GM H-19/H-22 establish identities and relationships;
 // local outlines are reconstructed. No photographs are used as part surfaces.
@@ -160,11 +161,14 @@ export function buildWaterPump(h){
  for(let i=0;i<4;i++){const a=i*Math.PI/2;h.tube(id('water-pump'),[at(-.010,Math.cos(a)*.044,Math.sin(a)*.044),at(-.021,Math.cos(a)*.026,Math.sin(a)*.026)],.004,'castAluminum');}
  // Machined heater fitting socket and the early threaded hose nipple.
  const hosePos=at(.001,.042,.042);
+ // Main coolant return neck, separate from the small threaded heater return.
+ // Port envelope is reconstructed; both views and hose use this same datum.
+ lathe('water-pump',[[.017,0],[.019,0],[.019,.057],[.0205,.059],[.0205,.061],[.019,.062],[.017,.062],[.017,0]],[pumpInletEngine[0],pumpInletEngine[1],pumpInletEngine[2]-.062],'castAluminum',[Math.PI/2,0,0]);
  h.cyl(id('water-pump'),.015,.034,hosePos,'castAluminum',Y);
  lathe('water-pump-fitting',[[.006,0],[.009,0],[.009,.015],[.011,.017],[.011,.020],[.009,.022],[.009,.029],[.006,.029],[.006,0]],[hosePos[0],hosePos[1]+.012,hosePos[2]],'zinc');
  for(const [z,y] of holes)bolt('water-pump-bolts',at(.006,y,-z),.035,'x',.0045,1);
  // Stamped dish pulley with an open hub hole and actual mounting holes.
- const pulleyX=-.064;
+ const pulleyX=-.053;
  lathe('water-pulley',[[.008,-.002],[.021,-.002],[.037,-.009],[.056,-.009],[.060,-.006],[.060,-.003],[.055,-.002],[.055,.005],[.060,.006],[.060,.009],[.056,.012],[.037,.011],[.020,.004],[.008,.004],[.008,-.002]],at(pulleyX,0,0),'blackPaint',X);
  for(let i=0;i<4;i++){const a=i*Math.PI/2;bolt('water-pulley-bolts',at(pulleyX-.007,Math.cos(a)*.016,Math.sin(a)*.016),.016,'x',.004,1);}
 }

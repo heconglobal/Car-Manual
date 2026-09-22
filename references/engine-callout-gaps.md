@@ -9,17 +9,17 @@ Drawing H-19 and tables [H-20 / H-21, PDF 15–16](https://fieroinfo.com/manuals
 | Callout | Component | Current coverage / needed work |
 | --- | --- | --- |
 | 18, 26 | Oil-filter fitting and bypass valve | Filter exterior plus separate fitting and bypass-valve representation now exist. Exact pad passages and valve calibration remain unverified. |
-| 20–23 | Starter, shims and mounting bolts | Coarse vehicle-level starter; dedicated engine breakdown still absent. |
+| 20–23 | Starter, shims and mounting bolts | Starter construction is now available as 22 selections in the charging explorer and shared in the vehicle. Original casting, shims, mounting fits and exact drive geometry remain unverified. |
 | 24–25 | Oil-pressure / fuel-pump switch and fitting | Early sender, A/C pipe, adapter and support bolt now have a dedicated scope. Non-A/C routing remains missing; dimensions are reconstructed. |
 | 36 | Distributor-to-oil-pump intermediate shaft | Distinct hex drive shaft now selectable. Exact distributor/pump alignment and engagement lengths remain unresolved. |
 | 37–39 | Oil pump, inlet screen and fastener | Pump/pickup exterior represented; pump body profile and internal gears need research. |
 | 40–43 | Dipstick, attachment, tube and tube seal | Four selections now exist: flat dipstick, hollow guide tube, attachment and entry seal. Route, length and calibration marks remain approximate. |
 | 44–47 | Pan rear seal, pan and fasteners | Separate side strips, early rear end seal, flange bolts and drain plug added. Exact early-pan flange/end-seal fit and front sealing remain incomplete. |
-| 54–59 | Crank pulley, washers, bolts and key | Damper/pulley form is grouped and simplified; small components need independent identities. |
+| 54–59 | Crank pulley, washers, bolts and key | Separate crank pulley and damper groups now exist with a reconstructed common belt envelope. Washers, key and small attachment components still need independent identities and verified geometry. |
 | 70–77 | Timing pointer, water-pump fitting, pump gasket, front seal and cover gasket | Separate pointer, front seal, pump/cover gaskets and early heater fitting added. Pump exterior/pulley refined; exact outlines, attachment map and internals remain incomplete. |
 | 79 | Timing-chain guide | Separate formed guide and wear surface added; exact guide profile remains unmeasured. |
 | 88–90 | Later oil-pan reinforcement, studs and gasket | Marked 1987–88 in this table; do not add them to an original 1985 configuration. |
-| 97–98 | Clutch cover and driven plate | Remain outside the detailed engine scope; future manual-transaxle breakdown. |
+| 97–98 | Clutch cover and driven plate | Now independently inspectable in the transaxle clutch scope, with a shared engine/transaxle flywheel builder. Production tooth profile, release travel and all fits remain unverified. |
 
 ## Upper engine
 
@@ -42,4 +42,4 @@ Drawing H-22 and tables [H-23 / H-24, PDF 18–19](https://fieroinfo.com/manuals
 | 97–103 | Throttle-body coolant hoses, tubes, clamps and bolts | Missing as individually resolved factory parts. |
 | 105–109 | Crankcase breather tubes, connectors, grommet and heater-hose shield | Generic PCV hose exists; the complete breather/heater arrangement is incomplete. |
 
-The 39 ignition entries and 315 engine entries are counts of selectable modeled parts or sets, not a claim that these table rows are all covered. Geometry completeness requires checking shape, material, attachment, orientation and variant as well as merely creating a catalog entry.
+The current 43 ignition selections and 320 engine selections are counts of selectable modeled parts or sets, not a claim that these table rows are all covered. Geometry completeness requires checking shape, material, attachment, orientation and variant as well as merely creating a catalog entry.

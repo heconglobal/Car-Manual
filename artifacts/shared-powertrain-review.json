@@ -1,0 +1,35 @@
+{
+  "startedAt": "2026-09-22T09:03:14.711Z",
+  "finishedAt": "2026-09-22T09:05:37.701Z",
+  "capturedAt": "2026-09-22T09:03:14.667Z",
+  "sourceSha256": "b2019702353965532ff3dcd7d8016da9555acf341514d85704bcced93b67718c",
+  "applicationSha256": "bac39907dbcc78a2567f657c959bbbe6c24bf5a68f42839fa5fea8c97be096ff",
+  "testFiles": {
+    "body-hardware.spec.js": "24b614104877cf0b10b04be60d48ababe46ee22175d33db6ade180a7e5bc8e9d",
+    "brakes.spec.js": "f1195a86b80545fd1eb9578946da480aa33e2775b258b5b8f3eca6cb6c88e125",
+    "configuration.spec.js": "88254f68c446f555661395e7310f93047342dfaae6a891e8f79d684fee5d8cac",
+    "electrical.spec.js": "b3c3610e7fdf2ec04f7b8fe7e5cefa8be782d0764ce0575e4592396d05978c56",
+    "engine-service.spec.js": "e3e7deca44f16a8fcb6093ed503ea01a035776b7e0246ebece5cd3e0c8f19e6e",
+    "engine.spec.js": "d835929251fdf52eaab25b3d6d7a7fe8b1279938713a0e007077e6384459b525",
+    "exhaust.spec.js": "942e6ced8d9e7902427f668fc421e447da1417ec4741f4ddab096e3782eaab86",
+    "fuel.spec.js": "855c51895b37fee5ab862293191a195457f16d700866bea41d8c90039c4584d4",
+    "headlights.spec.js": "afa882d3504ad71177c7b4409bddc17808cfbf4bddafcf997650222fbb43af4d",
+    "hvac.spec.js": "835318b1a7b085f68e5a605e381285405b66b31f5215ab114c68f4beb3f3551f",
+    "ignition.spec.js": "26b85b075ee9d1e426121a87486e716fe9e4968d4729b827f7f7015d86040127",
+    "rear-body.spec.js": "aa8e63a6d9f5816a6775f9a18358d35a64b955303962b6040ecbb101a5b0deba",
+    "service-guides.spec.js": "ed83a1a18c1cf65152d18100d4f86c684eba3675fecd0a0d89f989b2cde38aef",
+    "suspension.spec.js": "27e4d61da57b4333af13614c6a2b30ee05bb1f378cb197b0de3124b14c2fc890",
+    "transmission-cooling.spec.js": "c21d94f16185813d5a3618637c651a27ead9478233740f2e7c8fad4d573dcf4b",
+    "valve-gear.spec.js": "603a19658e11b924e65d789c925440d057ddd21fce02bbf19527f7c2bf899d74",
+    "workshop.spec.js": "f63d9d0936dcb83393dcf5eabf40d8b69c70bfdc2c54ec951a4761e359976a5d"
+  },
+  "newestInputMtime": 1790067465976.9973,
+  "errors": [],
+  "captures": [
+    "shared-powertrain-whole-car.png",
+    "shared-powertrain-installed.png",
+    "shared-powertrain-engine.png",
+    "shared-powertrain-engine-exploded.png"
+  ],
+  "status": "captured, pending visual inspection"
+}

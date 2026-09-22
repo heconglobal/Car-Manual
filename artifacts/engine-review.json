@@ -1,9 +1,41 @@
 {
-  "date": "2026-09-18T20:21:36.060Z",
+  "date": "2026-09-22T08:26:16.240Z",
+  "startedAt": "2026-09-22T08:23:05.601Z",
+  "sourceSha256": "2e64d5ce13c48fabccadb6af0d09da1f041fea81f7b88f267f7791e2e9ad6029",
+  "applicationSha256": "d73b07f2c2d46cc732269bd3af23221bdd5fbc4cab040f2dd957f6ee419e791f",
   "errors": [],
-  "engineParts": 159,
+  "engineParts": 319,
+  "captures": [
+    "engine-assembled.png",
+    "engine-exploded.png",
+    "engine-head-front.png",
+    "engine-short-block.png",
+    "engine-timing.png"
+  ],
+  "extraCaptures": [
+    "charging-battery-assembled.png",
+    "charging-battery-exploded.png",
+    "charging-starter-assembled.png",
+    "charging-starter-exploded.png",
+    "charging-alternator-assembled.png",
+    "charging-alternator-exploded.png",
+    "lighting-rear-left-assembled.png",
+    "lighting-rear-left-exploded.png",
+    "lighting-front-left-assembled.png",
+    "lighting-front-left-exploded.png",
+    "lighting-dome-assembled.png",
+    "lighting-dome-exploded.png"
+  ],
+  "engineStats": {
+    "meshes": 19,
+    "triangles": 122594
+  },
+  "renderProfile": "software",
+  "scope": "lighting-dome",
   "stats": {
-    "meshes": 13,
-    "triangles": 117760
-  }
+    "meshes": 45,
+    "triangles": 62120
+  },
+  "status": "captured for visual inspection",
+  "limits": "Captures and interaction checks do not certify exact casting geometry or all internal clearances."
 }

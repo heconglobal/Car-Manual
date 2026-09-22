@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-09-22T10:20:00.801316+00:00",
+  "status": "manufacturer replacement specifications; original 1985 application not yet verified",
+  "source": "https://melling.com/parts-lookup-part-number-dimension/",
+  "lookup": "https://specsearch.melling.com/default.aspx",
+  "method": "Public specification form, Timing Set category, exact part-number queries. Original old catalog PDF URL returned 404.",
+  "parts": {
+    "S506": {
+      "toothQuantity": 40,
+      "material": "High alloy steel",
+      "diameter": {
+        "inch": 4.788,
+        "mm": 122.0
+      },
+      "insideDiameter": {
+        "inch": 0.858,
+        "mm": 22.0
+      },
+      "thickness": {
+        "inch": 0.725,
+        "mm": 18.0
+      }
+    },
+    "S511": {
+      "toothQuantity": 20,
+      "material": "High Alloy Steel",
+      "insideDiameter": {
+        "inch": 1.4,
+        "mm": 36.0
+      },
+      "thickness": {
+        "inch": 0.525,
+        "mm": 13.0
+      },
+      "keywayAdjustable": false,
+      "keywayQuantity": 1
+    },
+    "3-373S": {
+      "camshaftSprocketMaterial": "Steel",
+      "keywayAdjustable": false,
+      "sprocketsIncluded": true
+    }
+  },
+  "responses": [
+    {
+      "part": "3-373S",
+      "responseSha256": "8649bfe3765029fedcbd46f09d9558fb2605b459b3698a537598425755f23ee0"
+    },
+    {
+      "part": "S506",
+      "responseSha256": "8fd6b038b8bda1ee3425f7df882e754e1fdb9a9b3a252858d1ebf62565fb45d7"
+    },
+    {
+      "part": "S511",
+      "responseSha256": "579d944dd791ef21526b4cb3b931bc8ffa506a1ee0335720221b9ea11b971049"
+    }
+  ],
+  "limits": [
+    "Metric and inch fields are transcribed as independently displayed rounded values; they must not be silently treated as equal precision.",
+    "No original-part shape, chain pitch, 1985 VIN-9 fitment, cam phase, shaft fit or original material is certified by these product specifications.",
+    "Current model still uses 32 repeated tooth forms on both timing sprockets. Manufacturer data requires application and original-GM cross-reference verification before a coordinated correction.",
+    "No manufacturer product image or proprietary CAD was imported into the app."
+  ]
+}

@@ -1,3 +1,10 @@
+import {bankOffset,headStackCorrection,upperEngineDrop} from './engine-layout.js';
+import {buildFlywheel} from './transmission-detail.js';
+import {engineOffset} from './powertrain-layout.js';
+import {buildEngineDrive} from './engine-drive.js';
+import {l44Nominal,v6BlockNominal} from './factory-specifications.js';
+import {buildAlternator,chargingMaterials,chargingDatums} from './charging-detail.js';
+import {chargingParts} from './charging-catalog.js';
 import {buildExhaustManifold} from './exhaust-detail.js';
 import {correctLegacyHandedness} from './vehicle-frame.js';
 import {buildValveHardware} from './engine-valvetrain.js';
@@ -12,7 +19,7 @@ import {engineParts,engineSectionById} from './engine-catalog.js';
 
 // Dedicated inspection model. H-19 / H-22 establish component relationships;
 // local casting profiles and disassembly offsets are reconstructed, not CAD.
-export function createEngineDetail(){
+export function createEngineDetail({legacyFrame=false}={}){
  const root=new T.Group(),groups=new Map(),materials=createMaterials();
  // Engine castings have fine foundry grain, and their enamel is less glossy
  // than the body paint. Keep the accepted vehicle paint materials unchanged.
@@ -21,9 +28,9 @@ export function createEngineDetail(){
  materials.red.roughness=.42;materials.red.clearcoat=.22;materials.red.clearcoatRoughness=.36;
  for(const p of engineParts){const g=new T.Group();g.name=p.id;g.userData={partId:p.id,system:'engine',section:p.section,spread:new T.Vector3(...p.spread)};groups.set(p.id,g);root.add(g);}
  const h=geometryTools(groups,materials),{box,cyl,tube,ring,bolt,surface,label,add}=h;
- const id=s=>`eng-${s}`,xAt=c=>(c-2)*.105;
+ const id=s=>`eng-${s}`,xAt=c=>(c-2)*l44Nominal.borePitch;
  const crankY=1.05;
- const bankPoint=(x,y,z,s)=>[x,crankY+y*Math.cos(Math.PI/6)-z*s*.5,y*s*.5+z*Math.cos(Math.PI/6)];
+ const bankPoint=(x,y,z,s)=>[x+bankOffset(s),crankY+y*Math.cos(Math.PI/6)-z*s*.5,y*s*.5+z*Math.cos(Math.PI/6)];
  const sleeve=(key,r,length,pos,rot,mat='iron')=>{
   const geo=new T.CylinderGeometry(r,r,length,40,1,true);const mesh=add(id(key),geo,mat,pos,rot);mesh.material.side=T.DoubleSide;
  };
@@ -41,10 +48,10 @@ export function createEngineDetail(){
  for(const x of [-.191,.191])box(id('block'),[.023,.18,.24],[x,1.09,0],'iron');
  for(const s of [-1,1]){
   const rot=[s*Math.PI/6,0,0];
-  plate('block',.40,.118,.022,[1,2,3].map(c=>[xAt(c),0,.0445]),bankPoint(0,.27,0,s),rot);
+  plate('block',.40,.118,.022,[1,2,3].map(c=>[xAt(c),0,.0445]),bankPoint(0,v6BlockNominal.deckHeight-.011,0,s),rot);
   for(let c=1;c<=3;c++){
-   sleeve('block',.0445,.172,bankPoint(xAt(c),.184,0,s),rot,'rotor');
-   sleeve('block',.0505,.174,bankPoint(xAt(c),.184,0,s),rot,'iron');
+   sleeve('block',.0445,.172,bankPoint(xAt(c),v6BlockNominal.deckHeight-.086,0,s),rot,'rotor');
+   sleeve('block',.0505,.174,bankPoint(xAt(c),v6BlockNominal.deckHeight-.086,0,s),rot,'iron');
    cyl(id('block'),.023,.008,[xAt(c),1.14,s*.132],'gold',[Math.PI/2,0,0]);
   }
  }
@@ -68,7 +75,7 @@ export function createEngineDetail(){
  }
  for(const [bank,s] of [['front',-1],['rear',1]]){
   const rot=[s*Math.PI/6,0,0],at=(x,y,z=0)=>bankPoint(x,y,z,s);
-  plate(`${bank}-head-gasket`,.412,.13,.002,[1,2,3].map(c=>[xAt(c),0,.0455]),at(0,.286),rot,'dark');
+  plate(`${bank}-head-gasket`,.412,.13,.002,[1,2,3].map(c=>[xAt(c),0,.0455]),at(0,v6BlockNominal.deckHeight+.001),rot,'dark');
   buildCylinderHead(h,bank,s,at);
   for(let c=1;c<=3;c++){
    // Exhaust-side port flanges and dark port mouths.
@@ -83,12 +90,17 @@ export function createEngineDetail(){
   for(const x of [-.175,.175])for(const z of [-.062,.062])bolt(id(`${bank}-head-bolts`),at(x,.379,z),.006);
   if(s>0)cyl(id(`${bank}-cover`),.022,.016,at(.135,.477),'blackPaint',rot);
   for(let c=1;c<=3;c++){
-   const tag=`${bank}-${c}`,x=xAt(c)+(s>0?.013:-.013),piston=at(x,.213);
+   const tag=`${bank}-${c}`,x=xAt(c)+bankOffset(s),piston=at(x-bankOffset(s),.213);
    cyl(id(`piston-${tag}`),.0435,.048,piston,'alloy',rot);
-   for(const dy of [-.004,.007,.018])ring(id(`piston-${tag}`),.0432,.0013,at(x,.213+dy),'dark',[Math.PI/2+s*Math.PI/6,0,0]);
-   for(const dy of [-.004,.007,.018])ring(id(`rings-${tag}`),.044,.0013,at(x,.213+dy),'rotor',[Math.PI/2+s*Math.PI/6,0,0]);
+   for(const dy of [-.004,.007,.018])sleeve(`piston-${tag}`,.04351,.003,at(x-bankOffset(s),.213+dy),rot,'dark');
+   // Flat ring sections fit within the bore; the old torus representation
+   // protruded through the cylinder wall. Section sizes remain reconstructed.
+   for(const dy of [-.004,.007,.018]){
+    const sh=new T.Shape();sh.absarc(0,0,l44Nominal.bore/2-.0001,0,Math.PI*2,false);const hole=new T.Path();hole.absarc(0,0,.0432,0,Math.PI*2,true);sh.holes.push(hole);
+    const geo=new T.ExtrudeGeometry(sh,{depth:.0015,bevelEnabled:false,curveSegments:48});geo.translate(0,0,-.00075);geo.rotateX(-Math.PI/2);add(id(`rings-${tag}`),geo,'rotor',at(x-bankOffset(s),.213+dy),rot);
+   }
    sleeve(`pin-${tag}`,.009,.073,piston,[0,0,Math.PI/2],'rotor');
-   const small=at(x,.205),big=[x,crankY+.025,s*.014];
+   const small=at(x-bankOffset(s),.205-.044),big=[x,crankY+.025,s*.014];
    tube(id(`rod-${tag}`),[big,small],.009,'metal');
    ring(id(`rod-${tag}`),.015,.006,small,'metal',[0,Math.PI/2,0]);
    halfShell(`rod-${tag}`,.031,.024,.023,big,false,'metal');
@@ -98,12 +110,12 @@ export function createEngineDetail(){
    for(const [type,dx] of [['intake',-.025],['exhaust',.025]]){
     const v=`${tag}-${type}`,vx=xAt(c)+dx,vz=s*.017;
     const vr=type==='intake'?.018:.015;
-    const valveProfile=[[0,-.002],[vr*.88,-.002],[vr,-.0006],[vr,.001],[vr*.86,.0028],[vr*.64,.005],[.0065,.009],[.004,.015],[.0034,.022],[.0034,.100],[0,.100]];
-    add(id(`valve-${v}`),new T.LatheGeometry(valveProfile.map(p=>new T.Vector2(...p)),48),'rotor',at(vx,.298,vz),rot);
+    const valveProfile=[[0,-.002],[vr*.88,-.002],[vr,-.0006],[vr,.001],[vr*.86,.0028],[vr*.64,.005],[.0065,.009],[.004,.015],[.0034,.022],[.0034,.083],[0,.083]];
+    add(id(`valve-${v}`),new T.LatheGeometry(valveProfile.map(p=>new T.Vector2(...p)),48),'rotor',at(vx,.315,vz),rot);
     const coil=[];for(let k=0;k<=100;k++){const a=k/100*Math.PI*12;coil.push(at(vx+Math.cos(a)*.011,.347+k/100*.042,vz+Math.sin(a)*.011));}
     tube(id(`spring-${v}`),coil,.002,'dark');
-    tube(id(`pushrod-${v}`),[at(vx,.145,-s*.038),at(vx,.406,-s*.037)],.0035,'rotor');
-    for(const p of [at(vx,.145,-s*.038),at(vx,.406,-s*.037)])add(id(`pushrod-${v}`),new T.SphereGeometry(.0035,16,12),'rotor',p);
+    tube(id(`pushrod-${v}`),[at(vx,.145,-s*.038),at(vx,.406-headStackCorrection,-s*.037)],.0035,'rotor');
+    for(const p of [at(vx,.145,-s*.038),at(vx,.406-headStackCorrection,-s*.037)])add(id(`pushrod-${v}`),new T.SphereGeometry(.0035,16,12),'rotor',p);
     const lifterProfile=[[0,-.0175],[.0095,-.0175],[.010,-.016],[.010,-.002],[.0091,-.001],[.0091,.003],[.010,.004],[.010,.015],[.0095,.0175],[.004,.0175],[.0035,.012],[0,.011],[0,-.0175]];
     add(id(`lifter-${v}`),new T.LatheGeometry(lifterProfile.map(p=>new T.Vector2(...p)),48),'rotor',at(vx,.131,-s*.038),rot);
    }
@@ -113,7 +125,7 @@ export function createEngineDetail(){
  // Three intake levels, separate fuel rail and six injector bodies.
  box(id('lower-intake'),[.354,.057,.127],[0,1.338,0],'metal',[],{},.012);
  for(const s of [-1,1])for(let c=1;c<=3;c++){
-  const x=xAt(c),n=(s<0?0:3)+c;
+  const x=xAt(c)+bankOffset(s),n=(s<0?0:3)+c;
   ring(id('intake-gaskets'),.020,.003,[x,1.333,s*.087],'dark',[Math.PI/2,0,0]);
   tube(id('middle-intake'),[[x,1.33,s*.085],[x,1.395,s*.09],[x,1.415,s*.037]],.024,'metal');
   tube(id('plenum'),[[x,1.413,s*.062],[x,1.477,s*.04],[x,1.486,0]],.027,'red');
@@ -159,13 +171,27 @@ export function createEngineDetail(){
  refineBlockCasting(h,bankPoint);
  // Engine-mounted accessories, with separate pulley and belt.
  buildEngineService(h);
- cyl(id('alternator'),.052,.099,[-.261,1.269,-.153],'metal');for(let i=0;i<12;i++){const a=i*Math.PI/6;box(id('alternator'),[.066,.012,.006],[-.26,1.269+Math.cos(a)*.052,-.153+Math.sin(a)*.052],'dark',[a,0,0]);}cyl(id('alternator'),.026,.019,[-.323,1.269,-.153],'dark');
- tube(id('belt'),[[-.339,1.03,-.076],[-.339,1.00,0],[-.339,1.19,.129],[-.339,1.28,.078],[-.339,1.298,-.153],[-.339,1.269,-.183],[-.339,1.03,-.076]],.004,'rubber');
- cyl(id('flywheel'),.132,.017,[.231,1.05,0],'rotor');for(let i=0;i<100;i++){const a=i/100*Math.PI*2;box(id('flywheel'),[.018,.006,.007],[.231,1.05+Math.cos(a)*.133,Math.sin(a)*.133],'metal',[a,0,0]);}
- for(let i=0;i<6;i++){const a=i*Math.PI/3;bolt(id('flywheel'),[.244,1.05+Math.cos(a)*.034,Math.sin(a)*.034],.005,'x');}
+ const altParts=chargingParts.filter(p=>p.section==='charging-alternator'),altGroups=new Map(altParts.map(p=>[p.id,new T.Group()]));const ah=geometryTools(altGroups,chargingMaterials(materials));buildAlternator(ah,altGroups);ah.optimize();
+ for(const g of altGroups.values())for(const m of [...g.children]){m.geometry.translate(...engineOffset.map(v=>-v));m.userData.partId='eng-alternator';groups.get('eng-alternator').add(m);}
+ buildEngineDrive(h);
+ buildFlywheel(h,id('flywheel'),[.231,crankY,0]);
  ring(id('rear-seal'),.035,.005,[.207,1.05,0],'rubber',[0,Math.PI/2,0]);
  h.optimize();
+ // Shared construction datums. Whole parts move rigidly; measured diameters,
+ // threads and circular cross-sections are unchanged in the car.
+ for(const p of engineParts){
+  let delta=[0,0,0];
+  const bank=p.id.includes('-front')?-1:p.id.includes('-rear')?1:0;
+  if((p.section.startsWith('head-')||p.section.startsWith('valve-'))&&!/^eng-(front|rear)-exhaust/.test(p.id)&&!/^eng-(lifter|pushrod)-(front|rear)/.test(p.id)&&!p.id.includes('head-gasket'))delta=[0,-upperEngineDrop,-bank*headStackCorrection*.5];
+  if(p.section==='induction'||p.section==='engine-controls'||['distributor-detail','coil-detail','plug-wires','thermostat-detail'].includes(p.section))delta=[0,-upperEngineDrop,0];
+  if(p.id==='eng-pcv')delta[2]=-.045;
+  if(/^eng-(piston|rings|pin)-(front|rear)/.test(p.id))delta=[0,-.044*Math.cos(Math.PI/6),-bank*.022];
+  for(const mesh of groups.get(p.id).children){
+   mesh.updateMatrix();mesh.geometry.applyMatrix4(mesh.matrix).translate(...delta);
+   mesh.position.set(0,0,0);mesh.rotation.set(0,0,0);mesh.scale.set(1,1,1);
+  }
+ }
  for(const p of engineParts){const g=groups.get(p.id);g.userData.assemblySpread=new T.Vector3(...engineSectionById.get(p.section).spread);}
- correctLegacyHandedness(groups);
+ if(!legacyFrame)correctLegacyHandedness(groups);
  return {root,groups};
 }

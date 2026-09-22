@@ -1,0 +1,664 @@
+{
+  "date": "2026-09-22T09:01:54.164Z",
+  "status": "passed",
+  "pageLinks": 87,
+  "documents": {
+    "chevrolet-60v6-power.pdf": {
+      "pages": 32,
+      "bytes": 30674920,
+      "sha256": "94420fc52297222a30031db4e43ca986dbd4eccce3220b93bb28381942d9cae3"
+    },
+    "1985-86-specifications.pdf": {
+      "pages": 35,
+      "bytes": 978595,
+      "sha256": "cb22b53a5172da99d22b0b46c153ed4d8e6aeea60c9dbe32e5dd83dcda796e07"
+    },
+    "1985-owners-boomtastic.pdf": {
+      "pages": 107,
+      "bytes": 33867178,
+      "sha256": "912382ad0d177f8833f614aa697aab535e0c46cc6b69c4dc9b46050d95ac34b1"
+    },
+    "fiero-parts-cd.pdf": {
+      "pages": 356,
+      "bytes": 20135960,
+      "sha256": "8cc8ba63654dd1892b7be90d2d12729803745303ec5e55d89c584010e0b5048c"
+    },
+    "fiero-22p-parts.pdf": {
+      "pages": 355,
+      "bytes": 20277711,
+      "sha256": "63b9e573d3c5fe4e9096b77a4e09c0d863f6f2ba5c03e11277fdf411fdf0f40b"
+    },
+    "1986-service.pdf": {
+      "pages": 1303,
+      "bytes": 79842817,
+      "sha256": "a03a875d114c444447433d9b78a44d19f1120dc57445c0834350e722fe06a05b"
+    },
+    "1985-fiero-diy.pdf": {
+      "pages": 66,
+      "bytes": 16820213,
+      "sha256": "7bc46753c5c90f25bd898b08e215e2f75b55ff3dca2b8e9eb22851193656932e"
+    },
+    "1985-fiero-6e3.pdf": {
+      "pages": 110,
+      "bytes": 36199480,
+      "sha256": "a6ae4b6c3a61b46f0aed16bdb77e8e3c3f2ff4f9dd88d3aff4ddc6a6cc5fe414"
+    },
+    "1985-fiero-brochure.pdf": {
+      "pages": 7,
+      "bytes": 8023372,
+      "sha256": "1483707d7d03504bfe0e65bf587af5493529eb312ec2acd69541297d157007f6"
+    }
+  },
+  "results": [
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf#page=67",
+      "file": "1985-fiero-6e3.pdf",
+      "page": 67,
+      "pages": 110,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf#page=68",
+      "file": "1985-fiero-6e3.pdf",
+      "page": 68,
+      "pages": 110,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf#page=69",
+      "file": "1985-fiero-6e3.pdf",
+      "page": 69,
+      "pages": 110,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf#page=7",
+      "file": "1985-fiero-6e3.pdf",
+      "page": 7,
+      "pages": 110,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf#page=79",
+      "file": "1985-fiero-6e3.pdf",
+      "page": 79,
+      "pages": 110,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf#page=8",
+      "file": "1985-fiero-6e3.pdf",
+      "page": 8,
+      "pages": 110,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf#page=80",
+      "file": "1985-fiero-6e3.pdf",
+      "page": 80,
+      "pages": 110,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf#page=83",
+      "file": "1985-fiero-6e3.pdf",
+      "page": 83,
+      "pages": 110,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf#page=84",
+      "file": "1985-fiero-6e3.pdf",
+      "page": 84,
+      "pages": 110,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf#page=85",
+      "file": "1985-fiero-6e3.pdf",
+      "page": 85,
+      "pages": 110,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf#page=92",
+      "file": "1985-fiero-6e3.pdf",
+      "page": 92,
+      "pages": 110,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf#page=93",
+      "file": "1985-fiero-6e3.pdf",
+      "page": 93,
+      "pages": 110,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf#page=94",
+      "file": "1985-fiero-6e3.pdf",
+      "page": 94,
+      "pages": 110,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=13",
+      "file": "1985-fiero-diy.pdf",
+      "page": 13,
+      "pages": 66,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=31",
+      "file": "1985-fiero-diy.pdf",
+      "page": 31,
+      "pages": 66,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=33",
+      "file": "1985-fiero-diy.pdf",
+      "page": 33,
+      "pages": 66,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=35",
+      "file": "1985-fiero-diy.pdf",
+      "page": 35,
+      "pages": 66,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=37",
+      "file": "1985-fiero-diy.pdf",
+      "page": 37,
+      "pages": 66,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=38",
+      "file": "1985-fiero-diy.pdf",
+      "page": 38,
+      "pages": 66,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=39",
+      "file": "1985-fiero-diy.pdf",
+      "page": 39,
+      "pages": 66,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=41",
+      "file": "1985-fiero-diy.pdf",
+      "page": 41,
+      "pages": 66,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=48",
+      "file": "1985-fiero-diy.pdf",
+      "page": 48,
+      "pages": 66,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=59",
+      "file": "1985-fiero-diy.pdf",
+      "page": 59,
+      "pages": 66,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=60",
+      "file": "1985-fiero-diy.pdf",
+      "page": 60,
+      "pages": 66,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=1038",
+      "file": "1986-service.pdf",
+      "page": 1038,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=1208",
+      "file": "1986-service.pdf",
+      "page": 1208,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=1209",
+      "file": "1986-service.pdf",
+      "page": 1209,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=1214",
+      "file": "1986-service.pdf",
+      "page": 1214,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=1248",
+      "file": "1986-service.pdf",
+      "page": 1248,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=1249",
+      "file": "1986-service.pdf",
+      "page": 1249,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=1250",
+      "file": "1986-service.pdf",
+      "page": 1250,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=1251",
+      "file": "1986-service.pdf",
+      "page": 1251,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=245",
+      "file": "1986-service.pdf",
+      "page": 245,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=318",
+      "file": "1986-service.pdf",
+      "page": 318,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=364",
+      "file": "1986-service.pdf",
+      "page": 364,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=395",
+      "file": "1986-service.pdf",
+      "page": 395,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=706",
+      "file": "1986-service.pdf",
+      "page": 706,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=708",
+      "file": "1986-service.pdf",
+      "page": 708,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=802",
+      "file": "1986-service.pdf",
+      "page": 802,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=886",
+      "file": "1986-service.pdf",
+      "page": 886,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=995",
+      "file": "1986-service.pdf",
+      "page": 995,
+      "pages": 1303,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=115",
+      "file": "fiero-parts-cd.pdf",
+      "page": 115,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=122",
+      "file": "fiero-parts-cd.pdf",
+      "page": 122,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=123",
+      "file": "fiero-parts-cd.pdf",
+      "page": 123,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=128",
+      "file": "fiero-parts-cd.pdf",
+      "page": 128,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=166",
+      "file": "fiero-parts-cd.pdf",
+      "page": 166,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=170",
+      "file": "fiero-parts-cd.pdf",
+      "page": 170,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=171",
+      "file": "fiero-parts-cd.pdf",
+      "page": 171,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=172",
+      "file": "fiero-parts-cd.pdf",
+      "page": 172,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=177",
+      "file": "fiero-parts-cd.pdf",
+      "page": 177,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=182",
+      "file": "fiero-parts-cd.pdf",
+      "page": 182,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=193",
+      "file": "fiero-parts-cd.pdf",
+      "page": 193,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=194",
+      "file": "fiero-parts-cd.pdf",
+      "page": 194,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=197",
+      "file": "fiero-parts-cd.pdf",
+      "page": 197,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=219",
+      "file": "fiero-parts-cd.pdf",
+      "page": 219,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=237",
+      "file": "fiero-parts-cd.pdf",
+      "page": 237,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=252",
+      "file": "fiero-parts-cd.pdf",
+      "page": 252,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=254",
+      "file": "fiero-parts-cd.pdf",
+      "page": 254,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=261",
+      "file": "fiero-parts-cd.pdf",
+      "page": 261,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=263",
+      "file": "fiero-parts-cd.pdf",
+      "page": 263,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=278",
+      "file": "fiero-parts-cd.pdf",
+      "page": 278,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=280",
+      "file": "fiero-parts-cd.pdf",
+      "page": 280,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=289",
+      "file": "fiero-parts-cd.pdf",
+      "page": 289,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=300",
+      "file": "fiero-parts-cd.pdf",
+      "page": 300,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=336",
+      "file": "fiero-parts-cd.pdf",
+      "page": 336,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=343",
+      "file": "fiero-parts-cd.pdf",
+      "page": 343,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=40",
+      "file": "fiero-parts-cd.pdf",
+      "page": 40,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=51",
+      "file": "fiero-parts-cd.pdf",
+      "page": 51,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=56",
+      "file": "fiero-parts-cd.pdf",
+      "page": 56,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=58",
+      "file": "fiero-parts-cd.pdf",
+      "page": 58,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=61",
+      "file": "fiero-parts-cd.pdf",
+      "page": 61,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=65",
+      "file": "fiero-parts-cd.pdf",
+      "page": 65,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=67",
+      "file": "fiero-parts-cd.pdf",
+      "page": 67,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=69",
+      "file": "fiero-parts-cd.pdf",
+      "page": 69,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=72",
+      "file": "fiero-parts-cd.pdf",
+      "page": 72,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=79",
+      "file": "fiero-parts-cd.pdf",
+      "page": 79,
+      "pages": 356,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_P22.pdf#page=14",
+      "file": "fiero-22p-parts.pdf",
+      "page": 14,
+      "pages": 355,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_P22.pdf#page=17",
+      "file": "fiero-22p-parts.pdf",
+      "page": 17,
+      "pages": 355,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_P22.pdf#page=18",
+      "file": "fiero-22p-parts.pdf",
+      "page": 18,
+      "pages": 355,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_P22.pdf#page=19",
+      "file": "fiero-22p-parts.pdf",
+      "page": 19,
+      "pages": 355,
+      "valid": true
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/Chevrolet_60V6_Power_Manual.pdf#page=6",
+      "file": "chevrolet-60v6-power.pdf",
+      "page": 6,
+      "pages": 32,
+      "valid": true
+    },
+    {
+      "url": "https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FMotor+Vehicle+Specifcations%2F1985-86+Pontiac+Fiero.PDF#page=10",
+      "file": "1985-86-specifications.pdf",
+      "page": 10,
+      "pages": 35,
+      "valid": true
+    },
+    {
+      "url": "https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FMotor+Vehicle+Specifcations%2F1985-86+Pontiac+Fiero.PDF#page=11",
+      "file": "1985-86-specifications.pdf",
+      "page": 11,
+      "pages": 35,
+      "valid": true
+    },
+    {
+      "url": "https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FMotor+Vehicle+Specifcations%2F1985-86+Pontiac+Fiero.PDF#page=26",
+      "file": "1985-86-specifications.pdf",
+      "page": 26,
+      "pages": 35,
+      "valid": true
+    },
+    {
+      "url": "https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FMotor+Vehicle+Specifcations%2F1985-86+Pontiac+Fiero.PDF#page=5",
+      "file": "1985-86-specifications.pdf",
+      "page": 5,
+      "pages": 35,
+      "valid": true
+    },
+    {
+      "url": "https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FOwners+Manuals%2F1985%2F1985+Fiero+Owners+Manual.pdf#page=32",
+      "file": "1985-owners-boomtastic.pdf",
+      "page": 32,
+      "pages": 107,
+      "valid": true
+    },
+    {
+      "url": "https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FOwners+Manuals%2F1985%2F1985+Fiero+Owners+Manual.pdf#page=93",
+      "file": "1985-owners-boomtastic.pdf",
+      "page": 93,
+      "pages": 107,
+      "valid": true
+    }
+  ],
+  "limits": "Confirms that linked PDF page numbers exist in the downloaded reference edition; does not verify the content of each cited page or guarantee the remote file remains the same edition."
+}

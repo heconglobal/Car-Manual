@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-22T09:03:12.633Z",
+  "status": "passed",
+  "parts": 99,
+  "checks": [
+    "17 factory fuse/breaker ratings and distinct positions",
+    "nonempty finite geometry and picking identities",
+    "driver fuse panel / turn flasher, passenger hazard flasher / junction",
+    "ECM lower-edge connector alignment",
+    "1985 figure 38 EST circuit mapping"
+  ],
+  "limits": "Model audit and transcription assertions; not a circuit continuity test or dimensional certification."
+}

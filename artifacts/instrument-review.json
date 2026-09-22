@@ -1,0 +1,15 @@
+{
+  "date": "2026-09-22T05:33:57.309Z",
+  "status": "passed",
+  "parts": 47,
+  "seconds": 156.731,
+  "errors": [],
+  "captures": [
+    "instruments-assembled",
+    "instruments-exploded",
+    "instruments-oil-scale",
+    "wiring-ecm-assembled-review",
+    "wiring-ecm-exploded-review",
+    "instruments-mobile"
+  ]
+}

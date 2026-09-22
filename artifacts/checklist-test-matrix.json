@@ -1,0 +1,1245 @@
+{
+  "generatedAt": "2026-09-22T10:38:36.450Z",
+  "sourceSha256": "b2019702353965532ff3dcd7d8016da9555acf341514d85704bcced93b67718c",
+  "accepted": false,
+  "requirements": 73,
+  "complete": 0,
+  "partial": 25,
+  "open": 48,
+  "browserPassed": true,
+  "note": "Test scenarios overlap areas. Counts must not be summed as unique tests. Passing browser tests do not establish factory dimensions, physical operation, complete part coverage or owner acceptance.",
+  "areas": [
+    {
+      "area": 1,
+      "name": "Headlights",
+      "requirements": [
+        {
+          "id": "01.1",
+          "area": "Headlights",
+          "requirement": "Check the new LH/RH lamp, cover, linkage, early motor and relay breakdown in UAT.",
+          "status": "partial",
+          "evidence": [
+            "artifacts/model-audit.json",
+            "references/headlight-reconstruction.md",
+            "artifacts/regression-history/2026-09-22T09-05-41.350Z-b20197023539.json",
+            "artifacts/visual-inspection-manifest.json"
+          ],
+          "remaining": "Owner UAT of the expanded pair, controls and early mechanism is still pending."
+        },
+        {
+          "id": "01.2",
+          "area": "Headlights",
+          "requirement": "Verify measured cover/bucket profiles, actuator case dimensions, exact gear teeth/ratios, brush/contact shapes and all retainers.",
+          "status": "partial",
+          "evidence": [
+            "references/1985-mvma-research.md",
+            "artifacts/headlight-clearance-audit.json"
+          ],
+          "remaining": "Measured bucket/cover/motor profiles, production pivots, original gear counts/ratios and complete retainers."
+        },
+        {
+          "id": "01.3",
+          "area": "Headlights",
+          "requirement": "Calibrate hinge/crank travel and clearances through the full movement; nominal bulb position and constant-length reconstructed linkage are checked, while production pivots, cover contact and motor stops remain unverified.",
+          "status": "partial",
+          "evidence": [
+            "artifacts/headlight-clearance-audit.json"
+          ],
+          "remaining": "Measured production hard points, motor end stops, cover contact and full mechanism interference calibration."
+        },
+        {
+          "id": "01.4",
+          "area": "Headlights",
+          "requirement": "Complete the 1985 headlight switch, dimmer linkage, circuit pinouts, fusible links and factory harness routing; validate aiming and diagnostic procedures.",
+          "status": "partial",
+          "evidence": [
+            "artifacts/lighting-review.json",
+            "artifacts/electrical-geometry-audit.json"
+          ],
+          "remaining": "Full 1985 circuits, harness routing, calibrated dimmer linkage, aiming and diagnostic procedure validation."
+        }
+      ],
+      "testFiles": [
+        "headlights.spec.js",
+        "service-guides.spec.js",
+        "configuration.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "preview choices change geometry, persist, and leave the VIN record intact",
+          "file": "configuration.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "invalid saved preview values recover to supported choices",
+          "file": "configuration.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "1985 headlights expose both sides, early motor internals, independent covers and a complete remaining-work list",
+          "file": "headlights.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "factory headlamp guide highlights real parts, preserves relay reconnection order and restores the previous view",
+          "file": "service-guides.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "Selection, nested explosion, cover pose, mobile controls and the headlamp guide are covered. Exact motor internals, production hard points, operating stops, optics and complete circuits are not."
+    },
+    {
+      "area": 2,
+      "name": "Other exterior and interior lighting",
+      "requirements": [
+        {
+          "id": "02.1",
+          "area": "Other exterior and interior lighting",
+          "requirement": "Front park/turn lamps and side markers: housings, optical lenses, bulbs, sockets, gaskets, brackets and screws.",
+          "status": "partial",
+          "evidence": [
+            "artifacts/lighting-review.json",
+            "references/electrical-reconstruction.md"
+          ],
+          "remaining": "Measured housings, original optical tooling, dimensions, seals and final visual acceptance."
+        },
+        {
+          "id": "02.2",
+          "area": "Other exterior and interior lighting",
+          "requirement": "Rear stop/turn/tail and reverse lamps: separate chambers, lens sections, reflectors, bulbs, sockets, seals and fasteners.",
+          "status": "partial",
+          "evidence": [
+            "artifacts/lighting-review.json",
+            "references/electrical-reconstruction.md"
+          ],
+          "remaining": "Measured lens optics/case profiles and assembled rear appearance acceptance."
+        },
+        {
+          "id": "02.3",
+          "area": "Other exterior and interior lighting",
+          "requirement": "License lamps, courtesy lamps, dome/map lighting and instrument illumination; correct factory option variants.",
+          "status": "partial",
+          "evidence": [
+            "artifacts/lighting-review.json",
+            "artifacts/charging-review.json"
+          ],
+          "remaining": "Full instrument illumination, original option identities, exact dimensions and circuit routing."
+        }
+      ],
+      "testFiles": [
+        "electrical.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "lighting and charging assemblies expose native parts, option lamps and correct lamp interfaces",
+          "file": "electrical.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "1985 fuse layout, ECM connectors, flashers and verified EST circuits are inspectable on desktop and mobile",
+          "file": "electrical.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "Lamp selection, option visibility and assembled/exploded presentation are covered. Original optical tooling and complete working circuits are not."
+    },
+    {
+      "area": 3,
+      "name": "Battery, starting and charging",
+      "requirements": [
+        {
+          "id": "03.1",
+          "area": "Battery, starting and charging",
+          "requirement": "Battery case/caps, terminals, tray, hold-down and vent/insulation details; complete positive/negative cables and ground straps.",
+          "status": "partial",
+          "evidence": [
+            "artifacts/charging-review.json",
+            "artifacts/electrical-geometry-audit.json"
+          ],
+          "remaining": "Measured battery/tray geometry, original appearance, complete cable routes and interface validation."
+        },
+        {
+          "id": "03.2",
+          "area": "Battery, starting and charging",
+          "requirement": "Original starter: housing, solenoid, drive, armature/brushes, mounting and cable interfaces.",
+          "status": "partial",
+          "evidence": [
+            "artifacts/charging-review.json",
+            "references/electrical-reconstruction.md"
+          ],
+          "remaining": "Installed original stamping, exact drive tooth count, casting forms, fits and mounting coordinates."
+        },
+        {
+          "id": "03.3",
+          "area": "Battery, starting and charging",
+          "requirement": "Alternator: cast housings, rotor/stator, bearings, regulator/rectifier, brushes, pulley, fan and brackets; original belt routing.",
+          "status": "partial",
+          "evidence": [
+            "artifacts/charging-review.json",
+            "artifacts/electrical-geometry-audit.json"
+          ],
+          "remaining": "Original 66/94 A application, correct fan revision, measured castings and belt alignment/routing."
+        }
+      ],
+      "testFiles": [
+        "electrical.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "lighting and charging assemblies expose native parts, option lamps and correct lamp interfaces",
+          "file": "electrical.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "1985 fuse layout, ECM connectors, flashers and verified EST circuits are inspectable on desktop and mobile",
+          "file": "electrical.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "Battery/starter/alternator selection and breakdown are covered. Original casting dimensions, exact drive teeth, full cables and live electrical operation are not."
+    },
+    {
+      "area": 4,
+      "name": "Vehicle wiring, switches and instruments",
+      "requirements": [
+        {
+          "id": "04.1",
+          "area": "Vehicle wiring, switches and instruments",
+          "requirement": "Complete body/engine/dash harnesses, branch lengths, connectors, terminal cavities, grommets, clips, junctions and grounds.",
+          "status": "partial",
+          "evidence": [
+            "references/wiring-reconstruction.md",
+            "artifacts/wiring-audit.json"
+          ],
+          "remaining": "Complete harness branch lengths, actual terminal population, grommets/clips, full pinouts and measured connector forms."
+        },
+        {
+          "id": "04.2",
+          "area": "Vehicle wiring, switches and instruments",
+          "requirement": "Fuse block, fusible links, relay bases, ignition switch, stop/reverse/clutch switches and horn assemblies/circuit.",
+          "status": "partial",
+          "evidence": [
+            "references/wiring-reconstruction.md",
+            "artifacts/wiring-audit.json"
+          ],
+          "remaining": "Fusible links, ignition/brake/reverse/clutch switches, horn units and complete validated circuits."
+        },
+        {
+          "id": "04.3",
+          "area": "Vehicle wiring, switches and instruments",
+          "requirement": "Instrument housings, circuit boards, speedometer/tachometer/gauges and warning lamps; correct 1985 pinouts and circuit links.",
+          "status": "partial",
+          "evidence": [
+            "references/instrument-reconstruction.md",
+            "artifacts/instrument-review.json",
+            "artifacts/factory-datums-audit.json"
+          ],
+          "remaining": "Measured instrument forms, complete movements/circuit boards, exact 1985 pinouts and electrical operation."
+        }
+      ],
+      "testFiles": [
+        "electrical.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "lighting and charging assemblies expose native parts, option lamps and correct lamp interfaces",
+          "file": "electrical.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "1985 fuse layout, ECM connectors, flashers and verified EST circuits are inspectable on desktop and mobile",
+          "file": "electrical.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "Fuse/ECM/cluster selection, the EST terminal table and mobile navigation are covered. Complete harness topology and pin-by-pin circuit operation are not."
+    },
+    {
+      "area": 5,
+      "name": "Ignition and engine controls",
+      "requirements": [
+        {
+          "id": "05.1",
+          "area": "Ignition and engine controls",
+          "requirement": "Verify the installed distributor variant, pickup/module/coil shapes and exact retaining hardware.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Verify the installed distributor variant, pickup/module/coil shapes and exact retaining hardware."
+        },
+        {
+          "id": "05.2",
+          "area": "Ignition and engine controls",
+          "requirement": "Verify cylinder numbering, firing-order presentation and factory high-tension lead routing, separators, primary wiring and ground points.",
+          "status": "partial",
+          "evidence": [
+            "references/wiring-reconstruction.md",
+            "artifacts/wiring-audit.json"
+          ],
+          "remaining": "Exact HT cap clocking/routing, separators and complete primary wiring/grounds."
+        },
+        {
+          "id": "05.3",
+          "area": "Ignition and engine controls",
+          "requirement": "Complete sensor mounting details, vacuum routing and emissions-label configuration; validate tune-up and diagnostic content.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Complete sensor mounting details, vacuum routing and emissions-label configuration; validate tune-up and diagnostic content."
+        }
+      ],
+      "testFiles": [
+        "ignition.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "global ICM search opens the nested distributor, separates parts and restores the vehicle",
+          "file": "ignition.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "electrical catalogue exposes ignition assemblies and mobile tune-up navigation",
+          "file": "ignition.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "Module, coil, distributor and ignition-part selection/explosion are covered. Exact variant geometry and every wire route remain unverified."
+    },
+    {
+      "area": 6,
+      "name": "Engine castings, internals and induction",
+      "requirements": [
+        {
+          "id": "06.1",
+          "area": "Engine castings, internals and induction",
+          "requirement": "Measured block/head/plenum/intake/exhaust castings; all ports, chambers, oil/coolant passages and sealing faces.",
+          "status": "partial",
+          "evidence": [
+            "references/1985-mvma-research.md",
+            "artifacts/factory-datums-audit.json",
+            "references/shared-powertrain-reconstruction.md"
+          ],
+          "remaining": "Measured L44 block/head/plenum castings, all ports/chambers/passages, sealing faces and complete internal fit validation."
+        },
+        {
+          "id": "06.2",
+          "area": "Engine castings, internals and induction",
+          "requirement": "Correct 1985–86 intake profiles, valley shield, idle-air tube, manual throttle cable/lever and brackets, fuel/vacuum connections.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Correct 1985–86 intake profiles, valley shield, idle-air tube, manual throttle cable/lever and brackets, fuel/vacuum connections."
+        },
+        {
+          "id": "06.3",
+          "area": "Engine castings, internals and induction",
+          "requirement": "Oil-pump gears/relief/screen/drive, early sump/seal geometry, water-pump impeller/bearing/seal, complete accessory brackets and lifts.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Oil-pump gears/relief/screen/drive, early sump/seal geometry, water-pump impeller/bearing/seal, complete accessory brackets and lifts."
+        },
+        {
+          "id": "06.4",
+          "area": "Engine castings, internals and induction",
+          "requirement": "Complete gaskets, plugs, seals, dowels and fastener counts; verify bearing fits, valve interfaces and engine mounting coordinates.",
+          "status": "partial",
+          "evidence": [
+            "references/shared-powertrain-reconstruction.md",
+            "artifacts/cross-view-scale-review.json",
+            "artifacts/engine-timing-audit.json"
+          ],
+          "remaining": "Production mounts, complete gaskets/fasteners and internal fits remain unverified. In particular, the timing builder still has a 131 mm cam/crank separation versus the GM blueprint’s 159.03 mm; shaft, bearings, sprocket, chain, cover and valve-gear interfaces need a coordinated correction."
+        }
+      ],
+      "testFiles": [
+        "engine.spec.js",
+        "engine-service.spec.js",
+        "valve-gear.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "cooling assembly opens detailed service parts, separates them and restores vehicle context",
+          "file": "engine-service.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "engine has independent explosion, selectable internals, subassembly navigation and vehicle return",
+          "file": "engine.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "engine explorer supports mobile navigation and return without overflow",
+          "file": "engine.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "individual valve gear separates small hardware and preserves the correct stem-seal variant",
+          "file": "valve-gear.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "Engine navigation, internals, selected service parts and valve-gear presentation are covered. Complete internal fits, measured castings and operating kinematics are not; the known cam/crank datum discrepancy remains open."
+    },
+    {
+      "area": 7,
+      "name": "Four-speed transmission, clutch and halfshafts",
+      "requirements": [
+        {
+          "id": "07.1",
+          "area": "Four-speed transmission, clutch and halfshafts",
+          "requirement": "Verify original gear tooth counts, ratios, involute profiles, synchronizer fits and measured case contours.",
+          "status": "partial",
+          "evidence": [
+            "references/1985-mvma-research.md",
+            "artifacts/factory-datums-audit.json"
+          ],
+          "remaining": "Individual speed-gear tooth counts, measured involute/helix profiles, synchronizer fits and case contours."
+        },
+        {
+          "id": "07.2",
+          "area": "Four-speed transmission, clutch and halfshafts",
+          "requirement": "Clutch master/slave internals, reservoirs, pushrods, brackets and hydraulic routing.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Clutch master/slave internals, reservoirs, pushrods, brackets and hydraulic routing."
+        },
+        {
+          "id": "07.3",
+          "area": "Four-speed transmission, clutch and halfshafts",
+          "requirement": "Shifter and selector cable internals, levers, bushings, brackets and cable paths.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Shifter and selector cable internals, levers, bushings, brackets and cable paths."
+        },
+        {
+          "id": "07.4",
+          "area": "Four-speed transmission, clutch and halfshafts",
+          "requirement": "Inner/outer CV joints, unequal halfshafts, boots/clamps, axle hardware and complete transaxle mounts.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Inner/outer CV joints, unequal halfshafts, boots/clamps, axle hardware and complete transaxle mounts."
+        }
+      ],
+      "testFiles": [
+        "transmission-cooling.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "four-speed internals, cooling circuit and US left-hand-drive layout remain coherent",
+          "file": "transmission-cooling.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "Gear/shaft/differential/clutch selection and return navigation are covered. Case contours, every tooth profile, synchronizer engagement and hydraulic mechanisms are not."
+    },
+    {
+      "area": 8,
+      "name": "Brakes and parking brake",
+      "requirements": [
+        {
+          "id": "08.1",
+          "area": "Brakes and parking brake",
+          "requirement": "Measured caliper/master/booster castings and mounting coordinates; rear piston parking-clutch and sealed-hub internals.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Measured caliper/master/booster castings and mounting coordinates; rear piston parking-clutch and sealed-hub internals."
+        },
+        {
+          "id": "08.2",
+          "area": "Brakes and parking brake",
+          "requirement": "Combination/proportioning valve internal form and calibration; exact line clips, hose fittings and retaining hardware.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Combination/proportioning valve internal form and calibration; exact line clips, hose fittings and retaining hardware."
+        },
+        {
+          "id": "08.3",
+          "area": "Brakes and parking brake",
+          "requirement": "Parking-brake handle/release/switch internals and cable adjustment geometry.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Parking-brake handle/release/switch internals and cable adjustment geometry."
+        },
+        {
+          "id": "08.4",
+          "area": "Brakes and parking brake",
+          "requirement": "Verify hose clearance throughout steering/suspension travel and factory bleeding, adjustment and service specifications.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Verify hose clearance throughout steering/suspension travel and factory bleeding, adjustment and service specifications."
+        }
+      ],
+      "testFiles": [
+        "brakes.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "1985 brakes expose distinct corners, hydraulic internals and parking controls",
+          "file": "brakes.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "Front/rear caliper, rotor, master-cylinder and parking-brake breakdown/navigation are covered. Full hydraulic behavior, calibrated valve internals, measured castings and swept hose clearances are not."
+    },
+    {
+      "area": 9,
+      "name": "Suspension and steering",
+      "requirements": [
+        {
+          "id": "09.1",
+          "area": "Suspension and steering",
+          "requirement": "Measure frame/control-arm stampings, pivot coordinates, ball-joint interfaces and original bushings.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Measure frame/control-arm stampings, pivot coordinates, ball-joint interfaces and original bushings."
+        },
+        {
+          "id": "09.2",
+          "area": "Suspension and steering",
+          "requirement": "Verify WS6 spring codes/rates and rack ratio/tooth count; complete shock, strut and steering-damper internals.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Verify WS6 spring codes/rates and rack ratio/tooth count; complete shock, strut and steering-damper internals."
+        },
+        {
+          "id": "09.3",
+          "area": "Suspension and steering",
+          "requirement": "Steering column, tilt mechanism, bearings, locks, lower shafts, universal joints/couplers and attaching hardware.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Steering column, tilt mechanism, bearings, locks, lower shafts, universal joints/couplers and attaching hardware."
+        },
+        {
+          "id": "09.4",
+          "area": "Suspension and steering",
+          "requirement": "Validate alignment datums, steering stops, suspension travel and full wheel/body clearance.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Validate alignment datums, steering stops, suspension travel and full wheel/body clearance."
+        }
+      ],
+      "testFiles": [
+        "suspension.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "early suspension and manual steering remain selectable, asymmetric and reachable on mobile",
+          "file": "suspension.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "Early front/rear suspension and manual rack selection/explosion are covered. WS6 rates, measured mounting points, full articulation and column mechanisms are not."
+    },
+    {
+      "area": 10,
+      "name": "Wheels, tires, spare and tools",
+      "requirements": [
+        {
+          "id": "10.1",
+          "area": "Wheels, tires, spare and tools",
+          "requirement": "Accurate original wheel faces, inner barrels, center caps, lug seats/nuts, valve stems and balance weights.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Accurate original wheel faces, inner barrels, center caps, lug seats/nuts, valve stems and balance weights."
+        },
+        {
+          "id": "10.2",
+          "area": "Wheels, tires, spare and tools",
+          "requirement": "Correct tire profiles, tread and sidewall markings for each verified factory wheel/tire preview.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Correct tire profiles, tread and sidewall markings for each verified factory wheel/tire preview."
+        },
+        {
+          "id": "10.3",
+          "area": "Wheels, tires, spare and tools",
+          "requirement": "Compact spare, jack mechanism, lug wrench, retainers and front-compartment stowage hardware.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Compact spare, jack mechanism, lug wrench, retainers and front-compartment stowage hardware."
+        }
+      ],
+      "testFiles": [
+        "configuration.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "preview choices change geometry, persist, and leave the VIN record intact",
+          "file": "configuration.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "invalid saved preview values recover to supported choices",
+          "file": "configuration.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "The wheel preview control is covered. This is not a tire/wheel dimensional test or an inspection of jack/spare/tool internals."
+    },
+    {
+      "area": 11,
+      "name": "Fuel supply and evaporative emissions",
+      "requirements": [
+        {
+          "id": "11.1",
+          "area": "Fuel supply and evaporative emissions",
+          "requirement": "Measured early tank shell/baffles and verified capacity; sender travel/resistance calibration.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Measured early tank shell/baffles and verified capacity; sender travel/resistance calibration."
+        },
+        {
+          "id": "11.2",
+          "area": "Fuel supply and evaporative emissions",
+          "requirement": "Pump, filter and canister internals; exact filler/vent/return/purge routing, clamps, clips and electrical connections.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Pump, filter and canister internals; exact filler/vent/return/purge routing, clamps, clips and electrical connections."
+        },
+        {
+          "id": "11.3",
+          "area": "Fuel supply and evaporative emissions",
+          "requirement": "Verify factory fuel-system interfaces and complete documented service content.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Verify factory fuel-system interfaces and complete documented service content."
+        }
+      ],
+      "testFiles": [
+        "fuel.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "early V6 fuel supply exposes pump, sender, filler, filter and vapor parts",
+          "file": "fuel.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "Tank/sender/pump/filter/canister selection and explosion are covered. Tank baffles, sender calibration, pressure/flow, exact routing and full service procedures are not."
+    },
+    {
+      "area": 12,
+      "name": "Exhaust and heat shields",
+      "requirements": [
+        {
+          "id": "12.1",
+          "area": "Exhaust and heat shields",
+          "requirement": "Measured manifold/crossover profiles, collector junctions and production pipe bends.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Measured manifold/crossover profiles, collector junctions and production pipe bends."
+        },
+        {
+          "id": "12.2",
+          "area": "Exhaust and heat shields",
+          "requirement": "Muffler internal chambers/baffles and verified early converter construction.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Muffler internal chambers/baffles and verified early converter construction."
+        },
+        {
+          "id": "12.3",
+          "area": "Exhaust and heat shields",
+          "requirement": "Exact shield stampings, hangers, spring positions, tailpipe finish/application and heat/body clearances.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Exact shield stampings, hangers, spring positions, tailpipe finish/application and heat/body clearances."
+        }
+      ],
+      "testFiles": [
+        "exhaust.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "early V6 exhaust exposes period catalyst, spring joints, supports and finish previews",
+          "file": "exhaust.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "Complete exhaust and crossover/manifold selection and explosion are covered. Exact production bends, internal baffles and installed thermal clearance are not."
+    },
+    {
+      "area": 13,
+      "name": "Cooling",
+      "requirements": [
+        {
+          "id": "13.1",
+          "area": "Cooling",
+          "requirement": "Complete water-pump and fan-motor internals; verify original fan/shroud option.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Complete water-pump and fan-motor internals; verify original fan/shroud option."
+        },
+        {
+          "id": "13.2",
+          "area": "Cooling",
+          "requirement": "Measured radiator, coolant-pipe and hose bends, clamp/support locations, sender/switch fittings and clearance.",
+          "status": "partial",
+          "evidence": [
+            "artifacts/front-clearance-audit.json",
+            "artifacts/vehicle-hood-clearance-fixed.png"
+          ],
+          "remaining": "Measured production mounting datum, all pipe/hose bends, clamp coordinates and full clearances."
+        },
+        {
+          "id": "13.3",
+          "area": "Cooling",
+          "requirement": "Validate coolant filling/bleeding, capacities, thermostat and pressure specifications from 1985 sources.",
+          "status": "partial",
+          "evidence": [
+            "references/verified-cooling-specifications.json",
+            "references/engine-service-reconstruction.md"
+          ],
+          "remaining": "Integrate the complete source-checked filling/bleeding procedure into the interactive manual, verify every referenced part and validate the finished guide."
+        }
+      ],
+      "testFiles": [
+        "transmission-cooling.spec.js",
+        "engine-service.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "cooling assembly opens detailed service parts, separates them and restores vehicle context",
+          "file": "engine-service.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "four-speed internals, cooling circuit and US left-hand-drive layout remain coherent",
+          "file": "transmission-cooling.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "Circuit/pipe/radiator/fan selection and engine cooling-part access are covered. Fan/pump internals, complete factory fill/bleed guide and every clearance are not."
+    },
+    {
+      "area": 14,
+      "name": "Heating, ventilation and air conditioning",
+      "requirements": [
+        {
+          "id": "14.1",
+          "area": "Heating, ventilation and air conditioning",
+          "requirement": "Measured C41/C60 case/duct profiles, door seals, linkage positions and calibrated travel.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Measured C41/C60 case/duct profiles, door seals, linkage positions and calibrated travel."
+        },
+        {
+          "id": "14.2",
+          "area": "Heating, ventilation and air conditioning",
+          "requirement": "Blower and electric-actuator internals, switch contacts, resistor/relay wiring and verified control circuits.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Blower and electric-actuator internals, switch contacts, resistor/relay wiring and verified control circuits."
+        },
+        {
+          "id": "14.3",
+          "area": "Heating, ventilation and air conditioning",
+          "requirement": "Complete original A/C compressor/clutch, condenser, refrigerant lines, fittings, O-rings and accumulator internals; verify application before assigning dimensions.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Complete original A/C compressor/clutch, condenser, refrigerant lines, fittings, O-rings and accumulator internals; verify application before assigning dimensions."
+        }
+      ],
+      "testFiles": [
+        "hvac.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "heater and C60 previews share native cores and show distinct controls, motors and refrigeration parts",
+          "file": "hvac.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "C41/C60 preview switching, applicable part visibility and selection are covered. Calibrated door travel, complete control circuits and the refrigeration system are not."
+    },
+    {
+      "area": 15,
+      "name": "Doors, windows, locks and mirrors",
+      "requirements": [
+        {
+          "id": "15.1",
+          "area": "Doors, windows, locks and mirrors",
+          "requirement": "Manual/power window regulators, motors, rollers, stops, glass channels, felt guides and seals.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Manual/power window regulators, motors, rollers, stops, glass channels, felt guides and seals."
+        },
+        {
+          "id": "15.2",
+          "area": "Doors, windows, locks and mirrors",
+          "requirement": "Complete latch and key-cylinder internals, lock rods/clips, power-lock actuators, switches and harnesses.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Complete latch and key-cylinder internals, lock rods/clips, power-lock actuators, switches and harnesses."
+        },
+        {
+          "id": "15.3",
+          "area": "Doors, windows, locks and mirrors",
+          "requirement": "Manual/power mirror pivots, adjustment mechanisms, cable/wiring, mounting pads and hardware.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Manual/power mirror pivots, adjustment mechanisms, cable/wiring, mounting pads and hardware."
+        },
+        {
+          "id": "15.4",
+          "area": "Doors, windows, locks and mirrors",
+          "requirement": "Door weatherstrip cross-sections, belt moldings, inner shields and complete trim attachments.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Door weatherstrip cross-sections, belt moldings, inner shields and complete trim attachments."
+        }
+      ],
+      "testFiles": [
+        "body-hardware.spec.js",
+        "configuration.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "body panels share vehicle surfaces and expose hinges, torque rods, latches and retainers",
+          "file": "body-hardware.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "preview choices change geometry, persist, and leave the VIN record intact",
+          "file": "configuration.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "invalid saved preview values recover to supported choices",
+          "file": "configuration.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "Door skin/glass/trim/hinge selection and option previews are covered. Missing regulator, latch, lock and mirror internals are not tested."
+    },
+    {
+      "area": 16,
+      "name": "Wipers, washer and defroster",
+      "requirements": [
+        {
+          "id": "16.1",
+          "area": "Wipers, washer and defroster",
+          "requirement": "Wiper motor/gearbox, transmission links, pivots, delay control and exact blade/arm construction.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Wiper motor/gearbox, transmission links, pivots, delay control and exact blade/arm construction."
+        },
+        {
+          "id": "16.2",
+          "area": "Wipers, washer and defroster",
+          "requirement": "Washer pump, bottle details, hoses, clips, nozzles and wiring.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Washer pump, bottle details, hoses, clips, nozzles and wiring."
+        },
+        {
+          "id": "16.3",
+          "area": "Wipers, washer and defroster",
+          "requirement": "Rear-window defroster grid/terminals, switch, relay, wiring and original-option application.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Rear-window defroster grid/terminals, switch, relay, wiring and original-option application."
+        }
+      ],
+      "testFiles": [],
+      "scenarios": [],
+      "coverageAndLimits": "There is no dedicated wiper/washer/defroster detail or mechanism regression. Whole-car rendering does not substitute for it."
+    },
+    {
+      "area": 17,
+      "name": "Body panels, roof and structure",
+      "requirements": [
+        {
+          "id": "17.1",
+          "area": "Body panels, roof and structure",
+          "requirement": "Measured panel curvature, sections, datums and gaps: front/rear fascias, hood, front fenders, doors, rockers, quarters and rear roof clip. Radiator-to-hood interference has been corrected and checked; measured factory placement remains unverified.",
+          "status": "partial",
+          "evidence": [
+            "artifacts/front-clearance-audit.json",
+            "artifacts/vehicle-hood-clearance-fixed.png"
+          ],
+          "remaining": "Measured panel sections, datums, curvature and gaps throughout the car."
+        },
+        {
+          "id": "17.2",
+          "area": "Body panels, roof and structure",
+          "requirement": "Refine A/B/C pillars, small sail windows, recessed rear window, decklid/vents and rear bumper geometry against source dimensions.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Refine A/B/C pillars, small sail windows, recessed rear window, decklid/vents and rear bumper geometry against source dimensions."
+        },
+        {
+          "id": "17.3",
+          "area": "Body panels, roof and structure",
+          "requirement": "Complete space-frame stampings, weld/joint locations, bulkheads, floor/tunnel, rails, bumper beams and energy absorbers.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Complete space-frame stampings, weld/joint locations, bulkheads, floor/tunnel, rails, bumper beams and energy absorbers."
+        },
+        {
+          "id": "17.4",
+          "area": "Body panels, roof and structure",
+          "requirement": "Fascia supports, wheelhouse liners, air deflectors, seals and every verified panel retainer.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Fascia supports, wheelhouse liners, air deflectors, seals and every verified panel retainer."
+        },
+        {
+          "id": "17.5",
+          "area": "Body panels, roof and structure",
+          "requirement": "Sunroof latch/seals/drains/stowage, roof trim and glazing adhesive/weatherstrip sections.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Sunroof latch/seals/drains/stowage, roof trim and glazing adhesive/weatherstrip sections."
+        },
+        {
+          "id": "17.6",
+          "area": "Body panels, roof and structure",
+          "requirement": "Wing or luggage-rack mounts/pads/reinforcement, option-specific deck torque rods, fuel-door hinge/latch and power-release mechanisms.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Wing or luggage-rack mounts/pads/reinforcement, option-specific deck torque rods, fuel-door hinge/latch and power-release mechanisms."
+        }
+      ],
+      "testFiles": [
+        "body-hardware.spec.js",
+        "rear-body.spec.js",
+        "configuration.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "body panels share vehicle surfaces and expose hinges, torque rods, latches and retainers",
+          "file": "body-hardware.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "preview choices change geometry, persist, and leave the VIN record intact",
+          "file": "configuration.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "invalid saved preview values recover to supported choices",
+          "file": "configuration.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "rear glass, sail windows and deck vents are independent selectable assemblies",
+          "file": "rear-body.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "Panel/hinge/vent/torque-rod selection, body configuration and rear geometry presentation are covered. Measured panel sections, all hidden structure, gaps and full hinge travel are not."
+    },
+    {
+      "area": 18,
+      "name": "Seats, restraints, trim and cabin controls",
+      "requirements": [
+        {
+          "id": "18.1",
+          "area": "Seats, restraints, trim and cabin controls",
+          "requirement": "Seat frames, tracks, recliners, cushion construction, speaker internals and mounting hardware.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Seat frames, tracks, recliners, cushion construction, speaker internals and mounting hardware."
+        },
+        {
+          "id": "18.2",
+          "area": "Seats, restraints, trim and cabin controls",
+          "requirement": "Seat-belt retractors, buckles, anchors, covers and warning-switch wiring.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Seat-belt retractors, buckles, anchors, covers and warning-switch wiring."
+        },
+        {
+          "id": "18.3",
+          "area": "Seats, restraints, trim and cabin controls",
+          "requirement": "Dashboard/console/door trim moldings, hidden attachments, carpet, insulation and sound pads.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Dashboard/console/door trim moldings, hidden attachments, carpet, insulation and sound pads."
+        },
+        {
+          "id": "18.4",
+          "area": "Seats, restraints, trim and cabin controls",
+          "requirement": "Pedal pivots, throttle cable/return hardware, shifter boot/control details, radio and speaker assemblies/wiring.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Pedal pivots, throttle cable/return hardware, shifter boot/control details, radio and speaker assemblies/wiring."
+        }
+      ],
+      "testFiles": [
+        "transmission-cooling.spec.js",
+        "configuration.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "preview choices change geometry, persist, and leave the VIN record intact",
+          "file": "configuration.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "invalid saved preview values recover to supported choices",
+          "file": "configuration.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "four-speed internals, cooling circuit and US left-hand-drive layout remain coherent",
+          "file": "transmission-cooling.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "Driver-control handedness and cabin preview visibility are covered. Seat/retractor/recliner/column/pedal internal mechanisms are not."
+    },
+    {
+      "area": 19,
+      "name": "Factory options and interchange",
+      "requirements": [
+        {
+          "id": "19.1",
+          "area": "Factory options and interchange",
+          "requirement": "Complete cruise-control hardware/cables/switches and verified option-specific electrical/vacuum architecture.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Complete cruise-control hardware/cables/switches and verified option-specific electrical/vacuum architecture."
+        },
+        {
+          "id": "19.2",
+          "area": "Factory options and interchange",
+          "requirement": "Finish supported factory alternatives for tilt, power windows/locks/mirrors/releases, delay wipers, lighting packages, defroster and roof equipment.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Finish supported factory alternatives for tilt, power windows/locks/mirrors/releases, delay wipers, lighting packages, defroster and roof equipment."
+        },
+        {
+          "id": "19.3",
+          "area": "Factory options and interchange",
+          "requirement": "Verify model-year/RPO/side compatibility for swap previews; separate original build facts from preview choices.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Verify model-year/RPO/side compatibility for swap previews; separate original build facts from preview choices."
+        },
+        {
+          "id": "19.4",
+          "area": "Factory options and interchange",
+          "requirement": "Original paint/trim, spring codes and other undocumented installed RPOs remain unknown; the VIN alone does not establish them.",
+          "status": "open",
+          "evidence": [],
+          "remaining": "Original paint/trim, spring codes and other undocumented installed RPOs remain unknown; the VIN alone does not establish them."
+        }
+      ],
+      "testFiles": [
+        "configuration.spec.js",
+        "hvac.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "preview choices change geometry, persist, and leave the VIN record intact",
+          "file": "configuration.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "invalid saved preview values recover to supported choices",
+          "file": "configuration.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "heater and C60 previews share native cores and show distinct controls, motors and refrigeration parts",
+          "file": "hvac.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "Preview changes, persistence, invalid saved values and some option-specific visibility are covered. This does not establish the original build sheet or compatibility of every swap."
+    },
+    {
+      "area": 20,
+      "name": "Specifications, procedures and final acceptance",
+      "requirements": [
+        {
+          "id": "20.1",
+          "area": "Specifications, procedures and final acceptance",
+          "requirement": "Source every published part identity/application, fastener quantity, torque, clearance, fluid and maintenance value.",
+          "status": "partial",
+          "evidence": [
+            "references/wiring-reconstruction.md",
+            "references/electrical-reconstruction.md"
+          ],
+          "remaining": "All other identities, applications, quantities, torque, clearance, fluid and maintenance values across the full inventory."
+        },
+        {
+          "id": "20.2",
+          "area": "Specifications, procedures and final acceptance",
+          "requirement": "Build validated step-by-step procedures with tools, access, removal/refit order and verification linked to the actual selectable parts.",
+          "status": "partial",
+          "evidence": [
+            "src/service-guides.js",
+            "references/headlight-service-guide.md",
+            "tests/service-guides.spec.js",
+            "artifacts/regression-history/2026-09-22T06-48-25.060Z-d873bc28c691.json",
+            "artifacts/regression-history/2026-09-22T09-05-41.350Z-b20197023539.json"
+          ],
+          "remaining": "Remaining procedures for every other system, exact removal paths and physical workshop validation."
+        },
+        {
+          "id": "20.3",
+          "area": "Specifications, procedures and final acceptance",
+          "requirement": "Check left/right orientation, assembly interfaces, full travel, hose/cable routing and clashes throughout the car.",
+          "status": "partial",
+          "evidence": [
+            "artifacts/model-audit.json",
+            "artifacts/wiring-audit.json",
+            "artifacts/front-clearance-audit.json",
+            "artifacts/cross-view-scale-review.json"
+          ],
+          "remaining": "Calibrated full travel, complete routing and clash checks throughout the vehicle."
+        },
+        {
+          "id": "20.4",
+          "area": "Specifications, procedures and final acceptance",
+          "requirement": "Review close-up surface accuracy/materials and assembled/exploded interaction for each system; test desktop and mobile performance.",
+          "status": "partial",
+          "evidence": [
+            "artifacts/lighting-review.json",
+            "artifacts/charging-review.json",
+            "artifacts/native-windows-review-initial.json",
+            "artifacts/native-windows-all-families-interrupted.json",
+            "artifacts/vehicle-construction-profile.json",
+            "artifacts/model-construction-hotspots.json",
+            "artifacts/regression-history/2026-09-22T09-05-41.350Z-b20197023539.json",
+            "artifacts/visual-inspection-manifest.json",
+            "artifacts/checklist-test-matrix.md",
+            "artifacts/performance-followup.md"
+          ],
+          "remaining": "Photoreal surface acceptance for every component, full device performance review and outstanding system-specific checks. Native initial readiness was approximately 97 seconds during concurrent regression. Broad native hardware/device testing and startup performance remain unresolved; the follow-up all-family capture run was interrupted."
+        },
+        {
+          "id": "20.5",
+          "area": "Specifications, procedures and final acceptance",
+          "requirement": "Resolve remaining provenance/licensing and dimensional evidence gaps before claiming a complete photorealistic, factory-spec manual.",
+          "status": "partial",
+          "evidence": [
+            "ASSET-CREDITS.md",
+            "public/THIRD-PARTY-NOTICES.txt",
+            "artifacts/distribution-audit.json",
+            "references/acceptance-evidence-gaps.md"
+          ],
+          "remaining": "Resolve measured geometry and complete original-application evidence throughout the model before any full photorealistic factory-spec claim. Current reference evidence remains insufficient for several production surfaces, hidden mechanisms and variants."
+        }
+      ],
+      "testFiles": [
+        "workshop.spec.js",
+        "service-guides.spec.js"
+      ],
+      "scenarios": [
+        {
+          "title": "factory headlamp guide highlights real parts, preserves relay reconnection order and restores the previous view",
+          "file": "service-guides.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "renders 3D vehicle without runtime errors or external image requests",
+          "file": "workshop.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "system filtering, global search, focus, isolation and reset work",
+          "file": "workshop.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "camera presets and keyboard controls update the viewer",
+          "file": "workshop.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "visibility, labels, wireframe and exploded views work",
+          "file": "workshop.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "direct 3D picking selects a part",
+          "file": "workshop.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "orientation tour advances, goes back, and finishes",
+          "file": "workshop.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "air-cleaner tour advances, goes back, and finishes",
+          "file": "workshop.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "suspension tour advances, goes back, and finishes",
+          "file": "workshop.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "specification provenance and source dialog remain accessible",
+          "file": "workshop.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "UAT feedback persists, is safely rendered, and exports valid JSON",
+          "file": "workshop.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        },
+        {
+          "title": "mobile layout renders without overflow and opens assembly navigation",
+          "file": "workshop.spec.js",
+          "passed": true,
+          "report": "artifacts/full-regression.json"
+        }
+      ],
+      "coverageAndLimits": "General search, selection, camera, visibility, guides, source links, feedback export and mobile presentation are covered. Full physical fidelity, complete procedures and broad device performance remain open."
+    }
+  ]
+}

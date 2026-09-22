@@ -1,3 +1,5 @@
+import {buildVehicleWiring} from './wiring-detail.js';
+import {buildVehicleCharging} from './charging-detail.js';
 import {buildVehicleLighting} from './lighting-detail.js';
 import {buildVehicleHeadlights} from './headlight-detail.js';
 import {buildVehicleHvac} from './vehicle-hvac.js';
@@ -8,14 +10,13 @@ import { createMaterials } from './materials.js';
 import { geometryTools } from './geometry.js';
 import { buildBody } from './body.js';
 import { buildMechanics, buildInterior } from './mechanics.js';
-import {buildVehicleIgnition} from './vehicle-ignition.js';
+import {buildVehicleEngine} from './vehicle-engine.js';
 import {buildVehiclePowertrain} from './vehicle-powertrain.js';
 import {buildVehicleSuspension} from './vehicle-suspension.js';
 import {buildVehicleBodyHardware} from './vehicle-body-hardware.js';
 import {buildVehicleExhaust} from './vehicle-exhaust.js';
 import {buildVehicleFuel} from './vehicle-fuel.js';
 import {buildVehicleBrakes} from './vehicle-brakes.js';
-import {buildVehicleService} from './vehicle-service.js';
 import { defaultConfiguration, paints, sanitizeConfiguration } from './configuration.js';
 
 export function createVehicle() {
@@ -24,18 +25,9 @@ export function createVehicle() {
  for(const part of parts){const g=new T.Group();g.name=part.id;g.userData={partId:part.id,system:part.system,spread:new T.Vector3(0,.2,0)};groups.set(part.id,g);root.add(g);}
  const h=geometryTools(groups,materials);
  buildBody(h);buildMechanics(h);buildInterior(h);
- // Fit the reconstructed powertrain below the deck, retaining the axle datum.
- const engineEnvelope=new T.Matrix4().makeScale(1,.76,1);engineEnvelope.setPosition(0,.0552,0);
- for(const [id,g] of groups)if(g.userData.system==='engine'||['alternator','thermostat'].includes(id))g.traverse(m=>{if(m.isMesh){m.updateMatrix();m.geometry.applyMatrix4(m.matrix);m.geometry.applyMatrix4(engineEnvelope);m.position.set(0,0,0);m.rotation.set(0,0,0);m.scale.set(1,1,1);}});
  // Legacy authoring frame uses +X for the driver side; vehicle-frame.js
  // converts all groups to true US LHD (-X) once construction is complete.
- // the accessory-drive end of the V6 is on the passenger side.
- for(const id of ['engine-block','heads','intake','oil-pan','alternator','thermostat']){
-  const g=groups.get(id);g.scale.x=-1;
-  g.traverse(m=>{if(m.isMesh&&m.material.map){m.material.map.repeat.x=-1;m.material.map.offset.x=1;}});
- }
- buildVehicleIgnition(groups,materials);
- buildVehicleService(groups,materials);
+ buildVehicleEngine(groups);
  buildVehiclePowertrain(groups,materials);
  buildVehicleBrakes(groups,materials);
  buildVehicleSuspension(groups,materials);
@@ -45,6 +37,8 @@ export function createVehicle() {
  buildVehicleHvac(groups,materials);
  buildVehicleHeadlights(groups,materials);
  buildVehicleLighting(groups,materials);
+ buildVehicleCharging(groups,materials);
+ buildVehicleWiring(groups,materials);
  h.optimize();
  for(const [id,g] of groups){
   const s=g.userData.system;

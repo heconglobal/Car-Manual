@@ -1,3 +1,4 @@
+import {cylinderNumber,cylinderReference,mvma1985,chevroletV6Blueprint} from './factory-specifications.js';
 import {valveHardwareParts} from './engine-valvetrain.js';
 import {engineServiceParts} from './engine-service-catalog.js';
 import {engineControlParts} from './engine-controls.js';
@@ -23,7 +24,7 @@ export const engineSections=[
  {id:'water-pump-detail',parent:'accessories',name:'Water pump & pulley',spread:[-.68,.15,0]},
  {id:'flywheel',name:'Manual-engine flywheel',spread:[.46,-.08,0]},
 ];
-for(const [bank,s] of [['front',-1],['rear',1]])for(let c=1;c<=3;c++)for(const type of ['intake','exhaust'])engineSections.push({id:`valve-${bank}-${c}-${type}`,parent:`head-${bank}`,name:`Position ${c} ${type} valve gear`,spread:[0,.30,s*.42]});
+for(const [bank,s] of [['front',-1],['rear',1]])for(let c=1;c<=3;c++)for(const type of ['intake','exhaust'])engineSections.push({id:`valve-${bank}-${c}-${type}`,parent:`head-${bank}`,name:`Cylinder ${cylinderNumber(bank,c)} ${type} valve gear`,spread:[0,.30,s*.42]});
 export const engineParts=[];
 const part=(id,section,name,description,spread=[0,0,0])=>engineParts.push({id:`eng-${id}`,section,system:'engine',name,description,location:engineSections.find(s=>s.id===section).name,spread,source:['short-block','timing','lubrication','accessories','flywheel'].includes(section)?'GM 22P · H-19':'GM 22P · H-22'});
 part('block','short-block','Cylinder block','Reconstructed 60-degree V6 block with six open cylinder bores, crankcase walls and main-bearing saddles. Local casting details and dimensions are approximate.');
@@ -38,8 +39,8 @@ for(const [bank,s] of [['front',-1],['rear',1]]){
  part(`${bank}-cover-gasket`,section,`${label} valve-cover gasket`,'Separate perimeter gasket beneath the cover.',[0,.35,s*.05]);
  part(`${bank}-head-bolts`,section,`${label} head bolt set`,'Representative grouped head fasteners. Exact count, lengths and tightening sequence remain unverified.',[.08,.19,s*.12]);
  for(let c=1;c<=3;c++){
-  const tag=`${bank}-${c}`,where=`${label}, cylinder position ${c}`;
-  part(`piston-${tag}`,'short-block',`${where} piston`,'Separate piston with crown, skirt and ring grooves. Position numbering is for this viewer, not firing order.',[(c-2)*.10,.08,s*.35]);
+  const tag=`${bank}-${c}`,where=`${label}, cylinder ${cylinderNumber(bank,c)}`;
+  part(`piston-${tag}`,'short-block',`${where} piston`,'Separate piston with crown, skirt and ring grooves. Cylinder identity follows the Pontiac bank layout; the displayed static piston position is not a running-engine simulation.',[(c-2)*.10,.08,s*.35]);
   part(`rings-${tag}`,'short-block',`${where} piston rings`,'Two compression rings and an illustrative oil-control ring set, grouped for inspection.',[(c-2)*.10,.21,s*.35]);
   part(`pin-${tag}`,'short-block',`${where} wrist pin`,'Hollow pin connecting piston and rod.',[(c-2)*.10+.11,.08,s*.35]);
   part(`rod-${tag}`,'short-block',`${where} connecting rod`,'Connecting rod with open small and big ends.',[(c-2)*.10,-.06,s*.35]);
@@ -67,7 +68,7 @@ for(const [id,name,desc,spread] of [
  ['throttle','Throttle body','Bore, butterfly and external housing.',[.22,.35,0]],
  ['fuel-rail','Fuel rail & regulator','Twin rail tubes with a regulator representation.',[0,.09,.20]],
 ])part(id,'induction',name,desc,spread);
-for(let i=0;i<6;i++)part(`injector-${i+1}`,'induction',`Fuel injector ${i+1}`,'Individual injector exterior with connector and seals. Numbering identifies model instances.',[(i%3-1)*.06,-.05,(i<3?-1:1)*.12]);
+for(let i=0;i<6;i++)part(`injector-${i+1}`,'induction',`Cylinder ${cylinderNumber(i<3?'front':'rear',i%3+1)} fuel injector`,'Individual injector exterior with connector and seals. Cylinder identity follows the Pontiac bank layout.',[(i%3-1)*.06,-.05,(i<3?-1:1)*.12]);
 for(const [id,section,name,desc,spread] of [
  ['camshaft','timing','Camshaft','Cam-in-block shaft with twelve representative lobes.',[-.28,0,0]],
  ['cam-bearings','timing','Camshaft bearing set','Grouped journal-bearing sleeves. Exact bearing sizes and oil-hole positions remain unverified.',[.12,.10,0]],
@@ -76,6 +77,7 @@ for(const [id,section,name,desc,spread] of [
  ['chain','timing','Timing chain','Individual linked-chain representation between sprockets.',[-.23,0,0]],
  ['timing-cover','timing','Timing cover','Front cover with a crank-seal opening.',[-.36,0,0]],
  ['balancer','timing','Harmonic balancer','Crankshaft damper and belt-groove representation.',[-.49,0,0]],
+ ['crank-pulley','accessories','Crankshaft accessory pulley','Separate dished drive pulley ahead of the harmonic balancer. The belt follows the shared crank, water-pump and generator pulley envelopes; diameters and belt length remain reconstructed.',[-.37,0,0]],
  ['pan','lubrication','Oil pan','Stepped stamped sump with a shallow timing-end shelf, drawn corners, open interior, flange and separate drain plug and flange fasteners. Shape follows GM H-19; local dimensions and finish are reconstructed.',[0,-.20,0]],
  ['pan-gasket','lubrication','Oil-pan gasket','Two separate side-rail gasket strips, grouped. The early rear end seal is a separate selection. Front end sealing and exact flange profiles remain incomplete; not a fabrication template.',[0,-.07,0]],
  ['oil-pump','lubrication','Oil pump','Pump housing below the crankcase.',[.13,0,0]],
@@ -83,13 +85,15 @@ for(const [id,section,name,desc,spread] of [
  ['oil-filter','lubrication','Oil filter','Spin-on filter exterior.',[.18,-.05,-.24]],
  ['water-pump','water-pump-detail','Water pump','Contoured cast pump, open rear chamber, irregular mounting flange, bearing nose and hub. Exact coolant passages, impeller and bearing internals remain incomplete.',[0,0,0]],
  ['water-pulley','water-pump-detail','Water-pump pulley','Stamped dish pulley with a formed rim and open centre. Fasteners are separately selectable; local dimensions remain reconstructed.',[-.16,0,0]],
- ['alternator','accessories','Alternator','Housing, cooling slots and pulley representation; internal electrical pieces are not yet modeled.',[0,.23,-.16]],
+ ['alternator','accessories','Alternator','Shared generator castings, rotor/stator, bearings, regulator/rectifier and brushes. Open its linked component explorer for individual selections.',[0,.23,-.16]],
  ['belt','accessories','Accessory belt','Representative belt loop; not a routing or length specification.',[-.27,0,0]],
  ['flywheel','flywheel','Manual-transmission flywheel','Engine-side flywheel and ring gear; clutch and transaxle remain separate vehicle assemblies.',[.15,0,0]],
  ['rear-seal','flywheel','Rear crankshaft seal','Separate annular crank seal.',[0,0,0]],
 ])part(id,section,name,desc,spread);
 engineParts.push(...ignitionParts,...engineControlParts,...engineServiceParts,...valveHardwareParts);
 for(const [id,callout] of [['eng-water-pump',72],['eng-water-pulley',69]])Object.assign(engineParts.find(p=>p.id===id),{source:'GM 22P · H-19',sourceUrl:engineSource+'#page=14',callout});
+for(const p of engineParts){const m=p.id.match(/(?:piston|rings|pin|rod|rod-cap|rod-bearing|spark|valve|spring|rocker|pushrod|lifter)-(front|rear)-([123])/);if(m){p.cylinder=cylinderNumber(m[1],Number(m[2]));if(!p.serviceReference)p.serviceReference=cylinderReference;}}
+Object.assign(engineParts.find(p=>p.id==='eng-block'),{serviceReference:{title:'1985 L44 nominal engine dimensions',rows:[['Bore','89.0 mm'],['Stroke','76.0 mm'],['Cylinder pitch','111.8 mm'],['Block deck height','224 mm'],['Bank offset','44 mm']],links:[['Pontiac 1985 engine specifications',mvma1985+'#page=5'],['GM production V6 blueprint · figure 11',chevroletV6Blueprint]],note:'Nominal bore and pitch are applied to this reconstruction. Deck height and bank stagger use the GM production-family blueprint. Casting contours, installed mounts, bore fits and operating clearances remain unmeasured.'}});
 export const enginePartById=new Map(engineParts.map(p=>[p.id,p]));
 export const engineSectionById=new Map(engineSections.map(s=>[s.id,s]));
 export function inEngineSection(part,section){
@@ -98,3 +102,5 @@ export function inEngineSection(part,section){
  return false;
 }
 export const engineMembers=section=>engineParts.filter(p=>inEngineSection(p,section));
+
+Object.assign(engineParts.find(p=>p.id==='eng-alternator'),{relatedAssembly:'charging-alternator',relatedAssemblyLabel:'Inspect generator internals'});

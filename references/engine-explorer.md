@@ -1,5 +1,7 @@
 # Engine component explorer
 
+Current inventory: 320 engine selections within 1,538 detail selections across 13 families. The milestone notes below retain their original counts; use the [current status](../artifacts/acceptance-status.json) for acceptance.
+
 The vehicle now has a second level of exploration: **Explore engine components** opens the engine by itself. The engine's explosion amount is independent of the vehicle slider. Ten primary subassembly views plus nineteen nested service views filter the engine to their own components and separation offsets. Selecting a mesh or a list entry opens its description, source reference, focus and isolation controls. Back to vehicle restores the previous selection, search, camera and whole-car explosion amount.
 
 ## Coverage

@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-22T04:31:13.455Z",
+  "models": {
+    "lighting": {
+      "parts": 108,
+      "status": "passed"
+    },
+    "charging": {
+      "parts": 62,
+      "status": "passed"
+    },
+    "headlights": {
+      "parts": 118,
+      "status": "passed"
+    }
+  },
+  "limits": "Software geometry and selection audit. Original manufacturing dimensions, electrical operation and physical fit are not certified."
+}

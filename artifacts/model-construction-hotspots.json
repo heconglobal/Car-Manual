@@ -1,0 +1,431 @@
+{
+  "startedAt": "2026-09-22T10:24:49.428Z",
+  "finishedAt": "2026-09-22T10:26:33.684Z",
+  "sourceSha256": "b2019702353965532ff3dcd7d8016da9555acf341514d85704bcced93b67718c",
+  "constructionMs": 96745.72645999999,
+  "self": [
+    {
+      "function": "(garbage collector)",
+      "file": "",
+      "line": 0,
+      "milliseconds": 6095.700000000001
+    },
+    {
+      "function": "transformedGeometry",
+      "file": "src/vehicle-frame.js",
+      "line": 10,
+      "milliseconds": 3922.636999999998
+    },
+    {
+      "function": "applyNormalMatrix",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 18041,
+      "milliseconds": 1094.1270000000013
+    },
+    {
+      "function": "applyNormalMatrix",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 18041,
+      "milliseconds": 1058.1760000000008
+    },
+    {
+      "function": "mergeAttributes",
+      "file": "node_modules/three/examples/jsm/utils/BufferGeometryUtils.js",
+      "line": 331,
+      "milliseconds": 944.688
+    },
+    {
+      "function": "applyMatrix4",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 18018,
+      "milliseconds": 821.5589999999992
+    },
+    {
+      "function": "copy",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 20066,
+      "milliseconds": 757.1740000000003
+    },
+    {
+      "function": "applyMatrix4",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 18018,
+      "milliseconds": 741.6429999999999
+    },
+    {
+      "function": "applyMatrix4",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 19090,
+      "milliseconds": 737.6909999999999
+    },
+    {
+      "function": "convertBufferAttribute",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 19834,
+      "milliseconds": 716.0709999999995
+    },
+    {
+      "function": "applyMatrix4",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 19090,
+      "milliseconds": 715.9989999999999
+    },
+    {
+      "function": "applyMatrix4",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 19090,
+      "milliseconds": 713.5669999999998
+    },
+    {
+      "function": "copy",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 20066,
+      "milliseconds": 711.8840000000001
+    },
+    {
+      "function": "convertBufferAttribute",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 19834,
+      "milliseconds": 614.2790000000003
+    },
+    {
+      "function": "applyMatrix4",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 19090,
+      "milliseconds": 613.448
+    },
+    {
+      "function": "clone",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 18371,
+      "milliseconds": 593.11
+    },
+    {
+      "function": "getX",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 18137,
+      "milliseconds": 570.0169999999999
+    },
+    {
+      "function": "getX",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 18137,
+      "milliseconds": 541.79
+    },
+    {
+      "function": "getX",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 18137,
+      "milliseconds": 486.0750000000003
+    },
+    {
+      "function": "isEarHashed",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 34493,
+      "milliseconds": 439.9610000000002
+    },
+    {
+      "function": "setFromBufferAttribute",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 9518,
+      "milliseconds": 439.6030000000001
+    },
+    {
+      "function": "getX",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 18137,
+      "milliseconds": 419.43499999999983
+    },
+    {
+      "function": "applyMatrix4",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 19090,
+      "milliseconds": 398.8359999999999
+    },
+    {
+      "function": "applyMatrix4",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 19090,
+      "milliseconds": 395.993
+    },
+    {
+      "function": "mergeVertices",
+      "file": "node_modules/three/examples/jsm/utils/BufferGeometryUtils.js",
+      "line": 644,
+      "milliseconds": 375.218
+    },
+    {
+      "function": "mergeAttributes",
+      "file": "node_modules/three/examples/jsm/utils/BufferGeometryUtils.js",
+      "line": 331,
+      "milliseconds": 373.2909999999998
+    },
+    {
+      "function": "computeBoundingBox",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 19355,
+      "milliseconds": 369.681
+    },
+    {
+      "function": "getY",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 18170,
+      "milliseconds": 360.40800000000013
+    },
+    {
+      "function": "getY",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 18170,
+      "milliseconds": 351.85900000000026
+    },
+    {
+      "function": "post",
+      "file": "node:inspector",
+      "line": 115,
+      "milliseconds": 347.328
+    },
+    {
+      "function": "applyMatrix4",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 19090,
+      "milliseconds": 347.1729999999998
+    },
+    {
+      "function": "convertBufferAttribute",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 19834,
+      "milliseconds": 329.13100000000003
+    },
+    {
+      "function": "getY",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 18170,
+      "milliseconds": 321.8570000000001
+    },
+    {
+      "function": "getX",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 18137,
+      "milliseconds": 321.01700000000017
+    },
+    {
+      "function": "getY",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 18170,
+      "milliseconds": 310.64599999999996
+    }
+  ],
+  "inclusive": [
+    {
+      "function": "(root)",
+      "file": "",
+      "line": 0,
+      "milliseconds": 97147.44199999992
+    },
+    {
+      "function": "(anonymous)",
+      "file": "scripts/profile-model-construction.mjs",
+      "line": 0,
+      "milliseconds": 90647.73299999986
+    },
+    {
+      "function": "createVehicle",
+      "file": "src/model.js",
+      "line": 22,
+      "milliseconds": 90241.98199999983
+    },
+    {
+      "function": "buildVehicleEngine",
+      "file": "src/vehicle-engine.js",
+      "line": 21,
+      "milliseconds": 18786.451000000012
+    },
+    {
+      "function": "createEngineDetail",
+      "file": "src/engine-detail.js",
+      "line": 22,
+      "milliseconds": 16048.771999999997
+    },
+    {
+      "function": "correctLegacyHandedness",
+      "file": "src/vehicle-frame.js",
+      "line": 24,
+      "milliseconds": 9847.719999999972
+    },
+    {
+      "function": "buildVehiclePowertrain",
+      "file": "src/vehicle-powertrain.js",
+      "line": 11,
+      "milliseconds": 7951.766000000014
+    },
+    {
+      "function": "buildVehicleWiring",
+      "file": "src/wiring-detail.js",
+      "line": 15,
+      "milliseconds": 7916.50600000002
+    },
+    {
+      "function": "transformedGeometry",
+      "file": "src/vehicle-frame.js",
+      "line": 10,
+      "milliseconds": 7815.506
+    },
+    {
+      "function": "buildVehicleBrakes",
+      "file": "src/vehicle-brakes.js",
+      "line": 6,
+      "milliseconds": 6531.530000000002
+    },
+    {
+      "function": "buildWiring",
+      "file": "src/wiring-detail.js",
+      "line": 16,
+      "milliseconds": 6232.56300000001
+    },
+    {
+      "function": "buildVehicleHeadlights",
+      "file": "src/headlight-detail.js",
+      "line": 17,
+      "milliseconds": 6127.784000000008
+    },
+    {
+      "function": "(garbage collector)",
+      "file": "",
+      "line": 0,
+      "milliseconds": 6095.700000000001
+    },
+    {
+      "function": "optimize",
+      "file": "src/geometry.js",
+      "line": 33,
+      "milliseconds": 6047.184000000003
+    },
+    {
+      "function": "buildVehicleSuspension",
+      "file": "src/vehicle-suspension.js",
+      "line": 5,
+      "milliseconds": 5375.926999999993
+    },
+    {
+      "function": "buildBrakes",
+      "file": "src/brake-detail.js",
+      "line": 49,
+      "milliseconds": 5092.785000000017
+    },
+    {
+      "function": "(anonymous)",
+      "file": "src/geometry.js",
+      "line": 41,
+      "milliseconds": 4751.982000000001
+    },
+    {
+      "function": "optimize",
+      "file": "src/geometry.js",
+      "line": 33,
+      "milliseconds": 4714.799000000003
+    },
+    {
+      "function": "buildSuspension",
+      "file": "src/suspension-detail.js",
+      "line": 41,
+      "milliseconds": 4537.584999999996
+    },
+    {
+      "function": "buildVehicleLighting",
+      "file": "src/lighting-detail.js",
+      "line": 19,
+      "milliseconds": 4322.983000000003
+    },
+    {
+      "function": "(anonymous)",
+      "file": "src/geometry.js",
+      "line": 41,
+      "milliseconds": 4078.115999999998
+    },
+    {
+      "function": "buildVehicleExhaust",
+      "file": "src/vehicle-exhaust.js",
+      "line": 5,
+      "milliseconds": 3864.9669999999987
+    },
+    {
+      "function": "buildHeadlights",
+      "file": "src/headlight-detail.js",
+      "line": 33,
+      "milliseconds": 3828.2969999999996
+    },
+    {
+      "function": "buildLighting",
+      "file": "src/lighting-detail.js",
+      "line": 20,
+      "milliseconds": 3429.3470000000034
+    },
+    {
+      "function": "buildTransmission",
+      "file": "src/transmission-detail.js",
+      "line": 25,
+      "milliseconds": 3325.795000000007
+    },
+    {
+      "function": "buildEcm",
+      "file": "src/wiring-detail.js",
+      "line": 53,
+      "milliseconds": 3102.7690000000057
+    },
+    {
+      "function": "buildExhaust",
+      "file": "src/exhaust-detail.js",
+      "line": 44,
+      "milliseconds": 2999.230999999996
+    },
+    {
+      "function": "translate",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 19226,
+      "milliseconds": 2793.9280000000044
+    },
+    {
+      "function": "buildVehicleFuel",
+      "file": "src/vehicle-fuel.js",
+      "line": 5,
+      "milliseconds": 2778.232999999998
+    },
+    {
+      "function": "applyMatrix4",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 19090,
+      "milliseconds": 2752.7320000000036
+    },
+    {
+      "function": "applyMatrix4",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 19090,
+      "milliseconds": 2681.017999999996
+    },
+    {
+      "function": "applyMatrix4",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 19090,
+      "milliseconds": 2611.023
+    },
+    {
+      "function": "optimize",
+      "file": "src/geometry.js",
+      "line": 33,
+      "milliseconds": 2555.3039999999974
+    },
+    {
+      "function": "applyMatrix4",
+      "file": "node_modules/three/build/three.core.js",
+      "line": 19090,
+      "milliseconds": 2404.4809999999975
+    },
+    {
+      "function": "buildVehicleCharging",
+      "file": "src/charging-detail.js",
+      "line": 13,
+      "milliseconds": 2387.622
+    }
+  ],
+  "limits": "Single Node CPU sample during concurrent regression with stubbed canvas. Identifies construction hotspots; excludes browser layout, actual canvas drawing, shader compilation and rendering. It does not establish an isolated device benchmark."
+}

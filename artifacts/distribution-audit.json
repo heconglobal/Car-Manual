@@ -1,0 +1,37 @@
+{
+  "date": "2026-09-22T09:00:47.260Z",
+  "status": "passed",
+  "checks": [
+    "No distributed manual scans, component photos or downloaded vehicle meshes",
+    "Three.js license included in distribution",
+    "HDR source notice and identical lighting asset retained"
+  ],
+  "files": [
+    {
+      "file": "THIRD-PARTY-NOTICES.txt",
+      "bytes": 2756,
+      "sha256": "930a44e874822ad9fe2fda83ccf82ed291ceb3605abf48e47e79c3a63164bc48"
+    },
+    {
+      "file": "index.html",
+      "bytes": 530,
+      "sha256": "5ebf02fed1bc6b5c8e0e6a62fce71ba6d6269d38901f058c66cc7559d7d1b08c"
+    },
+    {
+      "file": "assets/index-CqR56Lv-.js",
+      "bytes": 1189425,
+      "sha256": "da1e0530058d6c145fa56dfcffd003c7d4dd39cfb9458c1c7d3060f8ef18ea72"
+    },
+    {
+      "file": "assets/index-Cv3JGt7W.css",
+      "bytes": 29458,
+      "sha256": "daf144a544c47a47d4fdb31cb583590da9c2edb7cf76334a3864bd084b1dfba0"
+    },
+    {
+      "file": "assets/studio_small_09_1k.hdr",
+      "bytes": 1615248,
+      "sha256": "e7cfda5f4e98e623db12b8bfd0184e048488e4855d9c83e2751fb44a32e80c45"
+    }
+  ],
+  "limits": "File-content and packaging checks only; not a legal opinion or certification of all model/reference provenance."
+}

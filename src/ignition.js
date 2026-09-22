@@ -1,4 +1,7 @@
+import {bankOffset} from './engine-layout.js';
+import {l44Nominal} from './factory-specifications.js';
 import * as T from 'three';
+import {estCircuits} from './ignition-catalog.js';
 
 // Authored solid geometry. GM K-13 establishes the distributor stack;
 // 1985 6E3 figure 38 establishes circuit topology. Dimensions are reconstructed.
@@ -7,7 +10,7 @@ export const coilOrigin=[.360,1.372,-.105];
 const Y=[0,0,0],flat=[Math.PI/2,0,0];
 export function sparkPlugPose(bank,c){
  const s=bank==='front'?-1:1;
- return {position:[(c-2)*.105,1.05+.325*Math.cos(Math.PI/6)-.109*.5,s*(.325*.5+.109*Math.cos(Math.PI/6))],axis:[0,.22,s*.976]};
+ return {position:[((c-2)*l44Nominal.borePitch+bankOffset(s)),1.05+.325*Math.cos(Math.PI/6)-.109*.5,s*(.325*.5+.109*Math.cos(Math.PI/6)-.045)],axis:[0,.22,s*.976]};
 }
 
 export function buildIgnition(h){
@@ -156,7 +159,11 @@ export function buildIgnition(h){
  connector('coil-primary-harness',primaryStart,2);connector('coil-primary-harness',primaryEnd,2);
  for(const [dx,mat] of [[-.002,'wireWhite'],[.002,'wirePink']])tube(id('coil-primary-harness'),[at([dx,0,0],primaryStart),at([-.025+dx,.020,.085]),[.29,1.40,-.035],at([-.028,-.034,.060+dx],C),at([dx,0,0],primaryEnd)],.0017,mat);
  const est=at([.012,.010,.054]);connector('est-harness',est,4);
- for(let i=0;i<4;i++)tube(id('est-harness'),[at([(i-1.5)*.005,0,0],est),at([.034+i*.004,-.009,.074]),[.29+i*.004,1.327,.048],[.29+i*.004,1.305,-.05]],.0013,['wire','wireTan','wirePurple','wireWhite'][i]);
+ for(const [i,c] of estCircuits.entries()){
+  const points=[at([(i-1.5)*.005,0,0],est),at([.034+i*.004,-.009,.074]),[.29+i*.004,1.327,.048],[.29+i*.004,1.305,-.05]];
+  tube(id('est-'+c.key),points,.0013,c.base);
+  if(c.stripe)tube(id('est-'+c.key),points.map(p=>[p[0]-.00124,p[1],p[2]]),.00024,c.stripe);
+ }
  const feed=at([.014,-.026,.046],C);connector('coil-feed-harness',feed,2,'zinc');
  for(const [dz,mat] of [[-.003,'wirePink'],[.003,'wireWhite']])tube(id('coil-feed-harness'),[feed,at([-.073,-.020,.030+dz],C),at([-.040,-.055,.050+dz],C),at([.005,-.066,.052+dz],C)],.0017,mat);
  const F=at([.052,-.050,.028],C);
@@ -191,7 +198,7 @@ export function buildIgnition(h){
   const bootStart=P.clone().addScaledVector(axis,.021).toArray(),end=P.clone().addScaledVector(axis,.081).toArray();boot(key,bootStart,pose.axis,.061);
   const slot=(s<0?0:3)+(c-1),a=slot*Math.PI/3,cap=at([Math.cos(a)*.029,.077,-.006+Math.sin(a)*.029]);
   boot(key,cap,[0,1,0],.037);
-  tube(id(key),[at([0,.034,0],cap),at([-.018,.060,s*.013],cap),[(c-2)*.105,1.468,s*.19],[(c-2)*.105,1.415,s*.29],end],.0035,'silicone');
+  tube(id(key),[at([0,.034,0],cap),at([-.018,.060,s*.013],cap),[((c-2)*l44Nominal.borePitch+bankOffset(s)),1.468,s*.19],[((c-2)*l44Nominal.borePitch+bankOffset(s)),1.415,s*.29],end],.0035,'silicone');
  }
  const coilTop=at([0,.009,.044],C),capTop=at([0,.083,-.006]);
  boot('coil-lead',coilTop,[0,0,1]);boot('coil-lead',capTop,[0,1,0]);

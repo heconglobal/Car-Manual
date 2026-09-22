@@ -1,0 +1,129 @@
+{
+  "reviewedAt": "2026-09-22T07:29:55.479693+00:00",
+  "sourceSha256": "2e64d5ce13c48fabccadb6af0d09da1f041fea81f7b88f267f7791e2e9ad6029",
+  "applicationSha256": "d73b07f2c2d46cc732269bd3af23221bdd5fbc4cab040f2dd957f6ee419e791f",
+  "status": "development visual inspection; not final acceptance",
+  "captures": [
+    {
+      "file": "brakes-front-caliper-assembled.png",
+      "sha256": "bd9114b64abf9f24df4c2ceda59721ddd6ae0250a1f9820abe608e91027d380b",
+      "capturedAt": "2026-09-22T07:00:34.198102+00:00"
+    },
+    {
+      "file": "body-hood-assembled.png",
+      "sha256": "5cd232d5bba9f15b4938d0d1df8a551a8532ad5169db45113b1bc043cdc477e8",
+      "capturedAt": "2026-09-22T06:57:01.499326+00:00"
+    },
+    {
+      "file": "wiring-cluster-assembled.png",
+      "sha256": "ebdb592aebd122be683aaaae9918528bd89da7c5f84f4bb569ab7be0eb7815c7",
+      "capturedAt": "2026-09-22T07:13:29.640920+00:00"
+    },
+    {
+      "file": "headlight-left-assembled.png",
+      "sha256": "d867946a23197df545793b6adb9ff2731d6e86b66b6415f226dd3771c0af6f4f",
+      "capturedAt": "2026-09-22T07:29:05.657749+00:00"
+    },
+    {
+      "file": "fuel-tank-assembled.png",
+      "sha256": "c312c4c967be836f6e164b0d2a52a5c9b6e8d1c2246571c8e7ad7c6afb7c8719",
+      "capturedAt": "2026-09-22T07:25:46.179904+00:00"
+    },
+    {
+      "file": "exhaust-complete-assembled.png",
+      "sha256": "62c3fab1c169dd31f71d13c2ede85ffe8d62afaf8adbe8a83f007041f2321170",
+      "capturedAt": "2026-09-22T07:22:38.807661+00:00"
+    },
+    {
+      "file": "headlight-motor-exploded.png",
+      "sha256": "28f934f00391c0c30857bad9aaea2a2917b59e4c062df750b876a608bb427f63",
+      "capturedAt": "2026-09-22T07:29:34.075801+00:00",
+      "reviewedAt": "2026-09-22T07:41:32.539708+00:00"
+    },
+    {
+      "file": "hvac-c41-assembled.png",
+      "sha256": "72fe82266d6d3fe12ad557928debc17a2a970400feefd5274283b6bdad3aca98",
+      "capturedAt": "2026-09-22T07:32:46.534321+00:00",
+      "reviewedAt": "2026-09-22T07:41:32.541879+00:00"
+    },
+    {
+      "file": "engine-mobile.png",
+      "sha256": "ef6e4925bea74ef96e6e5218e5e8e8a9ced097b11907c532f82adf54216f1660",
+      "capturedAt": "2026-09-22T07:20:35.107622+00:00",
+      "reviewedAt": "2026-09-22T07:41:32.542954+00:00"
+    },
+    {
+      "file": "headlamp-procedure-mobile.png",
+      "sha256": "c912788d8351a65c9436a588ae152a2b0e6c779aa832bc7387ad6aeb344bf05d",
+      "capturedAt": "2026-09-22T07:45:00.708748+00:00",
+      "reviewedAt": "2026-09-22T07:48:00.502560+00:00"
+    },
+    {
+      "file": "headlamp-procedure-spring.png",
+      "sha256": "7d8b240b13b96f03e61bb84e96e7bd1422060f9954c34aa0c82155bff0027729",
+      "capturedAt": "2026-09-22T07:44:53.079415+00:00",
+      "reviewedAt": "2026-09-22T07:48:00.505114+00:00"
+    },
+    {
+      "file": "transmission-assembled.png",
+      "sha256": "30dc16d4152021722c53e88880398445b38db4afaf33ac2113150de0d4b74d10",
+      "capturedAt": "2026-09-22T07:51:23.038311+00:00",
+      "reviewedAt": "2026-09-22T07:56:17.397426+00:00"
+    },
+    {
+      "file": "cooling-complete-circuit.png",
+      "sha256": "38c740a77341ba7402008a0af16f986a3181118d180d17df1d5094fc16eaff79",
+      "capturedAt": "2026-09-22T07:51:55.244055+00:00",
+      "reviewedAt": "2026-09-22T07:56:17.400801+00:00"
+    },
+    {
+      "file": "suspension-front-assembled.png",
+      "sha256": "3a6a56dc2eff8b839a0b319f50960fc8feba2c341cb9b6256a87dda8f03bed7e",
+      "capturedAt": "2026-09-22T07:47:47.006437+00:00",
+      "reviewedAt": "2026-09-22T07:56:17.404795+00:00"
+    },
+    {
+      "file": "desktop-overview.png",
+      "sha256": "687dc6343647e37458ee046aec96bcf6974f4a9166b98394e7cca6a0493c95b8",
+      "capturedAt": "2026-09-22T07:58:10.656468+00:00",
+      "reviewedAt": "2026-09-22T08:05:35.061092+00:00"
+    },
+    {
+      "file": "engine-assembled.png",
+      "sha256": "a615a5ddc2caedb49a2bcdb97d335de7453f33453285e0c3c25fbb07b7b4f7e9",
+      "capturedAt": "2026-09-22T08:25:10.398763+00:00",
+      "reviewedAt": "2026-09-22T08:48:06.018532+00:00"
+    },
+    {
+      "file": "engine-exploded.png",
+      "sha256": "b52432a9f0bb428c016233a011b2c670b1fc0eae06fd630f1cc53a6b1556cdbb",
+      "capturedAt": "2026-09-22T08:25:16.121681+00:00",
+      "reviewedAt": "2026-09-22T08:48:06.024643+00:00"
+    },
+    {
+      "file": "charging-battery-assembled.png",
+      "sha256": "9acbae053b47bf0d2c8881859eb29ca1dfd63e6fc99b642ff4a52b5bab151656",
+      "capturedAt": "2026-09-22T08:25:35.578213+00:00",
+      "reviewedAt": "2026-09-22T08:48:06.044413+00:00"
+    },
+    {
+      "file": "charging-starter-assembled.png",
+      "sha256": "64e276214ac65b5207eee44d6178a479ced2a26e94dcaad587b62bf5f74ca1b9",
+      "capturedAt": "2026-09-22T08:25:42.713695+00:00",
+      "reviewedAt": "2026-09-22T08:48:06.068617+00:00"
+    },
+    {
+      "file": "charging-alternator-assembled.png",
+      "sha256": "4127f73cc976c94e10359814964671a9bf7a9593a6fc17d47ae8a25158450d13",
+      "capturedAt": "2026-09-22T08:25:48.743203+00:00",
+      "reviewedAt": "2026-09-22T08:48:06.083969+00:00"
+    },
+    {
+      "file": "lighting-rear-left-assembled.png",
+      "sha256": "20bebf8a56831ef9d8355ee0ea5ac7b4c76af010c7b3872f6ed304ad6b3b6813",
+      "capturedAt": "2026-09-22T08:25:59.502501+00:00",
+      "reviewedAt": "2026-09-22T08:48:06.116582+00:00"
+    }
+  ],
+  "note": "These captures represent the 2e64d5ce13c4 build before the shared powertrain changes. They are retained as historical visual findings, not current-source acceptance."
+}

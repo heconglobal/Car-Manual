@@ -1,3 +1,4 @@
+import {sourceFingerprint} from './source-fingerprint.mjs';
 import assert from 'node:assert/strict';
 import {writeFile} from 'node:fs/promises';
 import * as T from 'three';
@@ -11,6 +12,10 @@ const {createTransmissionDetail,transaxleDatum}=await import('../src/transmissio
 const {createCoolingDetail,coolantRoutes}=await import('../src/cooling-detail.js');
 const {transmissionParts}=await import('../src/transmission-catalog.js');
 const {coolingParts}=await import('../src/cooling-catalog.js');
+const {wiringParts}=await import('../src/wiring-catalog.js');
+const {createWiringDetail}=await import('../src/wiring-detail.js');
+const {chargingParts}=await import('../src/charging-catalog.js');
+const {createChargingDetail}=await import('../src/charging-detail.js');
 const {lightingParts}=await import('../src/lighting-catalog.js');
 const {createLightingDetail}=await import('../src/lighting-detail.js');
 const {headlightParts}=await import('../src/headlight-catalog.js');
@@ -37,8 +42,8 @@ const exhaustModel=createExhaustDetail();
 const bodyModel=createBodyDetail();
 const hvacModel=createHvacDetail();
 const headlightModel=createHeadlightDetail();
-const results={date:new Date().toISOString(),models:{}};
-for(const [name,model,catalog] of [['engine',createEngineDetail(),engineParts],['transmission',createTransmissionDetail(),transmissionParts],['cooling',createCoolingDetail(),coolingParts],['brakes',brakeModel,brakeParts],['suspension',suspensionModel,suspensionParts],['fuel',fuelModel,fuelParts],['exhaust',exhaustModel,exhaustParts],['body',bodyModel,bodyParts],['lighting',createLightingDetail(),lightingParts],['headlights',headlightModel,headlightParts],['hvac',hvacModel,hvacParts],['vehicle',vehicleModel,parts]]){
+const results={date:new Date().toISOString(),sourceSha256:sourceFingerprint(),models:{}};
+for(const [name,model,catalog] of [['wiring',createWiringDetail(),wiringParts],['engine',createEngineDetail(),engineParts],['transmission',createTransmissionDetail(),transmissionParts],['cooling',createCoolingDetail(),coolingParts],['brakes',brakeModel,brakeParts],['suspension',suspensionModel,suspensionParts],['fuel',fuelModel,fuelParts],['exhaust',exhaustModel,exhaustParts],['body',bodyModel,bodyParts],['charging',createChargingDetail(),chargingParts],['lighting',createLightingDetail(),lightingParts],['headlights',headlightModel,headlightParts],['hvac',hvacModel,hvacParts],['vehicle',vehicleModel,parts]]){
  assert.equal(new Set(catalog.map(p=>p.id)).size,catalog.length,'duplicate catalog IDs');
  assert.equal(model.groups.size,catalog.length);
  let meshes=0,triangles=0;
@@ -58,6 +63,8 @@ const visibleHeadBounds=(model,id,raised)=>{const g=model.groups.get(id);g.trave
 for(const side of ['left','right']){
  const key='hl-'+side+'-',driver=side==='left';
  const closed=visibleHeadBounds(headlightModel,key+'lens',false),raised=visibleHeadBounds(headlightModel,key+'lens',true);
+ assert(Math.abs(raised.getCenter(new T.Vector3()).y-.709)<.0001,'1985 nominal raised bulb-center height');
+ assert(Math.abs(Math.abs(raised.getCenter(new T.Vector3()).x)-.511)<.0001,'1985 nominal lateral bulb-center offset');
  assert(raised.getCenter(new T.Vector3()).y-closed.getCenter(new T.Vector3()).y>.15,'lamp must actually rotate below the hood');
  assert.equal(headlightParts.filter(p=>p.id.startsWith(key+'bumper-')).length,4,'early gear needs four individual cushions');
  for(const p of headlightParts.filter(p=>p.id.startsWith(key))){const bounds=new T.Box3().setFromObject(headlightModel.groups.get(p.id));assert(driver?bounds.max.x<0:bounds.min.x>0,p.id+' wrong side');}
@@ -67,7 +74,7 @@ for(const side of ['left','right']){
 }
 assert(new T.Box3().setFromObject(headlightModel.groups.get('hl-isolation-relay')).max.x<0,'isolation relay must be driver-side');
 const allClosed=visibleHeadBounds(vehicleModel,'headlights',false),allRaised=visibleHeadBounds(vehicleModel,'headlights',true);
-assert(allRaised.max.y<.89,'accepted low headlight profile');assert(allRaised.max.y-allClosed.max.y>.12,'closed hardware must stay beneath hood');
+assert(allRaised.max.y<.82,'lower nominal headlight profile');assert(allRaised.max.y-allClosed.max.y>.08,'raised cover must stand clear of its closed pose');
 results.headlights='passed: dual poses, real bucket rotation, early four-cushion gears, fixed motors/relays, independent cover, LHD identity and low raised envelope';
 // Heater and blower stay on the passenger side in actual vehicle coordinates.
 const hb=id=>new T.Box3().setFromObject(hvacModel.groups.get('hv-'+id));
@@ -114,9 +121,9 @@ const forward=centre('nose').sub(centre('rear-fascia')).setY(0).normalize();
 const actualLeft=new T.Vector3().crossVectors(new T.Vector3(0,1,0),forward);
 assert(centre('steering-wheel').dot(actualLeft)>0,'steering wheel must be left when facing the actual nose');
 assert(centre('battery').dot(actualLeft)<0,'battery must be passenger-side in the same physical frame');
-const labels=vehicleModel.groups.get('dashboard').children.filter(m=>m.userData.label);
+const labels=vehicleModel.groups.get('instrument-cluster').children.filter(m=>m.userData.label);
 const labelX=text=>new T.Box3().setFromObject(labels.find(m=>m.userData.label===text)).getCenter(new T.Vector3()).x;
-assert(labelX('MPH')<labelX('RPM'),'speedometer must remain left of tachometer after conversion');
+assert(labelX('MPH')<labelX('R.P.M.'),'speedometer must remain left of tachometer after conversion');
 assert(new T.Box3().setFromObject(vehicleModel.groups.get('steering-wheel')).min.x<-.55,'turn-signal stalk must extend to driver left');
 assert(centre('radiator').z<0);assert(centre('gearbox').z>0);
 for(const id of ['gearbox','clutch','steering-wheel'])assert(vehicleModel.groups.get(id).matrixWorld.determinant()>0,id+' must not be mirrored');

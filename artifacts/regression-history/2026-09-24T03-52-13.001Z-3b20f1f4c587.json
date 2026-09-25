@@ -1,0 +1,289 @@
+{
+  "manifest": {
+    "capturedAt": "2026-09-24T03:56:33.166Z",
+    "sourceSha256": "3b20f1f4c587db5442cc158dcc36472061e36f516167959699208ac67471352f",
+    "applicationSha256": "c29b17aaee67e25de02d9fdcdb37fedff96b12bc6861379a13a152780272d45b",
+    "testFiles": {
+      "body-hardware.spec.js": "24b614104877cf0b10b04be60d48ababe46ee22175d33db6ade180a7e5bc8e9d",
+      "brakes.spec.js": "f1195a86b80545fd1eb9578946da480aa33e2775b258b5b8f3eca6cb6c88e125",
+      "configuration.spec.js": "88254f68c446f555661395e7310f93047342dfaae6a891e8f79d684fee5d8cac",
+      "electrical.spec.js": "b3c3610e7fdf2ec04f7b8fe7e5cefa8be782d0764ce0575e4592396d05978c56",
+      "engine-service.spec.js": "9bf5b2fc7dc5460f3dd6a5251273ceb1640c2bc85145fa61bcc420053705c0e1",
+      "engine.spec.js": "d835929251fdf52eaab25b3d6d7a7fe8b1279938713a0e007077e6384459b525",
+      "exhaust.spec.js": "942e6ced8d9e7902427f668fc421e447da1417ec4741f4ddab096e3782eaab86",
+      "fuel.spec.js": "855c51895b37fee5ab862293191a195457f16d700866bea41d8c90039c4584d4",
+      "headlights.spec.js": "0202d7da9c2d578e03ac7ee91e94bc62db8a1064615da0e2a2759624dd26a29a",
+      "hvac.spec.js": "835318b1a7b085f68e5a605e381285405b66b31f5215ab114c68f4beb3f3551f",
+      "ignition.spec.js": "26b85b075ee9d1e426121a87486e716fe9e4968d4729b827f7f7015d86040127",
+      "rear-body.spec.js": "aa8e63a6d9f5816a6775f9a18358d35a64b955303962b6040ecbb101a5b0deba",
+      "service-guides.spec.js": "ae226847c7c4d94d1d96867e16166ab705ab0ae9257d0b75facb4eb276dddbce",
+      "suspension.spec.js": "27e4d61da57b4333af13614c6a2b30ee05bb1f378cb197b0de3124b14c2fc890",
+      "transmission-cooling.spec.js": "c21d94f16185813d5a3618637c651a27ead9478233740f2e7c8fad4d573dcf4b",
+      "valve-gear.spec.js": "eda7e7f4af55a1c862510d5755e8d1811ec1737513c317798f07bc91d9be8702",
+      "workshop.spec.js": "f63d9d0936dcb83393dcf5eabf40d8b69c70bfdc2c54ec951a4761e359976a5d"
+    },
+    "newestInputMtime": 1790221932356.2358
+  },
+  "report": {
+    "config": {
+      "argv": [
+        "/home/hesh913/.nvm/versions/node/v24.13.1/bin/node",
+        "/home/hesh913/fiero-3d-manual/node_modules/@playwright/test/cli.js",
+        "test",
+        "tests/headlights.spec.js",
+        "tests/valve-gear.spec.js",
+        "--workers=1"
+      ],
+      "configFile": "/home/hesh913/fiero-3d-manual/playwright.config.js",
+      "rootDir": "/home/hesh913/fiero-3d-manual/tests",
+      "failOnFlakyTests": false,
+      "forbidOnly": false,
+      "fullyParallel": false,
+      "globalSetup": null,
+      "globalTeardown": null,
+      "globalTimeout": 0,
+      "grep": {},
+      "grepInvert": null,
+      "maxFailures": 0,
+      "metadata": {
+        "sourceSha256": "3b20f1f4c587db5442cc158dcc36472061e36f516167959699208ac67471352f",
+        "actualWorkers": 1
+      },
+      "preserveOutput": "always",
+      "projects": [
+        {
+          "outputDir": "/home/hesh913/fiero-3d-manual/test-results",
+          "repeatEach": 1,
+          "retries": 0,
+          "metadata": {
+            "sourceSha256": "3b20f1f4c587db5442cc158dcc36472061e36f516167959699208ac67471352f",
+            "actualWorkers": 1
+          },
+          "id": "",
+          "name": "",
+          "testDir": "/home/hesh913/fiero-3d-manual/tests",
+          "testIgnore": [],
+          "testMatch": [
+            "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+          ],
+          "timeout": 240000
+        }
+      ],
+      "quiet": false,
+      "reporter": [
+        [
+          "list",
+          null
+        ],
+        [
+          "html",
+          {
+            "open": "never"
+          }
+        ],
+        [
+          "json",
+          {
+            "outputFile": "artifacts/full-regression.json"
+          }
+        ]
+      ],
+      "reportSlowTests": {
+        "max": 5,
+        "threshold": 300000
+      },
+      "shard": null,
+      "tags": [],
+      "updateSnapshots": "missing",
+      "updateSourceMethod": "patch",
+      "version": "1.63.0",
+      "workers": 1,
+      "webServer": {
+        "command": "npm run dev",
+        "url": "http://127.0.0.1:5185",
+        "reuseExistingServer": true,
+        "timeout": 30000
+      }
+    },
+    "suites": [
+      {
+        "title": "headlights.spec.js",
+        "file": "headlights.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "1985 headlights expose both sides, early motor internals, independent covers and a complete remaining-work list",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 840000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 146416,
+                    "errors": [],
+                    "stdout": [
+                      {
+                        "text": "Captured headlights-vehicle-closed\n"
+                      },
+                      {
+                        "text": "Captured remaining-work-checklist\n"
+                      },
+                      {
+                        "text": "Captured headlights-pair-raised\n"
+                      },
+                      {
+                        "text": "Captured headlight-left-assembled\n"
+                      },
+                      {
+                        "text": "Captured headlight-left-exploded\n"
+                      },
+                      {
+                        "text": "Captured headlight-right-assembled\n"
+                      },
+                      {
+                        "text": "Captured headlight-right-exploded\n"
+                      },
+                      {
+                        "text": "Captured headlight-lamp-assembled\n"
+                      },
+                      {
+                        "text": "Captured headlight-lamp-exploded\n"
+                      },
+                      {
+                        "text": "Captured headlight-aim-spring\n"
+                      },
+                      {
+                        "text": "Captured headlight-motor-assembled\n"
+                      },
+                      {
+                        "text": "Captured headlight-motor-exploded\n"
+                      },
+                      {
+                        "text": "Captured headlight-plastic-output-gear\n"
+                      },
+                      {
+                        "text": "Captured headlight-cover-raised\n"
+                      },
+                      {
+                        "text": "Captured headlight-cover-closed\n"
+                      },
+                      {
+                        "text": "Captured headlight-closed-mechanism\n"
+                      },
+                      {
+                        "text": "Captured headlight-relays\n"
+                      },
+                      {
+                        "text": "Captured headlight-left-relay-assembled\n"
+                      },
+                      {
+                        "text": "Captured headlight-left-relay-exploded\n"
+                      },
+                      {
+                        "text": "Captured headlight-right-relay-assembled\n"
+                      },
+                      {
+                        "text": "Captured headlight-right-relay-exploded\n"
+                      },
+                      {
+                        "text": "Captured headlight-isolation-relay-assembled\n"
+                      },
+                      {
+                        "text": "Captured headlight-isolation-relay-exploded\n"
+                      },
+                      {
+                        "text": "Captured headlight-fusible-links-assembled\n"
+                      },
+                      {
+                        "text": "Captured headlight-fusible-links-exploded\n"
+                      },
+                      {
+                        "text": "Captured headlights-vehicle-raised\n"
+                      },
+                      {
+                        "text": "Captured headlights-vehicle-white-closed\n"
+                      },
+                      {
+                        "text": "Captured headlight-mobile-cushion\n"
+                      }
+                    ],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T03:52:13.911Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "132b88abb95a8691fb25-d24c01dcde6dc3c452d3",
+            "file": "headlights.spec.js",
+            "line": 5,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "valve-gear.spec.js",
+        "file": "valve-gear.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "individual valve gear separates small hardware and preserves the correct stem-seal variant",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 300000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 65885,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T03:54:40.646Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "bbe92b7fcf4cdf312a9a-b229ef0780497acad2ce",
+            "file": "valve-gear.spec.js",
+            "line": 4,
+            "column": 1
+          }
+        ]
+      }
+    ],
+    "errors": [],
+    "stats": {
+      "startTime": "2026-09-24T03:52:13.001Z",
+      "duration": 213862.229,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  }
+}

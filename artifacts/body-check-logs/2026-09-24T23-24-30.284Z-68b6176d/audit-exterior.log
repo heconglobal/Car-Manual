@@ -1,0 +1,41 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: paint blocks exterior opening
+
+1 !== 0
+
+    at file:///home/hesh913/fiero-3d-manual/scripts/audit-exterior.mjs:33:107
+    at check (file:///home/hesh913/fiero-3d-manual/scripts/audit-exterior.mjs:19:25)
+    at file:///home/hesh913/fiero-3d-manual/scripts/audit-exterior.mjs:31:1 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 1,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.13.1
+Error: Command failed: /home/hesh913/.nvm/versions/node/v24.13.1/bin/node scripts/audit-exterior.mjs
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: paint blocks exterior opening
+
+1 !== 0
+
+    at file:///home/hesh913/fiero-3d-manual/scripts/audit-exterior.mjs:33:107
+    at check (file:///home/hesh913/fiero-3d-manual/scripts/audit-exterior.mjs:19:25)
+    at file:///home/hesh913/fiero-3d-manual/scripts/audit-exterior.mjs:31:1 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 1,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.13.1

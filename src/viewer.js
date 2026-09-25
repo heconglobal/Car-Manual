@@ -61,20 +61,21 @@ export function createViewer(container, onSelect) {
    if(o.userData.original)Object.assign(o.userData.original,{opacity:m.opacity,transparent:true});
   });
  }
+ const vehiclePartById=new Map(parts.map(p=>[p.id,p]));
  const {root,groups,configure}=createVehicle();prepareSoftwareSurfaces(root);scene.add(root);
  let inspection=null;const inspections=new Map();
  const builders={'wiring-system':createWiringDetail,'charging-system':createChargingDetail,'lighting-system':createLightingDetail,'headlight-system':createHeadlightDetail,'hvac-system':createHvacDetail,'body-system':createBodyDetail,'exhaust-system':createExhaustDetail,'fuel-system':createFuelDetail,'suspension-system':createSuspensionDetail,engine:createEngineDetail,transmission:createTransmissionDetail,'cooling-system':createCoolingDetail,'braking-system':createBrakeDetail};
  const currentGroups=()=>current.assembly?inspection.groups:groups;
  const currentParts=()=>current.assembly?detailParts.filter(p=>p.family===familyFor(current.assembly).id):parts;
  const currentRoot=()=>current.assembly?inspection.root:root;
- const target=new T.WebGLRenderTarget(1,1,{type:T.HalfFloatType,samples:softwareRenderer?0:4});
+ const target=new T.WebGLRenderTarget(1,1,{type:T.HalfFloatType,samples:4});
  const composer=new EffectComposer(renderer,target);composer.addPass(new RenderPass(scene,camera));
  const occlusion=new SSAOPass(scene,camera,1,1,16);occlusion.kernelRadius=.13;occlusion.minDistance=.000025;occlusion.maxDistance=.004;composer.addPass(occlusion);
  const output=new OutputPass();composer.addPass(output);
  const antialias=new ShaderPass(FXAAShader);antialias.enabled=!!softwareRenderer;composer.addPass(antialias);
  const dimensions=new T.Group();scene.add(dimensions);
  const dimensionLine=(points)=>{const g=new T.BufferGeometry().setFromPoints(points.map(p=>new T.Vector3(...p)));dimensions.add(new T.Line(g,new T.LineBasicMaterial({color:'#617b72'})));};
- dimensionLine([[1.04,.03,-2.041],[1.15,.03,-2.041],[1.15,.03,2.041],[1.04,.03,2.041]]);
+ dimensionLine([[1.04,.03,-2.1105],[1.15,.03,-2.1105],[1.15,.03,1.9715],[1.04,.03,1.9715]]);
  dimensionLine([[-.99,.03,-1.1865],[-1.1,.03,-1.1865],[-1.1,.03,1.1865],[-.99,.03,1.1865]]);
  dimensionLine([[-.876,.03,-2.22],[-.876,.03,-2.30],[.876,.03,-2.30],[.876,.03,-2.22]]);
  for(const [text,pos,size] of [['4,082 mm',[1.28,.04,0],[.72,.14]],['2,373 mm',[-1.25,.04,0],[.72,.14]],['1,752 mm',[0,.04,-2.45],[.72,.14]]]){const m=new T.Mesh(new T.PlaneGeometry(...size),textMaterial(text,{background:'#dededb',foreground:'#516c62',font:'54px monospace'}));m.position.set(...pos);m.rotation.x=-Math.PI/2;dimensions.add(m);}dimensions.visible=false;
@@ -124,7 +125,7 @@ export function createViewer(container, onSelect) {
   container.closest('.stage').dataset.studio=dark?'dark':'light';
   for(const [id,g] of currentGroups()) {
    const active=!!current.assembly||current.system==='all'||g.userData.system===current.system;
-   g.visible=current.assembly?inDetailSection(detailPartById.get(id),current.assembly)&&detailAvailable(detailPartById.get(id),current.configuration):!(current.hideBody&&g.userData.system==='body'&&id!=='spaceframe');
+   g.visible=current.assembly?inDetailSection(detailPartById.get(id),current.assembly)&&detailAvailable(detailPartById.get(id),current.configuration):detailAvailable(vehiclePartById.get(id),current.configuration)&&!(current.hideBody&&g.userData.system==='body'&&id!=='spaceframe');
    if(current.isolate)g.visible=g.visible&&(current.selected?id===current.selected:active);
    g.traverse(o=>{if(!o.isMesh)return;const original=o.userData.original;
     if(current.assembly&&o.userData.option)o.visible=current.configuration?.[o.userData.option]===o.userData.value;
@@ -140,7 +141,7 @@ export function createViewer(container, onSelect) {
     o.material.color.copy(original.color);o.material.emissive?.copy(original.emissive);o.material.emissiveIntensity=original.emissiveIntensity;
     const transparent=ghost||original.transparent;
     if(o.material.transparent!==transparent||o.material.wireframe!==current.wireframe)o.material.needsUpdate=true;
-    o.material.opacity=ghost?.075:original.opacity;o.material.transparent=transparent;o.material.depthWrite=!ghost&&original.opacity===1;o.material.wireframe=current.wireframe;o.castShadow=!ghost&&!['glass','headlampGlass','headlampFlute','lensGrid'].includes(o.userData.materialName);
+    o.material.opacity=ghost?.075:original.opacity;o.material.transparent=transparent;o.material.depthWrite=!ghost&&original.opacity===1;o.material.wireframe=current.wireframe;o.castShadow=!ghost&&!['glass','headlampGlass','headlampFlute','lensGrid','tailOuter'].includes(o.userData.materialName);
    });
   }
   renderer.domElement.dataset.system=current.system;renderer.domElement.dataset.selected=current.selected||'';
@@ -150,7 +151,7 @@ export function createViewer(container, onSelect) {
  function fitInspectionShadow(){
   const sc=sun.shadow.camera;
   if(!current.assembly){
-   sun.target.position.set(0,0,0);sc.left=-4;sc.right=4;sc.top=4;sc.bottom=-4;sc.near=.5;sc.far=500;sun.shadow.normalBias=.003;sun.shadow.radius=10;
+   sun.target.position.set(0,0,0);sc.left=-4;sc.right=4;sc.top=4;sc.bottom=-4;sc.near=.5;sc.far=20;sun.shadow.bias=-.00015;sun.shadow.normalBias=.005;sun.shadow.radius=10;
   }else{
    inspection.root.updateMatrixWorld(true);const b=new T.Box3();
    for(const g of inspection.groups.values())if(g.visible){const p=visibleBounds(g);p.translate(engineGoal(g).sub(g.position));b.union(p);}
@@ -160,7 +161,7 @@ export function createViewer(container, onSelect) {
    const centre=b.getCenter(new T.Vector3()),radius=Math.max(.03,b.getSize(new T.Vector3()).length()/2)*1.18;
    inspectionRadius=radius;sun.target.position.copy(centre);const distance=sun.position.distanceTo(centre);
    sc.left=-radius;sc.right=radius;sc.top=radius;sc.bottom=-radius;sc.near=Math.max(.1,distance-radius);sc.far=distance+radius;
-   sun.shadow.normalBias=T.MathUtils.clamp(radius*.0007,.00002,.0007);sun.shadow.radius=2;
+   sun.shadow.bias=-.00002;sun.shadow.normalBias=T.MathUtils.clamp(radius*.0007,.00002,.0007);sun.shadow.radius=2;
   }
   sun.target.updateMatrixWorld();sc.updateProjectionMatrix();renderer.shadowMap.needsUpdate=true;
  }

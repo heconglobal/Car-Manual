@@ -1,0 +1,507 @@
+{
+  "manifest": {
+    "capturedAt": "2026-09-24T03:52:12.300Z",
+    "sourceSha256": "384321b7a77e6ee906c6132c53274724dbc755ea030d4d2121df3cdec45efe9e",
+    "applicationSha256": "c29b17aaee67e25de02d9fdcdb37fedff96b12bc6861379a13a152780272d45b",
+    "testFiles": {
+      "body-hardware.spec.js": "24b614104877cf0b10b04be60d48ababe46ee22175d33db6ade180a7e5bc8e9d",
+      "brakes.spec.js": "f1195a86b80545fd1eb9578946da480aa33e2775b258b5b8f3eca6cb6c88e125",
+      "configuration.spec.js": "88254f68c446f555661395e7310f93047342dfaae6a891e8f79d684fee5d8cac",
+      "electrical.spec.js": "b3c3610e7fdf2ec04f7b8fe7e5cefa8be782d0764ce0575e4592396d05978c56",
+      "engine-service.spec.js": "9bf5b2fc7dc5460f3dd6a5251273ceb1640c2bc85145fa61bcc420053705c0e1",
+      "engine.spec.js": "d835929251fdf52eaab25b3d6d7a7fe8b1279938713a0e007077e6384459b525",
+      "exhaust.spec.js": "942e6ced8d9e7902427f668fc421e447da1417ec4741f4ddab096e3782eaab86",
+      "fuel.spec.js": "855c51895b37fee5ab862293191a195457f16d700866bea41d8c90039c4584d4",
+      "headlights.spec.js": "8419fef5f6ba748ba37f737af7cc40d964bdf608866ad425f0003dd6a8ed466b",
+      "hvac.spec.js": "835318b1a7b085f68e5a605e381285405b66b31f5215ab114c68f4beb3f3551f",
+      "ignition.spec.js": "26b85b075ee9d1e426121a87486e716fe9e4968d4729b827f7f7015d86040127",
+      "rear-body.spec.js": "aa8e63a6d9f5816a6775f9a18358d35a64b955303962b6040ecbb101a5b0deba",
+      "service-guides.spec.js": "ae226847c7c4d94d1d96867e16166ab705ab0ae9257d0b75facb4eb276dddbce",
+      "suspension.spec.js": "27e4d61da57b4333af13614c6a2b30ee05bb1f378cb197b0de3124b14c2fc890",
+      "transmission-cooling.spec.js": "c21d94f16185813d5a3618637c651a27ead9478233740f2e7c8fad4d573dcf4b",
+      "valve-gear.spec.js": "c46492dca65102462434cc7837df33839ac47ce49e51a4ab22d405d35e47d006",
+      "workshop.spec.js": "f63d9d0936dcb83393dcf5eabf40d8b69c70bfdc2c54ec951a4761e359976a5d"
+    },
+    "newestInputMtime": 1790221080319.352
+  },
+  "report": {
+    "config": {
+      "argv": [
+        "/home/hesh913/.nvm/versions/node/v24.13.1/bin/node",
+        "/home/hesh913/fiero-3d-manual/node_modules/@playwright/test/cli.js",
+        "test",
+        "tests/engine.spec.js",
+        "tests/engine-service.spec.js",
+        "tests/valve-gear.spec.js",
+        "tests/transmission-cooling.spec.js",
+        "tests/headlights.spec.js",
+        "--workers=1"
+      ],
+      "configFile": "/home/hesh913/fiero-3d-manual/playwright.config.js",
+      "rootDir": "/home/hesh913/fiero-3d-manual/tests",
+      "failOnFlakyTests": false,
+      "forbidOnly": false,
+      "fullyParallel": false,
+      "globalSetup": null,
+      "globalTeardown": null,
+      "globalTimeout": 0,
+      "grep": {},
+      "grepInvert": null,
+      "maxFailures": 0,
+      "metadata": {
+        "sourceSha256": "384321b7a77e6ee906c6132c53274724dbc755ea030d4d2121df3cdec45efe9e",
+        "actualWorkers": 1
+      },
+      "preserveOutput": "always",
+      "projects": [
+        {
+          "outputDir": "/home/hesh913/fiero-3d-manual/test-results",
+          "repeatEach": 1,
+          "retries": 0,
+          "metadata": {
+            "sourceSha256": "384321b7a77e6ee906c6132c53274724dbc755ea030d4d2121df3cdec45efe9e",
+            "actualWorkers": 1
+          },
+          "id": "",
+          "name": "",
+          "testDir": "/home/hesh913/fiero-3d-manual/tests",
+          "testIgnore": [],
+          "testMatch": [
+            "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+          ],
+          "timeout": 240000
+        }
+      ],
+      "quiet": false,
+      "reporter": [
+        [
+          "list",
+          null
+        ],
+        [
+          "html",
+          {
+            "open": "never"
+          }
+        ],
+        [
+          "json",
+          {
+            "outputFile": "artifacts/full-regression.json"
+          }
+        ]
+      ],
+      "reportSlowTests": {
+        "max": 5,
+        "threshold": 300000
+      },
+      "shard": null,
+      "tags": [],
+      "updateSnapshots": "missing",
+      "updateSourceMethod": "patch",
+      "version": "1.63.0",
+      "workers": 1,
+      "webServer": {
+        "command": "npm run dev",
+        "url": "http://127.0.0.1:5185",
+        "reuseExistingServer": true,
+        "timeout": 30000
+      }
+    },
+    "suites": [
+      {
+        "title": "engine-service.spec.js",
+        "file": "engine-service.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "cooling assembly opens detailed service parts, separates them and restores vehicle context",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 420000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 88603,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T03:39:28.027Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "47f6bfaf79f8638f27e4-e737ebafd07b958892d8",
+            "file": "engine-service.spec.js",
+            "line": 4,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "engine.spec.js",
+        "file": "engine.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "engine has independent explosion, selectable internals, subassembly navigation and vehicle return",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 300000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 78891,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T03:40:57.139Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "cb289eddb0afb4f9e3c9-cdfe2f4e15ba38e54107",
+            "file": "engine.spec.js",
+            "line": 4,
+            "column": 1
+          },
+          {
+            "title": "engine explorer supports mobile navigation and return without overflow",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 180000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 51447,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T03:42:16.066Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "cb289eddb0afb4f9e3c9-b5a986fb1d98108884a9",
+            "file": "engine.spec.js",
+            "line": 59,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "headlights.spec.js",
+        "file": "headlights.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "1985 headlights expose both sides, early motor internals, independent covers and a complete remaining-work list",
+            "ok": false,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 840000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "failed",
+                    "duration": 55454,
+                    "error": {
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#modal li')\nExpected: \u001b[32m73\u001b[39m\nReceived: \u001b[31m109\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('#modal li') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#modal li')\u001b[22m\n\u001b[2m    14 × locator resolved to 109 elements\u001b[22m\n\u001b[2m       - unexpected value \"109\"\u001b[22m\n",
+                      "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#modal li')\nExpected: \u001b[32m73\u001b[39m\nReceived: \u001b[31m109\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('#modal li') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#modal li')\u001b[22m\n\u001b[2m    14 × locator resolved to 109 elements\u001b[22m\n\u001b[2m       - unexpected value \"109\"\u001b[22m\n\n    at /home/hesh913/fiero-3d-manual/tests/headlights.spec.js:11:432",
+                      "location": {
+                        "file": "/home/hesh913/fiero-3d-manual/tests/headlights.spec.js",
+                        "column": 432,
+                        "line": 11
+                      },
+                      "snippet": "   9 |  const reset=()=>page.getByRole('button',{name:'Reset view',exact:true}).click();const scope=async id=>{if(!await page.locator(`#systems [data-assembly=\"${id}\"]`).count()){const parent=detailSectionById.get(id)?.parent;if(parent)await scope(parent);}await page.locator(`#systems [data-assembly=\"${id}\"]`).click();await expect(page.locator('canvas')).toHaveAttribute('data-assembly',id);};\n  10 |  await capture('headlights-vehicle-closed');const closed=await page.evaluate(()=>window.__fiero.getPartBounds('headlights'));\n> 11 |  await page.getByRole('button',{name:'Reference library',exact:true}).click();await page.getByRole('button',{name:'Remaining model & manual work',exact:true}).click();await expect(page.locator('#modal')).toBeVisible();await expect(page.locator('#modal .source-card')).toHaveCount(remainingWork.length);await expect(page.locator('#modal .source-card').first()).toContainText('1. Headlights');await expect(page.locator('#modal li')).toHaveCount(73);await capture('remaining-work-checklist');await page.getByRole('button',{name:'Close dialog',exact:true}).click();\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                ^\n  12 |  await page.locator('#systems [data-system=\"electrical\"]').click();await page.locator('.part-button[data-part=\"headlights\"]').click();await page.getByRole('button',{name:'Explode this assembly',exact:true}).click();await reset();\n  13 |  expect((await page.evaluate(()=>window.__fiero.getVisibleParts())).sort()).toEqual(headlightParts.map(p=>p.id).sort());\n  14 |  await page.getByRole('button',{name:'Raise headlights',exact:true}).click();await capture('headlights-pair-raised');"
+                    },
+                    "errors": [
+                      {
+                        "location": {
+                          "file": "/home/hesh913/fiero-3d-manual/tests/headlights.spec.js",
+                          "column": 432,
+                          "line": 11
+                        },
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#modal li')\nExpected: \u001b[32m73\u001b[39m\nReceived: \u001b[31m109\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('#modal li') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#modal li')\u001b[22m\n\u001b[2m    14 × locator resolved to 109 elements\u001b[22m\n\u001b[2m       - unexpected value \"109\"\u001b[22m\n\n\n   9 |  const reset=()=>page.getByRole('button',{name:'Reset view',exact:true}).click();const scope=async id=>{if(!await page.locator(`#systems [data-assembly=\"${id}\"]`).count()){const parent=detailSectionById.get(id)?.parent;if(parent)await scope(parent);}await page.locator(`#systems [data-assembly=\"${id}\"]`).click();await expect(page.locator('canvas')).toHaveAttribute('data-assembly',id);};\n  10 |  await capture('headlights-vehicle-closed');const closed=await page.evaluate(()=>window.__fiero.getPartBounds('headlights'));\n> 11 |  await page.getByRole('button',{name:'Reference library',exact:true}).click();await page.getByRole('button',{name:'Remaining model & manual work',exact:true}).click();await expect(page.locator('#modal')).toBeVisible();await expect(page.locator('#modal .source-card')).toHaveCount(remainingWork.length);await expect(page.locator('#modal .source-card').first()).toContainText('1. Headlights');await expect(page.locator('#modal li')).toHaveCount(73);await capture('remaining-work-checklist');await page.getByRole('button',{name:'Close dialog',exact:true}).click();\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                ^\n  12 |  await page.locator('#systems [data-system=\"electrical\"]').click();await page.locator('.part-button[data-part=\"headlights\"]').click();await page.getByRole('button',{name:'Explode this assembly',exact:true}).click();await reset();\n  13 |  expect((await page.evaluate(()=>window.__fiero.getVisibleParts())).sort()).toEqual(headlightParts.map(p=>p.id).sort());\n  14 |  await page.getByRole('button',{name:'Raise headlights',exact:true}).click();await capture('headlights-pair-raised');\n    at /home/hesh913/fiero-3d-manual/tests/headlights.spec.js:11:432"
+                      }
+                    ],
+                    "stdout": [
+                      {
+                        "text": "Captured headlights-vehicle-closed\n"
+                      }
+                    ],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T03:43:07.619Z",
+                    "annotations": [],
+                    "attachments": [
+                      {
+                        "name": "screenshot",
+                        "contentType": "image/png",
+                        "path": "/home/hesh913/fiero-3d-manual/test-results/headlights-1985-headlights-8f32e-omplete-remaining-work-list/test-failed-1.png"
+                      },
+                      {
+                        "name": "error-context",
+                        "contentType": "text/markdown",
+                        "path": "/home/hesh913/fiero-3d-manual/test-results/headlights-1985-headlights-8f32e-omplete-remaining-work-list/error-context.md"
+                      },
+                      {
+                        "name": "trace",
+                        "contentType": "application/zip",
+                        "path": "/home/hesh913/fiero-3d-manual/test-results/headlights-1985-headlights-8f32e-omplete-remaining-work-list/trace.zip"
+                      }
+                    ],
+                    "errorLocation": {
+                      "file": "/home/hesh913/fiero-3d-manual/tests/headlights.spec.js",
+                      "column": 432,
+                      "line": 11
+                    }
+                  }
+                ],
+                "status": "unexpected"
+              }
+            ],
+            "id": "132b88abb95a8691fb25-d24c01dcde6dc3c452d3",
+            "file": "headlights.spec.js",
+            "line": 5,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "transmission-cooling.spec.js",
+        "file": "transmission-cooling.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "four-speed internals, cooling circuit and US left-hand-drive layout remain coherent",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 540000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 1,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 154921,
+                    "errors": [],
+                    "stdout": [
+                      {
+                        "text": "Captured transmission-assembled\n"
+                      },
+                      {
+                        "text": "Captured transmission-exploded\n"
+                      },
+                      {
+                        "text": "Captured transmission-input-assembled\n"
+                      },
+                      {
+                        "text": "Captured transmission-input-exploded\n"
+                      },
+                      {
+                        "text": "Captured transmission-differential-assembled\n"
+                      },
+                      {
+                        "text": "Captured transmission-differential-exploded\n"
+                      },
+                      {
+                        "text": "Captured transmission-clutch-assembled\n"
+                      },
+                      {
+                        "text": "Captured transmission-clutch-exploded\n"
+                      },
+                      {
+                        "text": "Captured transmission-clutch-disc\n"
+                      },
+                      {
+                        "text": "Captured cooling-complete-circuit\n"
+                      },
+                      {
+                        "text": "Captured cooling-radiator-assembled\n"
+                      },
+                      {
+                        "text": "Captured cooling-radiator-exploded\n"
+                      },
+                      {
+                        "text": "Captured cooling-fan-blade\n"
+                      },
+                      {
+                        "text": "Captured vehicle-lhd-cockpit\n"
+                      },
+                      {
+                        "text": "Captured vehicle-after-transmission-cooling\n"
+                      },
+                      {
+                        "text": "Captured lhd-driver-seat\n"
+                      },
+                      {
+                        "text": "Captured lhd-controls-from-front\n"
+                      },
+                      {
+                        "text": "Captured lhd-rear-lettering\n"
+                      },
+                      {
+                        "text": "Captured lhd-intake-lettering\n"
+                      },
+                      {
+                        "text": "Captured lhd-driver-side\n"
+                      },
+                      {
+                        "text": "Captured lhd-passenger-side\n"
+                      }
+                    ],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T03:44:04.809Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "68233748377e4ec29c5a-248ff8f305837d34c0d2",
+            "file": "transmission-cooling.spec.js",
+            "line": 4,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "valve-gear.spec.js",
+        "file": "valve-gear.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "individual valve gear separates small hardware and preserves the correct stem-seal variant",
+            "ok": false,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 300000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 1,
+                    "parallelIndex": 0,
+                    "status": "timedOut",
+                    "duration": 300459,
+                    "error": {
+                      "message": "\u001b[31mTest timeout of 300000ms exceeded.\u001b[39m",
+                      "stack": "\u001b[31mTest timeout of 300000ms exceeded.\u001b[39m"
+                    },
+                    "errors": [
+                      {
+                        "message": "\u001b[31mTest timeout of 300000ms exceeded.\u001b[39m"
+                      },
+                      {
+                        "location": {
+                          "file": "/home/hesh913/fiero-3d-manual/tests/valve-gear.spec.js",
+                          "column": 71,
+                          "line": 37
+                        },
+                        "message": "Error: locator.click: Test timeout of 300000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#systems [data-assembly=\"valve-rear-2-intake\"]')\u001b[22m\n\n\n  35 |  await page.getByRole('button',{name:'Isolate',exact:true}).click();\n  36 |  expect(await page.evaluate(()=>window.__fiero.getVisibleParts())).toEqual(['eng-lifter-check-ball-rear-2-intake']);\n> 37 |  await page.locator('#systems [data-assembly=\"valve-rear-2-intake\"]').click();\n     |                                                                       ^\n  38 |  await page.locator('#systems [data-assembly=\"valve-rear-2-exhaust\"]').click();\n  39 |  expect((await page.evaluate(()=>window.__fiero.getVisibleParts())).sort()).toEqual(engineMembers('valve-rear-2-exhaust').map(p=>p.id).sort());\n  40 |  await expect(page.locator('.part-button[data-part=\"eng-stem-shield-rear-2-exhaust\"]')).toHaveCount(1);\n    at /home/hesh913/fiero-3d-manual/tests/valve-gear.spec.js:37:71"
+                      }
+                    ],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T03:46:40.230Z",
+                    "annotations": [],
+                    "attachments": [
+                      {
+                        "name": "screenshot",
+                        "contentType": "image/png",
+                        "path": "/home/hesh913/fiero-3d-manual/test-results/valve-gear-individual-valv-1783a-e-correct-stem-seal-variant/test-failed-1.png"
+                      },
+                      {
+                        "name": "error-context",
+                        "contentType": "text/markdown",
+                        "path": "/home/hesh913/fiero-3d-manual/test-results/valve-gear-individual-valv-1783a-e-correct-stem-seal-variant/error-context.md"
+                      },
+                      {
+                        "name": "trace",
+                        "contentType": "application/zip",
+                        "path": "/home/hesh913/fiero-3d-manual/test-results/valve-gear-individual-valv-1783a-e-correct-stem-seal-variant/trace.zip"
+                      }
+                    ]
+                  }
+                ],
+                "status": "unexpected"
+              }
+            ],
+            "id": "bbe92b7fcf4cdf312a9a-b229ef0780497acad2ce",
+            "file": "valve-gear.spec.js",
+            "line": 4,
+            "column": 1
+          }
+        ]
+      }
+    ],
+    "errors": [],
+    "stats": {
+      "startTime": "2026-09-24T03:39:26.550Z",
+      "duration": 734596.2370000001,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    }
+  }
+}

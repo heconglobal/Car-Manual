@@ -1,39 +1,102 @@
 {
-  "reviewedAt": "2026-09-22T10:12:40.244Z",
-  "sourceSha256": "b2019702353965532ff3dcd7d8016da9555acf341514d85704bcced93b67718c",
-  "status": "failed",
+  "reviewedAt": "2026-09-24T22:27:49.392Z",
+  "sourceSha256": "8db945773c72a68ebf2a66bbce0de6757274e59a18acb9e50f6a107aa8e25177",
+  "status": "passed",
   "source": "https://fieroinfo.com/manuals/Chevrolet_60V6_Power_Manual.pdf#page=6",
   "crankAxis": {
     "y": 1.050000011920929,
     "z": 0,
-    "samples": 288
+    "samples": 146
   },
   "camAxis": {
-    "y": 1.1810000538825989,
+    "y": 1.2090299725532532,
     "z": 0,
-    "samples": 288
+    "samples": 146
   },
   "checks": [
     {
       "name": "Camshaft/crankshaft centre separation",
-      "actualMetres": 0.13100004196166992,
+      "actualMetres": 0.15902996063232422,
       "expectedMetres": 0.15903,
       "toleranceMetres": 0.000002,
-      "passed": false
+      "passed": true
     },
     {
       "name": "eng-cam-bearings concentric with camshaft",
-      "errorMetres": 5.960464477539063e-8,
+      "errorMetres": 0,
       "toleranceMetres": 0.000002,
       "passed": true
     },
     {
       "name": "eng-cam-gear concentric with camshaft",
-      "errorMetres": 5.960464477539063e-8,
+      "errorMetres": 0,
       "toleranceMetres": 0.000002,
       "passed": true
+    },
+    {
+      "name": "Chain mesh fits the open timing-cover cavity",
+      "passed": true,
+      "sampledSections": 3392,
+      "blockedRearRays": 0,
+      "frontMisses": 0,
+      "minimumFrontGapMetres": 0.0299999862909317
+    },
+    {
+      "name": "Gasket seats on rear cover flange",
+      "passed": true,
+      "gapMetres": 3.814697252524368e-9
+    },
+    {
+      "name": "Four bearing bores meet their concentric cam journals",
+      "passed": true,
+      "radialProbes": 8,
+      "failures": 0,
+      "limits": "Nominal visual contact; no manufactured running clearance is specified."
+    },
+    {
+      "name": "All twelve flat tappets contact their cam lobes in the static pose",
+      "passed": true,
+      "failures": 0,
+      "limits": "Reconstructed static pose; not a running cam-phase or valve-lift simulation."
+    },
+    {
+      "name": "All twelve pushrod lower ends reach their lifter seats",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "name": "All twelve pushrods pass through open guide forks",
+      "passed": true,
+      "probes": 96,
+      "failures": 0
+    },
+    {
+      "name": "Cam lobes do not overlap the journal sleeves axially",
+      "passed": true,
+      "minimumGapMetres": 0.0019999999999999922
+    },
+    {
+      "name": "Cam lobes fit through the bearing-bore envelope",
+      "passed": true,
+      "maximumLobeRadiusMetres": 0.023000000044780717,
+      "bearingBoreRadiusMetres": 0.024,
+      "limits": "Reconstructed insertion envelope; bearing and cam dimensions are not factory tolerance specifications."
+    },
+    {
+      "name": "eng-cam-gear mesh tooth count",
+      "passed": true,
+      "actual": 40,
+      "expected": 40,
+      "limits": "Replacement-based 40/20 reconstruction, not verification of original GM tooth profiles or original-part application."
+    },
+    {
+      "name": "eng-crank-gear mesh tooth count",
+      "passed": true,
+      "actual": 20,
+      "expected": 20,
+      "limits": "Replacement-based 40/20 reconstruction, not verification of original GM tooth profiles or original-part application."
     }
   ],
-  "limits": "GM production-family nominal, not a complete L44 timing or valve-train certification. Tooth counts/profiles, chain pitch/tension, cam phases, lifter interfaces and cover clearance still need verification.",
-  "requiredCorrection": "Correct the shaft, bearings, sprocket, chain, cover and associated valve-gear interfaces coherently. Moving only the shaft would create new assembly errors."
+  "limits": "GM production-family centre separation plus selected reconstructed mesh fits, not a complete L44 timing or valve-train certification. Original sprocket application/tooling, chain pitch/tension/tooth engagement, cam phases, hydraulic preload, guide bores and full casting clearance remain unverified.",
+  "requiredCorrection": null
 }

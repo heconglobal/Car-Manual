@@ -13,3 +13,5 @@ Tools and the warning about powerful electrically operated mechanisms come from 
 The viewer keeps the assembly together and highlights each referenced part. Its generic explode control remains a construction view, not the procedure's actual removal sequence. Physical workshop validation remains outstanding.
 
 The expanded browser regression passed on the corrected guide implementation at the run begun 2026-09-22T06:48:25.060Z. It covers isolated spring inspection, preservation of the factory reconnection sequence, return from vehicle/detail scopes, cross-scope part selection, temporary-pose persistence and home navigation cleanup. The raw report is archived with its exact source manifest. A subsequent full build adds distribution notices and normalizes mobile screenshot scroll position; its regression is recorded separately.
+
+September 23: the deactivate/reconnect steps now select `hl-left-disconnect`, the separate C101 plug pair. The former `hl-left-motor-leads` selection now represents only the protective loom sleeve. The browser guide scenario checks isolation of the actual disconnect before continuing the original factory sequence.

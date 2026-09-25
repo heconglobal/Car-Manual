@@ -1,0 +1,276 @@
+{
+  "manifest": {
+    "capturedAt": "2026-09-24T04:54:03.895Z",
+    "sourceSha256": "fb63f873502b612c398c04a25ab4c13a9b0f916f6aa7ddbad8250f217c3bd30f",
+    "applicationSha256": "926216d1d06abcca982bb56db26ceb36984362a8a4a9a828e44cece4d3e5ce4e",
+    "testFiles": {
+      "body-hardware.spec.js": "24b614104877cf0b10b04be60d48ababe46ee22175d33db6ade180a7e5bc8e9d",
+      "brakes.spec.js": "f1195a86b80545fd1eb9578946da480aa33e2775b258b5b8f3eca6cb6c88e125",
+      "configuration.spec.js": "88254f68c446f555661395e7310f93047342dfaae6a891e8f79d684fee5d8cac",
+      "coolant-guide.spec.js": "eea2d2c0c40a7e87c081548b7807054cd41aab135a64b5f3947abee19a17eaad",
+      "electrical.spec.js": "b3c3610e7fdf2ec04f7b8fe7e5cefa8be782d0764ce0575e4592396d05978c56",
+      "engine-service.spec.js": "9bf5b2fc7dc5460f3dd6a5251273ceb1640c2bc85145fa61bcc420053705c0e1",
+      "engine.spec.js": "d835929251fdf52eaab25b3d6d7a7fe8b1279938713a0e007077e6384459b525",
+      "exhaust.spec.js": "942e6ced8d9e7902427f668fc421e447da1417ec4741f4ddab096e3782eaab86",
+      "fuel.spec.js": "855c51895b37fee5ab862293191a195457f16d700866bea41d8c90039c4584d4",
+      "headlights.spec.js": "0202d7da9c2d578e03ac7ee91e94bc62db8a1064615da0e2a2759624dd26a29a",
+      "hvac.spec.js": "835318b1a7b085f68e5a605e381285405b66b31f5215ab114c68f4beb3f3551f",
+      "ignition.spec.js": "26b85b075ee9d1e426121a87486e716fe9e4968d4729b827f7f7015d86040127",
+      "oil-pump.spec.js": "f159c6419ca3e1a9864de237f5e8c5e38c1d28891faba0c0a7c1e4f8372f4b2e",
+      "rear-body.spec.js": "aa8e63a6d9f5816a6775f9a18358d35a64b955303962b6040ecbb101a5b0deba",
+      "service-guides.spec.js": "ae226847c7c4d94d1d96867e16166ab705ab0ae9257d0b75facb4eb276dddbce",
+      "suspension.spec.js": "27e4d61da57b4333af13614c6a2b30ee05bb1f378cb197b0de3124b14c2fc890",
+      "transmission-cooling.spec.js": "c21d94f16185813d5a3618637c651a27ead9478233740f2e7c8fad4d573dcf4b",
+      "valve-gear.spec.js": "eda7e7f4af55a1c862510d5755e8d1811ec1737513c317798f07bc91d9be8702",
+      "workshop.spec.js": "f63d9d0936dcb83393dcf5eabf40d8b69c70bfdc2c54ec951a4761e359976a5d"
+    },
+    "newestInputMtime": 1790224676685.6392
+  },
+  "report": {
+    "config": {
+      "argv": [
+        "/home/hesh913/.nvm/versions/node/v24.13.1/bin/node",
+        "/home/hesh913/fiero-3d-manual/node_modules/@playwright/test/cli.js",
+        "test",
+        "tests/configuration.spec.js",
+        "tests/engine.spec.js",
+        "--workers=2",
+        "--fully-parallel"
+      ],
+      "configFile": "/home/hesh913/fiero-3d-manual/playwright.config.js",
+      "rootDir": "/home/hesh913/fiero-3d-manual/tests",
+      "failOnFlakyTests": false,
+      "forbidOnly": false,
+      "fullyParallel": true,
+      "globalSetup": null,
+      "globalTeardown": null,
+      "globalTimeout": 0,
+      "grep": {},
+      "grepInvert": null,
+      "maxFailures": 0,
+      "metadata": {
+        "sourceSha256": "fb63f873502b612c398c04a25ab4c13a9b0f916f6aa7ddbad8250f217c3bd30f",
+        "actualWorkers": 2
+      },
+      "preserveOutput": "always",
+      "projects": [
+        {
+          "outputDir": "/home/hesh913/fiero-3d-manual/artifacts/test-runs/2026-09-24T04-54-03.886Z-e132ada4/results",
+          "repeatEach": 1,
+          "retries": 0,
+          "metadata": {
+            "sourceSha256": "fb63f873502b612c398c04a25ab4c13a9b0f916f6aa7ddbad8250f217c3bd30f",
+            "actualWorkers": 2
+          },
+          "id": "",
+          "name": "",
+          "testDir": "/home/hesh913/fiero-3d-manual/tests",
+          "testIgnore": [],
+          "testMatch": [
+            "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+          ],
+          "timeout": 240000
+        }
+      ],
+      "quiet": false,
+      "reporter": [
+        [
+          "list",
+          null
+        ],
+        [
+          "html",
+          {
+            "open": "never",
+            "outputFolder": "artifacts/test-runs/2026-09-24T04-54-03.886Z-e132ada4/html"
+          }
+        ],
+        [
+          "json",
+          {
+            "outputFile": "artifacts/full-regression.json"
+          }
+        ]
+      ],
+      "reportSlowTests": {
+        "max": 5,
+        "threshold": 300000
+      },
+      "shard": null,
+      "tags": [],
+      "updateSnapshots": "missing",
+      "updateSourceMethod": "patch",
+      "version": "1.63.0",
+      "workers": 2,
+      "webServer": {
+        "command": "npm run dev",
+        "url": "http://127.0.0.1:5185",
+        "reuseExistingServer": true,
+        "timeout": 30000
+      }
+    },
+    "suites": [
+      {
+        "title": "configuration.spec.js",
+        "file": "configuration.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "preview choices change geometry, persist, and leave the VIN record intact",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 540000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 172417,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T04:54:06.691Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "6f30549d3f744a7033aa-55d028b24577f8ea0d61",
+            "file": "configuration.spec.js",
+            "line": 3,
+            "column": 1
+          },
+          {
+            "title": "invalid saved preview values recover to supported choices",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 1,
+                    "parallelIndex": 1,
+                    "status": "passed",
+                    "duration": 66353,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T04:54:06.677Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "6f30549d3f744a7033aa-a7ad0fa46413863e0746",
+            "file": "configuration.spec.js",
+            "line": 53,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "engine.spec.js",
+        "file": "engine.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "engine has independent explosion, selectable internals, subassembly navigation and vehicle return",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 300000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 1,
+                    "parallelIndex": 1,
+                    "status": "passed",
+                    "duration": 118108,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T04:55:13.951Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "cb289eddb0afb4f9e3c9-cdfe2f4e15ba38e54107",
+            "file": "engine.spec.js",
+            "line": 4,
+            "column": 1
+          },
+          {
+            "title": "engine explorer supports mobile navigation and return without overflow",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 180000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 62294,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T04:57:00.108Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "cb289eddb0afb4f9e3c9-b5a986fb1d98108884a9",
+            "file": "engine.spec.js",
+            "line": 59,
+            "column": 1
+          }
+        ]
+      }
+    ],
+    "errors": [],
+    "stats": {
+      "startTime": "2026-09-24T04:54:05.434Z",
+      "duration": 237397.22199999998,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-24T00:28:43.375Z",
+  "sourceSha256": "267f7ce33b674db06a91c3ae15cb71ee195ef8e058968119cb0bd117a4f00c23",
+  "status": "passed",
+  "indexed": {
+    "constructionMs": 25601.315411,
+    "meshes": 1458,
+    "triangles": 5416475,
+    "storedVertices": 8502240,
+    "maxRssKiB": 927576
+  },
+  "expanded": {
+    "constructionMs": 29897.43904,
+    "meshes": 1458,
+    "triangles": 5416475,
+    "storedVertices": 15568045,
+    "maxRssKiB": 1282000
+  },
+  "vertexReductionPercent": 45.38659157267338,
+  "geometryCheck": "Every vehicle mesh expanded triangle position, normal and UV hash, material bucket, detail ID, option and value matches the previous merge algorithm. Same current source in separate processes; only merge indexing differs.",
+  "limits": "Sequential single Node construction samples with stubbed canvas after browser regression was paused and the native review finished. Other workstation load is not controlled. Timing/RSS are observations, not isolated device or browser benchmarks."
+}

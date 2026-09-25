@@ -1,0 +1,1128 @@
+{
+  "manifest": {
+    "capturedAt": "2026-09-24T00:25:12.560Z",
+    "sourceSha256": "8d27d7eee7563f1e28b21a4162cd07446b1adcac85445f08710f7ae4368d3f49",
+    "applicationSha256": "aa83ca050de8a32a282bb74de8c1019249e07ddb9f25ed67709d6a580f8816e0",
+    "testFiles": {
+      "body-hardware.spec.js": "24b614104877cf0b10b04be60d48ababe46ee22175d33db6ade180a7e5bc8e9d",
+      "brakes.spec.js": "f1195a86b80545fd1eb9578946da480aa33e2775b258b5b8f3eca6cb6c88e125",
+      "configuration.spec.js": "88254f68c446f555661395e7310f93047342dfaae6a891e8f79d684fee5d8cac",
+      "electrical.spec.js": "b3c3610e7fdf2ec04f7b8fe7e5cefa8be782d0764ce0575e4592396d05978c56",
+      "engine-service.spec.js": "e3e7deca44f16a8fcb6093ed503ea01a035776b7e0246ebece5cd3e0c8f19e6e",
+      "engine.spec.js": "d835929251fdf52eaab25b3d6d7a7fe8b1279938713a0e007077e6384459b525",
+      "exhaust.spec.js": "942e6ced8d9e7902427f668fc421e447da1417ec4741f4ddab096e3782eaab86",
+      "fuel.spec.js": "855c51895b37fee5ab862293191a195457f16d700866bea41d8c90039c4584d4",
+      "headlights.spec.js": "8419fef5f6ba748ba37f737af7cc40d964bdf608866ad425f0003dd6a8ed466b",
+      "hvac.spec.js": "835318b1a7b085f68e5a605e381285405b66b31f5215ab114c68f4beb3f3551f",
+      "ignition.spec.js": "26b85b075ee9d1e426121a87486e716fe9e4968d4729b827f7f7015d86040127",
+      "rear-body.spec.js": "aa8e63a6d9f5816a6775f9a18358d35a64b955303962b6040ecbb101a5b0deba",
+      "service-guides.spec.js": "ae226847c7c4d94d1d96867e16166ab705ab0ae9257d0b75facb4eb276dddbce",
+      "suspension.spec.js": "27e4d61da57b4333af13614c6a2b30ee05bb1f378cb197b0de3124b14c2fc890",
+      "transmission-cooling.spec.js": "c21d94f16185813d5a3618637c651a27ead9478233740f2e7c8fad4d573dcf4b",
+      "valve-gear.spec.js": "603a19658e11b924e65d789c925440d057ddd21fce02bbf19527f7c2bf899d74",
+      "workshop.spec.js": "f63d9d0936dcb83393dcf5eabf40d8b69c70bfdc2c54ec951a4761e359976a5d"
+    },
+    "newestInputMtime": 1790208293814.0308
+  },
+  "report": {
+    "config": {
+      "argv": [
+        "/home/hesh913/.nvm/versions/node/v24.13.1/bin/node",
+        "/home/hesh913/fiero-3d-manual/node_modules/.bin/playwright",
+        "test",
+        "--workers=1"
+      ],
+      "configFile": "/home/hesh913/fiero-3d-manual/playwright.config.js",
+      "rootDir": "/home/hesh913/fiero-3d-manual/tests",
+      "failOnFlakyTests": false,
+      "forbidOnly": false,
+      "fullyParallel": false,
+      "globalSetup": null,
+      "globalTeardown": null,
+      "globalTimeout": 0,
+      "grep": {},
+      "grepInvert": null,
+      "maxFailures": 0,
+      "metadata": {
+        "sourceSha256": "8d27d7eee7563f1e28b21a4162cd07446b1adcac85445f08710f7ae4368d3f49",
+        "actualWorkers": 1
+      },
+      "preserveOutput": "always",
+      "projects": [
+        {
+          "outputDir": "/home/hesh913/fiero-3d-manual/test-results",
+          "repeatEach": 1,
+          "retries": 0,
+          "metadata": {
+            "sourceSha256": "8d27d7eee7563f1e28b21a4162cd07446b1adcac85445f08710f7ae4368d3f49",
+            "actualWorkers": 1
+          },
+          "id": "",
+          "name": "",
+          "testDir": "/home/hesh913/fiero-3d-manual/tests",
+          "testIgnore": [],
+          "testMatch": [
+            "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+          ],
+          "timeout": 240000
+        }
+      ],
+      "quiet": false,
+      "reporter": [
+        [
+          "list",
+          null
+        ],
+        [
+          "html",
+          {
+            "open": "never"
+          }
+        ],
+        [
+          "json",
+          {
+            "outputFile": "artifacts/full-regression.json"
+          }
+        ]
+      ],
+      "reportSlowTests": {
+        "max": 5,
+        "threshold": 300000
+      },
+      "shard": null,
+      "tags": [],
+      "updateSnapshots": "missing",
+      "updateSourceMethod": "patch",
+      "version": "1.63.0",
+      "workers": 1,
+      "webServer": {
+        "command": "npm run dev",
+        "url": "http://127.0.0.1:5185",
+        "reuseExistingServer": true,
+        "timeout": 30000
+      }
+    },
+    "suites": [
+      {
+        "title": "body-hardware.spec.js",
+        "file": "body-hardware.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "body panels share vehicle surfaces and expose hinges, torque rods, latches and retainers",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 840000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 234554,
+                    "errors": [],
+                    "stdout": [
+                      {
+                        "text": "Captured vehicle-after-body-hardware\n"
+                      },
+                      {
+                        "text": "Captured body-hood-assembled\n"
+                      },
+                      {
+                        "text": "Captured body-hood-exploded\n"
+                      },
+                      {
+                        "text": "Captured body-hood-stay\n"
+                      },
+                      {
+                        "text": "Captured body-decklid-assembled\n"
+                      },
+                      {
+                        "text": "Captured body-decklid-exploded\n"
+                      },
+                      {
+                        "text": "Captured body-driver-door-exploded\n"
+                      },
+                      {
+                        "text": "Captured body-driver-hinge\n"
+                      },
+                      {
+                        "text": "Captured body-rocker-covers\n"
+                      },
+                      {
+                        "text": "Captured body-front-panels-exploded\n"
+                      },
+                      {
+                        "text": "Captured body-rear-panels\n"
+                      },
+                      {
+                        "text": "Captured body-rear-clip-exploded\n"
+                      },
+                      {
+                        "text": "Captured body-roof-open-white\n"
+                      },
+                      {
+                        "text": "Captured body-complete-panels\n"
+                      },
+                      {
+                        "text": "Captured fuel-tank-sidewall-refined\n"
+                      },
+                      {
+                        "text": "Captured body-vehicle-return\n"
+                      },
+                      {
+                        "text": "Captured body-hardware-mobile\n"
+                      }
+                    ],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T00:05:01.241Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "69dd03b11e104023332c-5988802ef7e39b439c09",
+            "file": "body-hardware.spec.js",
+            "line": 3,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "brakes.spec.js",
+        "file": "brakes.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "1985 brakes expose distinct corners, hydraulic internals and parking controls",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 720000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 200217,
+                    "errors": [],
+                    "stdout": [
+                      {
+                        "text": "Captured brakes-complete-circuit\n"
+                      },
+                      {
+                        "text": "Captured brakes-front-caliper-assembled\n"
+                      },
+                      {
+                        "text": "Captured brakes-front-caliper-exploded\n"
+                      },
+                      {
+                        "text": "Captured brakes-front-hub-exploded\n"
+                      },
+                      {
+                        "text": "Captured brakes-rear-caliper-assembled\n"
+                      },
+                      {
+                        "text": "Captured brakes-rear-caliper-exploded\n"
+                      },
+                      {
+                        "text": "Captured brakes-master-assembled\n"
+                      },
+                      {
+                        "text": "Captured brakes-master-exploded\n"
+                      },
+                      {
+                        "text": "Captured brakes-booster-assembled\n"
+                      },
+                      {
+                        "text": "Captured brakes-booster-exploded\n"
+                      },
+                      {
+                        "text": "Captured brakes-lines\n"
+                      },
+                      {
+                        "text": "Captured brakes-parking-cables\n"
+                      },
+                      {
+                        "text": "Captured brakes-parking-lever\n"
+                      },
+                      {
+                        "text": "Captured vehicle-after-brakes\n"
+                      }
+                    ],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T00:08:56.581Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "f84edb4bb9ebdb8f4e7b-6cb5b709bb16a23d5192",
+            "file": "brakes.spec.js",
+            "line": 4,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "configuration.spec.js",
+        "file": "configuration.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "preview choices change geometry, persist, and leave the VIN record intact",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 540000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 141371,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T00:12:16.894Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "6f30549d3f744a7033aa-55d028b24577f8ea0d61",
+            "file": "configuration.spec.js",
+            "line": 3,
+            "column": 1
+          },
+          {
+            "title": "invalid saved preview values recover to supported choices",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 52978,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T00:14:38.320Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "6f30549d3f744a7033aa-a7ad0fa46413863e0746",
+            "file": "configuration.spec.js",
+            "line": 53,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "electrical.spec.js",
+        "file": "electrical.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "lighting and charging assemblies expose native parts, option lamps and correct lamp interfaces",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 900000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 93896,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T00:15:31.407Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "285e25c3ae6ba068df60-38150bb55ca0e38dda62",
+            "file": "electrical.spec.js",
+            "line": 6,
+            "column": 1
+          },
+          {
+            "title": "1985 fuse layout, ECM connectors, flashers and verified EST circuits are inspectable on desktop and mobile",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 900000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 123592,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T00:17:05.363Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "285e25c3ae6ba068df60-6c660b4a385cbf389fcd",
+            "file": "electrical.spec.js",
+            "line": 26,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "engine-service.spec.js",
+        "file": "engine-service.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "cooling assembly opens detailed service parts, separates them and restores vehicle context",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 420000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 79216,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T00:19:09.039Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "47f6bfaf79f8638f27e4-e737ebafd07b958892d8",
+            "file": "engine-service.spec.js",
+            "line": 4,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "engine.spec.js",
+        "file": "engine.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "engine has independent explosion, selectable internals, subassembly navigation and vehicle return",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 300000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 115310,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T00:20:28.314Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "cb289eddb0afb4f9e3c9-cdfe2f4e15ba38e54107",
+            "file": "engine.spec.js",
+            "line": 4,
+            "column": 1
+          },
+          {
+            "title": "engine explorer supports mobile navigation and return without overflow",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 180000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 55867,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T00:22:23.657Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "cb289eddb0afb4f9e3c9-b5a986fb1d98108884a9",
+            "file": "engine.spec.js",
+            "line": 59,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "exhaust.spec.js",
+        "file": "exhaust.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "early V6 exhaust exposes period catalyst, spring joints, supports and finish previews",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 840000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "interrupted",
+                    "duration": 33058,
+                    "error": {
+                      "message": "Error: Object with guid response@97e35042793e34c1d87c845134b2285a was not bound in the connection",
+                      "stack": "Error: Object with guid response@97e35042793e34c1d87c845134b2285a was not bound in the connection"
+                    },
+                    "errors": [
+                      {
+                        "message": "Error: Object with guid response@97e35042793e34c1d87c845134b2285a was not bound in the connection"
+                      }
+                    ],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T00:23:19.574Z",
+                    "annotations": [],
+                    "attachments": [
+                      {
+                        "name": "error-context",
+                        "contentType": "text/markdown",
+                        "path": "/home/hesh913/fiero-3d-manual/test-results/exhaust-early-V6-exhaust-e-a8d3c-upports-and-finish-previews/error-context.md"
+                      },
+                      {
+                        "name": "trace",
+                        "contentType": "application/zip",
+                        "path": "/home/hesh913/fiero-3d-manual/test-results/exhaust-early-V6-exhaust-e-a8d3c-upports-and-finish-previews/trace.zip"
+                      }
+                    ]
+                  }
+                ],
+                "status": "skipped"
+              }
+            ],
+            "id": "e8f9d1b4f19cded6e53a-7e00634970e6ddbc0575",
+            "file": "exhaust.spec.js",
+            "line": 3,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "fuel.spec.js",
+        "file": "fuel.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "early V6 fuel supply exposes pump, sender, filler, filter and vapor parts",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "e15a9c54d3b403addb66-eac088351389ecfc2eee",
+            "file": "fuel.spec.js",
+            "line": 3,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "headlights.spec.js",
+        "file": "headlights.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "1985 headlights expose both sides, early motor internals, independent covers and a complete remaining-work list",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "132b88abb95a8691fb25-d24c01dcde6dc3c452d3",
+            "file": "headlights.spec.js",
+            "line": 5,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "hvac.spec.js",
+        "file": "hvac.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "heater and C60 previews share native cores and show distinct controls, motors and refrigeration parts",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "f2e45dbb467aedf4ddbb-6a39041dbae080924f6d",
+            "file": "hvac.spec.js",
+            "line": 3,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "ignition.spec.js",
+        "file": "ignition.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "global ICM search opens the nested distributor, separates parts and restores the vehicle",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "ae990aadc40478d94005-7a3a7b04cd3856216623",
+            "file": "ignition.spec.js",
+            "line": 4,
+            "column": 1
+          },
+          {
+            "title": "electrical catalogue exposes ignition assemblies and mobile tune-up navigation",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "ae990aadc40478d94005-3547938c917699a03e55",
+            "file": "ignition.spec.js",
+            "line": 51,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "rear-body.spec.js",
+        "file": "rear-body.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "rear glass, sail windows and deck vents are independent selectable assemblies",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "5062ee079f3edf0f4d2a-248ebc86bc026177f088",
+            "file": "rear-body.spec.js",
+            "line": 3,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "service-guides.spec.js",
+        "file": "service-guides.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "factory headlamp guide highlights real parts, preserves relay reconnection order and restores the previous view",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "c7206cff0445fc369ee2-8e223a453949edd39cd7",
+            "file": "service-guides.spec.js",
+            "line": 3,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "suspension.spec.js",
+        "file": "suspension.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "early suspension and manual steering remain selectable, asymmetric and reachable on mobile",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "a967f56aa66f860e8bfd-a1849adcf42d1f925c90",
+            "file": "suspension.spec.js",
+            "line": 4,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "transmission-cooling.spec.js",
+        "file": "transmission-cooling.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "four-speed internals, cooling circuit and US left-hand-drive layout remain coherent",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "68233748377e4ec29c5a-248ff8f305837d34c0d2",
+            "file": "transmission-cooling.spec.js",
+            "line": 4,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "valve-gear.spec.js",
+        "file": "valve-gear.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "individual valve gear separates small hardware and preserves the correct stem-seal variant",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "bbe92b7fcf4cdf312a9a-b229ef0780497acad2ce",
+            "file": "valve-gear.spec.js",
+            "line": 4,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "workshop.spec.js",
+        "file": "workshop.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "renders 3D vehicle without runtime errors or external image requests",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "2fabae67bf3e3e9c1ccc-7442c3e4e5c4bea81267",
+            "file": "workshop.spec.js",
+            "line": 6,
+            "column": 1
+          },
+          {
+            "title": "system filtering, global search, focus, isolation and reset work",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "2fabae67bf3e3e9c1ccc-3022f30b7dd1e50b2c01",
+            "file": "workshop.spec.js",
+            "line": 14,
+            "column": 1
+          },
+          {
+            "title": "camera presets and keyboard controls update the viewer",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "2fabae67bf3e3e9c1ccc-c93f895d7b371b9d3620",
+            "file": "workshop.spec.js",
+            "line": 29,
+            "column": 1
+          },
+          {
+            "title": "visibility, labels, wireframe and exploded views work",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "2fabae67bf3e3e9c1ccc-bc8386704bc8391af8c4",
+            "file": "workshop.spec.js",
+            "line": 35,
+            "column": 1
+          },
+          {
+            "title": "direct 3D picking selects a part",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "2fabae67bf3e3e9c1ccc-e63e2fca2156186486cc",
+            "file": "workshop.spec.js",
+            "line": 42,
+            "column": 1
+          },
+          {
+            "title": "orientation tour advances, goes back, and finishes",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "2fabae67bf3e3e9c1ccc-dcbba8244591dfd7c9dd",
+            "file": "workshop.spec.js",
+            "line": 49,
+            "column": 60
+          },
+          {
+            "title": "air-cleaner tour advances, goes back, and finishes",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "2fabae67bf3e3e9c1ccc-2cf88ff27c06d1c41373",
+            "file": "workshop.spec.js",
+            "line": 49,
+            "column": 60
+          },
+          {
+            "title": "suspension tour advances, goes back, and finishes",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "2fabae67bf3e3e9c1ccc-151e3133ede2f8534153",
+            "file": "workshop.spec.js",
+            "line": 49,
+            "column": 60
+          },
+          {
+            "title": "specification provenance and source dialog remain accessible",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "2fabae67bf3e3e9c1ccc-2611b28a797bb664fb04",
+            "file": "workshop.spec.js",
+            "line": 57,
+            "column": 1
+          },
+          {
+            "title": "UAT feedback persists, is safely rendered, and exports valid JSON",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "2fabae67bf3e3e9c1ccc-222eecd656cb7e39c8fd",
+            "file": "workshop.spec.js",
+            "line": 64,
+            "column": 1
+          },
+          {
+            "title": "mobile layout renders without overflow and opens assembly navigation",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "2fabae67bf3e3e9c1ccc-c87d5570104286a53be2",
+            "file": "workshop.spec.js",
+            "line": 70,
+            "column": 1
+          }
+        ]
+      }
+    ],
+    "errors": [],
+    "stats": {
+      "startTime": "2026-09-24T00:04:57.156Z",
+      "duration": 1141603.33,
+      "expected": 9,
+      "skipped": 22,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  }
+}

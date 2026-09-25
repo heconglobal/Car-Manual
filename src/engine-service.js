@@ -1,4 +1,6 @@
 import * as T from 'three';
+import {toCreasedNormals} from 'three/addons/utils/BufferGeometryUtils.js';
+import {timingLayout,timingCoverOutline} from './engine-timing.js';
 import {pumpInletEngine} from './powertrain-layout.js';
 
 // Authored solid geometry. GM H-19/H-22 establish identities and relationships;
@@ -8,7 +10,7 @@ function serviceTools(h){
  const id=k=>`eng-${k}`;
  const lathe=(k,profile,p,mat='zinc',rot=Y)=>h.add(id(k),new T.LatheGeometry(profile.map(v=>new T.Vector2(...v)),64),mat,p,rot);
  const plate=(k,shape,depth,p,mat='zinc',rot=Y,bevel=0)=>{
-  const g=new T.ExtrudeGeometry(shape,{depth,bevelEnabled:bevel>0,bevelSize:bevel,bevelThickness:bevel,bevelSegments:3,curveSegments:32});g.translate(0,0,-depth/2);return h.add(id(k),g,mat,p,rot);
+  const g=new T.ExtrudeGeometry(shape,{depth,bevelEnabled:bevel>0,bevelSize:bevel,bevelThickness:bevel,bevelSegments:3,curveSegments:k==='water-pump-hub'?96:32});g.translate(0,0,-depth/2);return h.add(id(k),g,mat,p,rot);
  };
  const outline=(points,holes=[])=>{const s=new T.Shape();points.forEach(([x,y],i)=>i?s.lineTo(x,y):s.moveTo(x,y));s.closePath();for(const [x,y,r] of holes){const hole=new T.Path();hole.absarc(x,y,r,0,Math.PI*2,true);s.holes.push(hole);}return s;};
  const washer=(k,outer,inner,depth,p,mat='zinc',rot=Y)=>lathe(k,[[inner,-depth/2],[outer,-depth/2],[outer,depth/2],[inner,depth/2],[inner,-depth/2]],p,mat,rot);
@@ -135,11 +137,14 @@ export function buildTimingService(h){
  washer('front-crank-seal',.028,.020,.008,seal,'zinc',X);
  lathe('front-crank-seal',[[.019,-.004],[.027,-.004],[.027,.004],[.022,.004],[.019,.001],[.019,-.004]],seal,'silicone',X);
  h.ring(id('front-crank-seal'),.022,.0006,[-.273,1.05,0],'zinc',[0,Math.PI/2,0]);
- const gasket=new T.Shape();gasket.moveTo(-.069,-.098);gasket.quadraticCurveTo(-.107,-.087,-.103,-.040);gasket.lineTo(-.080,.095);gasket.quadraticCurveTo(-.069,.149,0,.154);gasket.quadraticCurveTo(.069,.149,.080,.095);gasket.lineTo(.103,-.040);gasket.quadraticCurveTo(.107,-.087,.069,-.098);gasket.closePath();
- const inner=new T.Path();inner.moveTo(-.061,-.085);inner.lineTo(.061,-.085);inner.quadraticCurveTo(.090,-.082,.087,-.037);inner.lineTo(.065,.092);inner.quadraticCurveTo(.055,.134,0,.139);inner.quadraticCurveTo(-.055,.134,-.065,.092);inner.lineTo(-.087,-.037);inner.quadraticCurveTo(-.090,-.082,-.061,-.085);gasket.holes.push(inner);
- plate('timing-cover-gasket',gasket,.0015,[-.246,1.097,0],'dark',[0,Math.PI/2,0]);
- plate('timing-guide',outline([[-.021,-.046],[.015,-.042],[.019,.041],[-.020,.045]],[[.009,-.032,.003],[.010,.032,.003]]),.003,[-.217,1.132,.064],'zinc',[0,Math.PI/2,0]);
- h.box(id('timing-guide'),[.006,.075,.008],[-.225,1.132,.057],'phenolic',[.06,0,0],{},.003);
+ const gasket=timingCoverOutline();gasket.holes.push(timingCoverOutline(true));
+ plate('timing-cover-gasket',gasket,.0015,[timingLayout.coverRear+.00075,timingLayout.coverY,0],'dark',[0,Math.PI/2,0]);
+ // Guide follows the corrected straight run. Its local tooling is unmeasured.
+ const runY=(timingLayout.camY+timingLayout.crankY)/2;
+ const slope=(timingLayout.camRadius-timingLayout.crankRadius)/(timingLayout.camY-timingLayout.crankY);
+ const angle=Math.asin(slope),guideZ=(timingLayout.camRadius+timingLayout.crankRadius)/2*Math.cos(angle)+.009;
+ plate('timing-guide',outline([[-.021,-.046],[.015,-.042],[.019,.041],[-.020,.045]],[[.009,-.032,.003],[.010,.032,.003]]),.003,[-.214,runY,guideZ],'zinc',[0,Math.PI/2,0]);
+ h.box(id('timing-guide'),[.006,.075,.008],[-.225,runY,guideZ],'phenolic',[angle,0,0],{},.003);
  const pointer=outline([[-.029,-.017],[.023,-.017],[.030,-.011],[.030,-.002],[.020,.007],[.012,.003],[.004,.009],[-.004,.006],[-.013,.012],[-.028,.003]],[[.021,-.010,.003]]);
  plate('timing-pointer',pointer,.0015,[-.307,1.108,.070],'zinc',[0,Math.PI/2,-.5]);bolt('timing-pointer',[-.307,1.125,.058],.010,'x',.0035);
 }
@@ -148,16 +153,15 @@ export function buildWaterPump(h){
  const {id,lathe,plate,outline,washer,bolt}=serviceTools(h),C=[-.283,1.218,.076];
  const at=(x,y,z)=>[C[0]+x,C[1]+y,C[2]+z];
  // Cast volute, irregular bolt ears and machined rear flange replace the
- // former plain cylinder. Bearing/impeller internals are not invented here.
+ // former plain cylinder. Internal construction is a qualified reconstruction.
  const boundary=[[-.077,-.040],[-.069,-.060],[-.045,-.061],[-.025,-.053],[.015,-.052],[.035,-.068],[.052,-.063],[.058,-.043],[.051,-.020],[.064,.005],[.058,.034],[.073,.059],[.059,.074],[.038,.066],[.021,.052],[-.018,.055],[-.042,.068],[-.061,.059],[-.060,.034],[-.075,.018]];
  const holes=[[-.061,-.044,.0035],[.041,-.052,.0035],[.058,.058,.0035],[-.047,.053,.0035],[-.065,.009,.0035]];
  const contour=new T.CatmullRomCurve3(boundary.map(([x,y])=>new T.Vector3(x,y,0)),true,'centripetal');
  const flange=outline(contour.getPoints(120).map(p=>[p.x,p.y]),[[0,0,.031],...holes]);
  plate('water-pump',flange,.007,at(.012,0,0),'castAluminum',[0,Math.PI/2,0],.0014);
  plate('water-pump-gasket',flange,.0015,at(.017,0,0),'dark',[0,Math.PI/2,0]);
- lathe('water-pump',[[.030,-.016],[.050,-.016],[.053,-.009],[.050,.002],[.040,.013],[.025,.024],[.018,.025],[.018,.040],[.013,.043],[.008,.043],[.008,.032],[.017,.020],[.024,.013],[.030,.005],[.030,-.016]],C,'castAluminum',X);
- h.cyl(id('water-pump'),.007,.048,at(-.033,0,0),'rotor',X);
- washer('water-pump',.024,.007,.006,at(-.041,0,0),'zinc',X);
+ lathe('water-pump',[[.030,-.016],[.050,-.016],[.053,-.009],[.050,.002],[.040,.013],[.025,.024],[.018,.025],[.018,.040],[.013,.043],[.008,.043],[.008,.041],[.012,.041],[.012,.022],[.014,.020],[.017,.020],[.024,.013],[.030,.005],[.030,-.016]],C,'castAluminum',X);
+ buildWaterPumpInternals(h,serviceTools(h),C);
  for(let i=0;i<4;i++){const a=i*Math.PI/2;h.tube(id('water-pump'),[at(-.010,Math.cos(a)*.044,Math.sin(a)*.044),at(-.021,Math.cos(a)*.026,Math.sin(a)*.026)],.004,'castAluminum');}
  // Machined heater fitting socket and the early threaded hose nipple.
  const hosePos=at(.001,.042,.042);
@@ -174,3 +178,39 @@ export function buildWaterPump(h){
 }
 
 export function buildEngineService(h){buildThermostat(h);buildOilService(h);buildTimingService(h);buildWaterPump(h);}
+
+// Manufacturer construction reference, not an original L44 teardown drawing.
+// Unitized bearing and mechanical seal remain assemblies: their supplier-specific
+// rolling-element count and seal stack are not presented as factory specifications.
+function buildWaterPumpInternals(h,{id,lathe,plate,outline,washer},C){
+ const at=(u,y=0,z=0)=>[C[0]-u,C[1]+y,C[2]+z];
+ h.cyl(id('water-pump-bearing'),.0065,.071,at(.0215),'rotor',X);
+ washer('water-pump-bearing',.0115,.0065,.015,at(.0325),'rotor',X);
+ for(const u of [.025,.040])washer('water-pump-bearing',.0111,.0065,.0008,at(u),'dark',X);
+ // Pulley-side hub flange has real screw holes and a shaft interference seat.
+ const holes=[[0,0,.0065],...[0,1,2,3].map(i=>[Math.cos(i*Math.PI/2)*.016,Math.sin(i*Math.PI/2)*.016,.0025])];
+ const shape=new T.Shape();shape.absarc(0,0,.0235,0,Math.PI*2,false);
+ for(const [x,y,r]of holes){const hole=new T.Path();hole.absarc(x,y,r,0,Math.PI*2,true);shape.holes.push(hole);}
+ const hub=plate('water-pump-hub',shape,.006,at(.048),'zinc',[0,Math.PI/2,0],.0003),rawHub=hub.geometry;rawHub.scale(1000,1000,1000);hub.geometry=toCreasedNormals(rawHub,Math.PI/4);hub.geometry.scale(.001,.001,.001);if(hub.geometry!==rawHub)rawHub.dispose();
+ // Keep the two machined faces planar: averaging bevel normals into large
+ // face triangles makes a flat flange look dented under the studio lighting.
+ const hp=hub.geometry.attributes.position,hn=hub.geometry.attributes.normal;
+ for(let i=0;i<hp.count;i++)if(Math.abs(Math.abs(hp.getZ(i))-.0033)<1e-8)hn.setXYZ(i,0,0,Math.sign(hp.getZ(i)));
+ hn.needsUpdate=true;
+ washer('water-pump-hub',.010,.0065,.008,at(.041),'zinc',X);
+ // Wet-side seal carrier and spring-loaded face. Exact production stack is open.
+ washer('water-pump-seal',.0135,.007,.003,at(.019),'zinc',X);
+ washer('water-pump-seal',.0118,.0065,.004,at(.014),'silicone',X);
+ washer('water-pump-seal',.0108,.0065,.002,at(.005),'dark',X);
+ const spring=[];for(let i=0;i<=160;i++){const t=i/160,a=t*Math.PI*10;spring.push(at(.006+t*.007,Math.cos(a)*.0092,Math.sin(a)*.0092));}h.tube(id('water-pump-seal'),spring,.00065,'zinc');
+ // Open centrifugal impeller: reconstructed six-vane envelope, explicitly
+ // unverified blade count/profile. Kept clear of the existing rear opening.
+ washer('water-pump-impeller',.0275,.0065,.002,at(-.003),'dark',X);
+ washer('water-pump-impeller',.010,.0065,.010,at(-.008),'dark',X);
+ for(let i=0;i<6;i++){
+  const shape=new T.Shape(),a=i*Math.PI/3,points=[];
+  for(const side of [-1,1])for(let j=0;j<=24;j++){const t=(side<0?j:24-j)/24,r=.010+t*.0165,angle=a+t*.40+side*.00065/r;points.push([r*Math.cos(angle),r*Math.sin(angle)]);}
+  points.forEach(([x,y],j)=>j?shape.lineTo(x,y):shape.moveTo(x,y));shape.closePath();
+  plate('water-pump-impeller',shape,.008,at(-.008),'dark',[0,Math.PI/2,0],.00025);
+ }
+}

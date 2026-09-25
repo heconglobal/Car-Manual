@@ -14,3 +14,7 @@ Four circuit images indexed under the 1985 V6 were inspected directly. Their GM 
 The diagram distinguishes the motor-side white/green/gray conductors from the harness-side blue or blue/white disconnect lead. The existing short motor pigtail geometry uses approximate colors and requires correction along with the complete socket/terminal model. A schematic connection is not a physical cavity-face drawing, and its wire-size annotation is not a measured insulation diameter or harness length.
 
 The isolation relay includes two linked contacts and suppression diodes; the actuator relays and torque-operated motor endpoint contacts are distinct. A generic relay box or a connectivity diagram does not demonstrate contact construction, an electrical simulation or a validated diagnostic procedure. Full 1985 pinout verification, actual harness branches/clips, factory terminal views and aiming instructions remain open under 01.4 and 04.1.
+
+## September 23 implementation and primary cross-check
+
+The corresponding connection identities were cross-checked directly against the intact original 1986 manual, PDF 994 / printed 8A-102-0. PDF 995 and PDF 1047 establish the front-harness location of links C/D. Runtime entries now expose these circuit relationships with the adjacent-year qualification and explicitly avoid claiming a physical connector-end layout. Motor conductor colors and connector construction are updated; full 1985 circuit verification remains open. See [electrical construction notes](headlight-electrical-reconstruction.md).

@@ -4,12 +4,12 @@ import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { textMaterial } from './materials.js';
 
 export function geometryTools(groups,mats){
- let custom=0;
+ let custom=0;const created=[];
  function add(id,geometry,material='metal',pos=[0,0,0],rot=[0,0,0],flags={}){
   const mat=typeof material==='string'?mats[material].clone():material;
   const m=new T.Mesh(geometry,mat);m.position.set(...pos);m.rotation.set(...(rot.length===3?rot:[0,0,0]));m.castShadow=true;m.receiveShadow=true;
   m.userData={partId:id,materialName:typeof material==='string'?material:`custom${custom++}`,...flags,original:{opacity:mat.opacity,transparent:mat.transparent,color:mat.color.clone(),emissive:mat.emissive.clone(),emissiveIntensity:mat.emissiveIntensity}};
-  groups.get(id).add(m);return m;
+  groups.get(id).add(m);created.push(m);return m;
  }
  const box=(id,size,pos,mat='metal',rot=[0,0,0],flags={},radius=.012)=>add(id,Math.min(...size)<.006?new T.BoxGeometry(...size):new RoundedBoxGeometry(...size,2,Math.min(radius,Math.min(...size)*.3)),mat,pos,rot,flags);
  const cyl=(id,r,l,pos,mat='metal',rot=[0,0,Math.PI/2],r2=r,flags={})=>add(id,new T.CylinderGeometry(r,r2,l,48),mat,pos,rot,flags);
@@ -38,12 +38,29 @@ export function geometryTools(groups,mats){
     if(!buckets.has(key))buckets.set(key,[]);buckets.get(key).push(m);
    }
    for(const batch of buckets.values()){
-    if(batch.length<2)continue;const geos=batch.map(m=>{m.updateMatrix();const geo=m.geometry.index?m.geometry.toNonIndexed():m.geometry.clone();geo.applyMatrix4(m.matrix);return geo;});
+    if(batch.length<2)continue;const geos=batch.map(m=>{
+     m.updateMatrix();const geo=m.geometry.clone();
+     // Preserve shared vertices and the original triangle stream. Expanding
+     // every cylinder/tube/surface into duplicate vertices caused expensive
+     // copies in each merge and subsequent vehicle-frame transformation.
+     // Nonindexed inputs get an identity index; no welding or simplification.
+     if(!geo.index){const n=geo.attributes.position.count,Index=n>65535?Uint32Array:Uint16Array;geo.setIndex(new T.BufferAttribute(Index.from({length:n},(_,i)=>i),1));}
+     geo.applyMatrix4(m.matrix);return geo;
+    });
     const merged=mergeGeometries(geos,false);geos.forEach(g=>g.dispose());if(!merged)continue;
     const first=batch[0];const combined=new T.Mesh(merged,first.material);combined.userData=first.userData;combined.castShadow=true;combined.receiveShadow=true;
     for(const m of batch){g.remove(m);m.geometry.dispose();if(m!==first)m.material.dispose();}g.add(combined);
    }
   }
  }
- return {add,box,cyl,tube,surface,profile,bolt,label,ring,optimize};
+ // Apply a coherent body reference correction only after a builder has set
+ // local rotations and placements. Shared detail and vehicle builders use it
+ // once; unrelated powertrain/suspension geometry is not remapped.
+ function mapAdded(builder,map){const start=created.length;builder();for(const m of created.slice(start)){
+  m.updateMatrix();m.geometry.applyMatrix4(m.matrix);const a=m.geometry.attributes.position;
+  for(let i=0;i<a.count;i++)a.setXYZ(i,...map([a.getX(i),a.getY(i),a.getZ(i)],m));
+  m.geometry.computeVertexNormals();m.geometry.computeBoundingBox();m.geometry.computeBoundingSphere();
+  m.position.set(0,0,0);m.rotation.set(0,0,0);m.scale.set(1,1,1);m.updateMatrix();
+ }}
+ return {add,box,cyl,tube,surface,profile,bolt,label,ring,optimize,mapAdded};
 }

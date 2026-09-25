@@ -1,0 +1,8 @@
+{
+  "recordedAt": "2026-09-24T22:53:53.602098+00:00",
+  "sourceSha256": "c1c7f63300ab74f4b9ea21fcfec6b9332ddaf397e432890f18639a8cff35dfbc",
+  "command": "node scripts/verify-geometry.mjs",
+  "exitCode": 143,
+  "completedAggregate": false,
+  "note": "Terminated before any group result was returned; no aggregate pass is claimed. Targeted body audits run separately."
+}

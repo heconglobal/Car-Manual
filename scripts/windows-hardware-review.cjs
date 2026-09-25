@@ -31,17 +31,27 @@ async function connect(url){
   const settle=()=>evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>setTimeout(resolve,1000))))');
   const capture=async name=>{await settle();const image=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});fs.writeFileSync(path.join(output,name+'.png'),Buffer.from(image.data,'base64'));report.captures.push({file:name+'.png',state:await evaluate('window.__fiero.getState()'),stats:await evaluate('window.__fiero.getModelStats()')});console.log('Captured '+name);};
   const click=selector=>evaluate('(()=>{const el=document.querySelector('+JSON.stringify(selector)+');if(!el)throw Error("Missing selector");el.click();})()');
-  await capture('native-windows-vehicle');
-  await click('#systems [data-system="engine"]');await click('.part-button[data-part="engine-block"]');await evaluate('Array.from(document.querySelectorAll("button")).find(b=>b.textContent.trim()==="Explore engine components").click()');
+  await capture(reviewInput.capturePrefix?reviewInput.capturePrefix+'-vehicle':'native-windows-vehicle');
+  if(reviewInput.startPart){await click('#systems [data-system="electrical"]');await click('.part-button[data-part="'+reviewInput.startPart+'"]');await evaluate('Array.from(document.querySelectorAll("button")).find(b=>b.textContent.trim()==="Explode this assembly").click()');}
+  else{await click('#systems [data-system="engine"]');await click('.part-button[data-part="engine-block"]');await evaluate('Array.from(document.querySelectorAll("button")).find(b=>b.textContent.trim()==="Explore engine components").click()');}
   for(const row of reviewInput.scopes){
    const began=Date.now();
+   for(const parent of row.parents||[row.parent].filter(Boolean))await click('[data-assembly="'+parent+'"]');
    await click('[data-assembly="'+row.id+'"]');await click('[data-action="reset"]');
    const active=await evaluate('window.__fiero.getVisibleParts().slice().sort()');if(JSON.stringify(active)!==JSON.stringify(row.parts))throw Error('Selection mismatch '+row.id);
-   await capture('native-windows-'+row.id+'-assembled');
-   await evaluate('Array.from(document.querySelectorAll("button")).find(b=>b.textContent.trim()==="Explode assembly").click()');await capture('native-windows-'+row.id+'-exploded');
+   await capture((reviewInput.capturePrefix||'native-windows')+'-'+row.id+'-assembled');
+   await evaluate('Array.from(document.querySelectorAll("button")).find(b=>b.textContent.trim()==="Explode assembly").click()');await capture((reviewInput.capturePrefix||'native-windows')+'-'+row.id+'-exploded');
    row.elapsedMs=Date.now()-began;
   }
   report.scopes=reviewInput.scopes.map(row=>({id:row.id,parts:row.parts.length,elapsedMs:row.elapsedMs}));
+  for(const row of reviewInput.focusParts||[]){
+   for(const parent of row.parents||[])await click('[data-assembly="'+parent+'"]');
+   await click('[data-assembly="'+row.section+'"]');await click('[data-action="reset"]');await click('.part-button[data-part="'+row.id+'"]');
+   await evaluate('Array.from(document.querySelectorAll("button")).find(b=>b.textContent.trim()==="Isolate").click()');await evaluate('Array.from(document.querySelectorAll("button")).find(b=>b.textContent.trim()==="Focus part").click()');
+   const active=await evaluate('window.__fiero.getVisibleParts()');if(active.length!==1||active[0]!==row.id)throw Error('Part isolation mismatch '+row.id);
+   if(row.view)await click('[data-view="'+row.view+'"]');
+   await capture((reviewInput.capturePrefix||'native-windows')+'-'+row.id+(row.view?'-'+row.view:''));
+  }
   report.errors=client.events.filter(e=>e.method==='Runtime.exceptionThrown');report.status=report.errors.length?'failed':'captured; pending visual inspection';
- }catch(e){report.errors.push(String(e.stack||e));report.status='failed';process.exitCode=1;}finally{report.finishedAt=new Date().toISOString();fs.writeFileSync(path.join(output,'native-windows-review.json'),JSON.stringify(report,null,2)+'\n');if(targetId)await client.send('Target.closeTarget',{targetId}).catch(()=>{});await client.send('Browser.close').catch(()=>{});client.close();console.log(report.status);}
+ }catch(e){report.errors.push(String(e.stack||e));report.status='failed';process.exitCode=1;}finally{report.finishedAt=new Date().toISOString();fs.writeFileSync(path.join(output,reviewInput.reportFile||'native-windows-review.json'),JSON.stringify(report,null,2)+'\n');if(targetId)await client.send('Target.closeTarget',{targetId}).catch(()=>{});await client.send('Browser.close').catch(()=>{});client.close();console.log(report.status);}
 })().catch(e=>{console.error(e);process.exitCode=1;});

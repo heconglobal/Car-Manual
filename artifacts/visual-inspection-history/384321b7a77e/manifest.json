@@ -1,0 +1,111 @@
+{
+  "reviewedAt": "2026-09-24T03:43:47.458Z",
+  "sourceSha256": "384321b7a77e6ee906c6132c53274724dbc755ea030d4d2121df3cdec45efe9e",
+  "applicationSha256": "c29b17aaee67e25de02d9fdcdb37fedff96b12bc6861379a13a152780272d45b",
+  "status": "Development visual inspection; not final dimensional or photorealistic acceptance",
+  "captures": [
+    {
+      "file": "native-internals-vehicle.png",
+      "sha256": "ac9511073b42f9ad7fdf42f06c588504f2bfc77cb8029f4566e8d69e65dffa17",
+      "capturedAt": "2026-09-24T03:38:27.477Z",
+      "reviewedAt": "2026-09-24T03:40:41.722Z"
+    },
+    {
+      "file": "native-internals-lifter-rear-2-intake-assembled.png",
+      "sha256": "6de33c3ad30c43db40eb108d79e8d396318dc91771d47d08697b6a441ddd3539",
+      "capturedAt": "2026-09-24T03:38:34.977Z",
+      "reviewedAt": "2026-09-24T03:40:41.724Z"
+    },
+    {
+      "file": "native-internals-lifter-rear-2-intake-exploded.png",
+      "sha256": "ff0811e7f8a48e5b84ceac184253f73fcbae7c23eb37e08f43bd99e69708bdd7",
+      "capturedAt": "2026-09-24T03:38:36.245Z",
+      "reviewedAt": "2026-09-24T03:40:41.725Z"
+    },
+    {
+      "file": "native-internals-water-pump-detail-assembled.png",
+      "sha256": "42cf33d3130e8ee7ca357bc2e85e0c468541f8e2a9aaa5addf4fe09b47b197b6",
+      "capturedAt": "2026-09-24T03:38:38.164Z",
+      "reviewedAt": "2026-09-24T03:40:41.728Z"
+    },
+    {
+      "file": "native-internals-water-pump-detail-exploded.png",
+      "sha256": "57ac712d147c647e0f5dcbc187019cf8f2efc6fab28ad12e497f9b67786fd4a4",
+      "capturedAt": "2026-09-24T03:38:39.496Z",
+      "reviewedAt": "2026-09-24T03:40:41.729Z"
+    },
+    {
+      "file": "native-internals-eng-water-pump-impeller.png",
+      "sha256": "289565319b8cdb2c89b26bb8ebf97ad684737c0d2254ca6b67e5f960112e6652",
+      "capturedAt": "2026-09-24T03:38:42.768Z",
+      "reviewedAt": "2026-09-24T03:40:41.732Z"
+    },
+    {
+      "file": "native-internals-eng-water-pump-seal.png",
+      "sha256": "6056df6af35c9c89f7b2f7ffd16cb9f0075bb079581887e025b88f4724cf3288",
+      "capturedAt": "2026-09-24T03:38:45.968Z",
+      "reviewedAt": "2026-09-24T03:40:41.735Z"
+    },
+    {
+      "file": "native-internals-eng-water-pump-bearing.png",
+      "sha256": "fc4dcda565fbc911376b26c38e9de28276518d1f125c9b9e6771f71cd7d481d3",
+      "capturedAt": "2026-09-24T03:38:47.593Z",
+      "reviewedAt": "2026-09-24T03:40:41.737Z"
+    },
+    {
+      "file": "native-internals-eng-water-pump-hub.png",
+      "sha256": "a908cb09b22276cb24c17a06f7033ec0a93dbc41dc27bf89414117f385f63fb3",
+      "capturedAt": "2026-09-24T03:38:49.277Z",
+      "reviewedAt": "2026-09-24T03:40:41.740Z"
+    },
+    {
+      "file": "native-internals-eng-water-pump.png",
+      "sha256": "b666f8505a230f91f327a42da8d03a903a1bf8d9f0cefa9f7a254139846a611b",
+      "capturedAt": "2026-09-24T03:38:50.943Z",
+      "reviewedAt": "2026-09-24T03:40:41.742Z"
+    },
+    {
+      "file": "native-internals-eng-lifter-rear-2-intake.png",
+      "sha256": "7a122cd84512827061210daaecda7e1ed54197506f1f1ee40e35b0ad720dc63b",
+      "capturedAt": "2026-09-24T03:38:53.288Z",
+      "reviewedAt": "2026-09-24T03:40:41.744Z"
+    },
+    {
+      "file": "native-internals-eng-lifter-plunger-rear-2-intake.png",
+      "sha256": "43763247cb405716e4464c9b03e0bdefe3299f14fe5b4d777cd2bcc7f4b243e8",
+      "capturedAt": "2026-09-24T03:38:54.999Z",
+      "reviewedAt": "2026-09-24T03:40:41.746Z"
+    },
+    {
+      "file": "native-internals-eng-lifter-pushrod-seat-rear-2-intake.png",
+      "sha256": "666635c5ec8eb32a8663639879986c2504ab183985c102dc617daf3fdedd8892",
+      "capturedAt": "2026-09-24T03:38:56.797Z",
+      "reviewedAt": "2026-09-24T03:40:41.748Z"
+    },
+    {
+      "file": "native-internals-eng-lifter-check-retainer-rear-2-intake.png",
+      "sha256": "87e15371b0eacfe85c726de9bb9fe5a08dea27e1361b2c997af4b7d6dbe71c39",
+      "capturedAt": "2026-09-24T03:38:58.528Z",
+      "reviewedAt": "2026-09-24T03:40:41.751Z"
+    },
+    {
+      "file": "native-internals-eng-lifter-pushrod-seat-rear-2-intake-top.png",
+      "sha256": "1995e8389d279486d4b917bb17b138c1e1ed95a188cf1542d12f96c459841093",
+      "capturedAt": "2026-09-24T03:39:00.231Z",
+      "reviewedAt": "2026-09-24T03:40:41.753Z"
+    },
+    {
+      "file": "native-internals-eng-water-pump-impeller-side.png",
+      "sha256": "2c8f89b54f05fed119195e5d152381008c3c27e435ba28142667ff15ff98dea5",
+      "capturedAt": "2026-09-24T03:39:02.318Z",
+      "reviewedAt": "2026-09-24T03:40:41.756Z"
+    },
+    {
+      "file": "service-mobile-dipstick.png",
+      "sha256": "d0e8eed2bfe6987dc10ec9b0101f5ba36aa70e68e45e62fe751abe01e1131180",
+      "capturedAt": "2026-09-24T03:40:56.888Z",
+      "reviewedAt": "2026-09-24T03:43:47.458Z"
+    }
+  ],
+  "limits": "Explicitly recorded after opening these captures. Passing screenshots do not prove complete physical parts, original tooling, electrical operation, all devices or owner acceptance."
+}

@@ -14,6 +14,7 @@ export function engineVehicleOwner(p){
  if(p.section==='induction')return 'intake';
  if(p.id==='eng-alternator'||p.id==='eng-flywheel'||p.id.includes('exhaust'))return null; // separate shared builders
  if(/^eng-(front|rear)-(head|cover)(-gasket|-bolts)?$/.test(p.id))return 'heads';
+ if(p.section==='oil-pump-detail')return ['eng-oil-pump','eng-pickup','eng-pickup-screen','eng-oil-pump-cover','eng-oil-pump-cover-bolts','eng-oil-pump-mount-bolt','eng-oil-pump-drive'].includes(p.id)?'oil-pan':null;
  if(p.section==='lubrication'||p.section==='dipstick-detail'||p.section==='oil-pressure-detail')return 'oil-pan';
  if(p.id==='eng-block'||['eng-timing-cover','eng-balancer','eng-crank-pulley','eng-belt','eng-front-crank-seal','eng-timing-pointer','eng-rear-seal'].includes(p.id)||p.section==='water-pump-detail')return 'engine-block';
  return null;

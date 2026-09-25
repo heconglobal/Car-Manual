@@ -8,7 +8,7 @@ test('1985 headlights expose both sides, early motor internals, independent cove
  const capture=async name=>{await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await page.screenshot({path:`artifacts/${name}.png`});console.log('Captured '+name);};
  const reset=()=>page.getByRole('button',{name:'Reset view',exact:true}).click();const scope=async id=>{if(!await page.locator(`#systems [data-assembly="${id}"]`).count()){const parent=detailSectionById.get(id)?.parent;if(parent)await scope(parent);}await page.locator(`#systems [data-assembly="${id}"]`).click();await expect(page.locator('canvas')).toHaveAttribute('data-assembly',id);};
  await capture('headlights-vehicle-closed');const closed=await page.evaluate(()=>window.__fiero.getPartBounds('headlights'));
- await page.getByRole('button',{name:'Reference library',exact:true}).click();await page.getByRole('button',{name:'Remaining model & manual work',exact:true}).click();await expect(page.locator('#modal')).toBeVisible();await expect(page.locator('#modal .source-card')).toHaveCount(remainingWork.length);await expect(page.locator('#modal .source-card').first()).toContainText('1. Headlights');await expect(page.locator('#modal li')).toHaveCount(73);await capture('remaining-work-checklist');await page.getByRole('button',{name:'Close dialog',exact:true}).click();
+ await page.getByRole('button',{name:'Reference library',exact:true}).click();await page.getByRole('button',{name:'Remaining model & manual work',exact:true}).click();await expect(page.locator('#modal')).toBeVisible();await expect(page.locator('#modal .source-card')).toHaveCount(remainingWork.length);await expect(page.locator('#modal .source-card').first()).toContainText('1. Headlights');await expect(page.locator('#modal li')).toHaveText(remainingWork.flatMap(area=>area.items));await capture('remaining-work-checklist');await page.getByRole('button',{name:'Close dialog',exact:true}).click();
  await page.locator('#systems [data-system="electrical"]').click();await page.locator('.part-button[data-part="headlights"]').click();await page.getByRole('button',{name:'Explode this assembly',exact:true}).click();await reset();
  expect((await page.evaluate(()=>window.__fiero.getVisibleParts())).sort()).toEqual(headlightParts.map(p=>p.id).sort());
  await page.getByRole('button',{name:'Raise headlights',exact:true}).click();await capture('headlights-pair-raised');
@@ -24,6 +24,24 @@ test('1985 headlights expose both sides, early motor internals, independent cove
  await page.locator('.part-button[data-part="hl-left-output-gear"]').click();await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();await capture('headlight-plastic-output-gear');
  await scope('headlight-left-door');await reset();await capture('headlight-cover-raised');await page.getByRole('button',{name:'Lower headlights',exact:true}).click();await capture('headlight-cover-closed');await scope('headlight-left');await reset();await capture('headlight-closed-mechanism');const low=await page.evaluate(()=>window.__fiero.getPartBounds('hl-left-lens'));await page.getByRole('button',{name:'Raise headlights',exact:true}).click();const high=await page.evaluate(()=>window.__fiero.getPartBounds('hl-left-lens'));expect(high.max[1]-low.max[1]).toBeGreaterThan(.15);
  await scope('headlight-relays');await reset();await capture('headlight-relays');expect((await page.evaluate(()=>window.__fiero.getPartBounds('hl-isolation-relay'))).max[0]).toBeLessThan(0);
+ for(const relay of ['left','right','isolation']){
+  const section='headlight-'+relay+'-relay',prefix=relay==='isolation'?'hl-isolation':'hl-'+relay+'-relay';
+  await scope(section);await reset();
+  expect((await page.evaluate(()=>window.__fiero.getVisibleParts())).sort()).toEqual(detailMembers(section).map(p=>p.id).sort());
+  await capture('headlight-'+relay+'-relay-assembled');
+  await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await capture('headlight-'+relay+'-relay-exploded');
+  await page.locator(`.part-button[data-part="${prefix}-terminal-c1-b"]`).click();
+  await expect(page.locator('#inspector-content')).toContainText(relay==='isolation'?'yellow':'pink');
+  await expect(page.locator('#inspector-content')).toContainText('C1 B');
+  await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();
+  expect(await page.evaluate(()=>window.__fiero.getVisibleParts())).toEqual([prefix+'-terminal-c1-b']);
+ }
+ await scope('headlight-power');await reset();await capture('headlight-fusible-links-assembled');
+ expect((await page.evaluate(()=>window.__fiero.getVisibleParts())).sort()).toEqual(detailMembers('headlight-power').map(p=>p.id).sort());
+ await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await capture('headlight-fusible-links-exploded');
+ await page.locator('.part-button[data-part="hl-link-c-conductor"]').click();await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();
+ await expect(page.locator('#inspector-content')).toContainText('LH actuator relay C1 A');
+ expect((await page.evaluate(()=>window.__fiero.getPartBounds('hl-link-c-conductor'))).max[0]).toBeLessThan(0);
  await page.getByRole('button',{name:'Back to vehicle',exact:false}).click();await expect(page.locator('canvas')).toHaveAttribute('data-selected','headlights');await reset();const raised=await page.evaluate(()=>window.__fiero.getPartBounds('headlights'));expect(raised.max[1]).toBeLessThan(.89);expect(raised.max[1]-closed.max[1]).toBeGreaterThan(.08);await capture('headlights-vehicle-raised');
  await page.getByRole('button',{name:'Configure',exact:true}).click();await page.getByRole('button',{name:'White paint',exact:true}).click();await page.locator('[data-config="headlights"]').uncheck();await page.getByRole('button',{name:'Exterior',exact:true}).click();await capture('headlights-vehicle-white-closed');
  await page.setViewportSize({width:390,height:700});await page.getByRole('button',{name:'Open assemblies',exact:true}).click();await page.getByRole('searchbox').fill('Output-gear cushion');await page.locator('.part-button[data-part="hl-right-bumper-4"]').click();await expect(page.locator('canvas')).toHaveAttribute('data-assembly','headlight-right-motor');await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();await capture('headlight-mobile-cushion');expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);

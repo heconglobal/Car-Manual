@@ -7,6 +7,7 @@ import {geometryTools} from './geometry.js';
 import {mechanicalTools} from './mechanical-geometry.js';
 import {correctLegacyHandedness} from './vehicle-frame.js';
 import {fuelParts,fuelSections} from './fuel-catalog.js';
+import {bodyPoint} from './body-datums.js';
 export function fuelMaterials(base=createMaterials()){
  const m={...base};for(const k of ['metal','rubber','plastic','interior','reservoir'])m[k]=base[k].clone();m.metal.roughness=.44;m.metal.bumpScale=.00003;m.rubber.bumpScale=.000025;m.plastic.bumpScale=.000025;m.reservoir.transparent=false;m.reservoir.opacity=1;m.interior.color.set('#c3af82');m.interior.bumpScale=.00014;return m;
 }
@@ -19,8 +20,8 @@ function fuelTools(h){
  function hose(id,points,r=.004,mat='rubber'){tube(id,points,r,mat);for(const p of [points[0],points.at(-1)]){const near=p===points[0]?points[1]:points.at(-2),v=new T.Vector3(...p).sub(new T.Vector3(...near)).normalize().toArray();sleeve(id,r+.001,r*.65,.01,p,mat,v);}}
  return {sleeve,lathe,clamp,hose,plate};
 }
-export const fuelDatum={tankSender:[0,.416,.35],filler:[-.835,.708,.93],filter:[.235,.326,.63],canister:[-.55,.645,1.42]};
-export function buildFuel(h){buildTank(h);buildSender(h);buildFiller(h);buildPlumbing(h);buildVapor(h);}
+export const fuelDatum={tankSender:[0,.416,.35],filler:bodyPoint([-.795,.708,.93]),filter:[.235,.326,.63],canister:[-.55,.645,1.42]};
+export function buildFuel(h){buildTank(h);buildSender(h);h.mapAdded(()=>buildFiller(h),bodyPoint);buildPlumbing(h);buildVapor(h);}
 function tankShape(scale=1){const sh=new T.Shape(),x=.142*scale,z0=-.80,z1=.63,r=.037;sh.moveTo(-x+r,-z0);sh.lineTo(x-r,-z0);sh.quadraticCurveTo(x,-z0,x,-z0-r);sh.lineTo(x,-z1+r);sh.quadraticCurveTo(x,-z1,x-r,-z1);sh.lineTo(-x+r,-z1);sh.quadraticCurveTo(-x,-z1,-x,-z1+r);sh.lineTo(-x,-z0-r);sh.quadraticCurveTo(-x,-z0,-x+r,-z0);return sh;}
 const tankTop=z=>.286+.130*T.MathUtils.smoothstep(z,-.17,.14);
 function buildTank(h){
@@ -73,11 +74,11 @@ function buildSender(h){
 }
 function buildFiller(h){
  const {surface,tube,box,cyl,bolt}=h,{sleeve,lathe,clamp,hose}=fuelTools(h),id=k=>'fu-filler-'+k;
- const neck=[[.816,.708,.93],[.764,.685,.925],[.67,.572,.90],[.48,.489,.81],[.28,.429,.69],[.18,.415,.64]];
+ const neck=[[.776,.708,.93],[.744,.685,.925],[.67,.572,.90],[.48,.489,.81],[.28,.429,.69],[.18,.415,.64]];
  hose(id('neck'),neck,.024,'metal');hose(id('neck'),neck.map(p=>[p[0]-.018,p[1]+.025,p[2]-.018]),.0065,'metal');
- sleeve(id('neck'),.034,.022,.023,[.816,.708,.93],'zinc',[1,0,0]);
- lathe(id('cap'),[[-.025,.021],[-.006,.022],[0,.034],[.007,.035],[.016,.026],[.020,.020],[.020,0],[-.025,0],[-.025,.021]],[.828,.708,.93],'plastic',[1,0,0]);box(id('cap'),[.018,.014,.052],[.854,.708,.93],'plastic',[],{},.007);
- sleeve(id('seal'),.028,.021,.003,[.831,.708,.93],'rubber',[1,0,0]);sleeve(id('insulator'),.048,.025,.011,[.790,.705,.93],'rubber',[1,0,0]);sleeve(id('plate'),.055,.039,.002,[.784,.705,.93],'zinc',[1,0,0]);for(let i=0;i<3;i++){const a=i*Math.PI*2/3;bolt(id('plate'),[.782,.705+Math.cos(a)*.048,.93+Math.sin(a)*.048],.004,'x');}
+ sleeve(id('neck'),.034,.022,.023,[.776,.708,.93],'zinc',[1,0,0]);
+ lathe(id('cap'),[[-.025,.021],[-.006,.022],[0,.034],[.007,.035],[.016,.026],[.020,.020],[.020,0],[-.025,0],[-.025,.021]],[.788,.708,.93],'plastic',[1,0,0]);box(id('cap'),[.018,.014,.052],[.814,.708,.93],'plastic',[],{},.007);
+ sleeve(id('seal'),.028,.021,.003,[.791,.708,.93],'rubber',[1,0,0]);sleeve(id('insulator'),.048,.025,.011,[.750,.705,.93],'rubber',[1,0,0]);sleeve(id('plate'),.055,.039,.002,[.744,.705,.93],'zinc',[1,0,0]);for(let i=0;i<3;i++){const a=i*Math.PI*2/3;bolt(id('plate'),[.742,.705+Math.cos(a)*.048,.93+Math.sin(a)*.048],.004,'x');}
  hose(id('hose'),[[.18,.415,.64],[.12,.403,.638],[.07,.393,.637]],.025);hose(id('vent-hose'),[[.16,.440,.622],[.105,.432,.625],[.04,.429,.634]],.0075);
  for(const [p,r] of [[[.173,.412,.64],.025],[[.072,.393,.638],.025],[[.155,.439,.623],.0075],[[.046,.429,.633],.0075]])clamp(id('clamps'),p,r,[1,0,0]);
  tube(id('ground'),[[.69,.587,.90],[.67,.62,.87],[.70,.66,.87]],.0018,'metal');sleeve(id('ground'),.005,.0025,.001,[.70,.66,.87],'zinc',[1,0,0]);

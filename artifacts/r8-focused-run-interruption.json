@@ -1,0 +1,7 @@
+{
+  "date": "2026-09-25T01:33:17.706673+00:00",
+  "sourceSha256": "0c1e23dd80f0886b27d6e772e2800d88db8c74418c309c5d59a62a201255d310",
+  "status": "interrupted-not-counted",
+  "exitCode": 143,
+  "reason": "Combined five-audit process terminated after the exterior audit. Remaining audits are rerun individually; only completed source-stamped reports count."
+}

@@ -11,8 +11,12 @@ test('factory headlamp guide highlights real parts, preserves relay reconnection
  expect(await page.evaluate(()=>window.__fiero.getState().configuration.headlights)).toBe(true);
  await expect(page.locator('#inspector-content')).toContainText('T-15');
  await page.locator('[data-action="next-step"]').click();
- await expect(page.locator('canvas')).toHaveAttribute('data-selected','hl-left-motor-leads');
+ await expect(page.locator('canvas')).toHaveAttribute('data-selected','hl-left-disconnect');
  await expect(page.locator('.step-description')).toContainText('must remain raised');
+ await page.getByRole('button',{name:'Inspect this part',exact:true}).click();
+ expect(await page.evaluate(()=>window.__fiero.getVisibleParts())).toEqual(['hl-left-disconnect']);
+ await page.screenshot({path:'artifacts/headlamp-procedure-disconnect.png'});
+ await page.getByRole('button',{name:'Show assembly',exact:true}).click();
  await page.locator('[data-action="prev-step"]').click();await expect(page.locator('.tour-progress .current')).toHaveText('1');
  await page.locator('.tour-progress [data-step="4"]').click();
  await expect(page.locator('canvas')).toHaveAttribute('data-selected','hl-left-aim-spring');

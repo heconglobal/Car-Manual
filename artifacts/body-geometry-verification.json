@@ -1,0 +1,45 @@
+{
+  "sourceSha256": "0c1e23dd80f0886b27d6e772e2800d88db8c74418c309c5d59a62a201255d310",
+  "finishedAt": "2026-09-25T01:36:57.796Z",
+  "unchanged": true,
+  "status": "passed",
+  "scope": "Five targeted body/clearance audits; not full aggregate vehicle verification.",
+  "execution": "Independently completed source-stamped reports, collected without rerunning or inferring checks.",
+  "results": [
+    {
+      "script": "audit-exterior",
+      "status": "passed",
+      "currentSource": true,
+      "report": "artifacts/exterior-audit.json",
+      "completedAt": "2026-09-25T01:31:09.702Z"
+    },
+    {
+      "script": "audit-body-dimensions",
+      "status": "passed",
+      "currentSource": true,
+      "report": "artifacts/body-dimension-audit.json",
+      "completedAt": "2026-09-25T01:33:19.327Z"
+    },
+    {
+      "script": "audit-rear-body",
+      "status": "passed",
+      "currentSource": true,
+      "report": "artifacts/rear-body-surface-audit.json",
+      "completedAt": "2026-09-25T01:34:33.562Z"
+    },
+    {
+      "script": "audit-front-clearance",
+      "status": "passed",
+      "currentSource": true,
+      "report": "artifacts/front-clearance-audit.json",
+      "completedAt": "2026-09-25T01:36:06.278Z"
+    },
+    {
+      "script": "audit-exterior-fit",
+      "status": "passed",
+      "currentSource": true,
+      "report": "artifacts/exterior-fit-audit.json",
+      "completedAt": "2026-09-25T01:29:36.194Z"
+    }
+  ]
+}

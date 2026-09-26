@@ -20,17 +20,19 @@ export function createMaterials(){
  const cast=texture('cast'),vinyl=texture('vinyl'),cloth=texture('cloth'),rubber=texture('rubber'),brushed=texture('brushed');
  const standard=(color,metalness,roughness,extra={})=>new T.MeshStandardMaterial({color,metalness,roughness,...extra});
  return {
-  red:new T.MeshPhysicalMaterial({color:'#a80912',metalness:0,roughness:.3,clearcoat:.7,clearcoatRoughness:.28,envMapIntensity:.60}),
+  red:new T.MeshPhysicalMaterial({color:'#a80912',metalness:0,roughness:.36,clearcoat:.45,clearcoatRoughness:.34,envMapIntensity:.45}),
   dark:standard('#191c1e',.45,.36),
   frame:standard('#26292a',.55,.48,{bumpMap:cast,bumpScale:.00025}),
   blackPaint:new T.MeshPhysicalMaterial({color:'#101214',metalness:.1,roughness:.29,clearcoat:.8,clearcoatRoughness:.18}),
   metal:standard('#9d9e9d',.85,.39,{bumpMap:cast,bumpScale:.0011}),
   alloy:standard('#babdc0',.95,.22),
+  wheelAlloy:standard('#9da2a4',.78,.43),
+  wheelCast:standard('#555a5c',.65,.58),
   rotor:standard('#979c9f',1,.34,{bumpMap:brushed,bumpScale:.0006}),
   iron:standard('#454746',.65,.7,{bumpMap:cast,bumpScale:.002}),
   rubber:standard('#101112',0,.88,{bumpMap:rubber,bumpScale:.001}),
   plastic:standard('#1f2022',0,.7,{bumpMap:vinyl,bumpScale:.001}),
-  sailGlass:new T.MeshPhysicalMaterial({color:'#192123',metalness:.12,roughness:.15,clearcoat:1,clearcoatRoughness:.07,side:T.DoubleSide}),
+  sailGlass:new T.MeshPhysicalMaterial({color:'#101719',metalness:0,roughness:.25,clearcoat:.45,clearcoatRoughness:.22,envMapIntensity:.3,side:T.DoubleSide}),
   glass:new T.MeshPhysicalMaterial({color:'#bac9c6',metalness:0,roughness:.06,transmission:.88,thickness:.004,ior:1.52,attenuationColor:'#8ba59b',attenuationDistance:.12,side:T.DoubleSide}),
   headlampGlass:new T.MeshPhysicalMaterial({color:'#f5f7f4',roughness:.12,transmission:.92,thickness:.006,ior:1.52,side:T.DoubleSide}),
   headlampFlute:new T.MeshPhysicalMaterial({color:'#d7dedb',roughness:.19,metalness:.05,transparent:true,opacity:.35,clearcoat:1}),

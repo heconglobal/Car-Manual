@@ -1,0 +1,880 @@
+--- /dev/null
++++ R8/scripts/audit-exterior-fit.mjs
+@@ -0,0 +1,71 @@
++import assert from 'node:assert/strict';
++import {writeFile} from 'node:fs/promises';
++import * as T from 'three';
++import {sourceFingerprint} from './source-fingerprint.mjs';
++import {bodyPoint} from '../src/body-datums.js';
++import {exteriorBeltHeight} from '../src/body-contours.js';
++globalThis.document={createElement:()=>({getContext:()=>({createImageData:(w,h)=>({data:new Uint8ClampedArray(w*h*4)}),putImageData(){},fillRect(){},strokeRect(){},fillText(){}})})};
++const {createMaterials}=await import('../src/materials.js');
++const {geometryTools}=await import('../src/geometry.js');
++const {parts}=await import('../src/data.js');
++const {buildBody}=await import('../src/body.js');
++const {buildMechanics}=await import('../src/mechanics.js');
++const {correctLegacyHandedness}=await import('../src/vehicle-frame.js');
++const root=new T.Group(),groups=new Map(parts.map(p=>{const g=new T.Group();root.add(g);return[p.id,g];}));
++const h=geometryTools(groups,createMaterials());buildBody(h);buildMechanics(h);h.optimize();correctLegacyHandedness(groups);root.updateMatrixWorld(true);
++const checks=[],ray=new T.Raycaster();
++const check=(name,fn)=>{const measurements=fn();checks.push({name,status:'passed',measurements});};
++const cast=(id,p,d)=>{ray.set(new T.Vector3(...p),new T.Vector3(...d));return ray.intersectObjects(groups.get(id).children,false);};
++check('Side molding remains above its body skin across the full ribbed section',()=>{
++ let samples=0,minStandOff=Infinity;
++ for(const side of ['left','right'])for(const [trim,panel,stations]of [
++  ['door-molding','door',[-.50,-.25,0,.25,.54]],['front-molding','fender',[-1.60,-.83,-.70]],['rear-molding','quarter',[.64,.74,.83,1.55,1.65]]]){
++  const sign=side==='left'?-1:1;
++  for(const z of stations)for(const dy of [-.007,0,.007]){
++   const p=bodyPoint([0,exteriorBeltHeight(z)+dy,z]);p[0]=sign*1.1;
++   const d=[-sign,0,0],skin=cast(panel+'-'+side,p,d)[0],molding=cast(trim+'-'+side,p,d)[0];
++   assert(skin&&molding,`${trim}-${side} missing at ${z}/${dy}`);
++   const stand=skin.distance-molding.distance;assert(stand>0,`${trim}-${side} buried by ${-stand*1000} mm at ${z}/${dy}`);minStandOff=Math.min(minStandOff,stand);samples++;
++  }
++ }
++ return{samples,minStandOffMm:minStandOff*1000};
++});
++check('Installed molding centres follow one straight side elevation',()=>{
++ const start=bodyPoint([0,exteriorBeltHeight(-1.65),-1.65]),end=bodyPoint([0,exteriorBeltHeight(1.65),1.65]);let error=0;
++ for(let i=0;i<=100;i++){const z=-1.65+3.3*i/100,p=bodyPoint([0,exteriorBeltHeight(z),z]),expected=start[1]+(end[1]-start[1])*(p[2]-start[2])/(end[2]-start[2]);error=Math.max(error,Math.abs(p[1]-expected));}
++ assert(error<.001);return{maxDeviationMm:error*1000};
++});
++check('Intake opening is below the uninterrupted quarter molding and clear of paint',()=>{
++ let samples=0;
++ for(const z of [.66,.72,.79])for(const dy of [-.110,-.075,-.045]){const p=bodyPoint([-1.1,exteriorBeltHeight(z)+dy,z]);assert.equal(cast('quarter-left',p,[1,0,0]).length,0,'paint across intake');samples++;}
++ const box=new T.Box3().setFromObject(groups.get('side-intake')),molding=new T.Box3().setFromObject(groups.get('rear-molding-left'));assert(box.max.y<molding.min.y-.008);return{samples,upperClearanceMm:(molding.min.y-box.max.y)*1000};
++});
++check('Tread remains within the shallow road-tire radius envelope',()=>{
++ const a=groups.get('wheels').children.filter(m=>m.userData.materialName==='rubber');let maxRadius=0;
++ for(const m of a){const p=m.geometry.attributes.position;for(let i=0;i<p.count;i++){const z=p.getZ(i),cz=z<0?-1.1865:1.1865;maxRadius=Math.max(maxRadius,Math.hypot(p.getY(i)-.307,z-cz));}}
++ assert(maxRadius<.310,'tread projects beyond a shallow road-tire envelope');return{maximumRadiusMm:maxRadius*1000};
++});
++// Build the option parts without merging so the actual contact surfaces can
++// be checked independently; production still uses this same builder.
++const {buildSpoilers}=await import('../src/spoilers.js');
++const {deckHeight}=await import('../src/body-contours.js');
++const optionGroups=new Map(['deck-carrier','deck-wing'].map(id=>[id,new T.Group()]));
++const oh=geometryTools(optionGroups,createMaterials());let contacts;
++oh.mapAdded(()=>{contacts=buildSpoilers(oh,deckHeight);},bodyPoint);
++for(const g of optionGroups.values())g.updateMatrixWorld(true);
++for(const [name,legs,foils,topOnly]of [
++ ['Carrier supports meet the swept spoiler underside',contacts.carrierSupports,contacts.carrierFoils,false],
++ ['Wing pedestals end inside the lower foil skin',contacts.wingPedestals,contacts.wingFoils,true]
++])check(name,()=>{
++ let samples=0,maxFitError=0;
++ for(const m of legs){const p=m.geometry.attributes.position,uv=m.geometry.attributes.uv;
++  for(let i=0;i<p.count;i++){if(topOnly&&uv.getY(i)<.999)continue;
++   ray.set(new T.Vector3(p.getX(i),1.4,p.getZ(i)),new T.Vector3(0,-1,0));const hit=ray.intersectObjects(foils,false)[0];if(!hit)continue;
++   const error=Math.abs(p.getY(i)-hit.point.y);maxFitError=Math.max(maxFitError,error);samples++;
++  }
++ }
++ assert(samples>30,'insufficient physical contact samples');assert(maxFitError<.002,`${name}: ${maxFitError*1000} mm`);
++ return{samples,maxFitErrorMm:maxFitError*1000};
++});
++const report={sourceSha256:sourceFingerprint(),reviewedAt:new Date().toISOString(),status:'passed',checks,limits:'Interface and silhouette regressions on actual shared geometry. Reconstruction checks, not production tooling or factory tolerance certification.'};
++await writeFile('artifacts/exterior-fit-audit.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
+--- R7/scripts/audit-exterior.mjs
++++ R8/scripts/audit-exterior.mjs
+@@ -30,7 +30,7 @@
+ });
+ check('Fuel door and intake occupy real openings in the driver quarter skin',()=>{
+  const ray=new T.Raycaster(),meshes=model.groups.get('bd-skin-quarter-left').children;
+- for(const [y,z]of [[.710,.93],[.590,.720]]){ray.set(new T.Vector3(-1.2,y,z),new T.Vector3(1,0,0));assert.equal(ray.intersectObjects(meshes,false).length,0,'paint blocks exterior opening');}
++ for(const [y,z]of [[.710,.93],[.525,.720]]){ray.set(new T.Vector3(-1.2,y,z),new T.Vector3(1,0,0));assert.equal(ray.intersectObjects(meshes,false).length,0,'paint blocks exterior opening');}
+  assert(bounds('fuel-door').max.x<0);assert(bounds('side-intake').max.x<0);assert(bounds('antenna').min.x>0);
+ });
+ check('Fuel cap and grip fit behind the closed fuel door',()=>{
+@@ -45,7 +45,7 @@
+  for(const side of ['left','right']){const shell=bounds('mirror-'+side),glass=bounds('mirror-glass-'+side),window=bounds('door-glass-'+side);assert(shell.containsBox(glass),side+' glass outside rim');assert(glass.min.z>shell.min.z+.07);assert(side==='left'?glass.max.x<window.min.x:glass.min.x>window.max.x);}
+ });
+ check('Front pads and fascia leave the park/turn apertures open',()=>{
+- for(const side of ['left','right']){const x=side==='left'?-.500:.500,ray=new T.Raycaster(new T.Vector3(x,.365,-2.3),new T.Vector3(0,0,1));const meshes=['nose','front-pad-'+side].flatMap(id=>model.groups.get('bd-skin-'+id).children);assert.equal(ray.intersectObjects(meshes,false).length,0,'front turn lamp blocked');assert(bounds('front-pad-'+side).getSize(new T.Vector3()).z>.025);}
++ for(const side of ['left','right']){const x=side==='left'?-.500:.500,ray=new T.Raycaster(new T.Vector3(x,.410,-2.3),new T.Vector3(0,0,1));const meshes=['nose','front-pad-'+side].flatMap(id=>model.groups.get('bd-skin-'+id).children);assert.equal(ray.intersectObjects(meshes,false).length,0,'front turn lamp blocked');assert(bounds('front-pad-'+side).getSize(new T.Vector3()).z>.025);}
+ });
+ check('Curved bumper pad faces retain dense tessellation after wrapping',()=>{
+  for(const end of ['front','rear'])for(const side of ['left','right']){const g=model.groups.get('bd-skin-'+end+'-pad-'+side);let longest=0;for(const m of g.children){const a=m.geometry.attributes.position,ix=m.geometry.index;if(!ix)continue;for(let i=0;i<ix.count;i+=3){const p=[0,1,2].map(k=>new T.Vector3().fromBufferAttribute(a,ix.getX(i+k)));longest=Math.max(longest,p[0].distanceTo(p[1]),p[1].distanceTo(p[2]),p[2].distanceTo(p[0]));}}assert(longest<.06,end+' pad contains fascia-crossing cap triangles');}
+--- R7/scripts/audit-front-clearance.mjs
++++ R8/scripts/audit-front-clearance.mjs
+@@ -1,8 +1,9 @@
+ import assert from 'node:assert/strict';
+ import {writeFile} from 'node:fs/promises';
+ import * as T from 'three';
++import {sourceFingerprint} from './source-fingerprint.mjs';
+ import {verticalSurfaceIndex} from './vertical-surface-index.mjs';
+ globalThis.document={createElement:()=>({getContext:()=>({createImageData:(w,h)=>({data:new Uint8ClampedArray(w*h*4)}),putImageData(){},fillRect(){},strokeRect(){},fillText(){}})})};
+ const {createCoolingDetail}=await import('../src/cooling-detail.js');const {createBodyDetail}=await import('../src/body-detail.js');const body=createBodyDetail();body.root.updateMatrixWorld(true);const hoodHeights=verticalSurfaceIndex(body.groups.get('bd-skin-hood').children.filter(m=>m.userData.materialName==='red'));const model=createCoolingDetail();model.root.updateMatrixWorld(true);const results=[];
+ for(const [id,g]of model.groups){if(!id.startsWith('cool-'))continue;let max=-Infinity,point;g.traverse(m=>{if(!m.isMesh)return;const a=m.geometry.attributes.position;for(let i=0;i<a.count;i++){const p=new T.Vector3().fromBufferAttribute(a,i).applyMatrix4(m.matrixWorld);if(Math.abs(p.x)>.64||p.z< -1.786||p.z>-.65)continue;const hits=hoodHeights(p.x,p.z);if(!hits.length)continue;const diff=p.y-Math.min(...hits);if(diff>max){max=diff;point=p.toArray();}}});if(Number.isFinite(max))results.push({id,maxAboveHood:max,point});}
+-results.sort((a,b)=>b.maxAboveHood-a.maxAboveHood);console.log(JSON.stringify(results.slice(0,8),null,2));assert(results.length);assert(results[0].maxAboveHood<-.002,'cooling hardware must sit at least 2 mm below the modeled hood');await writeFile('artifacts/front-clearance-audit.json',JSON.stringify({date:new Date().toISOString(),status:'passed',scope:'Cooling vertices versus actual calibrated hood triangles, excluding open headlamp apertures; not a factory fit certification',results},null,2)+'\n');
++results.sort((a,b)=>b.maxAboveHood-a.maxAboveHood);console.log(JSON.stringify(results.slice(0,8),null,2));assert(results.length);assert(results[0].maxAboveHood<-.002,'cooling hardware must sit at least 2 mm below the modeled hood');await writeFile('artifacts/front-clearance-audit.json',JSON.stringify({sourceSha256:sourceFingerprint(),date:new Date().toISOString(),status:'passed',scope:'Cooling vertices versus actual calibrated hood triangles, excluding open headlamp apertures; not a factory fit certification',results},null,2)+'\n');
+--- /dev/null
++++ R8/scripts/collect-body-verification.mjs
+@@ -0,0 +1,14 @@
++// Collect independently completed runs when a long batch cannot finish.
++import {readFile,writeFile} from 'node:fs/promises';
++import {sourceFingerprint} from './source-fingerprint.mjs';
++import {preserveFiles} from './preserve-files.mjs';
++const sourceSha256=sourceFingerprint(),results=[];
++for(const [script,file] of [['audit-exterior','exterior-audit'],['audit-body-dimensions','body-dimension-audit'],['audit-rear-body','rear-body-surface-audit'],['audit-front-clearance','front-clearance-audit'],['audit-exterior-fit','exterior-fit-audit']]){
++ const path='artifacts/'+file+'.json';let report;try{report=JSON.parse(await readFile(path,'utf8'));}catch{}
++ const current=report?.sourceSha256===sourceSha256,status=current&&report?.status==='passed'?'passed':'failed';
++ results.push({script,status,currentSource:current,report:path,completedAt:report?.reviewedAt||report?.date||null});
++}
++const unchanged=sourceFingerprint()===sourceSha256,status=unchanged&&results.every(r=>r.status==='passed')?'passed':'failed';
++await preserveFiles(['artifacts/body-geometry-verification.json'],'before-collecting-body-audits');
++await writeFile('artifacts/body-geometry-verification.json',JSON.stringify({sourceSha256,finishedAt:new Date().toISOString(),unchanged,status,scope:'Five targeted body/clearance audits; not full aggregate vehicle verification.',execution:'Independently completed source-stamped reports, collected without rerunning or inferring checks.',results},null,2)+'\n');
++console.log(JSON.stringify({sourceSha256,status,results},null,2));if(status!=='passed')process.exitCode=1;
+--- R7/scripts/record-visual-review.mjs
++++ R8/scripts/record-visual-review.mjs
+@@ -5,6 +5,7 @@
+ import {createHash} from 'node:crypto';
+ import assert from 'node:assert/strict';
+ import {regressionManifest} from './regression-evidence.mjs';
++import {preserveFiles} from './preserve-files.mjs';
+ const current=regressionManifest(),path='artifacts/visual-inspection-manifest.json';
+ let prior;try{prior=JSON.parse(await readFile(path,'utf8'));}catch{}
+ if(prior?.sourceSha256!==current.sourceSha256)prior=null;
+@@ -16,4 +17,5 @@
+  captures.set(name,{file:name,sha256:createHash('sha256').update(await readFile(file)).digest('hex'),capturedAt:s.mtime.toISOString(),reviewedAt:new Date().toISOString()});
+ }
+ const report={reviewedAt:new Date().toISOString(),sourceSha256:current.sourceSha256,applicationSha256:current.applicationSha256,status:'Development visual inspection; not final dimensional or photorealistic acceptance',captures:[...captures.values()],limits:'Explicitly recorded after opening these captures. Passing screenshots do not prove complete physical parts, original tooling, electrical operation, all devices or owner acceptance.'};
++await preserveFiles([path],'before-recording-visual-review');
+ await writeFile(path,JSON.stringify(report,null,2)+'\n');console.log('Recorded '+report.captures.length+' inspected current-source captures.');
+--- R7/scripts/verify-body.mjs
++++ R8/scripts/verify-body.mjs
+@@ -5,14 +5,14 @@
+ import {preserveFiles,runId} from './preserve-files.mjs';
+ import {sourceFingerprint} from './source-fingerprint.mjs';
+ const exec=promisify(execFile),sourceSha256=sourceFingerprint(),startedAt=new Date().toISOString(),results=[];
+-await preserveFiles(['artifacts/body-geometry-verification.json','artifacts/exterior-audit.json','artifacts/body-dimension-audit.json','artifacts/rear-body-surface-audit.json','artifacts/front-clearance-audit.json'],'before-focused-body-audits');
++await preserveFiles(['artifacts/body-geometry-verification.json','artifacts/exterior-audit.json','artifacts/body-dimension-audit.json','artifacts/rear-body-surface-audit.json','artifacts/front-clearance-audit.json','artifacts/exterior-fit-audit.json'],'before-focused-body-audits');
+ const dir='artifacts/body-check-logs/'+runId();await mkdir(dir,{recursive:true});
+-for(const script of ['audit-exterior','audit-body-dimensions','audit-rear-body','audit-front-clearance']){
++for(const script of ['audit-exterior','audit-body-dimensions','audit-rear-body','audit-front-clearance','audit-exterior-fit']){
+  let status='passed',exitCode=0,output='';const start=Date.now();
+  try{const r=await exec(process.execPath,['scripts/'+script+'.mjs'],{maxBuffer:8*1024*1024});output=r.stdout+r.stderr;}
+  catch(e){status='failed';exitCode=e.code;output=(e.stdout||'')+(e.stderr||'')+String(e);}
+  const log=dir+'/'+script+'.log';await writeFile(log,output);results.push({script,status,exitCode,durationMs:Date.now()-start,log});console.log(script+': '+status);
+ }
+ const unchanged=sourceFingerprint()===sourceSha256,status=unchanged&&results.every(r=>r.status==='passed')?'passed':'failed';
+-await writeFile('artifacts/body-geometry-verification.json',JSON.stringify({sourceSha256,startedAt,finishedAt:new Date().toISOString(),unchanged,status,scope:'Four targeted body/clearance audits; not full aggregate vehicle verification.',results},null,2)+'\n');
++await writeFile('artifacts/body-geometry-verification.json',JSON.stringify({sourceSha256,startedAt,finishedAt:new Date().toISOString(),unchanged,status,scope:'Five targeted body/clearance audits; not full aggregate vehicle verification.',results},null,2)+'\n');
+ if(status!=='passed')process.exitCode=1;
+--- R7/scripts/write-uat-report.mjs
++++ R8/scripts/write-uat-report.mjs
+@@ -10,10 +10,10 @@
+ const inspected=new Set(compatible(visual)?visual.captures.map(c=>c.file):[]);
+ const hardware=compatible(native)?`Native Windows Edge used **${native.renderer?.renderer}**. It captured ${native.captures.length} vehicle/lifter/pump states and recorded ${native.errors.length} application exceptions. ${native.captures.filter(c=>inspected.has(c.file)).length} of those captures were opened and inspected. Initial readiness was ${(native.loadReadyMs/1000).toFixed(1)} seconds on this workstation. Captures retain their original source snapshot; a test-only edit does not change the rendered application. This is a bounded hardware review, not a full hardware regression or a device-performance guarantee.`:'Hardware captures require a current-source refresh.';
+ const geometry=status?.allGeometry?.passed?`${checks.results.filter(r=>r.status==='passed').length}/${checks.results.length} geometry checks passed against the current application. Outstanding failures: ${checks.results.filter(r=>r.status!=='passed').map(r=>r.script).join(', ')||'none'}.`:'Aggregate geometry checks require a current-source refresh.';
+-const bodyGeometry=bodyChecks?.sourceSha256===source&&bodyChecks.status==='passed'?'All four targeted body/clearance audits pass on this source. [Focused results](body-geometry-verification.json). The broader aggregate run was terminated and is not counted.':'Targeted body checks require refresh.';
++const bodyGeometry=bodyChecks?.sourceSha256===source&&bodyChecks.status==='passed'?'All five targeted body/clearance audits pass on this source. [Focused results](body-geometry-verification.json). This is a focused exterior verification, not a current full-vehicle aggregate pass.':'Targeted body checks require refresh.';
+ const timing=status?.engineTiming?.currentSource?'Engine timing audit: **'+status.engineTiming.status+'**. The expanded checks cover the 159.03 mm GM family datum, concentric journals/bearings, reconstructed cam insertion envelope, cover/gasket/chain containment and static follower/pushrod/guide interfaces. Original tooling, running clearances and valve timing remain unverified.':'Engine timing requires a current-source audit.';
+ const optimization=comparison?.sourceSha256===source&&comparison.status==='passed'?`Every vehicle mesh’s expanded triangle position/normal/UV hash, material, detail ID and option identity matches the previous merge algorithm. Both contain ${comparison.indexed.triangles.toLocaleString('en-US')} triangles. Stored vertices fall from ${comparison.expanded.storedVertices.toLocaleString('en-US')} to ${comparison.indexed.storedVertices.toLocaleString('en-US')} (${comparison.vertexReductionPercent.toFixed(2)}% fewer). The timing/RSS observations retain their workload limits; they are not browser-performance promises.`:'See the geometry comparison for its source and limits.';
+-const body=`# Current development review — Body R7 fascia and contour correction
++const body=`# Current development review — Body R8 complete exterior pass
+ 
+ [Open the workshop](http://localhost:5185/) · [Shared workstation](http://100.122.225.61:5185/)
+ 
+@@ -21,12 +21,12 @@
+ 
+ ## This pass
+ 
+-- The rear painted apron extends 88 mm below R6, and the front lower return extends 45 mm. Formed under-returns replace open lower edges. Fascia end sections follow the adjacent quarters/fenders instead of independent width curves.
+-- Tail lamps have larger, softer upper corners and tighter lower corners; covers and apertures use the same outline. Four bulb chambers and published 678/538 mm lateral offsets remain.
+-- Clear outer tail covers no longer cast opaque shadow maps onto the inner lenses. The complete-vehicle shadow depth range is restricted to the car scene.
+-- The [R7 body specification](../references/body-r7-specification.md) separates published dimensions, inferred contours and unresolved references. Pontiac’s production profile in Performance Plus printed 46 is supporting adjacent-year evidence; race-car geometry is excluded.
+-- The earlier equation of H102/H104 with the entire painted fascia minimum is withdrawn. Sixteen other nominal dimension comparisons remain. Both bumper ground references and actual fascia minima are retained as unresolved comparisons; no test point was moved to manufacture agreement.
+-- [Body comparison](http://localhost:5185/body-review.html) and [rear-lamp review](http://localhost:5185/tail-review.html) use the shared geometry. The manual identifies **BODY R7**. Exact tooling, full-body visual acceptance and owner sign-off remain open.
++- Side and wraparound moldings follow the installed panel skin across their entire cross section. The side line no longer bows at the rear quarter.
++- The driver intake sits below the molding, with accurately cut intake/fuel apertures. The front deflector sits below the lower nose return.
++- The roof return and rear pillar share their upper boundary. Hood/deck seams, wheel faces, tire sidewalls and tread, carrier/wing support contacts, sail appliques, paint reflections and lamp covers were refined and checked in close views.
++- The deeper R7 rear apron, curved bumper ends, exhaust scallops, recessed plate and softened lamp corners remain.
++- The [R8 exterior specification](../references/body-r8-specification.md) covers every exterior region and separates published dimensions from reconstruction. Sixteen selected nominal comparisons remain; H102/H104 bumper ground-reference interpretations remain unresolved.
++- [Body comparison](http://localhost:5185/body-review.html) includes wheel, roof and front close views. [Rear-lamp review](http://localhost:5185/tail-review.html) uses the same layered geometry. The manual identifies **BODY R8**. Factory tooling accuracy and owner sign-off remain open.
+ 
+ ## Verification
+ 
+@@ -34,7 +34,7 @@
+ 
+ [Browser execution notes](browser-verification-notes.md) distinguish this targeted run from archived earlier applications. The latest raw report may cover only one batch; the consolidated browser evidence accounts for every current scenario.
+ 
+-${geometry} ${bodyGeometry} The rear-body surface audit has ${status?.rearBody?.checks||0} check groups covering pad separation/height, plate recess/visibility, license-housing concealment, outer/inner lens ordering, rear apertures, the lower nose, factory lamp datums/load conventions, four-chamber inventory, cover clarity and fitted lens ends. These are shape regression checks, not factory acceptance. The body audit separately measures ${status?.bodyDimensions?.checks||0} selected nominal dimensions on actual triangles and checks bilateral/axle anchors. Its numerical tolerances are software comparison tolerances, not manufacturing tolerances. The exterior audit has fifteen checks covering shared panel vertices, apertures, wheel lips, mirror fit, pad tessellation, fuel-door clearance, wiper span, the 1,752 mm body-width datum, distinct separation offsets and option ownership, plus sunroof panel/body hardware ownership, open trim/latch cavities and glass thickness. The internal audit has 38 checks covering all twelve lifter inventories, oil passages, containment and ball-seat interfaces plus pump alignment/chamber fit. The oil-pump audit adds six checks for its twelve selections, static tooth separation, shaft/socket fits, relief containment and open pickup/screen geometry. The existing timing audit remains separate. Other geometry checks cover catalogs, installed/detail agreement, selected factory datums, electrical cavities, wiring, hood clearance and distribution. These tests do not establish every factory dimension or operating clearance.
++${geometry} ${bodyGeometry} The rear-body surface audit has ${status?.rearBody?.checks||0} check groups covering pad separation/height, plate recess/visibility, license-housing concealment, outer/inner lens ordering, rear apertures, the lower nose, factory lamp datums/load conventions, four-chamber inventory, cover clarity and fitted lens ends. These are shape regression checks, not factory acceptance. The body audit separately measures ${status?.bodyDimensions?.checks||0} selected nominal dimensions on actual triangles and checks bilateral/axle anchors. Its numerical tolerances are software comparison tolerances, not manufacturing tolerances. The exterior audit has fifteen checks covering shared panel vertices, apertures, wheel lips, mirror fit, pad tessellation, fuel-door clearance, wiper span, the 1,752 mm body-width datum, distinct separation offsets and option ownership, plus sunroof panel/body hardware ownership, open trim/latch cavities and glass thickness. The new exterior-fit audit adds actual-mesh checks at 78 trim/paint sightlines, molding straightness, nine clear intake sightlines the road-tire tread envelope, 234 carrier-support contacts and 130 wing-pedestal contacts. The internal audit has 38 checks covering all twelve lifter inventories, oil passages, containment and ball-seat interfaces plus pump alignment/chamber fit. The oil-pump audit adds six checks for its twelve selections, static tooth separation, shaft/socket fits, relief containment and open pickup/screen geometry. The existing timing audit remains separate. Other geometry checks cover catalogs, installed/detail agreement, selected factory datums, electrical cavities, wiring, hood clearance and distribution. These tests do not establish every factory dimension or operating clearance.
+ 
+ ${hardware}
+ 
+--- R7/src/body-contours.js
++++ R8/src/body-contours.js
+@@ -1,4 +1,4 @@
+-import {bodyNominal,exteriorLampNominal,designLampHeight} from './body-datums.js';
++import {bodyNominal,exteriorLampNominal,designLampHeight,bodyPoint} from './body-datums.js';
+ // Shared transverse shoulder datums keep fascia and fender joins coherent.
+ // These curve controls are inferred from the reference views, not GM tooling.
+ export function shoulderWidth(z){
+@@ -24,8 +24,11 @@
+  return .245+((rear?fasciaProfile.rearLower:fasciaProfile.frontLower)-.245)*t*t*(3-2*t);
+ }
+ export function exteriorBeltHeight(z){
+- const t=Math.max(0,Math.min(1,(z+1.75)/3.53));
+- return designLampHeight(exteriorLampNominal.frontMarkerCurb,-1.75)*(1-t)+designLampHeight(exteriorLampNominal.rearMarkerCurb,1.78)*t;
++ // Keep the final installed molding straight between the lamp stations.
++ // Invert the upper-body lift instead of lifting the trim for a second time.
++ const zz=bodyPoint([0,.59,z])[2],t=Math.max(0,Math.min(1,(zz+1.75)/3.53));
++ const target=designLampHeight(exteriorLampNominal.frontMarkerCurb,-1.75)*(1-t)+designLampHeight(exteriorLampNominal.rearMarkerCurb,1.78)*t;
++ let y=target;for(let i=0;i<5;i++)y+=target-bodyPoint([0,y,z])[1];return y;
+ }
+ 
+ // Shared skin coordinates prevent attached trim from floating above the panels.
+@@ -57,3 +60,7 @@
+  return[s*(doorSection(v)-moldingRecess(z,y)),y,z];
+ }
+ export function doorAt(s,z,y){const v=(y-.245)/.533,u=(z+.619)/(1.201-.074*(1-v)**2);return doorSkin(s,u,v);}
++
++// Park/turn housing fit reconstructed from the production front photographs.
++// Only the 500 mm lateral bulb offset is a published MVMA datum.
++export const frontLampMount={height:.410,openingWidth:.176,openingHeight:.080};
+--- R7/src/body-datums.js
++++ R8/src/body-datums.js
+@@ -14,7 +14,7 @@
+ // are sourced; the smooth interpolation between them is NOT factory loft data.
+ // Axle stations and the engine/transaxle are not scaled or translated.
+ export function bodyLongitudinal(z,y=.840){
+- if(z< -1.790)return -1.790+(z+1.790)*(bodyStations.frontTip+1.790)/(-2.0355056+1.790);
++ if(z< -1.790)return -1.790+(z+1.790)*(bodyStations.frontTip+1.790)/(-2.03687291+1.790);
+  if(z>1.867)return 1.867+(z-1.867)*(bodyStations.rearTip-1.867)/(2.0336808-1.867);
+  const upper=smooth((y-.647)/.182);
+  // Keep the wheel opening and sill endpoint fixed. The short forward segment
+--- R7/src/body-review.js
++++ R8/src/body-review.js
+@@ -20,12 +20,18 @@
+ buildBody(h);buildMechanics(h);buildInterior(h);buildVehicleLighting(groups,mats);buildVehicleHeadlights(groups,mats);buildVehicleExhaust(groups,mats);h.optimize();correctLegacyHandedness(groups);
+ const config={...defaultConfiguration,roof:'glass',deck:'rack',headlights:true};
+ const visibleSystems=new Set(['body','interior']);for(const p of parts){const g=groups.get(p.id);g.visible=visibleSystems.has(p.system)||['wheels','tyres','tires','headlights','taillights','front-signals','marker-lamps','license-lamps','exhaust'].includes(p.id);g.traverse(m=>{if(!m.isMesh)return;m.visible=!m.userData.option||config[m.userData.option]===m.userData.value;});}
++// Use the same alpha-glazing fallback as the manual on software renderers.
++const gl=renderer.getContext(),debugInfo=gl.getExtension('WEBGL_debug_renderer_info');
++if(debugInfo&&/SwiftShader|llvmpipe|Software/i.test(gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL)))root.traverse(m=>{
++ if(!m.isMesh||!m.material.transmission)return;
++ m.material.transmission=0;m.material.transparent=true;m.material.opacity=m.userData.materialName==='glass'?.22:.30;m.material.depthWrite=false;m.material.needsUpdate=true;
++});
+ scene.add(root);const floor=new T.Mesh(new T.PlaneGeometry(30,30),new T.MeshBasicMaterial({color:'#d5d7d5'}));floor.rotation.x=-Math.PI/2;floor.position.y=-.006;scene.add(floor);
+ const camera=new T.PerspectiveCamera(35,1,.05,60),controls=new OrbitControls(camera,renderer.domElement);controls.target.set(0,.62,0);controls.enableDamping=false;
+-const views={rear:{camera:[3.7,1.65,4.94],offset:.02,photo:'IMG_5461.jpg'},side:{camera:[7,1.15,1.2],offset:.13,photo:'IMG_5459.jpg'},front:{camera:[4.5,1.7,-5.0],offset:.02,photo:'IMG_5462.jpg'},straightRear:{camera:[0,1.1,5.5],offset:0,photo:'IMG_5461.jpg'}};
++const views={rear:{camera:[3.7,1.65,4.94],offset:.02,photo:'IMG_5461.jpg'},side:{camera:[7,1.15,1.2],offset:.13,photo:'IMG_5459.jpg'},front:{camera:[4.5,1.7,-5.0],offset:.02,photo:'IMG_5462.jpg'},straightRear:{camera:[0,1.1,5.5],offset:0,photo:'IMG_5461.jpg'},frontWheel:{camera:[2.0,.55,-1.1865],target:[.80,.307,-1.1865],offset:0,photo:'IMG_5459.jpg'},roof:{camera:[2.0,2.3,-.2],target:[0,1.0,.15],offset:0,photo:'IMG_5461.jpg'},frontClose:{camera:[1.8,1.2,-3.2],target:[0,.68,-1.10],offset:0,photo:'IMG_5462.jpg'}};
+ let queued=false;function render(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;renderer.render(scene,camera);});}function resize(){renderer.setSize(host.clientWidth,host.clientHeight);camera.aspect=host.clientWidth/host.clientHeight;camera.updateProjectionMatrix();render();}
+-function view(name){const v=views[name];camera.position.set(...v.camera);camera.setViewOffset(host.clientWidth,host.clientHeight,0,-host.clientHeight*v.offset,host.clientWidth,host.clientHeight);controls.target.set(0,.62,0);controls.update();document.querySelector('#photo').src='/references/owner-body-review/'+v.photo;render();}
++function view(name){const v=views[name];camera.position.set(...v.camera);camera.setViewOffset(host.clientWidth,host.clientHeight,0,-host.clientHeight*v.offset,host.clientWidth,host.clientHeight);controls.target.set(...(v.target||[0,.62,0]));controls.update();document.querySelector('#photo').src='/references/owner-body-review/'+v.photo;render();}
+ controls.addEventListener('change',render);new ResizeObserver(resize).observe(host);
+ document.querySelector('#clay').addEventListener('change',e=>{root.traverse(m=>{if(!m.isMesh||m.userData.materialName!=='red')return;m.userData.reviewOriginal??=m.material;m.userData.reviewClay??=new T.MeshStandardMaterial({color:'#a8aeaa',roughness:.8,side:T.DoubleSide});m.material=e.target.checked?m.userData.reviewClay:m.userData.reviewOriginal;});render();});
+-for(const name of Object.keys(views)){const b=document.createElement('button');b.textContent={rear:'Rear quarter',side:'Side profile',front:'Front quarter',straightRear:'Straight rear'}[name];b.dataset.reviewView=name;b.onclick=()=>view(name);document.querySelector('#views').append(b);}
++for(const name of Object.keys(views)){const b=document.createElement('button');b.textContent={rear:'Rear quarter',side:'Side profile',front:'Front quarter',straightRear:'Straight rear',frontWheel:'Wheel detail',roof:'Roof and glazing',frontClose:'Hood and nose'}[name];b.dataset.reviewView=name;b.onclick=()=>view(name);document.querySelector('#views').append(b);}
+ window.__bodyReview={view,render,groups,bounds:id=>{root.updateMatrixWorld(true);const b=new T.Box3();groups.get(id).traverseVisible(m=>{if(m.isMesh)b.expandByObject(m);});return{min:b.min.toArray(),max:b.max.toArray()};}};resize();view('rear');renderer.domElement.dataset.ready='true';
+--- R7/src/body.js
++++ R8/src/body.js
+@@ -5,7 +5,9 @@
+ import { buildGreenhouse } from './greenhouse.js';
+ import { buildDecklid } from './decklid.js';
+ import { shoulderWidth, shoulderDrop, lowerPanelHeight, deckHeight, panelUpper as upper, sideWidth, doorSkin } from './body-contours.js';
+-import {buildExterior,removeTriangles} from './exterior.js';
++import {buildExterior} from './exterior.js';
++import {cutPanelAperture} from './panel-aperture.js';
++import {exteriorBeltHeight} from './body-contours.js';
+ import {bodyPoint,bodyNominal} from './body-datums.js';
+ 
+ // Reconstructed surfaces from the 1985 factory brochure and DIY illustrations.
+@@ -25,14 +27,19 @@
+  hoodPatch(-.659,-.646,-1.692,-1.368,2,18);
+  hoodPatch(.646,.659,-1.692,-1.368,2,18);
+  for(const u of [0,1])surface('hood',40,4,(t,v)=>{const p=hoodPoint(u,t);p[1]-=.005*v;return p;});
+- for(const u of [0,1])tube('hood',Array.from({length:24},(_,i)=>hoodPoint(u,i/23)),.0022,'rubber');
+- for(const v of [0,1])tube('hood',Array.from({length:24},(_,i)=>hoodPoint(i/23,v)),.0022,'rubber');
++ for(const u of [0,1])tube('hood',Array.from({length:96},(_,i)=>hoodPoint(u,i/95)),.0022,'rubber');
++ for(const v of [0,1])tube('hood',Array.from({length:96},(_,i)=>hoodPoint(i/95,v)),.0022,'rubber');
+  function fender(id,s,zmin,zmax,centre,rear){
+   const edge=z=>{const d=z-centre;return Math.abs(d)<.339?.308+Math.sqrt(.339**2-d*d):.245;};
+   // Split at the arch spring points so the vertical ends are exact edges.
+   for(const [a,b]of [[zmin,centre-.339],[centre-.339,centre+.339],[centre+.339,zmax]]){
+    const mesh=surface(id,64,40,(u,v)=>{let z=lerp(a,b,u);if(rear&&a===zmin)z-=.074*(1-v)**2*(1-u);const isArch=a===centre-.339,y=lerp(isArch?.308+Math.sqrt(Math.max(0,.339**2-(z-centre)**2)):lowerPanelHeight(z,rear),upper(z,rear)-shoulderDrop(z,rear),v);return [s*sideWidth(z,y,centre,rear),y,z];});
+-   if(rear&&s>0)removeTriangles(mesh,p=>(p.y-.710)**2+(p.z-.93)**2<.0505**2||(p.y>.555&&p.y<.658&&p.z>.633&&p.z<.827));
++   if(rear&&s>0){
++    const face=(z,y)=>[sideWidth(z,y,centre,rear),y,z];
++    cutPanelAperture(mesh,Array.from({length:64},(_,i)=>{const a=i/64*Math.PI*2;return [.93+Math.sin(a)*.0505,.710+Math.cos(a)*.0505];}),face,[2,1]);
++    const opening=[[.633,0],[.827,0],[.827,1],[.633,1]].map(([z,v])=>[z,exteriorBeltHeight(z)-.133+.103*v]);
++    cutPanelAperture(mesh,opening,face,[2,1]);
++   }
+   }
+   surface(id,64,24,(u,v)=>{const z=lerp(zmin,zmax,u),inner=rear?.654:.663;return [s*(inner+(shoulderWidth(z)-inner)*Math.sin(v*Math.PI/2)),upper(z,rear)-shoulderDrop(z,rear)*(1-Math.cos(v*Math.PI/2)),z];});
+   // Rolled wheel lip has a real inward return and smooth circular opening.
+@@ -55,6 +62,8 @@
+   tube(s>0?'rocker-left':'rocker-right',Array.from({length:32},(_,i)=>[s*.796,.251,lerp(-.836,.836,i/31)]),.003,'rubber');
+   for(const u of [0,1])tube(id,Array.from({length:48},(_,i)=>{const p=skin(u,i/47);p[0]-=s*.0025;return p;}),.002,'rubber');
+   for(const u of [0,1])surface(id,32,6,(t,v)=>{const p=skin(u,t);p[0]-=s*.010*v;return p;});
++  // Recessed jamb backing closes sightlines through the panel gap.
++  for(const edge of [0,1])surface(id,48,3,(u,v)=>{const p=skin(edge,u);p[0]-=s*.006;p[2]+=edge?.010*v:-.010*(1-v);return p;},'rubber');
+   surface(id,48,5,(u,v)=>{const p=skin(u,0);p[0]-=s*.013*v;return p;});
+   // Interior trim separates from the door skin and its hardware.
+   const trimId=s>0?'door-trim-left':'door-trim-right';
+--- R7/src/decklid.js
++++ R8/src/decklid.js
+@@ -17,7 +17,7 @@
+   const edge=Array.from({length:34},(_,i)=>{const z=lerp(.774,1.185,i/33);return lidPoint(s*centreWidth(z),z);});
+   tube('decklid',edge,.0022,'rubber');
+   surface('decklid',34,6,(u,v)=>{const z=lerp(.774,1.185,u),p=lidPoint(s*centreWidth(z),z);p[1]-=.012*v;return p;});
+-  tube('decklid',Array.from({length:32},(_,i)=>lidPoint(s*.650,lerp(1.185,1.861,i/31))),.0022,'rubber');
++  tube('decklid',Array.from({length:32},(_,i)=>{const p=lidPoint(s*.650,lerp(1.185,1.861,i/31));p[1]-=.001;return p;}),.0018,'rubber');
+   tube('decklid',[lidPoint(s*.398,1.185),lidPoint(s*.650,1.185)],.0022,'rubber');
+   const id=s>0?'deck-vent-left':'deck-vent-right';
+   const vent=(u,v)=>{const z=lerp(.778,1.174,v),inner=centreWidth(z)+.007,outer=lerp(.558,.644,T.MathUtils.smoothstep(v,0,1));return [s*lerp(inner,outer,u),deckHeight(z)+.004,z];};
+--- R7/src/exterior.js
++++ R8/src/exterior.js
+@@ -7,8 +7,8 @@
+ export function rubMolding(h,id,path,normal,height=.021){
+  const standOff=id.endsWith('-fascia-molding')?.001:.0005;
+  const section=[[-1,0],[-.91,.003],[-.64,.0048],[-.30,.0034],[0,.0042],[.30,.0034],[.64,.0048],[.91,.003],[1,0]];
+- h.surface(id,64,section.length-1,(u,v)=>{const n=Math.round(v*(section.length-1)),p=path(u),q=section[n];p[1]+=q[0]*height/2;const dir=normal(u);return p.map((x,i)=>x+dir[i]*(standOff+q[1]));},'blackPaint');
+- for(const u of [0,1])h.surface(id,2,section.length-1,(_,v)=>{const q=section[Math.round(v*(section.length-1))],p=path(u),dir=normal(u);p[1]+=q[0]*height/2;return p.map((x,i)=>x+dir[i]*(standOff+q[1]*_));},'blackPaint');
++ h.surface(id,64,section.length-1,(u,v)=>{const n=Math.round(v*(section.length-1)),q=section[n],p=path(u,q[0]*height/2);const dir=normal(u);return p.map((x,i)=>x+dir[i]*(standOff+q[1]));},'blackPaint');
++ for(const u of [0,1])h.surface(id,2,section.length-1,(_,v)=>{const q=section[Math.round(v*(section.length-1))],p=path(u,q[0]*height/2),dir=normal(u);return p.map((x,i)=>x+dir[i]*(standOff+q[1]*_));},'blackPaint');
+ }
+ function roundRect(w,h,r){const s=new T.Shape(),x=-w/2,y=-h/2;s.moveTo(x+r,y);s.lineTo(x+w-r,y);s.quadraticCurveTo(x+w,y,x+w,y+r);s.lineTo(x+w,y+h-r);s.quadraticCurveTo(x+w,y+h,x+w-r,y+h);s.lineTo(x+r,y+h);s.quadraticCurveTo(x,y+h,x,y+h-r);s.lineTo(x,y+r);s.quadraticCurveTo(x,y,x+r,y);return s;}
+ export function formedPatch(h,id,face,cx,cy,w,height,depth,mat='blackPaint',holes=[]){
+@@ -34,18 +34,18 @@
+   const normal=()=>[s,0,0];
+   // Handle lies in the protective molding; the pocket sits below it.
+   const dp=(z,y,offset=0)=>{const p=doorAt(s,z,y);p[0]+=s*offset;return p;};
+-  for(const [a,b]of [[-.614,.342],[.482,.570]])rubMolding(h,'door-molding-'+side,u=>dp(lerp(a,b,u),exteriorBeltHeight(lerp(a,b,u))),normal);
++  for(const [a,b]of [[-.614,.342],[.482,.570]])rubMolding(h,'door-molding-'+side,(u,dy=0)=>dp(lerp(a,b,u),exteriorBeltHeight(lerp(a,b,u))+dy),normal);
+   const handle='handle-'+side,handleRise=exteriorBeltHeight(.414)-.520;
+   surface(handle,28,12,(u,v)=>{const z=lerp(.348,.478,u),y=lerp(.475,.506,v)+handleRise;return dp(z,y,.001+.002*Math.sin(v*Math.PI));},'dark');
+   surface(handle,28,12,(u,v)=>{const z=lerp(.351,.475,u),y=.515+(v-.5)*.019+handleRise;return dp(z,y,.005+.006*Math.sin(v*Math.PI));},'blackPaint');
+   tube(handle,Array.from({length:24},(_,i)=>dp(lerp(.349,.477,i/23),.477+handleRise,.004)),.0014,'red');
+   const key=dp(.508,.483+handleRise,.003);cyl('door-lock-'+side,.008,.003,key,'chrome');box('door-lock-'+side,[.004,.002,.009],[key[0]+s*.002,key[1],key[2]],'dark',[],{},.0005);
+-  rubMolding(h,'belt-seal-'+side,u=>[s*.800,.803,lerp(-.590,.557,u)],normal,.014);
++  rubMolding(h,'belt-seal-'+side,(u,dy=0)=>[s*.800,.803+dy,lerp(-.590,.557,u)],normal,.014);
+   surface('belt-seal-'+side,48,5,(u,v)=>[s*lerp(.798,.784,v),.808+.001*Math.sin(v*Math.PI),lerp(-.590,.557,u)],'rubber');
+   for(const rear of [false,true]){
+    const id=(rear?'rear':'front')+'-molding-'+side,centre=rear?1.1865:-1.1865;
+    const ranges=rear?[[.599,.901],[1.48,1.695]]:[[-1.663,-1.482],[-.891,-.628]];
+-   for(const [a,b]of ranges)rubMolding(h,id,u=>{const z=lerp(a,b,u),y=exteriorBeltHeight(z);return [s*sideWidth(z,y,centre,rear),y,z];},normal);
++   for(const [a,b]of ranges)rubMolding(h,id,(u,dy=0)=>{const z=lerp(a,b,u),y=exteriorBeltHeight(z)+dy;return [s*sideWidth(z,y,centre,rear),y,z];},normal);
+   }
+   // Tapered mirror shell; rear-facing glass has its own closed rim and carrier.
+   const shell='mirror-'+side,glass='mirror-glass-'+side,mount='mirror-mount-'+side;
+@@ -67,7 +67,7 @@
+   for(const t of [.08,.27,.46,.54,.73,.92]){const p=bladePoint(t);box(blade,[.011,.008,.009],[p[0],p[1]+.004,p[2]],'dark',[],{},.001);}
+  }
+  // Intake aperture is cut from the quarter; grating sits inside its lip.
+- const intake=(u,v,depth=0)=>{const z=.633+.194*u,y=.555+.103*v;return [sideWidth(z,y,1.1865,true)+depth,y,z];};
++ const intake=(u,v,depth=0)=>{const z=.633+.194*u,y=exteriorBeltHeight(z)-.133+.103*v;return [sideWidth(z,y,1.1865,true)+depth,y,z];};
+  for(const v of [0,1])tube('side-intake',Array.from({length:20},(_,i)=>intake(i/19,v,-.004)),.003,'blackPaint');
+  for(const u of [0,1])tube('side-intake',Array.from({length:12},(_,i)=>intake(u,i/11,-.004)),.003,'blackPaint');
+  surface('side-intake',22,10,(u,v)=>intake(u,v,-.022),'dark');
+--- R7/src/fascias.js
++++ R8/src/fascias.js
+@@ -3,7 +3,7 @@
+ import {bodyNominal} from './body-datums.js';
+ import {tailLampOutline} from './tail-lamp-shape.js';
+ import {cutPanelAperture} from './panel-aperture.js';
+-import { shoulderWidth, shoulderDrop, exteriorBeltHeight, fasciaProfile, sideWidth } from './body-contours.js';
++import { shoulderWidth, shoulderDrop, exteriorBeltHeight, fasciaProfile, sideWidth, frontLampMount } from './body-contours.js';
+ 
+ // GM 22P G-13 / G-19 and the 1985 SE brochure: rounded bumper-pad
+ // fascias. Cross sections are reconstructed contours, not measured tooling.
+@@ -69,18 +69,19 @@
+   surface(id,112,6,(u,v)=>{const x=(u*2-1)*width(0,rear),p=point(x,apronBottom(x,rear),rear);return [p[0]*(1-.008*v),p[1]+.004*(1-Math.cos(v*Math.PI/2)),p[2]+(rear?-1:1)*.026*Math.sin(v*Math.PI/2)];});
+   // Open lamp apertures: opaque fascia must not occupy reflector chambers.
+   const geo=mesh.geometry,pos=geo.attributes.position,idx=geo.index,keep=[];
+-  for(let i=0;i<idx.count;i+=3){const a=idx.getX(i),b=idx.getX(i+1),c=idx.getX(i+2),x=Math.abs((pos.getX(a)+pos.getX(b)+pos.getX(c))/3),y=(pos.getY(a)+pos.getY(b)+pos.getY(c))/3;const lamp=!rear&&(Math.abs(x-.500)<.062&&Math.abs(y-.365)<.028);const plate=rear&&x<.158&&y>.355&&y<.520;if(!lamp&&!plate)keep.push(a,b,c);}
++  for(let i=0;i<idx.count;i+=3){const a=idx.getX(i),b=idx.getX(i+1),c=idx.getX(i+2),x=Math.abs((pos.getX(a)+pos.getX(b)+pos.getX(c))/3),y=(pos.getY(a)+pos.getY(b)+pos.getY(c))/3;const lamp=false;const plate=rear&&x<.158&&y>.355&&y<.520;if(!lamp&&!plate)keep.push(a,b,c);}
+   geo.setIndex(keep);geo.computeVertexNormals();
++  if(!rear)for(const side of [-1,1]){const cx=side*.500,cy=frontLampMount.height;cutPanelAperture(mesh,[[-.091,-.043],[.091,-.043],[.091,.043],[-.091,.043]].map(([x,y])=>[x+cx,y+cy]),frontFace);}
+   if(rear)for(const side of [-1,1])cutPanelAperture(mesh,tailLampOutline(.002).map(([x,y])=>[side*x,y]),rearFace);
+  }
+  // Closed pads stand proud of the flexible fascia and contain real apertures.
+  for(const rear of [false,true]){
+   const face=rear?rearFace:frontFace,end=rear?'rear':'front',sign=rear?1:-1;
+-  rubMolding(h,end+'-fascia-molding',u=>face(lerp(-.827,.827,u),exteriorBeltHeight(rear?1.78:-1.75)-(rear?.012*(1-T.MathUtils.smoothstep(Math.abs(lerp(-.827,.827,u)),.65,.80)):0)),u=>{const x=lerp(-.827,.827,u),turn=Math.max(0,(Math.abs(x)-.59)/.237);return [Math.sign(x)*turn,0,sign*(1-turn)];},.022);
++  rubMolding(h,end+'-fascia-molding',(u,dy=0)=>face(lerp(-.827,.827,u),exteriorBeltHeight(rear?1.78:-1.75)+dy-(rear?.012*(1-T.MathUtils.smoothstep(Math.abs(lerp(-.827,.827,u)),.65,.80)):0)),u=>{const x=lerp(-.827,.827,u),turn=Math.max(0,(Math.abs(x)-.59)/.237);return [Math.sign(x)*turn,0,sign*(1-turn)];},.022);
+   for(const side of ['left','right']){
+-   const s=side==='left'?1:-1,cx=s*.480,cy=rear?.440:.386;
+-   const holes=rear?[[s*.635,.436,.092,.039]]:[[s*.500,.365,.126,.060]];
+-   formedPatch(h,end+'-pad-'+side,face,cx,cy,.610,rear?.186:.128,sign*.018,'rubber',holes);
++   const s=side==='left'?1:-1,cx=s*.480,cy=rear?.440:.410;
++   const holes=rear?[[s*.635,.436,.092,.039]]:[[s*.500,frontLampMount.height,frontLampMount.openingWidth,frontLampMount.openingHeight]];
++   formedPatch(h,end+'-pad-'+side,face,cx,cy,.610,rear?.186:.146,sign*.018,'rubber',holes);
+    if(rear)formedPatch(h,end+'-pad-'+side,face,s*.635,.436,.093,.040,.003,'dark');
+   }
+   formedPatch(h,end+'-plate-mount',rear?rearPlateFace:face,0,rear?.438:.389,rear?.334:.270,rear?.200:.138,sign*.002,'dark');
+@@ -91,8 +92,9 @@
+  label('rear-emblems','P O N T I A C',[.41,.024],[0,.574,rearFace(0,.574)[2]+.003],[Math.atan((rearFace(0,.575)[2]-rearFace(0,.573)[2])/.002),0,0],{background:'transparent',foreground:'#756965',font:'48px Arial'});
+  const badge=rearFace(.50,.798),badgeSlope=(rearFace(.50,.799)[2]-rearFace(.50,.797)[2])/.002;
+  label('rear-emblems','Fiero 2M6',[.158,.023],[badge[0],badge[1]+.001,badge[2]+.002],[Math.atan(badgeSlope),0,0],{background:'transparent',foreground:'#c7c8c5',font:'italic 62px Arial'});
+- surface('front-deflector',72,8,(u,v)=>{const x=(u*2-1)*.772,p=frontFace(x,.318);return [x,p[1]-v*.028,p[2]+v*.022];},'rubber');
+- const crest=(x,z)=>[x,.633+.008*(1-Math.abs(x)/.018),z];
++ surface('front-deflector',72,8,(u,v)=>{const x=(u*2-1)*.772,p=frontFace(x,fasciaProfile.frontLower);return [x,p[1]-.002-v*.024,p[2]+.032+v*.012];},'rubber');
++ // Seat the badge on the sloped nose instead of letting a flat crest cross it.
++ const crest=(x,z)=>{let lo=.58,hi=.645;for(let i=0;i<30;i++){const y=(lo+hi)/2;if(frontFace(x,y)[2]<z)lo=y;else hi=y;}return[x,(lo+hi)/2+.0008,z];};
+  surface('nose-emblem',16,12,(u,v)=>crest((u*2-1)*.017*(1-.68*v),-1.822+v*.038),'chrome');
+  surface('nose-emblem',16,12,(u,v)=>{const p=crest((u*2-1)*.014*(1-.68*v),-1.819+v*.032);p[1]+=.001;return p;},'dark');
+ }
+--- R7/src/lighting-detail.js
++++ R8/src/lighting-detail.js
+@@ -8,14 +8,15 @@
+ import {bodyPoint,designLampHeight,exteriorLampNominal} from './body-datums.js';
+ import {buildTailLamp} from './tail-lamps.js';
+ import {tailLampShape} from './tail-lamp-shape.js';
++import {frontLampMount} from './body-contours.js';
+ export function lightingMaterials(base=createMaterials()){
+  const m={...base};for(const key of['plastic','rubber','metal','dark']){m[key]=base[key].clone();m[key].bumpScale=.00003;}
+  m.bulbGlass=new T.MeshPhysicalMaterial({color:'#e8efed',roughness:.08,metalness:0,transparent:true,opacity:.22,clearcoat:1,side:T.DoubleSide,depthWrite:false});
+  m.clearLens=new T.MeshPhysicalMaterial({color:'#c5d0c9',roughness:.18,metalness:0,transparent:true,opacity:.47,clearcoat:1,side:T.DoubleSide,depthWrite:false});
+- m.tailOuter=new T.MeshPhysicalMaterial({color:'#78868c',roughness:.16,transparent:true,opacity:.28,clearcoat:.4,clearcoatRoughness:.18,envMapIntensity:.4,side:T.DoubleSide,depthWrite:false});
++ m.tailOuter=new T.MeshPhysicalMaterial({color:'#a5b0b3',roughness:.23,transparent:true,opacity:.16,clearcoat:.25,clearcoatRoughness:.25,envMapIntensity:.3,side:T.DoubleSide,depthWrite:false});
+  m.tailOuter.forceSinglePass=true;
+- m.tailInnerRed=new T.MeshPhysicalMaterial({color:'#490605',roughness:.30,metalness:.04,clearcoat:.18,envMapIntensity:.35,side:T.DoubleSide});
+- m.tailInnerClear=new T.MeshPhysicalMaterial({color:'#293333',roughness:.34,metalness:.10,clearcoat:.22,envMapIntensity:.35,side:T.DoubleSide});
++ m.tailInnerRed=new T.MeshPhysicalMaterial({color:'#610b09',roughness:.34,metalness:.04,clearcoat:.18,envMapIntensity:.35,side:T.DoubleSide});
++ m.tailInnerClear=new T.MeshPhysicalMaterial({color:'#465050',roughness:.38,metalness:.10,clearcoat:.22,envMapIntensity:.35,side:T.DoubleSide});
+  m.tailGrid=new T.MeshStandardMaterial({color:'#151819',roughness:.43,side:T.DoubleSide});
+  m.tailTrim=new T.MeshPhysicalMaterial({color:'#111416',roughness:.27,clearcoat:.5,side:T.DoubleSide});
+  m.tailRed=new T.MeshPhysicalMaterial({color:'#960d07',roughness:.20,transparent:true,opacity:.80,clearcoat:1,side:T.DoubleSide,depthWrite:false});
+@@ -31,12 +32,18 @@
+  function bake(scope,map){bakeElectrical(groups,lightingParts.filter(p=>p.section==='lighting-'+scope).map(p=>p.id),map);}
+  for(const [side,s]of[['left',1],['right',-1]]){
+   let scope='front-'+side,id=k=>`lt-${scope}-${k}`;
++  // Recessed black well surrounds the smaller amber lens in the SE pad.
++  const rim=[[-.088,-.040],[.088,-.040],[.088,.040],[-.088,.040]];
++  for(let edge=0;edge<4;edge++)h.surface(id('housing'),24,8,(u,v)=>{
++   const a=rim[edge],b=rim[(edge+1)%4],x=a[0]+(b[0]-a[0])*u,y=a[1]+(b[1]-a[1])*u;
++   return[x*(1-.295*v),y*(1-.25*v),.015-.023*v];
++  },'plastic');
+   bowl(id('housing'),.108,.045,.043,[0,0,-.004]);frame(id('housing'),.125,.061,.006,.005,[0,0,-.004],'plastic');
+   for(const dx of[-.052,.052])plate(id('housing'),.017,.021,.004,[dx,0,-.007],'plastic',[[0,0,.002]]);
+   lens(id('lens'),.118,.050,[0,0,.003],'turnAmber');frame(id('gasket'),.117,.051,.0025,.0015,[0,0,0],'rubber');
+   bulb(id('bulb'),[0,0,-.045]);socket(id('socket'),[0,0,-.055]);for(const dx of[-.048,.048])screw(id('screws'),[dx,0,.006],.003,.025);
+   frame(id('bracket'),.131,.068,.009,.003,[0,0,-.023],'dark');for(const dx of[-.059,.059])screw(id('bracket'),[dx,0,-.017],.003,.012);
+-  bake(scope,(x,y,z)=>{const p=frontFace(s*.500-x,.365+y);return[p[0],p[1],p[2]-.008-z];});
++  bake(scope,(x,y,z)=>{const p=frontFace(s*.500-x,frontLampMount.height+y);return[p[0],p[1],p[2]-.008-z];});
+   for(const [end,cy,cz]of[['front',designLampHeight(exteriorLampNominal.frontMarkerCurb,-1.75),-1.75],['rear',designLampHeight(exteriorLampNominal.rearMarkerCurb,1.78),1.78]]){
+    scope=`marker-${end}-${side}`;id=k=>`lt-${scope}-${k}`;
+    plate(id('housing'),.164,.030,.005,[0,0,-.008],'plastic',[[0,0,.006]],.004);frame(id('housing'),.164,.032,.003,.008,[0,0,-.006],'plastic',.004);
+--- R7/src/main.js
++++ R8/src/main.js
+@@ -49,7 +49,7 @@
+  <header class="header">
+   <a class="brand" href="#" aria-label="Fiero Workshop home"><span class="brand-mark">F<span>↗</span></span><span class="brand-type">FIERO<span>WORKSHOP / 85</span></span></a>
+   <div class="header-divider"></div><div class="vehicle-title"><strong>1985 Pontiac Fiero <span>SE 2M6</span></strong><span>2.8L V6 <i></i> 4-speed manual <i></i> WS6</span></div>
+-  <div class="header-actions"><span class="build-badge"><i></i> REVIEW 0.2 · BODY R7</span><button class="quiet" data-action="configure">${icon('gear')}<span>Configure</span></button><button class="quiet" data-action="sources">${icon('book')}<span>Reference library</span></button></div>
++  <div class="header-actions"><span class="build-badge"><i></i> REVIEW 0.2 · BODY R8</span><button class="quiet" data-action="configure">${icon('gear')}<span>Configure</span></button><button class="quiet" data-action="sources">${icon('book')}<span>Reference library</span></button></div>
+  </header>
+  <div class="workspace-bar"><div class="workspace-label"><span class="tiny-square"></span> INTERACTIVE WORKSHOP <span class="slash">/</span> <span class="muted">VEHICLE EXPLORER</span></div><span class="vin">VIN ${vehicle.vin}</span></div>
+  <main class="workspace">
+@@ -209,7 +209,7 @@
+  const modal=document.querySelector('#modal');
+  if(type==='remaining-work'){document.querySelector('#modal-content').innerHTML=`<div class="modal-heading"><p class="eyebrow">DEVELOPMENT CHECKLIST</p><button class="icon-button" data-action="close-modal" aria-label="Close dialog">${icon('close')}</button></div><h2>What remains to build.</h2><p class="description">Headlights first. This tracks known gaps in the 3D model and manual; it is not a list of repairs your car needs. A modeled part can still need measurement and verification.</p>${remainingWork.map((row,i)=>`<article class="source-card"><h3>${i+1}. ${esc(row.name)}</h3><p class="eyebrow">${esc(row.stage)}</p><ul>${row.items.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>${row.assembly?`<button class="text-button" data-work-assembly="${row.assembly}">Inspect current model ${icon('arrow')}</button>`:''}</article>`).join('')}`;modal.showModal();return;}
+ 
+- document.querySelector('#modal-content').innerHTML=`<div class="modal-heading"><p class="eyebrow">WORKSHOP / 85</p><button class="icon-button" data-action="close-modal" aria-label="Close dialog">${icon('close')}</button></div>${type==='sources'?`<h2>Reference library</h2><button class="secondary full-width" data-action="remaining-work">Remaining model & manual work</button><p class="description">Source coverage is explicit. A source listing does not mean all of its content has been verified or imported.</p><details class="coverage-audit"><summary>Parts coverage · modeled and remaining</summary><p class="description small">${parts.length} vehicle assemblies and ${detailParts.length} detailed parts / grouped sets across the component explorers. Counts overlap where the same part appears in both views; they are not a complete vehicle inventory.</p>${coverageAudit.map(row=>`<article class="coverage-row"><h3>${row.system}</h3><p><strong>Modeled:</strong> ${row.modeled}</p><p><strong>Still missing or simplified:</strong> ${row.remaining}</p></article>`).join('')}</details>${sources.map(s=>`<article class="source-card"><h3>${s.title}</h3><p>${s.note}</p>${s.url?`<a href="${s.url}" target="_blank" rel="noopener noreferrer">Open source ↗</a>`:''}</article>`).join('')}`:`<h2>A 3D workshop in progress.</h2><p class="description">Body R7 deepens the painted bumper aprons, matches their ends to adjacent panels and softens the upper tail-lamp corners. Sixteen selected body dimensions remain checked; two bumper ground-reference interpretations remain unresolved. Shape accuracy remains under review. Build 0.2 includes: ${parts.length} selectable assemblies, nine systems, ${tours.length} guided tours, exploded views and local UAT feedback.</p><div class="source-card"><h3>What this build represents</h3><p>The vehicle is an owner-described original 1985 Fiero SE 2M6, four-speed manual, with WS6. VIN identity was checked with NHTSA.</p></div><div class="source-card"><h3>What is still in development</h3><p>The procedural model is illustrative, not a measured replica. The engine now has selectable internal parts and a detailed ignition breakdown. Many fasteners, measured gear profiles, exact routing, full accessory options and validated repair instructions remain incomplete. Technical service values are withheld until checked against factory references.</p></div><div class="source-card"><h3>Your data</h3><p>Feedback and checklist results are stored locally in this browser. Export them from the UAT tab to share or back up. No analytics, accounts or external assets are loaded by the app.</p></div>`}`;modal.showModal();
++ document.querySelector('#modal-content').innerHTML=`<div class="modal-heading"><p class="eyebrow">WORKSHOP / 85</p><button class="icon-button" data-action="close-modal" aria-label="Close dialog">${icon('close')}</button></div>${type==='sources'?`<h2>Reference library</h2><button class="secondary full-width" data-action="remaining-work">Remaining model & manual work</button><p class="description">Source coverage is explicit. A source listing does not mean all of its content has been verified or imported.</p><details class="coverage-audit"><summary>Parts coverage · modeled and remaining</summary><p class="description small">${parts.length} vehicle assemblies and ${detailParts.length} detailed parts / grouped sets across the component explorers. Counts overlap where the same part appears in both views; they are not a complete vehicle inventory.</p>${coverageAudit.map(row=>`<article class="coverage-row"><h3>${row.system}</h3><p><strong>Modeled:</strong> ${row.modeled}</p><p><strong>Still missing or simplified:</strong> ${row.remaining}</p></article>`).join('')}</details>${sources.map(s=>`<article class="source-card"><h3>${s.title}</h3><p>${s.note}</p>${s.url?`<a href="${s.url}" target="_blank" rel="noopener noreferrer">Open source ↗</a>`:''}</article>`).join('')}`:`<h2>A 3D workshop in progress.</h2><p class="description">Body R8 refines the entire exterior: panel and molding joins, quarter openings, roof-pillar fit, bumpers, lamps, wheels and surface finish. Sixteen selected body dimensions are checked; two bumper ground-reference interpretations and exact local tooling remain unresolved. Build 0.2 includes: ${parts.length} selectable assemblies, nine systems, ${tours.length} guided tours, exploded views and local UAT feedback.</p><div class="source-card"><h3>What this build represents</h3><p>The vehicle is an owner-described original 1985 Fiero SE 2M6, four-speed manual, with WS6. VIN identity was checked with NHTSA.</p></div><div class="source-card"><h3>What is still in development</h3><p>The procedural model is illustrative, not a measured replica. The engine now has selectable internal parts and a detailed ignition breakdown. Many fasteners, measured gear profiles, exact routing, full accessory options and validated repair instructions remain incomplete. Technical service values are withheld until checked against factory references.</p></div><div class="source-card"><h3>Your data</h3><p>Feedback and checklist results are stored locally in this browser. Export them from the UAT tab to share or back up. No analytics, accounts or external assets are loaded by the app.</p></div>`}`;modal.showModal();
+ }
+ document.addEventListener('click',async e=>{
+  const b=e.target.closest('button');if(!b)return;
+@@ -250,7 +250,7 @@
+   case 'prev-step':applyStep(state.step-1);break;
+   case 'next-step':{const tour=tours.find(t=>t.id===state.tour);if(state.step===tour.steps.length-1){finishTour();toast('Guide complete — explore another assembly');}else applyStep(state.step+1);break;}
+   case 'exit-tour':finishTour();break;
+-  case 'export':{const payload={build:'0.2.0',bodyRevision:'R7',configuration:state.configuration,exportedAt:new Date().toISOString(),vehicle,checkedItems:saved.checks.map(i=>acceptance[i]),notes:saved.notes};const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='fiero-uat-feedback.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('UAT feedback exported');break;}
++  case 'export':{const payload={build:'0.2.0',bodyRevision:'R8',configuration:state.configuration,exportedAt:new Date().toISOString(),vehicle,checkedItems:saved.checks.map(i=>acceptance[i]),notes:saved.notes};const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='fiero-uat-feedback.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('UAT feedback exported');break;}
+   case 'fullscreen':try{if(document.fullscreenElement)await document.exitFullscreen();else await document.querySelector('.stage').requestFullscreen();}catch{toast('Fullscreen is unavailable in this browser.');}break;
+  }
+ });
+--- R7/src/materials.js
++++ R8/src/materials.js
+@@ -20,17 +20,19 @@
+  const cast=texture('cast'),vinyl=texture('vinyl'),cloth=texture('cloth'),rubber=texture('rubber'),brushed=texture('brushed');
+  const standard=(color,metalness,roughness,extra={})=>new T.MeshStandardMaterial({color,metalness,roughness,...extra});
+  return {
+-  red:new T.MeshPhysicalMaterial({color:'#a80912',metalness:0,roughness:.3,clearcoat:.7,clearcoatRoughness:.28,envMapIntensity:.60}),
++  red:new T.MeshPhysicalMaterial({color:'#a80912',metalness:0,roughness:.36,clearcoat:.45,clearcoatRoughness:.34,envMapIntensity:.45}),
+   dark:standard('#191c1e',.45,.36),
+   frame:standard('#26292a',.55,.48,{bumpMap:cast,bumpScale:.00025}),
+   blackPaint:new T.MeshPhysicalMaterial({color:'#101214',metalness:.1,roughness:.29,clearcoat:.8,clearcoatRoughness:.18}),
+   metal:standard('#9d9e9d',.85,.39,{bumpMap:cast,bumpScale:.0011}),
+   alloy:standard('#babdc0',.95,.22),
++  wheelAlloy:standard('#9da2a4',.78,.43),
++  wheelCast:standard('#555a5c',.65,.58),
+   rotor:standard('#979c9f',1,.34,{bumpMap:brushed,bumpScale:.0006}),
+   iron:standard('#454746',.65,.7,{bumpMap:cast,bumpScale:.002}),
+   rubber:standard('#101112',0,.88,{bumpMap:rubber,bumpScale:.001}),
+   plastic:standard('#1f2022',0,.7,{bumpMap:vinyl,bumpScale:.001}),
+-  sailGlass:new T.MeshPhysicalMaterial({color:'#192123',metalness:.12,roughness:.15,clearcoat:1,clearcoatRoughness:.07,side:T.DoubleSide}),
++  sailGlass:new T.MeshPhysicalMaterial({color:'#101719',metalness:0,roughness:.25,clearcoat:.45,clearcoatRoughness:.22,envMapIntensity:.3,side:T.DoubleSide}),
+   glass:new T.MeshPhysicalMaterial({color:'#bac9c6',metalness:0,roughness:.06,transmission:.88,thickness:.004,ior:1.52,attenuationColor:'#8ba59b',attenuationDistance:.12,side:T.DoubleSide}),
+   headlampGlass:new T.MeshPhysicalMaterial({color:'#f5f7f4',roughness:.12,transmission:.92,thickness:.006,ior:1.52,side:T.DoubleSide}),
+   headlampFlute:new T.MeshPhysicalMaterial({color:'#d7dedb',roughness:.19,metalness:.05,transparent:true,opacity:.35,clearcoat:1}),
+--- R7/src/mechanics.js
++++ R8/src/mechanics.js
+@@ -35,16 +35,23 @@
+  box('shift-linkage',[.073,.017,.105],transmissionAttachment([.43,.56,1.16]),'metal',[installationAngle,0,0]);
+  // Suspension and steering surfaces are shared with their component explorer.
+  // Lathed tire sidewalls and machined 14-inch wheels at factory axle spacing.
+- const tireProfile=[[-.102,.178],[-.112,.191],[-.109,.239],[-.096,.29],[-.079,.307],[.079,.307],[.096,.29],[.109,.239],[.112,.191],[.102,.178]];
++ const tireProfile=[[-.102,.178],[-.112,.191],[-.109,.239],[-.096,.29],[-.079,.305],[.079,.305],[.096,.29],[.109,.239],[.112,.191],[.102,.178]];
+  for(const s of [-1,1])for(const z of [-1.1865,1.1865]){
+   const x=s*(z<0?.734:.746),y=.307;
+   const tireGeo=new T.LatheGeometry(tireProfile.map(([a,r])=>new T.Vector2(r,a)),96);tireGeo.rotateZ(Math.PI/2);add('wheels',tireGeo,'rubber',[x,y,z]);
+   buildWheelFace(h,x,y,z,s);
+-  for(const r of [.218,.26,.29])ring('wheels',r,.0009,[x+s*.111,y,z],'rubber');
+-  // Dense shallow tread blocks, visually unlike the original chunky prototype.
+-  for(let i=0;i<88;i++){const a=i/88*Math.PI*2;for(const offset of [-.053,.053])box('wheels',[.079,.004,.008],[x+offset,y+Math.cos(a)*.307,z+Math.sin(a)*.307],'rubber',[a,0,.18*Math.sign(offset)],{},.001);}
++  for(const [r,offset] of [[.218,.111],[.26,.105],[.29,.096]])ring('wheels',r,.0006,[x+s*offset,y,z],'rubber');
++  // A continuous road-tire crown with recessed grooves, not raised teeth.
++  // Tread pattern is illustrative; its envelope retains the 307 mm radius.
++  surface('wheels',528,32,(u,v)=>{
++   const a=u*Math.PI*2,edge=Math.sin(v*Math.PI)**.35;
++   const transverse=Math.max(0,Math.cos((u*88+Math.abs(v-.5)*.45)*Math.PI*2))**16;
++   const channel=Math.max(...[.24,.50,.76].map(c=>Math.exp(-(((v-c)/.022)**2))));
++   const r=.305+edge*(.002-.0013*Math.max(transverse,channel));
++   return[x+(v-.5)*.158,y+Math.cos(a)*r,z+Math.sin(a)*r];
++  },'rubber');
+   // Tire markings on the outboard sidewall, each character follows the arc.
+-  const text='P215/60 R14';for(let i=0;i<text.length;i++){const a=(i-text.length/2)*.073;label('wheels',text[i],[.014,.018],[x+s*.113,y+Math.cos(a)*.267,z+Math.sin(a)*.267],[0,s*Math.PI/2,a*s],{background:'#111213',foreground:'#3d4143',width:64,height:64,font:'bold 48px Arial'});}
++  const text='P215/60 R14';for(let i=0;i<text.length;i++){const a=(i-text.length/2)*.073*s;label('wheels',text[i],[.014,.018],[x+s*.113,y+Math.cos(a)*.267,z+Math.sin(a)*.267],[0,s*Math.PI/2,a*s],{background:'#111213',foreground:'#3d4143',width:64,height:64,font:'bold 48px Arial'});}
+  }
+  // Rotors, hubs, calipers and hydraulic components share the brake explorer
+  // surfaces through buildVehicleBrakes rather than duplicate coarse proxies.
+--- R7/src/model.js
++++ R8/src/model.js
+@@ -71,7 +71,7 @@
+    const surfaceMaterial=m.userData.surfaceMaterial||m.material;
+    m.visible=!option||configuration[option]===value;
+    if(materialName==='red'&&(g.userData.system==='body'||id==='headlights')){
+-    m.userData.original.color.set(paint.color);surfaceMaterial.metalness=paint.metalness;surfaceMaterial.roughness=paint.id==='gray'?.32:.3;
++    m.userData.original.color.set(paint.color);surfaceMaterial.metalness=paint.metalness;surfaceMaterial.roughness=paint.id==='gray'?.38:.36;
+    }
+    if(materialName==='interior')m.userData.original.color.set(configuration.interior==='tan'?'#9b7a50':'#555b60');
+    if(materialName==='vinyl')m.userData.original.color.set(configuration.interior==='tan'?'#604931':'#2e3338');
+--- R7/src/panel-aperture.js
++++ R8/src/panel-aperture.js
+@@ -4,14 +4,14 @@
+ // Clip a convex opening from a tessellated panel in its authored XY plane.
+ // Edge intersections are reprojected onto the actual panel, so the opening
+ // follows the lamp silhouette instead of deleting whole grid triangles.
+-export function cutPanelAperture(mesh,outline,face){
++export function cutPanelAperture(mesh,outline,face,axes=[0,1]){
+  const area=outline.reduce((sum,p,i)=>{const q=outline[(i+1)%outline.length];return sum+p[0]*q[1]-q[0]*p[1];},0);
+  const ring=area>0?outline:[...outline].reverse();
+  const xs=ring.map(p=>p[0]),ys=ring.map(p=>p[1]),lo=[Math.min(...xs),Math.min(...ys)],hi=[Math.max(...xs),Math.max(...ys)];
+  const old=mesh.geometry,a=old.attributes.position,ix=old.index,out=[];
+  const emit=poly=>{for(let j=1;j<poly.length-1;j++){const p=poly[0],q=poly[j],r=poly[j+1];if(Math.abs((q[0]-p[0])*(r[1]-p[1])-(q[1]-p[1])*(r[0]-p[0]))<1e-12)continue;for(const v of [p,q,r])out.push(...face(v[0],v[1]));}};
+  for(let i=0;i<ix.count;i+=3){
+-  let poly=[0,1,2].map(k=>[a.getX(ix.getX(i+k)),a.getY(ix.getX(i+k))]);
++  let poly=[0,1,2].map(k=>axes.map(axis=>a.array[ix.getX(i+k)*3+axis]));
+   if(poly.every(p=>p[0]<lo[0])||poly.every(p=>p[0]>hi[0])||poly.every(p=>p[1]<lo[1])||poly.every(p=>p[1]>hi[1])){emit(poly);continue;}
+   for(let k=0;k<ring.length&&poly.length;k++){
+    const p=ring[k],q=ring[(k+1)%ring.length],d=v=>(q[0]-p[0])*(v[1]-p[1])-(q[1]-p[1])*(v[0]-p[0]);
+--- R7/src/rear-clip.js
++++ R8/src/rear-clip.js
+@@ -12,12 +12,13 @@
+  const {surface,tube,label}=h,id='rear-clip';
+  const header=u=>{const a=2*u-1;return [a*.596,1.138+.026*(1-a*a),.663-.020*(1-a*a)];};
+  // Continue the roof's descending tangent, with no second crown at the back.
+- surface(id,48,18,(u,v)=>{
++ const roofReturn=(u,v)=>{
+   const a=roofPoint(u,1),b=header(u),p=mix(a,b,v);
+   const entrySlope=-.056*(b[2]-a[2])/.592,exitSlope=-.025;
+   p[1]=(2*v**3-3*v*v+1)*a[1]+(v**3-2*v*v+v)*entrySlope+(-2*v**3+3*v*v)*b[1]+(v**3-v*v)*exitSlope;
+   return p;
+- });
++ };
++ surface(id,48,18,roofReturn);
+  const backWidth=v=>{const r=.035,d=Math.min(v,1-v)*.270;return lerp(.532,.514,v)-(d<r?r-Math.sqrt(Math.max(0,r*r-(r-d)**2)):0);};
+  const backlight=(u,v)=>[(2*u-1)*backWidth(v),lerp(.840,1.110,v)+.005*(1-(2*u-1)**2)*v,lerp(.742,.644,v)];
+  surface('rear-window',44,32,backlight,'glass');
+@@ -35,6 +36,9 @@
+    const shoulderY=deckHeight(root[2])-shoulderDrop(root[2],true)*(1-Math.sqrt(1-t*t));
+    p[0]+=.012*Math.sin(u*Math.PI)*Math.sin(v*Math.PI);
+    p[1]+=.003*Math.sin(u*Math.PI)*Math.sin(v*Math.PI)+(shoulderY-root[1])*(1-v)**4;
++   // Share the roof-return edge; an independent line left an open crown.
++   const edge=roofReturn(1,u),oldTop=mix(front(1),trailing(1),u);
++   for(let k=0;k<3;k++)p[k]+=(edge[k]-oldTop[k])*v**4;
+    return signed(p);
+   };
+   // Broad, crowned C-pillar outer skin with a horizontal shoulder at its top.
+--- R7/src/spoilers.js
++++ R8/src/spoilers.js
+@@ -2,6 +2,7 @@
+ // 1985 brochure. Surface sections and mounting coordinates are reconstructed.
+ export function buildSpoilers(h,deckHeight){
+  const {surface,box,tube}=h;let id='deck-carrier';
++ const contacts={carrierSupports:[],carrierFoils:[],wingPedestals:[],wingFoils:[]};
+  const rack={option:'deck',value:'rack'},wing={option:'deck',value:'wing'};
+  // The carrier uses longitudinal deck slats and a small raised rear spoiler,
+  // not a tubular rectangular basket or transverse cargo bars.
+@@ -12,26 +13,25 @@
+   },'blackPaint',rack);
+   for(const z of [1.37,1.67])box(id,[.024,.009,.050],[x,deckHeight(z)+.008,z],'rubber',[],rack,.004);
+  }
+- // Curved integral end supports have thickness and closed side faces.
+- for(const s of [-1,1]){
+-  const support=(u,v,edge)=>{const z=1.67+.19*u,base=deckHeight(z)+.008,top=base+.059*Math.sin(u*Math.PI/2);return [s*(.54+edge*.016),base+(top-base)*v,z];};
++ const rackFoil=(u,v,top)=>{const a=2*u-1;return [a*.565,(top?.862+.009*Math.sin(v*Math.PI):.842-.004*Math.sin(v*Math.PI))-.010*a**8,1.780+.079*v-.012*a*a];};
++ const rackUnder=(x,z)=>{const a=x/.565,v=Math.max(0,Math.min(1,(z-1.780+.012*a*a)/.079));return rackFoil((a+1)/2,v,false)[1];};
++ // Supports meet the carrier underside and stop at its swept trailing edge.
++ for(const sign of [-1,1]){
++  const support=(u,v,edge)=>{
++   const x=sign*(.54+edge*.016),a=x/.565,end=1.859-.012*a*a,front=1.780-.012*a*a,z=1.67+(end-1.67)*u;
++   const base=deckHeight(z)+.008,t=Math.max(0,Math.min(1,(z-1.67)/(front-1.67))),rise=t*t*(3-2*t);
++   const top=base+(rackUnder(x,z)+.0008-base)*rise;
++   return[x,base+(top-base)*v,z];
++  };
+   for(const edge of [-1,1])surface(id,30,10,(u,v)=>support(u,v,edge),'blackPaint',rack);
+-  surface(id,30,8,(u,v)=>{const p=support(u,1,2*v-1);p[1]+=.004*Math.sin(v*Math.PI);return p;},'blackPaint',rack);
++  contacts.carrierSupports.push(surface(id,30,8,(u,v)=>support(u,1,2*v-1),'blackPaint',rack));
++  surface(id,8,10,(u,v)=>support(1,v,2*u-1),'blackPaint',rack);
+  }
+- const rackFoil=(u,v,top)=>{const a=2*u-1;return [a*.565,(top?.862+.009*Math.sin(v*Math.PI):.842-.004*Math.sin(v*Math.PI))-.010*a**8,1.780+.079*v-.012*a*a];};
+  surface(id,56,18,(u,v)=>rackFoil(u,v,true),'blackPaint',rack);
+- surface(id,56,18,(u,v)=>rackFoil(u,v,false),'blackPaint',rack);
++ contacts.carrierFoils.push(surface(id,56,18,(u,v)=>rackFoil(u,v,false),'blackPaint',rack));
+  for(const v of [0,1])surface(id,56,8,(u,t)=>{const a=rackFoil(u,v,false),b=rackFoil(u,v,true),p=a.map((x,i)=>x+(b[i]-x)*t);p[2]+=(v===0?-1:1)*.004*Math.sin(t*Math.PI);return p;},'blackPaint',rack);
+  for(const u of [0,1])surface(id,24,10,(v,t)=>{const a=rackFoil(u,v,false),b=rackFoil(u,v,true),p=a.map((x,i)=>x+(b[i]-x)*t);p[0]+=(u===0?-1:1)*.004*Math.sin(t*Math.PI);return p;},'blackPaint',rack);
+  id='deck-wing';
+- // Swept, tapered pedestals with radiused edges and separate mounting feet.
+- for(const s of [-1,1]){
+-  box(id,[.076,.009,.190],[s*.455,deckHeight(1.69)+.006,1.69],'rubber',[],wing,.018);
+-  surface(id,64,22,(u,v)=>{
+-   const a=u*Math.PI*2,z=1.695+.039*v,w=.032-.014*v,chord=.089-.009*v;
+-   return [s*.455+Math.sign(Math.cos(a))*Math.abs(Math.cos(a))**.80*w,deckHeight(1.69)+.010+v*.139,z+Math.sign(Math.sin(a))*Math.abs(Math.sin(a))**.78*chord];
+-  },'red',wing);
+- }
+  // Closed airfoil section, rounded leading edge and swept, lowered tips.
+  const foil=(u,v,upper)=>{
+   const a=u*2-1,tip=a**6,chord=.292-.041*tip;
+@@ -39,7 +39,24 @@
+   return [a*(.742-.017*(1-Math.sin(v*Math.PI))),.939-.047*tip+.007*Math.sin(v*Math.PI)+(upper?1:-1)*half,1.583-.035*tip+v*chord];
+  };
+  surface(id,100,56,(u,v)=>foil(u,v,true),'red',wing);
+- surface(id,100,56,(u,v)=>foil(u,v,false),'red',wing);
++ contacts.wingFoils.push(surface(id,100,56,(u,v)=>foil(u,v,false),'red',wing));
+  surface(id,100,4,(u,t)=>{const a=foil(u,1,false),b=foil(u,1,true);return a.map((x,i)=>x+(b[i]-x)*t);},'red',wing);
+  for(const u of [0,1])surface(id,56,6,(v,t)=>{const a=foil(u,v,false),b=foil(u,v,true);const p=a.map((x,i)=>x+(b[i]-x)*t);p[0]+=(u===0?-1:1)*.006*Math.sin(t*Math.PI)*Math.sin(v*Math.PI);return p;},'red',wing);
++ // Invert the swept airfoil parameterization at each actual support point.
++ // This replaces independent pedestal heights that pierced the upper skin.
++ const wingUnder=(x,z)=>{
++  let a=x/.73,v=.5;
++  for(let i=0;i<12;i++){const tip=a**6;v=Math.max(0,Math.min(1,(z-1.583+.035*tip)/(.292-.041*tip)));a=x/(.742-.017*(1-Math.sin(v*Math.PI)));}
++  return foil((a+1)/2,v,false)[1];
++ };
++ for(const sign of [-1,1]){
++  box(id,[.076,.009,.190],[sign*.455,deckHeight(1.69)+.006,1.69],'rubber',[],wing,.018);
++  contacts.wingPedestals.push(surface(id,64,22,(u,v)=>{
++   const a=u*Math.PI*2,z=1.695+.039*v,w=.032-.014*v,chord=.089-.009*v;
++   const x=sign*.455+Math.sign(Math.cos(a))*Math.abs(Math.cos(a))**.80*w,zz=z+Math.sign(Math.sin(a))*Math.abs(Math.sin(a))**.78*chord,base=deckHeight(1.69)+.010;
++   return[x,base+(wingUnder(x,zz)+.0008-base)*v,zz];
++  },'red',wing));
++ }
++ return contacts;
++
+ }
+--- R7/src/viewer.js
++++ R8/src/viewer.js
+@@ -68,7 +68,7 @@
+  const currentGroups=()=>current.assembly?inspection.groups:groups;
+  const currentParts=()=>current.assembly?detailParts.filter(p=>p.family===familyFor(current.assembly).id):parts;
+  const currentRoot=()=>current.assembly?inspection.root:root;
+- const target=new T.WebGLRenderTarget(1,1,{type:T.HalfFloatType,samples:softwareRenderer?0:4});
++ const target=new T.WebGLRenderTarget(1,1,{type:T.HalfFloatType,samples:4});
+  const composer=new EffectComposer(renderer,target);composer.addPass(new RenderPass(scene,camera));
+  const occlusion=new SSAOPass(scene,camera,1,1,16);occlusion.kernelRadius=.13;occlusion.minDistance=.000025;occlusion.maxDistance=.004;composer.addPass(occlusion);
+  const output=new OutputPass();composer.addPass(output);
+--- R7/src/wheels.js
++++ R8/src/wheels.js
+@@ -5,31 +5,32 @@
+ export function buildWheelFace(h,x,y,z,s){
+  const {add,cyl,ring,surface,bolt}=h,id='wheels',fx=x+s*.093;
+  const barrel=new T.LatheGeometry([[.168,-.076],[.176,-.076],[.180,-.069],[.176,.057],[.183,.076],[.171,.076],[.166,.059]].map(([r,a])=>new T.Vector2(r,a)),80);
+- barrel.rotateZ(Math.PI/2);add(id,barrel,'alloy',[x,y,z]);
++ barrel.rotateZ(Math.PI/2);add(id,barrel,'wheelAlloy',[x,y,z]);
+  const wheelPoint=(a,r,depth)=>[fx+s*depth,y+Math.cos(a)*r,z+Math.sin(a)*r];
+- surface(id,96,16,(u,v)=>wheelPoint(u*Math.PI*2,.155+.027*v,.007+.009*Math.sin(v*Math.PI)-.013*v),'alloy');
+- ring(id,.181,.0025,[fx-s*.004,y,z],'chrome');
+- ring(id,.158,.002,[fx+s*.008,y,z],'alloy');
++ surface(id,96,16,(u,v)=>wheelPoint(u*Math.PI*2,.155+.027*v,.007+.009*Math.sin(v*Math.PI)-.013*v),'wheelAlloy');
++ ring(id,.181,.0025,[fx-s*.004,y,z],'wheelAlloy');
++ ring(id,.158,.002,[fx+s*.008,y,z],'wheelAlloy');
+  // Individual cast members leave open windows, with recessed dark sidewalls.
+  function member(points,angle){
+   const shape=new T.Shape();points.forEach(([a,b],i)=>i?shape.lineTo(a,b):shape.moveTo(a,b));shape.closePath();
+   const g=new T.ExtrudeGeometry(shape,{depth:.012,bevelEnabled:true,bevelSize:.0011,bevelThickness:.001,bevelSegments:3,steps:1});
+   // A shallow dish brings the spoke roots forward of the rim.
+-  const p=g.attributes.position;for(let i=0;i<p.count;i++)p.setZ(i,p.getZ(i)+.014*(1-Math.min(1,Math.hypot(p.getX(i),p.getY(i))/.16)));
++  // Cast depth is uniform across each planar machined member.
++  const p=g.attributes.position;for(let i=0;i<p.count;i++)p.setZ(i,p.getZ(i)+.005);
+   g.computeVertexNormals();g.rotateZ(-angle);g.rotateY(s*Math.PI/2);
+-  add(id,g,'alloy',[fx-s*.008,y,z],[0,0,0],{finish:'wheel'});
++  add(id,g,'wheelAlloy',[fx-s*.008,y,z],[0,0,0],{finish:'wheel'});
+  }
+  for(let i=0;i<5;i++){
+   const a=i*Math.PI*2/5;
+-  member([[-.016,.039],[.016,.039],[.013,.160],[-.013,.160]],a);
++  member([[-.016,.039],[.016,.039],[.012,.160],[-.012,.160]],a);
+   for(const offset of [.043,.073,.103]){
+    const lo=offset/Math.tan(Math.PI*2/5)+.014,hi=Math.sqrt(.158**2-offset**2);
+    member([[offset-.0024,lo],[offset+.0024,lo+.002],[offset+.0024,hi-.002],[offset-.0024,hi+.002]],a);
+   }
+  }
+- cyl(id,.039,.020,[fx+s*.009,y,z],'alloy');
+- cyl(id,.025,.008,[fx+s*.023,y,z],'alloy');
+- ring(id,.025,.0014,[fx+s*.028,y,z],'alloy');
++ cyl(id,.039,.020,[fx+s*.009,y,z],'wheelAlloy');
++ cyl(id,.025,.008,[fx+s*.023,y,z],'wheelAlloy');
++ ring(id,.025,.0014,[fx+s*.028,y,z],'wheelAlloy');
+  // Recessed five-lug bores on the 100 mm bolt circle.
+  for(let i=0;i<5;i++){
+   const a=i*Math.PI*2/5+.38,py=y+Math.cos(a)*.050,pz=z+Math.sin(a)*.050;
+--- /dev/null
++++ R8/tests/exterior-close-review.spec.js
+@@ -0,0 +1,11 @@
++import {test,expect} from '@playwright/test';
++test('exterior wheel, roof and front panel interfaces render in close views',async({page})=>{
++ test.setTimeout(480000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
++ await page.goto('/body-review.html');await page.waitForFunction(()=>window.__bodyReview&&document.querySelector('canvas').dataset.ready==='true');
++ for(const view of ['frontWheel','roof','frontClose']){
++  await page.locator(`[data-review-view="${view}"]`).click();
++  await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
++  await page.locator('#model').screenshot({path:`artifacts/exterior-r8-${view}.png`});
++ }
++ expect(errors).toEqual([]);
++});
+--- R7/tests/tail-lamp-review.spec.js
++++ R8/tests/tail-lamp-review.spec.js
+@@ -3,6 +3,6 @@
+  test.setTimeout(300000);const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/tail-review.html');await page.waitForFunction(()=>window.__tailReview&&document.querySelector('canvas').dataset.ready==='true');
+  const lamps=await page.evaluate(()=>Object.fromEntries(['left','right'].map(side=>{const groups=window.__tailReview.groups,stem='lt-rear-'+side+'-';return [side,{bulbs:['tail','turn','inner-stop','reverse'].every(k=>groups.get(stem+k+'-bulb')?.children.length),outer:groups.get(stem+'outer-lens').children.filter(m=>m.userData.materialName==='tailOuter').map(m=>({transparent:m.material.transparent,opacity:m.material.opacity})),red:groups.get(stem+'red-lens').children.length,reverse:groups.get(stem+'reverse-lens').children.length}];})));
+  for(const value of Object.values(lamps)){expect(value.bulbs).toBe(true);expect(value.outer.length).toBeGreaterThan(0);for(const m of value.outer){expect(m.transparent).toBe(true);expect(m.opacity).toBeLessThan(.4);}expect(value.red).toBeGreaterThan(0);expect(value.reverse).toBeGreaterThan(0);}
+- for(const name of ['straight','quarter','lamp','exploded']){await page.locator(`button[data-view="${name}"]`).click();await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await page.screenshot({path:`artifacts/tail-r7-${name}.png`,fullPage:true});}
++ for(const name of ['straight','quarter','lamp','exploded']){await page.locator(`button[data-view="${name}"]`).click();await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await page.screenshot({path:`artifacts/tail-r8-${name}.png`,fullPage:true});}
+  expect(errors).toEqual([]);
+ });
+--- R7/body-review.html
++++ R8/body-review.html
+@@ -1 +1 @@
+-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fiero body comparison</title><style>body{margin:0;background:#e8e8e3;color:#20292a;font:15px system-ui}header{padding:16px 24px}h1{font-size:24px;margin:0 0 8px}button{padding:8px 14px;margin:4px;border:1px solid #a5adaa;background:white;border-radius:5px;cursor:pointer}.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}figure{margin:0;background:#d5d7d5}figcaption{padding:10px}#model{height:620px}#photo{width:100%;height:620px;object-fit:cover;object-position:50% 100%}canvas{display:block;width:100%;height:100%}p{max-width:1000px;margin:8px 0}@media(max-width:800px){.pair{grid-template-columns:1fr}#model,#photo{height:420px}}</style><header><h1>Body R7 — factory dimensions and surface review</h1><p>The shared body is checked against Pontiac’s 1985 coupe/SE specifications and factory brochure. Owner photographs provide a second visual reference. Camera and lighting differ; the views are not calibrated overlays.</p><div id="views"></div><label><input id="clay" type="checkbox"> Neutral panel material</label> · <a href="/">Open manual</a></header><details style="margin:0 24px 12px"><summary>Factory dimensional references · 1985 coupe/SE</summary><p>Wheelbase 2373 mm · length 4082 mm · width 1752 mm · roof height 1192 mm · front/rear overhang 924/785 mm . Published bumper ground references: 315/333 mm; their relationship to the painted apron remains unresolved.</p><p><a href="/references/1985-86-specifications.pdf#page=22">Pontiac MVMA dimensions</a> · <a href="/references/1985-86-specifications.pdf#page=26">Lamp datums (curb load)</a> · <a href="/references/1985-fiero-brochure.pdf#page=3">Factory SE brochure</a> · <a href="/tail-review.html">Rear lamp close-up</a> · <a href="/references/body-r7-specification.md">R7 body specification and unresolved dimensions</a> · <a href="/references/pontiac-super-duty-guide-r7.pdf#page=37">Pontiac production profile</a> · <a href="/references/body-r5-factory-specification-review.md">Load conditions and reconstruction limits</a></p><p>Lamp heights in the design-load rendering use an explicit estimated curb-to-design pitch correction. Local panel curves and gaps remain reconstructed.</p></details><main class="pair"><figure><div id="model"></div><figcaption>Current shared native geometry. Drag to orbit.</figcaption></figure><figure><img id="photo" alt="Owner's Fiero reference photograph"><figcaption>Owner reference, preserved locally; no photograph is used as a model surface.</figcaption></figure></main><script type="module" src="/src/body-review.js"></script></html>
++<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fiero body comparison</title><style>body{margin:0;background:#e8e8e3;color:#20292a;font:15px system-ui}header{padding:16px 24px}h1{font-size:24px;margin:0 0 8px}button{padding:8px 14px;margin:4px;border:1px solid #a5adaa;background:white;border-radius:5px;cursor:pointer}.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}figure{margin:0;background:#d5d7d5}figcaption{padding:10px}#model{height:620px}#photo{width:100%;height:620px;object-fit:cover;object-position:50% 100%}canvas{display:block;width:100%;height:100%}p{max-width:1000px;margin:8px 0}@media(max-width:800px){.pair{grid-template-columns:1fr}#model,#photo{height:420px}}</style><header><h1>Body R8 — factory dimensions and surface review</h1><p>The shared body is checked against Pontiac’s 1985 coupe/SE specifications and factory brochure. Owner photographs provide a second visual reference. Camera and lighting differ; the views are not calibrated overlays.</p><div id="views"></div><label><input id="clay" type="checkbox"> Neutral panel material</label> · <a href="/">Open manual</a></header><details style="margin:0 24px 12px"><summary>Factory dimensional references · 1985 coupe/SE</summary><p>Wheelbase 2373 mm · length 4082 mm · width 1752 mm · roof height 1192 mm · front/rear overhang 924/785 mm . Published bumper ground references: 315/333 mm; their relationship to the painted apron remains unresolved.</p><p><a href="/references/1985-86-specifications.pdf#page=22">Pontiac MVMA dimensions</a> · <a href="/references/1985-86-specifications.pdf#page=26">Lamp datums (curb load)</a> · <a href="/references/1985-fiero-brochure.pdf#page=3">Factory SE brochure</a> · <a href="/tail-review.html">Rear lamp close-up</a> · <a href="/references/body-r8-specification.md">R8 body specification and unresolved dimensions</a> · <a href="/references/pontiac-super-duty-guide-r7.pdf#page=37">Pontiac production profile</a> · <a href="/references/body-r5-factory-specification-review.md">Load conditions and reconstruction limits</a></p><p>Lamp heights in the design-load rendering use an explicit estimated curb-to-design pitch correction. Local panel curves and gaps remain reconstructed.</p></details><main class="pair"><figure><div id="model"></div><figcaption>Current shared native geometry. Drag to orbit.</figcaption></figure><figure><img id="photo" alt="Owner's Fiero reference photograph"><figcaption>Owner reference, preserved locally; no photograph is used as a model surface.</figcaption></figure></main><script type="module" src="/src/body-review.js"></script></html>
+--- R7/tail-review.html
++++ R8/tail-review.html
+@@ -1 +1 @@
+-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Body R7 — rear lamp review</title><style>body{margin:0;background:#d9dcda;color:#18292f;font:16px system-ui}header{padding:16px 24px}h1{margin:0 0 6px;font-size:25px}p{margin:6px 0;max-width:1100px}button,a{margin-right:12px}button{padding:8px 14px;background:#fff;border:1px solid #89938f;border-radius:4px}#model{height:calc(100vh - 175px);min-height:420px}canvas{display:block}a{color:#164c69}</style></head><body><header><h1>Body R7 — 1985 SE rear combination lamps</h1><p>Shared model geometry: clear outer covers, separate inner optics and four bulb chambers per side. Softer upper corners and a deeper formed rear apron. Published bulb positions are retained; local contours remain reconstructed.</p><p><button data-view="straight">Straight rear</button><button data-view="quarter">Rear quarter</button><button data-view="lamp">Left lamp</button><button data-view="exploded">Left lamp separated</button></p><p><a href="/references/fiero-parts-cd.pdf#page=72">GM rear-lamp construction</a><a href="/references/1985-fiero-diy.pdf#page=34">1985 Pontiac lamp illustration</a><a href="/references/1985-86-specifications.pdf#page=26">Factory bulb datums</a><a href="/references/body-r7-specification.md">Body specification</a><a href="/">Open manual</a></p></header><main id="model"></main><script type="module" src="/src/tail-review.js"></script></body></html>
++<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Body R8 — rear lamp review</title><style>body{margin:0;background:#d9dcda;color:#18292f;font:16px system-ui}header{padding:16px 24px}h1{margin:0 0 6px;font-size:25px}p{margin:6px 0;max-width:1100px}button,a{margin-right:12px}button{padding:8px 14px;background:#fff;border:1px solid #89938f;border-radius:4px}#model{height:calc(100vh - 175px);min-height:420px}canvas{display:block}a{color:#164c69}</style></head><body><header><h1>Body R8 — 1985 SE rear combination lamps</h1><p>Shared model geometry: clear outer covers, separate inner optics and four bulb chambers per side. Softer upper corners and a deeper formed rear apron. Published bulb positions are retained; local contours remain reconstructed.</p><p><button data-view="straight">Straight rear</button><button data-view="quarter">Rear quarter</button><button data-view="lamp">Left lamp</button><button data-view="exploded">Left lamp separated</button></p><p><a href="/references/fiero-parts-cd.pdf#page=72">GM rear-lamp construction</a><a href="/references/1985-fiero-diy.pdf#page=34">1985 Pontiac lamp illustration</a><a href="/references/1985-86-specifications.pdf#page=26">Factory bulb datums</a><a href="/references/body-r8-specification.md">Body specification</a><a href="/">Open manual</a></p></header><main id="model"></main><script type="module" src="/src/tail-review.js"></script></body></html>
+--- R7/README.md
++++ R8/README.md
+@@ -1,6 +1,6 @@
+ # Fiero / Workshop 85 — visual review 0.2
+ 
+-Current body revision: **R7**. [Body specification and unresolved dimensions](references/body-r7-specification.md) · [Body comparison](http://localhost:5185/body-review.html) · [Rear lamp review](http://localhost:5185/tail-review.html). R7 deepens the bumper aprons, rounds the lamp’s upper corners and corrects adjoining-panel/exhaust fit. The earlier two fascia-to-bumper-datum equations are withdrawn; sixteen other dimensional comparisons remain. Earlier R5/R6 notes below are historical.
++Current body revision: **R8**. [Complete exterior specification](references/body-r8-specification.md) · [Body comparison](http://localhost:5185/body-review.html) · [Rear lamp review](http://localhost:5185/tail-review.html). R8 corrects molding alignment/fit, quarter openings, the lower nose deflector, wheel/tire detail and surface rendering while retaining the deeper R7 rear apron and rounded lamp corners. Published dimensions and reconstructed contours are distinguished explicitly. Earlier revision notes below are historical.
+ 
+ Interactive 3D workshop prototype for the owner's original **1985 Pontiac Fiero SE 2M6**, VIN `1G2PF3796FP217611`, original four-speed manual, and owner-confirmed WS6 option.
+ 
+--- /dev/null
++++ R8/references/body-r8-specification.md
+@@ -0,0 +1,55 @@
++# Body R8 — complete exterior review
++
++Vehicle scope: owner-described 1985 Pontiac Fiero SE 2M6, notchback, non-aero front/rear fascias, US left-hand drive, WS6 and 14-inch Hi-Tech wheels. The body and Body explorer share native geometry. Roof and deck equipment remain selectable previews.
++
++## Dimensional authority
++
++Use the locally preserved Pontiac **1985–86 MVMA specification**, issued September 1, 1984, PDF pages 22–23 for coupe/SE body dimensions and page 26 for lamp datums. Page 31 defines measurement references. The **1985 Pontiac Fiero brochure**, PDF page 3, establishes the production SE appearance, including the non-aero nose, separate bumper pads, notchback pillars and Hi-Tech wheels. Its option table is on page 6. The production packaging profile in **Pontiac Performance Plus**, PDF page 37 / printed page 46, supports the overall silhouette; adjacent racing-car photographs do not establish production panel contours.
++
++| Reference | Nominal |
++|---|---:|
++| Wheelbase | 2373 mm |
++| Coupe/SE length | 4082 mm |
++| Body width, excluding mirrors | 1752 mm |
++| Solid-roof height | 1192 mm |
++| Front / rear overhang | 924 / 785 mm |
++| Front / rear track | 1468 / 1492 mm |
++| Cowl height | 832 mm |
++| Deck reference height | 875 mm |
++| Upper-structure reference length | 1518 mm |
++| Front / rear rocker bottom | 168 / 171 mm |
++| Closed painted door bottom | 245 mm |
++
++Design-load dimensions refer to the manufacturer's specified loading. Curb-load lamp heights use the explicitly documented estimated static-pitch conversion in `src/body-datums.js`. The 315 / 333 mm published bumper ground references remain unresolved as to the corresponding modeled surface; they are not silently reassigned to a convenient pad vertex. The painted front / rear apron minima remain reconstructed at 270 / 245 mm, with rear exhaust scallops.
++
++Numerical agreement with these reference dimensions does **not** establish exact factory panel tooling, production tolerances or owner approval. No factory surface loft or calibrated complete panel scan has been obtained.
++
++## Exterior pass and intended form
++
++| Region | R8 inspection / correction |
++|---|---|
++| Front nose and bumper ends | Preserve the non-aero wedge, curved impact face, separate black pads and recessed park/turn wells around the smaller amber lenses. Their height and opening dimensions are photo-guided; the 500 mm bulb offset remains the published datum. Refit the wraparound molding across its entire ribbed section. Correct the nose extremity after fitting the trim. |
++| Lower nose | Put the flexible deflector below and behind the apron return instead of inside the painted fascia. |
++| Hood and pop-up covers | Retain matching crowned hood/door surfaces, actual apertures and separate raised/closed covers; seat the nose crest on its curved panel. Densify hood seam sampling and inspect the front close view. |
++| Both front fenders | Retain rolled shoulders, circular wheel openings and inward lips; refit the molding on the real curved skin. |
++| Both doors | Preserve dimensional door bottoms and upper shoulder, handles, key cylinders and window wiping seals. Molding cross sections now follow the skin at every height; recessed jamb backing closes bright sightlines through the door gaps. |
++| Both rear quarters | Remove the molding-height kink introduced by the body correction. Cut the fuel and intake apertures to their boundaries instead of removing whole grid triangles. |
++| Driver quarter intake | Move the opening below the protective molding; keep its grille recessed with a continuous strip above it. |
++| Rockers | Retain rolled outer faces, tucked returns and documented front/rear ground datums. |
++| Windshield, roof and side glass | Inspect the A-post, roof shoulders, sunroof frame and glass interfaces in a close roof view. Match the roof return and pillar crown to one shared boundary and retain the sourced height/cowl anchors. |
++| Sail appliques and rear pillars | Retain the opaque framed triangles and broad painted notchback pillars. Reduce the metallic-looking sail reflections so their actual borders remain readable. |
++| Rear window | Retain the recessed glass, painted header/reveals and separate optional defroster. |
++| Decklid and ventilation | Retain the 1985 raised centre and real grille openings. Recess the outer deck seam slightly below the skin. Fit carrier supports and wing pedestals to the actual foil undersides, and check plain, carrier and wing configurations. |
++| Rear fascia and apron | Retain the deeper R7 apron, matching quarter ends, underturned edge, exhaust clearance, separate tall pads and recessed plate pocket. |
++| Rear lamps | Retain R7 softened upper corners and layered original-assembly construction. Reduce the clear-cover opacity/reflection and improve red/reverse insert visibility. |
++| Mirrors, wipers, antenna and badges | Inspect both mirror shells/glass/pedestals, parked nominal 18-inch blades, cowl nozzles, passenger antenna and identification pieces. Fine badge artwork remains illustrative. |
++| Wheels and tires | Use a less reflective machined finish and planar spoke faces. Seat the sidewall rings on the tire profile; replace raised tread blocks with a continuous crown and recessed grooves, retaining the road-tire envelope. |
++| Finish and viewing | Reduce paint glare and retain multisample antialiasing in the software render target so thin seams remain readable. |
++
++## Review evidence
++
++Current results are recorded after final geometry and browser checks in `artifacts/body-geometry-verification.json`, `artifacts/exterior-fit-audit.json`, the source-stamped browser history and `artifacts/visual-inspection-manifest.json`. Screenshots from intermediate sources are archived and do not count as final review evidence.
++
++The new exterior-fit audit casts rays against actual trim and paint meshes at 78 positions, checks molding straightness, tests nine intake sightlines and measures the road-tire tread envelope. It also checks the carrier and wing support contacts on the real surfaces. These protect the corrected interfaces; they are not factory manufacturing-tolerance tests.
++
++Owner photographs remain a second visual source, with uncalibrated cameras and lighting. The original lamp-assembly photographs and GM parts illustrations establish construction rather than dimensional tooling. See [R7 source and lamp details](body-r7-specification.md) for provenance and original-page references.
+--- R7/references/acceptance-evidence.json
++++ R8/references/acceptance-evidence.json
+@@ -39,7 +39,7 @@
+     },
+     "02.2": {
+       "status": "partial",
+-      "progress": "R7 deepens the rear painted apron by 88 mm and front lower return by 45 mm, matches fascia edges to adjacent quarter/fender sections, adds an under-return, and softens upper lamp corners. Published envelope and lamp offsets remain anchored. Sixteen body dimension comparisons remain; the previous two fascia/bumper-ground equations are withdrawn and retained as unresolved comparisons. The complete surface specification distinguishes published dimensions from reconstruction controls. Clear outer lamp covers no longer cast opaque shadows.",
++      "progress": "R8 covers the full exterior: refitted straight side/wraparound moldings, accurately clipped fuel/intake openings, intake below the molding, exposed lower nose deflector, smoother road-tire silhouette, revised machined wheel/sail/paint/lamp finishes and close-view inspection. The deeper R7 rear apron and softened upper lamp corners remain. Sixteen selected dimensional comparisons and separate actual-mesh interface audits support development review. Two bumper-reference interpretations and factory tooling accuracy remain unresolved; owner approval is not asserted.",
+       "evidence": [
+         "artifacts/lighting-review.json",
+         "references/electrical-reconstruction.md",
+@@ -124,7 +124,7 @@
+     },
+     "17.1": {
+       "status": "partial",
+-      "progress": "R7 deepens the rear painted apron by 88 mm and front lower return by 45 mm, matches fascia edges to adjacent quarter/fender sections, adds an under-return, and softens upper lamp corners. Published envelope and lamp offsets remain anchored. Sixteen body dimension comparisons remain; the previous two fascia/bumper-ground equations are withdrawn and retained as unresolved comparisons. The complete surface specification distinguishes published dimensions from reconstruction controls. Clear outer lamp covers no longer cast opaque shadows.",
++      "progress": "R8 covers the full exterior: refitted straight side/wraparound moldings, accurately clipped fuel/intake openings, intake below the molding, exposed lower nose deflector, smoother road-tire silhouette, revised machined wheel/sail/paint/lamp finishes and close-view inspection. The deeper R7 rear apron and softened upper lamp corners remain. Sixteen selected dimensional comparisons and separate actual-mesh interface audits support development review. Two bumper-reference interpretations and factory tooling accuracy remain unresolved; owner approval is not asserted.",
+       "evidence": [
+         "artifacts/front-clearance-audit.json",
+         "artifacts/vehicle-hood-clearance-fixed.png",
+@@ -155,7 +155,7 @@
+     },
+     "20.3": {
+       "status": "partial",
+-      "progress": "R7 deepens the rear painted apron by 88 mm and front lower return by 45 mm, matches fascia edges to adjacent quarter/fender sections, adds an under-return, and softens upper lamp corners. Published envelope and lamp offsets remain anchored. Sixteen body dimension comparisons remain; the previous two fascia/bumper-ground equations are withdrawn and retained as unresolved comparisons. The complete surface specification distinguishes published dimensions from reconstruction controls. Clear outer lamp covers no longer cast opaque shadows.",
++      "progress": "R8 covers the full exterior: refitted straight side/wraparound moldings, accurately clipped fuel/intake openings, intake below the molding, exposed lower nose deflector, smoother road-tire silhouette, revised machined wheel/sail/paint/lamp finishes and close-view inspection. The deeper R7 rear apron and softened upper lamp corners remain. Sixteen selected dimensional comparisons and separate actual-mesh interface audits support development review. Two bumper-reference interpretations and factory tooling accuracy remain unresolved; owner approval is not asserted.",
+       "evidence": [
+         "artifacts/model-audit.json",
+         "artifacts/wiring-audit.json",
+@@ -175,7 +175,7 @@
+     },
+     "20.4": {
+       "status": "partial",
+-      "progress": "R7 deepens the rear painted apron by 88 mm and front lower return by 45 mm, matches fascia edges to adjacent quarter/fender sections, adds an under-return, and softens upper lamp corners. Published envelope and lamp offsets remain anchored. Sixteen body dimension comparisons remain; the previous two fascia/bumper-ground equations are withdrawn and retained as unresolved comparisons. The complete surface specification distinguishes published dimensions from reconstruction controls. Clear outer lamp covers no longer cast opaque shadows.",
++      "progress": "R8 covers the full exterior: refitted straight side/wraparound moldings, accurately clipped fuel/intake openings, intake below the molding, exposed lower nose deflector, smoother road-tire silhouette, revised machined wheel/sail/paint/lamp finishes and close-view inspection. The deeper R7 rear apron and softened upper lamp corners remain. Sixteen selected dimensional comparisons and separate actual-mesh interface audits support development review. Two bumper-reference interpretations and factory tooling accuracy remain unresolved; owner approval is not asserted.",
+       "evidence": [
+         "artifacts/geometry-verification.json",
+         "artifacts/oil-pump-audit.json",
+@@ -347,7 +347,7 @@
+     },
+     "17.2": {
+       "status": "partial",
+-      "progress": "R7 deepens the rear painted apron by 88 mm and front lower return by 45 mm, matches fascia edges to adjacent quarter/fender sections, adds an under-return, and softens upper lamp corners. Published envelope and lamp offsets remain anchored. Sixteen body dimension comparisons remain; the previous two fascia/bumper-ground equations are withdrawn and retained as unresolved comparisons. The complete surface specification distinguishes published dimensions from reconstruction controls. Clear outer lamp covers no longer cast opaque shadows.",
++      "progress": "R8 covers the full exterior: refitted straight side/wraparound moldings, accurately clipped fuel/intake openings, intake below the molding, exposed lower nose deflector, smoother road-tire silhouette, revised machined wheel/sail/paint/lamp finishes and close-view inspection. The deeper R7 rear apron and softened upper lamp corners remain. Sixteen selected dimensional comparisons and separate actual-mesh interface audits support development review. Two bumper-reference interpretations and factory tooling accuracy remain unresolved; owner approval is not asserted.",
+       "evidence": [
+         "references/exterior-reconstruction-20260924.md",
+         "artifacts/exterior-audit.json",

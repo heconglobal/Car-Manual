@@ -1,0 +1,308 @@
+{
+  "manifest": {
+    "capturedAt": "2026-09-24T02:49:42.584Z",
+    "sourceSha256": "4ea9c02d2012a69e54502a1fccd2e651f6ab887817d93aa5cd2adca06baa7aaa",
+    "applicationSha256": "cd39be46e523ae958fa098d07d28e95731657459845a874af9ea3cf9397a7c80",
+    "testFiles": {
+      "body-hardware.spec.js": "24b614104877cf0b10b04be60d48ababe46ee22175d33db6ade180a7e5bc8e9d",
+      "brakes.spec.js": "f1195a86b80545fd1eb9578946da480aa33e2775b258b5b8f3eca6cb6c88e125",
+      "configuration.spec.js": "88254f68c446f555661395e7310f93047342dfaae6a891e8f79d684fee5d8cac",
+      "electrical.spec.js": "b3c3610e7fdf2ec04f7b8fe7e5cefa8be782d0764ce0575e4592396d05978c56",
+      "engine-service.spec.js": "e3e7deca44f16a8fcb6093ed503ea01a035776b7e0246ebece5cd3e0c8f19e6e",
+      "engine.spec.js": "d835929251fdf52eaab25b3d6d7a7fe8b1279938713a0e007077e6384459b525",
+      "exhaust.spec.js": "942e6ced8d9e7902427f668fc421e447da1417ec4741f4ddab096e3782eaab86",
+      "fuel.spec.js": "855c51895b37fee5ab862293191a195457f16d700866bea41d8c90039c4584d4",
+      "headlights.spec.js": "8419fef5f6ba748ba37f737af7cc40d964bdf608866ad425f0003dd6a8ed466b",
+      "hvac.spec.js": "835318b1a7b085f68e5a605e381285405b66b31f5215ab114c68f4beb3f3551f",
+      "ignition.spec.js": "26b85b075ee9d1e426121a87486e716fe9e4968d4729b827f7f7015d86040127",
+      "rear-body.spec.js": "aa8e63a6d9f5816a6775f9a18358d35a64b955303962b6040ecbb101a5b0deba",
+      "service-guides.spec.js": "ae226847c7c4d94d1d96867e16166ab705ab0ae9257d0b75facb4eb276dddbce",
+      "suspension.spec.js": "27e4d61da57b4333af13614c6a2b30ee05bb1f378cb197b0de3124b14c2fc890",
+      "transmission-cooling.spec.js": "c21d94f16185813d5a3618637c651a27ead9478233740f2e7c8fad4d573dcf4b",
+      "valve-gear.spec.js": "603a19658e11b924e65d789c925440d057ddd21fce02bbf19527f7c2bf899d74",
+      "workshop.spec.js": "f63d9d0936dcb83393dcf5eabf40d8b69c70bfdc2c54ec951a4761e359976a5d"
+    },
+    "newestInputMtime": 1790218008664.264
+  },
+  "report": {
+    "config": {
+      "argv": [
+        "/home/hesh913/.nvm/versions/node/v24.13.1/bin/node",
+        "/home/hesh913/fiero-3d-manual/node_modules/@playwright/test/cli.js",
+        "test",
+        "tests/engine.spec.js",
+        "tests/engine-service.spec.js",
+        "tests/valve-gear.spec.js",
+        "tests/transmission-cooling.spec.js",
+        "--workers=1"
+      ],
+      "configFile": "/home/hesh913/fiero-3d-manual/playwright.config.js",
+      "rootDir": "/home/hesh913/fiero-3d-manual/tests",
+      "failOnFlakyTests": false,
+      "forbidOnly": false,
+      "fullyParallel": false,
+      "globalSetup": null,
+      "globalTeardown": null,
+      "globalTimeout": 0,
+      "grep": {},
+      "grepInvert": null,
+      "maxFailures": 0,
+      "metadata": {
+        "sourceSha256": "4ea9c02d2012a69e54502a1fccd2e651f6ab887817d93aa5cd2adca06baa7aaa",
+        "actualWorkers": 1
+      },
+      "preserveOutput": "always",
+      "projects": [
+        {
+          "outputDir": "/home/hesh913/fiero-3d-manual/test-results",
+          "repeatEach": 1,
+          "retries": 0,
+          "metadata": {
+            "sourceSha256": "4ea9c02d2012a69e54502a1fccd2e651f6ab887817d93aa5cd2adca06baa7aaa",
+            "actualWorkers": 1
+          },
+          "id": "",
+          "name": "",
+          "testDir": "/home/hesh913/fiero-3d-manual/tests",
+          "testIgnore": [],
+          "testMatch": [
+            "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+          ],
+          "timeout": 240000
+        }
+      ],
+      "quiet": false,
+      "reporter": [
+        [
+          "list",
+          null
+        ],
+        [
+          "html",
+          {
+            "open": "never"
+          }
+        ],
+        [
+          "json",
+          {
+            "outputFile": "artifacts/full-regression.json"
+          }
+        ]
+      ],
+      "reportSlowTests": {
+        "max": 5,
+        "threshold": 300000
+      },
+      "shard": null,
+      "tags": [],
+      "updateSnapshots": "missing",
+      "updateSourceMethod": "patch",
+      "version": "1.63.0",
+      "workers": 1,
+      "webServer": {
+        "command": "npm run dev",
+        "url": "http://127.0.0.1:5185",
+        "reuseExistingServer": true,
+        "timeout": 30000
+      }
+    },
+    "suites": [
+      {
+        "title": "engine-service.spec.js",
+        "file": "engine-service.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "cooling assembly opens detailed service parts, separates them and restores vehicle context",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 420000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "interrupted",
+                    "duration": 99495,
+                    "error": {
+                      "message": "Error: page.screenshot: Test ended.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n",
+                      "stack": "Error: page.screenshot: Test ended.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\n    at capture (/home/hesh913/fiero-3d-manual/tests/engine-service.spec.js:9:55)\n    at /home/hesh913/fiero-3d-manual/tests/engine-service.spec.js:35:78",
+                      "location": {
+                        "file": "/home/hesh913/fiero-3d-manual/tests/engine-service.spec.js",
+                        "column": 55,
+                        "line": 9
+                      },
+                      "snippet": "   7 |  await page.goto('/');await page.waitForFunction(()=>window.__fiero);\n   8 |  const settle=()=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));\n>  9 |  const capture=async name=>{await settle();await page.screenshot({path:`artifacts/${name}.png`});};\n     |                                                       ^\n  10 |  await page.locator('#systems [data-system=\"cooling\"]').click();\n  11 |  await page.locator('.part-button[data-part=\"thermostat\"]').click();\n  12 |  await page.getByRole('button',{name:'Explode this assembly',exact:true}).click();"
+                    },
+                    "errors": [
+                      {
+                        "location": {
+                          "file": "/home/hesh913/fiero-3d-manual/tests/engine-service.spec.js",
+                          "column": 55,
+                          "line": 9
+                        },
+                        "message": "Error: page.screenshot: Test ended.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\n\n   7 |  await page.goto('/');await page.waitForFunction(()=>window.__fiero);\n   8 |  const settle=()=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));\n>  9 |  const capture=async name=>{await settle();await page.screenshot({path:`artifacts/${name}.png`});};\n     |                                                       ^\n  10 |  await page.locator('#systems [data-system=\"cooling\"]').click();\n  11 |  await page.locator('.part-button[data-part=\"thermostat\"]').click();\n  12 |  await page.getByRole('button',{name:'Explode this assembly',exact:true}).click();\n    at capture (/home/hesh913/fiero-3d-manual/tests/engine-service.spec.js:9:55)\n    at /home/hesh913/fiero-3d-manual/tests/engine-service.spec.js:35:78"
+                      }
+                    ],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T02:47:49.490Z",
+                    "annotations": [],
+                    "attachments": [
+                      {
+                        "name": "screenshot",
+                        "contentType": "image/png",
+                        "path": "/home/hesh913/fiero-3d-manual/test-results/engine-service-cooling-ass-90f48-nd-restores-vehicle-context/test-failed-1.png"
+                      },
+                      {
+                        "name": "error-context",
+                        "contentType": "text/markdown",
+                        "path": "/home/hesh913/fiero-3d-manual/test-results/engine-service-cooling-ass-90f48-nd-restores-vehicle-context/error-context.md"
+                      },
+                      {
+                        "name": "trace",
+                        "contentType": "application/zip",
+                        "path": "/home/hesh913/fiero-3d-manual/test-results/engine-service-cooling-ass-90f48-nd-restores-vehicle-context/trace.zip"
+                      }
+                    ],
+                    "errorLocation": {
+                      "file": "/home/hesh913/fiero-3d-manual/tests/engine-service.spec.js",
+                      "column": 55,
+                      "line": 9
+                    }
+                  }
+                ],
+                "status": "skipped"
+              }
+            ],
+            "id": "47f6bfaf79f8638f27e4-e737ebafd07b958892d8",
+            "file": "engine-service.spec.js",
+            "line": 4,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "engine.spec.js",
+        "file": "engine.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "engine has independent explosion, selectable internals, subassembly navigation and vehicle return",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "cb289eddb0afb4f9e3c9-cdfe2f4e15ba38e54107",
+            "file": "engine.spec.js",
+            "line": 4,
+            "column": 1
+          },
+          {
+            "title": "engine explorer supports mobile navigation and return without overflow",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "cb289eddb0afb4f9e3c9-b5a986fb1d98108884a9",
+            "file": "engine.spec.js",
+            "line": 59,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "transmission-cooling.spec.js",
+        "file": "transmission-cooling.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "four-speed internals, cooling circuit and US left-hand-drive layout remain coherent",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "68233748377e4ec29c5a-248ff8f305837d34c0d2",
+            "file": "transmission-cooling.spec.js",
+            "line": 4,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "valve-gear.spec.js",
+        "file": "valve-gear.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "individual valve gear separates small hardware and preserves the correct stem-seal variant",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 240000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [],
+                "status": "skipped"
+              }
+            ],
+            "id": "bbe92b7fcf4cdf312a9a-b229ef0780497acad2ce",
+            "file": "valve-gear.spec.js",
+            "line": 4,
+            "column": 1
+          }
+        ]
+      }
+    ],
+    "errors": [],
+    "stats": {
+      "startTime": "2026-09-24T02:47:43.852Z",
+      "duration": 106969.321,
+      "expected": 0,
+      "skipped": 5,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  }
+}

@@ -6,6 +6,24 @@ Open http://localhost:5185/ in a WebGL-capable browser.
 
 This UAT evaluates the **interactive 3D experience and the revised appearance**. Factory overall dimensions anchor the reconstruction; detailed component contours and service procedures remain unverified. The requested photorealistic, fully accurate model is not signed off. Record appearance issues under **Model accuracy** in the UAT tab.
 
+## Oil-pump and coolant-guide review
+
+Open **Engine → Oil pan & lubrication → Oil pump & pickup**. Inspect the twelve selections, compare assembled/exploded states, and isolate the gears, relief parts and wire screen. The ten-tooth profile, pressure calibration and local dimensions remain reconstructed. Return to the previous vehicle view, then use mobile search for **relief piston**.
+
+Open **Guides → Replace engine coolant**. Walk through all twenty numbered steps. Check transitions between the engine filler, front radiator, underbody plugs and recovery bottle; the headlamp preview must remain unchanged. Verify flushing and bottle cleaning are retained, pipe-plug torque is not applied to other drains, the thermostat stays out until step 19, and cooling/pressure-release requirements remain visible. Check numbered-step wrapping, isolation, Previous, Finish and cancellation on desktop and phone widths. This is source/content review; physical workshop validation and optional block-drain geometry remain outstanding.
+
+## Hydraulic lifter and water-pump review
+
+Open Engine → a cylinder head → an individual valve → its hydraulic lifter. Check all nine entries, explode, select the small ball/springs, isolate the plunger and orbit to inspect its open bore/feed. Reset and return through the parent valve and head. Repeat on the other bank and an exhaust valve. Names must retain physical cylinder identity.
+
+Open Cooling → water pump → Explode this assembly, or Engine → Cooling & accessories → Water pump & pulley. Its ten selections include four new internal construction units. Isolate the hub, shaft/bearing, seal and impeller; orbit behind the impeller to see its vanes. The original vane count/profile and internal pump variants are unverified, as the inspector explains. Do not interpret this construction view as an overhaul procedure.
+
+The [109-requirement checklist](REMAINING-WORK.md) and [component inventory](COMPONENT-COVERAGE.md) retain unfinished details across all 20 areas. Passing these interactions does not finish those requirements.
+
+## Engine timing review
+
+Open Engine → Explore engine components → Camshaft & timing drive. Compare assembled and exploded states, then isolate the camshaft, bearing set, chain, cam sprocket and timing cover. Orbit behind the cover to inspect its open cavity and separate flange gasket. Open a cylinder head and an individual intake/exhaust valve scope on each bank; inspect the lifter/pushrod connection and guide fork. Return to the vehicle and check that the installed engine retains the same geometry. These are static reconstructed fits; see [timing evidence and limits](references/engine-timing-reconstruction.md).
+
 ## New headlight review
 
 1. Select Electrical → Headlamp assemblies → Explode this assembly.
@@ -79,7 +97,7 @@ Use the UAT tab to record observations, bugs, geometry corrections or feature re
 27. Select the thermostat itself. Confirm the original GM 195 °F rating is distinguished from the MotoRad replacement dimensions.
 28. Open **Water pump & pulley**, then **Oil pan & lubrication → Dipstick & guide tube**. Check assembled and exploded views, normal list/mesh selection, isolation and return to vehicle.
 29. Open **Oil-pressure sender · A/C**. Confirm the early large sender is shown, and the description explicitly identifies A/C routing as a preview rather than a decoded VIN feature.
-30. Search **spring retainer**. Open an individual valve scope; confirm eleven selections. Intake has a retained stem seal; exhaust has a metal stem shield. Both have separate keeper pairs, retainers, stem O-rings, studs and nuts.
+30. Search **spring retainer**. Open an individual valve scope; confirm nineteen selections, including nine inside the nested lifter scope. Intake has a retained stem seal; exhaust has a metal stem shield. Both have separate keeper pairs, retainers, stem O-rings, studs and nuts.
 31. Return to either head and confirm all six valve scopes are available. On a short mobile screen, use global dipstick search and confirm the sidebar and component list remain reachable.
 
 ## Transmission, cooling and left-hand-drive increment
@@ -91,7 +109,7 @@ Use the UAT tab to record observations, bugs, geometry corrections or feature re
 5. On mobile, open the assembly menu, search for a new part, inspect it, and return. Both side views and the orbit tools should remain accessible without overlap.
 6. Choose **Options → Cabin** for the driver-seat view. Check that the speedometer is left of the tachometer, the turn-signal stalk is outboard on the left, and the HVAC controls sit above the radio. Reset, then inspect the rear and intake lettering for readable orientation.
 
-This increment contains 95 transmission/clutch and 36 cooling selectable parts or grouped sets, alongside the 320 engine entries. It is an illustrated reconstruction. Gear profiles, local casting dimensions, fan variant, exact routing and many remaining vehicle systems are unfinished; passing this UAT does not establish a complete photorealistic replica or validate repair procedures.
+This increment contains 95 transmission/clutch and 36 cooling selectable parts or grouped sets, alongside the 420 engine entries. It is an illustrated reconstruction. Gear profiles, local casting dimensions, fan variant, exact routing and many remaining vehicle systems are unfinished; passing this UAT does not establish a complete photorealistic replica or validate repair procedures.
 
 ## Brake inspection increment
 
@@ -137,3 +155,19 @@ Body hardware review: Body & chassis → Front hood → Explode this assembly. I
 6. Check the coolant explorer's heater core uses the same current variant. Return to the vehicle and verify the original HVAC selection is restored. Use Configure → Cabin and verify the HVAC controls/outlets and door trim remain opaque and visible. Repeat blower search/focus on a narrow screen.
 
 These are native geometry and interaction checks. Exact case tooling, duct shape/clearance, graphics, motor internals, full wiring and full A/C refrigeration parts remain unaccepted.
+
+## Revised exterior review — 24 September 2026
+
+Compare the six whole-car views with the supplied photographs, then inspect Front panels, Rear panels, each Door, Roof, Rear clip, Glazing and Decklid under Body. Mirrors, handles, pads, moldings, fuel door, intake, antenna and wipers now select independently. Roof glass/seal and carrier/wing follow Configure. Check the front lamp apertures, filler-door fit and exploded views on desktop and mobile. See [panel coverage](references/exterior-reconstruction-20260924.md); the previous accepted-contour wording is superseded.
+
+## Sunroof hardware review
+
+Choose the glass roof in Configure and search for “Sunroof glass-side latch handle”. Open its assembly, then inspect the hinge tongues, bushings, handle, body release housing and trim in the Body roof section. Explode and isolate the separate parts. Change to removed glass: the glass-side hardware should disappear and the body release/trim remain. Choose solid roof: all AD3 pieces should disappear. Repeat selection and isolation on a narrow viewport. Hardware positions are reconstructed; no physical removal sequence or latch calibration is implied.
+
+Whole-body calibration: [published dimensions, actual-mesh before/after measurements and limits](references/body-dimension-reconstruction-20260924.md). Review all six exterior views and each body section; selected nominal dimensions now match, while complete factory panel contours and physical acceptance remain unverified.
+
+Body R4 follow-up: the owner rejected the earlier rear bumper and proportions. Confirm **BODY R4** in the manual header, then use the [local photo comparison](http://localhost:5185/body-review.html) and review the [R4 changes and limits](references/body-r4-owner-review-20260924.md). Exact body appearance remains unaccepted.
+
+Body R5: factory coupe/SE bumper heights, lamp offsets, side molding/handle line and rear deck are revised. Confirm **BODY R5** in the header. The [factory specification review](references/body-r5-factory-specification-review.md) separates published values from reconstructed surfaces and load conversion; the [comparison workspace](http://localhost:5185/body-review.html) links the original tables and SE brochure. Earlier R4 records are historical.
+
+Body R6 corrects the rear combination-lamp construction and missing bulb chamber while retaining the selected factory body/bulb datums. Confirm **BODY R6** in the header. [Lamp sources and limitations](references/body-r6-tail-lamp-review.md) · [Focused lamp review](http://localhost:5185/tail-review.html). R5 captures/results are historical.

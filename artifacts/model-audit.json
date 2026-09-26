@@ -1,6 +1,6 @@
 {
-  "date": "2026-09-22T09:02:03.881Z",
-  "sourceSha256": "b2019702353965532ff3dcd7d8016da9555acf341514d85704bcced93b67718c",
+  "date": "2026-09-24T22:24:37.091Z",
+  "sourceSha256": "8db945773c72a68ebf2a66bbce0de6757274e59a18acb9e50f6a107aa8e25177",
   "models": {
     "wiring": {
       "parts": 99,
@@ -8,9 +8,9 @@
       "triangles": 548586
     },
     "engine": {
-      "parts": 320,
-      "meshes": 501,
-      "triangles": 1236818
+      "parts": 429,
+      "meshes": 633,
+      "triangles": 1555982
     },
     "transmission": {
       "parts": 95,
@@ -43,9 +43,9 @@
       "triangles": 344468
     },
     "body": {
-      "parts": 111,
-      "meshes": 198,
-      "triangles": 631159
+      "parts": 169,
+      "meshes": 266,
+      "triangles": 1228289
     },
     "charging": {
       "parts": 62,
@@ -53,14 +53,14 @@
       "triangles": 231388
     },
     "lighting": {
-      "parts": 108,
-      "meshes": 269,
-      "triangles": 380444
+      "parts": 112,
+      "meshes": 293,
+      "triangles": 443076
     },
     "headlights": {
-      "parts": 118,
-      "meshes": 298,
-      "triangles": 775580
+      "parts": 189,
+      "meshes": 408,
+      "triangles": 898420
     },
     "hvac": {
       "parts": 64,
@@ -68,9 +68,9 @@
       "triangles": 227386
     },
     "vehicle": {
-      "parts": 94,
-      "meshes": 1113,
-      "triangles": 5293635
+      "parts": 152,
+      "meshes": 1543,
+      "triangles": 6140449
     }
   },
   "headlights": "passed: dual poses, real bucket rotation, early four-cushion gears, fixed motors/relays, independent cover, LHD identity and low raised envelope",
@@ -81,7 +81,7 @@
   "suspension": "passed: separate front shocks, corner sides, upper-joint orientation, rear strut inventory, manual rack asymmetry",
   "hvac": "passed: passenger-side module, coaxial blower, LHD outlets/control knob, C41/C60 geometry alternatives, electric C60 mode control and no duplicate whole-car core",
   "leftHandDrive": "passed: signed component positions, front/rear and positive determinant",
-  "detailParts": 1538,
+  "detailParts": 1780,
   "ignitionParts": 43,
   "engineControls": 21
 }

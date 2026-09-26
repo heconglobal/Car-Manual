@@ -6,7 +6,7 @@ Current implemented inventory: 94 vehicle assembly records and 1,538 detail sele
 
 ## Current user priority
 
-**Finish and test the entire list, with headlights first.** The detailed [remaining-work checklist](../REMAINING-WORK.md) records 20 areas and 73 currently identified tasks. The same checklist is available in the application from Reference library and UAT. These describe development work, not repairs diagnosed on the owner's car. The canonical checklist data is `src/remaining-work.js`.
+**Finish and test the entire list, with headlights first.** The detailed [remaining-work checklist](../REMAINING-WORK.md) records 20 areas and 109 currently identified tasks. The same checklist is available in the application from Reference library and UAT. These describe development work, not repairs diagnosed on the owner's car. The canonical checklist data is `src/remaining-work.js`.
 
 Headlight modeling now includes both sides and their lamp/aiming, cover/linkage and early motor breakdowns, plus relays/harness. Both endpoint poses exist, preserving the accepted low exterior silhouette. See [headlight reconstruction](headlight-reconstruction.md) and the UAT report for evidence and validation limits.
 
@@ -17,7 +17,7 @@ All systems remain subject to measured geometry, parts inventory, original-optio
 1. **Mechanical alignment audit:** reconcile distributor drive axis, oil-pump intermediate shaft/pump location, cast passages, early-pan end-seal flange and front sealing. Separate part identities alone do not establish a correct assembly. Check assembled clearance and exploded connection paths against the factory drawing.
 2. **Induction:** replace generic plenum/middle/lower intake envelopes with correct 1985–86 profiles; preserve the early decal rather than adopting later cast lettering. Add idle-air tube/hose, manual throttle lever, cable brackets, throttle coolant tubes/hoses/clamps and valley splash guard. H-22/H-23/H-24 distinguish manual/automatic and model years.
 3. **Starter and alternator:** identify original 1985 applications before importing adjacent-year internals. The 1986 manual PDF 400 has a 5MT exploded figure; PDF 401–405 covers both 5MT and 10MT service. These are newly located geometry leads, not verified 1985 fitment. Do not select a generic or modern replacement starter merely because it appears in that section. The charging explorer now includes 22 starter and 27 alternator selections shared with vehicle geometry; original unit stampings, measured castings, fan revisions, belt alignment and fit remain unverified.
-4. **Lubrication and cooling internals:** real pump gears, inlet screen, relief components, pump drive engagement, water-pump impeller/bearing/seal, thermostat original-part dimensional confirmation, non-A/C sender arrangement, fan switch and gauge sender. Keep the ECM temperature sensor distinct.
+4. **Lubrication and cooling internals:** real pump gears, inlet screen, relief components, pump drive engagement, original water-pump impeller/bearing/seal dimensions and variants (reconstructed construction now selectable), thermostat original-part dimensional confirmation, non-A/C sender arrangement, fan switch and gauge sender. Keep the ECM temperature sensor distinct.
 5. **External completion:** engine lift brackets, exhaust heat shields and attachment hardware, breather tube/connector/grommet, fuel line clips/seals, full harness supports/grounds, confirmed factory plug-wire routes and cap clocking. Cylinder identities and firing order are now source-linked.
 6. **Head/block detail:** real ports, combustion chambers, coolant/oil passages, accurately seated valve gear, bearings/clearances and remaining fastener inventory. The current head galleries and block profiles remain illustrative.
 
@@ -38,3 +38,5 @@ All systems remain subject to measured geometry, parts inventory, original-optio
 Verify identity and model-year/option applicability; author the characteristic shape rather than a generic box/cylinder; model openings and mounting interfaces; assign credible materials; provide selectable and correctly related explosion groups; link the reference and distinguish measured facts from reconstructed dimensions; inspect both assembled and exploded renders; test search, focus, isolation, return and mobile access. Keep unverified procedures and exact service values out of repair instructions.
 
 No assembly should be called fully accurate merely because its catalog entries and automated interaction tests pass.
+
+The [component inventory](../COMPONENT-COVERAGE.md) indexes 1,709 authored detail selections. Its grouped units and overlapping views are not a count of all physical factory parts. Requirement 20.6 retains complete GM callout reconciliation.

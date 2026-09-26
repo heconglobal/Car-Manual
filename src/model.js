@@ -71,7 +71,7 @@ export function createVehicle() {
    const surfaceMaterial=m.userData.surfaceMaterial||m.material;
    m.visible=!option||configuration[option]===value;
    if(materialName==='red'&&(g.userData.system==='body'||id==='headlights')){
-    m.userData.original.color.set(paint.color);surfaceMaterial.metalness=paint.metalness;surfaceMaterial.roughness=paint.id==='gray'?.32:.3;
+    m.userData.original.color.set(paint.color);surfaceMaterial.metalness=paint.metalness;surfaceMaterial.roughness=paint.id==='gray'?.38:.36;
    }
    if(materialName==='interior')m.userData.original.color.set(configuration.interior==='tan'?'#9b7a50':'#555b60');
    if(materialName==='vinyl')m.userData.original.color.set(configuration.interior==='tan'?'#604931':'#2e3338');

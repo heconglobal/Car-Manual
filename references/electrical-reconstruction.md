@@ -19,7 +19,7 @@ Primary documents: https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrat
 
 Headlight-control additions distinguish the dash light switch, panel dimming wheel / remote transistor and column high/low-beam switch / actuating rod. Contact and connector models remain illustrative.
 
-Lighting replaces previous surface-only rear/front lamp proxies with separate housings, optics, bulbs and sockets. Rear lamps have two 2057 bulbs and an inboard 1156 per side; no later fastback lettering or center high-mounted stop lamp is added. The cabin overhead module has four lamps. Manual ashtray lighting has two bulbs, without an automatic shift-indicator lamp. Optional courtesy/compartment lighting follows the lamp-group preview setting.
+Lighting replaces previous surface-only rear/front lamp proxies with separate housings, optics, bulbs and sockets. R6 corrects the previous missing red chamber: rear lamps have three 2057 bulbs and an inboard 1156 per side (outer tail plus two stop/turn bulbs in the 1985 arrangement); no later fastback lettering or center high-mounted stop lamp is added. The cabin overhead module has four lamps. Manual ashtray lighting has two bulbs, without an automatic shift-indicator lamp. Optional courtesy/compartment lighting follows the lamp-group preview setting.
 
 Opaque front/rear fascia and bumper-pad surfaces are opened at the lamp apertures. Optical flutes are authored geometry; no photographic stand-ins are served.
 
@@ -36,3 +36,7 @@ The charging browser review passed on 2026-09-22 at 04:36:42 UTC, covering batte
 The owner’s manual was recovered from Boomtastic’s reorganized file center: `references/1985-owners-boomtastic.pdf` is an intact 107-page copy (33,867,178 bytes). Printed 6-4 / PDF 92 corroborates the bulb identities. The earlier 9,442,792-byte FieroInfo file remains a failed, truncated download, not evidence. See `wiring-reconstruction.md` for the working URL and fuse/ECM additions.
 
 The radiator package was moved downward by 52 mm to eliminate the upper support and filler cap protruding through the accepted hood. The adjacent hose endpoints were adjusted with it. `artifacts/front-clearance-audit.json` records a minimum modeled hood gap of 6.3906 mm. This resolves a visual interference; it is not a claim to have measured the production radiator mounting datum.
+
+## R6 correction after owner rejection
+
+The earlier three-chamber model and nearly opaque outer cover were incorrect. The original GM rear-lamp diagram, 1985 DIY drawing and opened original-assembly photographs were reopened. Four chambers, separate inner optics, a smooth clear outer cover and a fitted fascia opening now replace that construction. See [R6 source and dimensional limits](body-r6-tail-lamp-review.md). Earlier lighting-review reports/captures retain their original source and do not establish current acceptance.

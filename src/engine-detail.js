@@ -1,4 +1,7 @@
+import {buildOilPump} from './engine-oil-pump.js';
+import {buildHydraulicLifter} from './engine-lifters.js';
 import {bankOffset,headStackCorrection,upperEngineDrop} from './engine-layout.js';
+import {timingLayout,camFollowers,buildEngineTiming} from './engine-timing.js';
 import {buildFlywheel} from './transmission-detail.js';
 import {engineOffset} from './powertrain-layout.js';
 import {buildEngineDrive} from './engine-drive.js';
@@ -29,7 +32,7 @@ export function createEngineDetail({legacyFrame=false}={}){
  for(const p of engineParts){const g=new T.Group();g.name=p.id;g.userData={partId:p.id,system:'engine',section:p.section,spread:new T.Vector3(...p.spread)};groups.set(p.id,g);root.add(g);}
  const h=geometryTools(groups,materials),{box,cyl,tube,ring,bolt,surface,label,add}=h;
  const id=s=>`eng-${s}`,xAt=c=>(c-2)*l44Nominal.borePitch;
- const crankY=1.05;
+ const crankY=timingLayout.crankY;
  const bankPoint=(x,y,z,s)=>[x+bankOffset(s),crankY+y*Math.cos(Math.PI/6)-z*s*.5,y*s*.5+z*Math.cos(Math.PI/6)];
  const sleeve=(key,r,length,pos,rot,mat='iron')=>{
   const geo=new T.CylinderGeometry(r,r,length,40,1,true);const mesh=add(id(key),geo,mat,pos,rot);mesh.material.side=T.DoubleSide;
@@ -114,10 +117,11 @@ export function createEngineDetail({legacyFrame=false}={}){
     add(id(`valve-${v}`),new T.LatheGeometry(valveProfile.map(p=>new T.Vector2(...p)),48),'rotor',at(vx,.315,vz),rot);
     const coil=[];for(let k=0;k<=100;k++){const a=k/100*Math.PI*12;coil.push(at(vx+Math.cos(a)*.011,.347+k/100*.042,vz+Math.sin(a)*.011));}
     tube(id(`spring-${v}`),coil,.002,'dark');
-    tube(id(`pushrod-${v}`),[at(vx,.145,-s*.038),at(vx,.406-headStackCorrection,-s*.037)],.0035,'rotor');
-    for(const p of [at(vx,.145,-s*.038),at(vx,.406-headStackCorrection,-s*.037)])add(id(`pushrod-${v}`),new T.SphereGeometry(.0035,16,12),'rotor',p);
-    const lifterProfile=[[0,-.0175],[.0095,-.0175],[.010,-.016],[.010,-.002],[.0091,-.001],[.0091,.003],[.010,.004],[.010,.015],[.0095,.0175],[.004,.0175],[.0035,.012],[0,.011],[0,-.0175]];
-    add(id(`lifter-${v}`),new T.LatheGeometry(lifterProfile.map(p=>new T.Vector2(...p)),48),'rotor',at(vx,.131,-s*.038),rot);
+    const follower=camFollowers.find(f=>f.bank===bank&&f.c===c&&f.type===type);
+    const lower=follower.seat.toArray(),upper=at(vx,.404-headStackCorrection,-s*.037);
+    tube(id(`pushrod-${v}`),[lower,upper],.0035,'rotor');
+    for(const p of [lower,upper])add(id(`pushrod-${v}`),new T.SphereGeometry(.0035,16,12),'rotor',p);
+    buildHydraulicLifter(h,follower);
    }
 
   }
@@ -142,29 +146,13 @@ export function createEngineDetail({legacyFrame=false}={}){
  cyl(id('throttle'),.024,.003,[.19,1.49,0],'gold',[0,0,Math.PI/2]);
  for(const z of [-.072,.072])tube(id('fuel-rail'),[[-.14,1.403,z],[.14,1.403,z]],.008,'metal');
  tube(id('fuel-rail'),[[.14,1.403,-.072],[.165,1.403,0],[.14,1.403,.072]],.008,'metal');cyl(id('fuel-rail'),.021,.026,[.167,1.406,0],'metal',[0,0,0]);
- // Cam-in-block, timing sprockets and actual repeated chain links.
- cyl(id('camshaft'),.014,.43,[0,1.181,0],'rotor');
- for(let i=0;i<12;i++){
-  const shape=new T.Shape(),phase=i*Math.PI*.58;
-  for(let j=0;j<=48;j++){const a=j/48*Math.PI*2,r=.018+.012*Math.max(0,Math.cos(a-phase))**4;const x=Math.cos(a)*r,y=Math.sin(a)*r;j?shape.lineTo(x,y):shape.moveTo(x,y);}
-  shape.closePath();const geo=new T.ExtrudeGeometry(shape,{depth:.011,bevelEnabled:true,bevelSize:.0007,bevelThickness:.0007,bevelSegments:2});geo.rotateY(Math.PI/2);add(id('camshaft'),geo,'rotor',[-.164+i*.029,1.181,0]);
- }
- for(const x of [-.177,-.060,.060,.177])sleeve('cam-bearings',.0165,.018,[x,1.181,0],[0,0,Math.PI/2],'gold');
- function gear(key,x,y,r){cyl(id(key),r,.015,[x,y,0],'metal');for(let i=0;i<32;i++){const a=i/32*Math.PI*2;box(id(key),[.016,.007,.008],[x,y+Math.cos(a)*r,Math.sin(a)*r],'rotor',[a,0,0]);}bolt(id(key),[x-.013,y,0],.008,'x');}
- gear('cam-gear',-.228,1.181,.056);gear('crank-gear',-.228,1.05,.028);
- const chain=new T.CatmullRomCurve3([[-.228,1.05,-.033],[-.228,1.181,-.061],[-.228,1.242,0],[-.228,1.181,.061],[-.228,1.05,.033],[-.228,1.017,0]].map(p=>new T.Vector3(...p)),true);
- for(let i=0;i<64;i++){const p=chain.getPointAt(i/64);ring(id('chain'),.0037,.0017,p.toArray(),'dark',[0,Math.PI/2,0]);}
- const cover=new T.Shape();cover.moveTo(-.069,-.098);cover.quadraticCurveTo(-.107,-.087,-.103,-.040);cover.lineTo(-.080,.095);cover.quadraticCurveTo(-.069,.149,0,.154);cover.quadraticCurveTo(.069,.149,.080,.095);cover.lineTo(.103,-.040);cover.quadraticCurveTo(.107,-.087,.069,-.098);cover.closePath();
- const seal=new T.Path();seal.absarc(0,-.047,.027,0,Math.PI*2,true);cover.holes.push(seal);
- const coverGeo=new T.ExtrudeGeometry(cover,{depth:.019,bevelEnabled:true,bevelSize:.004,bevelThickness:.003,bevelSegments:3,curveSegments:28});coverGeo.rotateY(Math.PI/2);add(id('timing-cover'),coverGeo,'metal',[-.270,1.097,0]);
- for(const [y,z] of [[1.023,-.077],[1.023,.077],[1.16,-.077],[1.16,.077],[1.225,-.047],[1.225,.047]])bolt(id('timing-cover'),[-.278,y,z],.0045,'x');
- ring(id('timing-cover'),.033,.007,[-.277,1.05,0],'metal',[0,Math.PI/2,0]);
+ // Shared factory cam datum, reconstructed connected timing components.
+ buildEngineTiming(h);
  cyl(id('balancer'),.074,.037,[-.291,1.05,0],'dark');for(const x of [-.31,-.30,-.29])ring(id('balancer'),.072,.003,[x,1.05,0],'rubber',[0,Math.PI/2,0]);
  // Drawn, stepped oil-pan shell with an open sump.
  buildOilPan(h);
  for(const z of [-.121,.121])box(id('pan-gasket'),[.395,.002,.013],[0,.943,z],'dark',[],{},.001);
- box(id('oil-pump'),[.060,.046,.054],[.105,.948,0],'iron');
- tube(id('pickup'),[[.105,.940,0],[.12,.861,0],[.06,.835,0]],.008,'metal');cyl(id('pickup'),.036,.013,[.060,.826,0],'dark',[0,0,0]);
+ buildOilPump(h);
  cyl(id('oil-filter'),.033,.084,[.134,1.013,-.177],'blackPaint',[0,0,.22]);
  buildIgnition(h);
  buildEngineControls(h);

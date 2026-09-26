@@ -1,0 +1,173 @@
+{
+  "date": "2026-09-24T22:27:55.876Z",
+  "sourceSha256": "8db945773c72a68ebf2a66bbce0de6757274e59a18acb9e50f6a107aa8e25177",
+  "status": "passed",
+  "limits": "Checks reconstructed geometry and selection coverage; not production tolerances, original pump internals, hydraulic calibration or approval of overhaul procedures.",
+  "checks": [
+    {
+      "name": "lifter-rear-1-intake complete inventory and finite, contained meshes",
+      "passed": true,
+      "selections": 9
+    },
+    {
+      "name": "lifter-rear-1-intake open bore, coaxial oil feed and seat passages",
+      "passed": true
+    },
+    {
+      "name": "lifter-rear-1-intake moving pieces fit the body bore and ball seat",
+      "passed": true
+    },
+    {
+      "name": "lifter-front-1-intake complete inventory and finite, contained meshes",
+      "passed": true,
+      "selections": 9
+    },
+    {
+      "name": "lifter-front-1-intake open bore, coaxial oil feed and seat passages",
+      "passed": true
+    },
+    {
+      "name": "lifter-front-1-intake moving pieces fit the body bore and ball seat",
+      "passed": true
+    },
+    {
+      "name": "lifter-rear-1-exhaust complete inventory and finite, contained meshes",
+      "passed": true,
+      "selections": 9
+    },
+    {
+      "name": "lifter-rear-1-exhaust open bore, coaxial oil feed and seat passages",
+      "passed": true
+    },
+    {
+      "name": "lifter-rear-1-exhaust moving pieces fit the body bore and ball seat",
+      "passed": true
+    },
+    {
+      "name": "lifter-front-1-exhaust complete inventory and finite, contained meshes",
+      "passed": true,
+      "selections": 9
+    },
+    {
+      "name": "lifter-front-1-exhaust open bore, coaxial oil feed and seat passages",
+      "passed": true
+    },
+    {
+      "name": "lifter-front-1-exhaust moving pieces fit the body bore and ball seat",
+      "passed": true
+    },
+    {
+      "name": "lifter-rear-2-intake complete inventory and finite, contained meshes",
+      "passed": true,
+      "selections": 9
+    },
+    {
+      "name": "lifter-rear-2-intake open bore, coaxial oil feed and seat passages",
+      "passed": true
+    },
+    {
+      "name": "lifter-rear-2-intake moving pieces fit the body bore and ball seat",
+      "passed": true
+    },
+    {
+      "name": "lifter-front-2-intake complete inventory and finite, contained meshes",
+      "passed": true,
+      "selections": 9
+    },
+    {
+      "name": "lifter-front-2-intake open bore, coaxial oil feed and seat passages",
+      "passed": true
+    },
+    {
+      "name": "lifter-front-2-intake moving pieces fit the body bore and ball seat",
+      "passed": true
+    },
+    {
+      "name": "lifter-rear-2-exhaust complete inventory and finite, contained meshes",
+      "passed": true,
+      "selections": 9
+    },
+    {
+      "name": "lifter-rear-2-exhaust open bore, coaxial oil feed and seat passages",
+      "passed": true
+    },
+    {
+      "name": "lifter-rear-2-exhaust moving pieces fit the body bore and ball seat",
+      "passed": true
+    },
+    {
+      "name": "lifter-front-2-exhaust complete inventory and finite, contained meshes",
+      "passed": true,
+      "selections": 9
+    },
+    {
+      "name": "lifter-front-2-exhaust open bore, coaxial oil feed and seat passages",
+      "passed": true
+    },
+    {
+      "name": "lifter-front-2-exhaust moving pieces fit the body bore and ball seat",
+      "passed": true
+    },
+    {
+      "name": "lifter-rear-3-intake complete inventory and finite, contained meshes",
+      "passed": true,
+      "selections": 9
+    },
+    {
+      "name": "lifter-rear-3-intake open bore, coaxial oil feed and seat passages",
+      "passed": true
+    },
+    {
+      "name": "lifter-rear-3-intake moving pieces fit the body bore and ball seat",
+      "passed": true
+    },
+    {
+      "name": "lifter-front-3-intake complete inventory and finite, contained meshes",
+      "passed": true,
+      "selections": 9
+    },
+    {
+      "name": "lifter-front-3-intake open bore, coaxial oil feed and seat passages",
+      "passed": true
+    },
+    {
+      "name": "lifter-front-3-intake moving pieces fit the body bore and ball seat",
+      "passed": true
+    },
+    {
+      "name": "lifter-rear-3-exhaust complete inventory and finite, contained meshes",
+      "passed": true,
+      "selections": 9
+    },
+    {
+      "name": "lifter-rear-3-exhaust open bore, coaxial oil feed and seat passages",
+      "passed": true
+    },
+    {
+      "name": "lifter-rear-3-exhaust moving pieces fit the body bore and ball seat",
+      "passed": true
+    },
+    {
+      "name": "lifter-front-3-exhaust complete inventory and finite, contained meshes",
+      "passed": true,
+      "selections": 9
+    },
+    {
+      "name": "lifter-front-3-exhaust open bore, coaxial oil feed and seat passages",
+      "passed": true
+    },
+    {
+      "name": "lifter-front-3-exhaust moving pieces fit the body bore and ball seat",
+      "passed": true
+    },
+    {
+      "name": "Water-pump construction selections and shaft alignment",
+      "passed": true
+    },
+    {
+      "name": "Impeller fits open rear chamber and has a shaft bore",
+      "passed": true,
+      "maxRadiusMetres": 0.027500047868330293
+    }
+  ]
+}

@@ -5,11 +5,20 @@ import {correctLegacyHandedness} from './vehicle-frame.js';
 import {lightingParts,lightingSections} from './lighting-catalog.js';
 import {electricalTools,bakeElectrical} from './electrical-geometry.js';
 import {rearFace,frontFace} from './fascias.js';
+import {bodyPoint,designLampHeight,exteriorLampNominal} from './body-datums.js';
+import {buildTailLamp} from './tail-lamps.js';
+import {tailLampShape} from './tail-lamp-shape.js';
+import {frontLampMount} from './body-contours.js';
 export function lightingMaterials(base=createMaterials()){
  const m={...base};for(const key of['plastic','rubber','metal','dark']){m[key]=base[key].clone();m[key].bumpScale=.00003;}
  m.bulbGlass=new T.MeshPhysicalMaterial({color:'#e8efed',roughness:.08,metalness:0,transparent:true,opacity:.22,clearcoat:1,side:T.DoubleSide,depthWrite:false});
  m.clearLens=new T.MeshPhysicalMaterial({color:'#c5d0c9',roughness:.18,metalness:0,transparent:true,opacity:.47,clearcoat:1,side:T.DoubleSide,depthWrite:false});
- m.tailOuter=new T.MeshPhysicalMaterial({color:'#6f6965',roughness:.16,transparent:true,opacity:.29,clearcoat:1,side:T.DoubleSide,depthWrite:false});
+ m.tailOuter=new T.MeshPhysicalMaterial({color:'#a5b0b3',roughness:.23,transparent:true,opacity:.16,clearcoat:.25,clearcoatRoughness:.25,envMapIntensity:.3,side:T.DoubleSide,depthWrite:false});
+ m.tailOuter.forceSinglePass=true;
+ m.tailInnerRed=new T.MeshPhysicalMaterial({color:'#610b09',roughness:.34,metalness:.04,clearcoat:.18,envMapIntensity:.35,side:T.DoubleSide});
+ m.tailInnerClear=new T.MeshPhysicalMaterial({color:'#465050',roughness:.38,metalness:.10,clearcoat:.22,envMapIntensity:.35,side:T.DoubleSide});
+ m.tailGrid=new T.MeshStandardMaterial({color:'#151819',roughness:.43,side:T.DoubleSide});
+ m.tailTrim=new T.MeshPhysicalMaterial({color:'#111416',roughness:.27,clearcoat:.5,side:T.DoubleSide});
  m.tailRed=new T.MeshPhysicalMaterial({color:'#960d07',roughness:.20,transparent:true,opacity:.80,clearcoat:1,side:T.DoubleSide,depthWrite:false});
  m.turnAmber=new T.MeshPhysicalMaterial({color:'#e38012',roughness:.20,transparent:true,opacity:.74,clearcoat:1,side:T.DoubleSide,depthWrite:false});
  return m;
@@ -17,18 +26,25 @@ export function lightingMaterials(base=createMaterials()){
 function makeGroups(){const root=new T.Group(),groups=new Map();for(const p of lightingParts){const g=new T.Group();g.name=p.id;g.userData={partId:p.id,system:'electrical',section:p.section,spread:new T.Vector3(...p.spread),assemblySpread:new T.Vector3()};groups.set(p.id,g);root.add(g);}return{root,groups};}
 export function createLightingDetail(){const model=makeGroups(),h=geometryTools(model.groups,lightingMaterials());buildLighting(h,model.groups);h.optimize();correctLegacyHandedness(model.groups);return model;}
 export function buildVehicleLighting(groups,materials){const d=makeGroups(),h=geometryTools(d.groups,lightingMaterials(materials));buildLighting(h,d.groups);h.optimize();for(const p of lightingParts){const owner=p.section.startsWith('lighting-rear-')?'taillights':p.section.startsWith('lighting-front-')?'front-signals':p.section.startsWith('lighting-marker-')?'marker-lamps':p.section.startsWith('lighting-license-')?'license-lamps':'cabin-lamps';for(const m of [...d.groups.get(p.id).children]){m.userData.partId=owner;groups.get(owner).add(m);}}}
-export function buildLighting(h,groups){
+export function buildLighting(h,groups){h.mapAdded(()=>buildAuthoredLighting(h,groups),bodyPoint);}
+function buildAuthoredLighting(h,groups){
  const {box,cyl,tube,ring}=h,{plate,frame,sleeve,screw,bulb,socket,lens,bowl}=electricalTools(h);
  function bake(scope,map){bakeElectrical(groups,lightingParts.filter(p=>p.section==='lighting-'+scope).map(p=>p.id),map);}
  for(const [side,s]of[['left',1],['right',-1]]){
   let scope='front-'+side,id=k=>`lt-${scope}-${k}`;
+  // Recessed black well surrounds the smaller amber lens in the SE pad.
+  const rim=[[-.088,-.040],[.088,-.040],[.088,.040],[-.088,.040]];
+  for(let edge=0;edge<4;edge++)h.surface(id('housing'),24,8,(u,v)=>{
+   const a=rim[edge],b=rim[(edge+1)%4],x=a[0]+(b[0]-a[0])*u,y=a[1]+(b[1]-a[1])*u;
+   return[x*(1-.295*v),y*(1-.25*v),.015-.023*v];
+  },'plastic');
   bowl(id('housing'),.108,.045,.043,[0,0,-.004]);frame(id('housing'),.125,.061,.006,.005,[0,0,-.004],'plastic');
   for(const dx of[-.052,.052])plate(id('housing'),.017,.021,.004,[dx,0,-.007],'plastic',[[0,0,.002]]);
   lens(id('lens'),.118,.050,[0,0,.003],'turnAmber');frame(id('gasket'),.117,.051,.0025,.0015,[0,0,0],'rubber');
   bulb(id('bulb'),[0,0,-.045]);socket(id('socket'),[0,0,-.055]);for(const dx of[-.048,.048])screw(id('screws'),[dx,0,.006],.003,.025);
   frame(id('bracket'),.131,.068,.009,.003,[0,0,-.023],'dark');for(const dx of[-.059,.059])screw(id('bracket'),[dx,0,-.017],.003,.012);
-  bake(scope,(x,y,z)=>{const p=frontFace(s*.557-x,.365+y);return[p[0],p[1],p[2]-.008-z];});
-  for(const [end,cy,cz]of[['front',.520,-1.75],['rear',.562,1.78]]){
+  bake(scope,(x,y,z)=>{const p=frontFace(s*.500-x,frontLampMount.height+y);return[p[0],p[1],p[2]-.008-z];});
+  for(const [end,cy,cz]of[['front',designLampHeight(exteriorLampNominal.frontMarkerCurb,-1.75),-1.75],['rear',designLampHeight(exteriorLampNominal.rearMarkerCurb,1.78),1.78]]){
    scope=`marker-${end}-${side}`;id=k=>`lt-${scope}-${k}`;
    plate(id('housing'),.164,.030,.005,[0,0,-.008],'plastic',[[0,0,.006]],.004);frame(id('housing'),.164,.032,.003,.008,[0,0,-.006],'plastic',.004);
    lens(id('lens'),.157,.023,[0,0,.002],end==='front'?'turnAmber':'tailRed');frame(id('seal'),.165,.031,.002,.0015,[0,0,-.011],'rubber',.004);
@@ -36,27 +52,11 @@ export function buildLighting(h,groups){
    bake(scope,(x,y,z)=>[s*(.849+z),cy+y,cz-s*x]);
   }
   scope='rear-'+side;id=k=>`lt-${scope}-${k}`;
-  // Molded three-chamber rear body. The lens is clear/smoked outside with
-  // separate red and reverse optics inside, as GM 2P02-002 illustrates.
-  const centers=[-.245,0,.245];
-  frame(id('housing'),.713,.118,.006,.025,[0,0,-.023],'plastic');
-  plate(id('housing'),.695,.107,.003,[0,0,-.072],'plastic',centers.map(x=>[x,0,.012]));
-  for(const x of centers)bowl(id('housing'),.226,.098,.055,[x,0,-.010]);
-  for(const x of[-.125,.125])box(id('housing'),[.003,.107,.060],[x,0,-.038],'plastic');
-  lens(id('outer-lens'),.717,.112,[0,0,.006],'tailOuter',false);
-  // Keep the accepted grid pitch and outer rear contour.
-  for(let i=0;i<38;i++)box(id('outer-lens'),[.0008,.090,.0008],[-.346+i*.0187,0,.0072],'lensGrid');
-  for(let i=0;i<7;i++)box(id('outer-lens'),[.692,.0008,.0008],[0,-.044+i*.0147,.0072],'lensGrid');
-  // Inboard chamber center depends on side; shell and bulb locations mirror.
-  const reverse=-s*.245,turn=0,tail=s*.245;
-  lens(id('red-lens'),.456,.101,[s*.1225,0,-.004],'tailRed');lens(id('reverse-lens'),.225,.101,[reverse,0,-.004],'clearLens');
-  frame(id('seal'),.712,.111,.002,.0015,[0,0,.001],'rubber');
-  for(const [key,x,type]of[['tail',tail,'2057'],['turn',turn,'2057'],['reverse',reverse,'1156']]){bulb(id(key+'-bulb'),[x,0,-.063],type);socket(id(key+'-socket'),[x,0,-.078],type==='2057');}
-  for(const x of[-.280,0,.280]){screw(id('retainers'),[x,.070,-.023],.004,.075,'y');frame(id('retainers'),.015,.013,.003,.009,[x,-.060,-.027],'zinc',.002);plate(id('access-caps'),.025,.017,.003,[x,0,0],'plastic',[],.003);const m=groups.get(id('access-caps')).children.at(-1);m.rotation.x=-Math.PI/2;m.position.set(x,.079,-.023);}
-  bake(scope,(x,y,z)=>{const p=rearFace(s*.376+x,.670+y);return[p[0],p[1],p[2]+z];});
+  buildTailLamp(h,groups,s,id,{plate,bowl,bulb,socket,screw});
+  bake(scope,(x,y,z)=>{const p=rearFace(s*tailLampShape.centerX+x,tailLampShape.centerY+y);return[p[0],p[1],p[2]+z];});
   scope='license-'+side;id=k=>`lt-${scope}-${k}`;
   bowl(id('housing'),.057,.025,.018,[0,0,-.003]);frame(id('housing'),.071,.037,.005,.016,[0,0,-.006],'plastic',.003);lens(id('lens'),.058,.027,[0,0,.004]);bulb(id('bulb'),[0,0,-.018],'194');socket(id('socket'),[0,0,-.029],false,true);for(const x of[-.030,.030])screw(id('screws'),[x,0,.002],.0025,.013);
-  bake(scope,(x,y,z)=>[s*.105+x,.451-z,2.005+y]);
+  bake(scope,(x,y,z)=>[s*.105+x,.529-z,rearFace(s*.105+x,.529)[2]-.032+y]);
  }
  let scope='dome',id=k=>`lt-${scope}-${k}`;
  const xs=[.104,.033,-.033,-.104],keys=['left-map','left-dome','right-dome','right-map'];

@@ -12,14 +12,15 @@ export function buildRearClip(h,deckHeight,roofPoint,sideWindow){
  const {surface,tube,label}=h,id='rear-clip';
  const header=u=>{const a=2*u-1;return [a*.596,1.138+.026*(1-a*a),.663-.020*(1-a*a)];};
  // Continue the roof's descending tangent, with no second crown at the back.
- surface(id,48,18,(u,v)=>{
+ const roofReturn=(u,v)=>{
   const a=roofPoint(u,1),b=header(u),p=mix(a,b,v);
   const entrySlope=-.056*(b[2]-a[2])/.592,exitSlope=-.025;
   p[1]=(2*v**3-3*v*v+1)*a[1]+(v**3-2*v*v+v)*entrySlope+(-2*v**3+3*v*v)*b[1]+(v**3-v*v)*exitSlope;
   return p;
- });
- const backWidth=v=>{const r=.035,d=Math.min(v,1-v)*.242;return lerp(.532,.514,v)-(d<r?r-Math.sqrt(Math.max(0,r*r-(r-d)**2)):0);};
- const backlight=(u,v)=>[(2*u-1)*backWidth(v),lerp(.860,1.102,v)+.005*(1-(2*u-1)**2)*v,lerp(.728,.644,v)];
+ };
+ surface(id,48,18,roofReturn);
+ const backWidth=v=>{const r=.035,d=Math.min(v,1-v)*.270;return lerp(.532,.514,v)-(d<r?r-Math.sqrt(Math.max(0,r*r-(r-d)**2)):0);};
+ const backlight=(u,v)=>[(2*u-1)*backWidth(v),lerp(.840,1.110,v)+.005*(1-(2*u-1)**2)*v,lerp(.742,.644,v)];
  surface('rear-window',44,32,backlight,'glass');
  // Rounded header reveal, with a visible painted lip above recessed glass.
  surface(id,44,16,(u,v)=>{const a=header(u),b=backlight(u,1),p=mix(a,b,v);p[2]+=.018*Math.sin(v*Math.PI);return p;});
@@ -35,6 +36,9 @@ export function buildRearClip(h,deckHeight,roofPoint,sideWindow){
    const shoulderY=deckHeight(root[2])-shoulderDrop(root[2],true)*(1-Math.sqrt(1-t*t));
    p[0]+=.012*Math.sin(u*Math.PI)*Math.sin(v*Math.PI);
    p[1]+=.003*Math.sin(u*Math.PI)*Math.sin(v*Math.PI)+(shoulderY-root[1])*(1-v)**4;
+   // Share the roof-return edge; an independent line left an open crown.
+   const edge=roofReturn(1,u),oldTop=mix(front(1),trailing(1),u);
+   for(let k=0;k<3;k++)p[k]+=(edge[k]-oldTop[k])*v**4;
    return signed(p);
   };
   // Broad, crowned C-pillar outer skin with a horizontal shoulder at its top.

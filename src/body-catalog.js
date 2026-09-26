@@ -1,3 +1,4 @@
+import {exteriorParts} from './exterior-catalog.js';
 const cd='https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf';
 const service='https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf';
 export const bodySections=[
@@ -14,20 +15,21 @@ export const bodySections=[
  {id:'body-glazing',parent:'body-system',name:'Windshield, seals & wipers',spread:[0,.28,-.1]},
 ];
 export const bodyParts=[];
-function add(key,section,name,description,spread,vehiclePart,page,callout,extra={}){bodyParts.push({id:'bd-'+key,section,system:'body',name,description,spread,vehiclePart,callout,location:bodySections.find(s=>s.id===section).name,source:page<1000?'GM 22P · 1985 body / panel hardware':'1986 Pontiac service · body hardware',sourceUrl:(page<1000?cd:service)+'#page='+page,referenceNote:'Panel and mechanism identity follows the 1985 application rows, with adjacent-year service figures for attachment relationships. The accepted exterior curves are preserved. Local surfaces, hinge axes, fastener coordinates and weatherstrip profiles are reconstructed, not tooling or body-alignment data.',...extra});}
+function add(key,section,name,description,spread,vehiclePart,page,callout,extra={}){bodyParts.push({id:'bd-'+key,section,system:'body',name,description,spread,vehiclePart,callout,location:bodySections.find(s=>s.id===section).name,source:page<1000?'GM 22P · 1985 body / panel hardware':'1986 Pontiac service · body hardware',sourceUrl:(page<1000?cd:service)+'#page='+page,referenceNote:'Panel and mechanism identity follows the 1985 application rows, with adjacent-year service figures for attachment relationships. Exterior curves are revised against owner photographs and GM panel illustrations. Local surfaces, hinge axes, fastener coordinates and weatherstrip profiles are reconstructed, not tooling or body-alignment data.',...extra});}
 export const bodySurfaceOwners=[
+ ...exteriorParts.map(e=>[e.id,e.section,e.name,e.spread,e.page,e.callout]),
  ['hood','body-hood','Hood exterior skin',[0,.22,0],237,1],
- ['decklid','body-decklid','Rear decklid exterior & spoiler preview',[0,.26,0],343,22],
+ ['decklid','body-decklid','Rear decklid exterior skin',[0,.26,0],343,22],
  ['deck-vent-left','body-decklid','Driver-side engine vent grille',[.08,.20,0],336,53],['deck-vent-right','body-decklid','Passenger-side engine vent grille',[-.08,.20,0],336,2],
  ['nose','body-front-panels','SE front fascia',[0,0,-.22],237,16],['fender-left','body-front-panels','Driver-side front fender',[.22,.05,0],237,7],['fender-right','body-front-panels','Passenger-side front fender',[-.22,.05,0],237,7],
  ['rear-fascia','body-rear-panels','SE rear fascia',[0,0,.22],336,36],['quarter-left','body-rear-panels','Driver-side rear quarter & intake',[.22,.05,0],336,23],['quarter-right','body-rear-panels','Passenger-side rear quarter',[-.22,.05,0],336,23],
- ['door-left','body-door-left','Driver door exterior, handle & mirror',[.24,0,0],336,25],['door-right','body-door-right','Passenger door exterior, handle & mirror',[-.24,0,0],336,25],
+ ['door-left','body-door-left','Driver door exterior skin',[.24,0,0],336,25],['door-right','body-door-right','Passenger door exterior skin',[-.24,0,0],336,25],
  ['door-trim-left','body-door-left','Driver door interior trim',[-.16,0,0],1214,7],['door-trim-right','body-door-right','Passenger door interior trim',[.16,0,0],1214,7],
  ['door-glass-left','body-door-left','Driver door glass',[0,.28,0],300,1],['door-glass-right','body-door-right','Passenger door glass',[0,.28,0],300,1],
  ['rocker-left','body-side-panels','Driver-side rocker cover',[.20,-.07,0],336,17],['rocker-right','body-side-panels','Passenger-side rocker cover',[-.20,-.07,0],336,17],
- ['roof','body-roof','Roof skin, A-pillars & roof preview',[0,.21,0],336,38],['rear-clip','body-rear-clip','Rear roof clip & buttresses',[0,.21,.14],336,3],['sail-left','body-rear-clip','Driver-side sail applique',[.20,.08,0],336,24],['sail-right','body-rear-clip','Passenger-side sail applique',[-.20,.08,0],336,24],['rear-window','body-rear-clip','Recessed backlight',[0,.13,-.12],336,39],['glass','body-glazing','Windshield, perimeter seals & wipers',[0,.15,-.1],336,null],
+ ['roof','body-roof','Roof skin, A-pillars & roof preview',[0,.21,0],336,38],['rear-clip','body-rear-clip','Rear roof clip & buttresses',[0,.21,.14],336,3],['sail-left','body-rear-clip','Driver-side sail applique',[.20,.08,0],336,24],['sail-right','body-rear-clip','Passenger-side sail applique',[-.20,.08,0],336,24],['rear-window','body-rear-clip','Recessed backlight',[0,.13,-.12],336,39],['glass','body-glazing','Windshield & perimeter seals',[0,.15,-.1],336,null],
 ];
-for(const [owner,section,name,spread,page,callout]of bodySurfaceOwners)add('skin-'+owner,section,name,'Shared with the assembled car. Native curved panel geometry retains the accepted shape; panel sections, folded returns and local mounting dimensions remain provisional.',spread,owner,page,callout,{surface:true});
+for(const [owner,section,name,spread,page,callout]of bodySurfaceOwners)add('skin-'+owner,section,name,'Shared with the assembled car. Native curved panel geometry uses the revised reconstructed shape; panel sections, folded returns and local mounting dimensions remain provisional.',spread,owner,page,callout,{surface:true,...(exteriorParts.find(e=>e.id===owner)||{}),id:'bd-skin-'+owner,vehiclePart:owner});
 for(const [key,name,description,spread,callout,page]of [
  ['inner','Hood bonded inner reinforcement','Open reinforcing frame follows the outer hood, with headlamp apertures and attachment lands. Bonded separation is an illustrative construction view.',[0,.08,0],1,237],
  ['left-hinge','Driver-side front hood hinge','Separate body foot, rotating strap and pin at the front edge.',[.12,-.08,0],21,1208],['right-hinge','Passenger-side front hood hinge','Opposite front hinge, sharing the hood’s forward axis.',[-.12,-.08,0],21,1208],['hinge-bolts','Hood-to-hinge bolt set','Four grouped bolts at the two hinge straps.',[0,-.17,-.08],22,1208],['hinge-nuts','Hood hinge-to-body nuts','Separate grouped body attachment nuts.',[0,-.25,-.08],23,1208],

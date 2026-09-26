@@ -1,0 +1,10 @@
+{
+  "sourceSha256": "267f7ce33b674db06a91c3ae15cb71ee195ef8e058968119cb0bd117a4f00c23",
+  "command": "npx playwright test --workers=2",
+  "startedAtApprox": "2026-09-24T00:29:25Z",
+  "observedAt": "2026-09-24T00:48:20.668136+00:00",
+  "exitCode": 143,
+  "status": "interrupted without a final Playwright report",
+  "cause": "Unknown. No assertion failure was reported in the captured console output. No current report was written; the previous source report was left untouched.",
+  "evidencePolicy": "Console successes are not counted as archived current-source regression evidence. All scenarios will be rerun in archived batches."
+}

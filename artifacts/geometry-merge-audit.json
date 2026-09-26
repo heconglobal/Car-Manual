@@ -1,0 +1,10 @@
+{
+  "date": "2026-09-24T22:28:09.971Z",
+  "sourceSha256": "8db945773c72a68ebf2a66bbce0de6757274e59a18acb9e50f6a107aa8e25177",
+  "status": "passed",
+  "buckets": 9,
+  "triangles": 144968,
+  "storedBefore": 411741,
+  "storedAfter": 411741,
+  "checks": "Expanded triangle positions, normals and UVs are byte-identical to the former reference operation; material, option and detail IDs preserved; index bounds and positive transforms after handedness conversion checked."
+}

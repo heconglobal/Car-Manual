@@ -1,0 +1,405 @@
+{
+  "manifest": {
+    "capturedAt": "2026-09-24T01:31:35.840Z",
+    "sourceSha256": "267f7ce33b674db06a91c3ae15cb71ee195ef8e058968119cb0bd117a4f00c23",
+    "applicationSha256": "c714c049bdc374e790156fbfc59353a030739afd6d1ce3a35cd9accbfd17b846",
+    "testFiles": {
+      "body-hardware.spec.js": "24b614104877cf0b10b04be60d48ababe46ee22175d33db6ade180a7e5bc8e9d",
+      "brakes.spec.js": "f1195a86b80545fd1eb9578946da480aa33e2775b258b5b8f3eca6cb6c88e125",
+      "configuration.spec.js": "88254f68c446f555661395e7310f93047342dfaae6a891e8f79d684fee5d8cac",
+      "electrical.spec.js": "b3c3610e7fdf2ec04f7b8fe7e5cefa8be782d0764ce0575e4592396d05978c56",
+      "engine-service.spec.js": "e3e7deca44f16a8fcb6093ed503ea01a035776b7e0246ebece5cd3e0c8f19e6e",
+      "engine.spec.js": "d835929251fdf52eaab25b3d6d7a7fe8b1279938713a0e007077e6384459b525",
+      "exhaust.spec.js": "942e6ced8d9e7902427f668fc421e447da1417ec4741f4ddab096e3782eaab86",
+      "fuel.spec.js": "855c51895b37fee5ab862293191a195457f16d700866bea41d8c90039c4584d4",
+      "headlights.spec.js": "8419fef5f6ba748ba37f737af7cc40d964bdf608866ad425f0003dd6a8ed466b",
+      "hvac.spec.js": "835318b1a7b085f68e5a605e381285405b66b31f5215ab114c68f4beb3f3551f",
+      "ignition.spec.js": "26b85b075ee9d1e426121a87486e716fe9e4968d4729b827f7f7015d86040127",
+      "rear-body.spec.js": "aa8e63a6d9f5816a6775f9a18358d35a64b955303962b6040ecbb101a5b0deba",
+      "service-guides.spec.js": "ae226847c7c4d94d1d96867e16166ab705ab0ae9257d0b75facb4eb276dddbce",
+      "suspension.spec.js": "27e4d61da57b4333af13614c6a2b30ee05bb1f378cb197b0de3124b14c2fc890",
+      "transmission-cooling.spec.js": "c21d94f16185813d5a3618637c651a27ead9478233740f2e7c8fad4d573dcf4b",
+      "valve-gear.spec.js": "603a19658e11b924e65d789c925440d057ddd21fce02bbf19527f7c2bf899d74",
+      "workshop.spec.js": "f63d9d0936dcb83393dcf5eabf40d8b69c70bfdc2c54ec951a4761e359976a5d"
+    },
+    "newestInputMtime": 1790209512634.5283
+  },
+  "report": {
+    "config": {
+      "argv": [
+        "/home/hesh913/.nvm/versions/node/v24.13.1/bin/node",
+        "/home/hesh913/fiero-3d-manual/node_modules/@playwright/test/cli.js",
+        "test",
+        "tests/engine-service.spec.js",
+        "tests/engine.spec.js",
+        "tests/fuel.spec.js",
+        "tests/exhaust.spec.js",
+        "--fully-parallel",
+        "--workers=2"
+      ],
+      "configFile": "/home/hesh913/fiero-3d-manual/playwright.config.js",
+      "rootDir": "/home/hesh913/fiero-3d-manual/tests",
+      "failOnFlakyTests": false,
+      "forbidOnly": false,
+      "fullyParallel": true,
+      "globalSetup": null,
+      "globalTeardown": null,
+      "globalTimeout": 0,
+      "grep": {},
+      "grepInvert": null,
+      "maxFailures": 0,
+      "metadata": {
+        "sourceSha256": "267f7ce33b674db06a91c3ae15cb71ee195ef8e058968119cb0bd117a4f00c23",
+        "actualWorkers": 2
+      },
+      "preserveOutput": "always",
+      "projects": [
+        {
+          "outputDir": "/home/hesh913/fiero-3d-manual/test-results",
+          "repeatEach": 1,
+          "retries": 0,
+          "metadata": {
+            "sourceSha256": "267f7ce33b674db06a91c3ae15cb71ee195ef8e058968119cb0bd117a4f00c23",
+            "actualWorkers": 2
+          },
+          "id": "",
+          "name": "",
+          "testDir": "/home/hesh913/fiero-3d-manual/tests",
+          "testIgnore": [],
+          "testMatch": [
+            "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+          ],
+          "timeout": 240000
+        }
+      ],
+      "quiet": false,
+      "reporter": [
+        [
+          "list",
+          null
+        ],
+        [
+          "html",
+          {
+            "open": "never"
+          }
+        ],
+        [
+          "json",
+          {
+            "outputFile": "artifacts/full-regression.json"
+          }
+        ]
+      ],
+      "reportSlowTests": {
+        "max": 5,
+        "threshold": 300000
+      },
+      "shard": null,
+      "tags": [],
+      "updateSnapshots": "missing",
+      "updateSourceMethod": "patch",
+      "version": "1.63.0",
+      "workers": 2,
+      "webServer": {
+        "command": "npm run dev",
+        "url": "http://127.0.0.1:5185",
+        "reuseExistingServer": true,
+        "timeout": 30000
+      }
+    },
+    "suites": [
+      {
+        "title": "engine-service.spec.js",
+        "file": "engine-service.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "cooling assembly opens detailed service parts, separates them and restores vehicle context",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 420000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 250165,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T01:19:57.937Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "47f6bfaf79f8638f27e4-e737ebafd07b958892d8",
+            "file": "engine-service.spec.js",
+            "line": 4,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "engine.spec.js",
+        "file": "engine.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "engine has independent explosion, selectable internals, subassembly navigation and vehicle return",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 300000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 1,
+                    "parallelIndex": 1,
+                    "status": "passed",
+                    "duration": 252153,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T01:19:57.898Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "cb289eddb0afb4f9e3c9-cdfe2f4e15ba38e54107",
+            "file": "engine.spec.js",
+            "line": 4,
+            "column": 1
+          },
+          {
+            "title": "engine explorer supports mobile navigation and return without overflow",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 180000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 184176,
+                    "errors": [],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T01:24:09.590Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "cb289eddb0afb4f9e3c9-b5a986fb1d98108884a9",
+            "file": "engine.spec.js",
+            "line": 59,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "exhaust.spec.js",
+        "file": "exhaust.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "early V6 exhaust exposes period catalyst, spring joints, supports and finish previews",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 840000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 1,
+                    "parallelIndex": 1,
+                    "status": "passed",
+                    "duration": 338161,
+                    "errors": [],
+                    "stdout": [
+                      {
+                        "text": "Captured exhaust-complete-assembled\n"
+                      },
+                      {
+                        "text": "Captured exhaust-manifolds\n"
+                      },
+                      {
+                        "text": "Captured exhaust-crossover-assembled\n"
+                      },
+                      {
+                        "text": "Captured exhaust-crossover-exploded\n"
+                      },
+                      {
+                        "text": "Captured exhaust-catalyst-assembled\n"
+                      },
+                      {
+                        "text": "Captured exhaust-catalyst-cutaway\n"
+                      },
+                      {
+                        "text": "Captured exhaust-rear-assembled\n"
+                      },
+                      {
+                        "text": "Captured exhaust-black-tailpipes\n"
+                      },
+                      {
+                        "text": "Captured exhaust-rear-exploded\n"
+                      },
+                      {
+                        "text": "Captured fuel-tank-refined\n"
+                      },
+                      {
+                        "text": "Captured fuel-tank-cutaway-refined\n"
+                      },
+                      {
+                        "text": "Captured fuel-sender-refined\n"
+                      },
+                      {
+                        "text": "Captured vehicle-after-exhaust\n"
+                      },
+                      {
+                        "text": "Captured exhaust-mobile\n"
+                      }
+                    ],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T01:24:11.911Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "e8f9d1b4f19cded6e53a-7e00634970e6ddbc0575",
+            "file": "exhaust.spec.js",
+            "line": 3,
+            "column": 1
+          }
+        ]
+      },
+      {
+        "title": "fuel.spec.js",
+        "file": "fuel.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "early V6 fuel supply exposes pump, sender, filler, filter and vapor parts",
+            "ok": true,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 720000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "passed",
+                    "duration": 259904,
+                    "errors": [],
+                    "stdout": [
+                      {
+                        "text": "Captured fuel-sender-assembled\n"
+                      },
+                      {
+                        "text": "Captured fuel-sender-exploded\n"
+                      },
+                      {
+                        "text": "Captured fuel-tank-assembled\n"
+                      },
+                      {
+                        "text": "Captured fuel-tank-cutaway\n"
+                      },
+                      {
+                        "text": "Captured fuel-filler\n"
+                      },
+                      {
+                        "text": "Captured fuel-pipes-filter\n"
+                      },
+                      {
+                        "text": "Captured fuel-vapor-system\n"
+                      },
+                      {
+                        "text": "Captured fuel-complete-system\n"
+                      },
+                      {
+                        "text": "Captured suspension-arms-refined\n"
+                      },
+                      {
+                        "text": "Captured suspension-strut-refined\n"
+                      },
+                      {
+                        "text": "Captured suspension-cradle-refined\n"
+                      },
+                      {
+                        "text": "Captured vehicle-after-fuel\n"
+                      }
+                    ],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T01:27:14.602Z",
+                    "annotations": [],
+                    "attachments": []
+                  }
+                ],
+                "status": "expected"
+              }
+            ],
+            "id": "e15a9c54d3b403addb66-eac088351389ecfc2eee",
+            "file": "fuel.spec.js",
+            "line": 3,
+            "column": 1
+          }
+        ]
+      }
+    ],
+    "errors": [],
+    "stats": {
+      "startTime": "2026-09-24T01:19:54.685Z",
+      "duration": 700733.684,
+      "expected": 5,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  }
+}

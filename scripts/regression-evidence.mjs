@@ -1,11 +1,11 @@
 import {createHash} from 'node:crypto';
 import {readFileSync,readdirSync,statSync} from 'node:fs';
-import {sourceFingerprint} from './source-fingerprint.mjs';
+import {sourceFingerprint,comparisonInputs} from './source-fingerprint.mjs';
 const digest=files=>{const h=createHash('sha256');for(const f of [...files].sort())h.update(f+'\0').update(readFileSync(f)).update('\0');return h.digest('hex');};
 export function regressionManifest(){
  const tests=readdirSync('tests',{recursive:true}).filter(f=>/\.js$/.test(f));
  const testFiles=Object.fromEntries(tests.filter(f=>f.endsWith('.spec.js')).map(f=>[f,digest(['tests/'+f])]));
- const applicationFiles=['index.html','package.json','package-lock.json','playwright.config.js',...readdirSync('src',{recursive:true}).filter(f=>/\.(js|css)$/.test(f)).map(f=>'src/'+f),...readdirSync('public',{recursive:true}).map(f=>'public/'+f).filter(f=>statSync(f).isFile()),...tests.filter(f=>!f.endsWith('.spec.js')).map(f=>'tests/'+f)];
+ const applicationFiles=[...comparisonInputs,'index.html','package.json','package-lock.json','playwright.config.js',...readdirSync('src',{recursive:true}).filter(f=>/\.(js|css)$/.test(f)).map(f=>'src/'+f),...readdirSync('public',{recursive:true}).map(f=>'public/'+f).filter(f=>statSync(f).isFile()),...tests.filter(f=>!f.endsWith('.spec.js')).map(f=>'tests/'+f)];
  return {capturedAt:new Date().toISOString(),sourceSha256:sourceFingerprint(),applicationSha256:digest(applicationFiles),testFiles,newestInputMtime:Math.max(...[...applicationFiles,...tests.map(f=>'tests/'+f)].map(f=>statSync(f).mtimeMs))};
 }
 export const specs=suites=>(suites||[]).flatMap(s=>[...(s.specs||[]),...specs(s.suites)]);

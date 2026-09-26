@@ -1,0 +1,251 @@
+{
+  "sourceSha256": null,
+  "baselineSource": "preserved/2026-09-24T17-17-47.677Z-aa6ad314-before-owner-rejected-rear-body/src",
+  "reviewedAt": "2026-09-24T17:37:21.528Z",
+  "status": "failed",
+  "checks": [
+    {
+      "name": "Split rear pads are tall, raised above the lower fascia and separated across the plate opening",
+      "status": "failed",
+      "error": "rear pad remains a thin strip"
+    },
+    {
+      "name": "Rear plate mounting area has full height and sits behind the bumper-pad faces",
+      "status": "failed",
+      "error": "flattened plate mounting area"
+    },
+    {
+      "name": "Curved outer rear lenses cover the internal red/reverse optics at sampled face positions",
+      "status": "failed",
+      "error": "outer cap cuts behind inner optics or leaves an opening\n\n3 !== 0\n"
+    },
+    {
+      "name": "Rear painted fascia leaves the sampled lamp faces open",
+      "status": "passed"
+    },
+    {
+      "name": "Lower centre nose has a formed bumper face instead of the old deeply tucked point",
+      "status": "failed",
+      "error": "lower nose is tucked more than the reconstruction bound"
+    }
+  ],
+  "opticalSamples": [
+    {
+      "side": "left",
+      "x": -0.1,
+      "y": 0.63,
+      "outerZ": 1.9402871090599378,
+      "innerZ": 1.9362865057575784,
+      "clearanceMm": 4.000603302359407,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.1,
+      "y": 0.67,
+      "outerZ": 1.9275390847098826,
+      "innerZ": 1.9235730420404802,
+      "clearanceMm": 3.96604266940237,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.1,
+      "y": 0.71,
+      "outerZ": 1.9147910603598275,
+      "innerZ": 1.910905234930358,
+      "clearanceMm": 3.8858254294695804,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.3,
+      "y": 0.63,
+      "outerZ": 1.9337261027774062,
+      "innerZ": 1.9339040282249844,
+      "clearanceMm": -0.17792544757821993,
+      "status": "failed"
+    },
+    {
+      "side": "left",
+      "x": -0.3,
+      "y": 0.67,
+      "outerZ": 1.9209780784273511,
+      "innerZ": 1.9211163685466737,
+      "clearanceMm": -0.1382901193225372,
+      "status": "failed"
+    },
+    {
+      "side": "left",
+      "x": -0.3,
+      "y": 0.71,
+      "outerZ": 1.9089574351791263,
+      "innerZ": 1.9083287088683631,
+      "clearanceMm": 0.6287263107631613,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.52,
+      "y": 0.63,
+      "outerZ": 1.9265089958666217,
+      "innerZ": 1.9242675706311192,
+      "clearanceMm": 2.2414252355025255,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.52,
+      "y": 0.67,
+      "outerZ": 1.9143433937209173,
+      "innerZ": 1.9115862558884595,
+      "clearanceMm": 2.75713783245779,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.52,
+      "y": 0.71,
+      "outerZ": 1.902644872273283,
+      "innerZ": 1.899767620298341,
+      "clearanceMm": 2.877251974942041,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.66,
+      "y": 0.63,
+      "outerZ": 1.9220248296830151,
+      "innerZ": 1.9181352794350233,
+      "clearanceMm": 3.8895502479918687,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.66,
+      "y": 0.67,
+      "outerZ": 1.9103263082353807,
+      "innerZ": 1.9062123401437632,
+      "clearanceMm": 4.11396809161757,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.66,
+      "y": 0.71,
+      "outerZ": 1.898627786787746,
+      "innerZ": 1.8943937045536443,
+      "clearanceMm": 4.234082234101599,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.1,
+      "y": 0.63,
+      "outerZ": 1.9405673776364072,
+      "innerZ": 1.9362183138467002,
+      "clearanceMm": 4.349063789707008,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.1,
+      "y": 0.67,
+      "outerZ": 1.9279192623291037,
+      "innerZ": 1.9234973463833596,
+      "clearanceMm": 4.421915945744148,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.1,
+      "y": 0.71,
+      "outerZ": 1.9152711470218002,
+      "innerZ": 1.9109466532277914,
+      "clearanceMm": 4.324493794008788,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.3,
+      "y": 0.63,
+      "outerZ": 1.9339667473915745,
+      "innerZ": 1.933995162151827,
+      "clearanceMm": -0.028414760252504223,
+      "status": "failed"
+    },
+    {
+      "side": "right",
+      "x": 0.3,
+      "y": 0.67,
+      "outerZ": 1.9221745810678728,
+      "innerZ": 1.9213021495859282,
+      "clearanceMm": 0.8724314819446022,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.3,
+      "y": 0.71,
+      "outerZ": 1.9095264657605693,
+      "innerZ": 1.9086091370200293,
+      "clearanceMm": 0.9173287405399577,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.52,
+      "y": 0.63,
+      "outerZ": 1.9266106652657575,
+      "innerZ": 1.9242931054904313,
+      "clearanceMm": 2.3175597753262167,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.52,
+      "y": 0.67,
+      "outerZ": 1.9151656577768688,
+      "innerZ": 1.9127131532146757,
+      "clearanceMm": 2.4525045621930364,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.52,
+      "y": 0.71,
+      "outerZ": 1.9032073163732153,
+      "innerZ": 1.9001655408663956,
+      "clearanceMm": 3.0417755068197216,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.66,
+      "y": 0.63,
+      "outerZ": 1.921929522094783,
+      "innerZ": 1.918048807198459,
+      "clearanceMm": 3.8807148963240223,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.66,
+      "y": 0.67,
+      "outerZ": 1.9104845146058942,
+      "innerZ": 1.9064688549227033,
+      "clearanceMm": 4.015659683190842,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.66,
+      "y": 0.71,
+      "outerZ": 1.8990395071170054,
+      "innerZ": 1.8947923433140832,
+      "clearanceMm": 4.247163802922227,
+      "status": "passed"
+    }
+  ],
+  "limits": "Photo-guided shape regression and actual mesh overlap checks. These do not certify factory panel sections, optics, gaps or original hardware dimensions."
+}

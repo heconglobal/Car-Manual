@@ -33,6 +33,13 @@ test('cooling assembly opens detailed service parts, separates them and restores
  expect((await page.evaluate(()=>window.__fiero.getVisibleParts())).sort()).toEqual(engineMembers('water-pump-detail').map(p=>p.id).sort());
  await page.getByRole('button',{name:'Reset view',exact:true}).click();await capture('service-water-pump-assembled');
  await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await capture('service-water-pump-exploded');
+ await expect(page.locator('.part-button')).toHaveCount(10);
+ await page.locator('.part-button[data-part="eng-water-pump-impeller"]').click();
+ await expect(page.locator('#inspector-content')).toContainText('Six-vane count');
+ await expect(page.locator('#inspector-content')).toContainText('not a pump overhaul procedure');
+ await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();
+ expect(await page.evaluate(()=>window.__fiero.getVisibleParts())).toEqual(['eng-water-pump-impeller']);
+ await capture('service-water-pump-impeller');
  await page.locator('#systems [data-assembly="lubrication"]').click();
  await page.locator('#systems [data-assembly="dipstick-detail"]').click();
  await page.getByRole('button',{name:'Reset view',exact:true}).click();await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await capture('service-dipstick-exploded');

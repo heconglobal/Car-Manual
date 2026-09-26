@@ -1,0 +1,194 @@
+{
+  "sourceSha256": "0c1e23dd80f0886b27d6e772e2800d88db8c74418c309c5d59a62a201255d310",
+  "baselineSource": null,
+  "reviewedAt": "2026-09-25T01:33:19.327Z",
+  "status": "passed",
+  "source": "Pontiac 1985 MVMA PDF 22–23; definitions PDF 29 and 31",
+  "unresolvedBumperReferences": [
+    {
+      "code": "H102",
+      "publishedBumperGroundMm": 315,
+      "modeledFasciaMinimumMm": 270.00001072883606,
+      "status": "unresolved",
+      "reason": "Physical measurement surface requires confirmation; apron contour reconstructed from production profile and photographs."
+    },
+    {
+      "code": "H104",
+      "publishedBumperGroundMm": 333,
+      "modeledFasciaMinimumMm": 245.00000476837158,
+      "status": "unresolved",
+      "reason": "Physical measurement surface requires confirmation; apron contour reconstructed from production profile and photographs."
+    }
+  ],
+  "configuration": "Coupe/SE, solid roof, plain deck; manufacturer design load of two front occupants, no cargo",
+  "rows": [
+    {
+      "code": "L103",
+      "name": "Overall exterior length",
+      "actualMm": 4081.999659538269,
+      "nominalMm": 4082,
+      "errorMm": -0.0003404617308078173,
+      "toleranceMm": 0.25,
+      "status": "passed"
+    },
+    {
+      "code": "L104",
+      "name": "Front overhang",
+      "actualMm": 923.9998588562011,
+      "nominalMm": 924,
+      "errorMm": -0.00014114379898177987,
+      "toleranceMm": 0.25,
+      "status": "passed"
+    },
+    {
+      "code": "L105",
+      "name": "Rear overhang",
+      "actualMm": 784.9998006820678,
+      "nominalMm": 785,
+      "errorMm": -0.00019931793227012662,
+      "toleranceMm": 0.25,
+      "status": "passed"
+    },
+    {
+      "code": "W103",
+      "name": "Exterior width excluding mirrors and marker lamps",
+      "actualMm": 1752.0884275436401,
+      "nominalMm": 1752,
+      "errorMm": 0.08842754364013494,
+      "toleranceMm": 0.25,
+      "status": "passed"
+    },
+    {
+      "code": "H101",
+      "name": "Solid-roof body height",
+      "actualMm": 1192.0000314712524,
+      "nominalMm": 1192,
+      "errorMm": 0.0000314712524929206,
+      "toleranceMm": 0.25,
+      "status": "passed"
+    },
+    {
+      "code": "L125",
+      "name": "Cowl position aft of base grid",
+      "actualMm": 197.00000190734858,
+      "nominalMm": 197,
+      "errorMm": 0.0000019073485568732451,
+      "toleranceMm": 0.25,
+      "status": "passed"
+    },
+    {
+      "code": "H114",
+      "name": "Cowl height at vehicle centreline",
+      "actualMm": 832.0000171661377,
+      "nominalMm": 832,
+      "errorMm": 0.000017166137733504172,
+      "toleranceMm": 0.25,
+      "status": "passed"
+    },
+    {
+      "code": "H138",
+      "name": "Deck point height at vehicle centreline",
+      "actualMm": 875,
+      "nominalMm": 875,
+      "errorMm": 0,
+      "toleranceMm": 0.25,
+      "status": "passed"
+    },
+    {
+      "code": "L123",
+      "name": "Cowl-to-deck upper structure length",
+      "actualMm": 1518.0000066757202,
+      "nominalMm": 1518,
+      "errorMm": 0.0000066757201988565384,
+      "toleranceMm": 0.25,
+      "status": "passed"
+    },
+    {
+      "code": "W117",
+      "name": "Painted body width at front seating reference",
+      "actualMm": 1750.922441482544,
+      "nominalMm": 1751,
+      "errorMm": -0.07755851745594455,
+      "toleranceMm": 0.3,
+      "status": "passed"
+    },
+    {
+      "code": "H112-left",
+      "name": "Front rocker bottom, left",
+      "actualMm": 167.9999977350235,
+      "nominalMm": 168,
+      "errorMm": -0.00000226497651190094,
+      "toleranceMm": 0.25,
+      "status": "passed"
+    },
+    {
+      "code": "H111-left",
+      "name": "Rear rocker bottom, left",
+      "actualMm": 171.00000381469727,
+      "nominalMm": 171,
+      "errorMm": 0.0000038146972525243683,
+      "toleranceMm": 0.25,
+      "status": "passed"
+    },
+    {
+      "code": "H133-left",
+      "name": "Painted closed door bottom, left",
+      "actualMm": 245.00000476837158,
+      "nominalMm": 245,
+      "errorMm": 0.000004768371586472142,
+      "toleranceMm": 0.25,
+      "status": "passed"
+    },
+    {
+      "code": "H112-right",
+      "name": "Front rocker bottom, right",
+      "actualMm": 167.9999977350235,
+      "nominalMm": 168,
+      "errorMm": -0.00000226497651190094,
+      "toleranceMm": 0.25,
+      "status": "passed"
+    },
+    {
+      "code": "H111-right",
+      "name": "Rear rocker bottom, right",
+      "actualMm": 171.00000381469727,
+      "nominalMm": 171,
+      "errorMm": 0.0000038146972525243683,
+      "toleranceMm": 0.25,
+      "status": "passed"
+    },
+    {
+      "code": "H133-right",
+      "name": "Painted closed door bottom, right",
+      "actualMm": 245.00000476837158,
+      "nominalMm": 245,
+      "errorMm": 0.000004768371586472142,
+      "toleranceMm": 0.25,
+      "status": "passed"
+    }
+  ],
+  "referencePoints": {
+    "cowl": [
+      0,
+      0.8320000171661377,
+      -0.7894999980926514
+    ],
+    "deck": [
+      0,
+      0.875,
+      0.7285000085830688
+    ],
+    "seatingStation": 0.16549999999999998,
+    "bodyMin": [
+      -0.8760442137718201,
+      0.1679999977350235,
+      -2.110499858856201
+    ],
+    "bodyMax": [
+      0.8760442137718201,
+      1.1920000314712524,
+      1.9714998006820679
+    ]
+  },
+  "limits": "Numerical mesh agreement with selected nominal references. Tolerances cover tessellation/numerical sampling, not manufacturing tolerances. Smooth connecting surfaces, glazing sections, panel gaps, hinge travel, body-shop datums, full concealed hardware, bumper ground-clearance interpretation and owner acceptance remain unverified. The generic key-sheet sedan drawing is not a Fiero silhouette template."
+}

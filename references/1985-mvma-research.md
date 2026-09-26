@@ -32,7 +32,7 @@ Source: Pontiac Motor Division, General Motors, *Motor Vehicle Specifications, P
 | 16 / 18 | L44 battery | Delco Remy Freedom II 75-60 base, 500 A at 0°F; UA1 75A-60, 630 A; 12 V; right front engine compartment |
 | 16 / 18 | Alternator | 66 A standard, 94 A optional; integral regulator; 2.78:1 alternator-to-crank ratio. Does not establish installed alternator stampings |
 | 16 / 18 | L44 ignition identities | Remote Delco Remy coil 1115314; distributor 1103633 (nominal original application, not a physical inspection of this car) |
-| 20 / 22 | Coupe / SE | Wheelbase 2,373 mm, width 1,752 mm, length 4,082 mm; front/rear overhang 924/783 mm; front/rear track 1,468/1,492 mm |
+| 20 / 22 | Coupe / SE | Wheelbase 2,373 mm, width 1,752 mm, length 4,082 mm; front/rear overhang 924/785 mm; front/rear track 1,468/1,492 mm |
 | 20 / 22 | Body reference | Height 1,192 mm at stated design load (2 front occupants, no cargo); cowl 832 mm; deck 875 mm; rocker front/rear 168/171 mm; upper structure length 1,518 mm |
 | 21 / 23 | Cabin | Steering-wheel angle 16.5°; seat back angle 26.5°; nominal seat design H-point travel 199 mm |
 | 24 / 26 | Lamps, curb mass | Headlamp bulb center height 709 mm, lateral offset 511 mm; taillamp bulb center height 716 mm, outer lateral offset 678 mm; front/rear marker heights 555/655 mm; front/rear directional offsets 500/538 mm |
@@ -60,3 +60,7 @@ Source: Pontiac Motor Division, General Motors, *Motor Vehicle Specifications, P
 Cylinder pitch is now111.8 mm in matching engine geometry; bank/cylinder labels identify the physical original layout. A shared, explicitly reconstructed13 mm bank offset aligns each piston with its bore; that offset is not a factory measurement. Ray checks confirm bore centering. Flat ring sections replace the prior torus rings that exceeded the bore envelope; section sizes remain illustrative, not specified service fits.
 
 The final-drive visual tooth count is now84/23 and the clutch facing uses232/155 mm nominal diameters. Tooth pitch/profile/helix, individual speed-gear counts and clutch carrier/rivet details remain unmeasured. Raised headlamp datums are709 mm height and511 mm lateral offset; the bucket, cover and constant-length link reconstruction are separately documented in `headlight-reconstruction.md`.
+
+## Body dimension transcription correction — 24 September 2026
+
+The original PDF 22 row L105 reads **785.0 mm**, not the previously transcribed 783 mm. The enlarged row is retained in `artifacts/body-specification-review-20260924/mvma-lengths.png`. 924 + 2,373 + 785 = 4,082 mm. PDF 31 defines cowl/deck heights at the vehicle centreline, upper structure length from cowl point to deck point, and width with mirrors/marker lamps excluded but moldings included. PDF 23 gives front seating reference 1,152 mm aft of the base grid. These definitions now drive the body mesh audit. The generic sedan on PDF 29 illustrates definitions only and is not used as a Fiero silhouette template.

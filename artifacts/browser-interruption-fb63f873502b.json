@@ -1,0 +1,15 @@
+{
+  "runDirectory": "artifacts/test-runs/2026-09-24T04-40-29.028Z-7b1e705c",
+  "exitCode": 143,
+  "signal": "SIGTERM",
+  "finalReportWritten": false,
+  "status": "interrupted; not eligible completed regression evidence",
+  "observedPassedTitles": [
+    "body panels share vehicle surfaces and expose hinges, torque rods, latches and retainers",
+    "1985 brakes expose distinct corners, hydraulic internals and parking controls",
+    "preview choices change geometry, persist, and leave the VIN record intact",
+    "invalid saved preview values recover to supported choices",
+    "twenty-step coolant guide crosses engine and radiator scopes, preserves cap order and returns safely"
+  ],
+  "nextAction": "Rerun unfinished evidence in small completed batches; preserve the prior final report and this run directory."
+}

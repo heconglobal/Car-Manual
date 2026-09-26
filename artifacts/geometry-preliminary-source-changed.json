@@ -1,0 +1,86 @@
+{
+  "startedAt": "2026-09-24T03:30:15.733Z",
+  "finishedAt": "2026-09-24T03:34:52.187Z",
+  "sourceSha256": "a16a044e3b446eb65b9924ace89edfa9d4586915d6b5c0e640c61958c00268d4",
+  "unchanged": false,
+  "status": "failed",
+  "results": [
+    {
+      "script": "audit-model",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 50831,
+      "log": "artifacts/geometry-check-logs/audit-model.log"
+    },
+    {
+      "script": "audit-powertrain",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 31378,
+      "log": "artifacts/geometry-check-logs/audit-powertrain.log"
+    },
+    {
+      "script": "audit-factory-datums",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 11448,
+      "log": "artifacts/geometry-check-logs/audit-factory-datums.log"
+    },
+    {
+      "script": "audit-engine-timing",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 89977,
+      "log": "artifacts/geometry-check-logs/audit-engine-timing.log"
+    },
+    {
+      "script": "audit-engine-internals",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 78069,
+      "log": "artifacts/geometry-check-logs/audit-engine-internals.log"
+    },
+    {
+      "script": "audit-headlights",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 4486,
+      "log": "artifacts/geometry-check-logs/audit-headlights.log"
+    },
+    {
+      "script": "audit-headlight-electrical",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 3961,
+      "log": "artifacts/geometry-check-logs/audit-headlight-electrical.log"
+    },
+    {
+      "script": "audit-geometry-merge",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 977,
+      "log": "artifacts/geometry-check-logs/audit-geometry-merge.log"
+    },
+    {
+      "script": "audit-wiring",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 3943,
+      "log": "artifacts/geometry-check-logs/audit-wiring.log"
+    },
+    {
+      "script": "audit-front-clearance",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 1210,
+      "log": "artifacts/geometry-check-logs/audit-front-clearance.log"
+    },
+    {
+      "script": "audit-distribution",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 148,
+      "log": "artifacts/geometry-check-logs/audit-distribution.log"
+    }
+  ]
+}

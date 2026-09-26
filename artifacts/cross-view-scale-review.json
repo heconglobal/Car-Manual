@@ -1,10 +1,10 @@
 {
-  "reviewedAt": "2026-09-22T08:59:18.730Z",
-  "sourceSha256": "b2019702353965532ff3dcd7d8016da9555acf341514d85704bcced93b67718c",
+  "reviewedAt": "2026-09-24T22:27:27.766Z",
+  "sourceSha256": "8db945773c72a68ebf2a66bbce0de6757274e59a18acb9e50f6a107aa8e25177",
   "status": "passed",
-  "sharedParts": 124,
-  "valveVerticesChecked": 817014,
-  "verticesCompared": 1436964,
+  "sharedParts": 132,
+  "valveVerticesChecked": 211470,
+  "verticesCompared": 772451,
   "maximumVertexErrorMetres": 6.15012634316075e-8,
   "checks": [
     "unit-scale rigid placement in vehicle",
@@ -31,38 +31,38 @@
   "deckClearance": [
     {
       "id": "intake",
-      "samples": 567,
-      "minGap": 0.10198974086689194
+      "samples": 559,
+      "minGap": 0.11406518105289642
     },
     {
       "id": "heads",
-      "samples": 829,
-      "minGap": 0.05940992410652046
+      "samples": 860,
+      "minGap": 0.08179050235985552
     },
     {
       "id": "thermostat",
-      "samples": 599,
-      "minGap": 0.056073826225584544
+      "samples": 610,
+      "minGap": 0.08253260919672178
     },
     {
       "id": "distributor",
-      "samples": 897,
-      "minGap": 0.17159240665890396
+      "samples": 865,
+      "minGap": 0.18215902429241426
     },
     {
       "id": "ignition-coil",
-      "samples": 69,
-      "minGap": 0.10199539894109266
+      "samples": 71,
+      "minGap": 0.13535629077560496
     },
     {
       "id": "ignition-leads",
-      "samples": 605,
-      "minGap": 0.04493665293495419
+      "samples": 629,
+      "minGap": 0.06875991834772299
     },
     {
       "id": "engine-controls",
-      "samples": 2902,
-      "minGap": 0.019969903203523653
+      "samples": 2928,
+      "minGap": 0.04146914412531877
     },
     {
       "id": "alternator",

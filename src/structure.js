@@ -1,8 +1,10 @@
 import * as T from 'three';
+import {bodyPoint} from './body-datums.js';
 
 // 1985 factory DIY, printed 1-4 / 1-5: welded steel space frame.
 // Reconstructed formed members and panel layout; not measured body-shop data.
-export function buildStructure(h){
+export function buildStructure(h){h.mapAdded(()=>buildAuthoredStructure(h),bodyPoint);}
+function buildAuthoredStructure(h){
  const {box,cyl,tube,surface,bolt}=h,id='spaceframe';
  // Sweep a flanged hat section. Unlike round tubing, this has webs,
  // shoulders and flat weld flanges visible in the factory structure drawing.

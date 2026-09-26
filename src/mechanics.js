@@ -35,16 +35,23 @@ export function buildMechanics(h){
  box('shift-linkage',[.073,.017,.105],transmissionAttachment([.43,.56,1.16]),'metal',[installationAngle,0,0]);
  // Suspension and steering surfaces are shared with their component explorer.
  // Lathed tire sidewalls and machined 14-inch wheels at factory axle spacing.
- const tireProfile=[[-.102,.178],[-.112,.191],[-.109,.239],[-.096,.29],[-.079,.307],[.079,.307],[.096,.29],[.109,.239],[.112,.191],[.102,.178]];
+ const tireProfile=[[-.102,.178],[-.112,.191],[-.109,.239],[-.096,.29],[-.079,.305],[.079,.305],[.096,.29],[.109,.239],[.112,.191],[.102,.178]];
  for(const s of [-1,1])for(const z of [-1.1865,1.1865]){
   const x=s*(z<0?.734:.746),y=.307;
   const tireGeo=new T.LatheGeometry(tireProfile.map(([a,r])=>new T.Vector2(r,a)),96);tireGeo.rotateZ(Math.PI/2);add('wheels',tireGeo,'rubber',[x,y,z]);
   buildWheelFace(h,x,y,z,s);
-  for(const r of [.218,.26,.29])ring('wheels',r,.0009,[x+s*.111,y,z],'rubber');
-  // Dense shallow tread blocks, visually unlike the original chunky prototype.
-  for(let i=0;i<88;i++){const a=i/88*Math.PI*2;for(const offset of [-.053,.053])box('wheels',[.079,.004,.008],[x+offset,y+Math.cos(a)*.307,z+Math.sin(a)*.307],'rubber',[a,0,.18*Math.sign(offset)],{},.001);}
+  for(const [r,offset] of [[.218,.111],[.26,.105],[.29,.096]])ring('wheels',r,.0006,[x+s*offset,y,z],'rubber');
+  // A continuous road-tire crown with recessed grooves, not raised teeth.
+  // Tread pattern is illustrative; its envelope retains the 307 mm radius.
+  surface('wheels',528,32,(u,v)=>{
+   const a=u*Math.PI*2,edge=Math.sin(v*Math.PI)**.35;
+   const transverse=Math.max(0,Math.cos((u*88+Math.abs(v-.5)*.45)*Math.PI*2))**16;
+   const channel=Math.max(...[.24,.50,.76].map(c=>Math.exp(-(((v-c)/.022)**2))));
+   const r=.305+edge*(.002-.0013*Math.max(transverse,channel));
+   return[x+(v-.5)*.158,y+Math.cos(a)*r,z+Math.sin(a)*r];
+  },'rubber');
   // Tire markings on the outboard sidewall, each character follows the arc.
-  const text='P215/60 R14';for(let i=0;i<text.length;i++){const a=(i-text.length/2)*.073;label('wheels',text[i],[.014,.018],[x+s*.113,y+Math.cos(a)*.267,z+Math.sin(a)*.267],[0,s*Math.PI/2,a*s],{background:'#111213',foreground:'#3d4143',width:64,height:64,font:'bold 48px Arial'});}
+  const text='P215/60 R14';for(let i=0;i<text.length;i++){const a=(i-text.length/2)*.073*s;label('wheels',text[i],[.014,.018],[x+s*.113,y+Math.cos(a)*.267,z+Math.sin(a)*.267],[0,s*Math.PI/2,a*s],{background:'#111213',foreground:'#3d4143',width:64,height:64,font:'bold 48px Arial'});}
  }
  // Rotors, hubs, calipers and hydraulic components share the brake explorer
  // surfaces through buildVehicleBrakes rather than duplicate coarse proxies.

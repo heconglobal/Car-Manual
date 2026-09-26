@@ -1,0 +1,127 @@
+{
+  "startedAt": "2026-09-24T00:48:33.840Z",
+  "sourceSha256": "267f7ce33b674db06a91c3ae15cb71ee195ef8e058968119cb0bd117a4f00c23",
+  "applicationSha256": "c714c049bdc374e790156fbfc59353a030739afd6d1ce3a35cd9accbfd17b846",
+  "status": "failed",
+  "requiredTests": 31,
+  "groups": [
+    {
+      "name": "headlights-and-guide",
+      "args": [
+        "tests/headlights.spec.js",
+        "tests/service-guides.spec.js"
+      ],
+      "startedAt": "2026-09-24T00:48:33.882Z",
+      "status": "passed",
+      "finishedAt": "2026-09-24T00:54:27.466Z",
+      "code": 0,
+      "signal": null,
+      "stats": {
+        "startTime": "2026-09-24T00:48:35.203Z",
+        "duration": 351999.86199999996,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "archive": "Archived raw browser results and exact source manifest: 2026-09-24T00-48-35.203Z-267f7ce33b67"
+    },
+    {
+      "name": "body-brakes-options",
+      "args": [
+        "tests/body-hardware.spec.js",
+        "tests/brakes.spec.js",
+        "tests/configuration.spec.js"
+      ],
+      "startedAt": "2026-09-24T00:54:27.903Z",
+      "status": "passed",
+      "finishedAt": "2026-09-24T01:07:54.274Z",
+      "code": 0,
+      "signal": null,
+      "stats": {
+        "startTime": "2026-09-24T00:54:31.923Z",
+        "duration": 802125.144,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "archive": "Archived raw browser results and exact source manifest: 2026-09-24T00-54-31.923Z-267f7ce33b67"
+    },
+    {
+      "name": "electrical-ignition-hvac",
+      "args": [
+        "tests/electrical.spec.js",
+        "tests/ignition.spec.js",
+        "tests/hvac.spec.js"
+      ],
+      "startedAt": "2026-09-24T01:07:54.830Z",
+      "status": "passed",
+      "finishedAt": "2026-09-24T01:19:51.376Z",
+      "code": 0,
+      "signal": null,
+      "stats": {
+        "startTime": "2026-09-24T01:07:57.566Z",
+        "duration": 713595.32,
+        "expected": 5,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "archive": "Archived raw browser results and exact source manifest: 2026-09-24T01-07-57.566Z-267f7ce33b67"
+    },
+    {
+      "name": "engine-fuel-exhaust",
+      "args": [
+        "tests/engine-service.spec.js",
+        "tests/engine.spec.js",
+        "tests/fuel.spec.js",
+        "tests/exhaust.spec.js"
+      ],
+      "startedAt": "2026-09-24T01:19:51.692Z",
+      "status": "passed",
+      "finishedAt": "2026-09-24T01:31:35.607Z",
+      "code": 0,
+      "signal": null,
+      "stats": {
+        "startTime": "2026-09-24T01:19:54.685Z",
+        "duration": 700733.684,
+        "expected": 5,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "archive": "Archived raw browser results and exact source manifest: 2026-09-24T01-19-54.685Z-267f7ce33b67"
+    },
+    {
+      "name": "running-gear-rear-body",
+      "args": [
+        "tests/suspension.spec.js",
+        "tests/transmission-cooling.spec.js",
+        "tests/valve-gear.spec.js",
+        "tests/rear-body.spec.js"
+      ],
+      "startedAt": "2026-09-24T01:31:35.984Z",
+      "status": "failed",
+      "finishedAt": "2026-09-24T01:42:13.054Z",
+      "code": 1,
+      "signal": null,
+      "stats": {
+        "startTime": "2026-09-24T01:31:39.758Z",
+        "duration": 632980.824,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "archive": "Archived raw browser results and exact source manifest: 2026-09-24T01-31-39.758Z-267f7ce33b67"
+    }
+  ],
+  "finishedAt": "2026-09-24T01:42:13.422Z",
+  "followupRuns": [
+    "artifacts/regression-history/2026-09-24T01-42-52.400Z-267f7ce33b67.json",
+    "artifacts/regression-history/2026-09-24T01-46-47.650Z-267f7ce33b67.json",
+    "artifacts/regression-history/2026-09-24T02-00-41.239Z-267f7ce33b67.json"
+  ],
+  "followupSummary": "All 31 scenarios have eligible passing evidence after the unchanged rear-body single-worker rerun and both workshop groups. Original batch status above is retained; see artifacts/regression-summary.json for consolidated current-source results."
+}

@@ -1,4 +1,5 @@
-import {headlightReplacement} from './service-guides.js';
+import {exteriorParts} from './exterior-catalog.js';
+import {headlightReplacement,coolantReplacement} from './service-guides.js';
 import {mvma1985} from './factory-specifications.js';
 import {ownersSource} from './wiring-catalog.js';
 export const vehicle = { year: 1985, make: 'Pontiac', model: 'Fiero SE 2M6', vin: '1G2PF3796FP217611', engine: 'L44 · 2.8L V6', transmission: '4-speed manual', suspension: 'WS6', originality: 'Original equipment — owner reported' };
@@ -9,7 +10,7 @@ export const sources = [
  {id:'lighting-1985',title:'GM 22P · early rear lamps and starting/charging',url:'https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=72',note:'Inspected early rear lamp PDF 72, battery 67, starter 56–57, generator 58–59 and L44 bracket 61. Shared 3D detail replaces the old surface and cylinder proxies. Dimensions, optical tooling and installed starter/generator identifiers remain unverified.'},
  {id:'headlight-early',title:'GM 22P · early headlamp assemblies',url:'https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=69',note:'PDF 69–70 identifies the lamp, cover/hinge, aim hardware, bucket, crank kit, relays and early 1984–86 actuator applications: LH 22039672, RH 22039673, brush/switch assembly 22038870. The 1985 DIY printed 2-28 / 2-29 establishes the spring-loaded cover, blue-wire connector, two-piece retainer and aiming spring. Profiles and linkage travel remain reconstructed.'},
  {id:'headlight-motor-reference',title:'Early headlamp motor · construction reference',url:'https://www.rodneydickman.com/product_info.php?products_id=230',note:'Firsthand supplier photographs support the opened early motor arrangement. Original plastic output gear, four cushions, metal intermediate gear and factory rivets are distinguished from replacement hardware. Gear teeth and contact dimensions remain illustrative.'},
- {id:'body-hardware',title:'GM 22P · 1985 body panels and attachments',url:'https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=336',note:'PDF 237–238 identifies the SE front panels and mechanical hood stay; PDF 300–302 door hardware, 336–338 early notchback skins/retainers, 343–344 rear decklid hardware and option-specific torque rods. Adjacent-year service PDF 1208–1209 and 1248–1252 supports hinge, latch and seal relationships. Accepted panel contours remain reconstructed, not tooling coordinates.'},
+ {id:'body-hardware',title:'GM 22P · 1985 body panels and attachments',url:'https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=336',note:'PDF 237–238 identifies the SE front panels and mechanical hood stay; PDF 300–302 door hardware, 336–338 early notchback skins/retainers, 343–344 rear decklid hardware and option-specific torque rods. Adjacent-year service PDF 1208–1209 and 1248–1252 supports hinge, latch and seal relationships. Panel contours remain reconstructed, not tooling coordinates.'},
  {id:'hvac-catalog',title:'GM 22P · C41 heater and C60 air conditioning',url:'https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=254',note:'Inspected standard-heater PDF 252–255 / 261, C60 module 263–264, air distribution 278–279 and C60 control 280. Core and control applications are kept distinct. The catalog changes the air-distributor cover after 1985 and the C60 resistor after 1985; those later identities are not claimed for this car. Local geometry, harness circuits and full A/C refrigeration components remain incomplete.'},
  {id:'exhaust-catalog',title:'GM 22P · early L44 exhaust system',url:'https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=122',note:'PDF 122–123 distinguishes 1985–86 converter, front pipe and muffler applications, and black SE versus bright GT tailpipes. The adjacent-year service PDF 705–709 identifies the single pellet bed, spring joint, transverse muffler and supports. Local profiles and routing remain reconstructed.'},
  {id:'fuel-catalog',title:'GM 22P · early V6 fuel supply and vapor system',url:'https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=79',note:'Inspected PDF 79–80 for the 1985–86 L44 tank, year-specific sender, filler, filter, pipes and supports; PDF 115–117 for V6 vapor canister and fuel-pump relay. The later auxiliary vapor expansion tank is not included in the original 1985 arrangement. Detailed pump/sender shape also uses the explicitly typical 1986 service figure at PDF 364.'},
@@ -42,6 +43,7 @@ export const systems = [
 ];
 const p = (id, system, name, description, location, extra = {}) => ({ id, system, name, description, location, geometry: 'Illustrative', verification: 'Factory verification pending', ...extra });
 export const parts = [
+ ...exteriorParts.map(e=>p(e.id,'body',e.name,e.description,e.section,{assembly:e.section,option:e.option,value:e.value,values:e.values})),
  p('spaceframe','body','Space frame','Welded steel structure reconstructed from factory DIY 1-4 / 1-5: formed rails, open door apertures, floor pans, tunnel, wheelhouses and bulkheads. Local dimensions, welds and mounting coordinates are approximate; this is not a body-alignment model.','Full vehicle'),
  p('hood','body','Front hood','Opening panel above the front storage and cooling-system area.','Front compartment',{assembly:'body-hood'}),
  p('nose','body','Front fascia','Rounded 1985 SE bumper-pad nose with a sloping upper surface, wrapped moldings, inset park lamps and a rolled-under lower edge. Reconstructed from GM 22P G-13 and the period brochure; local contours are not measured.','Front',{assembly:'body-front-panels'}),
@@ -139,6 +141,7 @@ export const parts = [
 ];
 export const tours = [
  headlightReplacement,
+ coolantReplacement,
  { id:'orientation', title:'Meet the mid-engine layout', subtitle:'5 stops · vehicle orientation', system:'all', steps:[
    { title:'Start with the whole vehicle', text:'Orbit the vehicle to explore the SE proportions. All shapes in this UAT build are illustrative.', system:'all', camera:'home' },
    { title:'Engine behind the cabin', text:'The V6 is represented behind the two-seat cockpit. Select a component to inspect its record.', system:'engine', part:'engine-block', camera:'rear' },

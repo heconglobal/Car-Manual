@@ -1,0 +1,19 @@
+{
+  "source": "870a036a513f",
+  "events": [
+    {
+      "run": "artifacts/test-runs/2026-09-24T05-05-12.124Z-759478a3",
+      "result": "SIGTERM / exit 143; no completed report; superseded application"
+    },
+    {
+      "startedAt": "2026-09-24T05:34:56Z",
+      "tests": [
+        "body-hardware.spec.js",
+        "rear-body.spec.js",
+        "configuration.spec.js"
+      ],
+      "result": "SIGTERM / exit 143 before a completed report; not counted as passing evidence"
+    }
+  ],
+  "followup": "Run body checks separately with one worker; keep all prior outputs."
+}

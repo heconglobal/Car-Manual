@@ -1,5 +1,7 @@
 import {l44Nominal,cylinderNumber} from './factory-specifications.js';
 import * as T from 'three';
+import {camFollowers,pushrodGuidePoint,timingLayout} from './engine-timing.js';
+import {bankOffset} from './engine-layout.js';
 const gm='https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_P22.pdf#page=17';
 export const valveHardwareParts=[];
 function part(id,section,name,description,spread,callout){valveHardwareParts.push({id:`eng-${id}`,section,system:'engine',name,description,spread,callout,location:section.includes('front')?'Cabin-side cylinder head':'Trunk-side cylinder head',source:'GM 22P · H-22',sourceUrl:gm,aliases:'valve gear cylinder head rebuild '+id.replaceAll('-',' '),referenceNote:'GM H-23 distinguishes the exhaust stem shield from the retained intake stem seal. Local profiles, installed heights and fastener dimensions are reconstructed; no clearance or torque specification is implied.'});}
@@ -29,7 +31,14 @@ export function buildValveHardware(h,bank,s,at){
   const cx=(c-2)*l44Nominal.borePitch,pivotZ=-s*.007;
   // One stamped guide locates both pushrods for this cylinder position.
   // Its two slots remain open so the plate is not a solid block around rods.
-  const shape=new T.Shape(),points=[[-.041,-.043],[-.030,-.043],[-.030,-.027],[-.020,-.027],[-.020,-.043],[.020,-.043],[.020,-.027],[.030,-.027],[.030,-.043],[.041,-.043],[.041,.008],[-.041,.008]];
+  // Cut the two open forks around the actual sloping pushrod paths. Keeping
+  // the former fixed slots after relocating the cam trapped rods in metal.
+  const slots=camFollowers.filter(f=>f.bank===bank&&f.c===c).map(f=>{
+   const p=pushrodGuidePoint(f);return {x:p.x-bankOffset(s)-cx,z:((p.y-timingLayout.crankY)*(-s*.5)+p.z*Math.cos(Math.PI/6))*s};
+  }).sort((a,b)=>a.x-b.x);
+  const shape=new T.Shape(),points=[[-.046,-.064]];
+  for(const p of slots)points.push([p.x-.0055,-.064],[p.x-.0055,p.z+.006],[p.x+.0055,p.z+.006],[p.x+.0055,-.064]);
+  points.push([.046,-.064],[.046,.008],[-.046,.008]);
   points.forEach(([x,z],i)=>i?shape.lineTo(x,z*s):shape.moveTo(x,z*s));shape.closePath();for(const x of [-.025,.025])hole(shape,x,pivotZ,.0045);
   extrude(`pushrod-guide-${bank}-${c}`,shape,.002,[cx,.351,0]);
   for(const [type,dx] of [['intake',-.025],['exhaust',.025]]){

@@ -7,14 +7,16 @@ import {geometryTools} from './geometry.js';
 import {mechanicalTools} from './mechanical-geometry.js';
 import {correctLegacyHandedness} from './vehicle-frame.js';
 import {headlightParts,headlightSections} from './headlight-catalog.js';
+import {buildHeadlightRelays,buildHeadlightMotorLeads} from './headlight-electrical.js';
 
 export function headlightHoodPoint(u,v){const a=u*2-1;return[a*.659,.625+.193*v+.013*(1-a*a)+.019*Math.sin(v*Math.PI)+.007*Math.exp(-(((Math.abs(a*.659)-.42)/.055)**2))*Math.sin(v*Math.PI),-1.786+1.176*v];}
 export function headlightMaterials(base=createMaterials()){
  const m={...base};for(const k of ['plastic','dark','metal','rubber','phenolic']){m[k]=base[k].clone();m[k].bumpScale=.000025;}m.plastic.roughness=.45;m.dark.roughness=.39;
+ m.wireGray=new T.MeshStandardMaterial({color:'#818380',roughness:.68});m.wireYellow=new T.MeshStandardMaterial({color:'#bba34b',roughness:.68});
  m.wireRed=new T.MeshStandardMaterial({color:'#9b352c',roughness:.68});m.wireBlue=new T.MeshStandardMaterial({color:'#345784',roughness:.68});m.headlightNylon=new T.MeshStandardMaterial({color:'#c9c4a0',roughness:.48});m.headlightCushion=new T.MeshStandardMaterial({color:'#709765',roughness:.68});return m;
 }
 export function createHeadlightDetail(){const root=new T.Group(),groups=new Map();for(const p of headlightParts){const g=new T.Group();g.name=p.id;g.userData={partId:p.id,system:'electrical',section:p.section,spread:new T.Vector3(...p.spread),assemblySpread:new T.Vector3(...(headlightSections.find(s=>s.id===p.section).spread||[0,0,0]))};groups.set(p.id,g);root.add(g);}const h=geometryTools(groups,headlightMaterials());buildHeadlights(h,groups);h.optimize();correctLegacyHandedness(groups);return{root,groups};}
-export function buildVehicleHeadlights(groups,materials){const detail=new Map(headlightParts.map(p=>[p.id,new T.Group()])),h=geometryTools(detail,headlightMaterials(materials));buildHeadlights(h,detail);h.optimize();for(const p of headlightParts){const owner=p.section==='headlight-controls'?'lighting-controls':'headlights';for(const mesh of [...detail.get(p.id).children]){mesh.userData.partId=owner;groups.get(owner).add(mesh);}}}
+export function buildVehicleHeadlights(groups,materials){const detail=new Map(headlightParts.map(p=>[p.id,new T.Group()])),h=geometryTools(detail,headlightMaterials(materials));buildHeadlights(h,detail);h.optimize();for(const p of headlightParts){const owner=p.section==='headlight-controls'?'lighting-controls':'headlights';for(const mesh of [...detail.get(p.id).children]){mesh.userData.detailPartId=p.id;mesh.userData.partId=owner;groups.get(owner).add(mesh);}}}
 function lampTools(h){
  const {add,tube,cyl,box}=h;
  function path(points,Shape=T.Shape){const sh=new Shape();for(let i=0;i<points.length;i++){const p=points[i],prev=points[(i+points.length-1)%points.length],next=points[(i+1)%points.length];const a=p.map((n,k)=>n+(prev[k]-n)*.12),b=p.map((n,k)=>n+(next[k]-n)*.12);if(!i)sh.moveTo(...a);else sh.lineTo(...a);sh.quadraticCurveTo(...p,...b);}sh.closePath();return sh;}
@@ -139,22 +141,9 @@ function buildMotor(h,side,s){
  for(const e of[-1,1]){box(id('brushes'),[.007,.006,.004],[x,sy,z+e*.010],'dark',[],{},.001);tube(id('brushes'),[[x,sy,z+e*.012],[sx-s*.002,sy,z+e*.023],[sx-s*.002,sy+.014,z+e*.023]],.0007,'zinc');box(id('switch'),[.003,.018,.006],[sx,sy+.004,z+e*.021],'copper');cyl(id('switch'),.002,.003,[sx-s*.002,sy+.014,z+e*.021],'zinc');}
  box(id('switch'),[.003,.008,.010],[sx,sy-.018,z],'phenolic',[],{},.001);tube(id('switch'),[[sx,sy-.011,z-.012],[sx-s*.004,sy-.018,z],[sx,sy-.011,z+.012]],.0007,'copper');
  plate(id('switch-cover'),[[-.028,-.022],[.028,-.022],[.030,.016],[.020,.025],[-.025,.025]],[],.003,[x-s*.028,sy,z],'plastic','x');for(const [dy,dz]of[[-.018,-.023],[-.018,.023],[.021,0]])screw(id('switch-screws'),[x-s*.031,sy+dy,z+dz],.0025,'x');
- for(const [i,dz]of[-.009,0,.009].entries())tube(id('motor-leads'),[[sx,sy-.012,z+dz],[x-s*.041,sy-.016,z+dz],[x-s*.053,.532,-1.368+dz],[x-s*.074,.558,-1.33+dz]],.0016,i===0?'wireBlue':i===1?'headlightCushion':'wire');
- box(id('motor-leads'),[.014,.010,.025],[x-s*.074,.558,-1.339],'plastic',[],{},.003);box(id('motor-leads'),[.022,.014,.025],[x-s*.074,.558,-1.322],'plastic',[],{},.003);
+ buildHeadlightMotorLeads(h,lampTools(h),side,s);
 }
-function buildRelays(h){
- const {box,cyl,tube}=h,{plate,frame,sleeve,screw}=lampTools(h),id=k=>'hl-'+k;
- for(const [side,s]of[['left',1],['right',-1]]){
-  const x=s*.405,y=.606,z=-1.29;
-  box(id(side+'-relay'),[.029,.040,.032],[x,y,z],'plastic',[],{},.004);box(id(side+'-relay'),[.031,.006,.033],[x,y-.021,z],'phenolic',[],{},.002);
-  plate(id(side+'-relay-bracket'),[[-.02,-.028],[.02,-.028],[.017,.031],[-.017,.031]],[[0,.023,.003]],.0015,[x,y,z+.019],'zinc');screw(id(side+'-relay-bracket'),[x,y+.023,z+.022],.004);box(id(side+'-relay-bracket'),[.034,.002,.027],[x,y-.028,z+.007],'zinc');
-  frame(id(side+'-relay-socket'),.029,.016,.003,.030,[x,y-.034,z],'plastic');for(let i=0;i<4;i++)tube(id(side+'-relay-socket'),[[x-.01+i*.006,y-.039,z],[x-.01+i*.006,y-.075,z+.026],[s*.342+i*.006,.500,-1.34]],.0018,i===0?'wireRed':'wire');
-  sleeve(id(side+'-ground'),.006,.003,.001,[s*.663,.475,-1.518],'zinc','y');screw(id(side+'-ground'),[s*.663,.477,-1.518],.004,'y');tube(id(side+'-ground'),[[s*.663,.475,-1.518],[s*.631,.466,-1.49],[s*.56,.473,-1.38],[s*.34,.500,-1.34]],.002,'wire');
- }
- box(id('isolation-relay'),[.041,.039,.032],[.472,.588,-1.230],'plastic',[],{},.004);plate(id('isolation-bracket'),[[-.028,-.030],[.028,-.030],[.018,.035],[-.018,.035]],[[0,.027,.003]],.0015,[.472,.588,-1.209],'zinc');screw(id('isolation-bracket'),[.472,.615,-1.206],.004);box(id('isolation-bracket'),[.040,.009,.028],[.472,.562,-1.230],'phenolic',[],{},.002);
- tube(id('forward-harness'),[[.57,.53,-1.25],[.47,.507,-1.29],[.34,.5,-1.34],[0,.48,-1.39],[-.34,.5,-1.34],[-.54,.51,-1.30]],.006,'wire');tube(id('forward-harness'),[[.472,.560,-1.230],[.49,.53,-1.23],[.47,.507,-1.29]],.004,'wire');for(const s of[-1,1])tube(id('forward-harness'),[[s*.34,.50,-1.34],[s*.39,.48,-1.48],[s*.43,.58,-1.56],[s*.45,.67,-1.46]],.004,'wire');
- for(const x of[-.28,0,.28]){box(id('forward-harness'),[.017,.009,.020],[x,.486,-1.388],'plastic',[],{},.002);screw(id('forward-harness'),[x,.492,-1.388],.002,'y');}
-}
+function buildRelays(h){buildHeadlightRelays(h,lampTools(h));}
 
 function buildControls(h){
  const {box,cyl,tube,label}=h,{frame,plate,sleeve,screw}=lampTools(h),id=k=>'hl-'+k,x=.608,y=.824,z=-.356;

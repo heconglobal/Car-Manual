@@ -1,3 +1,5 @@
+> Historical hardware pass. The owner rejected the body appearance on 24 September 2026; prior references to accepted contours below are superseded by [the full exterior revision](exterior-reconstruction-20260924.md).
+
 # Body panels and attachment reconstruction
 
 Target: 1985 Fiero SE notchback, US LHD. This pass keeps the accepted exterior surfaces and adds a native 3D construction explorer. It is not a certified body alignment or tooling model.

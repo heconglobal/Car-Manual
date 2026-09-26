@@ -1,0 +1,379 @@
+--- R6/body-review.html
++++ R7/body-review.html
+@@ -1 +1 @@
+-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fiero body comparison</title><style>body{margin:0;background:#e8e8e3;color:#20292a;font:15px system-ui}header{padding:16px 24px}h1{font-size:24px;margin:0 0 8px}button{padding:8px 14px;margin:4px;border:1px solid #a5adaa;background:white;border-radius:5px;cursor:pointer}.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}figure{margin:0;background:#d5d7d5}figcaption{padding:10px}#model{height:620px}#photo{width:100%;height:620px;object-fit:cover;object-position:50% 100%}canvas{display:block;width:100%;height:100%}p{max-width:1000px;margin:8px 0}@media(max-width:800px){.pair{grid-template-columns:1fr}#model,#photo{height:420px}}</style><header><h1>Body R6 — factory dimensions and surface review</h1><p>The shared body is checked against Pontiac’s 1985 coupe/SE specifications and factory brochure. Owner photographs provide a second visual reference. Camera and lighting differ; the views are not calibrated overlays.</p><div id="views"></div><label><input id="clay" type="checkbox"> Neutral panel material</label> · <a href="/">Open manual</a></header><details style="margin:0 24px 12px"><summary>Factory dimensional references · 1985 coupe/SE</summary><p>Wheelbase 2373 mm · length 4082 mm · width 1752 mm · roof height 1192 mm · front/rear overhang 924/785 mm · bumper ground clearance 315/333 mm at design load.</p><p><a href="/references/1985-86-specifications.pdf#page=22">Pontiac MVMA dimensions</a> · <a href="/references/1985-86-specifications.pdf#page=26">Lamp datums (curb load)</a> · <a href="/references/1985-fiero-brochure.pdf#page=3">Factory SE brochure</a> · <a href="/tail-review.html">Rear lamp close-up</a> · <a href="/references/body-r6-tail-lamp-review.md">R6 lamp sources and limits</a> · <a href="/references/body-r5-factory-specification-review.md">Load conditions and reconstruction limits</a></p><p>Lamp heights in the design-load rendering use an explicit estimated curb-to-design pitch correction. Local panel curves and gaps remain reconstructed.</p></details><main class="pair"><figure><div id="model"></div><figcaption>Current shared native geometry. Drag to orbit.</figcaption></figure><figure><img id="photo" alt="Owner's Fiero reference photograph"><figcaption>Owner reference, preserved locally; no photograph is used as a model surface.</figcaption></figure></main><script type="module" src="/src/body-review.js"></script></html>
++<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fiero body comparison</title><style>body{margin:0;background:#e8e8e3;color:#20292a;font:15px system-ui}header{padding:16px 24px}h1{font-size:24px;margin:0 0 8px}button{padding:8px 14px;margin:4px;border:1px solid #a5adaa;background:white;border-radius:5px;cursor:pointer}.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}figure{margin:0;background:#d5d7d5}figcaption{padding:10px}#model{height:620px}#photo{width:100%;height:620px;object-fit:cover;object-position:50% 100%}canvas{display:block;width:100%;height:100%}p{max-width:1000px;margin:8px 0}@media(max-width:800px){.pair{grid-template-columns:1fr}#model,#photo{height:420px}}</style><header><h1>Body R7 — factory dimensions and surface review</h1><p>The shared body is checked against Pontiac’s 1985 coupe/SE specifications and factory brochure. Owner photographs provide a second visual reference. Camera and lighting differ; the views are not calibrated overlays.</p><div id="views"></div><label><input id="clay" type="checkbox"> Neutral panel material</label> · <a href="/">Open manual</a></header><details style="margin:0 24px 12px"><summary>Factory dimensional references · 1985 coupe/SE</summary><p>Wheelbase 2373 mm · length 4082 mm · width 1752 mm · roof height 1192 mm · front/rear overhang 924/785 mm . Published bumper ground references: 315/333 mm; their relationship to the painted apron remains unresolved.</p><p><a href="/references/1985-86-specifications.pdf#page=22">Pontiac MVMA dimensions</a> · <a href="/references/1985-86-specifications.pdf#page=26">Lamp datums (curb load)</a> · <a href="/references/1985-fiero-brochure.pdf#page=3">Factory SE brochure</a> · <a href="/tail-review.html">Rear lamp close-up</a> · <a href="/references/body-r7-specification.md">R7 body specification and unresolved dimensions</a> · <a href="/references/pontiac-super-duty-guide-r7.pdf#page=37">Pontiac production profile</a> · <a href="/references/body-r5-factory-specification-review.md">Load conditions and reconstruction limits</a></p><p>Lamp heights in the design-load rendering use an explicit estimated curb-to-design pitch correction. Local panel curves and gaps remain reconstructed.</p></details><main class="pair"><figure><div id="model"></div><figcaption>Current shared native geometry. Drag to orbit.</figcaption></figure><figure><img id="photo" alt="Owner's Fiero reference photograph"><figcaption>Owner reference, preserved locally; no photograph is used as a model surface.</figcaption></figure></main><script type="module" src="/src/body-review.js"></script></html>
+--- R6/references/body-r7-specification.md
++++ R7/references/body-r7-specification.md
+@@ -0,0 +1,60 @@
++# Body R7 — 1985 SE shape specification and evidence limits
++
++Target: US 1985 Pontiac Fiero SE, early bumper-pad fascias and notchback lamps. GT/aero fascias and 1987–88 coupe ends are excluded. The owner rejected R6’s shallow rear lower section and sharp upper lamp corners. This specification separates published dimensions from reconstructed surfaces; passing an envelope audit is not approval of the body shape.
++
++## Source hierarchy
++
++1. [1985 Pontiac MVMA, PDF22–23](1985-86-specifications.pdf#page=22), coupe column, issued 1 September 1984: dimensions and load conditions. [PDF26](1985-86-specifications.pdf#page=26): curb-load bulb datums. [PDF31](1985-86-specifications.pdf#page=31): definitions.
++2. [1985 Pontiac brochure, PDF3](1985-fiero-brochure.pdf#page=3): original SE exterior and panel relationships. [GM lamp illustration 2P02-002](fiero-parts-cd.pdf#page=72) and [1985 DIY 2-25](1985-fiero-diy.pdf#page=34): lamp construction.
++3. [Pontiac Performance Plus, printed46 / PDF37](pontiac-super-duty-guide-r7.pdf#page=37), copyright1983 Pontiac Motor Division: explicitly captioned **production Fiero** packaging profile and production-car side photograph. Its neighboring race-car drawings, widened tracks, wings and lowered ride heights are not used. This is an adjacent-year production profile, not a dimensioned 1985 SE tooling drawing. [Public original scan](https://spad.dy.fi/fiero/manuals/Pontiac_Fiero-HotrodSD4guide.pdf#page=37).
++4. Owner photographs and opened original lamp photographs corroborate visible contours. Perspective, lens distortion, terrain and suspension condition preclude treating their pixels as millimeter measurements.
++
++## Confirmed dimensional constraints
++
++All dimensions below are millimeters. Ground-related body dimensions use the MVMA manufacturer design load: two front occupants and no cargo. Optical heights in the separate source table use curb mass; the existing load-height interpolation remains an estimate.
++
++| Constraint | Published target | Model treatment |
++| --- | ---: | --- |
++| Wheelbase | 2373 | Fixed axle stations |
++| Length / body width / solid-roof height | 4082 / 1752 / 1192 | Actual mesh envelope; width excludes mirrors and marker lamps |
++| Front / rear overhang | 924 / 785 | Actual extremities relative to axle stations |
++| Cowl / deck reference heights | 832 / 875 | Lower daylight-opening reference points, not arbitrary skin maxima |
++| Upper structure length | 1518 | Cowl-to-deck reference distance |
++| Front / rear rocker bottom | 168 / 171 | Actual rocker surfaces |
++| Closed-door bottom | 245 | Actual painted door bottom |
++| Body width at front seating reference | 1751 | Cross-section through door skins |
++| Outside tail / rear directional lateral centers | 678 / 538 | Actual bulb geometry, each side |
++| Outside tail height at curb mass | 716 | Retained as source value; design-load conversion explicitly estimated |
++| Front / rear bumper ground reference | 315 / 333 | **Unresolved measurement-surface interpretation**, retained separately from fascia minima |
++
++### Correction to the R5/R6 claim
++
++R5 forced the entire painted front/rear fascia minima to H102/H104 and advertised 18 verified dimensions. The definition says bumper, including standard bumper guards; it does not identify a Fiero surface in a dimensioned section. That equation was not established. R7 withdraws those two passes. The report retains the published numbers and the modeled fascia minima as unresolved comparisons, rather than moving a test point or widening a tolerance to manufacture agreement. Sixteen other dimension comparisons remain independently testable. No claim is made that H102/H104 have now been resolved.
++
++## Surface specification and current reconstruction controls
++
++| Region | Required visible form | R7 control / evidence status |
++| --- | --- | --- |
++| Rear fascia | Painted lower apron below the two black pads; tucked under-return; curved ends continuous with quarters | Lowest authored edge245 mm, 88 mm below R6; section rolls through270/305/333 mm before the impact face, with43 mm outlet-clearance scallops centered510 mm either side of the centerline. Reconstruction, not published tooling. |
++| Front fascia / fender lower ends | Lower painted return distinct from impact pads, continuous into fenders | Authored edge270 mm, 45 mm below R6; retained nose/axle/length anchors. Reconstruction. |
++| Rear lamp covers | Soft upper corners, tighter lower corners, tapered outboard edge; clear cover over independent optics | Upper outboard radius34 mm, upper inboard22 mm, lower7 mm; R6 used10 mm uniformly. These are curve controls, not measured factory radii. |
++| Lamp apertures | Same rounded perimeter as covers, no painted triangles across visible optics | Shared profile and clipped/reprojected fascia mesh; actual ray checks. |
++| Hood / headlamp doors | Separate flush panels, preserved cowl and front-overhang anchors | Existing shared hood/lid coordinates retained; local crown and gaps remain unmeasured. |
++| Doors / rockers / quarters | Continuous lower silhouette and molding; fixed wheel openings and sill heights | Both rear quarter tails follow the lowered fascia; front fender tails follow the front return. Door width/height anchors retained. |
++| Roof / A-posts / rear clip / sail panels | Continuous roof crown, recessed backlight, notchback buttresses | Checked against production profile and 1985 brochure; measured slopes and radii unavailable. No new exactness claim. |
++| Decklid / vents | Low rear deck with separate grilles and 1985 raised forward center | Retains deck reference and shared attachment surfaces. Exact crown/vent tooling remains open. |
++| Exterior trim / lamps / handles / mirrors | Attached to shared skin coordinates with independent selectable parts | Retained shared builders; hidden mounts and production gaps remain open. |
++
++The deeper apron initially intersected the existing exhaust heat shields. Their reconstructed placement moves50 mm forward, and the outlet scallops retain space above the twin pipes. This is an interface correction, not a factory exhaust-location measurement.
++
++R7 also stops clear outer tail covers from casting opaque shadow maps onto their inner lenses. The complete-vehicle shadow frustum is limited to the car scene rather than extending500 meters; this addresses rendering artifacts, not physical dimensions.
++
++## Acceptance conditions
++
++- Confirmed envelope, axle and reference-point dimensions remain within numerical sampling tolerances. These tolerances are not manufacturing tolerances.
++- Rear skirt must visibly extend below both pads in straight rear and quarter views, with no holes at the lower sample points and continuous quarter joins.
++- Both lamp upper ends must have visibly rounded transitions; cover and fascia aperture must agree without paint occluding optics.
++- The complete vehicle, neutral-material body, lamp detail and separated lamp must be inspected after the final source changes. A browser assertion alone cannot certify these shapes.
++- H102/H104 physical surfaces, complete panel/tooling sections, original optical properties, panel gaps and owner visual acceptance remain open until supported. Exact factory replication cannot be certified from the presently obtained documents.
++
++Final run identifiers, inspected captures and deviations are recorded in the current development report after visual iteration.
+--- R6/scripts/acceptance-status.mjs
++++ R7/scripts/acceptance-status.mjs
+@@ -50,7 +50,7 @@
+ const allGeometryPassed=compatibleApplication(allGeometry)&&allGeometry?.unchanged&&allGeometry?.status==='passed';
+ const visualIntegrity=await assessVisualEvidence(visual,current.applicationSha256);
+ const visualCurrent=visualIntegrity.passed;
+-const report={generatedAt:new Date().toISOString(),accepted:complete===rows.length&&assessed.passed&&geometryCurrent&&dimensionalReviewPassed&&timingReviewPassed&&internalReviewPassed&&allGeometryPassed&&visualCurrent,criteria:'Every item completed with evidence and all software checks passed on the current application and test files; model presence alone does not establish dimensional or visual acceptance.',sourceSha256,requirements:rows.length,complete,partial:rows.filter(r=>r.status==='partial').length,open:rows.filter(r=>r.status==='open').length,browser:browserStatus,geometry:geometry?{date:geometry.date,currentSource:geometryCurrent,exactSnapshot:geometryExact,detailParts:geometry.detailParts,vehicleAssemblies:geometry.models.vehicle.parts}:null,dimensionalReview:{currentSource:dimensionalReviewCurrent,passed:dimensionalReviewPassed,status:dimensionalReview?.status||'missing',report:'artifacts/cross-view-scale-review.json',basis:'Actual shared-vertex comparisons and selected deck-plane, bank-stagger, containment, shaft, route-join, belt and decklid-clearance checks; independent of browser interaction results.'},rearBody:{passed:compatibleApplication(rearBodyReview)&&rearBodyReview?.status==='passed',checks:rearBodyReview?.checks?.length||0,opticalSamples:rearBodyReview?.opticalSamples?.length||0,lampDatums:rearBodyReview?.lampDatums?.length||0,report:'artifacts/rear-body-surface-audit.json'},bodyDimensions:{currentSource:compatibleApplication(bodyDimensions),passed:compatibleApplication(bodyDimensions)&&bodyDimensions?.status==='passed',checks:bodyDimensions?.rows?.length||0,report:'artifacts/body-dimension-audit.json',basis:'Selected published nominal dimensions measured on the reconstructed body mesh; not factory surface/tooling certification.'},exterior:{passed:compatibleApplication(exteriorReview)&&exteriorReview?.status==='passed',checks:exteriorReview?.checks?.length||0,bodySelections:exteriorReview?.bodySelections||0,report:'artifacts/exterior-audit.json'},oilPump:{passed:compatibleApplication(oilPumpReview)&&oilPumpReview?.status==='passed',status:oilPumpReview?.status||'missing',report:'artifacts/oil-pump-audit.json'},engineInternals:{passed:internalReviewPassed,status:internalReview?.status||'missing',report:'artifacts/engine-internals-audit.json'},allGeometry:{passed:!!allGeometryPassed,report:'artifacts/geometry-verification.json'},visual:{currentSource:!!visualCurrent,integrity:visualIntegrity,report:'artifacts/visual-inspection-manifest.json'},engineTiming:{currentSource:timingReviewCurrent,passed:timingReviewPassed,status:timingReview?.status||'missing',report:'artifacts/engine-timing-audit.json'},checklistSha256:createHash('sha256').update(await readFile('src/remaining-work.js')).digest('hex'),items:rows};
++const report={generatedAt:new Date().toISOString(),accepted:complete===rows.length&&assessed.passed&&geometryCurrent&&dimensionalReviewPassed&&timingReviewPassed&&internalReviewPassed&&allGeometryPassed&&visualCurrent,criteria:'Every item completed with evidence and all software checks passed on the current application and test files; model presence alone does not establish dimensional or visual acceptance.',sourceSha256,requirements:rows.length,complete,partial:rows.filter(r=>r.status==='partial').length,open:rows.filter(r=>r.status==='open').length,browser:browserStatus,geometry:geometry?{date:geometry.date,currentSource:geometryCurrent,exactSnapshot:geometryExact,detailParts:geometry.detailParts,vehicleAssemblies:geometry.models.vehicle.parts}:null,dimensionalReview:{currentSource:dimensionalReviewCurrent,passed:dimensionalReviewPassed,status:dimensionalReview?.status||'missing',report:'artifacts/cross-view-scale-review.json',basis:'Actual shared-vertex comparisons and selected deck-plane, bank-stagger, containment, shaft, route-join, belt and decklid-clearance checks; independent of browser interaction results.'},rearBody:{passed:compatibleApplication(rearBodyReview)&&rearBodyReview?.status==='passed',checks:rearBodyReview?.checks?.length||0,opticalSamples:rearBodyReview?.opticalSamples?.length||0,lampDatums:rearBodyReview?.lampDatums?.length||0,report:'artifacts/rear-body-surface-audit.json'},bodyDimensions:{currentSource:compatibleApplication(bodyDimensions),passed:compatibleApplication(bodyDimensions)&&bodyDimensions?.status==='passed',checks:bodyDimensions?.rows?.length||0,unresolvedReferences:bodyDimensions?.unresolvedBumperReferences||[],report:'artifacts/body-dimension-audit.json',basis:'Selected published nominal dimensions measured on the reconstructed body mesh; not factory surface/tooling certification.'},exterior:{passed:compatibleApplication(exteriorReview)&&exteriorReview?.status==='passed',checks:exteriorReview?.checks?.length||0,bodySelections:exteriorReview?.bodySelections||0,report:'artifacts/exterior-audit.json'},oilPump:{passed:compatibleApplication(oilPumpReview)&&oilPumpReview?.status==='passed',status:oilPumpReview?.status||'missing',report:'artifacts/oil-pump-audit.json'},engineInternals:{passed:internalReviewPassed,status:internalReview?.status||'missing',report:'artifacts/engine-internals-audit.json'},allGeometry:{passed:!!allGeometryPassed,report:'artifacts/geometry-verification.json'},visual:{currentSource:!!visualCurrent,integrity:visualIntegrity,report:'artifacts/visual-inspection-manifest.json'},engineTiming:{currentSource:timingReviewCurrent,passed:timingReviewPassed,status:timingReview?.status||'missing',report:'artifacts/engine-timing-audit.json'},checklistSha256:createHash('sha256').update(await readFile('src/remaining-work.js')).digest('hex'),items:rows};
+ await writeFile('artifacts/regression-summary.json',JSON.stringify(browserStatus,null,2)+'\n');
+ await writeFile('artifacts/acceptance-status.json',JSON.stringify(report,null,2)+'\n');
+ let md='# Remaining 3D model and repair-manual work\n\nAcceptance requires every item below to be finished and tested. These are model/manual development tasks, not repairs diagnosed on the owner’s car. Native 3D, factory-new appearance and US left-hand drive remain required.\n\n'+`**${complete} / ${rows.length} requirements accepted.** Partial modeling and software tests do not close measured-geometry, factory-application or validated-procedure requirements. See [evidence ledger](references/acceptance-evidence.json) and [machine-readable status](artifacts/acceptance-status.json).\n`;
+--- R6/scripts/audit-body-dimensions.mjs
++++ R7/scripts/audit-body-dimensions.mjs
+@@ -28,8 +28,10 @@
+ measure('L104','Front overhang',station.frontAxle-envelope.min.z,nominal.frontOverhang);
+ measure('L105','Rear overhang',envelope.max.z-station.rearAxle,nominal.rearOverhang);
+ measure('W103','Exterior width excluding mirrors and marker lamps',envelope.max.x-envelope.min.x,nominal.width);
+-measure('H102','Front bumper fascia to ground (design load)',bounds(['nose']).min.y,nominal.frontBumperGround);
+-measure('H104','Rear bumper fascia to ground (design load)',bounds(['rear-fascia']).min.y,nominal.rearBumperGround);
++// R7 withdraws the unsupported R5 equation of H102/H104 with the entire
++// painted fascia minimum. Keep BOTH discrepancies in the report; do not
++// redefine a pad or enlarge tolerance merely to obtain a passing row.
++const unresolvedBumperReferences=[['H102','nose',nominal.frontBumperGround],['H104','rear-fascia',nominal.rearBumperGround]].map(([code,id,nominal])=>({code,publishedBumperGroundMm:nominal*1000,modeledFasciaMinimumMm:bounds([id]).min.y*1000,status:'unresolved',reason:'Physical measurement surface requires confirmation; apron contour reconstructed from production profile and photographs.'}));
+ measure('H101','Solid-roof body height',bounds(['roof','rear-clip']).max.y,nominal.height);
+ measure('L125','Cowl position aft of base grid',cowl.z-station.rearAxle+nominal.rearAxleBaseGrid,nominal.cowlBaseGrid);
+ measure('H114','Cowl height at vehicle centreline',cowl.y,nominal.cowlHeight);
+@@ -46,7 +48,7 @@
+ for(const id of ['fender','quarter','door','rocker']){const a=bounds([id+'-left']),b=bounds([id+'-right']);assert(Math.abs(a.min.x+b.max.x)<.000001&&Math.abs(a.max.x+b.min.x)<.000001,id+' lost bilateral reference symmetry');}
+ // These anchor invariants protect wheel placement during upper-body correction.
+ for(const z of [station.frontAxle,station.rearAxle])for(const y of [.168,.308,.640])assert.equal(bodyPoint([0,y,z])[2],z);
+-const report={sourceSha256:baseline?null:sourceFingerprint(),baselineSource:baseline,reviewedAt:new Date().toISOString(),status:baseline?'historical-comparison':rows.every(r=>r.status==='passed')?'passed':'failed',source:'Pontiac 1985 MVMA PDF 22–23; definitions PDF 29 and 31',configuration:'Coupe/SE, solid roof, plain deck; manufacturer design load of two front occupants, no cargo',rows,referencePoints:{cowl:cowl.toArray(),deck:deck.toArray(),seatingStation:station.seat,bodyMin:envelope.min.toArray(),bodyMax:envelope.max.toArray()},limits:'Numerical mesh agreement with selected nominal references. Tolerances cover tessellation/numerical sampling, not manufacturing tolerances. Smooth connecting surfaces, glazing sections, panel gaps, hinge travel, body-shop datums, full concealed hardware, bumper ground-clearance interpretation and owner acceptance remain unverified. The generic key-sheet sedan drawing is not a Fiero silhouette template.'};
++const report={sourceSha256:baseline?null:sourceFingerprint(),baselineSource:baseline,reviewedAt:new Date().toISOString(),status:baseline?'historical-comparison':rows.every(r=>r.status==='passed')?'passed':'failed',source:'Pontiac 1985 MVMA PDF 22–23; definitions PDF 29 and 31',unresolvedBumperReferences,configuration:'Coupe/SE, solid roof, plain deck; manufacturer design load of two front occupants, no cargo',rows,referencePoints:{cowl:cowl.toArray(),deck:deck.toArray(),seatingStation:station.seat,bodyMin:envelope.min.toArray(),bodyMax:envelope.max.toArray()},limits:'Numerical mesh agreement with selected nominal references. Tolerances cover tessellation/numerical sampling, not manufacturing tolerances. Smooth connecting surfaces, glazing sections, panel gaps, hinge travel, body-shop datums, full concealed hardware, bumper ground-clearance interpretation and owner acceptance remain unverified. The generic key-sheet sedan drawing is not a Fiero silhouette template.'};
+ await writeFile(baseline?'artifacts/body-dimension-baseline.json':'artifacts/body-dimension-audit.json',JSON.stringify(report,null,2)+'\n');
+ console.table(rows.map(({code,actualMm,nominalMm,errorMm,status})=>({code,actualMm:+actualMm.toFixed(3),nominalMm,errorMm:+errorMm.toFixed(3),status})));
+ if(!baseline)assert.equal(report.status,'passed','Body nominal dimension mismatch');
+--- R6/scripts/audit-rear-body.mjs
++++ R7/scripts/audit-rear-body.mjs
+@@ -79,6 +79,27 @@
+   assert.equal(ray.intersectObjects(body.groups.get('bd-skin-rear-fascia').children,false).length,0,'paint remains across lamp perimeter');
+  }
+ });
++check('Rear painted apron continues below the pads and meets both quarter lower edges',()=>{
++ const fascia=bounds('rear-fascia');assert(fascia.min.y<.26,'rear apron remains cropped at bumper datum');
++ for(const side of ['left','right']){const pad=bounds('rear-pad-'+side);assert(pad.min.y-fascia.min.y>.08,'missing painted lower skirt');}
++ const ray=new T.Raycaster();for(const x of [-.65,0,.65]){ray.set(new T.Vector3(x,.280,2.4),new T.Vector3(0,0,-1));assert(ray.intersectObjects(body.groups.get('bd-skin-rear-fascia').children,false).length,'lower apron has an opening');}
++});
++check('Upper lamp corners roll into the top edge rather than retaining square outer corners',()=>{
++ for(const side of ['left','right']){const sign=side==='left'?-1:1,outer=lighting.groups.get('lt-rear-'+side+'-outer-lens').children.filter(m=>m.userData.materialName==='tailOuter');
++ const ray=new T.Raycaster(new T.Vector3(sign*.763,.761,2.4),new T.Vector3(0,0,-1));assert.equal(ray.intersectObjects(outer,false).length,0,'upper outboard corner remains too square');
++ ray.set(new T.Vector3(sign*.725,.752,2.4),new T.Vector3(0,0,-1));assert(ray.intersectObjects(outer,false).length,'rounded corner removes too much lamp face');}
++});
++const {createExhaustDetail}=await import('../src/exhaust-detail.js');
++const exhaust=createExhaustDetail();exhaust.root.updateMatrixWorld(true);
++check('Rear outlet scallops clear the twin pipes and shields remain behind the painted apron',()=>{
++ for(const side of [-1,1])for(const x of [.473,.547]){
++  const ray=new T.Raycaster(new T.Vector3(side*x,.272,2.4),new T.Vector3(0,0,-1));
++  assert.equal(ray.intersectObjects(body.groups.get('bd-skin-rear-fascia').children,false).length,0,'paint intersects twin-outlet clearance');
++ }
++ for(const id of ['ex-left-fascia-shield','ex-right-fascia-shield','ex-fascia-nuts'])for(const m of exhaust.groups.get(id).children){const a=m.geometry.attributes.position;
++  for(let i=0;i<a.count;i++){const p=new T.Vector3().fromBufferAttribute(a,i).applyMatrix4(m.matrixWorld),face=bodyPoint(rearFace(p.x,p.y));assert(p.z<face[2]-.005,id+' protrudes through lower fascia');}
++ }
++});
+ const status=checks.every(c=>c.status==='passed')?'passed':'failed';
+ const report={sourceSha256:baseline?null:sourceFingerprint(),baselineSource:baseline,reviewedAt:new Date().toISOString(),status,checks,opticalSamples:samples,lampDatums,limits:'Factory-reference bulb offsets, explicit approximate load conversion, shape regression and actual mesh overlap checks. These do not certify factory panel sections, optics, gaps or original hardware dimensions.'};
+ await writeFile('artifacts/rear-body-surface-'+(baseline?'baseline':'audit')+'.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));if(!baseline&&status!=='passed')process.exitCode=1;
+--- R6/scripts/checklist-test-matrix.mjs
++++ R7/scripts/checklist-test-matrix.mjs
+@@ -43,7 +43,7 @@
+  'C41/C60 preview switching, applicable part visibility and selection are covered. Calibrated door travel, complete control circuits and the refrigeration system are not.',
+  'Door skin/glass/trim/hinge selection and option previews are covered. Missing regulator, latch, lock and mirror internals are not tested.',
+  'Exterior checks cover parked blade selection/isolation and the nominal blade span. Hidden wiper motor, sweep, washer hydraulics and defroster operation still have no complete mechanism regression.',
+- 'Six exterior views, independent exterior pieces, roof/deck options, mobile selection, panel/hinge/vent/torque-rod navigation, sunroof panel/body hardware ownership and body configuration are covered. Eighteen selected nominal body dimensions are measured separately by audit-body-dimensions.mjs. Complete measured panel sections, all hidden structure, gaps and full hinge travel remain unverified.',
++ 'Six exterior views, independent exterior pieces, roof/deck options, mobile selection, panel/hinge/vent/torque-rod navigation, sunroof panel/body hardware ownership and body configuration are covered. Sixteen selected nominal body dimensions are measured separately by audit-body-dimensions.mjs. Two bumper ground-reference interpretations are unresolved and excluded from dimensional passes. Complete measured panel sections, all hidden structure, gaps and full hinge travel remain unverified.',
+  'Driver-control handedness and cabin preview visibility are covered. Seat/retractor/recliner/column/pedal internal mechanisms are not.',
+  'Preview changes, persistence, invalid saved values and some option-specific visibility are covered. This does not establish the original build sheet or compatibility of every swap.',
+  'General search, selection, camera, visibility, guides, source links, feedback export and mobile presentation are covered. Full physical fidelity, complete procedures and broad device performance remain open.',
+--- R6/scripts/write-uat-report.mjs
++++ R7/scripts/write-uat-report.mjs
+@@ -12,7 +12,7 @@
+ const geometry=status?.allGeometry?.passed?`${checks.results.filter(r=>r.status==='passed').length}/${checks.results.length} geometry checks passed against the current application. Outstanding failures: ${checks.results.filter(r=>r.status!=='passed').map(r=>r.script).join(', ')||'none'}.`:'Aggregate geometry checks require a current-source refresh.';
+ const timing=status?.engineTiming?.currentSource?'Engine timing audit: **'+status.engineTiming.status+'**. The expanded checks cover the 159.03 mm GM family datum, concentric journals/bearings, reconstructed cam insertion envelope, cover/gasket/chain containment and static follower/pushrod/guide interfaces. Original tooling, running clearances and valve timing remain unverified.':'Engine timing requires a current-source audit.';
+ const optimization=comparison?.sourceSha256===source&&comparison.status==='passed'?`Every vehicle mesh’s expanded triangle position/normal/UV hash, material, detail ID and option identity matches the previous merge algorithm. Both contain ${comparison.indexed.triangles.toLocaleString('en-US')} triangles. Stored vertices fall from ${comparison.expanded.storedVertices.toLocaleString('en-US')} to ${comparison.indexed.storedVertices.toLocaleString('en-US')} (${comparison.vertexReductionPercent.toFixed(2)}% fewer). The timing/RSS observations retain their workload limits; they are not browser-performance promises.`:'See the geometry comparison for its source and limits.';
+-const body=`# Current development review — Body R6 rear-lamp reconstruction
++const body=`# Current development review — Body R7 fascia and contour correction
+ 
+ [Open the workshop](http://localhost:5185/) · [Shared workstation](http://100.122.225.61:5185/)
+ 
+@@ -20,12 +20,12 @@
+ 
+ ## This pass
+ 
+-- The owner rejected the R5 tail-light shape and requested continued factory-dimensional work. R6 uses Pontiac's 1985 MVMA bulb datums, GM 2P02-002 and the 1985 DIY lamp illustration, with opened original-part photographs as secondary construction evidence.
+-- The outer cover is a smooth, lightly tinted, tapered and rounded shell. Rectangular optical prisms/grid belong to the separate red and clear inner inserts. The previous near-opaque cover and exposed exterior grid are replaced.
+-- Each assembly now contains four reflector/bulb chambers. The missing inner stop/turn bulb and socket are selectable. Three 2057 bulbs and one 1156 per side replace the incorrect two-plus-one inventory; the outer 1985 tail position is not labeled a third stop lamp.
+-- The rear fascia aperture follows the lens perimeter with split/reprojected triangles. Shared vehicle/detail builders retain the published 678 mm outer-tail and 538 mm rear-directional offsets, alongside the selected body dimensions. Inboard centers, cover tooling and load-height conversion remain reconstructed.
+-- The [focused rear-lamp review](http://localhost:5185/tail-review.html) provides assembled and separated views and original-source links. The [body comparison](http://localhost:5185/body-review.html) remains available. Header and exported feedback identify **BODY R6**.
+-- [Sources, changes and dimensional limits](../references/body-r6-tail-lamp-review.md). Exact full-body factory/visual acceptance is still open. Prior versions, failed attempts and raw reports remain preserved.
++- The rear painted apron extends 88 mm below R6, and the front lower return extends 45 mm. Formed under-returns replace open lower edges. Fascia end sections follow the adjacent quarters/fenders instead of independent width curves.
++- Tail lamps have larger, softer upper corners and tighter lower corners; covers and apertures use the same outline. Four bulb chambers and published 678/538 mm lateral offsets remain.
++- Clear outer tail covers no longer cast opaque shadow maps onto the inner lenses. The complete-vehicle shadow depth range is restricted to the car scene.
++- The [R7 body specification](../references/body-r7-specification.md) separates published dimensions, inferred contours and unresolved references. Pontiac’s production profile in Performance Plus printed46 is supporting adjacent-year evidence; race-car geometry is excluded.
++- The earlier equation of H102/H104 with the entire painted fascia minimum is withdrawn. Sixteen other nominal dimension comparisons remain. Both bumper ground references and actual fascia minima are retained as unresolved comparisons; no test point was moved to manufacture agreement.
++- [Body comparison](http://localhost:5185/body-review.html) and [rear-lamp review](http://localhost:5185/tail-review.html) use the shared geometry. The manual identifies **BODY R7**. Exact tooling, full-body visual acceptance and owner sign-off remain open.
+ 
+ ## Verification
+ 
+@@ -33,7 +33,7 @@
+ 
+ [Browser execution notes](browser-verification-notes.md) distinguish this targeted run from archived earlier applications. The latest raw report may cover only one batch; the consolidated browser evidence accounts for every current scenario.
+ 
+-${geometry} The rear-body surface audit has ${status?.rearBody?.checks||0} check groups covering pad separation/height, plate recess/visibility, license-housing concealment, outer/inner lens ordering, rear apertures, the lower nose, factory lamp datums/load conventions, four-chamber inventory, cover clarity and fitted lens ends. These are shape regression checks, not factory acceptance. The body audit separately measures 18 selected nominal dimensions on actual triangles and checks bilateral/axle anchors. Its numerical tolerances are software comparison tolerances, not manufacturing tolerances. The exterior audit has fifteen checks covering shared panel vertices, apertures, wheel lips, mirror fit, pad tessellation, fuel-door clearance, wiper span, the 1,752 mm body-width datum, distinct separation offsets and option ownership, plus sunroof panel/body hardware ownership, open trim/latch cavities and glass thickness. The internal audit has 38 checks covering all twelve lifter inventories, oil passages, containment and ball-seat interfaces plus pump alignment/chamber fit. The oil-pump audit adds six checks for its twelve selections, static tooth separation, shaft/socket fits, relief containment and open pickup/screen geometry. The existing timing audit remains separate. Other geometry checks cover catalogs, installed/detail agreement, selected factory datums, electrical cavities, wiring, hood clearance and distribution. These tests do not establish every factory dimension or operating clearance.
++${geometry} The rear-body surface audit has ${status?.rearBody?.checks||0} check groups covering pad separation/height, plate recess/visibility, license-housing concealment, outer/inner lens ordering, rear apertures, the lower nose, factory lamp datums/load conventions, four-chamber inventory, cover clarity and fitted lens ends. These are shape regression checks, not factory acceptance. The body audit separately measures ${status?.bodyDimensions?.checks||0} selected nominal dimensions on actual triangles and checks bilateral/axle anchors. Its numerical tolerances are software comparison tolerances, not manufacturing tolerances. The exterior audit has fifteen checks covering shared panel vertices, apertures, wheel lips, mirror fit, pad tessellation, fuel-door clearance, wiper span, the 1,752 mm body-width datum, distinct separation offsets and option ownership, plus sunroof panel/body hardware ownership, open trim/latch cavities and glass thickness. The internal audit has 38 checks covering all twelve lifter inventories, oil passages, containment and ball-seat interfaces plus pump alignment/chamber fit. The oil-pump audit adds six checks for its twelve selections, static tooth separation, shaft/socket fits, relief containment and open pickup/screen geometry. The existing timing audit remains separate. Other geometry checks cover catalogs, installed/detail agreement, selected factory datums, electrical cavities, wiring, hood clearance and distribution. These tests do not establish every factory dimension or operating clearance.
+ 
+ ${hardware}
+ 
+--- R6/src/body-contours.js
++++ R7/src/body-contours.js
+@@ -13,11 +13,15 @@
+  return .036+.022*arch+.014*tip;
+ }
+ 
+-// Lower fender/quarter edges rise into the specified coupe/SE bumper bottoms.
++// Lower apron controls are reconstructed, distinct from the MVMA bumper
++// reference. Pontiac production profile (Performance Plus p46) shows the
++// lower return continuing below the impact face. These are not tooling data.
++export const fasciaProfile={frontLower:.270,rearLower:.245};
++// Lower fender/quarter edges meet the painted apron bottoms.
+ // The wheel openings and door/rocker ground datums remain fixed.
+ export function lowerPanelHeight(z,rear){
+  const t=Math.max(0,Math.min(1,rear?(z-1.5255)/(1.865-1.5255):(-z-1.5255)/(1.788-1.5255)));
+- return .245+((rear?bodyNominal.rearBumperGround:bodyNominal.frontBumperGround)-.245)*t*t*(3-2*t);
++ return .245+((rear?fasciaProfile.rearLower:fasciaProfile.frontLower)-.245)*t*t*(3-2*t);
+ }
+ export function exteriorBeltHeight(z){
+  const t=Math.max(0,Math.min(1,(z+1.75)/3.53));
+--- R6/src/exhaust-detail.js
++++ R7/src/exhaust-detail.js
+@@ -114,7 +114,7 @@
+   }
+   uClamp(id('tail-clamps'),[s*.326,.248,1.74],.0254);
+   const hp=[s*.435,.335,1.798];plate(id(side+'-hanger'),[[.28,1.774],[.395,1.774],[.404,1.814],[.28,1.824]],[[.385,1.798,.0045],[.296,1.802,.0045]],.004,s*.435,'metal');box(id(side+'-hanger'),[.010,.063,.035],[s*.438,.332,1.798],'rubber',[],{},.006);for(const dy of [-.038,.051])bolt(id('hanger-bolts'),[s*.447,.335+dy,1.798],.006,'x');
+-  surface(id(side+'-fascia-shield'),32,20,(u,v)=>[s*.51+(u-.5)*.19,.307+.026*(2*u-1)**4,1.87+v*.08],'zinc');for(const dx of [-.063,.063])bolt(id('fascia-nuts'),[s*.51+dx,.328,1.944],.005);
++  surface(id(side+'-fascia-shield'),32,20,(u,v)=>[s*.51+(u-.5)*.19,.307+.026*(2*u-1)**4,1.82+v*.08],'zinc');for(const dx of [-.063,.063])bolt(id('fascia-nuts'),[s*.51+dx,.328,1.894],.005);
+   plate(id('spring-brackets'),[[.254,1.61],[.323,1.6],[.35,1.67],[.265,1.67]],[[.286,1.626,.007],[.327,1.639,.007]],.004,s*.421,'metal');for(const dz of [0,.028])bolt(id('spring-brackets'),[s*.428,.286,1.624+dz],.005,'x');
+   for(let i=0;i<3;i++){const a=[s*(.32+i*.009),.287+i*.018,1.655+i*.018],b=[s*.419,.278+i*.023,1.627+i*.015];tension(id(side+'-springs'),a,b);ring(id('muffler'),.006,.0018,a,'metal');}
+  }
+--- R6/src/fascias.js
++++ R7/src/fascias.js
+@@ -3,7 +3,7 @@
+ import {bodyNominal} from './body-datums.js';
+ import {tailLampOutline} from './tail-lamp-shape.js';
+ import {cutPanelAperture} from './panel-aperture.js';
+-import { shoulderWidth, shoulderDrop, exteriorBeltHeight } from './body-contours.js';
++import { shoulderWidth, shoulderDrop, exteriorBeltHeight, fasciaProfile, sideWidth } from './body-contours.js';
+ 
+ // GM 22P G-13 / G-19 and the 1985 SE brochure: rounded bumper-pad
+ // fascias. Cross sections are reconstructed contours, not measured tooling.
+@@ -18,19 +18,25 @@
+   return (2*t**3-3*t*t+1)*a[1]+(t**3-2*t*t+t)*(b[0]-a[0])*ma+(-2*t**3+3*t*t)*b[1]+(t**3-t*t)*(b[0]-a[0])*mb;
+  };
+ }
+-const frontSection=section([[.315,-1.976],[.365,-1.994],[.465,-2.011],[.517,-2.029],[.548,-2.020],[.599,-1.920],[.625,-1.790]]);
++const frontSection=section([[.270,-1.947],[.292,-1.964],[.315,-1.976],[.365,-1.994],[.465,-2.011],[.517,-2.029],[.548,-2.020],[.599,-1.920],[.625,-1.790]]);
+ // Distinct bumper crown, sloping painted bridge and raked lamp panel.
+ // The previous single swollen section erased the separation visible in IMG_5461.
+-const rearSection=section([[.333,1.970],[.365,1.993],[.440,2.007],[.500,2.010],[.542,1.987],[.625,1.951],[.644,1.939],[.777,1.884],[.816,1.867]]);
++const rearSection=section([[.245,1.894],[.270,1.925],[.305,1.953],[.333,1.970],[.365,1.993],[.440,2.007],[.500,2.010],[.542,1.987],[.625,1.951],[.644,1.939],[.777,1.884],[.816,1.867]]);
+ function crown(x,inner,rear){
+  const a=Math.abs(x);
+  if(a<=inner)return .012*(1-(a/inner)**2);
+  const z=rear?1.867:-1.790,t=clamp((a-inner)/(shoulderWidth(z)-inner),0,1);
+  return -shoulderDrop(z,rear)*(1-Math.sqrt(1-t*t));
+ }
+-function width(v,rear){return lerp(.8065,shoulderWidth(rear?1.867:-1.790),v)+.015*Math.sin(v*Math.PI);}
++function width(v,rear){
++ // Solve the fascia edge on the same transverse section as the adjacent
++ // fender/quarter. Independent width curves left a protruding lower corner.
++ const z=rear?1.867:-1.790,top=rear?.816:.625,bottom=rear?fasciaProfile.rearLower:fasciaProfile.frontLower;
++ let x=shoulderWidth(z);for(let i=0;i<16;i++){const y=lerp(bottom,top+crown(x,rear?.650:.659,rear),v);x=sideWidth(z,y,rear?1.1865:-1.1865,rear);}
++ return x;
++}
+ function point(x,y,rear){
+- const top=rear?.816:.625,bottom=rear?bodyNominal.rearBumperGround:bodyNominal.frontBumperGround,join=rear?1.867:-1.790;
++ const top=rear?.816:.625,bottom=rear?fasciaProfile.rearLower:fasciaProfile.frontLower,join=rear?1.867:-1.790;
+  const v=clamp((y-bottom)/(top+crown(x,rear?.650:.659,rear)-bottom),0,1);
+  const z=(rear?rearSection:frontSection)(lerp(bottom,top,v));
+  const w=width(v,rear),corner=rear?.560:.560,q=clamp((Math.abs(x)-corner)/(w-corner),0,1);
+@@ -43,6 +49,12 @@
+  if(rear){const across=1-T.MathUtils.smoothstep(Math.abs(x),.148,.180),vertical=T.MathUtils.smoothstep(y,.335,.355)*(1-T.MathUtils.smoothstep(y,.505,.543));finalZ-=.047*across*vertical;}
+  return [x,y,finalZ];
+ }
++// Clearance scallops above each twin outlet; local dimensions are inferred.
++function apronBottom(x,rear){
++ if(!rear)return fasciaProfile.frontLower;
++ const q=Math.abs(Math.abs(x)-.510)/.115;
++ return fasciaProfile.rearLower+(q<1?.043*Math.sqrt(1-q*q):0);
++}
+ export const frontFace=(x,y)=>point(x,y,false);
+ export const rearFace=(x,y)=>point(x,y,true);
+ // The registration plate is planar inside the sculpted fascia recess.
+@@ -51,8 +63,10 @@
+ export function buildFascias(h){
+  const {surface,tube,box,label}=h;
+  for(const rear of [false,true]){
+-  const id=rear?'rear-fascia':'nose',top=rear?.816:.625,bottom=rear?bodyNominal.rearBumperGround:bodyNominal.frontBumperGround;
+-  const mesh=surface(id,112,64,(u,v)=>{const x=(u*2-1)*width(v,rear),y=lerp(bottom,top+crown(x,rear?.650:.659,rear),v);return point(x,y,rear);});
++  const id=rear?'rear-fascia':'nose',top=rear?.816:.625,bottom=rear?fasciaProfile.rearLower:fasciaProfile.frontLower;
++  const mesh=surface(id,112,64,(u,v)=>{const x=(u*2-1)*width(v,rear),y=lerp(apronBottom(x,rear),top+crown(x,rear?.650:.659,rear),v);return point(x,y,rear);});
++  // Turn the apron under the body, retaining a formed lower edge.
++  surface(id,112,6,(u,v)=>{const x=(u*2-1)*width(0,rear),p=point(x,apronBottom(x,rear),rear);return [p[0]*(1-.008*v),p[1]+.004*(1-Math.cos(v*Math.PI/2)),p[2]+(rear?-1:1)*.026*Math.sin(v*Math.PI/2)];});
+   // Open lamp apertures: opaque fascia must not occupy reflector chambers.
+   const geo=mesh.geometry,pos=geo.attributes.position,idx=geo.index,keep=[];
+   for(let i=0;i<idx.count;i+=3){const a=idx.getX(i),b=idx.getX(i+1),c=idx.getX(i+2),x=Math.abs((pos.getX(a)+pos.getX(b)+pos.getX(c))/3),y=(pos.getY(a)+pos.getY(b)+pos.getY(c))/3;const lamp=!rear&&(Math.abs(x-.500)<.062&&Math.abs(y-.365)<.028);const plate=rear&&x<.158&&y>.355&&y<.520;if(!lamp&&!plate)keep.push(a,b,c);}
+--- R6/src/main.js
++++ R7/src/main.js
+@@ -49,7 +49,7 @@
+  <header class="header">
+   <a class="brand" href="#" aria-label="Fiero Workshop home"><span class="brand-mark">F<span>↗</span></span><span class="brand-type">FIERO<span>WORKSHOP / 85</span></span></a>
+   <div class="header-divider"></div><div class="vehicle-title"><strong>1985 Pontiac Fiero <span>SE 2M6</span></strong><span>2.8L V6 <i></i> 4-speed manual <i></i> WS6</span></div>
+-  <div class="header-actions"><span class="build-badge"><i></i> REVIEW 0.2 · BODY R6</span><button class="quiet" data-action="configure">${icon('gear')}<span>Configure</span></button><button class="quiet" data-action="sources">${icon('book')}<span>Reference library</span></button></div>
++  <div class="header-actions"><span class="build-badge"><i></i> REVIEW 0.2 · BODY R7</span><button class="quiet" data-action="configure">${icon('gear')}<span>Configure</span></button><button class="quiet" data-action="sources">${icon('book')}<span>Reference library</span></button></div>
+  </header>
+  <div class="workspace-bar"><div class="workspace-label"><span class="tiny-square"></span> INTERACTIVE WORKSHOP <span class="slash">/</span> <span class="muted">VEHICLE EXPLORER</span></div><span class="vin">VIN ${vehicle.vin}</span></div>
+  <main class="workspace">
+@@ -209,7 +209,7 @@
+  const modal=document.querySelector('#modal');
+  if(type==='remaining-work'){document.querySelector('#modal-content').innerHTML=`<div class="modal-heading"><p class="eyebrow">DEVELOPMENT CHECKLIST</p><button class="icon-button" data-action="close-modal" aria-label="Close dialog">${icon('close')}</button></div><h2>What remains to build.</h2><p class="description">Headlights first. This tracks known gaps in the 3D model and manual; it is not a list of repairs your car needs. A modeled part can still need measurement and verification.</p>${remainingWork.map((row,i)=>`<article class="source-card"><h3>${i+1}. ${esc(row.name)}</h3><p class="eyebrow">${esc(row.stage)}</p><ul>${row.items.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>${row.assembly?`<button class="text-button" data-work-assembly="${row.assembly}">Inspect current model ${icon('arrow')}</button>`:''}</article>`).join('')}`;modal.showModal();return;}
+ 
+- document.querySelector('#modal-content').innerHTML=`<div class="modal-heading"><p class="eyebrow">WORKSHOP / 85</p><button class="icon-button" data-action="close-modal" aria-label="Close dialog">${icon('close')}</button></div>${type==='sources'?`<h2>Reference library</h2><button class="secondary full-width" data-action="remaining-work">Remaining model & manual work</button><p class="description">Source coverage is explicit. A source listing does not mean all of its content has been verified or imported.</p><details class="coverage-audit"><summary>Parts coverage · modeled and remaining</summary><p class="description small">${parts.length} vehicle assemblies and ${detailParts.length} detailed parts / grouped sets across the component explorers. Counts overlap where the same part appears in both views; they are not a complete vehicle inventory.</p>${coverageAudit.map(row=>`<article class="coverage-row"><h3>${row.system}</h3><p><strong>Modeled:</strong> ${row.modeled}</p><p><strong>Still missing or simplified:</strong> ${row.remaining}</p></article>`).join('')}</details>${sources.map(s=>`<article class="source-card"><h3>${s.title}</h3><p>${s.note}</p>${s.url?`<a href="${s.url}" target="_blank" rel="noopener noreferrer">Open source ↗</a>`:''}</article>`).join('')}`:`<h2>A 3D workshop in progress.</h2><p class="description">Body R6 rebuilds the rear combination lamps with clear outer covers, separate inner optics and four bulb chambers per side, retaining the published coupe/SE body and bulb datums. Shape accuracy remains under review. Build 0.2 includes: ${parts.length} selectable assemblies, nine systems, ${tours.length} guided tours, exploded views and local UAT feedback.</p><div class="source-card"><h3>What this build represents</h3><p>The vehicle is an owner-described original 1985 Fiero SE 2M6, four-speed manual, with WS6. VIN identity was checked with NHTSA.</p></div><div class="source-card"><h3>What is still in development</h3><p>The procedural model is illustrative, not a measured replica. The engine now has selectable internal parts and a detailed ignition breakdown. Many fasteners, measured gear profiles, exact routing, full accessory options and validated repair instructions remain incomplete. Technical service values are withheld until checked against factory references.</p></div><div class="source-card"><h3>Your data</h3><p>Feedback and checklist results are stored locally in this browser. Export them from the UAT tab to share or back up. No analytics, accounts or external assets are loaded by the app.</p></div>`}`;modal.showModal();
++ document.querySelector('#modal-content').innerHTML=`<div class="modal-heading"><p class="eyebrow">WORKSHOP / 85</p><button class="icon-button" data-action="close-modal" aria-label="Close dialog">${icon('close')}</button></div>${type==='sources'?`<h2>Reference library</h2><button class="secondary full-width" data-action="remaining-work">Remaining model & manual work</button><p class="description">Source coverage is explicit. A source listing does not mean all of its content has been verified or imported.</p><details class="coverage-audit"><summary>Parts coverage · modeled and remaining</summary><p class="description small">${parts.length} vehicle assemblies and ${detailParts.length} detailed parts / grouped sets across the component explorers. Counts overlap where the same part appears in both views; they are not a complete vehicle inventory.</p>${coverageAudit.map(row=>`<article class="coverage-row"><h3>${row.system}</h3><p><strong>Modeled:</strong> ${row.modeled}</p><p><strong>Still missing or simplified:</strong> ${row.remaining}</p></article>`).join('')}</details>${sources.map(s=>`<article class="source-card"><h3>${s.title}</h3><p>${s.note}</p>${s.url?`<a href="${s.url}" target="_blank" rel="noopener noreferrer">Open source ↗</a>`:''}</article>`).join('')}`:`<h2>A 3D workshop in progress.</h2><p class="description">Body R7 deepens the painted bumper aprons, matches their ends to adjacent panels and softens the upper tail-lamp corners. Sixteen selected body dimensions remain checked; two bumper ground-reference interpretations remain unresolved. Shape accuracy remains under review. Build 0.2 includes: ${parts.length} selectable assemblies, nine systems, ${tours.length} guided tours, exploded views and local UAT feedback.</p><div class="source-card"><h3>What this build represents</h3><p>The vehicle is an owner-described original 1985 Fiero SE 2M6, four-speed manual, with WS6. VIN identity was checked with NHTSA.</p></div><div class="source-card"><h3>What is still in development</h3><p>The procedural model is illustrative, not a measured replica. The engine now has selectable internal parts and a detailed ignition breakdown. Many fasteners, measured gear profiles, exact routing, full accessory options and validated repair instructions remain incomplete. Technical service values are withheld until checked against factory references.</p></div><div class="source-card"><h3>Your data</h3><p>Feedback and checklist results are stored locally in this browser. Export them from the UAT tab to share or back up. No analytics, accounts or external assets are loaded by the app.</p></div>`}`;modal.showModal();
+ }
+ document.addEventListener('click',async e=>{
+  const b=e.target.closest('button');if(!b)return;
+@@ -250,7 +250,7 @@
+   case 'prev-step':applyStep(state.step-1);break;
+   case 'next-step':{const tour=tours.find(t=>t.id===state.tour);if(state.step===tour.steps.length-1){finishTour();toast('Guide complete — explore another assembly');}else applyStep(state.step+1);break;}
+   case 'exit-tour':finishTour();break;
+-  case 'export':{const payload={build:'0.2.0',bodyRevision:'R6',configuration:state.configuration,exportedAt:new Date().toISOString(),vehicle,checkedItems:saved.checks.map(i=>acceptance[i]),notes:saved.notes};const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='fiero-uat-feedback.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('UAT feedback exported');break;}
++  case 'export':{const payload={build:'0.2.0',bodyRevision:'R7',configuration:state.configuration,exportedAt:new Date().toISOString(),vehicle,checkedItems:saved.checks.map(i=>acceptance[i]),notes:saved.notes};const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='fiero-uat-feedback.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('UAT feedback exported');break;}
+   case 'fullscreen':try{if(document.fullscreenElement)await document.exitFullscreen();else await document.querySelector('.stage').requestFullscreen();}catch{toast('Fullscreen is unavailable in this browser.');}break;
+  }
+ });
+--- R6/src/tail-lamp-shape.js
++++ R7/src/tail-lamp-shape.js
+@@ -6,7 +6,7 @@
+ // No dimensioned GM outer-lens/tooling drawing has been obtained.
+ export const tailLampShape={
+  centerX:.394,centerY:designLampHeight(exteriorLampNominal.tailCurb,1.91),
+- halfHeight:.0616,inner:.004,outerBottom:.786,outerTop:.767,radius:.010,
++ halfHeight:.0616,inner:.004,outerBottom:.786,outerTop:.767,upperOuterRadius:.034,upperInnerRadius:.022,lowerRadius:.007,
+  coverDepth:.010,opticDepth:-.008,
+  redInner:.318,redOuter:.768,reverseInner:.016,reverseOuter:.308,
+  innerStopOffset:.398,reverseOffset:.258,
+@@ -14,9 +14,10 @@
+ };
+ export function tailLampEdges(y,inset=0){
+  const a=tailLampShape,t=Math.max(0,Math.min(1,(y+a.halfHeight)/(2*a.halfHeight)));
+- const h=a.halfHeight-inset,r=Math.max(.002,a.radius-inset),q=Math.max(0,Math.abs(y)-(h-r));
+- const corner=r-Math.sqrt(Math.max(0,r*r-q*q));
+- return [Math.max(.001,a.inner+inset+corner),a.outerBottom+(a.outerTop-a.outerBottom)*t-inset-corner];
++ const h=a.halfHeight-inset;
++ const corner=radius=>{const r=Math.max(.002,radius-inset),q=Math.max(0,Math.abs(y)-(h-r));return r-Math.sqrt(Math.max(0,r*r-q*q));};
++ const innerCorner=corner(y>0?a.upperInnerRadius:a.lowerRadius),outerCorner=corner(y>0?a.upperOuterRadius:a.lowerRadius);
++ return [Math.max(.001,a.inner+inset+innerCorner),a.outerBottom+(a.outerTop-a.outerBottom)*t-inset-outerCorner];
+ }
+ export function tailLampOutline(inset=0){
+  const h=tailLampShape.halfHeight-inset,out=[];
+--- R6/src/viewer.js
++++ R7/src/viewer.js
+@@ -141,7 +141,7 @@
+     o.material.color.copy(original.color);o.material.emissive?.copy(original.emissive);o.material.emissiveIntensity=original.emissiveIntensity;
+     const transparent=ghost||original.transparent;
+     if(o.material.transparent!==transparent||o.material.wireframe!==current.wireframe)o.material.needsUpdate=true;
+-    o.material.opacity=ghost?.075:original.opacity;o.material.transparent=transparent;o.material.depthWrite=!ghost&&original.opacity===1;o.material.wireframe=current.wireframe;o.castShadow=!ghost&&!['glass','headlampGlass','headlampFlute','lensGrid'].includes(o.userData.materialName);
++    o.material.opacity=ghost?.075:original.opacity;o.material.transparent=transparent;o.material.depthWrite=!ghost&&original.opacity===1;o.material.wireframe=current.wireframe;o.castShadow=!ghost&&!['glass','headlampGlass','headlampFlute','lensGrid','tailOuter'].includes(o.userData.materialName);
+    });
+   }
+   renderer.domElement.dataset.system=current.system;renderer.domElement.dataset.selected=current.selected||'';
+@@ -151,7 +151,7 @@
+  function fitInspectionShadow(){
+   const sc=sun.shadow.camera;
+   if(!current.assembly){
+-   sun.target.position.set(0,0,0);sc.left=-4;sc.right=4;sc.top=4;sc.bottom=-4;sc.near=.5;sc.far=500;sun.shadow.normalBias=.003;sun.shadow.radius=10;
++   sun.target.position.set(0,0,0);sc.left=-4;sc.right=4;sc.top=4;sc.bottom=-4;sc.near=.5;sc.far=20;sun.shadow.bias=-.00015;sun.shadow.normalBias=.005;sun.shadow.radius=10;
+   }else{
+    inspection.root.updateMatrixWorld(true);const b=new T.Box3();
+    for(const g of inspection.groups.values())if(g.visible){const p=visibleBounds(g);p.translate(engineGoal(g).sub(g.position));b.union(p);}
+@@ -161,7 +161,7 @@
+    const centre=b.getCenter(new T.Vector3()),radius=Math.max(.03,b.getSize(new T.Vector3()).length()/2)*1.18;
+    inspectionRadius=radius;sun.target.position.copy(centre);const distance=sun.position.distanceTo(centre);
+    sc.left=-radius;sc.right=radius;sc.top=radius;sc.bottom=-radius;sc.near=Math.max(.1,distance-radius);sc.far=distance+radius;
+-   sun.shadow.normalBias=T.MathUtils.clamp(radius*.0007,.00002,.0007);sun.shadow.radius=2;
++   sun.shadow.bias=-.00002;sun.shadow.normalBias=T.MathUtils.clamp(radius*.0007,.00002,.0007);sun.shadow.radius=2;
+   }
+   sun.target.updateMatrixWorld();sc.updateProjectionMatrix();renderer.shadowMap.needsUpdate=true;
+  }
+--- R6/tail-review.html
++++ R7/tail-review.html
+@@ -1 +1 @@
+-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Body R6 — rear lamp review</title><style>body{margin:0;background:#d9dcda;color:#18292f;font:16px system-ui}header{padding:16px 24px}h1{margin:0 0 6px;font-size:25px}p{margin:6px 0;max-width:1100px}button,a{margin-right:12px}button{padding:8px 14px;background:#fff;border:1px solid #89938f;border-radius:4px}#model{height:calc(100vh - 175px);min-height:420px}canvas{display:block}a{color:#164c69}</style></head><body><header><h1>Body R6 — 1985 SE rear combination lamps</h1><p>Shared model geometry: clear outer covers, separate inner optics and four bulb chambers per side. Published bulb positions are retained; cover contours remain reconstructed.</p><p><button data-view="straight">Straight rear</button><button data-view="quarter">Rear quarter</button><button data-view="lamp">Left lamp</button><button data-view="exploded">Left lamp separated</button></p><p><a href="/references/fiero-parts-cd.pdf#page=72">GM rear-lamp construction</a><a href="/references/1985-fiero-diy.pdf#page=34">1985 Pontiac lamp illustration</a><a href="/references/1985-86-specifications.pdf#page=26">Factory bulb datums</a><a href="/">Open manual</a></p></header><main id="model"></main><script type="module" src="/src/tail-review.js"></script></body></html>
++<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Body R7 — rear lamp review</title><style>body{margin:0;background:#d9dcda;color:#18292f;font:16px system-ui}header{padding:16px 24px}h1{margin:0 0 6px;font-size:25px}p{margin:6px 0;max-width:1100px}button,a{margin-right:12px}button{padding:8px 14px;background:#fff;border:1px solid #89938f;border-radius:4px}#model{height:calc(100vh - 175px);min-height:420px}canvas{display:block}a{color:#164c69}</style></head><body><header><h1>Body R7 — 1985 SE rear combination lamps</h1><p>Shared model geometry: clear outer covers, separate inner optics and four bulb chambers per side. Softer upper corners and a deeper formed rear apron. Published bulb positions are retained; local contours remain reconstructed.</p><p><button data-view="straight">Straight rear</button><button data-view="quarter">Rear quarter</button><button data-view="lamp">Left lamp</button><button data-view="exploded">Left lamp separated</button></p><p><a href="/references/fiero-parts-cd.pdf#page=72">GM rear-lamp construction</a><a href="/references/1985-fiero-diy.pdf#page=34">1985 Pontiac lamp illustration</a><a href="/references/1985-86-specifications.pdf#page=26">Factory bulb datums</a><a href="/references/body-r7-specification.md">Body specification</a><a href="/">Open manual</a></p></header><main id="model"></main><script type="module" src="/src/tail-review.js"></script></body></html>
+--- R6/tests/tail-lamp-review.spec.js
++++ R7/tests/tail-lamp-review.spec.js
+@@ -3,6 +3,6 @@
+  test.setTimeout(300000);const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/tail-review.html');await page.waitForFunction(()=>window.__tailReview&&document.querySelector('canvas').dataset.ready==='true');
+  const lamps=await page.evaluate(()=>Object.fromEntries(['left','right'].map(side=>{const groups=window.__tailReview.groups,stem='lt-rear-'+side+'-';return [side,{bulbs:['tail','turn','inner-stop','reverse'].every(k=>groups.get(stem+k+'-bulb')?.children.length),outer:groups.get(stem+'outer-lens').children.filter(m=>m.userData.materialName==='tailOuter').map(m=>({transparent:m.material.transparent,opacity:m.material.opacity})),red:groups.get(stem+'red-lens').children.length,reverse:groups.get(stem+'reverse-lens').children.length}];})));
+  for(const value of Object.values(lamps)){expect(value.bulbs).toBe(true);expect(value.outer.length).toBeGreaterThan(0);for(const m of value.outer){expect(m.transparent).toBe(true);expect(m.opacity).toBeLessThan(.4);}expect(value.red).toBeGreaterThan(0);expect(value.reverse).toBeGreaterThan(0);}
+- for(const name of ['straight','quarter','lamp','exploded']){await page.locator(`button[data-view="${name}"]`).click();await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await page.screenshot({path:`artifacts/tail-r6-${name}.png`,fullPage:true});}
++ for(const name of ['straight','quarter','lamp','exploded']){await page.locator(`button[data-view="${name}"]`).click();await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await page.screenshot({path:`artifacts/tail-r7-${name}.png`,fullPage:true});}
+  expect(errors).toEqual([]);
+ });

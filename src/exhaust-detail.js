@@ -109,12 +109,12 @@ function buildRear(h){
  surface(id('shield'),72,30,(u,v)=>{const x=(u-.5)*.62;return[x,.31+(v-.5)*.21,1.595+.009*Math.cos(u*Math.PI*12)**8+.023*(2*v-1)**8];},'zinc');for(const x of [-.26,.26])for(const dy of [-.07,.07])bolt(id('shield-screws'),[x,.31+dy,1.63],.004,'z');
  for(const s of [-1,1]){
   const side=s>0?'left':'right',tail=id(side+'-tail');pipe(tail,[[s*.316,.248,1.74],[s*.41,.244,1.78],[s*.475,.240,1.885]],.0254);
-  for(const offset of [-.037,.037]){const x=s*.51+offset;pipe(tail,[[s*.475,.240,1.875],[s*.48+offset,.240,1.925],[x,.240,1.965]],.025);
-   for(const [value,mat]of [['bright','chrome'],['black','blackPaint']]){const flags={option:'exhaustFinish',value};surface(tail,48,14,(u,v)=>{const a=u*Math.PI*2,r=.028+.0015*Math.sin(v*Math.PI/2);return[x+r*Math.cos(a),.240+r*Math.sin(a),1.955+v*.094];},mat,flags);surface(tail,48,8,(u,v)=>{const a=u*Math.PI*2;return[x+.025*Math.cos(a),.240+.025*Math.sin(a),2.018+v*.031];},'dark',flags);ring(tail,.0272,.0023,[x,.240,2.049],mat,[0,0,0],flags);}
+  for(const offset of [-.037,.037]){const x=s*.51+offset;pipe(tail,[[s*.475,.240,1.875],[s*.48+offset,.240,1.925],[x,.240,1.951]],.025);
+   for(const [value,mat]of [['bright','chrome'],['black','blackPaint']]){const flags={option:'exhaustFinish',value};surface(tail,48,14,(u,v)=>{const a=u*Math.PI*2,r=.028+.0015*Math.sin(v*Math.PI/2);return[x+r*Math.cos(a),.240+r*Math.sin(a),1.875+v*.094];},mat,flags);surface(tail,48,8,(u,v)=>{const a=u*Math.PI*2;return[x+.025*Math.cos(a),.240+.025*Math.sin(a),1.938+v*.031];},'dark',flags);ring(tail,.0272,.0023,[x,.240,1.969],mat,[0,0,0],flags);}
   }
   uClamp(id('tail-clamps'),[s*.326,.248,1.74],.0254);
   const hp=[s*.435,.335,1.798];plate(id(side+'-hanger'),[[.28,1.774],[.395,1.774],[.404,1.814],[.28,1.824]],[[.385,1.798,.0045],[.296,1.802,.0045]],.004,s*.435,'metal');box(id(side+'-hanger'),[.010,.063,.035],[s*.438,.332,1.798],'rubber',[],{},.006);for(const dy of [-.038,.051])bolt(id('hanger-bolts'),[s*.447,.335+dy,1.798],.006,'x');
-  surface(id(side+'-fascia-shield'),32,20,(u,v)=>[s*.51+(u-.5)*.19,.307+.026*(2*u-1)**4,1.88+v*.11],'zinc');for(const dx of [-.063,.063])bolt(id('fascia-nuts'),[s*.51+dx,.328,1.944],.005);
+  surface(id(side+'-fascia-shield'),32,20,(u,v)=>[s*.51+(u-.5)*.19,.307+.026*(2*u-1)**4,1.82+v*.08],'zinc');for(const dx of [-.063,.063])bolt(id('fascia-nuts'),[s*.51+dx,.328,1.894],.005);
   plate(id('spring-brackets'),[[.254,1.61],[.323,1.6],[.35,1.67],[.265,1.67]],[[.286,1.626,.007],[.327,1.639,.007]],.004,s*.421,'metal');for(const dz of [0,.028])bolt(id('spring-brackets'),[s*.428,.286,1.624+dz],.005,'x');
   for(let i=0;i<3;i++){const a=[s*(.32+i*.009),.287+i*.018,1.655+i*.018],b=[s*.419,.278+i*.023,1.627+i*.015];tension(id(side+'-springs'),a,b);ring(id('muffler'),.006,.0018,a,'metal');}
  }

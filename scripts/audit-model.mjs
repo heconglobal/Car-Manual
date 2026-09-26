@@ -107,7 +107,7 @@ for(const [scope,numbers] of [['thermostat-detail',[86,87,88,89,90]],['dipstick-
 // duplicated seal at all twelve valves would silently misrepresent H-23.
 for(const [bank,s] of [['front',-1],['rear',1]])for(let c=1;c<=3;c++)for(const type of ['intake','exhaust']){
  const members=engineMembers(`valve-${bank}-${c}-${type}`),codes=new Set(members.map(p=>p.callout));
- assert.equal(members.length,11,'valve gear service inventory');
+ assert.equal(members.length,19,'valve gear service inventory');
  for(const n of [42,43,45,66,68])assert(codes.has(n),'valve gear callout '+n+' missing');
  assert(codes.has(type==='intake'?47:44),'wrong stem seal variant');
  assert(!codes.has(type==='intake'?44:47),'intake/exhaust seals confused');
@@ -156,7 +156,11 @@ for(const side of ['left','right']){
  const driver=side==='left',hinge=bodyBounds('bd-door-'+side+'-upper-pin'),rocker=bodyBounds('bd-skin-rocker-'+side);
  assert(driver?hinge.max.x<0:hinge.min.x>0,'door hinge side');
  assert(driver?rocker.max.x<0:rocker.min.x>0,'rocker side');
- assert(bodyBounds('bd-hood-'+side+'-hinge').max.z<bodyBounds('bd-hood-striker').min.z-.9,'hood must hinge at the front');
+ const hood=bodyBounds('bd-skin-hood'),hoodLength=hood.max.z-hood.min.z,frontHinge=bodyBounds('bd-hood-'+side+'-hinge'),hoodStriker=bodyBounds('bd-hood-striker');
+ // Compare with the measured panel, not the old reconstruction's 900 mm gap.
+ assert(frontHinge.max.z<hood.min.z+hoodLength/3,'hood hinge must remain in the forward third');
+ assert(hoodStriker.min.z>hood.max.z-hoodLength/3&&hoodStriker.max.z<hood.max.z,'hood striker must remain in the rear third');
+ assert(frontHinge.max.y<hood.max.y,'hood hinge must remain below the upper panel');
  assert(bodyBounds('bd-deck-'+side+'-hinge').max.z<bodyBounds('bd-deck-latch').min.z-.7,'rear lid hinges must precede its latch');
  const rod=bodyBounds('bd-deck-'+side+'-rod');assert(rod.min.x<0&&rod.max.x>0,'each deck torque rod crosses the engine bay');
  assert(rod.max.y<bodyBounds('bd-skin-rear-window').min.y,'torque rods must remain below backlight');

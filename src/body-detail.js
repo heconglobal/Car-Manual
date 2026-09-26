@@ -6,6 +6,7 @@ import {correctLegacyHandedness} from './vehicle-frame.js';
 import {parts} from './data.js';
 import {buildBody} from './body.js';
 import {bodyParts,bodySections,bodySurfaceOwners} from './body-catalog.js';
+import {bodyPoint} from './body-datums.js';
 export function bodyMaterials(base=createMaterials()){const m={...base};for(const k of ['metal','dark','rubber','blackPaint','zinc'])m[k]=base[k].clone();m.metal.bumpScale=.00003;m.dark.bumpScale=.000025;m.zinc.bumpScale=.00002;m.rubber.bumpScale=.00003;m.blackPaint.roughness=.45;return m;}
 export function createBodyDetail(){const root=new T.Group(),groups=new Map();for(const p of bodyParts){const g=new T.Group();g.name=p.id;g.userData={partId:p.id,system:'body',section:p.section,spread:new T.Vector3(...p.spread),assemblySpread:new T.Vector3(...(bodySections.find(s=>s.id===p.section).spread||[0,0,0]))};groups.set(p.id,g);root.add(g);}const h=geometryTools(groups,bodyMaterials());
  const skins=new Map(parts.map(p=>[p.id,new T.Group()])),sh=geometryTools(skins,bodyMaterials());buildBody(sh);sh.optimize();for(const [owner]of bodySurfaceOwners)for(const m of [...skins.get(owner).children]){m.userData.partId='bd-skin-'+owner;groups.get('bd-skin-'+owner).add(m);}for(const g of skins.values())for(const m of g.children){m.geometry.dispose();m.material.dispose();}
@@ -21,7 +22,7 @@ function tools(h){
  function seal(id,points,r=.007){const path=new T.CatmullRomCurve3(points.map(p=>new T.Vector3(...p)),true,'centripetal');const m=add(id,new T.TubeGeometry(path,180,r,10,true),'rubber');return m;}
  return{...mechanicalTools(h),sleeve,roundedPath,flat,link,latch,clip,seal};
 }
-export function buildBodyHardware(h){buildHood(h);buildDeck(h);for(const s of [-1,1])buildDoor(h,s);buildPanelHardware(h);}
+export function buildBodyHardware(h){h.mapAdded(()=>{buildHood(h);buildDeck(h);for(const s of [-1,1])buildDoor(h,s);buildPanelHardware(h);},bodyPoint);}
 function buildHood(h){
  const {box,cyl,tube,bolt,surface}=h,{flat,link,plate,latch,seal,sleeve}=tools(h),id=k=>'bd-hood-'+k;
  flat(id('inner'),[[-.635,-1.76],[.635,-1.76],[.635,-.645],[-.635,-.645]],[[-.35,-1.69,.35,-1.405],[-.632,-1.684,-.384,-1.376],[.384,-1.684,.632,-1.376],[-.57,-1.29,.57,-.698]],0,'dark',(x,z)=>.601+(z+1.786)/1.176*.193+.005*(1-(x/.659)**2));

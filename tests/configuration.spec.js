@@ -15,7 +15,8 @@ test('preview choices change geometry, persist, and leave the VIN record intact'
  expect(raised.max[1]).toBeLessThan(.82);
  const plainDeck=await page.evaluate(()=>window.__fiero.getPartBounds('decklid'));
  await page.locator('#config-deck').selectOption('wing');
- const wingDeck=await page.evaluate(()=>window.__fiero.getPartBounds('decklid'));
+ const wingDeck=await page.evaluate(()=>window.__fiero.getPartBounds('deck-wing'));
+ expect(await page.evaluate(()=>window.__fiero.getPartBounds('decklid'))).toEqual(plainDeck);
  expect(wingDeck.max[1]-plainDeck.max[1]).toBeGreaterThan(.075);
  expect(wingDeck.max[1]).toBeLessThan((await page.evaluate(()=>window.__fiero.getPartBounds('roof'))).max[1]-.15);
  await page.locator('#config-roof').selectOption('glass');

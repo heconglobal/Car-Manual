@@ -1,0 +1,70 @@
+{
+  "date": "2026-09-25T01:31:09.702Z",
+  "sourceSha256": "0c1e23dd80f0886b27d6e772e2800d88db8c74418c309c5d59a62a201255d310",
+  "status": "passed",
+  "bodySelections": 169,
+  "exteriorSelections": 58,
+  "checks": [
+    {
+      "name": "Every exterior selection contains finite independently owned geometry",
+      "status": "passed"
+    },
+    {
+      "name": "Vehicle and Body explorer share every revised skin and exterior part",
+      "status": "passed"
+    },
+    {
+      "name": "Painted panel width retains the documented 1752 mm body envelope",
+      "status": "passed"
+    },
+    {
+      "name": "Fuel door and intake occupy real openings in the driver quarter skin",
+      "status": "passed"
+    },
+    {
+      "name": "Fuel cap and grip fit behind the closed fuel door",
+      "status": "passed"
+    },
+    {
+      "name": "Both wheel openings have smooth circular lips and inward returns",
+      "status": "passed"
+    },
+    {
+      "name": "Mirror glasses stay recessed in their shells, outside door glass",
+      "status": "passed"
+    },
+    {
+      "name": "Front pads and fascia leave the park/turn apertures open",
+      "status": "passed"
+    },
+    {
+      "name": "Curved bumper pad faces retain dense tessellation after wrapping",
+      "status": "passed"
+    },
+    {
+      "name": "Wiper blade spans follow the nominal 18-inch envelope",
+      "status": "passed"
+    },
+    {
+      "name": "Exterior service pieces have distinct explosion offsets",
+      "status": "passed"
+    },
+    {
+      "name": "Roof glass and deck alternatives retain separate identities and option flags",
+      "status": "passed"
+    },
+    {
+      "name": "Sunroof panel hardware follows the glass; body hardware survives removal",
+      "status": "passed"
+    },
+    {
+      "name": "Sunroof trim, seal and latch housing leave their physical openings clear",
+      "status": "passed"
+    },
+    {
+      "name": "Sunroof glass has separated upper and lower surfaces and independent hardware",
+      "status": "passed"
+    }
+  ],
+  "limits": "Actual reconstructed mesh checks; not measured factory tooling, crash structure, calibrated mechanism motion or owner acceptance."
+}

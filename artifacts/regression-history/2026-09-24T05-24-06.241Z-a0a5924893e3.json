@@ -1,0 +1,207 @@
+{
+  "manifest": {
+    "capturedAt": "2026-09-24T05:24:04.698Z",
+    "sourceSha256": "a0a5924893e33fe0ba28d3d15c84f6bf47eaf3c4dd1518ab84acb5e0759708c8",
+    "applicationSha256": "87d7473d2f513d6fec3a10146c07ed701477e78ae71e8c5f31d6297e97738676",
+    "testFiles": {
+      "body-hardware.spec.js": "24b614104877cf0b10b04be60d48ababe46ee22175d33db6ade180a7e5bc8e9d",
+      "brakes.spec.js": "f1195a86b80545fd1eb9578946da480aa33e2775b258b5b8f3eca6cb6c88e125",
+      "configuration.spec.js": "700aa8f532259f9e3aa3f27ffc7c802a74040116ac8039d79dd8d908c62622d4",
+      "coolant-guide.spec.js": "eea2d2c0c40a7e87c081548b7807054cd41aab135a64b5f3947abee19a17eaad",
+      "electrical.spec.js": "b3c3610e7fdf2ec04f7b8fe7e5cefa8be782d0764ce0575e4592396d05978c56",
+      "engine-service.spec.js": "9bf5b2fc7dc5460f3dd6a5251273ceb1640c2bc85145fa61bcc420053705c0e1",
+      "engine.spec.js": "d835929251fdf52eaab25b3d6d7a7fe8b1279938713a0e007077e6384459b525",
+      "exhaust.spec.js": "942e6ced8d9e7902427f668fc421e447da1417ec4741f4ddab096e3782eaab86",
+      "exterior.spec.js": "53b14b776c8daddb346c14154a614bc782e30f94d8d8c47cc78739987e0de7da",
+      "fuel.spec.js": "855c51895b37fee5ab862293191a195457f16d700866bea41d8c90039c4584d4",
+      "headlights.spec.js": "0202d7da9c2d578e03ac7ee91e94bc62db8a1064615da0e2a2759624dd26a29a",
+      "hvac.spec.js": "835318b1a7b085f68e5a605e381285405b66b31f5215ab114c68f4beb3f3551f",
+      "ignition.spec.js": "26b85b075ee9d1e426121a87486e716fe9e4968d4729b827f7f7015d86040127",
+      "oil-pump.spec.js": "f159c6419ca3e1a9864de237f5e8c5e38c1d28891faba0c0a7c1e4f8372f4b2e",
+      "rear-body.spec.js": "aa8e63a6d9f5816a6775f9a18358d35a64b955303962b6040ecbb101a5b0deba",
+      "service-guides.spec.js": "ae226847c7c4d94d1d96867e16166ab705ab0ae9257d0b75facb4eb276dddbce",
+      "suspension.spec.js": "27e4d61da57b4333af13614c6a2b30ee05bb1f378cb197b0de3124b14c2fc890",
+      "transmission-cooling.spec.js": "c21d94f16185813d5a3618637c651a27ead9478233740f2e7c8fad4d573dcf4b",
+      "valve-gear.spec.js": "eda7e7f4af55a1c862510d5755e8d1811ec1737513c317798f07bc91d9be8702",
+      "workshop.spec.js": "f63d9d0936dcb83393dcf5eabf40d8b69c70bfdc2c54ec951a4761e359976a5d"
+    },
+    "newestInputMtime": 1790227421949.503
+  },
+  "report": {
+    "config": {
+      "argv": [
+        "/home/hesh913/.nvm/versions/node/v24.13.1/bin/node",
+        "/home/hesh913/fiero-3d-manual/node_modules/@playwright/test/cli.js",
+        "test",
+        "tests/exterior.spec.js",
+        "--grep",
+        "service pieces",
+        "--workers=1"
+      ],
+      "configFile": "/home/hesh913/fiero-3d-manual/playwright.config.js",
+      "rootDir": "/home/hesh913/fiero-3d-manual/tests",
+      "failOnFlakyTests": false,
+      "forbidOnly": false,
+      "fullyParallel": false,
+      "globalSetup": null,
+      "globalTeardown": null,
+      "globalTimeout": 0,
+      "grep": {},
+      "grepInvert": null,
+      "maxFailures": 0,
+      "metadata": {
+        "sourceSha256": "a0a5924893e33fe0ba28d3d15c84f6bf47eaf3c4dd1518ab84acb5e0759708c8",
+        "actualWorkers": 1
+      },
+      "preserveOutput": "always",
+      "projects": [
+        {
+          "outputDir": "/home/hesh913/fiero-3d-manual/artifacts/test-runs/2026-09-24T05-24-04.687Z-ba6f9991/results",
+          "repeatEach": 1,
+          "retries": 0,
+          "metadata": {
+            "sourceSha256": "a0a5924893e33fe0ba28d3d15c84f6bf47eaf3c4dd1518ab84acb5e0759708c8",
+            "actualWorkers": 1
+          },
+          "id": "",
+          "name": "",
+          "testDir": "/home/hesh913/fiero-3d-manual/tests",
+          "testIgnore": [],
+          "testMatch": [
+            "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+          ],
+          "timeout": 240000
+        }
+      ],
+      "quiet": false,
+      "reporter": [
+        [
+          "list",
+          null
+        ],
+        [
+          "html",
+          {
+            "open": "never",
+            "outputFolder": "artifacts/test-runs/2026-09-24T05-24-04.687Z-ba6f9991/html"
+          }
+        ],
+        [
+          "json",
+          {
+            "outputFile": "artifacts/full-regression.json"
+          }
+        ]
+      ],
+      "reportSlowTests": {
+        "max": 5,
+        "threshold": 300000
+      },
+      "shard": null,
+      "tags": [],
+      "updateSnapshots": "missing",
+      "updateSourceMethod": "patch",
+      "version": "1.63.0",
+      "workers": 1,
+      "webServer": {
+        "command": "npm run dev",
+        "url": "http://127.0.0.1:5185",
+        "reuseExistingServer": true,
+        "timeout": 30000
+      }
+    },
+    "suites": [
+      {
+        "title": "exterior.spec.js",
+        "file": "exterior.spec.js",
+        "column": 0,
+        "line": 0,
+        "specs": [
+          {
+            "title": "exterior service pieces select, isolate, explode and return on desktop and mobile",
+            "ok": false,
+            "tags": [],
+            "tests": [
+              {
+                "timeout": 480000,
+                "annotations": [],
+                "expectedStatus": "passed",
+                "projectId": "",
+                "projectName": "",
+                "results": [
+                  {
+                    "workerIndex": 0,
+                    "parallelIndex": 0,
+                    "status": "failed",
+                    "duration": 133902,
+                    "error": {
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0.04\u001b[39m\nReceived:   \u001b[31m0.024500000000000077\u001b[39m",
+                      "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0.04\u001b[39m\nReceived:   \u001b[31m0.024500000000000077\u001b[39m\n    at /home/hesh913/fiero-3d-manual/tests/exterior.spec.js:27:484",
+                      "location": {
+                        "file": "/home/hesh913/fiero-3d-manual/tests/exterior.spec.js",
+                        "column": 484,
+                        "line": 27
+                      },
+                      "snippet": "  25 |   await page.getByRole('searchbox').fill(exteriorParts.find(p=>p.id===id).name);await page.locator(`.part-button[data-part=\"${id}\"]`).click();\n  26 |   await page.getByRole('button',{name:'Explode this assembly',exact:true}).click();await expect(page.locator('canvas')).toHaveAttribute('data-assembly',scope);\n> 27 |   await page.locator(`.part-button[data-part=\"bd-skin-${id}\"]`).click();const assembled=await page.evaluate(id=>window.__fiero.getPartBounds('bd-skin-'+id),id);await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));const exploded=await page.evaluate(id=>window.__fiero.getPartBounds('bd-skin-'+id),id);expect(Math.hypot(...exploded.min.map((v,i)=>v-assembled.min[i]))).toBeGreaterThan(.04);await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^\n  28 |   expect(await page.evaluate(()=>window.__fiero.getVisibleParts())).toEqual(['bd-skin-'+id]);\n  29 |   await page.screenshot({path:`artifacts/exterior-v3-isolated-${id}.png`});\n  30 |   await page.getByRole('button',{name:'Back to vehicle',exact:false}).click();await page.getByRole('button',{name:'Reset view',exact:true}).click();await page.getByRole('searchbox').fill('');"
+                    },
+                    "errors": [
+                      {
+                        "location": {
+                          "file": "/home/hesh913/fiero-3d-manual/tests/exterior.spec.js",
+                          "column": 484,
+                          "line": 27
+                        },
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0.04\u001b[39m\nReceived:   \u001b[31m0.024500000000000077\u001b[39m\n\n  25 |   await page.getByRole('searchbox').fill(exteriorParts.find(p=>p.id===id).name);await page.locator(`.part-button[data-part=\"${id}\"]`).click();\n  26 |   await page.getByRole('button',{name:'Explode this assembly',exact:true}).click();await expect(page.locator('canvas')).toHaveAttribute('data-assembly',scope);\n> 27 |   await page.locator(`.part-button[data-part=\"bd-skin-${id}\"]`).click();const assembled=await page.evaluate(id=>window.__fiero.getPartBounds('bd-skin-'+id),id);await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));const exploded=await page.evaluate(id=>window.__fiero.getPartBounds('bd-skin-'+id),id);expect(Math.hypot(...exploded.min.map((v,i)=>v-assembled.min[i]))).toBeGreaterThan(.04);await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^\n  28 |   expect(await page.evaluate(()=>window.__fiero.getVisibleParts())).toEqual(['bd-skin-'+id]);\n  29 |   await page.screenshot({path:`artifacts/exterior-v3-isolated-${id}.png`});\n  30 |   await page.getByRole('button',{name:'Back to vehicle',exact:false}).click();await page.getByRole('button',{name:'Reset view',exact:true}).click();await page.getByRole('searchbox').fill('');\n    at /home/hesh913/fiero-3d-manual/tests/exterior.spec.js:27:484"
+                      }
+                    ],
+                    "stdout": [],
+                    "stderr": [],
+                    "retry": 0,
+                    "startTime": "2026-09-24T05:24:07.831Z",
+                    "annotations": [],
+                    "attachments": [
+                      {
+                        "name": "screenshot",
+                        "contentType": "image/png",
+                        "path": "/home/hesh913/fiero-3d-manual/artifacts/test-runs/2026-09-24T05-24-04.687Z-ba6f9991/results/exterior-exterior-service--91df7-eturn-on-desktop-and-mobile/test-failed-1.png"
+                      },
+                      {
+                        "name": "error-context",
+                        "contentType": "text/markdown",
+                        "path": "/home/hesh913/fiero-3d-manual/artifacts/test-runs/2026-09-24T05-24-04.687Z-ba6f9991/results/exterior-exterior-service--91df7-eturn-on-desktop-and-mobile/error-context.md"
+                      },
+                      {
+                        "name": "trace",
+                        "contentType": "application/zip",
+                        "path": "/home/hesh913/fiero-3d-manual/artifacts/test-runs/2026-09-24T05-24-04.687Z-ba6f9991/results/exterior-exterior-service--91df7-eturn-on-desktop-and-mobile/trace.zip"
+                      }
+                    ],
+                    "errorLocation": {
+                      "file": "/home/hesh913/fiero-3d-manual/tests/exterior.spec.js",
+                      "column": 484,
+                      "line": 27
+                    }
+                  }
+                ],
+                "status": "unexpected"
+              }
+            ],
+            "id": "6af367c2374289d9bddd-220e574eaacc233b9a91",
+            "file": "exterior.spec.js",
+            "line": 21,
+            "column": 1
+          }
+        ]
+      }
+    ],
+    "errors": [],
+    "stats": {
+      "startTime": "2026-09-24T05:24:06.241Z",
+      "duration": 136962.403,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "sourceSha256": "0c1e23dd80f0886b27d6e772e2800d88db8c74418c309c5d59a62a201255d310",
+  "reviewedAt": "2026-09-25T01:29:36.194Z",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "Side molding remains above its body skin across the full ribbed section",
+      "status": "passed",
+      "measurements": {
+        "samples": 78,
+        "minStandOffMm": 4.640602798344218
+      }
+    },
+    {
+      "name": "Installed molding centres follow one straight side elevation",
+      "status": "passed",
+      "measurements": {
+        "maxDeviationMm": 2.6671298503089247e-07
+      }
+    },
+    {
+      "name": "Intake opening is below the uninterrupted quarter molding and clear of paint",
+      "status": "passed",
+      "measurements": {
+        "samples": 9,
+        "upperClearanceMm": 10.43790578842163
+      }
+    },
+    {
+      "name": "Tread remains within the shallow road-tire radius envelope",
+      "status": "passed",
+      "measurements": {
+        "maximumRadiusMm": 306.9861163088852
+      }
+    },
+    {
+      "name": "Carrier supports meet the swept spoiler underside",
+      "status": "passed",
+      "measurements": {
+        "samples": 234,
+        "maxFitErrorMm": 0.8786493713166532
+      }
+    },
+    {
+      "name": "Wing pedestals end inside the lower foil skin",
+      "status": "passed",
+      "measurements": {
+        "samples": 130,
+        "maxFitErrorMm": 0.8096834802449049
+      }
+    }
+  ],
+  "limits": "Interface and silhouette regressions on actual shared geometry. Reconstruction checks, not production tooling or factory tolerance certification.",
+  "reportNote": "Check label corrected to describe the radius actually measured; numeric results and pass/fail outcomes are unchanged."
+}

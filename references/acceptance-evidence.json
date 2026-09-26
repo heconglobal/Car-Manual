@@ -1,26 +1,32 @@
 {
-  "reviewedAt": "2026-09-22",
+  "reviewedAt": "2026-09-24",
   "policy": "Only mark complete after all wording of the requirement is satisfied. Test passes for selection/explosion do not certify original geometry, electrical operation or service procedures. Evidence refers to actual inspected sources and executed reports; open items retain their original scope.",
   "items": {
     "01.1": {
       "status": "partial",
-      "progress": "The current-source full run passes the LH/RH headlight scenario and the nine-step headlamp guide scenario. Both assembled/exploded lamps, motor, closed cover and mobile guide states were visually inspected; 118 selections are available. This is development verification, not owner sign-off or complete dimensional acceptance.",
+      "progress": "189 headlight selections now include three nested relay assemblies, separate motor conductors/disconnects and front-harness C/D links. The prior 267f7ce33b67 application passed headlight and replacement-guide scenarios; its 13 native vehicle/headlight captures were inspected and archived. Subsequent engine changes require current-source regression evidence. This is development verification, not owner sign-off or complete dimensional acceptance.",
       "evidence": [
         "artifacts/model-audit.json",
         "references/headlight-reconstruction.md",
         "artifacts/regression-history/2026-09-22T09-05-41.350Z-b20197023539.json",
-        "artifacts/visual-inspection-manifest.json"
+        "artifacts/visual-inspection-manifest.json",
+        "references/headlight-electrical-reconstruction.md",
+        "artifacts/headlight-electrical-audit.json",
+        "artifacts/regression-history/2026-09-24T00-48-35.203Z-267f7ce33b67.json",
+        "artifacts/visual-inspection-history/267f7ce33b67/manifest.json"
       ],
       "remaining": "Owner UAT of the expanded pair, controls and early mechanism is still pending."
     },
     "01.4": {
       "status": "partial",
-      "progress": "Driver switch, PARK button, panel dimmer, transistor, beam switch/rod and plugs added.",
+      "progress": "Driver controls plus early relay internals, 16 selectable blades, open connector cavities, white/green/gray motor leads, C101/C102 disconnects, blue harness branches and C/D fusible-link construction added. Connections cross-checked against original adjacent-year GM 8A-102-0; exact 1985 tooling and complete routes remain unverified.",
       "evidence": [
         "artifacts/lighting-review.json",
-        "artifacts/electrical-geometry-audit.json"
+        "artifacts/electrical-geometry-audit.json",
+        "references/headlight-electrical-reconstruction.md",
+        "artifacts/headlight-electrical-audit.json"
       ],
-      "remaining": "Full 1985 circuits, harness routing, calibrated dimmer linkage, aiming and diagnostic procedure validation."
+      "remaining": "Complete verified 1985 circuits, physical connector-end drawings, measured relay/motor tooling, fusible-link lengths, full harness routing, calibrated dimmer linkage, aiming and validated diagnostics."
     },
     "02.1": {
       "status": "partial",
@@ -33,12 +39,20 @@
     },
     "02.2": {
       "status": "partial",
-      "progress": "1984\u201385 rear housings, inner red/clear lenses, outer lens, three chambers, two 2057 bulbs and inboard 1156 per side added.",
+      "progress": "R8 covers the full exterior: refitted straight side/wraparound moldings, accurately clipped fuel/intake openings, intake below the molding, exposed lower nose deflector, smoother road-tire silhouette, revised machined wheel/sail/paint/lamp finishes and close-view inspection. The deeper R7 rear apron and softened upper lamp corners remain. Sixteen selected dimensional comparisons and separate actual-mesh interface audits support development review. Two bumper-reference interpretations and factory tooling accuracy remain unresolved; owner approval is not asserted.",
       "evidence": [
         "artifacts/lighting-review.json",
-        "references/electrical-reconstruction.md"
+        "references/electrical-reconstruction.md",
+        "references/body-r6-tail-lamp-review.md",
+        "artifacts/rear-body-surface-audit.json",
+        "tests/tail-lamp-review.spec.js",
+        "artifacts/visual-review-findings.md",
+        "references/body-r8-specification.md",
+        "artifacts/body-geometry-verification.json",
+        "artifacts/exterior-fit-audit.json",
+        "tests/exterior-close-review.spec.js"
       ],
-      "remaining": "Measured lens optics/case profiles and assembled rear appearance acceptance."
+      "remaining": "Dimensioned factory lens/housing/optical tooling, measured seal and mounting interfaces, original electrical validation and owner appearance acceptance."
     },
     "02.3": {
       "status": "partial",
@@ -83,7 +97,7 @@
         "references/wiring-reconstruction.md",
         "artifacts/wiring-audit.json"
       ],
-      "remaining": "Complete harness branch lengths, actual terminal population, grommets/clips, full pinouts and measured connector forms."
+      "remaining": "Complete harness branch lengths, actual terminal population, grommets/clips, full pinouts and measured connector forms. The ECM has a simplified board substrate; its original populated board, component identities and complete internal connections remain unverified."
     },
     "04.2": {
       "status": "partial",
@@ -114,12 +128,29 @@
     },
     "17.1": {
       "status": "partial",
-      "progress": "The dark hood strip was identified as protruding radiator support/filler hardware and corrected.",
+      "progress": "R8 covers the full exterior: refitted straight side/wraparound moldings, accurately clipped fuel/intake openings, intake below the molding, exposed lower nose deflector, smoother road-tire silhouette, revised machined wheel/sail/paint/lamp finishes and close-view inspection. The deeper R7 rear apron and softened upper lamp corners remain. Sixteen selected dimensional comparisons and separate actual-mesh interface audits support development review. Two bumper-reference interpretations and factory tooling accuracy remain unresolved; owner approval is not asserted.",
       "evidence": [
         "artifacts/front-clearance-audit.json",
-        "artifacts/vehicle-hood-clearance-fixed.png"
+        "artifacts/vehicle-hood-clearance-fixed.png",
+        "references/exterior-reconstruction-20260924.md",
+        "artifacts/exterior-audit.json",
+        "artifacts/visual-inspection-manifest.json",
+        "tests/exterior.spec.js",
+        "references/body-dimension-reconstruction-20260924.md",
+        "artifacts/body-dimension-audit.json",
+        "references/body-r4-owner-review-20260924.md",
+        "artifacts/rear-body-surface-audit.json",
+        "tests/body-shape-review.spec.js",
+        "references/body-r5-factory-specification-review.md",
+        "references/body-r6-tail-lamp-review.md",
+        "tests/tail-lamp-review.spec.js",
+        "artifacts/visual-review-findings.md",
+        "references/body-r8-specification.md",
+        "artifacts/body-geometry-verification.json",
+        "artifacts/exterior-fit-audit.json",
+        "tests/exterior-close-review.spec.js"
       ],
-      "remaining": "Measured panel sections, datums, curvature and gaps throughout the car."
+      "remaining": "Measured panel sections, datums, curvature and gap dimensions throughout the car; final owner appearance review."
     },
     "20.1": {
       "status": "partial",
@@ -132,31 +163,57 @@
     },
     "20.3": {
       "status": "partial",
-      "progress": "Shared engine geometry preserves its dimensions in the car; differential datum is retained and flywheel/clutch axes coincide. Both banks valve-cover containment, belt wrap and sampled deck clearances are checked separately. Production mount coordinates, complete routing and full motion remain unverified.",
+      "progress": "R8 covers the full exterior: refitted straight side/wraparound moldings, accurately clipped fuel/intake openings, intake below the molding, exposed lower nose deflector, smoother road-tire silhouette, revised machined wheel/sail/paint/lamp finishes and close-view inspection. The deeper R7 rear apron and softened upper lamp corners remain. Sixteen selected dimensional comparisons and separate actual-mesh interface audits support development review. Two bumper-reference interpretations and factory tooling accuracy remain unresolved; owner approval is not asserted.",
       "evidence": [
         "artifacts/model-audit.json",
         "artifacts/wiring-audit.json",
         "artifacts/front-clearance-audit.json",
-        "artifacts/cross-view-scale-review.json"
+        "artifacts/cross-view-scale-review.json",
+        "references/body-dimension-reconstruction-20260924.md",
+        "artifacts/body-dimension-audit.json",
+        "references/body-r4-owner-review-20260924.md",
+        "artifacts/rear-body-surface-audit.json",
+        "tests/body-shape-review.spec.js",
+        "references/body-r5-factory-specification-review.md",
+        "references/body-r6-tail-lamp-review.md",
+        "tests/tail-lamp-review.spec.js",
+        "artifacts/visual-review-findings.md",
+        "references/body-r8-specification.md",
+        "artifacts/body-geometry-verification.json",
+        "artifacts/exterior-fit-audit.json",
+        "tests/exterior-close-review.spec.js"
       ],
       "remaining": "Calibrated full travel, complete routing and clash checks throughout the vehicle."
     },
     "20.4": {
       "status": "partial",
-      "progress": "Electrical/charging desktop and mobile reviews executed; expanded full regression run is tracked separately. Software-renderer redraw cost reduced and mobile selection rechecked; original-layout instruments reviewed on desktop and mobile. A limited native Windows Edge / Intel UHD Direct3D11 session captured the vehicle and engine without browser exceptions; its three images were inspected. A Node construction probe took about 83 seconds; CPU sampling identifies substantial geometry construction, copying and handedness transformation costs before rendering. The full current-source browser run passes all 31 scenarios, with zero failed, skipped or flaky outcomes; raw outcomes and the exact source manifest are archived.",
+      "progress": "R8 covers the full exterior: refitted straight side/wraparound moldings, accurately clipped fuel/intake openings, intake below the molding, exposed lower nose deflector, smoother road-tire silhouette, revised machined wheel/sail/paint/lamp finishes and close-view inspection. The deeper R7 rear apron and softened upper lamp corners remain. Sixteen selected dimensional comparisons and separate actual-mesh interface audits support development review. Two bumper-reference interpretations and factory tooling accuracy remain unresolved; owner approval is not asserted.",
       "evidence": [
-        "artifacts/lighting-review.json",
-        "artifacts/charging-review.json",
-        "artifacts/native-windows-review-initial.json",
-        "artifacts/native-windows-all-families-interrupted.json",
-        "artifacts/vehicle-construction-profile.json",
-        "artifacts/model-construction-hotspots.json",
-        "artifacts/regression-history/2026-09-22T09-05-41.350Z-b20197023539.json",
+        "artifacts/geometry-verification.json",
+        "artifacts/oil-pump-audit.json",
+        "artifacts/regression-summary.json",
         "artifacts/visual-inspection-manifest.json",
-        "artifacts/checklist-test-matrix.md",
-        "artifacts/performance-followup.md"
+        "artifacts/visual-review-findings.md",
+        "references/exterior-reconstruction-20260924.md",
+        "artifacts/exterior-audit.json",
+        "tests/exterior.spec.js",
+        "artifacts/browser-verification-notes.md",
+        "references/sunroof-reconstruction-20260924.md",
+        "tests/sunroof.spec.js",
+        "references/body-dimension-reconstruction-20260924.md",
+        "artifacts/body-dimension-audit.json",
+        "references/body-r4-owner-review-20260924.md",
+        "artifacts/rear-body-surface-audit.json",
+        "tests/body-shape-review.spec.js",
+        "references/body-r5-factory-specification-review.md",
+        "references/body-r6-tail-lamp-review.md",
+        "tests/tail-lamp-review.spec.js",
+        "references/body-r8-specification.md",
+        "artifacts/body-geometry-verification.json",
+        "artifacts/exterior-fit-audit.json",
+        "tests/exterior-close-review.spec.js"
       ],
-      "remaining": "Photoreal surface acceptance for every component, full device performance review and outstanding system-specific checks. Native initial readiness was approximately 97 seconds during concurrent regression. Broad native hardware/device testing and startup performance remain unresolved; the follow-up all-family capture run was interrupted."
+      "remaining": "Finish the remaining current-source full-suite scenarios, refreshed native hardware review, complete device performance, measured factory tooling, hidden mechanisms and physical assembly interfaces. Owner acceptance of the revised body remains pending."
     },
     "01.2": {
       "status": "partial",
@@ -206,24 +263,30 @@
     },
     "20.2": {
       "status": "partial",
-      "progress": "Nine-step headlamp replacement guide cross-checked against 1985 Pontiac DIY printed 2-28 through 2-30, with native 3D part references, tools, motor isolation, aiming preservation, bezel torque and relay reconnection order. Expanded desktop/mobile regression passes in the current 31-scenario full run, including cross-assembly selection, saved configuration and return navigation.",
+      "progress": "Two source-checked interactive guides now provide the nine-step 1985 headlamp sequence and complete twenty-step coolant replacement sequence. All steps select actual modeled components across their respective inspection scopes. The coolant guide retains flushing, bottle cleaning, pressure-release stages, thermostat order and the qualified pipe-plug torque. Shared navigation supports per-step assembly changes and guide-specific temporary configuration. Browser results are recorded separately from physical workshop validation.",
       "evidence": [
         "src/service-guides.js",
         "references/headlight-service-guide.md",
         "tests/service-guides.spec.js",
         "artifacts/regression-history/2026-09-22T06-48-25.060Z-d873bc28c691.json",
-        "artifacts/regression-history/2026-09-22T09-05-41.350Z-b20197023539.json"
+        "artifacts/regression-history/2026-09-22T09-05-41.350Z-b20197023539.json",
+        "artifacts/regression-history/2026-09-24T00-48-35.203Z-267f7ce33b67.json",
+        "references/coolant-service-guide.md",
+        "tests/coolant-guide.spec.js"
       ],
-      "remaining": "Remaining procedures for every other system, exact removal paths and physical workshop validation."
+      "remaining": "Complete procedures for the remaining systems, optional coolant block-drain selections, verified tools/access and removal paths, and physical workshop validation of the finished guides."
     },
     "13.3": {
       "status": "partial",
-      "progress": "1985 owner VIN-code-9 row confirms approximate 13.0 L capacity; original Pontiac nominal form confirms 103.4 kPa / 15 psi cap pressure. All factory coolant replacement pages inspected, including pipe-plug torque and staged thermostat/cap handling. Four-cylinder 13.3 L entry excluded.",
+      "progress": "The 1985 owner VIN-code-9 row confirms approximate 13.0 L system capacity and Pontiac nominal data confirms 103.4 kPa / 15 psi radiator-cap pressure. All twenty original coolant replacement steps are now integrated into the interactive guide, including flushing, recovery-bottle cleaning, staged cap release, thermostat removal/refit and timed purge. Each step selects a real thermostat, radiator, pipe or recovery component. Pipe-plug torque remains limited to the underbody plugs. Source pages were visually inspected again; physical workshop validation is still pending.",
       "evidence": [
         "references/verified-cooling-specifications.json",
-        "references/engine-service-reconstruction.md"
+        "references/engine-service-reconstruction.md",
+        "references/coolant-service-guide.md",
+        "src/service-guides.js",
+        "tests/coolant-guide.spec.js"
       ],
-      "remaining": "Integrate the complete source-checked filling/bleeding procedure into the interactive manual, verify every referenced part and validate the finished guide."
+      "remaining": "Separately model and verify optional block-drain hardware, original reservoir/tooling/markings and access/removal paths; physically validate the complete guide and remaining factory cooling interfaces."
     },
     "20.5": {
       "status": "partial",
@@ -238,13 +301,158 @@
     },
     "06.4": {
       "status": "partial",
-      "progress": "Nonuniform installed engine scaling and coarse duplicate block/head/intake removed. Shared exterior geometry, flywheel, rigid engine/transaxle placement, belt wrap and selected hose/cable connections implemented; geometry checks recorded separately.",
+      "progress": "Nonuniform installed engine scaling and coarse duplicate block/head/intake removed. Shared exterior geometry, flywheel, rigid engine/transaxle placement, belt wrap and selected hose/cable connections implemented; geometry checks recorded separately. The 131 mm cam/crank discrepancy is corrected to the GM family 159.03 mm nominal. Coordinated shaft/journal/bearing, sprocket/chain, open cover/gasket and twelve follower/pushrod/guide interfaces pass the expanded actual-mesh timing audit, including the cam insertion envelope. The previous lifter and water-pump additions are retained. This pass adds nine oil-pump selections and replaces the solid pump/pickup proxies; current static geometry and targeted interaction checks are recorded in the generated reports.",
       "evidence": [
         "references/shared-powertrain-reconstruction.md",
         "artifacts/cross-view-scale-review.json",
-        "artifacts/engine-timing-audit.json"
+        "artifacts/engine-timing-audit.json",
+        "references/engine-timing-reconstruction.md",
+        "artifacts/regression-history/2026-09-24T02-51-27.037Z-1d9775f40ca4.json"
       ],
-      "remaining": "Production mounts, complete gaskets/fasteners and internal fits remain unverified. In particular, the timing builder still has a 131 mm cam/crank separation versus the GM blueprint\u2019s 159.03 mm; shaft, bearings, sprocket, chain, cover and valve-gear interfaces need a coordinated correction."
+      "remaining": "Production mounts, complete gaskets/fasteners, original bearing dimensions/clearances, oil holes, cam phases, lifter internals, exact silent-chain plate stack/pitch/tooth engagement and full casting fits remain unverified. Replacement-based 40/20 teeth do not certify original GM application or tooling."
+    },
+    "06.5": {
+      "status": "partial",
+      "progress": "All twelve lifters now expose nine selections matching adjacent-year GM figure 46: hollow body, plunger spring, ball-check retainer/spring/ball, hollow plunger, metering valve, pushrod seat and split retaining ring. Actual-mesh checks cover open bores, radial feeds, containment and ball-seat contact.",
+      "evidence": [
+        "references/lifter-internals-followup.md",
+        "artifacts/engine-internals-audit.json"
+      ],
+      "remaining": "Verify original dimensions, retaining-cage shape, oil-port geometry, spring rates, operating clearances, preload and leak-down calibration; inspect and test all relevant contexts."
+    },
+    "13.4": {
+      "status": "partial",
+      "progress": "Hub, unitized shaft/bearing, mechanical seal assembly and open centrifugal impeller are individually selectable. Reconstructed parts fit the shared shaft/chamber envelope. Generic GMB construction is distinguished from original GM application evidence.",
+      "evidence": [
+        "references/engine-service-reconstruction.md",
+        "artifacts/engine-internals-audit.json"
+      ],
+      "remaining": "Original L44 supplier drawing or measured pump, exact impeller vane count/profile/material, weep passage, bearing internals, seal stack and press fits; validate remaining pump/cooling interfaces."
+    },
+    "20.6": {
+      "status": "partial",
+      "progress": "Generated an index of every current detail selection with section, reference/callout and option metadata, and mapped each of the 13 families to the 20 checklist areas. Areas without dedicated complete explorers and grouped/overlapping selections are explicitly identified. Targeted distributor, valve and lifter callout checks exist.",
+      "evidence": [
+        "COMPONENT-COVERAGE.md",
+        "artifacts/component-coverage.json",
+        "artifacts/model-audit.json",
+        "artifacts/engine-internals-audit.json"
+      ],
+      "remaining": "Complete drawing-by-drawing reconciliation of all applicable GM callouts, service internals, physical hardware quantities and option/year variants. The authored catalog alone cannot prove a complete factory bill of materials."
+    },
+    "06.8": {
+      "status": "partial",
+      "progress": "Oil pump and pickup now have twelve nested selections, including nine new gear, cover, relief-mechanism, fastener and screen entries. The prior block and solid pickup proxy have been replaced with an open gear pocket, hollow drive socket, annular pickup tube and wire strainer. Relationships follow adjacent-year GM 1986 L44 figure 23; six actual-mesh checks cover static gear separation, pocket/shaft fits, relief containment and inlet/screen openings.",
+      "evidence": [
+        "references/oil-pump-reconstruction.md",
+        "src/engine-oil-pump.js",
+        "artifacts/oil-pump-audit.json",
+        "tests/oil-pump.spec.js"
+      ],
+      "remaining": "Measured original 1985 housing and pickup, verified tooth count/profile and operating mesh, pressure-relief calibration, complete internal galleries and mounting coordinates; filter internals and every gallery plug remain unfinished."
+    },
+    "06.3": {
+      "status": "partial",
+      "progress": "Oil-pump construction now complements the nested water-pump internals: separate spur gears, relief piston/spring/pin, cover and fasteners, hollow pickup and wire screen. Static reconstructed interfaces have dedicated mesh checks.",
+      "evidence": [
+        "references/oil-pump-reconstruction.md",
+        "artifacts/oil-pump-audit.json",
+        "artifacts/engine-internals-audit.json"
+      ],
+      "remaining": "Original pump geometry and calibration, verified early sump/seals, complete accessory brackets/lifts and measured water-pump construction remain incomplete."
+    },
+    "17.2": {
+      "status": "partial",
+      "progress": "R8 covers the full exterior: refitted straight side/wraparound moldings, accurately clipped fuel/intake openings, intake below the molding, exposed lower nose deflector, smoother road-tire silhouette, revised machined wheel/sail/paint/lamp finishes and close-view inspection. The deeper R7 rear apron and softened upper lamp corners remain. Sixteen selected dimensional comparisons and separate actual-mesh interface audits support development review. Two bumper-reference interpretations and factory tooling accuracy remain unresolved; owner approval is not asserted.",
+      "evidence": [
+        "references/exterior-reconstruction-20260924.md",
+        "artifacts/exterior-audit.json",
+        "artifacts/visual-inspection-manifest.json",
+        "tests/exterior.spec.js",
+        "references/body-dimension-reconstruction-20260924.md",
+        "artifacts/body-dimension-audit.json",
+        "references/body-r4-owner-review-20260924.md",
+        "artifacts/rear-body-surface-audit.json",
+        "tests/body-shape-review.spec.js",
+        "references/body-r5-factory-specification-review.md",
+        "references/body-r6-tail-lamp-review.md",
+        "tests/tail-lamp-review.spec.js",
+        "artifacts/visual-review-findings.md",
+        "references/body-r8-specification.md",
+        "artifacts/body-geometry-verification.json",
+        "artifacts/exterior-fit-audit.json",
+        "tests/exterior-close-review.spec.js"
+      ],
+      "remaining": "Measured A/B/C-pillar, backlight, decklid/vent and rear bumper sections; final owner visual approval."
+    },
+    "17.4": {
+      "status": "partial",
+      "progress": "Visible fascia moldings, pads, lower front deflector, intake grille and existing four liners/retaining sets are separately explorable.",
+      "evidence": [
+        "references/exterior-reconstruction-20260924.md",
+        "artifacts/exterior-audit.json",
+        "artifacts/visual-inspection-manifest.json",
+        "tests/exterior.spec.js"
+      ],
+      "remaining": "Original fascia supports, complete air deflectors/seals, measured liner forms and drawing-by-drawing reconciliation of every retainer."
+    },
+    "17.5": {
+      "status": "partial",
+      "progress": "AD3 roof construction now includes 16 separate hinge/bushing/nut, handle, release housing/button, trim, deflector and fastening selections. Panel-mounted pieces follow the removable glass; body-side pieces remain with the open roof. Glass underside/edges and a stepped aperture seal are modeled from the GM component relationships.",
+      "evidence": [
+        "references/exterior-reconstruction-20260924.md",
+        "artifacts/exterior-audit.json",
+        "artifacts/visual-inspection-manifest.json",
+        "tests/exterior.spec.js",
+        "references/sunroof-reconstruction-20260924.md",
+        "src/sunroof.js",
+        "tests/sunroof.spec.js"
+      ],
+      "remaining": "Measured glass and weatherstrip sections, latch detents/springs and calibrated travel, verified water management/drains and front-compartment stowage, complete headliner/adhesive details."
+    },
+    "17.6": {
+      "status": "partial",
+      "progress": "Carrier and pedestal wing now have independent selections with configuration-aware visibility. Driver fuel door, pocket and hinge now separate from the quarter skin; filler cap recessed behind the closed door.",
+      "evidence": [
+        "references/exterior-reconstruction-20260924.md",
+        "artifacts/exterior-audit.json",
+        "artifacts/visual-inspection-manifest.json",
+        "tests/exterior.spec.js"
+      ],
+      "remaining": "Verified mounts/pads/reinforcement, option-specific torque rods, full fuel-door release and power-release mechanisms, measured geometry and travel."
+    },
+    "15.3": {
+      "status": "partial",
+      "progress": "Both mirrors now have tapered rounded shells, separate recessed glass/carriers and independent pedestals/pads using the inspected GM CD PDF 288 layout.",
+      "evidence": [
+        "references/exterior-reconstruction-20260924.md",
+        "artifacts/exterior-audit.json",
+        "artifacts/visual-inspection-manifest.json",
+        "tests/exterior.spec.js"
+      ],
+      "remaining": "Original dimensions, manual/electric adjuster internals, cables/wiring, mounting hardware and calibrated travel."
+    },
+    "15.4": {
+      "status": "partial",
+      "progress": "Outside handles, key bezels, ribbed door rub moldings and outer window belt seals now have separate native selections.",
+      "evidence": [
+        "references/exterior-reconstruction-20260924.md",
+        "artifacts/exterior-audit.json",
+        "artifacts/visual-inspection-manifest.json",
+        "tests/exterior.spec.js"
+      ],
+      "remaining": "Measured weatherstrip sections, inner shields, complete belt molding attachments, channels/felts and trim retaining inventory."
+    },
+    "16.1": {
+      "status": "partial",
+      "progress": "Separate left/right parked arms, pivot caps and 18-inch-envelope blade/refill assemblies replace the short windshield-line proxies; GM CD PDF 284 inspected.",
+      "evidence": [
+        "references/exterior-reconstruction-20260924.md",
+        "artifacts/exterior-audit.json",
+        "artifacts/visual-inspection-manifest.json",
+        "tests/exterior.spec.js"
+      ],
+      "remaining": "Motor/gearbox, hidden transmission/pivots, calibrated full sweep, delay controls, exact holder tooling and complete arm construction."
     }
   }
 }

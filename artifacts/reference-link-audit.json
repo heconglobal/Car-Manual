@@ -1,8 +1,8 @@
 {
-  "date": "2026-09-22T09:01:43.515Z",
-  "status": "passed-after-retry",
-  "uniqueDocuments": 15,
-  "reachable": 15,
+  "date": "2026-09-24T00:09:56.037Z",
+  "status": "needs-review",
+  "uniqueDocuments": 16,
+  "reachable": 14,
   "results": [
     {
       "url": "https://cdn11.bigcommerce.com/s-ragx7opcj4/content/files/1985-pontiac-fiero-service-manual-sample1.jpg?t=1663030449",
@@ -12,6 +12,12 @@
       "contentType": "image/jpeg",
       "formatOkay": true,
       "status": "reachable"
+    },
+    {
+      "url": "https://charm.li/Pontiac/1985/Fiero%20V6-173%202.8L/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/Headlamp/Headlamp%20Motor/",
+      "fragments": [],
+      "status": "needs-review",
+      "error": "fetch failed"
     },
     {
       "url": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf",
@@ -61,6 +67,7 @@
       "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf",
       "fragments": [
         "#page=1038",
+        "#page=1047",
         "#page=1208",
         "#page=1209",
         "#page=1214",
@@ -76,6 +83,7 @@
         "#page=708",
         "#page=802",
         "#page=886",
+        "#page=994",
         "#page=995"
       ],
       "httpStatus": 206,
@@ -157,11 +165,11 @@
     {
       "url": "https://motorad.com/part/211-195/",
       "fragments": [],
-      "httpStatus": 200,
+      "httpStatus": 403,
       "finalUrl": "https://motorad.com/part/211-195/",
-      "contentType": "text/html; charset=UTF-8",
+      "contentType": "text/html",
       "formatOkay": true,
-      "status": "reachable"
+      "status": "needs-review"
     },
     {
       "url": "https://polyhaven.com/a/studio_small_09",
@@ -201,29 +209,11 @@
         "#page=32",
         "#page=93"
       ],
-      "status": "reachable",
-      "error": "This operation was aborted",
-      "attempts": [
-        {
-          "url": "https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FOwners+Manuals%2F1985%2F1985+Fiero+Owners+Manual.pdf",
-          "fragments": [
-            "#page=32",
-            "#page=93"
-          ],
-          "status": "needs-review",
-          "error": "This operation was aborted"
-        },
-        {
-          "startedAt": "2026-09-22T09:02:41.540Z",
-          "finishedAt": "2026-09-22T09:02:57.081Z",
-          "httpStatus": 200,
-          "contentType": "application/pdf",
-          "formatOkay": true
-        }
-      ],
       "httpStatus": 200,
+      "finalUrl": "https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FOwners+Manuals%2F1985%2F1985+Fiero+Owners+Manual.pdf",
+      "contentType": "application/pdf",
       "formatOkay": true,
-      "contentType": "application/pdf"
+      "status": "reachable"
     },
     {
       "url": "https://www.detroitironis.com/1985-pontiac-fiero-service-manual-print.html",
@@ -253,6 +243,5 @@
       "status": "reachable"
     }
   ],
-  "limits": "Reachability and PDF signature check only. Does not verify source claims, full download integrity, fragment destinations, copyright or applicability to the original vehicle. Some sites may block automated requests.",
-  "retriedAt": "2026-09-22T09:02:57.083Z"
+  "limits": "Reachability and PDF signature check only. Does not verify source claims, full download integrity, fragment destinations, copyright or applicability to the original vehicle. Some sites may block automated requests."
 }

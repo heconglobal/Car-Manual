@@ -1,5 +1,6 @@
 import * as T from 'three';
 import { buildRearClip } from './rear-clip.js';
+import { buildSunroof, roofPoint, sunroofGlassPoint } from './sunroof.js';
 
 // 1985 brochure and GM 22P H-8: formed roof skin, separate sail applique,
 // recessed backlight. Local curves are reconstructed, not tooling coordinates.
@@ -10,7 +11,6 @@ export function buildGreenhouse(h,deckHeight){
  const windshield=(u,v)=>{const a=2*u-1,corner=.022*Math.exp(-v*55)+.032*Math.exp(-(1-v)*55);return [a*(lerp(.773,.583,v)-corner),lerp(.817,1.145,v)+(.012+.012*v)*(1-a*a),lerp(-.612,-.118,v)-.028*(1-a*a)-.006*Math.sin(v*Math.PI)];};
  const aPost=t=>[lerp(.787,.619,t)+.003*Math.sin(t*Math.PI),lerp(.818,1.132,t)+.007*Math.sin(t*Math.PI),lerp(-.591,-.052,t)-.008*Math.sin(t*Math.PI)];
  const rail=t=>bezier([.619,1.132,-.052],[.603,1.166,.018],[.610,1.155,.409],[.623,1.136,.470],t);
- const roofPoint=(u,v)=>{const a=2*u-1;return [a*(.606+.004*Math.sin(v*Math.PI)),1.192-.028*a*a-.007*(2*v-1)**4,lerp(-.104,.488,v)+.030*a**4*(1-v)-.010*a**4*v];};
  const windowTop=u=>u<.48?aPost(u/.48):rail((u-.48)/.52);
  const sideWindow=(s,u,v)=>{const p=blend([.787,.814,lerp(-.591,.572,u)],windowTop(u),v);p[0]+=.009*Math.sin(v*Math.PI)*Math.sin(u*Math.PI);p[0]*=s;return p;};
  surface('glass',48,32,windshield,'glass');
@@ -48,8 +48,9 @@ export function buildGreenhouse(h,deckHeight){
   }
   // Linear interpolation along straight edges avoids Catmull-Rom overshoot.
   const rim=new T.CurvePath();for(let i=0;i<perimeter.length;i++)rim.add(new T.LineCurve3(new T.Vector3(...perimeter[i]),new T.Vector3(...perimeter[(i+1)%perimeter.length])));
-  h.add('roof',new T.TubeGeometry(rim,192,.003,6,true),'rubber',[0,0,0],[0,0,0],flags);
+  h.add('sunroof-seal',new T.TubeGeometry(rim,192,.003,6,true),'rubber',[0,0,0],[0,0,0],flags);
  }
- surface('roof',40,36,(u,v)=>{const d=Math.min(v,1-v)*.73,inset=d<.060?.037*(1-Math.sqrt(Math.max(0,1-(1-d/.060)**2))):0;const p=roofPoint(.14+inset+u*(.72-2*inset),.13+v*.73);p[1]+=.001;return p;},'glass',{option:'roof',value:'glass'});
+ surface('sunroof-glass',40,36,sunroofGlassPoint,'glass',{option:'roof',value:'glass'});
+ buildSunroof(h);
  buildRearClip(h,deckHeight,roofPoint,sideWindow);
 }

@@ -1,0 +1,114 @@
+{
+  "startedAt": "2026-09-24T22:21:50.324Z",
+  "finishedAt": "2026-09-24T22:28:23.369Z",
+  "sourceSha256": "8db945773c72a68ebf2a66bbce0de6757274e59a18acb9e50f6a107aa8e25177",
+  "unchanged": true,
+  "status": "passed",
+  "results": [
+    {
+      "script": "audit-model",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 193729,
+      "log": "artifacts/geometry-check-logs/audit-model.log"
+    },
+    {
+      "script": "audit-exterior",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 32399,
+      "log": "artifacts/geometry-check-logs/audit-exterior.log"
+    },
+    {
+      "script": "audit-body-dimensions",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 16261,
+      "log": "artifacts/geometry-check-logs/audit-body-dimensions.log"
+    },
+    {
+      "script": "audit-rear-body",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 21579,
+      "log": "artifacts/geometry-check-logs/audit-rear-body.log"
+    },
+    {
+      "script": "audit-powertrain",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 73416,
+      "log": "artifacts/geometry-check-logs/audit-powertrain.log"
+    },
+    {
+      "script": "audit-factory-datums",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 11259,
+      "log": "artifacts/geometry-check-logs/audit-factory-datums.log"
+    },
+    {
+      "script": "audit-engine-timing",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 10290,
+      "log": "artifacts/geometry-check-logs/audit-engine-timing.log"
+    },
+    {
+      "script": "audit-engine-internals",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 6513,
+      "log": "artifacts/geometry-check-logs/audit-engine-internals.log"
+    },
+    {
+      "script": "audit-oil-pump",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 5935,
+      "log": "artifacts/geometry-check-logs/audit-oil-pump.log"
+    },
+    {
+      "script": "audit-headlights",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 3813,
+      "log": "artifacts/geometry-check-logs/audit-headlights.log"
+    },
+    {
+      "script": "audit-headlight-electrical",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 3391,
+      "log": "artifacts/geometry-check-logs/audit-headlight-electrical.log"
+    },
+    {
+      "script": "audit-geometry-merge",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 889,
+      "log": "artifacts/geometry-check-logs/audit-geometry-merge.log"
+    },
+    {
+      "script": "audit-wiring",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 3301,
+      "log": "artifacts/geometry-check-logs/audit-wiring.log"
+    },
+    {
+      "script": "audit-front-clearance",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 9752,
+      "log": "artifacts/geometry-check-logs/audit-front-clearance.log"
+    },
+    {
+      "script": "audit-distribution",
+      "status": "passed",
+      "exitCode": 0,
+      "durationMs": 267,
+      "log": "artifacts/geometry-check-logs/audit-distribution.log"
+    }
+  ]
+}

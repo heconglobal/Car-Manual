@@ -1,6 +1,8 @@
+import {oilPumpParts,oilPumpSource,oilPumpReferenceNote} from './engine-oil-pump.js';
+import {lifterSections,lifterInternalParts,lifterSource,lifterReferenceNote} from './engine-lifters.js';
 import {cylinderNumber,cylinderReference,mvma1985,chevroletV6Blueprint} from './factory-specifications.js';
 import {valveHardwareParts} from './engine-valvetrain.js';
-import {engineServiceParts} from './engine-service-catalog.js';
+import {engineServiceParts,waterPumpInternals} from './engine-service-catalog.js';
 import {engineControlParts} from './engine-controls.js';
 import {ignitionParts,ignitionReferences,sparkPlugReference} from './ignition-catalog.js';
 export const engineSource='https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_P22.pdf';
@@ -13,6 +15,7 @@ export const engineSections=[
  {id:'induction',name:'Intake & fuel injection',spread:[0,.68,0]},
  {id:'timing',name:'Camshaft & timing drive',spread:[-.46,0,0]},
  {id:'lubrication',name:'Oil pan & lubrication',spread:[0,-.38,0]},
+ {id:'oil-pump-detail',parent:'lubrication',name:'Oil pump & pickup',spread:[0,-.38,0]},
  {id:'dipstick-detail',parent:'lubrication',name:'Dipstick & guide tube',spread:[0,-.38,0]},
  {id:'oil-pressure-detail',parent:'lubrication',name:'Oil-pressure sender · A/C',spread:[0,-.38,0]},
  {id:'ignition',name:'Ignition & tune-up',spread:[.46,.25,0]},
@@ -25,6 +28,7 @@ export const engineSections=[
  {id:'flywheel',name:'Manual-engine flywheel',spread:[.46,-.08,0]},
 ];
 for(const [bank,s] of [['front',-1],['rear',1]])for(let c=1;c<=3;c++)for(const type of ['intake','exhaust'])engineSections.push({id:`valve-${bank}-${c}-${type}`,parent:`head-${bank}`,name:`Cylinder ${cylinderNumber(bank,c)} ${type} valve gear`,spread:[0,.30,s*.42]});
+engineSections.push(...lifterSections);
 export const engineParts=[];
 const part=(id,section,name,description,spread=[0,0,0])=>engineParts.push({id:`eng-${id}`,section,system:'engine',name,description,location:engineSections.find(s=>s.id===section).name,spread,source:['short-block','timing','lubrication','accessories','flywheel'].includes(section)?'GM 22P · H-19':'GM 22P · H-22'});
 part('block','short-block','Cylinder block','Reconstructed 60-degree V6 block with six open cylinder bores, crankcase walls and main-bearing saddles. Local casting details and dimensions are approximate.');
@@ -51,8 +55,8 @@ for(const [bank,s] of [['front',-1],['rear',1]]){
    part(`valve-${v}`,valveSection,`${name} valve`,'One-piece poppet valve with a beveled seat edge, curved tulip transition and long stem. Valve angle, lift and seating dimensions remain approximate.',[(c-2)*.075,-.17,s*.17]);
    part(`spring-${v}`,valveSection,`${name} valve spring`,'Helical valve spring. The spring cap, keeper pair and stem seals are separate selections. Spring rate and installed height are not verified.',[(c-2)*.075,.16,s*.17]);
    part(`rocker-${v}`,valveSection,`${name} rocker arm`,'Hollow stamped rocker arm with raised side flanges, a slotted stud opening, contact pads and a spherical fulcrum. Stud, guide plate and adjusting nut are separate selections.',[(c-2)*.075,.29,s*.17]);
-   part(`pushrod-${v}`,valveSection,`${name} pushrod`,'Individual pushrod between the lifter and rocker.',[(c-2)*.075,.04,-s*.15]);
-   part(`lifter-${v}`,valveSection,`${name} hydraulic lifter`,'Individual hydraulic-lifter exterior. Internal lifter pieces are not yet modeled.',[(c-2)*.075,-.09,-s*.15]);
+   part(`pushrod-${v}`,valveSection,`${name} pushrod`,'Individual pushrod with rounded ends connecting its lifter seat to the rocker socket. Length and running clearance remain reconstructed.',[(c-2)*.075,.04,-s*.15]);
+   part(`lifter-${v}`,`lifter-${v}`,`${name} hydraulic lifter body`,'Hollow flat-tappet body with a closed cam-contact foot, open oil-feed drilling, annular oil groove and internal retaining-ring groove. Open its nine-piece lifter scope to inspect the internal pieces.',[(c-2)*.075,-.09,-s*.15]);
   }
   part(`spark-${tag}`,'plug-wires',`${where} spark plug`,'Spark plug with ribbed ceramic, metal terminal, hex, tapered seat, threaded shell and ground electrode. Shape is reconstructed. The factory reference below is specific to the original 1985 six-cylinder engine.',[(c-2)*.09,0,s*.27]);
   Object.assign(engineParts.at(-1),{system:'electrical',source:ignitionReferences.est.label,sourceUrl:ignitionReferences.est.url,aliases:'ignition tune up plugs',serviceReference:sparkPlugReference});
@@ -70,27 +74,29 @@ for(const [id,name,desc,spread] of [
 ])part(id,'induction',name,desc,spread);
 for(let i=0;i<6;i++)part(`injector-${i+1}`,'induction',`Cylinder ${cylinderNumber(i<3?'front':'rear',i%3+1)} fuel injector`,'Individual injector exterior with connector and seals. Cylinder identity follows the Pontiac bank layout.',[(i%3-1)*.06,-.05,(i<3?-1:1)*.12]);
 for(const [id,section,name,desc,spread] of [
- ['camshaft','timing','Camshaft','Cam-in-block shaft with twelve representative lobes.',[-.28,0,0]],
- ['cam-bearings','timing','Camshaft bearing set','Grouped journal-bearing sleeves. Exact bearing sizes and oil-hole positions remain unverified.',[.12,.10,0]],
- ['cam-gear','timing','Camshaft sprocket','Larger timing sprocket at the accessory end.',[-.13,.04,0]],
- ['crank-gear','timing','Crankshaft sprocket','Smaller crank timing sprocket.',[-.13,-.04,0]],
- ['chain','timing','Timing chain','Individual linked-chain representation between sprockets.',[-.23,0,0]],
- ['timing-cover','timing','Timing cover','Front cover with a crank-seal opening.',[-.36,0,0]],
+ ['camshaft','timing','Camshaft','Cam-in-block shaft at the GM production-family 159.03 mm crank-to-cam datum, with twelve reconstructed lobes, four journals and a locating nose. Static lobe phases are illustrative.',[-.28,0,0]],
+ ['cam-bearings','timing','Camshaft bearing set','Four annular bearing sleeves surrounding the cam journals. Bore surfaces and axial separation are checked in the model; original sizes, running clearances and oil holes remain unverified.',[.12,.10,0]],
+ ['cam-gear','timing','Camshaft sprocket','Larger open-web timing sprocket with three mounting bolts. Forty teeth follow researched replacement data; original GM tooth tooling, hole dimensions and application equivalence remain unverified.',[-.13,.04,0]],
+ ['crank-gear','timing','Crankshaft sprocket','Twenty-tooth reconstructed crank sprocket paired at 2:1 with the cam sprocket. Tooth tooling, keyway and original-part fit remain unverified.',[-.13,-.04,0]],
+ ['chain','timing','Timing chain','Pin-connected plate links following tangent runs around both sprockets. Link profiles, pitch, silent-chain plate stack and tooth engagement are illustrative, not a running timing simulation.',[-.23,0,0]],
+ ['timing-cover','timing','Timing cover','Open-backed timing-cover shell with a crank-seal aperture, rear flange and matching separate gasket. Chain containment is checked; original casting, coolant passages and bolt map remain unmeasured.',[-.36,0,0]],
  ['balancer','timing','Harmonic balancer','Crankshaft damper and belt-groove representation.',[-.49,0,0]],
  ['crank-pulley','accessories','Crankshaft accessory pulley','Separate dished drive pulley ahead of the harmonic balancer. The belt follows the shared crank, water-pump and generator pulley envelopes; diameters and belt length remain reconstructed.',[-.37,0,0]],
  ['pan','lubrication','Oil pan','Stepped stamped sump with a shallow timing-end shelf, drawn corners, open interior, flange and separate drain plug and flange fasteners. Shape follows GM H-19; local dimensions and finish are reconstructed.',[0,-.20,0]],
  ['pan-gasket','lubrication','Oil-pan gasket','Two separate side-rail gasket strips, grouped. The early rear end seal is a separate selection. Front end sealing and exact flange profiles remain incomplete; not a fabrication template.',[0,-.07,0]],
- ['oil-pump','lubrication','Oil pump','Pump housing below the crankcase.',[.13,0,0]],
- ['pickup','lubrication','Oil pickup & strainer','Formed pickup tube and screened inlet.',[-.13,-.04,0]],
+ ['oil-pump','oil-pump-detail','Oil-pump housing','Open twin-gear pocket, shaft bore, idler journal and mounting ear. Open this scope for the gears, cover, relief parts, pickup and fasteners.',[0,0,0]],
+ ['pickup','oil-pump-detail','Oil-pickup tube and shell','Hollow bent pickup tube and open formed shell with a separately selectable screen. Exact original tube route and sump position remain unverified.',[-.09,0,.05]],
  ['oil-filter','lubrication','Oil filter','Spin-on filter exterior.',[.18,-.05,-.24]],
- ['water-pump','water-pump-detail','Water pump','Contoured cast pump, open rear chamber, irregular mounting flange, bearing nose and hub. Exact coolant passages, impeller and bearing internals remain incomplete.',[0,0,0]],
+ ['water-pump','water-pump-detail','Water pump','Contoured cast pump, open rear chamber, irregular mounting flange, bearing nose. Hub, unitized shaft/bearing, mechanical seal and impeller are selectable; exact original coolant passages and internal variants remain unverified.',[0,0,0]],
  ['water-pulley','water-pump-detail','Water-pump pulley','Stamped dish pulley with a formed rim and open centre. Fasteners are separately selectable; local dimensions remain reconstructed.',[-.16,0,0]],
  ['alternator','accessories','Alternator','Shared generator castings, rotor/stator, bearings, regulator/rectifier and brushes. Open its linked component explorer for individual selections.',[0,.23,-.16]],
  ['belt','accessories','Accessory belt','Representative belt loop; not a routing or length specification.',[-.27,0,0]],
  ['flywheel','flywheel','Manual-transmission flywheel','Engine-side flywheel and ring gear; clutch and transaxle remain separate vehicle assemblies.',[.15,0,0]],
  ['rear-seal','flywheel','Rear crankshaft seal','Separate annular crank seal.',[0,0,0]],
 ])part(id,section,name,desc,spread);
-engineParts.push(...ignitionParts,...engineControlParts,...engineServiceParts,...valveHardwareParts);
+engineParts.push(...oilPumpParts,...ignitionParts,...engineControlParts,...engineServiceParts,...waterPumpInternals,...valveHardwareParts,...lifterInternalParts);
+for(const [id,callout] of [['eng-oil-pump',1],['eng-pickup',3],['eng-oil-pump-drive',null]])Object.assign(engineParts.find(p=>p.id===id),{section:'oil-pump-detail',source:'GM 1986 · 6A2-21 figure 23',sourceUrl:oilPumpSource,referenceNote:oilPumpReferenceNote,callout});
+for(const p of engineParts.filter(p=>/^eng-lifter-(front|rear)-/.test(p.id)))Object.assign(p,{callout:1,source:'GM 1986 · 6A-20 figure 46',sourceUrl:lifterSource,referenceNote:lifterReferenceNote});
 for(const [id,callout] of [['eng-water-pump',72],['eng-water-pulley',69]])Object.assign(engineParts.find(p=>p.id===id),{source:'GM 22P · H-19',sourceUrl:engineSource+'#page=14',callout});
 for(const p of engineParts){const m=p.id.match(/(?:piston|rings|pin|rod|rod-cap|rod-bearing|spark|valve|spring|rocker|pushrod|lifter)-(front|rear)-([123])/);if(m){p.cylinder=cylinderNumber(m[1],Number(m[2]));if(!p.serviceReference)p.serviceReference=cylinderReference;}}
 Object.assign(engineParts.find(p=>p.id==='eng-block'),{serviceReference:{title:'1985 L44 nominal engine dimensions',rows:[['Bore','89.0 mm'],['Stroke','76.0 mm'],['Cylinder pitch','111.8 mm'],['Block deck height','224 mm'],['Bank offset','44 mm']],links:[['Pontiac 1985 engine specifications',mvma1985+'#page=5'],['GM production V6 blueprint · figure 11',chevroletV6Blueprint]],note:'Nominal bore and pitch are applied to this reconstruction. Deck height and bank stagger use the GM production-family blueprint. Casting contours, installed mounts, bore fits and operating clearances remain unmeasured.'}});

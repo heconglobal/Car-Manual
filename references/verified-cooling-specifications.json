@@ -1,7 +1,7 @@
 {
   "reviewedAt": "2026-09-22",
   "vehicle": "1985 Fiero L44 / VIN engine code 9",
-  "status": "factory-reference transcription; not complete interactive procedure",
+  "status": "factory-reference transcription integrated into a twenty-step interactive walkthrough; physical workshop validation pending",
   "sources": {
     "owners": {
       "file": "1985-owners-boomtastic.pdf",
@@ -52,5 +52,12 @@
   ],
   "rejectedInference": "The 13.3 L manual-transmission/A-C entry belongs to VIN engine code R (four-cylinder), not the L44 V6 row. Do not apply it to this car.",
   "procedureReview": "All 20 numbered factory coolant replacement steps inspected. Distinguish the recovery bottle, radiator pressure cap and thermostat housing cap; keep the thermostat out during the specified filling/purge stages; follow the full original sequence and cap-release prerequisites. The original publication includes flushing and reservoir cleaning, which must not be silently omitted when presenting its complete replacement procedure.",
-  "limits": "The 1985 GM 1825-M coolant specification is a historical factory requirement. This record does not establish a current product recommendation or a substitute procedure. Original production fan/shroud variant remains an option/application question."
+  "limits": "The 1985 GM 1825-M coolant specification is a historical factory requirement. This record does not establish a current product recommendation or a substitute procedure. Original production fan/shroud variant remains an option/application question.",
+  "interactiveGuide": {
+    "id": "coolant-replacement",
+    "implementation": "src/service-guides.js",
+    "sourceReview": "references/coolant-service-guide.md",
+    "test": "tests/coolant-guide.spec.js",
+    "factorySteps": 20
+  }
 }

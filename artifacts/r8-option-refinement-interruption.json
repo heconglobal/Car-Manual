@@ -1,0 +1,10 @@
+{
+  "date": "2026-09-25T01:27:56.133845+00:00",
+  "sourceSha256": "9fd59d8b0d2c1f60b3a9422d8550e38328df106eec303cd2fd49ac20a2639f45",
+  "status": "interrupted-not-counted",
+  "reason": "Development iteration stopped after the comparison scenario while fitting carrier/wing supports and correcting the 1.049 mm nose-length error. Console-only passes are not current browser evidence. The focused geometry run completed with a failed dimensional check before the stop signal arrived.",
+  "exitCodes": [
+    130,
+    1
+  ]
+}

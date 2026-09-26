@@ -12,7 +12,7 @@ Research and reconstruction: 2026-09-21. This increment adds 27 selectable engin
 ## Geometry and interaction
 
 - The thermostat neck has a hollow bore, side opening, hose bead, rolled filler lip, flange opening and bolt holes. Cap, thermostat, housing, gasket and bolts separate independently. The tall handle is a thin stamped arch; the spring and copper capsule are modeled geometry. Its seal diameter and overall envelope use the expressly labeled replacement reference. The original stamped profiles, cap details and housing dimensions remain reconstructed.
-- The pump has a contoured cast volute, bearing nose, hub, irregular mounting flange and hollow rear cavity. Pulley, mounting gasket, early heater fitting, mounting bolts and pulley bolts are separate selections. The sealed pump is not falsely exploded into unverified bearing/impeller internals.
+- The pump has a contoured cast volute, bearing nose, hub, irregular mounting flange and hollow rear cavity. Pulley, mounting gasket, early heater fitting, mounting bolts and pulley bolts are separate selections. Four further selections now show the pulley hub, unitized shaft/bearing, mechanical seal assembly and impeller. They are explicitly qualified construction reconstructions, not original GM internal service parts.
 - The dipstick is a swept flat blade, with a formed loop and stopper. Its separate guide is a hollow sweep, with mouth flare, bracket, fastener and seal. Length, route and level markings are illustrative, not an oil-level calibration.
 - The sender scope explicitly previews the **A/C** pipe arrangement, independently of the vehicle options. It does not claim that VIN identifies A/C. The early sender is a large molded body over a metal base, with separate pipe/adapter/support fastener. The non-A/C arrangement is still missing.
 - Timing-cover gasket, front crank seal, timing pointer and chain guide are independently selectable. Exact timing marks, wear profile and gasket outlines are not specifications.
@@ -20,4 +20,15 @@ Research and reconstruction: 2026-09-21. This increment adds 27 selectable engin
 
 ## Remaining accuracy work
 
-The new geometry improves component identity and surface detail. It is not measured factory CAD or a complete photorealistic engine. Engine casting dimensions, mechanical alignments, actual fastener lengths, pump internals, precise hose routes, the complete early-pan joint, and the non-A/C sender installation remain incomplete. Catalog counts include service sets and overlap the vehicle view; they are not a whole-car part count.
+The new geometry improves component identity and surface detail. It is not measured factory CAD or a complete photorealistic engine. Engine casting dimensions, mechanical alignments, actual fastener lengths, original pump internals and weep passage, precise hose routes, the complete early-pan joint, and the non-A/C sender installation remain incomplete. Catalog counts include service sets and overlap the vehicle view; they are not a whole-car part count.
+
+
+## Water-pump internal construction — September 24, 2026
+
+[GM adjacent-year 1986 manual, PDF 352, printed 6B-11](https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=352) was rendered and inspected locally. Its lower-right 2.8L section removes/refits the complete pump; it does not supply an internal overhaul drawing. The 1.8L and 2.5L material elsewhere on that page is not used as L44 geometry evidence.
+
+[GMB’s manufacturer construction reference](https://gmb.net/blog/water-pump-components/) establishes the housing, impeller, bearing and pulley/hub relationships and the need to isolate the bearing from coolant. It does not specify original Fiero vane geometry, bearing type or seal stack. Those are kept explicitly unverified in the inspector. Replacement listings encountered during research disagree about impeller material; no retailer claim is used to identify the original installed pump.
+
+The native construction view adds a shaft and bearing sleeve with end seals, a separate four-hole hub flange, a spring/face/carrier seal assembly and an open curved-vane impeller. The illustrated six-vane count, material, dimensions and fits are reconstructed. The bearing and seal remain units rather than invented lists of factory rollers or seal service parts. Actual-mesh checks verify shaft alignment, the rear-chamber envelope and open impeller shaft bore. The pulley/hose placement remains shared with the complete engine.
+
+Original bearing internals, mechanical-seal stack, weep drilling, blade profile/count and internal flow passages remain explicit requirements 13.1 and 13.4. This is construction inspection, not a pump-rebuilding procedure.

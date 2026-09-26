@@ -1,0 +1,36 @@
+{
+  "date": "2026-09-24T22:28:01.827Z",
+  "sourceSha256": "8db945773c72a68ebf2a66bbce0de6757274e59a18acb9e50f6a107aa8e25177",
+  "status": "passed",
+  "limits": "Actual-mesh checks on reconstructed static geometry. Does not verify original dimensions, oil flow, pressure calibration, operating tooth engagement or a repair procedure.",
+  "checks": [
+    {
+      "name": "Twelve selections reconcile figure 23 construction callouts",
+      "passed": true,
+      "selections": 12,
+      "newSelections": 9
+    },
+    {
+      "name": "Actual gear meshes fit the open pocket with axial end clearance",
+      "passed": true
+    },
+    {
+      "name": "Static tooth envelopes do not intersect",
+      "passed": true,
+      "pose": "Static only; no operating tooth contact or ratio certification"
+    },
+    {
+      "name": "Drive coupling socket, idler bore and roof shaft passage remain open",
+      "passed": true
+    },
+    {
+      "name": "Relief piston, spring and pin fit their open sleeve",
+      "passed": true
+    },
+    {
+      "name": "Cover inlet, screen gaps and pickup shell are real openings",
+      "passed": true,
+      "reconstructedScreenToSumpGapMm": 41.999995708465576
+    }
+  ]
+}

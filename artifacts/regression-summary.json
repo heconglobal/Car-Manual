@@ -1,261 +1,372 @@
 {
-  "passed": true,
-  "requiredTests": 31,
-  "passedTests": 31,
-  "missingTests": [],
+  "passed": false,
+  "requiredTests": 40,
+  "passedTests": 4,
+  "missingTests": [
+    "body-hardware.spec.js: body panels share vehicle surfaces and expose hinges, torque rods, latches and retainers",
+    "brakes.spec.js: 1985 brakes expose distinct corners, hydraulic internals and parking controls",
+    "configuration.spec.js: preview choices change geometry, persist, and leave the VIN record intact",
+    "configuration.spec.js: invalid saved preview values recover to supported choices",
+    "coolant-guide.spec.js: twenty-step coolant guide crosses engine and radiator scopes, preserves cap order and returns safely",
+    "electrical.spec.js: lighting and charging assemblies expose native parts, option lamps and correct lamp interfaces",
+    "electrical.spec.js: 1985 fuse layout, ECM connectors, flashers and verified EST circuits are inspectable on desktop and mobile",
+    "engine-service.spec.js: cooling assembly opens detailed service parts, separates them and restores vehicle context",
+    "engine.spec.js: engine has independent explosion, selectable internals, subassembly navigation and vehicle return",
+    "engine.spec.js: engine explorer supports mobile navigation and return without overflow",
+    "exhaust.spec.js: early V6 exhaust exposes period catalyst, spring joints, supports and finish previews",
+    "exterior.spec.js: exterior service pieces select, isolate, explode and return on desktop and mobile",
+    "fuel.spec.js: early V6 fuel supply exposes pump, sender, filler, filter and vapor parts",
+    "headlights.spec.js: 1985 headlights expose both sides, early motor internals, independent covers and a complete remaining-work list",
+    "hvac.spec.js: heater and C60 previews share native cores and show distinct controls, motors and refrigeration parts",
+    "ignition.spec.js: global ICM search opens the nested distributor, separates parts and restores the vehicle",
+    "ignition.spec.js: electrical catalogue exposes ignition assemblies and mobile tune-up navigation",
+    "oil-pump.spec.js: oil pump construction opens, explodes, isolates and returns on desktop and mobile",
+    "rear-body.spec.js: rear glass, sail windows and deck vents are independent selectable assemblies",
+    "service-guides.spec.js: factory headlamp guide highlights real parts, preserves relay reconnection order and restores the previous view",
+    "sunroof.spec.js: sunroof hardware follows panel removal and remains inspectable on desktop and mobile",
+    "suspension.spec.js: early suspension and manual steering remain selectable, asymmetric and reachable on mobile",
+    "tail-lamp-review.spec.js: 1985 rear lamps retain four chambers, clear outer covers and separate inner optics in shared geometry",
+    "transmission-cooling.spec.js: four-speed internals, cooling circuit and US left-hand-drive layout remain coherent",
+    "valve-gear.spec.js: individual valve gear separates small hardware and preserves the correct stem-seal variant",
+    "workshop.spec.js: renders 3D vehicle without runtime errors or external image requests",
+    "workshop.spec.js: system filtering, global search, focus, isolation and reset work",
+    "workshop.spec.js: camera presets and keyboard controls update the viewer",
+    "workshop.spec.js: visibility, labels, wireframe and exploded views work",
+    "workshop.spec.js: direct 3D picking selects a part",
+    "workshop.spec.js: orientation tour advances, goes back, and finishes",
+    "workshop.spec.js: air-cleaner tour advances, goes back, and finishes",
+    "workshop.spec.js: suspension tour advances, goes back, and finishes",
+    "workshop.spec.js: specification provenance and source dialog remain accessible",
+    "workshop.spec.js: UAT feedback persists, is safely rendered, and exports valid JSON",
+    "workshop.spec.js: mobile layout renders without overflow and opens assembly navigation"
+  ],
   "outcomes": [
     {
       "id": "69dd03b11e104023332c-5988802ef7e39b439c09",
       "file": "body-hardware.spec.js",
       "title": "body panels share vehicle surfaces and expose hinges, torque rods, latches and retainers",
+      "passed": false,
+      "report": null,
+      "startTime": null
+    },
+    {
+      "id": "1091e877282066982c11-67a247bcad0daaf43287",
+      "file": "body-shape-review.spec.js",
+      "title": "rear bumper has separated tall pads and a recessed full-height plate; shared body renders in reference views",
       "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "report": "artifacts/regression-history/2026-09-25T01-28-38.127Z-0c1e23dd80f0.json",
+      "startTime": "2026-09-25T01:28:38.127Z"
     },
     {
       "id": "f84edb4bb9ebdb8f4e7b-6cb5b709bb16a23d5192",
       "file": "brakes.spec.js",
       "title": "1985 brakes expose distinct corners, hydraulic internals and parking controls",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "6f30549d3f744a7033aa-55d028b24577f8ea0d61",
       "file": "configuration.spec.js",
       "title": "preview choices change geometry, persist, and leave the VIN record intact",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "6f30549d3f744a7033aa-a7ad0fa46413863e0746",
       "file": "configuration.spec.js",
       "title": "invalid saved preview values recover to supported choices",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
+    },
+    {
+      "id": "166d9479ed356e01dbdc-c69b8add088dc1c94c92",
+      "file": "coolant-guide.spec.js",
+      "title": "twenty-step coolant guide crosses engine and radiator scopes, preserves cap order and returns safely",
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "285e25c3ae6ba068df60-38150bb55ca0e38dda62",
       "file": "electrical.spec.js",
       "title": "lighting and charging assemblies expose native parts, option lamps and correct lamp interfaces",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "285e25c3ae6ba068df60-6c660b4a385cbf389fcd",
       "file": "electrical.spec.js",
       "title": "1985 fuse layout, ECM connectors, flashers and verified EST circuits are inspectable on desktop and mobile",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "47f6bfaf79f8638f27e4-e737ebafd07b958892d8",
       "file": "engine-service.spec.js",
       "title": "cooling assembly opens detailed service parts, separates them and restores vehicle context",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "cb289eddb0afb4f9e3c9-cdfe2f4e15ba38e54107",
       "file": "engine.spec.js",
       "title": "engine has independent explosion, selectable internals, subassembly navigation and vehicle return",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "cb289eddb0afb4f9e3c9-b5a986fb1d98108884a9",
       "file": "engine.spec.js",
       "title": "engine explorer supports mobile navigation and return without overflow",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "e8f9d1b4f19cded6e53a-7e00634970e6ddbc0575",
       "file": "exhaust.spec.js",
       "title": "early V6 exhaust exposes period catalyst, spring joints, supports and finish previews",
+      "passed": false,
+      "report": null,
+      "startTime": null
+    },
+    {
+      "id": "f005bc0ff317e9a4e14f-79a2052a3a0f919e1606",
+      "file": "exterior-close-review.spec.js",
+      "title": "exterior wheel, roof and front panel interfaces render in close views",
+      "passed": true,
+      "report": "artifacts/regression-history/2026-09-25T01-28-38.127Z-0c1e23dd80f0.json",
+      "startTime": "2026-09-25T01:28:38.127Z"
+    },
+    {
+      "id": "6af367c2374289d9bddd-0d4025bdc7bf51156d69",
+      "file": "exterior.spec.js",
+      "title": "revised exterior renders from every side and keeps independent option geometry",
+      "passed": true,
+      "report": "artifacts/regression-history/2026-09-25T01-34-15.715Z-0c1e23dd80f0.json",
+      "startTime": "2026-09-25T01:34:15.715Z"
+    },
+    {
+      "id": "6af367c2374289d9bddd-220e574eaacc233b9a91",
+      "file": "exterior.spec.js",
+      "title": "exterior service pieces select, isolate, explode and return on desktop and mobile",
+      "passed": false,
+      "report": null,
+      "startTime": null
+    },
+    {
+      "id": "6af367c2374289d9bddd-f97ff3a17fd8d356f9d2",
+      "file": "exterior.spec.js",
+      "title": "exterior roof and deck alternatives render independently",
       "passed": true,
       "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "startTime": "2026-09-25T01:40:41.255Z"
     },
     {
       "id": "e15a9c54d3b403addb66-eac088351389ecfc2eee",
       "file": "fuel.spec.js",
       "title": "early V6 fuel supply exposes pump, sender, filler, filter and vapor parts",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "132b88abb95a8691fb25-d24c01dcde6dc3c452d3",
       "file": "headlights.spec.js",
       "title": "1985 headlights expose both sides, early motor internals, independent covers and a complete remaining-work list",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "f2e45dbb467aedf4ddbb-6a39041dbae080924f6d",
       "file": "hvac.spec.js",
       "title": "heater and C60 previews share native cores and show distinct controls, motors and refrigeration parts",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "ae990aadc40478d94005-7a3a7b04cd3856216623",
       "file": "ignition.spec.js",
       "title": "global ICM search opens the nested distributor, separates parts and restores the vehicle",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "ae990aadc40478d94005-3547938c917699a03e55",
       "file": "ignition.spec.js",
       "title": "electrical catalogue exposes ignition assemblies and mobile tune-up navigation",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
+    },
+    {
+      "id": "f94579e410a2f3b7d5eb-b33df9e485eb9138b918",
+      "file": "oil-pump.spec.js",
+      "title": "oil pump construction opens, explodes, isolates and returns on desktop and mobile",
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "5062ee079f3edf0f4d2a-248ebc86bc026177f088",
       "file": "rear-body.spec.js",
       "title": "rear glass, sail windows and deck vents are independent selectable assemblies",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "c7206cff0445fc369ee2-8e223a453949edd39cd7",
       "file": "service-guides.spec.js",
       "title": "factory headlamp guide highlights real parts, preserves relay reconnection order and restores the previous view",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
+    },
+    {
+      "id": "3f335f286063fad8b6a1-2fbafecb2434876432ad",
+      "file": "sunroof.spec.js",
+      "title": "sunroof hardware follows panel removal and remains inspectable on desktop and mobile",
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "a967f56aa66f860e8bfd-a1849adcf42d1f925c90",
       "file": "suspension.spec.js",
       "title": "early suspension and manual steering remain selectable, asymmetric and reachable on mobile",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
+    },
+    {
+      "id": "ed17344c3ec9aa418d0b-875d581f4cdea61fa989",
+      "file": "tail-lamp-review.spec.js",
+      "title": "1985 rear lamps retain four chambers, clear outer covers and separate inner optics in shared geometry",
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "68233748377e4ec29c5a-248ff8f305837d34c0d2",
       "file": "transmission-cooling.spec.js",
       "title": "four-speed internals, cooling circuit and US left-hand-drive layout remain coherent",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "bbe92b7fcf4cdf312a9a-b229ef0780497acad2ce",
       "file": "valve-gear.spec.js",
       "title": "individual valve gear separates small hardware and preserves the correct stem-seal variant",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "2fabae67bf3e3e9c1ccc-7442c3e4e5c4bea81267",
       "file": "workshop.spec.js",
       "title": "renders 3D vehicle without runtime errors or external image requests",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "2fabae67bf3e3e9c1ccc-3022f30b7dd1e50b2c01",
       "file": "workshop.spec.js",
       "title": "system filtering, global search, focus, isolation and reset work",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "2fabae67bf3e3e9c1ccc-c93f895d7b371b9d3620",
       "file": "workshop.spec.js",
       "title": "camera presets and keyboard controls update the viewer",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "2fabae67bf3e3e9c1ccc-bc8386704bc8391af8c4",
       "file": "workshop.spec.js",
       "title": "visibility, labels, wireframe and exploded views work",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "2fabae67bf3e3e9c1ccc-e63e2fca2156186486cc",
       "file": "workshop.spec.js",
       "title": "direct 3D picking selects a part",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "2fabae67bf3e3e9c1ccc-dcbba8244591dfd7c9dd",
       "file": "workshop.spec.js",
       "title": "orientation tour advances, goes back, and finishes",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "2fabae67bf3e3e9c1ccc-2cf88ff27c06d1c41373",
       "file": "workshop.spec.js",
       "title": "air-cleaner tour advances, goes back, and finishes",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "2fabae67bf3e3e9c1ccc-151e3133ede2f8534153",
       "file": "workshop.spec.js",
       "title": "suspension tour advances, goes back, and finishes",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "2fabae67bf3e3e9c1ccc-2611b28a797bb664fb04",
       "file": "workshop.spec.js",
       "title": "specification provenance and source dialog remain accessible",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "2fabae67bf3e3e9c1ccc-222eecd656cb7e39c8fd",
       "file": "workshop.spec.js",
       "title": "UAT feedback persists, is safely rendered, and exports valid JSON",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     },
     {
       "id": "2fabae67bf3e3e9c1ccc-c87d5570104286a53be2",
       "file": "workshop.spec.js",
       "title": "mobile layout renders without overflow and opens assembly navigation",
-      "passed": true,
-      "report": "artifacts/full-regression.json",
-      "startTime": "2026-09-22T09:05:41.350Z"
+      "passed": false,
+      "report": null,
+      "startTime": null
     }
   ],
-  "currentSource": true,
-  "applicationSha256": "bac39907dbcc78a2567f657c959bbbe6c24bf5a68f42839fa5fea8c97be096ff",
+  "currentSource": false,
+  "applicationSha256": "54ea1a721c0723e838d8f9a53adcccaa589d49ef384be9fd642a8d4fccd87808",
   "runs": [
+    "artifacts/regression-history/2026-09-25T01-28-38.127Z-0c1e23dd80f0.json",
+    "artifacts/regression-history/2026-09-25T01-34-15.715Z-0c1e23dd80f0.json",
     "artifacts/full-regression.json"
   ],
   "basis": "Latest result for every current test file on the identical application, dependencies and Playwright configuration. A changed app invalidates all old runs; a changed test invalidates results from that test file. Raw failed and successful runs remain archived."

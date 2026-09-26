@@ -1,0 +1,23 @@
+{
+  "recordedAt": "2026-09-25T01:52:14.496Z",
+  "sourceSha256": "0c1e23dd80f0886b27d6e772e2800d88db8c74418c309c5d59a62a201255d310",
+  "revision": "BODY R8",
+  "status": "paused at owner request after app update",
+  "build": "passed",
+  "focusedBodyAudits": "5 passed",
+  "browserScenarios": {
+    "passed": 4,
+    "total": 40
+  },
+  "inspectedCaptures": 17,
+  "serviceBrowserCheck": {
+    "status": "interrupted at owner pause; no completed eligible report",
+    "session": 26420,
+    "terminationRequested": "Ctrl-C",
+    "finalExitCode": null,
+    "sessionNoLongerAvailable": true
+  },
+  "tailBrowserCheck": "not refreshed on final R8 source",
+  "fullVehicleAggregate": "not refreshed",
+  "factoryContourAcceptance": "open"
+}

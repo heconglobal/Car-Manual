@@ -1,0 +1,338 @@
+--- R5/src/tail-lamp-shape.js
++++ R6/src/tail-lamp-shape.js
+@@ -0,0 +1,26 @@
++import {designLampHeight,exteriorLampNominal} from './body-datums.js';
++
++// The bulb datums come from the 1985 MVMA, PDF26. The cover outline, optical
++// pitch and the two inboard centers are reconstructed from GM 2P02-002,
++// Pontiac DIY 2-25 and photographs of opened original notchback assemblies.
++// No dimensioned GM outer-lens/tooling drawing has been obtained.
++export const tailLampShape={
++ centerX:.394,centerY:designLampHeight(exteriorLampNominal.tailCurb,1.91),
++ halfHeight:.0616,inner:.004,outerBottom:.786,outerTop:.767,radius:.010,
++ coverDepth:.010,opticDepth:-.008,
++ redInner:.318,redOuter:.768,reverseInner:.016,reverseOuter:.308,
++ innerStopOffset:.398,reverseOffset:.258,
++ columns:20,rows:6,
++};
++export function tailLampEdges(y,inset=0){
++ const a=tailLampShape,t=Math.max(0,Math.min(1,(y+a.halfHeight)/(2*a.halfHeight)));
++ const h=a.halfHeight-inset,r=Math.max(.002,a.radius-inset),q=Math.max(0,Math.abs(y)-(h-r));
++ const corner=r-Math.sqrt(Math.max(0,r*r-q*q));
++ return [Math.max(.001,a.inner+inset+corner),a.outerBottom+(a.outerTop-a.outerBottom)*t-inset-corner];
++}
++export function tailLampOutline(inset=0){
++ const h=tailLampShape.halfHeight-inset,out=[];
++ for(let i=0;i<=32;i++){const y=-h+2*h*i/32;out.push([tailLampEdges(y,inset)[1],tailLampShape.centerY+y]);}
++ for(let i=32;i>=0;i--){const y=-h+2*h*i/32;out.push([tailLampEdges(y,inset)[0],tailLampShape.centerY+y]);}
++ return out;
++}
+--- R5/src/tail-lamps.js
++++ R6/src/tail-lamps.js
+@@ -0,0 +1,50 @@
++import {tailLampShape as A,tailLampEdges,tailLampOutline} from './tail-lamp-shape.js';
++import {exteriorLampNominal} from './body-datums.js';
++
++// Shared vehicle/detail construction. Positions are still in the electrical
++// assembly frame here; the caller wraps every layer onto the same rear face.
++export function buildTailLamp(h,groups,s,id,e){
++ const {plate,bowl,bulb,socket,screw}=e;
++ const local=(a,y,z)=>[s*(a-A.centerX),y,z];
++ const outline=inset=>tailLampOutline(inset).map(([x,y])=>local(x,y-A.centerY,0));
++ function border(key,outset,inset,z,depth,mat){
++  const outer=outline(outset),inner=outline(inset),n=outer.length;
++  h.surface(id(key),n,3,(u,v)=>{const i=Math.min(n-1,Math.floor(u*n)),j=(i+1)%n,t=u*n-i;const p=outer[i].map((a,k)=>a+(outer[j][k]-a)*t),q=inner[i].map((a,k)=>a+(inner[j][k]-a)*t);return[p[0]+(q[0]-p[0])*v,p[1]+(q[1]-p[1])*v,z+depth*Math.sin(v*Math.PI)];},mat);
++ }
++ const centers=[['tail',exteriorLampNominal.tailOutside,'2057'],['turn',exteriorLampNominal.rearTurnOffset,'2057'],['inner-stop',A.innerStopOffset,'2057'],['reverse',A.reverseOffset,'1156']];
++ plate(id('housing'),.777,.110,.003,[0,0,-.078],'plastic',centers.map(([,x])=>[s*(x-A.centerX),0,.012]));
++ border('housing',-.004,.003,-.008,.002,'plastic');
++ const rim=outline(-.004),n=rim.length;
++ h.surface(id('housing'),n,8,(u,v)=>{const i=Math.min(n-1,Math.floor(u*n)),j=(i+1)%n,t=u*n-i;return[rim[i][0]+(rim[j][0]-rim[i][0])*t,rim[i][1]+(rim[j][1]-rim[i][1])*t,-.010-.070*v];},'plastic');
++ // Three red chambers plus one reverse chamber; the inboard end is a blind
++ // portion of the clear insert, not a second reverse bulb.
++ for(const [,a] of centers)bowl(id('housing'),.134,.098,.057,local(a,0,-.012));
++ for(const a of [.188,.328,.468,.608])h.box(id('housing'),[.0025,.108,.063],local(a,0,-.045),'plastic');
++ h.box(id('housing'),[.166,.106,.003],local(.100,0,-.026),'plastic');
++
++ function opticalInsert(key,start,end,mat,columns){
++  const bottom=-.052,top=.052;
++  const at=(a,y,z)=>{const edge=tailLampEdges(y,.006);return local(Math.max(edge[0],Math.min(edge[1],a)),y,z);};
++  h.surface(id(key),64,12,(u,v)=>at(start+(end-start)*u,bottom+(top-bottom)*v,A.opticDepth),mat);
++  // Six rows of wide rectangular prisms are behind the smooth outer cover.
++  // Count/proportions follow the original-part photographs and DIY drawing;
++  // pitch/depth are not claimed to be dimensioned factory optical tooling.
++  for(let c=0;c<columns;c++)for(let r=0;r<A.rows;r++){
++   const x0=start+(end-start)*c/columns+.0010,x1=start+(end-start)*(c+1)/columns-.0010;
++   const y0=bottom+(top-bottom)*r/A.rows+.0008,y1=bottom+(top-bottom)*(r+1)/A.rows-.0008;
++   h.surface(id(key),12,4,(u,v)=>at(x0+(x1-x0)*u,y0+(y1-y0)*v,A.opticDepth+.0002+.00030*Math.sin(v*Math.PI)+.00025*Math.sin(u*Math.PI*6)**2),mat);
++  }
++  for(let c=0;c<=columns;c++){const a=start+(end-start)*c/columns;h.surface(id(key),2,16,(u,v)=>at(a+(u-.5)*.0018,bottom+(top-bottom)*v,A.opticDepth+.0018),'tailGrid');}
++  for(let r=0;r<=A.rows;r++){const y=bottom+(top-bottom)*r/A.rows;h.surface(id(key),64,2,(u,v)=>at(start+(end-start)*u,y+(v-.5)*.0015,A.opticDepth+.0018),'tailGrid');}
++ }
++ opticalInsert('red-lens',A.redInner,A.redOuter,'tailInnerRed',12);
++ opticalInsert('reverse-lens',A.reverseInner,A.reverseOuter,'tailInnerClear',8);
++
++ h.surface(id('outer-lens'),96,24,(u,v)=>{const y=(v*2-1)*A.halfHeight,[l,r]=tailLampEdges(y);return local(l+(r-l)*u,y,A.coverDepth+.001*Math.sin(u*Math.PI)*Math.sin(v*Math.PI));},'tailOuter');
++ const edge=outline(0);
++ h.surface(id('outer-lens'),edge.length,5,(u,v)=>{const i=Math.min(edge.length-1,Math.floor(u*edge.length)),j=(i+1)%edge.length,t=u*edge.length-i;return[edge[i][0]+(edge[j][0]-edge[i][0])*t,edge[i][1]+(edge[j][1]-edge[i][1])*t,A.coverDepth-.020*v];},'tailOuter');
++ border('outer-lens',0,.0035,A.coverDepth+.0003,.0004,'tailTrim');
++ border('seal',-.005,-.001,-.007,.001,'rubber');
++ for(const [key,a,type]of centers){bulb(id(key+'-bulb'),local(a,0,-.066),type);socket(id(key+'-socket'),local(a,0,-.081),key==='turn'||key==='inner-stop');}
++ for(const a of [.105,.394,.685]){const x=s*(a-A.centerX);screw(id('retainers'),[x,.071,-.028],.004,.075,'y');plate(id('retainers'),.015,.013,.003,[x,-.060,-.027],'zinc',[[0,0,.002]],.002);plate(id('access-caps'),.025,.017,.003,[x,0,0],'plastic',[],.003);const m=groups.get(id('access-caps')).children.at(-1);m.rotation.x=-Math.PI/2;m.position.set(x,.080,-.028);}
++}
+--- R5/src/panel-aperture.js
++++ R6/src/panel-aperture.js
+@@ -0,0 +1,33 @@
++import * as T from 'three';
++import {mergeVertices} from 'three/addons/utils/BufferGeometryUtils.js';
++
++// Clip a convex opening from a tessellated panel in its authored XY plane.
++// Edge intersections are reprojected onto the actual panel, so the opening
++// follows the lamp silhouette instead of deleting whole grid triangles.
++export function cutPanelAperture(mesh,outline,face){
++ const area=outline.reduce((sum,p,i)=>{const q=outline[(i+1)%outline.length];return sum+p[0]*q[1]-q[0]*p[1];},0);
++ const ring=area>0?outline:[...outline].reverse();
++ const xs=ring.map(p=>p[0]),ys=ring.map(p=>p[1]),lo=[Math.min(...xs),Math.min(...ys)],hi=[Math.max(...xs),Math.max(...ys)];
++ const old=mesh.geometry,a=old.attributes.position,ix=old.index,out=[];
++ const emit=poly=>{for(let j=1;j<poly.length-1;j++){const p=poly[0],q=poly[j],r=poly[j+1];if(Math.abs((q[0]-p[0])*(r[1]-p[1])-(q[1]-p[1])*(r[0]-p[0]))<1e-12)continue;for(const v of [p,q,r])out.push(...face(v[0],v[1]));}};
++ for(let i=0;i<ix.count;i+=3){
++  let poly=[0,1,2].map(k=>[a.getX(ix.getX(i+k)),a.getY(ix.getX(i+k))]);
++  if(poly.every(p=>p[0]<lo[0])||poly.every(p=>p[0]>hi[0])||poly.every(p=>p[1]<lo[1])||poly.every(p=>p[1]>hi[1])){emit(poly);continue;}
++  for(let k=0;k<ring.length&&poly.length;k++){
++   const p=ring[k],q=ring[(k+1)%ring.length],d=v=>(q[0]-p[0])*(v[1]-p[1])-(q[1]-p[1])*(v[0]-p[0]);
++   const inner=[],outer=[];
++   for(let j=0;j<poly.length;j++){
++    const v=poly[j],w=poly[(j+1)%poly.length],dv=d(v),dw=d(w),inside=dv>=0;
++    (inside?inner:outer).push(v);
++    if(inside!==(dw>=0)){const t=dv/(dv-dw),hit=[v[0]+(w[0]-v[0])*t,v[1]+(w[1]-v[1])*t];inner.push(hit);outer.push(hit);}
++   }
++   emit(outer);poly=inner;
++  }
++ }
++ const geometry=new T.BufferGeometry(),n=out.length/3;
++ geometry.setAttribute('position',new T.Float32BufferAttribute(out,3));geometry.setAttribute('uv',new T.Float32BufferAttribute(new Float32Array(n*2),2));
++ geometry.setIndex(Array.from({length:n},(_,i)=>i));
++ // Share the cut intersections and untouched grid vertices before normals;
++ // otherwise every triangle becomes a separate flat-shaded paint facet.
++ const smooth=mergeVertices(geometry,1e-6);smooth.computeVertexNormals();mesh.geometry=smooth;geometry.dispose();old.dispose();
++}
+--- R5/src/lighting-detail.js
++++ R6/src/lighting-detail.js
+@@ -6,12 +6,18 @@
+ import {electricalTools,bakeElectrical} from './electrical-geometry.js';
+ import {rearFace,frontFace} from './fascias.js';
+ import {bodyPoint,designLampHeight,exteriorLampNominal} from './body-datums.js';
+-import {formedPatch} from './exterior.js';
++import {buildTailLamp} from './tail-lamps.js';
++import {tailLampShape} from './tail-lamp-shape.js';
+ export function lightingMaterials(base=createMaterials()){
+  const m={...base};for(const key of['plastic','rubber','metal','dark']){m[key]=base[key].clone();m[key].bumpScale=.00003;}
+  m.bulbGlass=new T.MeshPhysicalMaterial({color:'#e8efed',roughness:.08,metalness:0,transparent:true,opacity:.22,clearcoat:1,side:T.DoubleSide,depthWrite:false});
+  m.clearLens=new T.MeshPhysicalMaterial({color:'#c5d0c9',roughness:.18,metalness:0,transparent:true,opacity:.47,clearcoat:1,side:T.DoubleSide,depthWrite:false});
+- m.tailOuter=new T.MeshPhysicalMaterial({color:'#263337',roughness:.36,transparent:true,opacity:.94,clearcoat:.12,clearcoatRoughness:.3,envMapIntensity:.25,side:T.DoubleSide,depthWrite:false});
++ m.tailOuter=new T.MeshPhysicalMaterial({color:'#78868c',roughness:.16,transparent:true,opacity:.28,clearcoat:.4,clearcoatRoughness:.18,envMapIntensity:.4,side:T.DoubleSide,depthWrite:false});
++ m.tailOuter.forceSinglePass=true;
++ m.tailInnerRed=new T.MeshPhysicalMaterial({color:'#490605',roughness:.30,metalness:.04,clearcoat:.18,envMapIntensity:.35,side:T.DoubleSide});
++ m.tailInnerClear=new T.MeshPhysicalMaterial({color:'#293333',roughness:.34,metalness:.10,clearcoat:.22,envMapIntensity:.35,side:T.DoubleSide});
++ m.tailGrid=new T.MeshStandardMaterial({color:'#151819',roughness:.43,side:T.DoubleSide});
++ m.tailTrim=new T.MeshPhysicalMaterial({color:'#111416',roughness:.27,clearcoat:.5,side:T.DoubleSide});
+  m.tailRed=new T.MeshPhysicalMaterial({color:'#960d07',roughness:.20,transparent:true,opacity:.80,clearcoat:1,side:T.DoubleSide,depthWrite:false});
+  m.turnAmber=new T.MeshPhysicalMaterial({color:'#e38012',roughness:.20,transparent:true,opacity:.74,clearcoat:1,side:T.DoubleSide,depthWrite:false});
+  return m;
+@@ -39,26 +45,8 @@
+    bake(scope,(x,y,z)=>[s*(.849+z),cy+y,cz-s*x]);
+   }
+   scope='rear-'+side;id=k=>`lt-${scope}-${k}`;
+-  // Molded three-chamber rear body. The lens is clear/smoked outside with
+-  // separate red and reverse optics inside, as GM 2P02-002 illustrates.
+-  const centers=[-s*.245,s*(exteriorLampNominal.rearTurnOffset-.376),s*(exteriorLampNominal.tailOutside-.376)];
+-  frame(id('housing'),.747,.118,.006,.025,[0,0,-.023],'plastic');
+-  plate(id('housing'),.729,.107,.003,[0,0,-.072],'plastic',centers.map(x=>[x,0,.012]));
+-  for(const [x,w] of [[-s*.245,.226],[s*.114,.228],[s*.300,.132]])bowl(id('housing'),w,.098,.055,[x,0,-.010]);
+-  for(const x of[-s*.125,s*.230])box(id('housing'),[.003,.107,.060],[x,0,-.038],'plastic');
+-  // Tessellate the broad outer face before wrapping it onto the rear panel.
+-  // A single triangulated cap cuts behind the internal lenses at mid-span.
+-  formedPatch(h,id('outer-lens'),(x,y)=>[x,y,.003],0,0,.748,.112,.002,'tailOuter');
+-  // Reconstructed outer lens grid; surface proportions remain under review.
+-  for(let i=0;i<38;i++)h.surface(id('outer-lens'),2,12,(u,v)=>[-.346+i*.0187+(u-.5)*.0008,(v-.5)*.090,.0116],'lensGrid');
+-  for(let i=0;i<7;i++)h.surface(id('outer-lens'),48,2,(u,v)=>[(u-.5)*.692,-.044+i*.0147+(v-.5)*.0008,.0116],'lensGrid');
+-  // Inboard chamber center depends on side; shell and bulb locations mirror.
+-  const reverse=-s*.245,turn=s*(exteriorLampNominal.rearTurnOffset-.376),tail=s*(exteriorLampNominal.tailOutside-.376);
+-  lens(id('red-lens'),.456,.101,[s*.1225,0,-.004],'tailRed');lens(id('reverse-lens'),.225,.101,[reverse,0,-.004],'clearLens');
+-  frame(id('seal'),.744,.111,.002,.0015,[0,0,.001],'rubber');
+-  for(const [key,x,type]of[['tail',tail,'2057'],['turn',turn,'2057'],['reverse',reverse,'1156']]){bulb(id(key+'-bulb'),[x,0,-.063],type);socket(id(key+'-socket'),[x,0,-.078],type==='2057');}
+-  for(const x of[-.280,0,.280]){screw(id('retainers'),[x,.070,-.023],.004,.075,'y');frame(id('retainers'),.015,.013,.003,.009,[x,-.060,-.027],'zinc',.002);plate(id('access-caps'),.025,.017,.003,[x,0,0],'plastic',[],.003);const m=groups.get(id('access-caps')).children.at(-1);m.rotation.x=-Math.PI/2;m.position.set(x,.079,-.023);}
+-  bake(scope,(x,y,z)=>{const p=rearFace(s*.376+x,designLampHeight(exteriorLampNominal.tailCurb,1.91)+y*1.10);return[p[0],p[1],p[2]+z];});
++  buildTailLamp(h,groups,s,id,{plate,bowl,bulb,socket,screw});
++  bake(scope,(x,y,z)=>{const p=rearFace(s*tailLampShape.centerX+x,tailLampShape.centerY+y);return[p[0],p[1],p[2]+z];});
+   scope='license-'+side;id=k=>`lt-${scope}-${k}`;
+   bowl(id('housing'),.057,.025,.018,[0,0,-.003]);frame(id('housing'),.071,.037,.005,.016,[0,0,-.006],'plastic',.003);lens(id('lens'),.058,.027,[0,0,.004]);bulb(id('bulb'),[0,0,-.018],'194');socket(id('socket'),[0,0,-.029],false,true);for(const x of[-.030,.030])screw(id('screws'),[x,0,.002],.0025,.013);
+   bake(scope,(x,y,z)=>[s*.105+x,.529-z,rearFace(s*.105+x,.529)[2]-.032+y]);
+--- R5/src/lighting-catalog.js
++++ R6/src/lighting-catalog.js
+@@ -26,16 +26,18 @@
+  ])part(scope,key,`${label} ${end} · ${name}`,desc,spread,end==='front'?69:72,end==='front'?18:9);}
+  const rear='rear-'+side;section(rear,label+' 1984–85 rear combination lamp');
+  for(const [key,name,desc,spread,callout]of[
+-  ['housing','Divided rear reflector housing','Three bulb chambers with tapered reflector bowls and separate inboard reverse opening. Original catalog housing '+(side==='left'?'16500453':'16500454')+'.',[0,0,-.14],1],
+-  ['outer-lens','Outer lens & dark optical grid','Transparent outer panel with modeled dark grid; follows the reconstructed raked notchback rear contour, still under owner review. Original lens '+(side==='left'?'16500461':'16500462')+'.',[0,0,.24],4],
++  ['housing','Divided rear reflector housing','Four bulb chambers: three behind the red insert and one behind the inboard clear reverse insert. Original catalog housing '+(side==='left'?'16500453':'16500454')+'.',[0,0,-.14],1],
++  ['outer-lens','Clear outer lens & perimeter lip','Smooth clear outer cover with a tapered, rounded outline and separate inner optical grid; local contours remain reconstructed. Original lens '+(side==='left'?'16500461':'16500462')+'.',[0,0,.24],4],
+   ['red-lens','Red inner lens','Red inner stop / tail / turn lens separated from the clear outer lens; original '+(side==='left'?'16500457':'16500458')+'.',[0,0,.14],3],
+   ['reverse-lens','Clear inner reverse lens','Separate inboard clear lens, GM 16500460.',[-s*.09,0,.14],2],
+   ['seal','Rear lamp perimeter seal','Continuous sealing bead between outer lens and divided housing.',[0,0,.18],null],
+-  ['tail-bulb','2057 tail / stop bulb','Outer dual-filament bayonet bulb; distinct selectable lamp from the middle stop / turn bulb.',[s*.11,.08,.03],13],
+-  ['turn-bulb','2057 stop / turn bulb','Middle dual-filament bayonet bulb.',[0,.08,.03],14],
++  ['tail-bulb','2057 outer tail bulb','Outboard tail-lamp bulb. Its 678 mm offset follows the 1985 MVMA. The 1985 tail-only socket does not make this a third stop lamp.',[s*.11,.08,.03],13],
++  ['turn-bulb','2057 outer stop / turn bulb','Outer of the two stop/turn bulbs; 538 mm offset from the vehicle centerline in the 1985 MVMA.',[0,.08,.03],14],
++  ['inner-stop-bulb','2057 inner stop / turn bulb','Second stop/turn bulb behind the red insert. Its local position is reconstructed; the source does not dimension this center.',[-s*.07,.10,.03],14],
+   ['reverse-bulb','1156 reverse bulb','Inboard single-filament bulb with one base contact and level bayonet pins.',[-s*.10,.08,.03],15],
+-  ['tail-socket','Tail / stop socket & leads','Separate twist-lock socket behind the outboard chamber. Catalog socket 12030065.',[s*.07,0,-.23],13],
+-  ['turn-socket','Stop / turn socket & leads','Separate twist-lock socket behind the middle chamber. Catalog socket 12003757.',[0,0,-.23],14],
++  ['tail-socket','Outer tail socket & leads','Separate twist-lock socket behind the outboard chamber. Catalog socket 12030065.',[s*.07,0,-.23],13],
++  ['turn-socket','Outer stop / turn socket & leads','Separate twist-lock socket behind the outer stop/turn chamber. Catalog socket 12003757.',[0,0,-.23],14],
++  ['inner-stop-socket','Inner stop / turn socket & leads','Second dual-contact stop/turn socket behind the red insert.',[-s*.03,0,-.26],14],
+   ['reverse-socket','Reverse socket & leads','Single-contact socket behind the inboard chamber. Catalog socket 12003758.',[-s*.07,0,-.23],15],
+   ['retainers','Three long retaining screws & clips','Three top-access screws per assembly with lower receiving clips; early DIY procedure removes all three.',[0,.18,-.05],19],
+   ['access-caps','Three upper access caps','Black caps over the three retaining-screw access openings.',[0,.23,0],18],
+--- R5/src/fascias.js
++++ R6/src/fascias.js
+@@ -1,6 +1,8 @@
+ import {formedPatch,rubMolding} from './exterior.js';
+ import * as T from 'three';
+ import {bodyNominal} from './body-datums.js';
++import {tailLampOutline} from './tail-lamp-shape.js';
++import {cutPanelAperture} from './panel-aperture.js';
+ import { shoulderWidth, shoulderDrop, exteriorBeltHeight } from './body-contours.js';
+ 
+ // GM 22P G-13 / G-19 and the 1985 SE brochure: rounded bumper-pad
+@@ -53,8 +55,9 @@
+   const mesh=surface(id,112,64,(u,v)=>{const x=(u*2-1)*width(v,rear),y=lerp(bottom,top+crown(x,rear?.650:.659,rear),v);return point(x,y,rear);});
+   // Open lamp apertures: opaque fascia must not occupy reflector chambers.
+   const geo=mesh.geometry,pos=geo.attributes.position,idx=geo.index,keep=[];
+-  for(let i=0;i<idx.count;i+=3){const a=idx.getX(i),b=idx.getX(i+1),c=idx.getX(i+2),x=Math.abs((pos.getX(a)+pos.getX(b)+pos.getX(c))/3),y=(pos.getY(a)+pos.getY(b)+pos.getY(c))/3;const lamp=rear?(x>.004&&x<.751&&y>.641&&y<.770):(Math.abs(x-.500)<.062&&Math.abs(y-.365)<.028);const plate=rear&&x<.158&&y>.355&&y<.520;if(!lamp&&!plate)keep.push(a,b,c);}
++  for(let i=0;i<idx.count;i+=3){const a=idx.getX(i),b=idx.getX(i+1),c=idx.getX(i+2),x=Math.abs((pos.getX(a)+pos.getX(b)+pos.getX(c))/3),y=(pos.getY(a)+pos.getY(b)+pos.getY(c))/3;const lamp=!rear&&(Math.abs(x-.500)<.062&&Math.abs(y-.365)<.028);const plate=rear&&x<.158&&y>.355&&y<.520;if(!lamp&&!plate)keep.push(a,b,c);}
+   geo.setIndex(keep);geo.computeVertexNormals();
++  if(rear)for(const side of [-1,1])cutPanelAperture(mesh,tailLampOutline(.002).map(([x,y])=>[side*x,y]),rearFace);
+  }
+  // Closed pads stand proud of the flexible fascia and contain real apertures.
+  for(const rear of [false,true]){
+--- R5/src/main.js
++++ R6/src/main.js
+@@ -49,7 +49,7 @@
+  <header class="header">
+   <a class="brand" href="#" aria-label="Fiero Workshop home"><span class="brand-mark">F<span>↗</span></span><span class="brand-type">FIERO<span>WORKSHOP / 85</span></span></a>
+   <div class="header-divider"></div><div class="vehicle-title"><strong>1985 Pontiac Fiero <span>SE 2M6</span></strong><span>2.8L V6 <i></i> 4-speed manual <i></i> WS6</span></div>
+-  <div class="header-actions"><span class="build-badge"><i></i> REVIEW 0.2 · BODY R5</span><button class="quiet" data-action="configure">${icon('gear')}<span>Configure</span></button><button class="quiet" data-action="sources">${icon('book')}<span>Reference library</span></button></div>
++  <div class="header-actions"><span class="build-badge"><i></i> REVIEW 0.2 · BODY R6</span><button class="quiet" data-action="configure">${icon('gear')}<span>Configure</span></button><button class="quiet" data-action="sources">${icon('book')}<span>Reference library</span></button></div>
+  </header>
+  <div class="workspace-bar"><div class="workspace-label"><span class="tiny-square"></span> INTERACTIVE WORKSHOP <span class="slash">/</span> <span class="muted">VEHICLE EXPLORER</span></div><span class="vin">VIN ${vehicle.vin}</span></div>
+  <main class="workspace">
+@@ -209,7 +209,7 @@
+  const modal=document.querySelector('#modal');
+  if(type==='remaining-work'){document.querySelector('#modal-content').innerHTML=`<div class="modal-heading"><p class="eyebrow">DEVELOPMENT CHECKLIST</p><button class="icon-button" data-action="close-modal" aria-label="Close dialog">${icon('close')}</button></div><h2>What remains to build.</h2><p class="description">Headlights first. This tracks known gaps in the 3D model and manual; it is not a list of repairs your car needs. A modeled part can still need measurement and verification.</p>${remainingWork.map((row,i)=>`<article class="source-card"><h3>${i+1}. ${esc(row.name)}</h3><p class="eyebrow">${esc(row.stage)}</p><ul>${row.items.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>${row.assembly?`<button class="text-button" data-work-assembly="${row.assembly}">Inspect current model ${icon('arrow')}</button>`:''}</article>`).join('')}`;modal.showModal();return;}
+ 
+- document.querySelector('#modal-content').innerHTML=`<div class="modal-heading"><p class="eyebrow">WORKSHOP / 85</p><button class="icon-button" data-action="close-modal" aria-label="Close dialog">${icon('close')}</button></div>${type==='sources'?`<h2>Reference library</h2><button class="secondary full-width" data-action="remaining-work">Remaining model & manual work</button><p class="description">Source coverage is explicit. A source listing does not mean all of its content has been verified or imported.</p><details class="coverage-audit"><summary>Parts coverage · modeled and remaining</summary><p class="description small">${parts.length} vehicle assemblies and ${detailParts.length} detailed parts / grouped sets across the component explorers. Counts overlap where the same part appears in both views; they are not a complete vehicle inventory.</p>${coverageAudit.map(row=>`<article class="coverage-row"><h3>${row.system}</h3><p><strong>Modeled:</strong> ${row.modeled}</p><p><strong>Still missing or simplified:</strong> ${row.remaining}</p></article>`).join('')}</details>${sources.map(s=>`<article class="source-card"><h3>${s.title}</h3><p>${s.note}</p>${s.url?`<a href="${s.url}" target="_blank" rel="noopener noreferrer">Open source ↗</a>`:''}</article>`).join('')}`:`<h2>A 3D workshop in progress.</h2><p class="description">Body R5 corrects coupe/SE bumper ground heights and revises the side molding, handles, lamp placement and rear deck against factory references. Shape accuracy remains under review. Build 0.2 includes: ${parts.length} selectable assemblies, nine systems, ${tours.length} guided tours, exploded views and local UAT feedback.</p><div class="source-card"><h3>What this build represents</h3><p>The vehicle is an owner-described original 1985 Fiero SE 2M6, four-speed manual, with WS6. VIN identity was checked with NHTSA.</p></div><div class="source-card"><h3>What is still in development</h3><p>The procedural model is illustrative, not a measured replica. The engine now has selectable internal parts and a detailed ignition breakdown. Many fasteners, measured gear profiles, exact routing, full accessory options and validated repair instructions remain incomplete. Technical service values are withheld until checked against factory references.</p></div><div class="source-card"><h3>Your data</h3><p>Feedback and checklist results are stored locally in this browser. Export them from the UAT tab to share or back up. No analytics, accounts or external assets are loaded by the app.</p></div>`}`;modal.showModal();
++ document.querySelector('#modal-content').innerHTML=`<div class="modal-heading"><p class="eyebrow">WORKSHOP / 85</p><button class="icon-button" data-action="close-modal" aria-label="Close dialog">${icon('close')}</button></div>${type==='sources'?`<h2>Reference library</h2><button class="secondary full-width" data-action="remaining-work">Remaining model & manual work</button><p class="description">Source coverage is explicit. A source listing does not mean all of its content has been verified or imported.</p><details class="coverage-audit"><summary>Parts coverage · modeled and remaining</summary><p class="description small">${parts.length} vehicle assemblies and ${detailParts.length} detailed parts / grouped sets across the component explorers. Counts overlap where the same part appears in both views; they are not a complete vehicle inventory.</p>${coverageAudit.map(row=>`<article class="coverage-row"><h3>${row.system}</h3><p><strong>Modeled:</strong> ${row.modeled}</p><p><strong>Still missing or simplified:</strong> ${row.remaining}</p></article>`).join('')}</details>${sources.map(s=>`<article class="source-card"><h3>${s.title}</h3><p>${s.note}</p>${s.url?`<a href="${s.url}" target="_blank" rel="noopener noreferrer">Open source ↗</a>`:''}</article>`).join('')}`:`<h2>A 3D workshop in progress.</h2><p class="description">Body R6 rebuilds the rear combination lamps with clear outer covers, separate inner optics and four bulb chambers per side, retaining the published coupe/SE body and bulb datums. Shape accuracy remains under review. Build 0.2 includes: ${parts.length} selectable assemblies, nine systems, ${tours.length} guided tours, exploded views and local UAT feedback.</p><div class="source-card"><h3>What this build represents</h3><p>The vehicle is an owner-described original 1985 Fiero SE 2M6, four-speed manual, with WS6. VIN identity was checked with NHTSA.</p></div><div class="source-card"><h3>What is still in development</h3><p>The procedural model is illustrative, not a measured replica. The engine now has selectable internal parts and a detailed ignition breakdown. Many fasteners, measured gear profiles, exact routing, full accessory options and validated repair instructions remain incomplete. Technical service values are withheld until checked against factory references.</p></div><div class="source-card"><h3>Your data</h3><p>Feedback and checklist results are stored locally in this browser. Export them from the UAT tab to share or back up. No analytics, accounts or external assets are loaded by the app.</p></div>`}`;modal.showModal();
+ }
+ document.addEventListener('click',async e=>{
+  const b=e.target.closest('button');if(!b)return;
+@@ -250,7 +250,7 @@
+   case 'prev-step':applyStep(state.step-1);break;
+   case 'next-step':{const tour=tours.find(t=>t.id===state.tour);if(state.step===tour.steps.length-1){finishTour();toast('Guide complete — explore another assembly');}else applyStep(state.step+1);break;}
+   case 'exit-tour':finishTour();break;
+-  case 'export':{const payload={build:'0.2.0',bodyRevision:'R5',configuration:state.configuration,exportedAt:new Date().toISOString(),vehicle,checkedItems:saved.checks.map(i=>acceptance[i]),notes:saved.notes};const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='fiero-uat-feedback.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('UAT feedback exported');break;}
++  case 'export':{const payload={build:'0.2.0',bodyRevision:'R6',configuration:state.configuration,exportedAt:new Date().toISOString(),vehicle,checkedItems:saved.checks.map(i=>acceptance[i]),notes:saved.notes};const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='fiero-uat-feedback.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('UAT feedback exported');break;}
+   case 'fullscreen':try{if(document.fullscreenElement)await document.exitFullscreen();else await document.querySelector('.stage').requestFullscreen();}catch{toast('Fullscreen is unavailable in this browser.');}break;
+  }
+ });
+--- R5/src/tail-review.js
++++ R6/src/tail-review.js
+@@ -0,0 +1,27 @@
++import * as T from 'three';
++import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
++import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
++import {parts} from './data.js';
++import {createMaterials} from './materials.js';
++import {geometryTools} from './geometry.js';
++import {buildBody} from './body.js';
++import {createLightingDetail} from './lighting-detail.js';
++import {correctLegacyHandedness} from './vehicle-frame.js';
++const host=document.querySelector('#model'),renderer=new T.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(1);renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1;host.append(renderer.domElement);
++const scene=new T.Scene();scene.background=new T.Color('#d9dcda');const pmrem=new T.PMREMGenerator(renderer);scene.environment=pmrem.fromScene(new RoomEnvironment(),.04).texture;scene.environmentIntensity=.7;
++scene.add(new T.HemisphereLight('#fffaf3','#777c80',1.6));const light=new T.DirectionalLight('#fff7ed',2.3);light.position.set(-3,5,5);scene.add(light);
++const body=new T.Group(),groups=new Map();for(const p of parts){const g=new T.Group();groups.set(p.id,g);body.add(g);}const h=geometryTools(groups,createMaterials());buildBody(h);h.optimize();correctLegacyHandedness(groups);scene.add(body);
++const lighting=createLightingDetail();scene.add(lighting.root);
++const rearIds=new Set(['rear-fascia','rear-pad-left','rear-pad-right','rear-plate-mount','rear-fascia-molding','rear-emblems','quarter-left','quarter-right','decklid','deck-vent-left','deck-vent-right','rear-clip','rear-window','sail-left','sail-right','roof']);
++for(const [id,g]of groups){g.visible=rearIds.has(id);g.traverse(m=>{if(m.isMesh&&m.userData.option)m.visible=false;});}
++const camera=new T.PerspectiveCamera(35,1,.02,30),controls=new OrbitControls(camera,renderer.domElement);let queued=false;
++function render(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;renderer.render(scene,camera);});}
++function view(name){
++ const detail=name==='lamp'||name==='exploded';body.visible=!detail;
++ for(const [id,g]of lighting.groups){g.visible=detail?id.startsWith('lt-rear-left-'):id.startsWith('lt-rear-')||id.startsWith('lt-license-');g.position.set(0,0,0);if(name==='exploded'&&g.visible)g.position.copy(g.userData.spread).multiplyScalar(1.3);}
++ const views={straight:[[0,.77,4.25],[0,.71,1.86]],quarter:[[-2.7,1.5,4.2],[0,.74,1.6]],lamp:[[-.43,.83,3.24],[-.40,.71,1.90]],exploded:[[-1.15,1.19,3.18],[-.40,.73,1.90]]};
++ camera.position.set(...views[name][0]);controls.target.set(...views[name][1]);controls.update();renderer.domElement.dataset.view=name;render();
++}
++function resize(){renderer.setSize(host.clientWidth,host.clientHeight);camera.aspect=host.clientWidth/host.clientHeight;camera.updateProjectionMatrix();render();}
++new ResizeObserver(resize).observe(host);controls.addEventListener('change',render);document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>view(b.dataset.view));
++window.__tailReview={view,groups:lighting.groups,bodyGroups:groups,render};resize();view('straight');renderer.domElement.dataset.ready='true';
+--- R5/tail-review.html
++++ R6/tail-review.html
+@@ -0,0 +1 @@
++<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Body R6 — rear lamp review</title><style>body{margin:0;background:#d9dcda;color:#18292f;font:16px system-ui}header{padding:16px 24px}h1{margin:0 0 6px;font-size:25px}p{margin:6px 0;max-width:1100px}button,a{margin-right:12px}button{padding:8px 14px;background:#fff;border:1px solid #89938f;border-radius:4px}#model{height:calc(100vh - 175px);min-height:420px}canvas{display:block}a{color:#164c69}</style></head><body><header><h1>Body R6 — 1985 SE rear combination lamps</h1><p>Shared model geometry: clear outer covers, separate inner optics and four bulb chambers per side. Published bulb positions are retained; cover contours remain reconstructed.</p><p><button data-view="straight">Straight rear</button><button data-view="quarter">Rear quarter</button><button data-view="lamp">Left lamp</button><button data-view="exploded">Left lamp separated</button></p><p><a href="/references/fiero-parts-cd.pdf#page=72">GM rear-lamp construction</a><a href="/references/1985-fiero-diy.pdf#page=34">1985 Pontiac lamp illustration</a><a href="/references/1985-86-specifications.pdf#page=26">Factory bulb datums</a><a href="/">Open manual</a></p></header><main id="model"></main><script type="module" src="/src/tail-review.js"></script></body></html>
+--- R5/body-review.html
++++ R6/body-review.html
+@@ -1 +1 @@
+-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fiero body comparison</title><style>body{margin:0;background:#e8e8e3;color:#20292a;font:15px system-ui}header{padding:16px 24px}h1{font-size:24px;margin:0 0 8px}button{padding:8px 14px;margin:4px;border:1px solid #a5adaa;background:white;border-radius:5px;cursor:pointer}.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}figure{margin:0;background:#d5d7d5}figcaption{padding:10px}#model{height:620px}#photo{width:100%;height:620px;object-fit:cover;object-position:50% 100%}canvas{display:block;width:100%;height:100%}p{max-width:1000px;margin:8px 0}@media(max-width:800px){.pair{grid-template-columns:1fr}#model,#photo{height:420px}}</style><header><h1>Body R5 — factory dimensions and surface review</h1><p>The shared body is checked against Pontiac’s 1985 coupe/SE specifications and factory brochure. Owner photographs provide a second visual reference. Camera and lighting differ; the views are not calibrated overlays.</p><div id="views"></div><label><input id="clay" type="checkbox"> Neutral panel material</label> · <a href="/">Open manual</a></header><details style="margin:0 24px 12px"><summary>Factory dimensional references · 1985 coupe/SE</summary><p>Wheelbase 2373 mm · length 4082 mm · width 1752 mm · roof height 1192 mm · front/rear overhang 924/785 mm · bumper ground clearance 315/333 mm at design load.</p><p><a href="/references/1985-86-specifications.pdf#page=22">Pontiac MVMA dimensions</a> · <a href="/references/1985-86-specifications.pdf#page=26">Lamp datums (curb load)</a> · <a href="/references/1985-fiero-brochure.pdf#page=3">Factory SE brochure</a> · <a href="/references/body-r5-factory-specification-review.md">Load conditions and reconstruction limits</a></p><p>Lamp heights in the design-load rendering use an explicit estimated curb-to-design pitch correction. Local panel curves and gaps remain reconstructed.</p></details><main class="pair"><figure><div id="model"></div><figcaption>Current shared native geometry. Drag to orbit.</figcaption></figure><figure><img id="photo" alt="Owner's Fiero reference photograph"><figcaption>Owner reference, preserved locally; no photograph is used as a model surface.</figcaption></figure></main><script type="module" src="/src/body-review.js"></script></html>
++<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fiero body comparison</title><style>body{margin:0;background:#e8e8e3;color:#20292a;font:15px system-ui}header{padding:16px 24px}h1{font-size:24px;margin:0 0 8px}button{padding:8px 14px;margin:4px;border:1px solid #a5adaa;background:white;border-radius:5px;cursor:pointer}.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}figure{margin:0;background:#d5d7d5}figcaption{padding:10px}#model{height:620px}#photo{width:100%;height:620px;object-fit:cover;object-position:50% 100%}canvas{display:block;width:100%;height:100%}p{max-width:1000px;margin:8px 0}@media(max-width:800px){.pair{grid-template-columns:1fr}#model,#photo{height:420px}}</style><header><h1>Body R6 — factory dimensions and surface review</h1><p>The shared body is checked against Pontiac’s 1985 coupe/SE specifications and factory brochure. Owner photographs provide a second visual reference. Camera and lighting differ; the views are not calibrated overlays.</p><div id="views"></div><label><input id="clay" type="checkbox"> Neutral panel material</label> · <a href="/">Open manual</a></header><details style="margin:0 24px 12px"><summary>Factory dimensional references · 1985 coupe/SE</summary><p>Wheelbase 2373 mm · length 4082 mm · width 1752 mm · roof height 1192 mm · front/rear overhang 924/785 mm · bumper ground clearance 315/333 mm at design load.</p><p><a href="/references/1985-86-specifications.pdf#page=22">Pontiac MVMA dimensions</a> · <a href="/references/1985-86-specifications.pdf#page=26">Lamp datums (curb load)</a> · <a href="/references/1985-fiero-brochure.pdf#page=3">Factory SE brochure</a> · <a href="/tail-review.html">Rear lamp close-up</a> · <a href="/references/body-r6-tail-lamp-review.md">R6 lamp sources and limits</a> · <a href="/references/body-r5-factory-specification-review.md">Load conditions and reconstruction limits</a></p><p>Lamp heights in the design-load rendering use an explicit estimated curb-to-design pitch correction. Local panel curves and gaps remain reconstructed.</p></details><main class="pair"><figure><div id="model"></div><figcaption>Current shared native geometry. Drag to orbit.</figcaption></figure><figure><img id="photo" alt="Owner's Fiero reference photograph"><figcaption>Owner reference, preserved locally; no photograph is used as a model surface.</figcaption></figure></main><script type="module" src="/src/body-review.js"></script></html>
+--- R5/scripts/audit-rear-body.mjs
++++ R6/scripts/audit-rear-body.mjs
+@@ -58,6 +58,27 @@
+ check('Marker bulbs use source curb heights with an explicit reconstructed load correction',()=>{
+  for(const side of ['left','right'])for(const [end,target]of [['front',exteriorLampNominal.frontMarkerCurb],['rear',exteriorLampNominal.rearMarkerCurb]]){const id='lt-marker-'+end+'-'+side+'-bulb',p=bulbCentre(id),actual=p.y+estimatedCurbRise(p.z);lampDatums.push({id,quantity:'height after estimated curb conversion',actualMm:actual*1000,nominalMm:target*1000,basis:'Published curb datum; interpolated load conversion, not exact suspension geometry'});assert(Math.abs(actual-target)<.002,id+' load convention');}
+ });
++check('Each rear lamp has three red-chamber bulbs and a separate reverse bulb with matching sockets',()=>{
++ for(const side of ['left','right']){
++  const centers=['reverse','inner-stop','turn','tail'].map(key=>{const stem='lt-rear-'+side+'-'+key;assert(lighting.groups.get(stem+'-bulb')?.children.length,stem+' bulb missing');assert(lighting.groups.get(stem+'-socket')?.children.length,stem+' socket missing');return Math.abs(bulbCentre(stem+'-bulb').x);});
++  for(let i=1;i<centers.length;i++)assert(centers[i]-centers[i-1]>.10,'bulb chambers overlap or ordering is wrong');
++ }
++});
++check('Outer covers transmit the inner optics and the optical grid belongs to the inner inserts',()=>{
++ for(const side of ['left','right']){
++  const outer=lighting.groups.get('lt-rear-'+side+'-outer-lens').children;
++  const clear=outer.filter(m=>m.userData.materialName==='tailOuter');assert(clear.length);
++  for(const m of clear){assert(m.material.transparent&&m.material.opacity<.4,'near-opaque outer cover obscures inner lenses');assert(!m.material.depthWrite,'outer cover blocks later transparent geometry');}
++  assert(!outer.some(m=>['lensGrid','tailGrid'].includes(m.userData.materialName)),'grid still sits on outside cover');
++  for(const key of ['red-lens','reverse-lens'])assert(lighting.groups.get('lt-rear-'+side+'-'+key).children.some(m=>m.userData.materialName==='tailGrid'),'missing inner optical structure');
++ }
++});
++check('Wider tapered lens ends are visible through the fitted fascia apertures',()=>{
++ for(const side of [-1,1])for(const [x,y]of [[.735,.657],[.745,.706],[.745,.747],[.026,.657],[.026,.747]]){
++  const ray=new T.Raycaster(new T.Vector3(side*x,y,2.4),new T.Vector3(0,0,-1));
++  assert.equal(ray.intersectObjects(body.groups.get('bd-skin-rear-fascia').children,false).length,0,'paint remains across lamp perimeter');
++ }
++});
+ const status=checks.every(c=>c.status==='passed')?'passed':'failed';
+ const report={sourceSha256:baseline?null:sourceFingerprint(),baselineSource:baseline,reviewedAt:new Date().toISOString(),status,checks,opticalSamples:samples,lampDatums,limits:'Factory-reference bulb offsets, explicit approximate load conversion, shape regression and actual mesh overlap checks. These do not certify factory panel sections, optics, gaps or original hardware dimensions.'};
+ await writeFile('artifacts/rear-body-surface-'+(baseline?'baseline':'audit')+'.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));if(!baseline&&status!=='passed')process.exitCode=1;
+--- R5/scripts/source-fingerprint.mjs
++++ R6/scripts/source-fingerprint.mjs
+@@ -1,6 +1,6 @@
+ import {createHash} from 'node:crypto';
+ import {readFileSync,readdirSync} from 'node:fs';
+-export const comparisonInputs=['body-review.html',...['IMG_5459.jpg','IMG_5461.jpg','IMG_5462.jpg'].map(f=>'references/owner-body-review/'+f)];
++export const comparisonInputs=['body-review.html','tail-review.html',...['IMG_5459.jpg','IMG_5461.jpg','IMG_5462.jpg'].map(f=>'references/owner-body-review/'+f)];
+ export function sourceFingerprint(){
+  const hash=createHash('sha256');
+  const files=[...comparisonInputs,'package.json','package-lock.json','playwright.config.js',...['src','tests'].flatMap(dir=>readdirSync(dir,{recursive:true}).filter(p=>/\.(js|css)$/.test(p)).map(p=>dir+'/'+p))].sort();
+--- R5/tests/tail-lamp-review.spec.js
++++ R6/tests/tail-lamp-review.spec.js
+@@ -0,0 +1,8 @@
++import {test,expect} from '@playwright/test';
++test('1985 rear lamps retain four chambers, clear outer covers and separate inner optics in shared geometry',async({page})=>{
++ test.setTimeout(300000);const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/tail-review.html');await page.waitForFunction(()=>window.__tailReview&&document.querySelector('canvas').dataset.ready==='true');
++ const lamps=await page.evaluate(()=>Object.fromEntries(['left','right'].map(side=>{const groups=window.__tailReview.groups,stem='lt-rear-'+side+'-';return [side,{bulbs:['tail','turn','inner-stop','reverse'].every(k=>groups.get(stem+k+'-bulb')?.children.length),outer:groups.get(stem+'outer-lens').children.filter(m=>m.userData.materialName==='tailOuter').map(m=>({transparent:m.material.transparent,opacity:m.material.opacity})),red:groups.get(stem+'red-lens').children.length,reverse:groups.get(stem+'reverse-lens').children.length}];})));
++ for(const value of Object.values(lamps)){expect(value.bulbs).toBe(true);expect(value.outer.length).toBeGreaterThan(0);for(const m of value.outer){expect(m.transparent).toBe(true);expect(m.opacity).toBeLessThan(.4);}expect(value.red).toBeGreaterThan(0);expect(value.reverse).toBeGreaterThan(0);}
++ for(const name of ['straight','quarter','lamp','exploded']){await page.locator(`button[data-view="${name}"]`).click();await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await page.screenshot({path:`artifacts/tail-r6-${name}.png`,fullPage:true});}
++ expect(errors).toEqual([]);
++});

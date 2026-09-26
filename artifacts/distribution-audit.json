@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-22T09:00:47.260Z",
+  "date": "2026-09-24T22:28:23.321Z",
   "status": "passed",
   "checks": [
     "No distributed manual scans, component photos or downloaded vehicle meshes",
@@ -15,17 +15,97 @@
     {
       "file": "index.html",
       "bytes": 530,
-      "sha256": "5ebf02fed1bc6b5c8e0e6a62fce71ba6d6269d38901f058c66cc7559d7d1b08c"
+      "sha256": "a0d9a6df346aaa5d0a903f3ca1efbdc4d1ee7d25ae566b5a3ca86bebed3fc5b9"
     },
     {
-      "file": "assets/index-CqR56Lv-.js",
-      "bytes": 1189425,
-      "sha256": "da1e0530058d6c145fa56dfcffd003c7d4dd39cfb9458c1c7d3060f8ef18ea72"
+      "file": "assets/index-7U_-m9Rn.css",
+      "bytes": 29473,
+      "sha256": "4e6cabdbba52e69018d45ee3f35418cbfb68ef62d59378eaae2e88cb5b9adddf"
+    },
+    {
+      "file": "assets/index-BHjoQPAd.js",
+      "bytes": 1249910,
+      "sha256": "1c30adc214c6ad873aa5ff750704081212624b2aec6796ac73ffb7b2f153df39"
+    },
+    {
+      "file": "assets/index-B_is0CTc.js",
+      "bytes": 1250008,
+      "sha256": "c21cc9163ec73e4391e18579528605aa1aadb6c9c6864b198f03a51ff6afc197"
+    },
+    {
+      "file": "assets/index-ByKRg8Ws.js",
+      "bytes": 1265916,
+      "sha256": "27702ff1235f0b2237011a3d2061811b500d162f46773d15feea7b5802f9c0f8"
+    },
+    {
+      "file": "assets/index-C9A62XFz.js",
+      "bytes": 1257429,
+      "sha256": "4ee3298df7727dc0c484c57447319d09b0f83446e9449e2a9fded2fa54bac785"
+    },
+    {
+      "file": "assets/index-Cd3kU7JE.js",
+      "bytes": 1265945,
+      "sha256": "f120ac4018839005dc678bb5a2fe1f464981c6abdabb1b908b13473d05671fe7"
+    },
+    {
+      "file": "assets/index-CmJYHmA2.js",
+      "bytes": 1231293,
+      "sha256": "a6f8bd2407fd586da8b2153201902a97119f7a642f35c7d87a1fef2b2d2cb315"
+    },
+    {
+      "file": "assets/index-CnvX_pX6.js",
+      "bytes": 1260185,
+      "sha256": "8e4e826c0ea1539ce036aea379d303e317b572a77fdc569ee92f88e1cd7891bc"
+    },
+    {
+      "file": "assets/index-CsWF7j3Q.js",
+      "bytes": 1260336,
+      "sha256": "91b361d56869116eeec1c5a359de3f81ac4150e764341ffe9099ffd44864ea9a"
+    },
+    {
+      "file": "assets/index-CuW2S1SX.js",
+      "bytes": 1257487,
+      "sha256": "fc9a3340df52c8efdbd703e44713fa27a6d7115f2bc8b86fb01fcbe51988c99c"
     },
     {
       "file": "assets/index-Cv3JGt7W.css",
       "bytes": 29458,
       "sha256": "daf144a544c47a47d4fdb31cb583590da9c2edb7cf76334a3864bd084b1dfba0"
+    },
+    {
+      "file": "assets/index-D8tzTbkQ.js",
+      "bytes": 1259906,
+      "sha256": "3ff7f8aa92bc58334f6733814e375d93ce86d1f40f4ca9d87f11bbb6df36cf31"
+    },
+    {
+      "file": "assets/index-DWkZIU1W.js",
+      "bytes": 1248742,
+      "sha256": "5c692cb9ee866e6d22d8f6f26b39179bf80dce52f5ac69a54d0ebb9d4f90203e"
+    },
+    {
+      "file": "assets/index-DXaeZktK.js",
+      "bytes": 1261318,
+      "sha256": "50b0d9b99c276168e32b47ce91773f041b2134d411d06ed55ff6ac674e94ae8a"
+    },
+    {
+      "file": "assets/index-D_gJ-lTd.js",
+      "bytes": 1238230,
+      "sha256": "6a440525c92b74d740c94b74ab68a0753f7e70894a2d7b88263aa9d1d752a1f5"
+    },
+    {
+      "file": "assets/index-KYI90_3v.js",
+      "bytes": 1250013,
+      "sha256": "066c47e11ea27042d77f722a11069a70feae99977333fe7fc4a3405d2f3ad7bf"
+    },
+    {
+      "file": "assets/index-jNZzaJPC.js",
+      "bytes": 1261434,
+      "sha256": "d5928ac253237efcabec4286d8a907023a20e5876b73fb5865870e385f6a89d7"
+    },
+    {
+      "file": "assets/index-nXgTvpfB.js",
+      "bytes": 1250742,
+      "sha256": "c138b070db5d78267d05905015e4ae33ec014bf9b349576090c1506ac40652bd"
     },
     {
       "file": "assets/studio_small_09_1k.hdr",

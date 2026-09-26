@@ -1,0 +1,269 @@
+
+START BATCH headlights-and-guide
+
+Running 2 tests using 2 workers
+
+(node:624410) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:624411) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Captured headlights-vehicle-closed
+Captured remaining-work-checklist
+Captured headlights-pair-raised
+Captured headlight-left-assembled
+Captured headlight-left-exploded
+Captured headlight-right-assembled
+Captured headlight-right-exploded
+Captured headlight-lamp-assembled
+Captured headlight-lamp-exploded
+Captured headlight-aim-spring
+Captured headlight-motor-assembled
+Captured headlight-motor-exploded
+Captured headlight-plastic-output-gear
+  ✓  1 tests/service-guides.spec.js:3:1 › factory headlamp guide highlights real parts, preserves relay reconnection order and restores the previous view (3.3m)
+Captured headlight-cover-raised
+Captured headlight-cover-closed
+Captured headlight-closed-mechanism
+Captured headlight-relays
+Captured headlight-left-relay-assembled
+Captured headlight-left-relay-exploded
+Captured headlight-right-relay-assembled
+Captured headlight-right-relay-exploded
+Captured headlight-isolation-relay-assembled
+Captured headlight-isolation-relay-exploded
+Captured headlight-fusible-links-assembled
+Captured headlight-fusible-links-exploded
+Captured headlights-vehicle-raised
+Captured headlights-vehicle-white-closed
+Captured headlight-mobile-cushion
+  ✓  2 tests/headlights.spec.js:5:1 › 1985 headlights expose both sides, early motor internals, independent covers and a complete remaining-work list (5.8m)
+
+  Slow test file: tests/headlights.spec.js (5.8m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  2 passed (5.9m)
+FINISH BATCH headlights-and-guide passed
+
+START BATCH body-brakes-options
+
+Running 4 tests using 2 workers
+
+(node:625731) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:625730) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Captured vehicle-after-body-hardware
+Captured brakes-complete-circuit
+Captured body-hood-assembled
+Captured body-hood-exploded
+Captured brakes-front-caliper-assembled
+Captured brakes-front-caliper-exploded
+Captured body-hood-stay
+Captured body-decklid-assembled
+Captured brakes-front-hub-exploded
+Captured body-decklid-exploded
+Captured brakes-rear-caliper-assembled
+Captured brakes-rear-caliper-exploded
+Captured body-driver-door-exploded
+Captured body-driver-hinge
+Captured body-rocker-covers
+Captured brakes-master-assembled
+Captured body-front-panels-exploded
+Captured brakes-master-exploded
+Captured body-rear-panels
+Captured brakes-booster-assembled
+Captured brakes-booster-exploded
+Captured body-rear-clip-exploded
+Captured brakes-lines
+Captured brakes-parking-cables
+Captured body-roof-open-white
+Captured brakes-parking-lever
+Captured body-complete-panels
+Captured fuel-tank-sidewall-refined
+Captured vehicle-after-brakes
+Captured body-vehicle-return
+  ✓  1 tests/brakes.spec.js:4:1 › 1985 brakes expose distinct corners, hydraulic internals and parking controls (7.2m)
+Captured body-hardware-mobile
+  ✓  2 tests/body-hardware.spec.js:3:1 › body panels share vehicle surfaces and expose hinges, torque rods, latches and retainers (7.3m)
+  ✓  4 tests/configuration.spec.js:53:1 › invalid saved preview values recover to supported choices (3.1m)
+  ✓  3 tests/configuration.spec.js:3:1 › preview choices change geometry, persist, and leave the VIN record intact (6.0m)
+
+  Slow test file: tests/body-hardware.spec.js (7.3m)
+  Slow test file: tests/brakes.spec.js (7.2m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  4 passed (13.4m)
+FINISH BATCH body-brakes-options passed
+
+START BATCH electrical-ignition-hvac
+
+Running 5 tests using 2 workers
+
+(node:627781) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:627782) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/electrical.spec.js:6:1 › lighting and charging assemblies expose native parts, option lamps and correct lamp interfaces (4.5m)
+  ✓  2 tests/electrical.spec.js:26:1 › 1985 fuse layout, ECM connectors, flashers and verified EST circuits are inspectable on desktop and mobile (5.9m)
+Captured vehicle-after-hvac
+Captured hvac-c41-assembled
+Captured hvac-c41-module-exploded
+Captured hvac-blower-assembled
+Captured hvac-blower-exploded
+Captured hvac-blower-wheel
+Captured hvac-ducts
+Captured hvac-c41-controls
+Captured hvac-c60-controls
+Captured hvac-c60-assembled
+Captured hvac-c60-module-exploded
+Captured hvac-evaporator-assembled
+Captured hvac-evaporator-exploded
+Captured hvac-orifice-tube
+Captured hvac-auto-scope-recovery
+  ✓  4 tests/ignition.spec.js:4:1 › global ICM search opens the nested distributor, separates parts and restores the vehicle (3.3m)
+Captured hvac-shared-coolant-core
+Captured hvac-cabin-controls-visible
+Captured hvac-mobile
+  ✓  3 tests/hvac.spec.js:3:1 › heater and C60 previews share native cores and show distinct controls, motors and refrigeration parts (5.9m)
+  ✓  5 tests/ignition.spec.js:51:1 › electrical catalogue exposes ignition assemblies and mobile tune-up navigation (2.5m)
+
+  Slow test file: tests/hvac.spec.js (5.9m)
+  Slow test file: tests/ignition.spec.js (5.9m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  5 passed (11.9m)
+FINISH BATCH electrical-ignition-hvac passed
+
+START BATCH engine-fuel-exhaust
+
+Running 5 tests using 2 workers
+
+(node:629536) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:629535) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/engine-service.spec.js:4:1 › cooling assembly opens detailed service parts, separates them and restores vehicle context (4.2m)
+  ✓  1 tests/engine.spec.js:4:1 › engine has independent explosion, selectable internals, subassembly navigation and vehicle return (4.2m)
+  ✓  3 tests/engine.spec.js:59:1 › engine explorer supports mobile navigation and return without overflow (3.1m)
+Captured exhaust-complete-assembled
+Captured exhaust-manifolds
+Captured exhaust-crossover-assembled
+Captured exhaust-crossover-exploded
+Captured exhaust-catalyst-assembled
+Captured exhaust-catalyst-cutaway
+Captured exhaust-rear-assembled
+Captured exhaust-black-tailpipes
+Captured exhaust-rear-exploded
+Captured fuel-tank-refined
+Captured fuel-tank-cutaway-refined
+Captured fuel-sender-refined
+Captured vehicle-after-exhaust
+Captured exhaust-mobile
+  ✓  4 tests/exhaust.spec.js:3:1 › early V6 exhaust exposes period catalyst, spring joints, supports and finish previews (5.6m)
+Captured fuel-sender-assembled
+Captured fuel-sender-exploded
+Captured fuel-tank-assembled
+Captured fuel-tank-cutaway
+Captured fuel-filler
+Captured fuel-pipes-filter
+Captured fuel-vapor-system
+Captured fuel-complete-system
+Captured suspension-arms-refined
+Captured suspension-strut-refined
+Captured suspension-cradle-refined
+Captured vehicle-after-fuel
+  ✓  5 tests/fuel.spec.js:3:1 › early V6 fuel supply exposes pump, sender, filler, filter and vapor parts (4.3m)
+
+  Slow test file: tests/exhaust.spec.js (5.6m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  5 passed (11.7m)
+FINISH BATCH engine-fuel-exhaust passed
+
+START BATCH running-gear-rear-body
+
+Running 4 tests using 2 workers
+
+(node:631270) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:631271) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Captured suspension-front-assembled
+Captured suspension-front-arms-assembled
+  ✘  1 tests/rear-body.spec.js:3:1 › rear glass, sail windows and deck vents are independent selectable assemblies (3.1m)
+Captured suspension-front-arms-exploded
+(node:631962) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Captured suspension-front-coil-shock
+Captured suspension-stabilizer-exploded
+Captured suspension-rear-strut-assembled
+Captured suspension-rear-strut-exploded
+Captured suspension-rear-toe
+Captured steering-rack-assembled
+Captured steering-rack-exploded
+Captured suspension-cradle
+Captured brakes-front-caliper-refined
+Captured brakes-master-refined
+Captured brakes-rear-rotor-refined
+Captured vehicle-after-suspension
+  ✓  2 tests/suspension.spec.js:4:1 › early suspension and manual steering remain selectable, asymmetric and reachable on mobile (5.5m)
+Captured transmission-assembled
+Captured transmission-exploded
+Captured transmission-input-assembled
+Captured transmission-input-exploded
+Captured transmission-differential-assembled
+Captured transmission-differential-exploded
+Captured transmission-clutch-assembled
+Captured transmission-clutch-exploded
+Captured transmission-clutch-disc
+Captured cooling-complete-circuit
+Captured cooling-radiator-assembled
+Captured cooling-radiator-exploded
+Captured cooling-fan-blade
+Captured vehicle-lhd-cockpit
+  ✓  4 tests/valve-gear.spec.js:4:1 › individual valve gear separates small hardware and preserves the correct stem-seal variant (3.2m)
+Captured vehicle-after-transmission-cooling
+Captured lhd-driver-seat
+Captured lhd-controls-from-front
+Captured lhd-rear-lettering
+Captured lhd-intake-lettering
+Captured lhd-driver-side
+Captured lhd-passenger-side
+  ✓  3 tests/transmission-cooling.spec.js:4:1 › four-speed internals, cooling circuit and US left-hand-drive layout remain coherent (7.1m)
+
+
+  1) tests/rear-body.spec.js:3:1 › rear glass, sail windows and deck vents are independent selectable assemblies 
+
+    Test timeout of 180000ms exceeded.
+
+    Error: locator.click: Test timeout of 180000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Reset view', exact: true })
+        - locator resolved to <button title="Reset view" class="icon-button" data-action="reset" aria-label="Reset view">…</button>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+
+
+      23 |  await page.locator('[data-part="deck-vent-right"].part-button').click();
+      24 |  await expect(page.locator('.component-heading')).toContainText('Right engine-deck vent');
+    > 25 |  await page.getByRole('button',{name:'Reset view',exact:true}).click();
+         |                                                                ^
+      26 |  const assembled=await page.evaluate(()=>window.__fiero.getPartBounds('deck-vent-right'));
+      27 |  await page.locator('#explode').fill('50');
+      28 |  await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+        at /home/hesh913/fiero-3d-manual/tests/rear-body.spec.js:25:64
+
+    Error Context: test-results/rear-body-rear-glass-sail--6fa65-ndent-selectable-assemblies/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/rear-body-rear-glass-sail--6fa65-ndent-selectable-assemblies/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/rear-body-rear-glass-sail--6fa65-ndent-selectable-assemblies/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Slow test file: tests/transmission-cooling.spec.js (7.1m)
+  Slow test file: tests/suspension.spec.js (5.5m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  1 failed
+    tests/rear-body.spec.js:3:1 › rear glass, sail windows and deck vents are independent selectable assemblies 
+  3 passed (10.5m)
+FINISH BATCH running-gear-rear-body failed
+BROWSER BATCHES failed

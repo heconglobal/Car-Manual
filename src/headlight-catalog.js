@@ -1,4 +1,5 @@
 import {mvma1985} from './factory-specifications.js';
+import {actuatorTerminals,isolationTerminals,headlightCircuitSource,headlightCircuitPrimary,headlightCircuitNote} from './headlight-electrical-data.js';
 export const headlightSource='https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=69';
 export const headlightDiy='https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=37';
 export const headlightMotorSource='https://www.rodneydickman.com/product_info.php?products_id=230';
@@ -50,21 +51,74 @@ for(const [side,s,label]of [['left',1,'Driver / LH'],['right',-1,'Passenger / RH
  ['brushes','motor','Two motor brushes & contact arms','Pair of separate carbon brushes on spring contact arms at the commutator.',[-s*.15,.07,.03],36],
  ['switch-cover','motor','Brush / switch side cover','Removable side inspection cover, separate from the riveted gearcase.',[-s*.20,.04,.03],36],
  ['switch-screws','motor','Three switch-cover screws','Screw set for the removable brush/contact cover.',[-s*.26,.04,.03],36],
- ['motor-leads','motor','Actuator leads & blue-wire connector','Early three-wire actuator lead group, including the one-cavity connector on the blue wire shown in the 1985 DIY manual.',[-s*.12,-.05,.10],27],
+ ['motor-leads','motor','Motor lead protective sleeve','Short protective loom around the three motor conductors before they branch to the C2 motor plug and the separate C101 / C102 white-to-blue disconnect.',[-s*.12,-.05,.10],27],
  ];
  for(const [key,section,name,desc,spread,callout]of rows)part(side+'-'+key,side+'-'+section,name,desc,spread,section==='motor'&&!['housing','switch','brushes'].includes(key)?null:callout,section==='motor'&&!['housing','switch','brushes'].includes(key)?headlightMotorSource:headlightSource);
  for(let i=0;i<4;i++)part(`${side}-bumper-${i+1}`,side+'-motor',`Output-gear cushion ${i+1} of 4`,'Individual original-style green polyurethane cushion between the gear and steel drive plate.',[s*(.11+i*.016),-.045+(i%2)*.09,(i<2?-.06:.06)],null,headlightMotorSource);
 }
 headlightSections.push({id:'headlight-relays',parent:'headlight-system',name:'Relays, connectors & front harness',spread:[0,-.10,.10]});
+for(const [key,name,spread] of [['left','LH actuator relay',[.12,0,0]],['right','RH actuator relay',[-.12,0,0]],['isolation','Driver-side isolation relay',[0,.08,.10]]])headlightSections.push({id:`headlight-${key}-relay`,parent:'headlight-relays',name,spread});
 for(const [side,s]of [['left',1],['right',-1]]){
  part(side+'-relay','relays',(side==='left'?'LH':'RH')+' actuator relay','One early actuator relay at each lamp assembly; independent from the isolation relay.',[s*.10,.12,0],28);
  part(side+'-relay-bracket','relays',(side==='left'?'LH':'RH')+' relay bracket & screws','Separate folded mounting bracket behind the corresponding lamp.',[s*.16,.06,.10],29);
- part(side+'-relay-socket','relays',(side==='left'?'LH':'RH')+' relay plug & leads','Recessed molded connector and short bundled leads. Pin assignments are not certified from this geometry.',[s*.12,-.08,.05],27);
+ part(side+'-relay-socket','relays',(side==='left'?'LH':'RH')+' relay C1 connector shell','Open three-cavity feed/control/ground connector with separate retaining latch. C2 carries the two motor conductors. Five relay blades are individually selectable.',[s*.12,-.08,.05],27);
  part(side+'-ground','relays',(side==='left'?'LH':'RH')+' forward-lamp ground','Front fender ground lug below the corresponding headlamp; location supported by adjacent-year circuit component views.',[s*.20,-.10,0],null,'https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=995');
 }
 part('isolation-relay','relays','Headlight isolation relay','Third relay on the driver side of the front compartment behind the LH headlamp. Early relay operation is separate from the later 1987–88 module.',[.16,.13,.12],28);
 part('isolation-bracket','relays','Isolation-relay bracket & fasteners','Separate mounting tab, fasteners and plug base.',[.20,.02,.16],29);
 part('forward-harness','relays','Forward headlamp harness branches','Separate branches to the lamp sockets, actuator relays and isolation relay. Factory wire lengths, every clip and full C100 routing remain pending.',[0,-.20,.18],27);
+
+function circuitPart(key,section,name,description,spread,rows=[]){
+ part(key,section,name,description,spread,null,headlightCircuitSource);
+ Object.assign(headlightParts.at(-1),{source:'GM 1986 8A-102-0 · adjacent-year circuit',sourceUrl:headlightCircuitPrimary,referenceNote:headlightCircuitNote,serviceReference:{title:'Early headlamp circuit / construction',rows,links:[['Pontiac 1986 service · 8A-102-0',headlightCircuitPrimary],['Circuit scan indexed under 1985',headlightCircuitSource],['GM 22P · early headlight assemblies',headlightSource]],note:headlightCircuitNote}});
+}
+for(const [key,s,label,terminals] of [['left',1,'LH actuator',actuatorTerminals],['right',-1,'RH actuator',actuatorTerminals],['isolation',1,'Isolation',isolationTerminals]]){
+ const section=key+'-relay',prefix=key==='isolation'?'isolation':key+'-relay';
+ for(const oldKey of key==='isolation'?['isolation-relay','isolation-bracket']:[key+'-relay',key+'-relay-bracket',key+'-relay-socket']){
+  const p=headlightParts.find(p=>p.id==='hl-'+oldKey);p.section='headlight-'+section;p.location=headlightSections.find(s=>s.id===p.section).name;
+ }
+ const cover=headlightParts.find(p=>p.id==='hl-'+(key==='isolation'?'isolation-relay':key+'-relay'));
+ cover.description+=' Hollow removable cover; the coil, magnetic frame, armature, linked contacts and terminals can be explored separately. Internal tooling is reconstructed.';
+ for(const [suffix,name,description,spread] of [
+  ['base','Insulating terminal base','Separate insulating plate with blade openings; blade positions are illustrative and are not a factory connector-end view.',[0,-.04,0]],
+  ['coil','Coil bobbin & copper winding','Hollow bobbin, end flanges and modeled winding around the magnetic core. Turn count and resistance are unverified.',[-s*.065,.04,0]],
+  ['core','Magnetic core & return yoke','Steel pole and folded magnetic return frame, separate from the coil.',[-s*.105,.06,0]],
+  ['armature','Armature & return spring','Separate pivoting armature and return spring above the pole; static reconstructed geometry.',[s*.06,.10,0]],
+  ['contacts','Linked changeover contact set','Two mechanically linked contact leaves with stationary contact buttons and an insulating bridge, following the schematic function. Contact tooling and travel are unmeasured.',[s*.11,.045,0]],
+  ['diode','Coil suppression diode','Separate axial diode with leads and a cathode band. The schematic places a suppression diode across the relay coil; package dimensions and rating are unverified.',[-s*.07,-.025,.07]],
+  ['socket-contacts','Connector female contacts & crimps','Folded open receptacles, spring tongues, conductor crimps and insulation support wings. Exact original terminal series is unverified.',[0,-.17,0]],
+  ['socket-latches','Connector retaining latches','Flexible molded latch beams and engagement tabs on the separate plug shells.',[s*.11,-.09,.02]],
+  ['pigtails','Feed / control / ground pigtails','Individually colored local conductors attached to their contact positions. Full body harness length, supports and C100 route remain open.',[0,-.23,0]],
+ ])circuitPart(prefix+'-'+suffix,section,label+' · '+name,description,spread);
+ if(key==='isolation'){
+  circuitPart('isolation-steering-diode',section,'Isolation · control steering diode','Second diode shown between yellow circuit 10 and pink circuit 113, separate from coil suppression. Static package illustration; no certified diode test is implied.',[.10,.025,.07]);
+  circuitPart('isolation-socket',section,'Isolation · C1 and C2 connector shells','Two separate three-cavity plugs, six terminals total; molded partitions, open sockets and latches. Physical cavity orientation is reconstructed.',[0,-.10,0]);
+ }else circuitPart(prefix+'-motor-socket',section,label+' · C2 motor connector shell','Separate open two-cavity plug for gray C2 A and green C2 B conductors, with its own retaining latch.',[0,-.11,.08]);
+ for(const [i,t]of terminals.entries())circuitPart(prefix+'-terminal-'+t.key,section,label+' · '+t.cavity+' blade / '+t.color,t.function+'. Individually selectable male blade with internal tail; schematic number '+t.number+'.',[s*(-.12+i*.05),-.065,(i<3?-.08:.08)],[['Schematic connector',t.cavity],['Internal number',String(t.number)],['Conductor',t.color+(t.circuit?' · circuit '+t.circuit:'')],['Connection',t.function]]);
+}
+for(const [side,s]of [['left',1],['right',-1]]){
+ const name=side==='left'?'LH':'RH',disconnect=side==='left'?'C101':'C102';
+ for(const [key,label,desc,spread]of [
+  ['lead-white','White motor lead','Motor-side white conductor to '+disconnect+'. The harness conductor is '+(side==='left'?'dark blue 110':'dark blue / white 104')+'; these are distinct sides of the disconnect.',[-s*.08,-.09,.09]],
+  ['lead-green','Green motor lead','Green conductor from actuator relay C2 B / internal terminal 5 to the motor circuit breaker.',[-s*.04,-.13,.07]],
+  ['lead-gray','Gray motor lead','Gray conductor from actuator relay C2 A / internal terminal 6 to the motor endpoint-contact circuit.',[-s*.14,-.17,.04]],
+  ['disconnect',disconnect+' one-cavity plug pair','Separate keyed single-cavity shells and latch at the white-to-blue conductor transition. The 1985 DIY replacement sequence identifies this blue-wire disconnect.',[-s*.19,-.05,.15]],
+  ['disconnect-contacts',disconnect+' male / female contacts','Separate blade and open spring receptacle with crimped wire ends inside the one-cavity plug pair.',[-s*.24,-.09,.15]],
+  ['lead-grommet','Motor lead grommet','Three-entry insulating strain relief at the contact housing; exact rubber profile is reconstructed.',[-s*.20,.01,.04]],
+  ['motor-breaker','Motor internal circuit breaker','Separate illustrative bimetal strip and contact pair in the early motor circuit. Distinct from the dashboard headlight-switch circuit breaker; rating and tooling remain unverified.',[-s*.22,.07,-.03]],
+ ])circuitPart(side+'-'+key,side+'-motor',name+' · '+label,desc,spread);
+}
+for(const [side,s,code,color]of [['left',1,'110','dark blue'],['right',-1,'104','dark blue / white']])circuitPart('isolation-'+side+'-output','relays',(side==='left'?'LH C101':'RH C102')+' harness lead · '+color,'Circuit '+code+' from the isolation-relay branch to the white motor lead disconnect. Routing is reconstructed; the long harness branch is separate from the relay internals for close inspection.',[s*.10,-.13,.13],[['Circuit',code],['Harness conductor',color],['Motor conductor','white']]);
+headlightSections.push({id:'headlight-power',parent:'headlight-relays',name:'Fusible links C / D and feed branches',spread:[0,-.08,.12]});
+for(const [i,key]of ['c','d'].entries())for(const [suffix,name,description,spread]of [
+ ['insulation','fusible-link insulation','Separate red insulated fusible-link segment. Adjacent-year GM 8A-102-0 identifies .35 mm² red link wire; length and insulation outside diameter are reconstructed.',[-.05+i*.10,0,0]],
+ ['conductor','fusible-link conductor','Separate copper conductor inside the insulation. The schematic cross-section annotation is adjacent-year evidence, not a verified replacement instruction for this car.',[-.05+i*.10,.045,0]],
+ ['splices','link end splices & sleeves','Crimp barrels and separate protective sleeves at both ends. Splice construction and exact factory tooling remain unmeasured.',[-.05+i*.10,-.04,.04]],
+ ['feed','actuator battery-feed branch','Independent red circuit 2 feed to the '+(key==='c'?'LH':'RH')+' actuator relay, separate from the cabin TAIL fuse. Both links are represented in the front lighting harness near the master cylinder; full C100 wiring is pending.',[-.05+i*.10,-.10,.08]],
+ ]){
+  circuitPart('link-'+key+'-'+suffix,'power','Link '+key.toUpperCase()+' · '+name,description,spread,[['Supplies',key==='c'?'LH actuator relay C1 A':'RH actuator relay C1 A'],['Location evidence','1986 GM 8A-201-9 figure D; adjacent year']]);
+  headlightParts.at(-1).serviceReference.links.push(['GM front-harness component location','https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=1047']);
+}
 
 headlightSections.push({id:'headlight-controls',parent:'headlight-system',name:'Dash switch, illumination wheel & beam dimmer',spread:[.18,.08,.12]});
 const controlSource='https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=886';

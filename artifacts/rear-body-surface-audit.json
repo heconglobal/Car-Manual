@@ -1,0 +1,377 @@
+{
+  "sourceSha256": "0c1e23dd80f0886b27d6e772e2800d88db8c74418c309c5d59a62a201255d310",
+  "baselineSource": null,
+  "reviewedAt": "2026-09-25T01:34:33.562Z",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "Split rear pads are tall, raised above the lower fascia and separated across the plate opening",
+      "status": "passed"
+    },
+    {
+      "name": "Rear plate mounting area has full height and sits behind the bumper-pad faces",
+      "status": "passed"
+    },
+    {
+      "name": "Curved outer rear lenses cover the internal red/reverse optics at sampled face positions",
+      "status": "passed"
+    },
+    {
+      "name": "Rear painted fascia leaves the sampled lamp faces open",
+      "status": "passed"
+    },
+    {
+      "name": "Lower centre nose has a formed bumper face instead of the old deeply tucked point",
+      "status": "passed"
+    },
+    {
+      "name": "The planar registration plate remains visible through the fascia recess",
+      "status": "passed"
+    },
+    {
+      "name": "License-light housings remain behind the painted upper recess edge",
+      "status": "passed"
+    },
+    {
+      "name": "Front and rear direction-indicator bulb offsets follow the 1985 coupe table",
+      "status": "passed"
+    },
+    {
+      "name": "Outside tail bulbs retain the specified lateral location and documented load conversion",
+      "status": "passed"
+    },
+    {
+      "name": "Marker bulbs use source curb heights with an explicit reconstructed load correction",
+      "status": "passed"
+    },
+    {
+      "name": "Each rear lamp has three red-chamber bulbs and a separate reverse bulb with matching sockets",
+      "status": "passed"
+    },
+    {
+      "name": "Outer covers transmit the inner optics and the optical grid belongs to the inner inserts",
+      "status": "passed"
+    },
+    {
+      "name": "Wider tapered lens ends are visible through the fitted fascia apertures",
+      "status": "passed"
+    },
+    {
+      "name": "Rear painted apron continues below the pads and meets both quarter lower edges",
+      "status": "passed"
+    },
+    {
+      "name": "Upper lamp corners roll into the top edge rather than retaining square outer corners",
+      "status": "passed"
+    },
+    {
+      "name": "Rear outlet scallops clear the twin pipes and shields remain behind the painted apron",
+      "status": "passed"
+    }
+  ],
+  "opticalSamples": [
+    {
+      "side": "left",
+      "x": -0.1,
+      "y": 0.666,
+      "outerZ": 1.9146793218771891,
+      "innerZ": 1.9036140738158411,
+      "clearanceMm": 11.06524806134801,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.1,
+      "y": 0.706,
+      "outerZ": 1.9045226035814546,
+      "innerZ": 1.8941274730981181,
+      "clearanceMm": 10.395130483336512,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.1,
+      "y": 0.746,
+      "outerZ": 1.8944498332615614,
+      "innerZ": 1.8833918777502379,
+      "clearanceMm": 11.057955511323492,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.3,
+      "y": 0.666,
+      "outerZ": 1.9131121903035035,
+      "innerZ": 1.9018505150872662,
+      "clearanceMm": 11.261675216237332,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.3,
+      "y": 0.706,
+      "outerZ": 1.9030871224502548,
+      "innerZ": 1.892345409046615,
+      "clearanceMm": 10.74171340363983,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.3,
+      "y": 0.746,
+      "outerZ": 1.8928312251832073,
+      "innerZ": 1.881580158893609,
+      "clearanceMm": 11.251066289598377,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.52,
+      "y": 0.666,
+      "outerZ": 1.9091211820304048,
+      "innerZ": 1.8978978940630422,
+      "clearanceMm": 11.223287967362605,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.52,
+      "y": 0.706,
+      "outerZ": 1.8990236329361005,
+      "innerZ": 1.888325374720918,
+      "clearanceMm": 10.698258215182443,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.52,
+      "y": 0.746,
+      "outerZ": 1.8887296883069737,
+      "innerZ": 1.8775270153564234,
+      "clearanceMm": 11.20267295055033,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.66,
+      "y": 0.666,
+      "outerZ": 1.903028488475545,
+      "innerZ": 1.8919783147395417,
+      "clearanceMm": 11.050173736003366,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.66,
+      "y": 0.706,
+      "outerZ": 1.8935699083988715,
+      "innerZ": 1.8831292223776992,
+      "clearanceMm": 10.440686021172318,
+      "status": "passed"
+    },
+    {
+      "side": "left",
+      "x": -0.66,
+      "y": 0.746,
+      "outerZ": 1.8840766653222583,
+      "innerZ": 1.8730570993087499,
+      "clearanceMm": 11.019566013508397,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.1,
+      "y": 0.666,
+      "outerZ": 1.9146793218771891,
+      "innerZ": 1.9036140738158411,
+      "clearanceMm": 11.06524806134801,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.1,
+      "y": 0.706,
+      "outerZ": 1.9045226035814546,
+      "innerZ": 1.8941274730981181,
+      "clearanceMm": 10.395130483336512,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.1,
+      "y": 0.746,
+      "outerZ": 1.8944498332615614,
+      "innerZ": 1.8833918777502379,
+      "clearanceMm": 11.057955511323492,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.3,
+      "y": 0.666,
+      "outerZ": 1.9131121903035035,
+      "innerZ": 1.9018505150872662,
+      "clearanceMm": 11.261675216237332,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.3,
+      "y": 0.706,
+      "outerZ": 1.9030871224502548,
+      "innerZ": 1.892345409046615,
+      "clearanceMm": 10.74171340363983,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.3,
+      "y": 0.746,
+      "outerZ": 1.8928312251832073,
+      "innerZ": 1.881580158893609,
+      "clearanceMm": 11.251066289598377,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.52,
+      "y": 0.666,
+      "outerZ": 1.9091211820304048,
+      "innerZ": 1.8978978940630422,
+      "clearanceMm": 11.223287967362605,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.52,
+      "y": 0.706,
+      "outerZ": 1.8990236329361005,
+      "innerZ": 1.888325374720918,
+      "clearanceMm": 10.698258215182443,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.52,
+      "y": 0.746,
+      "outerZ": 1.8887296883069737,
+      "innerZ": 1.8775270153564234,
+      "clearanceMm": 11.20267295055033,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.66,
+      "y": 0.666,
+      "outerZ": 1.903028488475545,
+      "innerZ": 1.8919783147395417,
+      "clearanceMm": 11.050173736003366,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.66,
+      "y": 0.706,
+      "outerZ": 1.8935699083988715,
+      "innerZ": 1.8831292223776992,
+      "clearanceMm": 10.440686021172318,
+      "status": "passed"
+    },
+    {
+      "side": "right",
+      "x": 0.66,
+      "y": 0.746,
+      "outerZ": 1.8840766653222583,
+      "innerZ": 1.8730570993087499,
+      "clearanceMm": 11.019566013508397,
+      "status": "passed"
+    }
+  ],
+  "lampDatums": [
+    {
+      "id": "lt-front-left-bulb",
+      "quantity": "absolute lateral offset",
+      "actualMm": 500,
+      "nominalMm": 500,
+      "basis": "MVMA PDF26, independent of load-height approximation"
+    },
+    {
+      "id": "lt-rear-left-turn-bulb",
+      "quantity": "absolute lateral offset",
+      "actualMm": 537.9999876022339,
+      "nominalMm": 538,
+      "basis": "MVMA PDF26, independent of load-height approximation"
+    },
+    {
+      "id": "lt-front-right-bulb",
+      "quantity": "absolute lateral offset",
+      "actualMm": 500,
+      "nominalMm": 500,
+      "basis": "MVMA PDF26, independent of load-height approximation"
+    },
+    {
+      "id": "lt-rear-right-turn-bulb",
+      "quantity": "absolute lateral offset",
+      "actualMm": 537.9999876022339,
+      "nominalMm": 538,
+      "basis": "MVMA PDF26, independent of load-height approximation"
+    },
+    {
+      "id": "lt-rear-left-tail-bulb",
+      "quantity": "absolute lateral offset",
+      "actualMm": 678.0000030994415,
+      "nominalMm": 678,
+      "basis": "MVMA PDF26"
+    },
+    {
+      "id": "lt-rear-left-tail-bulb",
+      "quantity": "height after estimated curb conversion",
+      "actualMm": 716.2151374871798,
+      "nominalMm": 716,
+      "basis": "Published curb datum; interpolated load conversion, not exact suspension geometry"
+    },
+    {
+      "id": "lt-rear-right-tail-bulb",
+      "quantity": "absolute lateral offset",
+      "actualMm": 678.0000030994415,
+      "nominalMm": 678,
+      "basis": "MVMA PDF26"
+    },
+    {
+      "id": "lt-rear-right-tail-bulb",
+      "quantity": "height after estimated curb conversion",
+      "actualMm": 716.2151374871798,
+      "nominalMm": 716,
+      "basis": "Published curb datum; interpolated load conversion, not exact suspension geometry"
+    },
+    {
+      "id": "lt-marker-front-left-bulb",
+      "quantity": "height after estimated curb conversion",
+      "actualMm": 554.9999987510184,
+      "nominalMm": 555,
+      "basis": "Published curb datum; interpolated load conversion, not exact suspension geometry"
+    },
+    {
+      "id": "lt-marker-rear-left-bulb",
+      "quantity": "height after estimated curb conversion",
+      "actualMm": 655.5955618024749,
+      "nominalMm": 655,
+      "basis": "Published curb datum; interpolated load conversion, not exact suspension geometry"
+    },
+    {
+      "id": "lt-marker-front-right-bulb",
+      "quantity": "height after estimated curb conversion",
+      "actualMm": 554.9999987510184,
+      "nominalMm": 555,
+      "basis": "Published curb datum; interpolated load conversion, not exact suspension geometry"
+    },
+    {
+      "id": "lt-marker-rear-right-bulb",
+      "quantity": "height after estimated curb conversion",
+      "actualMm": 655.5955618024749,
+      "nominalMm": 655,
+      "basis": "Published curb datum; interpolated load conversion, not exact suspension geometry"
+    }
+  ],
+  "limits": "Factory-reference bulb offsets, explicit approximate load conversion, shape regression and actual mesh overlap checks. These do not certify factory panel sections, optics, gaps or original hardware dimensions."
+}

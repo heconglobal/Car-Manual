@@ -1,0 +1,75 @@
+{
+  "reviewedAt": "2026-09-24T00:22:51.640Z",
+  "sourceSha256": "8d27d7eee7563f1e28b21a4162cd07446b1adcac85445f08710f7ae4368d3f49",
+  "applicationSha256": "aa83ca050de8a32a282bb74de8c1019249e07ddb9f25ed67709d6a580f8816e0",
+  "status": "Development visual inspection; not final dimensional or photorealistic acceptance",
+  "captures": [
+    {
+      "file": "body-driver-door-exploded.png",
+      "sha256": "7922333673a2ad1af00043b570e0cf21abd0f5037e4099b1b91d5619675230b0",
+      "capturedAt": "2026-09-24T00:07:18.822Z",
+      "reviewedAt": "2026-09-24T00:16:56.360Z"
+    },
+    {
+      "file": "body-rear-clip-exploded.png",
+      "sha256": "66f607028ef6904226b6b1db24c6efb87ccb8e9b419dd1341ff7db6b3b616807",
+      "capturedAt": "2026-09-24T00:07:46.462Z",
+      "reviewedAt": "2026-09-24T00:16:56.363Z"
+    },
+    {
+      "file": "brakes-front-caliper-assembled.png",
+      "sha256": "bd9114b64abf9f24df4c2ceda59721ddd6ae0250a1f9820abe608e91027d380b",
+      "capturedAt": "2026-09-24T00:11:03.014Z",
+      "reviewedAt": "2026-09-24T00:16:56.366Z"
+    },
+    {
+      "file": "brakes-rear-caliper-exploded.png",
+      "sha256": "6400cef3facacd9670985886c4927f0018c0596f1b5f9a9d7d476d8e9700ac88",
+      "capturedAt": "2026-09-24T00:11:22.301Z",
+      "reviewedAt": "2026-09-24T00:16:56.368Z"
+    },
+    {
+      "file": "native-headlight-pass-vehicle.png",
+      "sha256": "edc3c5f515485d33f9c31ecaf244f09837747f41a4946424b0e611ad8e86586c",
+      "capturedAt": "2026-09-24T00:21:39.366Z",
+      "reviewedAt": "2026-09-24T00:22:51.621Z"
+    },
+    {
+      "file": "native-headlight-pass-headlight-left-relay-assembled.png",
+      "sha256": "f004f0900ff66e4ca46eede3e9a5a565657833133898902810156291c7521c92",
+      "capturedAt": "2026-09-24T00:21:51.246Z",
+      "reviewedAt": "2026-09-24T00:22:51.624Z"
+    },
+    {
+      "file": "native-headlight-pass-headlight-left-relay-exploded.png",
+      "sha256": "a3a9068513310ff7c3f0eb5f6e01281328d459ad5641d33e102a43899d6420cd",
+      "capturedAt": "2026-09-24T00:21:52.678Z",
+      "reviewedAt": "2026-09-24T00:22:51.628Z"
+    },
+    {
+      "file": "native-headlight-pass-headlight-isolation-relay-assembled.png",
+      "sha256": "dcad2d52b1e6631c8e9422fd032f9ccb19675f326bcf04e3ac2b56d5e1522e92",
+      "capturedAt": "2026-09-24T00:21:57.376Z",
+      "reviewedAt": "2026-09-24T00:22:51.631Z"
+    },
+    {
+      "file": "native-headlight-pass-hl-left-relay-coil.png",
+      "sha256": "455639207db4c880fcc506e8e1ef654fe5d43334ad71728b0b7e76a3efcb6560",
+      "capturedAt": "2026-09-24T00:22:03.454Z",
+      "reviewedAt": "2026-09-24T00:22:51.634Z"
+    },
+    {
+      "file": "native-headlight-pass-hl-left-relay-socket-contacts.png",
+      "sha256": "2c961392ba9e23d3f10f8b9b6001d69c7f664f9b681763f3a970afa2644cc322",
+      "capturedAt": "2026-09-24T00:22:05.322Z",
+      "reviewedAt": "2026-09-24T00:22:51.638Z"
+    },
+    {
+      "file": "native-headlight-pass-headlight-power-exploded.png",
+      "sha256": "20c8fdb5324061f95e78f29f47d953d0689175ad0e1befeb6b52f92996f2bcb8",
+      "capturedAt": "2026-09-24T00:22:01.642Z",
+      "reviewedAt": "2026-09-24T00:22:51.640Z"
+    }
+  ],
+  "limits": "Explicitly recorded after opening these captures. Passing screenshots do not prove complete physical parts, original tooling, electrical operation, all devices or owner acceptance."
+}

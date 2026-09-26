@@ -1,0 +1,10 @@
+{
+  "date": "2026-09-25T01:21:11.022163+00:00",
+  "sourceSha256": "77fa6467747ecc019211e150f56649a5aa4946ab2751adfe0a538c998ee9c2c1",
+  "status": "interrupted-not-counted",
+  "reason": "Stopped the two-scenario browser run and focused geometry run before changing the door-edge seal offset. The recessed jamb remains; the seal must stay within the documented body-width envelope.",
+  "exitCodes": [
+    130,
+    130
+  ]
+}

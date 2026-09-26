@@ -58,7 +58,7 @@
   "limits": [
     "Metric and inch fields are transcribed as independently displayed rounded values; they must not be silently treated as equal precision.",
     "No original-part shape, chain pitch, 1985 VIN-9 fitment, cam phase, shaft fit or original material is certified by these product specifications.",
-    "Current model still uses 32 repeated tooth forms on both timing sprockets. Manufacturer data requires application and original-GM cross-reference verification before a coordinated correction.",
+    "September 24 update: model now uses replacement-based 40/20 tooth outlines. Original-GM application, profile and dimensional equivalence remain unverified; this is not a verified factory timing set.",
     "No manufacturer product image or proprietary CAD was imported into the app."
   ]
 }

@@ -1,0 +1,81 @@
+{
+  "reviewedAt": "2026-09-24T02:58:44.507Z",
+  "sourceSha256": "1d9775f40ca423ba7f27b8d3daad507711fa128b9d9160a10a2bf1e038f70ca7",
+  "applicationSha256": "ba0c7206390833c12db4454313fce881ce3c63a876634efe6c8c01a17b4c76d8",
+  "status": "Development visual inspection; not final dimensional or photorealistic acceptance",
+  "captures": [
+    {
+      "file": "native-timing-vehicle.png",
+      "sha256": "56759085e2feee3405b5b78c2768d66ab3446773fe17ab86faebb1807c014695",
+      "capturedAt": "2026-09-24T02:52:49.075Z",
+      "reviewedAt": "2026-09-24T02:54:59.303Z"
+    },
+    {
+      "file": "native-timing-timing-assembled.png",
+      "sha256": "c40d3b5d13bb4722b411c026c2819dd60b1904784c810fd62ed9dd62021b6080",
+      "capturedAt": "2026-09-24T02:52:56.424Z",
+      "reviewedAt": "2026-09-24T02:54:59.306Z"
+    },
+    {
+      "file": "native-timing-timing-exploded.png",
+      "sha256": "fb8874db4bf27a0ede50752ca407d0b234a8d99ac7e1b46bd16035ac15f12185",
+      "capturedAt": "2026-09-24T02:52:57.763Z",
+      "reviewedAt": "2026-09-24T02:54:59.308Z"
+    },
+    {
+      "file": "native-timing-valve-front-2-intake-assembled.png",
+      "sha256": "c11e783061ca7e6120e76cac437a47920bdbd0ae288ed8fdf990649d6046a05d",
+      "capturedAt": "2026-09-24T02:52:59.434Z",
+      "reviewedAt": "2026-09-24T02:54:59.312Z"
+    },
+    {
+      "file": "native-timing-valve-front-2-intake-exploded.png",
+      "sha256": "e1cc0ab82fd7bbea7618e5fe8a73658d092397c5870dbc4ed0ba4a3a8cf43f5d",
+      "capturedAt": "2026-09-24T02:53:00.749Z",
+      "reviewedAt": "2026-09-24T02:54:59.316Z"
+    },
+    {
+      "file": "native-timing-valve-rear-2-exhaust-assembled.png",
+      "sha256": "05e811220c8727a9532462bb5336700e8c92715066cebc347469d3266374705e",
+      "capturedAt": "2026-09-24T02:53:02.643Z",
+      "reviewedAt": "2026-09-24T02:54:59.319Z"
+    },
+    {
+      "file": "native-timing-valve-rear-2-exhaust-exploded.png",
+      "sha256": "018faaa6b4e2ba42664dd4ff67964bfe65ecf7b02313400ae75bed5fd9a9aed1",
+      "capturedAt": "2026-09-24T02:53:04.050Z",
+      "reviewedAt": "2026-09-24T02:54:59.321Z"
+    },
+    {
+      "file": "native-timing-eng-timing-cover.png",
+      "sha256": "771137ecf2ce5ae47ad20ad48792e58f3989236cc67350791e8605946ad42e68",
+      "capturedAt": "2026-09-24T02:53:05.878Z",
+      "reviewedAt": "2026-09-24T02:54:59.325Z"
+    },
+    {
+      "file": "native-timing-eng-cam-gear.png",
+      "sha256": "df8ddc7121ddfafac076fcd98b3d0ba10c1874a315b6f18ed7fbcb1716a1f10d",
+      "capturedAt": "2026-09-24T02:53:07.669Z",
+      "reviewedAt": "2026-09-24T02:54:59.328Z"
+    },
+    {
+      "file": "native-timing-eng-chain.png",
+      "sha256": "586588d2fde1c451b4659e7e4e07b7a24f7803dd0a333911c3ae1de52449a44d",
+      "capturedAt": "2026-09-24T02:53:09.421Z",
+      "reviewedAt": "2026-09-24T02:54:59.332Z"
+    },
+    {
+      "file": "native-timing-eng-camshaft.png",
+      "sha256": "29d19312be0efa4fc3989abd3204bcb52e8316e2c590e2f23eedf7c3a8227f9c",
+      "capturedAt": "2026-09-24T02:53:11.102Z",
+      "reviewedAt": "2026-09-24T02:54:59.335Z"
+    },
+    {
+      "file": "engine-mobile.png",
+      "sha256": "7c023b8850c577c12577ba27631e0cd78a1ec208069c69850be641165cb72da5",
+      "capturedAt": "2026-09-24T02:55:12.591Z",
+      "reviewedAt": "2026-09-24T02:58:44.507Z"
+    }
+  ],
+  "limits": "Explicitly recorded after opening these captures. Passing screenshots do not prove complete physical parts, original tooling, electrical operation, all devices or owner acceptance."
+}

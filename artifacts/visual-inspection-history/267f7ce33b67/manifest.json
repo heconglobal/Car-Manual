@@ -1,0 +1,243 @@
+{
+  "reviewedAt": "2026-09-24T02:15:28.406Z",
+  "sourceSha256": "267f7ce33b674db06a91c3ae15cb71ee195ef8e058968119cb0bd117a4f00c23",
+  "applicationSha256": "c714c049bdc374e790156fbfc59353a030739afd6d1ce3a35cd9accbfd17b846",
+  "status": "Development visual inspection; not final dimensional or photorealistic acceptance",
+  "captures": [
+    {
+      "file": "native-headlight-final-hl-left-relay-socket-contacts.png",
+      "sha256": "c3af2bf409e7d6a5f88ba559b88ee1611f09662d0584af409e4f0f622f304205",
+      "capturedAt": "2026-09-24T00:26:37.731Z",
+      "reviewedAt": "2026-09-24T00:27:18.276Z"
+    },
+    {
+      "file": "native-headlight-final-hl-left-relay-coil.png",
+      "sha256": "e2778553ea8f4fd3c0fc2a9293c2965502bfab5f4e67776b81fbc74543635795",
+      "capturedAt": "2026-09-24T00:26:35.892Z",
+      "reviewedAt": "2026-09-24T00:27:18.279Z"
+    },
+    {
+      "file": "native-headlight-final-headlight-left-relay-assembled.png",
+      "sha256": "021b478ba8d8ea73db4143ae6c2d22b54b50de2dbaeed5dab8a12ad1a20e20fe",
+      "capturedAt": "2026-09-24T00:26:24.755Z",
+      "reviewedAt": "2026-09-24T00:27:18.281Z"
+    },
+    {
+      "file": "native-headlight-final-headlight-left-relay-exploded.png",
+      "sha256": "e82c093d0438f1a636f0695af891392b653521145d59dc8b51e2ce33aa3e7862",
+      "capturedAt": "2026-09-24T00:26:26.055Z",
+      "reviewedAt": "2026-09-24T00:27:18.283Z"
+    },
+    {
+      "file": "native-headlight-final-vehicle.png",
+      "sha256": "12f41b08135992b03d0f981f6c6b0f4576c4b0d14e7a64df459683509ee4614a",
+      "capturedAt": "2026-09-24T00:26:16.519Z",
+      "reviewedAt": "2026-09-24T00:45:25.248Z"
+    },
+    {
+      "file": "native-headlight-final-headlight-relays-assembled.png",
+      "sha256": "f3915ffd1bbea28fac7050d4ffb6aaf62186d68bc87af63b3f3e26b2a1c9661e",
+      "capturedAt": "2026-09-24T00:26:22.049Z",
+      "reviewedAt": "2026-09-24T00:45:25.262Z"
+    },
+    {
+      "file": "native-headlight-final-headlight-relays-exploded.png",
+      "sha256": "12671073cffb130745e78fbec733ac1f56ea097535c3543f2f14f356e83ecdf1",
+      "capturedAt": "2026-09-24T00:26:23.341Z",
+      "reviewedAt": "2026-09-24T00:45:25.270Z"
+    },
+    {
+      "file": "native-headlight-final-headlight-right-relay-assembled.png",
+      "sha256": "3a6d5de1fcf22ec80c957784dfc4630624391107e9eda036af25cc81ac1b1210",
+      "capturedAt": "2026-09-24T00:26:27.493Z",
+      "reviewedAt": "2026-09-24T00:45:25.274Z"
+    },
+    {
+      "file": "native-headlight-final-headlight-right-relay-exploded.png",
+      "sha256": "d75948b6be86b740c2aba48d3ab72b0b92574f41dd2d6c73ab32a295ee70103a",
+      "capturedAt": "2026-09-24T00:26:28.781Z",
+      "reviewedAt": "2026-09-24T00:45:25.276Z"
+    },
+    {
+      "file": "native-headlight-final-headlight-isolation-relay-assembled.png",
+      "sha256": "7002b7a6038511e6362e5dae9d2e7b8126f7368c221703acc4fc0e2a92c78136",
+      "capturedAt": "2026-09-24T00:26:30.223Z",
+      "reviewedAt": "2026-09-24T00:45:25.285Z"
+    },
+    {
+      "file": "native-headlight-final-headlight-isolation-relay-exploded.png",
+      "sha256": "e4f41230da824eb57cfc7bfbd7025acdeae37c6d60cf094b88431df2880f8b9d",
+      "capturedAt": "2026-09-24T00:26:31.535Z",
+      "reviewedAt": "2026-09-24T00:45:25.289Z"
+    },
+    {
+      "file": "native-headlight-final-headlight-power-assembled.png",
+      "sha256": "260a8450eeb6c1098a7b12bb7489b91032b16207810a8c603a9c4461742506ad",
+      "capturedAt": "2026-09-24T00:26:32.975Z",
+      "reviewedAt": "2026-09-24T00:45:25.291Z"
+    },
+    {
+      "file": "native-headlight-final-headlight-power-exploded.png",
+      "sha256": "20c8fdb5324061f95e78f29f47d953d0689175ad0e1befeb6b52f92996f2bcb8",
+      "capturedAt": "2026-09-24T00:26:34.247Z",
+      "reviewedAt": "2026-09-24T00:45:25.293Z"
+    },
+    {
+      "file": "headlamp-procedure-disconnect.png",
+      "sha256": "c44a22f509b5e987b19a5468d0e4874c276b2bb19aee3266e7febe560704d3b0",
+      "capturedAt": "2026-09-24T00:50:08.694Z",
+      "reviewedAt": "2026-09-24T00:53:26.880Z"
+    },
+    {
+      "file": "headlamp-procedure-mobile.png",
+      "sha256": "ce2908c28531ccb2ac3e7af2f1d8861e5634c6f400c3839140c3cc2ed8728427",
+      "capturedAt": "2026-09-24T00:50:22.918Z",
+      "reviewedAt": "2026-09-24T00:53:26.888Z"
+    },
+    {
+      "file": "headlight-motor-exploded.png",
+      "sha256": "b19eda5f1741bbb28569b3e2a8596f5649e9a957bc0eeb971126132a96b5bcc5",
+      "capturedAt": "2026-09-24T00:51:43.956Z",
+      "reviewedAt": "2026-09-24T00:55:18.830Z"
+    },
+    {
+      "file": "headlight-isolation-relay-exploded.png",
+      "sha256": "fbcb4630b96237e13ff4e1637bb2ce59c49e53ea2e0d572e8898b35a1ff207ea",
+      "capturedAt": "2026-09-24T00:52:47.703Z",
+      "reviewedAt": "2026-09-24T00:55:18.847Z"
+    },
+    {
+      "file": "headlight-fusible-links-exploded.png",
+      "sha256": "6187b5f32f0e48ee5f9cc2bb291366e3fc0b41cd964d62300c2d7e76558bed67",
+      "capturedAt": "2026-09-24T00:52:56.647Z",
+      "reviewedAt": "2026-09-24T00:55:18.849Z"
+    },
+    {
+      "file": "headlight-mobile-cushion.png",
+      "sha256": "b2ca20f16f836c1506ccebee96f998a273c88e9adab7ef9e1b1736200baa0928",
+      "capturedAt": "2026-09-24T00:54:22.065Z",
+      "reviewedAt": "2026-09-24T00:55:18.862Z"
+    },
+    {
+      "file": "body-decklid-assembled.png",
+      "sha256": "200d680c28e25b69c4be4c008106f9bbeb2b6a9e4f941fb45dedb3bb4a282d7a",
+      "capturedAt": "2026-09-24T00:58:51.198Z",
+      "reviewedAt": "2026-09-24T00:59:53.541Z"
+    },
+    {
+      "file": "brakes-front-caliper-assembled.png",
+      "sha256": "631246f7f9520964dfe3e4221927bbc54fdb4b9e3d0f55f59a7cef39d1a942d7",
+      "capturedAt": "2026-09-24T00:58:36.154Z",
+      "reviewedAt": "2026-09-24T00:59:53.544Z"
+    },
+    {
+      "file": "body-driver-door-exploded.png",
+      "sha256": "22d2e2bd9e89f8c8ecc8aaf30143526d5b691cc04e080b5e2d3d9abd7eeb0ea4",
+      "capturedAt": "2026-09-24T00:59:12.670Z",
+      "reviewedAt": "2026-09-24T01:01:22.437Z"
+    },
+    {
+      "file": "brakes-master-exploded.png",
+      "sha256": "2821abd3e5ce47a28f02652c3b2aebb86e8b0b41027b2684c5f2b456faa0ea1a",
+      "capturedAt": "2026-09-24T00:59:40.034Z",
+      "reviewedAt": "2026-09-24T01:01:22.445Z"
+    },
+    {
+      "file": "wiring-cluster-assembled.png",
+      "sha256": "ef5e2fe4a6fe4f4f790faa448359b8647e878fb697c6aaf1fda649d5b5d87a20",
+      "capturedAt": "2026-09-24T01:12:39.443Z",
+      "reviewedAt": "2026-09-24T01:14:13.473Z"
+    },
+    {
+      "file": "wiring-ecm-exploded.png",
+      "sha256": "2d6ccdad7cefe1dac894e80af70420fae24ece458cb0d42cd4355c8656fa1cf1",
+      "capturedAt": "2026-09-24T01:12:15.561Z",
+      "reviewedAt": "2026-09-24T01:14:13.478Z"
+    },
+    {
+      "file": "hvac-blower-exploded.png",
+      "sha256": "436d0dbdd00fe24126507fa8f1e330556983421132674bd90c2096b71fb97486",
+      "capturedAt": "2026-09-24T01:16:00.454Z",
+      "reviewedAt": "2026-09-24T01:18:00.285Z"
+    },
+    {
+      "file": "hvac-c60-module-exploded.png",
+      "sha256": "05e2da318910c4425847a670bc07aa062e26a078e6e1f4b4b2a4162647b2ea91",
+      "capturedAt": "2026-09-24T01:16:43.602Z",
+      "reviewedAt": "2026-09-24T01:18:00.308Z"
+    },
+    {
+      "file": "service-water-pump-exploded.png",
+      "sha256": "7255e2e71aecbfa75bd8cdb96d1e572f821f47f949364fc35d0db2eeca5deffb",
+      "capturedAt": "2026-09-24T01:23:32.674Z",
+      "reviewedAt": "2026-09-24T01:25:09.705Z"
+    },
+    {
+      "file": "service-thermostat-element.png",
+      "sha256": "8b0848ea13a35e42bcb65929fc5e99133873c7456f72043ce1add1f06e97da01",
+      "capturedAt": "2026-09-24T01:23:22.666Z",
+      "reviewedAt": "2026-09-24T01:25:09.710Z"
+    },
+    {
+      "file": "exhaust-crossover-assembled.png",
+      "sha256": "2ae2064dc1285383372255dc10234f9e965ddfa7782a9ef0fa88bedffe4c93a0",
+      "capturedAt": "2026-09-24T01:27:43.717Z",
+      "reviewedAt": "2026-09-24T01:30:03.200Z"
+    },
+    {
+      "file": "exhaust-catalyst-cutaway.png",
+      "sha256": "e01d26632dca576656015e9607bbf2bafd3b9dedad7fb0e06617debe68c61d2e",
+      "capturedAt": "2026-09-24T01:28:05.008Z",
+      "reviewedAt": "2026-09-24T01:30:03.209Z"
+    },
+    {
+      "file": "fuel-tank-cutaway.png",
+      "sha256": "971096c5e1dd1e6243e46e7b683095414a361719ae558467df7a883ce1b00803",
+      "capturedAt": "2026-09-24T01:30:34.318Z",
+      "reviewedAt": "2026-09-24T01:32:04.521Z"
+    },
+    {
+      "file": "fuel-sender-exploded.png",
+      "sha256": "3468cb5ea32ff4073585fce4c1553f5471a4798cea9b6ee4cfaed7370a2f7926",
+      "capturedAt": "2026-09-24T01:30:24.450Z",
+      "reviewedAt": "2026-09-24T01:32:04.524Z"
+    },
+    {
+      "file": "steering-rack-exploded.png",
+      "sha256": "e129164430aefe1164cd5e56f6ef05e9707a165043b9737bb6f0a84b40342980",
+      "capturedAt": "2026-09-24T01:35:45.794Z",
+      "reviewedAt": "2026-09-24T01:39:32.337Z"
+    },
+    {
+      "file": "transmission-input-exploded.png",
+      "sha256": "2f6499e06b0d58ca8a53920fe5b99edc7d748c85ef552d5f0f94ca15461aa784",
+      "capturedAt": "2026-09-24T01:38:28.902Z",
+      "reviewedAt": "2026-09-24T01:39:32.340Z"
+    },
+    {
+      "file": "lhd-controls-from-front.png",
+      "sha256": "a95167265c64cdc69b7aaa81f75827f6f1a6524745f7024a51e0e4ed92dbdf8a",
+      "capturedAt": "2026-09-24T01:40:53.192Z",
+      "reviewedAt": "2026-09-24T01:43:44.704Z"
+    },
+    {
+      "file": "cooling-complete-circuit.png",
+      "sha256": "dada4d4e9812377e50f9fd60c08c76a3b2474e4fc53f7af356e88b76290646ad",
+      "capturedAt": "2026-09-24T01:39:06.738Z",
+      "reviewedAt": "2026-09-24T01:43:44.706Z"
+    },
+    {
+      "file": "desktop-overview.png",
+      "sha256": "e8e9daf46ea33b00153c58175a10ff79a3a5175b337e766445f877a8ef36ae04",
+      "capturedAt": "2026-09-24T01:48:44.732Z",
+      "reviewedAt": "2026-09-24T01:54:01.023Z"
+    },
+    {
+      "file": "mobile-explorer.png",
+      "sha256": "cfe410580ff4e8737956114f1e106b56876f17bc46054f96e374bf3b7417c0ae",
+      "capturedAt": "2026-09-24T02:14:04.437Z",
+      "reviewedAt": "2026-09-24T02:15:28.406Z"
+    }
+  ],
+  "limits": "Explicitly recorded after opening these captures. Passing screenshots do not prove complete physical parts, original tooling, electrical operation, all devices or owner acceptance."
+}

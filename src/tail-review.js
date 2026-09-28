@@ -12,8 +12,8 @@ const scene=new T.Scene();scene.background=new T.Color('#d9dcda');const pmrem=ne
 scene.add(new T.HemisphereLight('#fffaf3','#777c80',1.6));const light=new T.DirectionalLight('#fff7ed',2.3);light.position.set(-3,5,5);scene.add(light);
 const body=new T.Group(),groups=new Map();for(const p of parts){const g=new T.Group();groups.set(p.id,g);body.add(g);}const h=geometryTools(groups,createMaterials());buildBody(h);h.optimize();correctLegacyHandedness(groups);scene.add(body);
 const lighting=createLightingDetail();scene.add(lighting.root);
-const rearIds=new Set(['rear-fascia','rear-pad-left','rear-pad-right','rear-plate-mount','rear-fascia-molding','rear-emblems','quarter-left','quarter-right','decklid','deck-vent-left','deck-vent-right','rear-clip','rear-window','sail-left','sail-right','roof']);
-for(const [id,g]of groups){g.visible=rearIds.has(id);g.traverse(m=>{if(m.isMesh&&m.userData.option)m.visible=false;});}
+const rearIds=new Set(['rear-fascia','rear-pad-left','rear-pad-right','rear-plate-mount','rear-fascia-molding','rear-emblems','quarter-left','quarter-right','decklid','deck-vent-left','deck-vent-right','rear-clip','rear-window','backlight-filler-left','backlight-filler-right','b-pillar-seal-left','b-pillar-seal-right','fuel-door','fuel-door-hinge','side-intake','rear-molding-left','rear-molding-right','sail-left','sail-right','roof']);
+for(const [id,g]of groups){g.visible=rearIds.has(id);g.traverse(m=>{if(m.isMesh&&m.userData.option)m.visible=m.userData.option==='roof'&&m.userData.value==='solid';});}
 const camera=new T.PerspectiveCamera(35,1,.02,30),controls=new OrbitControls(camera,renderer.domElement);let queued=false;
 function render(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;renderer.render(scene,camera);});}
 function view(name){

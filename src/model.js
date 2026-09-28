@@ -1,3 +1,4 @@
+import {interiorColor} from './interior-surfaces.js';
 import {buildVehicleWiring} from './wiring-detail.js';
 import {buildVehicleCharging} from './charging-detail.js';
 import {buildVehicleLighting} from './lighting-detail.js';
@@ -75,6 +76,7 @@ export function createVehicle() {
    }
    if(materialName==='interior')m.userData.original.color.set(configuration.interior==='tan'?'#9b7a50':'#555b60');
    if(materialName==='vinyl')m.userData.original.color.set(configuration.interior==='tan'?'#604931':'#2e3338');
+   const cabinColor=interiorColor(materialName,configuration);if(cabinColor)m.userData.original.color.set(cabinColor);
    if(finish==='wheel')m.userData.original.color.set(configuration.wheelFinish==='dark'?'#5e6468':'#bdc1c3');
    m.material.color.copy(m.userData.original.color);
    surfaceMaterial.color.copy(m.userData.original.color);

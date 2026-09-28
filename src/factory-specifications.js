@@ -20,3 +20,7 @@ export const cylinderReference={
  links:[['Pontiac 1985 nominal specifications · engine',mvma1985+'#page=5'],['Pontiac engine layout · 1986 §6A2-1','https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=318']],
  note:'The pulley end is toward the passenger side; the transaxle is toward the driver side. Cylinder identities and firing order are verified; cap clocking and the displayed lead routes are reconstructed and are not a distributor-installation diagram.',
 };
+
+// Pontiac 1985 MVMA PDF 23. Occupant-envelope values must not be
+// misrepresented as local cushion, body-panel or pedal dimensions.
+export const cabinNominal={steeringAngle:16.5,backAngle:26.5,effectiveHeadroom:.941,effectiveLegroom:1.105,hipRoom:1.380,shoulderRoom:1.395,hPointTravel:.199,seatToHeel:.159,seatingBaseGrid:1.152};

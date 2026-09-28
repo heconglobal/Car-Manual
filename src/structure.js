@@ -1,5 +1,6 @@
 import * as T from 'three';
 import {bodyPoint} from './body-datums.js';
+import {aPost,rail,sideWindow,windshield} from './glazing-contours.js';
 
 // 1985 factory DIY, printed 1-4 / 1-5: welded steel space frame.
 // Reconstructed formed members and panel layout; not measured body-shop data.
@@ -23,14 +24,31 @@ function buildAuthoredStructure(h){
   channel([[s*.687,.225,-.63],[s*.687,.225,.0],[s*.687,.225,.59]],.11,.10,.018);
   // Lower sill pinch-weld flange, seat support channels and mounting pads.
   box(id,[.005,.030,1.20],[s*.746,.213,-.022],'frame',[],{},.002);
-  for(const z of [-.32,.27]){
-   box(id,[.455,.048,.075],[s*.409,.235,z],'frame',[],{},.008);
-   for(const x of [.265,.558]){box(id,[.047,.004,.048],[s*x,.264,z],'frame');bolt(id,[s*x,.270,z],.005);}
+  for(const z of [-.091,.289]){
+   box(id,[.455,.048,.075],[s*.383,.218,z],'frame',[],{},.008);
+   for(const x of [.237,.529]){box(id,[.047,.004,.048],[s*x,.244,z],'frame');bolt(id,[s*x,.247,z],.005);}
   }
   // A-pillar, roof side rail and broad B-pillar surround the open aperture.
-  channel([[s*.707,.273,-.627],[s*.728,.585,-.610],[s*.744,.781,-.598],[s*.659,.963,-.338],[s*.569,1.119,-.075]],.041,.023,.010);
-  channel([[s*.569,1.119,-.075],[s*.582,1.126,.19],[s*.585,1.116,.464]],.049,.025,.010);
-  channel([[s*.707,.273,.590],[s*.718,.550,.587],[s*.716,.769,.563],[s*.653,.948,.514],[s*.585,1.116,.464]],.080,.043,.016);
+  // GM's catalog p13 bare-frame photograph: members follow the perimeter,
+  // with no second upright inside the clear opening. Derive the upper paths
+  // from that opening; these section sizes remain reconstructed.
+  // Seat the upper stamping behind the actual painted A-pillar land. A hat
+  // section offset only in Y crossed that sloping land at the upper corner.
+  const apostFrame=t=>{
+   const a=new T.Vector3(...windshield(s>0?1:0,t)),b=new T.Vector3(...aPost(t));b.x*=s;
+   const across=b.clone().sub(a),e=.0001,lo=aPost(Math.max(0,t-e)),hi=aPost(Math.min(1,t+e)),along=new T.Vector3(s*(hi[0]-lo[0]),hi[1]-lo[1],hi[2]-lo[2]);
+   const n=across.clone().cross(along).normalize();if(n.dot(new T.Vector3(s,.4,-.4))<0)n.negate();
+   return{p:a.lerp(b,.52),across,n};
+  };
+  const foot=apostFrame(0).p.clone().addScaledVector(apostFrame(0).n,-.012);
+  channel([[s*.707,.273,-.627],[s*.728,.585,-.610],foot.toArray()],.029,.013,.005);
+  const postSection=[[-.42,-.006],[-.30,-.006],[-.25,-.019],[.25,-.019],[.30,-.006],[.42,-.006]];
+  for(let k=0;k<postSection.length-1;k++)surface(id,64,2,(u,v)=>{const f=apostFrame(u),a=postSection[k],b=postSection[k+1];return f.p.addScaledVector(f.across,T.MathUtils.lerp(a[0],b[0],v)).addScaledVector(f.n,T.MathUtils.lerp(a[1],b[1],v)).toArray();},'frame');
+  // The channel's depth grows UP from its path. The old +20 mm path put
+  // the steel web above the roof, where it looked like a second weatherstrip.
+  channel(Array.from({length:25},(_,i)=>{const p=rail(i/24);return[s*(p[0]-.035),p[1]-.007,p[2]];}),.032,.008,.005);
+  const bpost=Array.from({length:17},(_,i)=>{const p=sideWindow(s,1,i/16);return[p[0]-s*.033,p[1],p[2]+.068];});
+  channel([[s*.707,.273,.590],[s*.718,.550,.630],...bpost],.059,.032,.010);
   // Door jamb mounting faces. No filled wall across the door/window opening.
   for(const y of [.42,.67]){box(id,[.036,.086,.038],[s*.728,y,-.599],'frame');bolt(id,[s*.751,y,-.599],.007,'x');}
   box(id,[.026,.062,.047],[s*.712,.675,.561],'frame');
@@ -69,7 +87,7 @@ function buildAuthoredStructure(h){
  box(id,[1.30,.061,.083],[0,.758,-.660],'frame',[],{},.010);
  box(id,[1.22,.043,.047],[0,.799,.545],'frame',[],{},.010);
  box(id,[1.15,.025,.038],[0,1.133,.478],'frame',[],{},.006);
- box(id,[1.12,.025,.032],[0,1.125,-.066],'frame',[],{},.006);
+ box(id,[1.12,.025,.032],[0,1.154,-.096],'frame',[],{},.006);
  // Radiator support and rear crossmember are folded sheet sections.
  for(const z of [-1.784,1.884]){
   box(id,[1.39,.114,.073],[0,.433,z],'frame',[],{},.009);

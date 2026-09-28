@@ -1,3 +1,5 @@
+import {createInteriorDetail} from './interior-detail.js';
+import {interiorColor} from './interior-surfaces.js';
 import {createWiringDetail} from './wiring-detail.js';
 import {createChargingDetail} from './charging-detail.js';
 import {createLightingDetail} from './lighting-detail.js';
@@ -64,7 +66,7 @@ export function createViewer(container, onSelect) {
  const vehiclePartById=new Map(parts.map(p=>[p.id,p]));
  const {root,groups,configure}=createVehicle();prepareSoftwareSurfaces(root);scene.add(root);
  let inspection=null;const inspections=new Map();
- const builders={'wiring-system':createWiringDetail,'charging-system':createChargingDetail,'lighting-system':createLightingDetail,'headlight-system':createHeadlightDetail,'hvac-system':createHvacDetail,'body-system':createBodyDetail,'exhaust-system':createExhaustDetail,'fuel-system':createFuelDetail,'suspension-system':createSuspensionDetail,engine:createEngineDetail,transmission:createTransmissionDetail,'cooling-system':createCoolingDetail,'braking-system':createBrakeDetail};
+ const builders={'interior-system':createInteriorDetail,'wiring-system':createWiringDetail,'charging-system':createChargingDetail,'lighting-system':createLightingDetail,'headlight-system':createHeadlightDetail,'hvac-system':createHvacDetail,'body-system':createBodyDetail,'exhaust-system':createExhaustDetail,'fuel-system':createFuelDetail,'suspension-system':createSuspensionDetail,engine:createEngineDetail,transmission:createTransmissionDetail,'cooling-system':createCoolingDetail,'braking-system':createBrakeDetail};
  const currentGroups=()=>current.assembly?inspection.groups:groups;
  const currentParts=()=>current.assembly?detailParts.filter(p=>p.family===familyFor(current.assembly).id):parts;
  const currentRoot=()=>current.assembly?inspection.root:root;
@@ -124,12 +126,12 @@ export function createViewer(container, onSelect) {
   const dark=current.configuration?.studio==='dark';scene.background.set(dark?'#22282c':'#dededb');scene.fog.color.copy(scene.background);floor.material.color.set(dark?'#292e32':'#dededb');dimensions.visible=!current.assembly&&!!current.configuration?.dimensions;grid.visible=dimensions.visible;
   container.closest('.stage').dataset.studio=dark?'dark':'light';
   for(const [id,g] of currentGroups()) {
-   const active=!!current.assembly||current.system==='all'||g.userData.system===current.system;
+   const active=!!current.assembly||current.system==='all'||g.userData.system===current.system||current.system==='interior'&&['instrument-cluster','lighting-controls','hvac-controls','hvac-ducts','ecm','cabin-lamps'].includes(id);
    g.visible=current.assembly?inDetailSection(detailPartById.get(id),current.assembly)&&detailAvailable(detailPartById.get(id),current.configuration):detailAvailable(vehiclePartById.get(id),current.configuration)&&!(current.hideBody&&g.userData.system==='body'&&id!=='spaceframe');
    if(current.isolate)g.visible=g.visible&&(current.selected?id===current.selected:active);
    g.traverse(o=>{if(!o.isMesh)return;const original=o.userData.original;
     if(current.assembly&&o.userData.option)o.visible=current.configuration?.[o.userData.option]===o.userData.value;
-    if(current.assembly&&['body-system','headlight-system','lighting-system'].includes(familyFor(current.assembly).id)){const mat=o.userData.surfaceMaterial||o.material;if(o.userData.materialName==='red'){const paint=paints.find(p=>p.id===current.configuration?.paint)||paints[0];original.color.set(paint.color);mat.metalness=paint.metalness;}if(o.userData.materialName==='interior')original.color.set(current.configuration?.interior==='tan'?'#9b7a50':'#555b60');if(o.userData.materialName==='vinyl')original.color.set(current.configuration?.interior==='tan'?'#604931':'#2e3338');}const ghost=!active&&!current.isolate;
+    if(current.assembly&&['interior-system','body-system','headlight-system','lighting-system'].includes(familyFor(current.assembly).id)){const mat=o.userData.surfaceMaterial||o.material;if(o.userData.materialName==='red'){const paint=paints.find(p=>p.id===current.configuration?.paint)||paints[0];original.color.set(paint.color);mat.metalness=paint.metalness;}if(o.userData.materialName==='interior')original.color.set(current.configuration?.interior==='tan'?'#9b7a50':'#555b60');if(o.userData.materialName==='vinyl')original.color.set(current.configuration?.interior==='tan'?'#604931':'#2e3338');}const cabinColor=interiorColor(o.userData.materialName,current.configuration);if(cabinColor){original.color.set(cabinColor);(o.userData.surfaceMaterial||o.material).color.set(cabinColor);}const ghost=!active&&!current.isolate;
     o.userData.surfaceMaterial??=o.material;
     if(current.wireframe){o.userData.wireMaterial??=new T.MeshBasicMaterial({wireframe:true,side:T.DoubleSide});o.material=o.userData.wireMaterial;}
     else if(ghost){
@@ -176,6 +178,7 @@ export function createViewer(container, onSelect) {
  function inspectionDirection(name){
   if(name!=='home')return presets[name]||presets.home;
   const family=familyFor(current.assembly).id;
+  if(family==='interior-system')return current.assembly==='interior-dashboard'||current.assembly==='interior-radio'||current.assembly==='interior-console'?[.8,.55,1.8]:current.assembly==='interior-door-left'?[1.8,.5,.4]:current.assembly==='interior-door-right'?[-1.8,.5,.4]:[-1.2,.7,-1.8];
   if(family==='suspension-system'){
    const corner=current.assembly.match(/^susp-([fr][lr])(?:-|$)/)?.[1];
    if(corner)return[corner[1]==='l'?-1.4:1.4,.9,corner[0]==='f'?-.9:.9];

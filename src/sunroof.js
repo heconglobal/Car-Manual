@@ -1,4 +1,5 @@
 import * as T from 'three';
+import {glazingSeal,sunroofSealSection} from './window-seals.js';
 
 export const roofPoint=(u,v)=>{const a=2*u-1;return [a*(.606+.004*Math.sin(v*Math.PI)),1.192-.028*a*a-.007*(2*v-1)**4,T.MathUtils.lerp(-.104,.488,v)+.030*a**4*(1-v)-.010*a**4*v];};
 export function sunroofGlassPoint(u,v){const d=Math.min(v,1-v)*.73,inset=d<.060?.037*(1-Math.sqrt(Math.max(0,1-(1-d/.060)**2))):0,p=roofPoint(.14+inset+u*(.72-2*inset),.13+v*.73);p[1]+=.001;return p;}
@@ -51,8 +52,8 @@ export function buildSunroof(h){
   const flags={option:'roof',value};
   frame('sunroof-finish-lace',[.108,.892,.09,.902],[.14,.86,.13,.86],-.010,.005,'rubber',flags);
   frame('sunroof-headliner-retainer',[.096,.904,.076,.920],[.124,.876,.114,.88],-.018,.003,'dark',flags);
-  // Stepped seal bed below the existing round contact lip; aperture stays open.
-  frame('sunroof-seal',[.123,.877,.111,.879],[.139,.861,.128,.862],-.004,.006,'rubber',flags);
+  // The bed and contact lip share the actual glass edge, including its corners.
+  glazingSeal(h,'sunroof-seal',sunroofGlassPoint,[0,1,0],{section:sunroofSealSection,flags});
   surface('sunroof-air-deflector',64,6,(u,v)=>point(.16+u*.68,.088+v*.033,-.003-.008*Math.sin(u*Math.PI)-v*.006),'blackPaint',flags);
   for(const u of [.17,.83])box('sunroof-air-deflector',[.014,.008,.027],point(u,.107,-.011),'blackPaint',[],flags,.002);
   box('sunroof-latch-spacer',[.080,.008,.041],point(.5,.923,-.017),'rubber',[],flags,.002);

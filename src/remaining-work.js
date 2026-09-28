@@ -195,7 +195,7 @@ export const remainingWork=[
   },
   {
     "name": "Body panels, roof and structure",
-    "stage": "Exterior panels and 42 separate exterior pieces revised; measured contours and owner review remain",
+    "stage": "Exterior panels, opening seals/retainers, lamps and trim revised; exact contours, hidden hardware and owner review remain",
     "assembly": "body-system",
     "items": [
       "Measured panel curvature, sections, datums and gaps: front/rear fascias, hood, front fenders, doors, rockers, quarters and rear roof clip. Radiator-to-hood interference has been corrected and checked; measured factory placement remains unverified.",
@@ -210,7 +210,8 @@ export const remainingWork=[
   },
   {
     "name": "Seats, restraints, trim and cabin controls",
-    "stage": "Detail missing",
+    "stage": "Interior I1: 313 selections/sets; measured tooling, hidden mechanisms and complete fastener accounting remain open",
+    "assembly": "interior-system",
     "items": [
       "Seat frames, tracks, recliners, cushion construction, speaker internals and mounting hardware.",
       "Seat-belt retractors, buckles, anchors, covers and warning-switch wiring.",

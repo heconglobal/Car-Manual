@@ -1,5 +1,5 @@
 {
-  "reviewedAt": "2026-09-24",
+  "reviewedAt": "2026-09-28T01:09:26.433547+00:00",
   "policy": "Only mark complete after all wording of the requirement is satisfied. Test passes for selection/explosion do not certify original geometry, electrical operation or service procedures. Evidence refers to actual inspected sources and executed reports; open items retain their original scope.",
   "items": {
     "01.1": {
@@ -39,7 +39,7 @@
     },
     "02.2": {
       "status": "partial",
-      "progress": "R8 covers the full exterior: refitted straight side/wraparound moldings, accurately clipped fuel/intake openings, intake below the molding, exposed lower nose deflector, smoother road-tire silhouette, revised machined wheel/sail/paint/lamp finishes and close-view inspection. The deeper R7 rear apron and softened upper lamp corners remain. Sixteen selected dimensional comparisons and separate actual-mesh interface audits support development review. Two bumper-reference interpretations and factory tooling accuracy remain unresolved; owner approval is not asserted.",
+      "progress": "R9 adds ten separate glass-opening seals/retainers and corner/backlight fillers, corrects GM panel callouts, conforms marker lamps to the curved skin, refits wheelhouse liners and conceals fender attachments. The full exterior is reviewed in orthographic elevations and close views, with selected nominal dimensions and installed interfaces checked separately. Exact tooling, complete hidden mechanisms, two bumper-reference interpretations and owner acceptance remain open. R11 follows a fresh review of original Pontiac catalog body/bare-frame photographs and GM production/CAD profiles: revised painted and steel pillars, straight-edged sail appliques, increased rear-panel rake and rising lower bumper return. The new profile audit rejects the preserved R10 geometry. Local tooling and owner sign-off remain open. R12 reduces independent inner-prism highlights and grid relief under the continuous tail-lamp cover; original chamber and bulb anchors remain. Exact optical tooling is unverified.",
       "evidence": [
         "artifacts/lighting-review.json",
         "references/electrical-reconstruction.md",
@@ -50,7 +50,18 @@
         "references/body-r8-specification.md",
         "artifacts/body-geometry-verification.json",
         "artifacts/exterior-fit-audit.json",
-        "tests/exterior-close-review.spec.js"
+        "tests/exterior-close-review.spec.js",
+        "references/body-r9-specification.md",
+        "artifacts/exterior-completeness-audit.json",
+        "references/body-r11-pillars-rear-profile.md",
+        "artifacts/pillar-profile-audit.json",
+        "artifacts/pillar-profile-r10-baseline.json",
+        "tests/body-pillars-profile.spec.js",
+        "references/body-r12-exterior-reassessment.md",
+        "artifacts/exterior-reassessment-audit.json",
+        "artifacts/exterior-reassessment-r11-baseline.json",
+        "tests/body-exterior-reassessment.spec.js",
+        "tests/body-r12-manual.spec.js"
       ],
       "remaining": "Dimensioned factory lens/housing/optical tooling, measured seal and mounting interfaces, original electrical validation and owner appearance acceptance."
     },
@@ -128,7 +139,7 @@
     },
     "17.1": {
       "status": "partial",
-      "progress": "R8 covers the full exterior: refitted straight side/wraparound moldings, accurately clipped fuel/intake openings, intake below the molding, exposed lower nose deflector, smoother road-tire silhouette, revised machined wheel/sail/paint/lamp finishes and close-view inspection. The deeper R7 rear apron and softened upper lamp corners remain. Sixteen selected dimensional comparisons and separate actual-mesh interface audits support development review. Two bumper-reference interpretations and factory tooling accuracy remain unresolved; owner approval is not asserted.",
+      "progress": "R10 corrects window-seal fit: formed side-opening profiles share glass/corner boundaries, belt wiping lips reach the pane, the inner gasket follows the aperture, and continuous windshield/backlight/sunroof surrounds replace mismatched strips. Dedicated actual-mesh contact and clear-pane tests detect the previous R9 defects. Exact factory sections, compression, water sealing and owner acceptance remain open. Previous scope: R9 adds ten separate glass-opening seals/retainers and corner/backlight fillers, corrects GM panel callouts, conforms marker lamps to the curved skin, refits wheelhouse liners and conceals fender attachments. The full exterior is reviewed in orthographic elevations and close views, with selected nominal dimensions and installed interfaces checked separately. Exact tooling, complete hidden mechanisms, two bumper-reference interpretations and owner acceptance remain open. R11 follows a fresh review of original Pontiac catalog body/bare-frame photographs and GM production/CAD profiles: revised painted and steel pillars, straight-edged sail appliques, increased rear-panel rake and rising lower bumper return. The new profile audit rejects the preserved R10 geometry. Local tooling and owner sign-off remain open. R12 rechecks the entire exterior against Pontiac catalog photographs, MVMA anchors and original component photographs. It corrects exposed steel, window surrounds, grille construction, molding endpoints, rear corners/impact face, sail inserts and parked wiper fit. Factory surface-coordinate data and owner appearance approval remain outstanding.",
       "evidence": [
         "artifacts/front-clearance-audit.json",
         "artifacts/vehicle-hood-clearance-fixed.png",
@@ -148,7 +159,23 @@
         "references/body-r8-specification.md",
         "artifacts/body-geometry-verification.json",
         "artifacts/exterior-fit-audit.json",
-        "tests/exterior-close-review.spec.js"
+        "tests/exterior-close-review.spec.js",
+        "references/body-r9-specification.md",
+        "artifacts/exterior-completeness-audit.json",
+        "references/body-r10-window-seals.md",
+        "artifacts/window-seal-audit.json",
+        "artifacts/window-seal-r9-baseline-audit.json",
+        "artifacts/window-seal-verification.json",
+        "tests/window-seals.spec.js",
+        "references/body-r11-pillars-rear-profile.md",
+        "artifacts/pillar-profile-audit.json",
+        "artifacts/pillar-profile-r10-baseline.json",
+        "tests/body-pillars-profile.spec.js",
+        "references/body-r12-exterior-reassessment.md",
+        "artifacts/exterior-reassessment-audit.json",
+        "artifacts/exterior-reassessment-r11-baseline.json",
+        "tests/body-exterior-reassessment.spec.js",
+        "tests/body-r12-manual.spec.js"
       ],
       "remaining": "Measured panel sections, datums, curvature and gap dimensions throughout the car; final owner appearance review."
     },
@@ -163,7 +190,7 @@
     },
     "20.3": {
       "status": "partial",
-      "progress": "R8 covers the full exterior: refitted straight side/wraparound moldings, accurately clipped fuel/intake openings, intake below the molding, exposed lower nose deflector, smoother road-tire silhouette, revised machined wheel/sail/paint/lamp finishes and close-view inspection. The deeper R7 rear apron and softened upper lamp corners remain. Sixteen selected dimensional comparisons and separate actual-mesh interface audits support development review. Two bumper-reference interpretations and factory tooling accuracy remain unresolved; owner approval is not asserted.",
+      "progress": "R10 corrects window-seal fit: formed side-opening profiles share glass/corner boundaries, belt wiping lips reach the pane, the inner gasket follows the aperture, and continuous windshield/backlight/sunroof surrounds replace mismatched strips. Dedicated actual-mesh contact and clear-pane tests detect the previous R9 defects. Exact factory sections, compression, water sealing and owner acceptance remain open. Previous scope: R9 adds ten separate glass-opening seals/retainers and corner/backlight fillers, corrects GM panel callouts, conforms marker lamps to the curved skin, refits wheelhouse liners and conceals fender attachments. The full exterior is reviewed in orthographic elevations and close views, with selected nominal dimensions and installed interfaces checked separately. Exact tooling, complete hidden mechanisms, two bumper-reference interpretations and owner acceptance remain open. R11 follows a fresh review of original Pontiac catalog body/bare-frame photographs and GM production/CAD profiles: revised painted and steel pillars, straight-edged sail appliques, increased rear-panel rake and rising lower bumper return. The new profile audit rejects the preserved R10 geometry. Local tooling and owner sign-off remain open. R12 adds actual-surface steel concealment, arch-molding coverage and grille construction regressions. All four fail on preserved R11 geometry and pass on R12. These are static exterior checks, not full vehicle articulation/routing validation.",
       "evidence": [
         "artifacts/model-audit.json",
         "artifacts/wiring-audit.json",
@@ -181,13 +208,29 @@
         "references/body-r8-specification.md",
         "artifacts/body-geometry-verification.json",
         "artifacts/exterior-fit-audit.json",
-        "tests/exterior-close-review.spec.js"
+        "tests/exterior-close-review.spec.js",
+        "references/body-r9-specification.md",
+        "artifacts/exterior-completeness-audit.json",
+        "references/body-r10-window-seals.md",
+        "artifacts/window-seal-audit.json",
+        "artifacts/window-seal-r9-baseline-audit.json",
+        "artifacts/window-seal-verification.json",
+        "tests/window-seals.spec.js",
+        "references/body-r11-pillars-rear-profile.md",
+        "artifacts/pillar-profile-audit.json",
+        "artifacts/pillar-profile-r10-baseline.json",
+        "tests/body-pillars-profile.spec.js",
+        "references/body-r12-exterior-reassessment.md",
+        "artifacts/exterior-reassessment-audit.json",
+        "artifacts/exterior-reassessment-r11-baseline.json",
+        "tests/body-exterior-reassessment.spec.js",
+        "tests/body-r12-manual.spec.js"
       ],
       "remaining": "Calibrated full travel, complete routing and clash checks throughout the vehicle."
     },
     "20.4": {
       "status": "partial",
-      "progress": "R8 covers the full exterior: refitted straight side/wraparound moldings, accurately clipped fuel/intake openings, intake below the molding, exposed lower nose deflector, smoother road-tire silhouette, revised machined wheel/sail/paint/lamp finishes and close-view inspection. The deeper R7 rear apron and softened upper lamp corners remain. Sixteen selected dimensional comparisons and separate actual-mesh interface audits support development review. Two bumper-reference interpretations and factory tooling accuracy remain unresolved; owner approval is not asserted.",
+      "progress": "R10 corrects window-seal fit: formed side-opening profiles share glass/corner boundaries, belt wiping lips reach the pane, the inner gasket follows the aperture, and continuous windshield/backlight/sunroof surrounds replace mismatched strips. Dedicated actual-mesh contact and clear-pane tests detect the previous R9 defects. Exact factory sections, compression, water sealing and owner acceptance remain open. Previous scope: R9 adds ten separate glass-opening seals/retainers and corner/backlight fillers, corrects GM panel callouts, conforms marker lamps to the curved skin, refits wheelhouse liners and conceals fender attachments. The full exterior is reviewed in orthographic elevations and close views, with selected nominal dimensions and installed interfaces checked separately. Exact tooling, complete hidden mechanisms, two bumper-reference interpretations and owner acceptance remain open. R11 follows a fresh review of original Pontiac catalog body/bare-frame photographs and GM production/CAD profiles: revised painted and steel pillars, straight-edged sail appliques, increased rear-panel rake and rising lower bumper return. The new profile audit rejects the preserved R10 geometry. Local tooling and owner sign-off remain open. R12 records a new whole-exterior browser review and inspected source-hashed captures. Interrupted interim runs are excluded. Published body anchors, clearances, seals, pillar profile and visible inventory are audited separately. Full suite, native hardware, physical operation and owner sign-off remain open.",
       "evidence": [
         "artifacts/geometry-verification.json",
         "artifacts/oil-pump-audit.json",
@@ -211,7 +254,23 @@
         "references/body-r8-specification.md",
         "artifacts/body-geometry-verification.json",
         "artifacts/exterior-fit-audit.json",
-        "tests/exterior-close-review.spec.js"
+        "tests/exterior-close-review.spec.js",
+        "references/body-r9-specification.md",
+        "artifacts/exterior-completeness-audit.json",
+        "references/body-r10-window-seals.md",
+        "artifacts/window-seal-audit.json",
+        "artifacts/window-seal-r9-baseline-audit.json",
+        "artifacts/window-seal-verification.json",
+        "tests/window-seals.spec.js",
+        "references/body-r11-pillars-rear-profile.md",
+        "artifacts/pillar-profile-audit.json",
+        "artifacts/pillar-profile-r10-baseline.json",
+        "tests/body-pillars-profile.spec.js",
+        "references/body-r12-exterior-reassessment.md",
+        "artifacts/exterior-reassessment-audit.json",
+        "artifacts/exterior-reassessment-r11-baseline.json",
+        "tests/body-exterior-reassessment.spec.js",
+        "tests/body-r12-manual.spec.js"
       ],
       "remaining": "Finish the remaining current-source full-suite scenarios, refreshed native hardware review, complete device performance, measured factory tooling, hidden mechanisms and physical assembly interfaces. Owner acceptance of the revised body remains pending."
     },
@@ -363,7 +422,7 @@
     },
     "17.2": {
       "status": "partial",
-      "progress": "R8 covers the full exterior: refitted straight side/wraparound moldings, accurately clipped fuel/intake openings, intake below the molding, exposed lower nose deflector, smoother road-tire silhouette, revised machined wheel/sail/paint/lamp finishes and close-view inspection. The deeper R7 rear apron and softened upper lamp corners remain. Sixteen selected dimensional comparisons and separate actual-mesh interface audits support development review. Two bumper-reference interpretations and factory tooling accuracy remain unresolved; owner approval is not asserted.",
+      "progress": "R10 corrects window-seal fit: formed side-opening profiles share glass/corner boundaries, belt wiping lips reach the pane, the inner gasket follows the aperture, and continuous windshield/backlight/sunroof surrounds replace mismatched strips. Dedicated actual-mesh contact and clear-pane tests detect the previous R9 defects. Exact factory sections, compression, water sealing and owner acceptance remain open. Previous scope: R9 adds ten separate glass-opening seals/retainers and corner/backlight fillers, corrects GM panel callouts, conforms marker lamps to the curved skin, refits wheelhouse liners and conceals fender attachments. The full exterior is reviewed in orthographic elevations and close views, with selected nominal dimensions and installed interfaces checked separately. Exact tooling, complete hidden mechanisms, two bumper-reference interpretations and owner acceptance remain open. R11 follows a fresh review of original Pontiac catalog body/bare-frame photographs and GM production/CAD profiles: revised painted and steel pillars, straight-edged sail appliques, increased rear-panel rake and rising lower bumper return. The new profile audit rejects the preserved R10 geometry. Local tooling and owner sign-off remain open. R12 reconstructs fourteen inclined transverse vanes per grille with flat frames, perforated screens and rear captive fasteners. The lid reinforcement follows the changed openings. Rear corner returns and impact face are reshaped; GM identifies 10033958 as the 1985 V6 non-aero fascia. No dimensioned fascia section has been obtained.",
       "evidence": [
         "references/exterior-reconstruction-20260924.md",
         "artifacts/exterior-audit.json",
@@ -381,24 +440,49 @@
         "references/body-r8-specification.md",
         "artifacts/body-geometry-verification.json",
         "artifacts/exterior-fit-audit.json",
-        "tests/exterior-close-review.spec.js"
+        "tests/exterior-close-review.spec.js",
+        "references/body-r9-specification.md",
+        "artifacts/exterior-completeness-audit.json",
+        "references/body-r10-window-seals.md",
+        "artifacts/window-seal-audit.json",
+        "artifacts/window-seal-r9-baseline-audit.json",
+        "artifacts/window-seal-verification.json",
+        "tests/window-seals.spec.js",
+        "references/body-r11-pillars-rear-profile.md",
+        "artifacts/pillar-profile-audit.json",
+        "artifacts/pillar-profile-r10-baseline.json",
+        "tests/body-pillars-profile.spec.js",
+        "references/body-r12-exterior-reassessment.md",
+        "artifacts/exterior-reassessment-audit.json",
+        "artifacts/exterior-reassessment-r11-baseline.json",
+        "tests/body-exterior-reassessment.spec.js",
+        "tests/body-r12-manual.spec.js"
       ],
       "remaining": "Measured A/B/C-pillar, backlight, decklid/vent and rear bumper sections; final owner visual approval."
     },
     "17.4": {
       "status": "partial",
-      "progress": "Visible fascia moldings, pads, lower front deflector, intake grille and existing four liners/retaining sets are separately explorable.",
+      "progress": "Visible fascia moldings, pads, lower front deflector, intake grille and existing four liners/retaining sets are separately explorable. R11 follows a fresh review of original Pontiac catalog body/bare-frame photographs and GM production/CAD profiles: revised painted and steel pillars, straight-edged sail appliques, increased rear-panel rake and rising lower bumper return. The new profile audit rejects the preserved R10 geometry. Local tooling and owner sign-off remain open. R12 replaces fixed molding endpoints with actual arch intersections and carries the ribbed section into the fascia returns. Dark recessed backing closes bright sightlines at the fascia joints. Hidden support/retainer completeness remains open.",
       "evidence": [
         "references/exterior-reconstruction-20260924.md",
         "artifacts/exterior-audit.json",
         "artifacts/visual-inspection-manifest.json",
-        "tests/exterior.spec.js"
+        "tests/exterior.spec.js",
+        "references/body-r11-pillars-rear-profile.md",
+        "artifacts/pillar-profile-audit.json",
+        "artifacts/pillar-profile-r10-baseline.json",
+        "tests/body-pillars-profile.spec.js",
+        "references/body-r12-exterior-reassessment.md",
+        "artifacts/exterior-reassessment-audit.json",
+        "artifacts/exterior-reassessment-r11-baseline.json",
+        "tests/body-exterior-reassessment.spec.js",
+        "tests/body-r12-manual.spec.js"
       ],
       "remaining": "Original fascia supports, complete air deflectors/seals, measured liner forms and drawing-by-drawing reconciliation of every retainer."
     },
     "17.5": {
       "status": "partial",
-      "progress": "AD3 roof construction now includes 16 separate hinge/bushing/nut, handle, release housing/button, trim, deflector and fastening selections. Panel-mounted pieces follow the removable glass; body-side pieces remain with the open roof. Glass underside/edges and a stepped aperture seal are modeled from the GM component relationships.",
+      "progress": "R10 corrects window-seal fit: formed side-opening profiles share glass/corner boundaries, belt wiping lips reach the pane, the inner gasket follows the aperture, and continuous windshield/backlight/sunroof surrounds replace mismatched strips. Dedicated actual-mesh contact and clear-pane tests detect the previous R9 defects. Exact factory sections, compression, water sealing and owner acceptance remain open. Previous scope: AD3 roof construction now includes 16 separate hinge/bushing/nut, handle, release housing/button, trim, deflector and fastening selections. Panel-mounted pieces follow the removable glass; body-side pieces remain with the open roof. Glass underside/edges and a stepped aperture seal are modeled from the GM component relationships. R11 follows a fresh review of original Pontiac catalog body/bare-frame photographs and GM production/CAD profiles: revised painted and steel pillars, straight-edged sail appliques, increased rear-panel rake and rising lower bumper return. The new profile audit rejects the preserved R10 geometry. Local tooling and owner sign-off remain open. R12 retains body-side sunroof seals with the panel removed and recesses the exposed steel roof channels. The roof opening is visually reviewed and contact-tested; exact sections, drainage and physical latch behavior remain open.",
       "evidence": [
         "references/exterior-reconstruction-20260924.md",
         "artifacts/exterior-audit.json",
@@ -406,7 +490,21 @@
         "tests/exterior.spec.js",
         "references/sunroof-reconstruction-20260924.md",
         "src/sunroof.js",
-        "tests/sunroof.spec.js"
+        "tests/sunroof.spec.js",
+        "references/body-r10-window-seals.md",
+        "artifacts/window-seal-audit.json",
+        "artifacts/window-seal-r9-baseline-audit.json",
+        "artifacts/window-seal-verification.json",
+        "tests/window-seals.spec.js",
+        "references/body-r11-pillars-rear-profile.md",
+        "artifacts/pillar-profile-audit.json",
+        "artifacts/pillar-profile-r10-baseline.json",
+        "tests/body-pillars-profile.spec.js",
+        "references/body-r12-exterior-reassessment.md",
+        "artifacts/exterior-reassessment-audit.json",
+        "artifacts/exterior-reassessment-r11-baseline.json",
+        "tests/body-exterior-reassessment.spec.js",
+        "tests/body-r12-manual.spec.js"
       ],
       "remaining": "Measured glass and weatherstrip sections, latch detents/springs and calibrated travel, verified water management/drains and front-compartment stowage, complete headliner/adhesive details."
     },
@@ -434,12 +532,26 @@
     },
     "15.4": {
       "status": "partial",
-      "progress": "Outside handles, key bezels, ribbed door rub moldings and outer window belt seals now have separate native selections.",
+      "progress": "R10 corrects window-seal fit: formed side-opening profiles share glass/corner boundaries, belt wiping lips reach the pane, the inner gasket follows the aperture, and continuous windshield/backlight/sunroof surrounds replace mismatched strips. Dedicated actual-mesh contact and clear-pane tests detect the previous R9 defects. Exact factory sections, compression, water sealing and owner acceptance remain open. Previous scope: Outside handles, key bezels, ribbed door rub moldings and outer window belt seals now have separate native selections. R11 follows a fresh review of original Pontiac catalog body/bare-frame photographs and GM production/CAD profiles: revised painted and steel pillars, straight-edged sail appliques, increased rear-panel rake and rising lower bumper return. The new profile audit rejects the preserved R10 geometry. Local tooling and owner sign-off remain open. R12 conceals exposed roof/A-pillar steel, reduces the windshield reveal and glass-stop edge, and extends ribbed side moldings to the actual wheel openings. Seal contact and clear-pane audits pass; measured extrusion sections remain outstanding.",
       "evidence": [
         "references/exterior-reconstruction-20260924.md",
         "artifacts/exterior-audit.json",
         "artifacts/visual-inspection-manifest.json",
-        "tests/exterior.spec.js"
+        "tests/exterior.spec.js",
+        "references/body-r10-window-seals.md",
+        "artifacts/window-seal-audit.json",
+        "artifacts/window-seal-r9-baseline-audit.json",
+        "artifacts/window-seal-verification.json",
+        "tests/window-seals.spec.js",
+        "references/body-r11-pillars-rear-profile.md",
+        "artifacts/pillar-profile-audit.json",
+        "artifacts/pillar-profile-r10-baseline.json",
+        "tests/body-pillars-profile.spec.js",
+        "references/body-r12-exterior-reassessment.md",
+        "artifacts/exterior-reassessment-audit.json",
+        "artifacts/exterior-reassessment-r11-baseline.json",
+        "tests/body-exterior-reassessment.spec.js",
+        "tests/body-r12-manual.spec.js"
       ],
       "remaining": "Measured weatherstrip sections, inner shields, complete belt molding attachments, channels/felts and trim retaining inventory."
     },
@@ -453,6 +565,85 @@
         "tests/exterior.spec.js"
       ],
       "remaining": "Motor/gearbox, hidden transmission/pivots, calibrated full sweep, delay controls, exact holder tooling and complete arm construction."
+    },
+    "18.1": {
+      "status": "partial",
+      "progress": "Interior I1 provides both seat pans/back frames, support springs, two-tone cloth covers, foam with headrest speaker recesses, inner/outer tracks/sliders, release links/springs, recliner/hinge covers and peened pins, four floor nuts and four rail-to-pan bolts per seat, and four speaker constructions. The published 26.5-degree design back angle guides the reconstructed back axis. Enlarged PDF351 reading adds hinge bushes and separate 1985 stereo harnesses and corrects the early-seat drawing callouts. Final sampled rear-cloth concealment and speaker-recess checks correct the exposed frame/foam seen in development close-ups; the saved previous mesh fails the new test.",
+      "evidence": [
+        "references/interior-i1-reconstruction.md",
+        "references/interior-i1-parts-inventory.csv",
+        "artifacts/interior-audit.json",
+        "tests/interior-appearance.spec.js",
+        "tests/interior-manual.spec.js",
+        "references/interior-i1-callout-reconciliation.csv",
+        "artifacts/interior-i1-fit-comparison.json"
+      ],
+      "remaining": "Measured seat/foam/frame profiles and hardpoints, full recliner/track locking details, exact speaker tooling and every factory fastener/rivet quantity; upholstery/trim code and owner appearance approval."
+    },
+    "18.2": {
+      "status": "partial",
+      "progress": "Both sides now expose retractors, webbing, guides/covers, latch plates, buckle/button/stalk, warning leads and four anchor attachments per side.",
+      "evidence": [
+        "references/interior-i1-reconstruction.md",
+        "references/interior-i1-parts-inventory.csv",
+        "artifacts/interior-audit.json",
+        "tests/interior-appearance.spec.js",
+        "tests/interior-manual.spec.js",
+        "references/interior-i1-callout-reconciliation.csv"
+      ],
+      "remaining": "Complete retractor inertia and buckle mechanisms, verified webbing paths and exact anchor hardware, switch circuits, factory geometry and physical restraint validation."
+    },
+    "18.3": {
+      "status": "partial",
+      "progress": "New shared native dash pad/map pocket, vertical end vents, console skeleton and surrounds, storage door/hinge/latch, door skins/pulls/handles/shields/clips, carpet/underlay, sill plates, early pillar garnish and roof-dependent headliner. Door-retaining geometry is shared with Body. Existing cluster, HVAC, ECM and lighting-control explorers remain linked. Additional service fittings include carpet supports, shift-plate gasket/clips, storage strap, armrest hangers/nuts/plugs, lower garnish, column filler and optional defogger switch. All 145 numbered callouts in four inspected drawings are reconciled, including explicit unresolved items; every production attachment is not claimed complete.",
+      "evidence": [
+        "references/interior-i1-reconstruction.md",
+        "references/interior-i1-parts-inventory.csv",
+        "artifacts/interior-audit.json",
+        "tests/interior-appearance.spec.js",
+        "tests/interior-manual.spec.js",
+        "references/interior-i1-callout-reconciliation.csv"
+      ],
+      "remaining": "Measured molding sections, exact colors/textures, full hidden clip/gasket/adhesive inventory, console/door switch mechanisms, roof fit measurements and owner appearance approval."
+    },
+    "18.4": {
+      "status": "partial",
+      "progress": "Added clutch and accelerator pieces, shift lever/boot/retainer/knob/clip, Delco receiver case/face/controls/connectors, dash and headrest speaker construction. Existing brake pedal and parking brake remain shared.",
+      "evidence": [
+        "references/interior-i1-reconstruction.md",
+        "references/interior-i1-parts-inventory.csv",
+        "artifacts/interior-audit.json",
+        "tests/interior-appearance.spec.js",
+        "tests/interior-manual.spec.js",
+        "references/interior-i1-callout-reconciliation.csv"
+      ],
+      "remaining": "Calibrated pedal/shifter motion, stop pads and full cable/return routing, exact control/radio variants, electronic internals and complete circuit/attachment inventory."
+    },
+    "18.5": {
+      "status": "partial",
+      "progress": "Added visors, pivots, support clips and screws; interior mirror/stem/button; ashtrays/lids/springs, lighter/socket/retainer; independent radio knobs, speaker cones/magnets and short leads. Option previews switch mats, pockets, power-window controls, speakers and roof trim. The lighter has a separate trim plate and bulb/holder; crank bearing plates and pocket clip sets are now explicit.",
+      "evidence": [
+        "references/interior-i1-reconstruction.md",
+        "references/interior-i1-parts-inventory.csv",
+        "artifacts/interior-audit.json",
+        "tests/interior-appearance.spec.js",
+        "tests/interior-manual.spec.js",
+        "references/interior-i1-callout-reconciliation.csv"
+      ],
+      "remaining": "Exact visor/mirror/trim tooling, optional accessory hardware, original radio/speaker applications and full antenna/coax/electrical routing."
+    },
+    "18.6": {
+      "status": "partial",
+      "progress": "Added clutch bushes/pivot/spring, accelerator/cable end, console skeleton, door-retaining sets and individually selectable seat, sill, visor, radio and console attachments. Existing brake details remain available through links.",
+      "evidence": [
+        "references/interior-i1-reconstruction.md",
+        "references/interior-i1-parts-inventory.csv",
+        "artifacts/interior-audit.json",
+        "tests/interior-appearance.spec.js",
+        "tests/interior-manual.spec.js",
+        "references/interior-i1-callout-reconciliation.csv"
+      ],
+      "remaining": "Every drawing callout and production fastener/rivet quantity, remaining pedal stop/return mechanisms, measured mounting coordinates and calibrated travel; grouped sets are not a complete physical BOM."
     }
   }
 }

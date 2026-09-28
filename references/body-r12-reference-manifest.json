@@ -1,0 +1,61 @@
+{
+  "recordedAt": "2026-09-27T03:57:36.593869+00:00",
+  "references": [
+    {
+      "file": "references/notchback-vent-original-r12.jpg",
+      "sha256": "6dfd99631a3660ba0e90a18b6abd1e4e81a76c9baa2793170cfa98acc15c576b",
+      "imageUrl": "https://i.ebayimg.com/images/g/s9EAAeSwbmhpmdj5/s-l1600.jpg",
+      "pageUrl": "https://www.ebay.com/itm/117049865486",
+      "useAndLimits": "Removed original notchback grille; construction only. Installed photograph determines orientation.",
+      "visuallyOpened": true
+    },
+    {
+      "file": "references/1985-gt-original-engine-bay-r12.jpg",
+      "sha256": "2e7388fc1e05b28fa38cd8e7dca8bcd85103a0bb832ae7d023bf462de3c25687",
+      "imageUrl": "https://cdn.dealeraccelerate.com/rkm/1/7914/527214/1920x1440/1985-pontiac-fiero-gt",
+      "pageUrl": "https://www.rkmotors.com/vehicles/4297/1985-pontiac-fiero-gt",
+      "useAndLimits": "Installed 1985 notchback grille: transverse vanes and rear fasteners. GT fascia excluded as SE template.",
+      "visuallyOpened": true
+    },
+    {
+      "file": "references/1985-se-v6-rear-secondary-photo-r12.jpg",
+      "sha256": "dd5e9f7aa533512aebc83adbbd3708a566e316a95d57fed865f92c425181326f",
+      "imageUrl": "https://davidsclassiccars.com/images/full/1985-pontiac-fiero-se-v-6-7.jpg",
+      "pageUrl": "https://davidsclassiccars.com/pontiac/465757-1985-pontiac-fiero-se-v-6.html",
+      "useAndLimits": "Secondary rear photograph: qualitative lamp/bumper appearance only.",
+      "visuallyOpened": true
+    },
+    {
+      "file": "references/hagerty-1985-se-04-r12.jpg",
+      "sha256": "6cdbed7251f4473ebd94ef8093f419f678908f960e5c495f61f83638109abb26",
+      "imageUrl": "https://hagerty-marketplace-prod.imgix.net/assets/1cg1ETWd_vse488VOZhQAA.jpg?w=1600&auto=compress",
+      "pageUrl": "https://www.hagerty.com/marketplace/auction/1985-Pontiac-Fiero/0086b7e4-123a-4664-afb4-d9e91c216269",
+      "useAndLimits": "Modified car. Lower body, front intake, painted pads, wheels and wing excluded as factory templates.",
+      "visuallyOpened": true
+    },
+    {
+      "file": "references/hagerty-1985-se-05-r12.jpg",
+      "sha256": "f8a7e4735da0937078e524e1e81965acb4d10b546a2b0f83f1f127845e735ef5",
+      "imageUrl": "https://hagerty-marketplace-prod.imgix.net/assets/h9WMeM7oSx8ewYIoBFpjpg.jpg?w=1600&auto=compress",
+      "pageUrl": "https://www.hagerty.com/marketplace/auction/1985-Pontiac-Fiero/0086b7e4-123a-4664-afb4-d9e91c216269",
+      "useAndLimits": "Modified car. Lower body, front intake, painted pads, wheels and wing excluded as factory templates.",
+      "visuallyOpened": true
+    },
+    {
+      "file": "references/hagerty-1985-se-06-r12.jpg",
+      "sha256": "ab4e244731ac0f976166fe7172ce51fd53c7976bef0de4ed80b3b6007adf6a48",
+      "imageUrl": "https://hagerty-marketplace-prod.imgix.net/assets/Qz-uOApZSm1bm8q0vtl1AQ.jpg?w=1600&auto=compress",
+      "pageUrl": "https://www.hagerty.com/marketplace/auction/1985-Pontiac-Fiero/0086b7e4-123a-4664-afb4-d9e91c216269",
+      "useAndLimits": "Modified car. Lower body, front intake, painted pads, wheels and wing excluded as factory templates.",
+      "visuallyOpened": true
+    },
+    {
+      "file": "references/hagerty-1985-se-18-r12.jpg",
+      "sha256": "9b65cb7e560190b065da1c11c4e8b71806405920b800db91803977acbc659a3c",
+      "imageUrl": "https://hagerty-marketplace-prod.imgix.net/assets/og99FSoy57pBT2oQeNCSow.jpg?w=1600&auto=compress",
+      "pageUrl": "https://www.hagerty.com/marketplace/auction/1985-Pontiac-Fiero/0086b7e4-123a-4664-afb4-d9e91c216269",
+      "useAndLimits": "Modified car. Lower body, front intake, painted pads, wheels and wing excluded as factory templates.",
+      "visuallyOpened": true
+    }
+  ]
+}

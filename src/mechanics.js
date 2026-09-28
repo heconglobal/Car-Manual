@@ -1,3 +1,4 @@
+import {buildMappedInterior} from './interior-detail.js';
 import { buildWheelFace } from './wheels.js';
 import * as T from 'three';
 import {engineToVehicle,transmissionAttachment,installationAngle} from './powertrain-layout.js';
@@ -98,65 +99,7 @@ export function buildMechanics(h){
 }
 
 export function buildInterior(h){
- const {box,cyl,tube,surface,profile,label,ring,add}=h;
- for(const s of [-1,1]){
-  const x=s*.36;
-  // Contoured cushion, lateral bolsters and integrated headrest bucket seats.
-  box('seats',[.395,.103,.41],[x,.329,.11],'interior',[-.06,0,0],{},.046);
-  const outline=new T.Shape();outline.moveTo(-.173,.36);outline.lineTo(.173,.36);outline.lineTo(.173,.69);outline.quadraticCurveTo(.17,.78,.121,.82);outline.lineTo(.121,.928);outline.quadraticCurveTo(.12,.96,.092,.961);outline.lineTo(-.092,.961);outline.quadraticCurveTo(-.12,.96,-.121,.928);outline.lineTo(-.121,.82);outline.quadraticCurveTo(-.17,.78,-.173,.69);outline.closePath();
-  const back=new T.ExtrudeGeometry(outline,{depth:.09,bevelEnabled:true,bevelSize:.018,bevelThickness:.023,bevelSegments:5,curveSegments:16});const vertex=back.attributes.position;
-  for(let i=0;i<vertex.count;i++)vertex.setZ(i,vertex.getZ(i)+.264+(vertex.getY(i)-.35)*.13);back.computeVertexNormals();add('seats',back,'interior',[x,0,0]);
-  for(const dx of [-.155,.155]){
-   box('seats',[.067,.17,.386],[x+dx,.38,.11],'vinyl',[-.11,0,0],{},.029);
-   box('seats',[.078,.42,.113],[x+dx,.624,.291],'vinyl',[-.14,0,dx*-.2],{},.03);
-   tube('seats',[[x+dx*.76,.373,-.073],[x+dx*.76,.359,.25],[x+dx*.79,.65,.29],[x+dx*.77,.837,.336]],.0017,'dark');
-  }
-  for(let i=0;i<6;i++)tube('seats',[[x-.113+i*.046,.377,-.065],[x-.113+i*.046,.351,.25],[x-.113+i*.046,.752,.322]],.0013,'vinyl');
-  for(const dx of [-.061,.061]){box('seats',[.075,.078,.007],[x+dx,.912,.320],'vinyl',[-.13,0,0],{option:'speakerSeats',value:true},.012);for(let i=0;i<8;i++)box('seats',[.065,.001,.003],[x+dx,.881+i*.009,.314+i*.0012],'interior',[],{option:'speakerSeats',value:true});}
-  box('seats',[.03,.035,.032],[x-s*.21,.38,.28],'dark');box('seats',[.022,.012,.025],[x-s*.21,.400,.28],'red');
-  tube('seats',[[s*.63,.98,.43],[s*.63,.65,.4],[s*.61,.35,.2]],.014,'rubber');
-  box('pedals',[.36,.009,.40],[x,.238,-.25],'interior',[],{option:'floorMats',value:true},.020);
- }
- box('dashboard',[1.27,.132,.218],[0,.721,-.545],'vinyl',[],{},.038);
- box('dashboard',[1.16,.19,.105],[0,.598,-.505],'vinyl');
- // The original 1985 instrument pod is shared with the wiring explorer.
- box('dashboard',[.197,.31,.127],[0,.572,-.455],'plastic',[-.05,0,0],{},.012);
- box('dashboard',[.176,.281,.006],[0,.574,-.382],'metal');
- // Vent outlets are shared with the HVAC explorer.
- for(const variant of ['am','amfm','cassette','equalizer']){
-  const flags={option:'radio',value:variant};box('dashboard',[.153,.068,.013],[0,.535,-.373],'dark',[],flags);
-  label('dashboard',variant==='am'?'AM  850':'FM  98.5',[.076,.021],[0,.548,-.363],[0,0,0],{background:'#112027',foreground:'#aaa994',font:'48px monospace'},flags);
-  for(const s of [-1,1])cyl('dashboard',.011,.011,[s*.061,.518,-.362],'plastic',[Math.PI/2,0,0],.011,flags);
-  if(['cassette','equalizer'].includes(variant))box('dashboard',[.081,.008,.007],[0,.515,-.361],'plastic',[],flags);
-  if(variant==='equalizer')for(let i=0;i<5;i++)box('dashboard',[.004,.021,.004],[-.034+i*.017,.494,-.36],'alloy',[],flags);
- }
- // Option-specific HVAC controls are shared with their explorer.
- // Steering wheel rim and separate spokes, with a wrapped-finish variant.
- for(const mode of ['formula','leather']){
-  const flags={option:'steeringWheel',value:mode};ring('steering-wheel',.159,.014,[.346,.739,-.196],mode==='leather'?'vinyl':'rubber',[.28,0,0],flags);
-  for(const a of [.93,3.14,5.35])box('steering-wheel',[.037,.121,.020],[.346+Math.sin(a)*.071,.739+Math.cos(a)*.071,-.196],'dark',[.28,0,-a],flags,.008);
-  cyl('steering-wheel',.05,.024,[.346,.739,-.185],'plastic',[Math.PI/2+.28,0,0],.05,flags);
- }
- tube('steering-wheel',[[.346,.739,-.20],[.346,.62,-.49]],.022,'dark');
- tube('steering-wheel',[[.382,.70,-.26],[.555,.71,-.26]],.006,'dark');
- box('steering-wheel',[.043,.013,.017],[.554,.71,-.26],'plastic',[],{option:'cruise',value:true});
- // Centre console, boot folds, gear knob, window and mirror controls.
- box('shifter',[.253,.116,.69],[0,.362,.027],'vinyl',[],{},.016);
- box('shifter',[.192,.006,.242],[0,.424,-.157],'metal');
- for(let i=0;i<5;i++)box('shifter',[.10-i*.014,.015,.10-i*.014],[0,.443+i*.012,-.175],'rubber',[],{},.009);
- cyl('shifter',.009,.085,[0,.529,-.175],'alloy',[0,0,0]);
- add('shifter',new T.SphereGeometry(.026,32,24),'vinyl',[0,.577,-.175]);
- for(const s of [-1,1])box('shifter',[.026,.014,.040],[s*.07,.433,.08],'dark',[],{option:'powerWindows',value:true});
- cyl('shifter',.014,.011,[0,.438,.18],'dark',[0,0,0],.014,{option:'powerMirrors',value:true});
- for(const [role,x,w,height] of [['accelerator',.226,.035,.095],['clutch',.46,.061,.054]]){
-  tube('pedals',[[x,.52,-.56],[x,.30,-.47]],.009,'metal');box('pedals',[w,height,.018],[x,.282,-.457],'rubber',[-.4,0,0],{},.008);
-  for(let i=0;i<5;i++)box('pedals',[w*.88,.002,.003],[x,.262+i*.010,-.445],'dark',[-.4,0,0],{},.0006);
- }
- // Lower column and driver-side rack pinion; asymmetric LHD geometry.
- tube('steering-wheel',[[.346,.62,-.49],[.35,.46,-.68],[.36,.36,-1.31]],.014,'dark');
- cyl('steering-rack',.034,.080,[.36,.369,-1.32],'castAluminum',[.5,0,0]);
-
- for(const s of [-1,1])box('dashboard',[.242,.013,.116],[s*.304,1.111,-.087],'vinyl',[0,0,0],{},.008);
- box('dashboard',[.135,.003,.064],[-.30,1.10,-.087],'chrome',[],{option:'vanityMirror',value:true});
- // Courtesy lamps are supplied by the shared lighting builder.
+ buildMappedInterior(h);
+ // Existing manual-rack input remains with its suspension assembly.
+ h.cyl('steering-rack',.034,.080,[.36,.369,-1.32],'castAluminum',[.5,0,0]);
 }

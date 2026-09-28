@@ -1,3 +1,4 @@
+import {buildDoorTrimSkin} from './interior-surfaces.js';
 import * as T from 'three';
 import {headlightHoodPoint} from './headlight-detail.js';
 import { buildFascias } from './fascias.js';
@@ -51,6 +52,12 @@ function buildAuthoredBody(h){
  }
  fender('fender-left',1,-1.788,-.627,-1.1865,false);fender('fender-right',-1,-1.788,-.627,-1.1865,false);
  fender('quarter-left',1,.59,1.865,1.1865,true);fender('quarter-right',-1,.59,1.865,1.1865,true);
+ // Dark recessed joint lands close the sightline behind the fascia gaps.
+ // The seams stay open at the paint surface without showing the far scenery.
+ for(const rear of [false,true])for(const s of [-1,1]){
+  const join=rear?1.867:-1.790,centre=rear?1.1865:-1.1865,id=rear?'rear-fascia':'nose';
+  surface(id,40,4,(u,v)=>{const y=lerp(lowerPanelHeight(join,rear),upper(join,rear)-shoulderDrop(join,rear),u),z=join+(v-.5)*.016;return[s*(sideWidth(join,y,centre,rear)-.007),y,z];},'rubber');
+ }
  // Door skins have a belt crease, lower tumblehome, handles and mirrors.
  for(const s of [-1,1]){
   const id=s>0?'door-left':'door-right';
@@ -65,15 +72,7 @@ function buildAuthoredBody(h){
   // Recessed jamb backing closes sightlines through the panel gap.
   for(const edge of [0,1])surface(id,48,3,(u,v)=>{const p=skin(edge,u);p[0]-=s*.006;p[2]+=edge?.010*v:-.010*(1-v);return p;},'rubber');
   surface(id,48,5,(u,v)=>{const p=skin(u,0);p[0]-=s*.013*v;return p;});
-  // Interior trim separates from the door skin and its hardware.
-  const trimId=s>0?'door-trim-left':'door-trim-right';
-  box(trimId,[.05,.42,1.05],[s*.748,.53,-.03],'vinyl');
-  box(trimId,[.053,.12,.91],[s*.716,.438,.0],'interior');
-  box(trimId,[.12,.075,.38],[s*.666,.59,.16],'vinyl');
-  box(trimId,[.010,.05,.13],[s*.704,.69,-.08],'dark');
-  box(trimId,[.014,.016,.075],[s*.693,.70,-.08],'alloy');
-  tube(trimId,[[s*.695,.58,-.26],[s*.643,.58,-.26],[s*.643,.62,-.23]],.01,'dark',{option:'powerWindows',value:false});
-  box(trimId,[.054,.14,.40],[s*.69,.34,.24],'interior',[],{option:'mapPockets',value:true},.017);
+  buildDoorTrimSkin(h,s>0?'door-trim-left':'door-trim-right',s);
  }
  buildGreenhouse(h,deckHeight);
  buildDecklid(h,deckHeight);

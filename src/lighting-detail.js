@@ -4,20 +4,21 @@ import {geometryTools} from './geometry.js';
 import {correctLegacyHandedness} from './vehicle-frame.js';
 import {lightingParts,lightingSections} from './lighting-catalog.js';
 import {electricalTools,bakeElectrical} from './electrical-geometry.js';
-import {rearFace,frontFace} from './fascias.js';
+import {rearFace,frontFace,sideSkinWidth} from './fascias.js';
 import {bodyPoint,designLampHeight,exteriorLampNominal} from './body-datums.js';
 import {buildTailLamp} from './tail-lamps.js';
+import {tessellateForWrap} from './surface-wrapping.js';
 import {tailLampShape} from './tail-lamp-shape.js';
 import {frontLampMount} from './body-contours.js';
 export function lightingMaterials(base=createMaterials()){
  const m={...base};for(const key of['plastic','rubber','metal','dark']){m[key]=base[key].clone();m[key].bumpScale=.00003;}
  m.bulbGlass=new T.MeshPhysicalMaterial({color:'#e8efed',roughness:.08,metalness:0,transparent:true,opacity:.22,clearcoat:1,side:T.DoubleSide,depthWrite:false});
  m.clearLens=new T.MeshPhysicalMaterial({color:'#c5d0c9',roughness:.18,metalness:0,transparent:true,opacity:.47,clearcoat:1,side:T.DoubleSide,depthWrite:false});
- m.tailOuter=new T.MeshPhysicalMaterial({color:'#a5b0b3',roughness:.23,transparent:true,opacity:.16,clearcoat:.25,clearcoatRoughness:.25,envMapIntensity:.3,side:T.DoubleSide,depthWrite:false});
+ m.tailOuter=new T.MeshPhysicalMaterial({color:'#8b9a9b',roughness:.13,transparent:true,opacity:.24,clearcoat:.80,clearcoatRoughness:.12,envMapIntensity:.7,side:T.DoubleSide,depthWrite:false});
  m.tailOuter.forceSinglePass=true;
- m.tailInnerRed=new T.MeshPhysicalMaterial({color:'#610b09',roughness:.34,metalness:.04,clearcoat:.18,envMapIntensity:.35,side:T.DoubleSide});
- m.tailInnerClear=new T.MeshPhysicalMaterial({color:'#465050',roughness:.38,metalness:.10,clearcoat:.22,envMapIntensity:.35,side:T.DoubleSide});
- m.tailGrid=new T.MeshStandardMaterial({color:'#151819',roughness:.43,side:T.DoubleSide});
+ m.tailInnerRed=new T.MeshStandardMaterial({color:'#350807',roughness:.58,metalness:0,envMapIntensity:.15,side:T.DoubleSide});
+ m.tailInnerClear=new T.MeshStandardMaterial({color:'#2d3738',roughness:.58,metalness:0,envMapIntensity:.15,side:T.DoubleSide});
+ m.tailGrid=new T.MeshStandardMaterial({color:'#14191a',roughness:.53,side:T.DoubleSide});
  m.tailTrim=new T.MeshPhysicalMaterial({color:'#111416',roughness:.27,clearcoat:.5,side:T.DoubleSide});
  m.tailRed=new T.MeshPhysicalMaterial({color:'#960d07',roughness:.20,transparent:true,opacity:.80,clearcoat:1,side:T.DoubleSide,depthWrite:false});
  m.turnAmber=new T.MeshPhysicalMaterial({color:'#e38012',roughness:.20,transparent:true,opacity:.74,clearcoat:1,side:T.DoubleSide,depthWrite:false});
@@ -29,7 +30,16 @@ export function buildVehicleLighting(groups,materials){const d=makeGroups(),h=ge
 export function buildLighting(h,groups){h.mapAdded(()=>buildAuthoredLighting(h,groups),bodyPoint);}
 function buildAuthoredLighting(h,groups){
  const {box,cyl,tube,ring}=h,{plate,frame,sleeve,screw,bulb,socket,lens,bowl}=electricalTools(h);
- function bake(scope,map){bakeElectrical(groups,lightingParts.filter(p=>p.section==='lighting-'+scope).map(p=>p.id),map);}
+ const markerFits=new Map();
+ function markerFit(end,cy,cz){
+  if(markerFits.has(end))return markerFits.get(end);
+  // A 5 mm sampled patch avoids solving the same curved corner separately
+  // for every duplicated cap/flute vertex. Fit error is independently checked.
+  const nz=40,ny=20,grid=Array.from({length:ny+1},(_,j)=>Array.from({length:nz+1},(_,i)=>sideSkinWidth(cz-.1+i*.005,cy-.05+j*.005)));
+  const fit=(z,y)=>{const u=T.MathUtils.clamp((z-cz+.1)/.005,0,nz),v=T.MathUtils.clamp((y-cy+.05)/.005,0,ny),i=Math.min(nz-1,Math.floor(u)),j=Math.min(ny-1,Math.floor(v));return T.MathUtils.lerp(T.MathUtils.lerp(grid[j][i],grid[j][i+1],u-i),T.MathUtils.lerp(grid[j+1][i],grid[j+1][i+1],u-i),v-j);};
+  markerFits.set(end,fit);return fit;
+ }
+ function bake(scope,map){const ids=lightingParts.filter(p=>p.section==='lighting-'+scope).map(p=>p.id);if(scope.startsWith('marker-'))for(const id of ids)for(const m of groups.get(id).children){const old=m.geometry;m.geometry=tessellateForWrap(old);old.dispose();}bakeElectrical(groups,ids,map);}
  for(const [side,s]of[['left',1],['right',-1]]){
   let scope='front-'+side,id=k=>`lt-${scope}-${k}`;
   // Recessed black well surrounds the smaller amber lens in the SE pad.
@@ -49,7 +59,7 @@ function buildAuthoredLighting(h,groups){
    plate(id('housing'),.164,.030,.005,[0,0,-.008],'plastic',[[0,0,.006]],.004);frame(id('housing'),.164,.032,.003,.008,[0,0,-.006],'plastic',.004);
    lens(id('lens'),.157,.023,[0,0,.002],end==='front'?'turnAmber':'tailRed');frame(id('seal'),.165,.031,.002,.0015,[0,0,-.011],'rubber',.004);
    bulb(id('bulb'),[0,0,-.021],'194');socket(id('socket'),[0,0,-.026],false,true);for(const dx of[-.071,.071])screw(id('screws'),[dx,0,.005],.003,.018);
-   bake(scope,(x,y,z)=>[s*(.849+z),cy+y,cz-s*x]);
+   const fitted=markerFit(end,cy,cz);bake(scope,(x,y,z)=>{const zz=cz-s*x,yy=cy+y;return[s*(fitted(zz,yy)+.009+z),yy,zz];});
   }
   scope='rear-'+side;id=k=>`lt-${scope}-${k}`;
   buildTailLamp(h,groups,s,id,{plate,bowl,bulb,socket,screw});

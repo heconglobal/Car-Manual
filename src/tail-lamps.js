@@ -34,8 +34,8 @@ export function buildTailLamp(h,groups,s,id,e){
    const y0=bottom+(top-bottom)*r/A.rows+.0008,y1=bottom+(top-bottom)*(r+1)/A.rows-.0008;
    h.surface(id(key),12,4,(u,v)=>at(x0+(x1-x0)*u,y0+(y1-y0)*v,A.opticDepth+.0002+.00030*Math.sin(v*Math.PI)+.00025*Math.sin(u*Math.PI*6)**2),mat);
   }
-  for(let c=0;c<=columns;c++){const a=start+(end-start)*c/columns;h.surface(id(key),2,16,(u,v)=>at(a+(u-.5)*.0018,bottom+(top-bottom)*v,A.opticDepth+.0018),'tailGrid');}
-  for(let r=0;r<=A.rows;r++){const y=bottom+(top-bottom)*r/A.rows;h.surface(id(key),64,2,(u,v)=>at(start+(end-start)*u,y+(v-.5)*.0015,A.opticDepth+.0018),'tailGrid');}
+  for(let c=0;c<=columns;c++){const a=start+(end-start)*c/columns;h.surface(id(key),2,16,(u,v)=>at(a+(u-.5)*.0008,bottom+(top-bottom)*v,A.opticDepth+.0010),'tailGrid');}
+  for(let r=0;r<=A.rows;r++){const y=bottom+(top-bottom)*r/A.rows;h.surface(id(key),64,2,(u,v)=>at(start+(end-start)*u,y+(v-.5)*.00065,A.opticDepth+.0010),'tailGrid');}
  }
  opticalInsert('red-lens',A.redInner,A.redOuter,'tailInnerRed',12);
  opticalInsert('reverse-lens',A.reverseInner,A.reverseOuter,'tailInnerClear',8);

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {writeFile} from 'node:fs/promises';
 import * as T from 'three';
 import {sourceFingerprint} from './source-fingerprint.mjs';
+import {bodyPoint} from '../src/body-datums.js';
 globalThis.document={createElement:()=>({getContext:()=>({createImageData:(w,h)=>({data:new Uint8ClampedArray(w*h*4)}),putImageData(){},fillRect(){},strokeRect(){},fillText(){}})})};
 const {createBodyDetail}=await import('../src/body-detail.js');
 const {bodyParts,bodySurfaceOwners}=await import('../src/body-catalog.js');
@@ -59,7 +60,14 @@ check('Exterior service pieces have distinct explosion offsets',()=>{
 check('Roof glass and deck alternatives retain separate identities and option flags',()=>{
  for(const [id,option,value]of [['sunroof-glass','roof','glass'],['deck-wing','deck','wing'],['deck-carrier','deck','rack']])for(const m of model.groups.get('bd-skin-'+id).children){assert.equal(m.userData.option,option);assert.equal(m.userData.value,value);}
  for(const m of model.groups.get('bd-skin-sunroof-seal').children)assert(['glass','removed'].includes(m.userData.value));
- const plain=bounds('decklid');assert(bounds('deck-wing').max.y>plain.max.y+.07);
+ // Compare wing and deck at the same stations. The raised forward engine
+ // hump is not the deck surface beneath the rear-mounted wing.
+ const ray=new T.Raycaster();
+ for(const x of [-.3,0,.3])for(const z of [1.66,1.72,1.78]){
+  const p=bodyPoint([x,1.4,z]);p[0]*=-1;ray.set(new T.Vector3(...p),new T.Vector3(0,-1,0));
+  const deck=ray.intersectObjects(model.groups.get('bd-skin-decklid').children,false)[0],wing=ray.intersectObjects(model.groups.get('bd-skin-deck-wing').children,false)[0];
+  assert(deck&&wing,'missing installed wing/deck section');assert(wing.point.y>deck.point.y+.07,'wing is too close to its local deck surface');
+ }
 });
 check('Sunroof panel hardware follows the glass; body hardware survives removal',()=>{
  for(const p of sunroofHardware){const values=new Set(model.groups.get('bd-skin-'+p.id).children.map(m=>{assert.equal(m.userData.option,'roof');return m.userData.value;}));assert.deepEqual([...values].sort(),(p.values||[p.value]).slice().sort(),p.id);assert(!values.has('solid'));}

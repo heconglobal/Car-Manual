@@ -79,10 +79,13 @@ check('Wider tapered lens ends are visible through the fitted fascia apertures',
   assert.equal(ray.intersectObjects(body.groups.get('bd-skin-rear-fascia').children,false).length,0,'paint remains across lamp perimeter');
  }
 });
-check('Rear painted apron continues below the pads and meets both quarter lower edges',()=>{
- const fascia=bounds('rear-fascia');assert(fascia.min.y<.26,'rear apron remains cropped at bumper datum');
- for(const side of ['left','right']){const pad=bounds('rear-pad-'+side);assert(pad.min.y-fascia.min.y>.08,'missing painted lower skirt');}
- const ray=new T.Raycaster();for(const x of [-.65,0,.65]){ray.set(new T.Vector3(x,.280,2.4),new T.Vector3(0,0,-1));assert(ray.intersectObjects(body.groups.get('bd-skin-rear-fascia').children,false).length,'lower apron has an opening');}
+check('Rear apron returns below the pads without restoring the unsupported flat deep skirt',()=>{
+ // R10's <260 mm minimum / 80 mm strip encoded the rejected flat skirt.
+ // GM's production outline rises aft of the rear wheel; keep that distinct
+ // from the still-unresolved H104 bumper measurement surface.
+ const fascia=bounds('rear-fascia');assert(fascia.min.y>.29&&fascia.min.y<.33,'return outside drawing-derived reconstruction band');
+ for(const side of ['left','right']){const pad=bounds('rear-pad-'+side);assert(pad.min.y-fascia.min.y>.015,'missing painted lower return');}
+ const ray=new T.Raycaster();for(const x of [-.65,0,.65]){ray.set(new T.Vector3(x,.332,2.4),new T.Vector3(0,0,-1));assert(ray.intersectObjects(body.groups.get('bd-skin-rear-fascia').children,false).length,'lower return has an opening');}
 });
 check('Upper lamp corners roll into the top edge rather than retaining square outer corners',()=>{
  for(const side of ['left','right']){const sign=side==='left'?-1:1,outer=lighting.groups.get('lt-rear-'+side+'-outer-lens').children.filter(m=>m.userData.materialName==='tailOuter');

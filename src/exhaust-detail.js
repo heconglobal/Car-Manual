@@ -114,7 +114,7 @@ function buildRear(h){
   }
   uClamp(id('tail-clamps'),[s*.326,.248,1.74],.0254);
   const hp=[s*.435,.335,1.798];plate(id(side+'-hanger'),[[.28,1.774],[.395,1.774],[.404,1.814],[.28,1.824]],[[.385,1.798,.0045],[.296,1.802,.0045]],.004,s*.435,'metal');box(id(side+'-hanger'),[.010,.063,.035],[s*.438,.332,1.798],'rubber',[],{},.006);for(const dy of [-.038,.051])bolt(id('hanger-bolts'),[s*.447,.335+dy,1.798],.006,'x');
-  surface(id(side+'-fascia-shield'),32,20,(u,v)=>[s*.51+(u-.5)*.19,.307+.026*(2*u-1)**4,1.82+v*.08],'zinc');for(const dx of [-.063,.063])bolt(id('fascia-nuts'),[s*.51+dx,.328,1.894],.005);
+  surface(id(side+'-fascia-shield'),32,20,(u,v)=>[s*.51+(u-.5)*.19,.307+.026*(2*u-1)**4,1.77+v*.08],'zinc');for(const dx of [-.063,.063])bolt(id('fascia-nuts'),[s*.51+dx,.328,1.844],.005);
   plate(id('spring-brackets'),[[.254,1.61],[.323,1.6],[.35,1.67],[.265,1.67]],[[.286,1.626,.007],[.327,1.639,.007]],.004,s*.421,'metal');for(const dz of [0,.028])bolt(id('spring-brackets'),[s*.428,.286,1.624+dz],.005,'x');
   for(let i=0;i<3;i++){const a=[s*(.32+i*.009),.287+i*.018,1.655+i*.018],b=[s*.419,.278+i*.023,1.627+i*.015];tension(id(side+'-springs'),a,b);ring(id('muffler'),.006,.0018,a,'metal');}
  }

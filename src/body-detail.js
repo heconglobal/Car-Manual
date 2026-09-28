@@ -1,4 +1,6 @@
 import * as T from 'three';
+import {buildInteriorTrimRetainers} from './interior-geometry.js';
+import {buildDoorOpeningWeatherstrip} from './window-seals.js';
 import {createMaterials} from './materials.js';
 import {geometryTools} from './geometry.js';
 import {mechanicalTools} from './mechanical-geometry.js';
@@ -6,6 +8,9 @@ import {correctLegacyHandedness} from './vehicle-frame.js';
 import {parts} from './data.js';
 import {buildBody} from './body.js';
 import {bodyParts,bodySections,bodySurfaceOwners} from './body-catalog.js';
+import {sideWidth,fenderTopHeight,deckHeight} from './body-contours.js';
+import {deckVentPoint} from './decklid.js';
+import {roofPoint} from './sunroof.js';
 import {bodyPoint} from './body-datums.js';
 export function bodyMaterials(base=createMaterials()){const m={...base};for(const k of ['metal','dark','rubber','blackPaint','zinc'])m[k]=base[k].clone();m.metal.bumpScale=.00003;m.dark.bumpScale=.000025;m.zinc.bumpScale=.00002;m.rubber.bumpScale=.00003;m.blackPaint.roughness=.45;return m;}
 export function createBodyDetail(){const root=new T.Group(),groups=new Map();for(const p of bodyParts){const g=new T.Group();g.name=p.id;g.userData={partId:p.id,system:'body',section:p.section,spread:new T.Vector3(...p.spread),assemblySpread:new T.Vector3(...(bodySections.find(s=>s.id===p.section).spread||[0,0,0]))};groups.set(p.id,g);root.add(g);}const h=geometryTools(groups,bodyMaterials());
@@ -45,7 +50,7 @@ function buildHood(h){
 }
 function buildDeck(h){
  const {box,cyl,tube,ring,bolt,surface}=h,{flat,link,plate,latch,seal,sleeve}=tools(h),id=k=>'bd-deck-'+k;
- flat(id('inner'),[[-.353,.80],[.353,.80],[.378,1.20],[.624,1.20],[.624,1.835],[-.624,1.835],[-.624,1.20],[-.378,1.20]],[[-.29,.859,.29,1.139],[-.54,1.287,.54,1.757]],0,'dark',(x,z)=>.788-(z-.774)*.028);
+ flat(id('inner'),[[-.300,.80],[.300,.80],[.316,1.20],[.624,1.20],[.624,1.835],[-.624,1.835],[-.624,1.20],[-.316,1.20]],[[-.26,.859,.26,1.139],[-.54,1.287,.54,1.757]],0,'dark',(x,z)=>.788-(z-.774)*.028);
  for(const s of [-1,1]){
   const side=s>0?'left':'right',hinge=id(side+'-hinge'),x=s*.32;
   plate(hinge,[[.681,.739],[.76,.729],[.785,.762],[.727,.818],[.681,.810]],[[.706,.751,.0045],[.756,.763,.006]],.005,x,'metal');
@@ -64,7 +69,11 @@ function buildDeck(h){
  for(const x of [-.019,.019])bolt(id('lock-screws'),[x,.764,1.825],.004);tube(id('lock-shaft'),[[0,.752,1.825],[0,.741,1.825],[0,.735,1.807]],.002,'zinc');
  seal(id('trunk-seal'),[[-.55,.76,1.55],[-.575,.755,1.67],[-.55,.750,1.80],[0,.751,1.815],[.55,.750,1.80],[.575,.755,1.67],[.55,.76,1.55],[0,.764,1.54]],.0075);
  for(const x of [-.573,.573]){cyl(id('bumpers'),.010,.014,[x,.755,1.791],'rubber',[0,0,0]);cyl(id('bumpers'),.003,.019,[x,.739,1.791],'zinc',[0,0,0]);}
- for(const s of [-1,1]){const side=s>0?'left':'right';for(const z of [.81,1.15]){box('bd-vent-'+side+'-retainer',[.092,.008,.028],[s*.512,.790,z],'dark',[],{},.003);bolt('bd-vent-'+side+'-fasteners',[s*.53,.813,z],.004);sleeve('bd-vent-'+side+'-fasteners',.007,.003,.002,[s*.53,.807,z],'zinc');}}
+ for(const s of [-1,1]){
+  const side=s>0?'left':'right';
+  for(const v of [.025,.986]){const a=deckVentPoint(s,.08,v,deckHeight),b=deckVentPoint(s,.92,v,deckHeight);box('bd-vent-'+side+'-retainer',[Math.abs(a[0]-b[0]),.008,.020],[(a[0]+b[0])/2,a[1]-.020,a[2]],'dark',[],{},.003);}
+  for(const u of [.12,.88]){const p=deckVentPoint(s,u,.986,deckHeight),id='bd-vent-'+side+'-fasteners';cyl(id,.005,.003,[p[0],p[1]+.005,p[2]],'dark',[0,0,0]);cyl(id,.002,.018,[p[0],p[1]-.006,p[2]],'zinc',[0,0,0]);sleeve(id,.006,.0025,.002,[p[0],p[1]+.002,p[2]],'zinc');box(id,[.006,.0006,.0012],[p[0],p[1]+.0067,p[2]],'rubber',[],{},0);}
+ }
 }
 function buildDoor(h,s){
  const {box,cyl,tube,bolt,surface,ring}=h,{plate,link,sleeve,spring,latch,seal,clip}=tools(h),side=s>0?'left':'right',id=k=>'bd-door-'+side+'-'+k,x=s*.758;
@@ -82,22 +91,30 @@ function buildDoor(h,s){
  // rear door edge; these are static relationship views, not lock simulations.
  latch(id('latch'),[s*.784,.485,.520]);cyl(id('striker'),.007,.036,[s*.776,.485,.550],'zinc');sleeve(id('striker'),.018,.004,.002,[s*.755,.485,.550],'zinc',[1,0,0]);
  tube(id('handle-rod'),[[s*.835,.489,.41],[s*.817,.470,.421],[s*.804,.467,.502]],.0016,'zinc');tube(id('lock-rod'),[[s*.835,.472,.503],[s*.814,.449,.505],[s*.796,.472,.510]],.0016,'zinc');
- seal(id('seal'),[[s*.724,.308,-.558],[s*.731,.31,.440],[s*.734,.42,.535],[s*.734,.79,.552],[s*.64,1.098,.433],[s*.637,1.126,-.025],[s*.731,.821,-.553]],.006);
- for(const [y,z]of [[.36,-.48],[.51,-.52],[.69,-.50],[.35,-.16],[.34,.16],[.37,.43],[.53,.48],[.70,.46],[.74,.14]])clip(id('trim-retainers'),[s*.728,y,z],'x');
+ buildDoorOpeningWeatherstrip(h,id('seal'),s);
+ buildInteriorTrimRetainers(h,s,id('trim-retainers'));
 }
 function buildPanelHardware(h){
  const {surface,tube,box,bolt,cyl}=h,{clip}=tools(h);
  for(const s of [-1,1]){
   const side=s>0?'left':'right';for(const [front,z]of [[true,-1.1865],[false,1.1865]]){
    const key=(front?'front':'rear'),id='bd-'+key+'-liner-'+side;
-   surface(id,72,22,(u,v)=>{const a=.03+(Math.PI-.06)*u,r=.356-.017*v;return[s*(.575+.254*v),.307+r*Math.sin(a),z+r*Math.cos(a)];},'plastic');
+   const edge=a=>{const zz=z+.344*Math.cos(a),y=.308+.344*Math.sin(a);return[s*(sideWidth(zz,y,z,!front)-.018),y,zz];};
+   surface(id,96,20,(u,v)=>{const a=u*Math.PI,p=edge(a);p[0]=s*T.MathUtils.lerp(.595,Math.abs(p[0]),v);return p;},'plastic');
+   // Vertical front/rear ends continue to the lower panel; no open slot.
+   for(const direction of [-1,1])surface(id,18,16,(u,v)=>{const y=T.MathUtils.lerp(.245,.308,u),zz=z+direction*.344;return[s*T.MathUtils.lerp(.595,sideWidth(zz,y,z,!front)-.018,v),y,zz];},'plastic');
+   // Rolled outer fixing flange sits behind, clear of the painted wheel lip.
+   surface(id,96,6,(u,v)=>{const a=u*Math.PI,p=edge(a);p[1]+=.018*v*Math.sin(a);p[2]+=.018*v*Math.cos(a);return p;},'plastic');
+   // The inboard liner wall closes the view above the tire. A transverse
+   // arch alone left a direct sightline to bright suspension/inner panels.
+   surface(id,96,10,(u,v)=>{const a=u*Math.PI,r=.312+.052*v;return[s*.595,.307+r*Math.sin(a),z+r*Math.cos(a)];},'plastic');
    for(const a of [.16,.64,1.13,1.63,2.15,2.72])clip('bd-'+key+'-panel-fasteners-'+side,[s*.827,.307+.342*Math.sin(a),z+.342*Math.cos(a)],'x');
-   for(const dz of [-.47,.39])clip('bd-'+key+'-panel-fasteners-'+side,[s*.72,front?.707:.795,z+dz]);
+   for(const dz of [-.47,.39]){const zz=z+dz;clip('bd-'+key+'-panel-fasteners-'+side,[s*.72,fenderTopHeight(.72,zz,!front)-.012,zz]);}
   }
   box('bd-rocker-'+side+'-retainers',[.008,.025,1.60],[s*.775,.239,0],'dark',[],{},.003);for(let i=0;i<7;i++)clip('bd-rocker-'+side+'-retainers',[s*.789,.237,-.74+i*.247],'x');
  }
  for(const [key,z,y]of [['front',-1.789,.604],['rear',1.867,.73]]){tube('bd-'+key+'-fascia-retainers',[[-.70,y-.018,z],[-.35,y,z],[.35,y,z],[.70,y-.018,z]],.007,'dark');for(let i=0;i<8;i++)clip('bd-'+key+'-fascia-retainers',[-.65+i*.186,y+.01,z]);}
- for(const x of [-.555,.555])for(const z of [-.06,.18,.43])bolt('bd-roof-fasteners',[x,1.135,z],.006);
+ for(const u of [.045,.955])for(const v of [.12,.50,.84]){const p=roofPoint(u,v);p[1]-=.020;bolt('bd-roof-fasteners',p,.006,'y','zinc');}
  // 1985 rear-roof figure 6-15: four side-rail bolts, six frame bolts,
  // three fuel-pocket bolts, two pillar bolts and three roof nuts.
  for(const s of [-1,1]){for(const z of [1.26,1.61])bolt('bd-clip-side-bolts',[s*.659,.748,z],.005);for(const z of [.68,.94,1.17])bolt('bd-clip-side-bolts',[s*.65,.777,z],.005);bolt('bd-clip-pillar-bolts',[s*.612,.923,.58],.005,'x');}

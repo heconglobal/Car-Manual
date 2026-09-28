@@ -16,6 +16,23 @@ const h=geometryTools(groups,createMaterials());buildBody(h);buildMechanics(h);h
 const checks=[],ray=new T.Raycaster();
 const check=(name,fn)=>{const measurements=fn();checks.push({name,status:'passed',measurements});};
 const cast=(id,p,d)=>{ray.set(new T.Vector3(...p),new T.Vector3(...d));return ray.intersectObjects(groups.get(id).children,false);};
+// Compare the actual sections at the same longitudinal station. Whole-part
+// bounding boxes mix the low front end of pitched trim with the high rear end
+// of the intake, so they do not measure their installed clearance.
+const sectionAt=(id,z)=>{
+ const ys=[];
+ for(const m of groups.get(id).children){
+  const p=m.geometry.attributes.position,ix=m.geometry.index;
+  for(let i=0;i<(ix?.count||p.count);i+=3){
+   const v=[0,1,2].map(j=>new T.Vector3().fromBufferAttribute(p,ix?ix.getX(i+j):i+j).applyMatrix4(m.matrixWorld));
+   for(let j=0;j<3;j++){const a=v[j],b=v[(j+1)%3];if(z<Math.min(a.z,b.z)||z>Math.max(a.z,b.z))continue;
+    if(Math.abs(b.z-a.z)<1e-10){ys.push(a.y,b.y);continue;}
+    ys.push(a.y+(b.y-a.y)*(z-a.z)/(b.z-a.z));
+   }
+  }
+ }
+ assert(ys.length,id+' has no section at '+z);return{min:Math.min(...ys),max:Math.max(...ys)};
+};
 check('Side molding remains above its body skin across the full ribbed section',()=>{
  let samples=0,minStandOff=Infinity;
  for(const side of ['left','right'])for(const [trim,panel,stations]of [
@@ -38,7 +55,14 @@ check('Installed molding centres follow one straight side elevation',()=>{
 check('Intake opening is below the uninterrupted quarter molding and clear of paint',()=>{
  let samples=0;
  for(const z of [.66,.72,.79])for(const dy of [-.110,-.075,-.045]){const p=bodyPoint([-1.1,exteriorBeltHeight(z)+dy,z]);assert.equal(cast('quarter-left',p,[1,0,0]).length,0,'paint across intake');samples++;}
- const box=new T.Box3().setFromObject(groups.get('side-intake')),molding=new T.Box3().setFromObject(groups.get('rear-molding-left'));assert(box.max.y<molding.min.y-.008);return{samples,upperClearanceMm:(molding.min.y-box.max.y)*1000};
+ const box=new T.Box3().setFromObject(groups.get('side-intake')),molding=new T.Box3().setFromObject(groups.get('rear-molding-left'));
+ let upperClearance=Infinity;
+ for(let i=0;i<=40;i++){const z=box.min.z+.0005+(box.max.z-box.min.z-.001)*i/40;
+  const intake=sectionAt('side-intake',z),trim=sectionAt('rear-molding-left',z);
+  upperClearance=Math.min(upperClearance,trim.min-intake.max);
+ }
+ assert(upperClearance>.008,'intake approaches the local molding underside');
+ return{samples,sectionSamples:41,upperClearanceMm:upperClearance*1000,wholePartBoundsDifferenceMm:(molding.min.y-box.max.y)*1000};
 });
 check('Tread remains within the shallow road-tire radius envelope',()=>{
  const a=groups.get('wheels').children.filter(m=>m.userData.materialName==='rubber');let maxRadius=0;

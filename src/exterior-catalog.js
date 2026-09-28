@@ -15,6 +15,12 @@ for(const side of ['left','right']){
  add('door-lock-'+side,door,who+' door key cylinder bezel','Separate key opening and bright bezel below the rear end of the handle. Tumbler internals are not represented.',300);
  add('door-molding-'+side,door,who+' door rub molding','Ribbed belt-line protective molding; interrupted at the separately selectable handle.');
  add('belt-seal-'+side,door,who+' outer window belt seal','Separate outer belt molding and wiping lip along the door glass opening.',300);
+ // GM 22P PDF336–338, 2P12-012: retainers include weatherstrips.
+ add('a-pillar-seal-'+side,'body-glazing',who+' A-pillar glass seal & retainer','Separate front glass-opening retainer and sealing lip. Reconstructed section; GM 22P item 28.',336,28);
+ add('upper-window-seal-'+side,'body-roof',who+' upper window seal, retainer & stop','Upper opening weatherstrip/retainer with a glass blow-out stop, GM 22P item 27. Remains with the roof when the door glass is lowered.',336,27);
+ add('b-pillar-seal-'+side,'body-rear-clip',who+' lock-pillar glass seal & retainer','Rear edge seal and retainer between the door glass and sail applique, GM 22P item 26.',336,26);
+ add('windshield-belt-filler-'+side,'body-glazing',who+' windshield belt corner filler','Small filler at the base of the windshield frame, GM 22P item 29, 1985 application.',336,29);
+ add('backlight-filler-'+side,'body-rear-clip',who+' rear-window side filler','Formed reveal filler between the backlight and rear clip, GM 22P item 39. Local contour remains reconstructed.',336,39);
  add('front-molding-'+side,'body-front-panels',who+' front fender moldings','Separate ribbed strips before and behind the wheel opening, stopping at the side marker.',237);
  add('rear-molding-'+side,'body-rear-panels',who+' quarter moldings','Separate ribbed strips following the quarter shoulder and stopping at the rear marker.');
  for(const end of ['front','rear'])add(end+'-pad-'+side,'body-'+end+'-panels',who+' '+end+' bumper pad','Raised molded pad with a closed rounded perimeter and a real inset opening. Shape follows the SE photographs; no impact-performance claim.',end==='front'?237:336);

@@ -1,4 +1,4 @@
-import {formedPatch,rubMolding} from './exterior.js';
+import {formedPatch,rubMolding,rubMoldingHeight} from './exterior.js';
 import * as T from 'three';
 import {bodyNominal} from './body-datums.js';
 import {tailLampOutline} from './tail-lamp-shape.js';
@@ -21,7 +21,7 @@ function section(stations){
 const frontSection=section([[.270,-1.947],[.292,-1.964],[.315,-1.976],[.365,-1.994],[.465,-2.011],[.517,-2.029],[.548,-2.020],[.599,-1.920],[.625,-1.790]]);
 // Distinct bumper crown, sloping painted bridge and raked lamp panel.
 // The previous single swollen section erased the separation visible in IMG_5461.
-const rearSection=section([[.245,1.894],[.270,1.925],[.305,1.953],[.333,1.970],[.365,1.993],[.440,2.007],[.500,2.010],[.542,1.987],[.625,1.951],[.644,1.939],[.777,1.884],[.816,1.867]]);
+const rearSection=section([[.315,1.889],[.332,1.953],[.355,1.995],[.375,2.008],[.440,2.010],[.510,2.010],[.529,2.008],[.547,1.984],[.625,1.951],[.644,1.939],[.777,1.884],[.816,1.867]]);
 function crown(x,inner,rear){
  const a=Math.abs(x);
  if(a<=inner)return .012*(1-(a/inner)**2);
@@ -39,10 +39,10 @@ function point(x,y,rear){
  const top=rear?.816:.625,bottom=rear?fasciaProfile.rearLower:fasciaProfile.frontLower,join=rear?1.867:-1.790;
  const v=clamp((y-bottom)/(top+crown(x,rear?.650:.659,rear)-bottom),0,1);
  const z=(rear?rearSection:frontSection)(lerp(bottom,top,v));
- const w=width(v,rear),corner=rear?.560:.560,q=clamp((Math.abs(x)-corner)/(w-corner),0,1);
+ const w=width(v,rear),corner=rear?.660:.560,q=clamp((Math.abs(x)-corner)/(w-corner),0,1);
  // An elliptical corner meets the adjoining side panel tangentially.
  const turn=1-Math.sqrt(Math.max(0,1-q*q));
- const bow=(rear?-1:1)*.018*(Math.abs(x)/w)**2*(1-turn);
+ const bow=(rear?-.007:.018)*(Math.abs(x)/w)**2*(1-turn);
  let finalZ=lerp(z,join,turn)+bow;
  // Recess the plate into the painted centre bridge; do not join the two pads
  // with a flat black strip. Tapered walls remain part of the fascia mesh.
@@ -53,11 +53,19 @@ function point(x,y,rear){
 function apronBottom(x,rear){
  if(!rear)return fasciaProfile.frontLower;
  const q=Math.abs(Math.abs(x)-.510)/.115;
- return fasciaProfile.rearLower+(q<1?.043*Math.sqrt(1-q*q):0);
+ return fasciaProfile.rearLower+(q<1?.014*Math.sqrt(1-q*q):0);
 }
 export const frontFace=(x,y)=>point(x,y,false);
 export const rearFace=(x,y)=>point(x,y,true);
 // The registration plate is planar inside the sculpted fascia recess.
+// Side-mounted markers cross the front fascia/fender seam. Project their
+// entire lens/housing onto the skin rather than a floating constant-X plane.
+export function sideSkinWidth(z,y){
+ if(z>=-1.790&&z<=1.867)return sideWidth(z,y,z<0?-1.1865:1.1865,z>0);
+ const rear=z>0;let lo=.56,hi=.90;
+ for(let i=0;i<40;i++){const mid=(lo+hi)/2,p=point(mid,y,rear);if(rear?p[2]>z:p[2]<z)lo=mid;else hi=mid;}
+ return (lo+hi)/2;
+}
 export const rearPlateFace=(x,y)=>[x,y,rearFace(0,.438)[2]];
 
 export function buildFascias(h){
@@ -77,7 +85,10 @@ export function buildFascias(h){
  // Closed pads stand proud of the flexible fascia and contain real apertures.
  for(const rear of [false,true]){
   const face=rear?rearFace:frontFace,end=rear?'rear':'front',sign=rear?1:-1;
-  rubMolding(h,end+'-fascia-molding',(u,dy=0)=>face(lerp(-.827,.827,u),exteriorBeltHeight(rear?1.78:-1.75)+dy-(rear?.012*(1-T.MathUtils.smoothstep(Math.abs(lerp(-.827,.827,u)),.65,.80)):0)),u=>{const x=lerp(-.827,.827,u),turn=Math.max(0,(Math.abs(x)-.59)/.237);return [Math.sign(x)*turn,0,sign*(1-turn)];},.022);
+  // The front marker straddles the fascia seam; terminate this molding
+  // before its lens instead of carrying a black rib across the amber end.
+  const extent=rear?sideWidth(1.867,exteriorBeltHeight(1.867),1.1865,true):Math.min(...[-.014,0,.014].map(dy=>sideSkinWidth(-1.836,exteriorBeltHeight(-1.75)+dy)))-.0005;
+  rubMolding(h,end+'-fascia-molding',(u,dy=0)=>{const x=lerp(-extent,extent,u),y=exteriorBeltHeight(rear?1.867:-1.75)+dy-(rear?.016*(1-T.MathUtils.smoothstep(Math.abs(x),.67,.84)):0);return face(x,y);},u=>{const x=lerp(-extent,extent,u),turn=T.MathUtils.clamp((Math.abs(x)-.59)/(extent-.59),0,1);return [Math.sign(x)*turn,0,sign*(1-turn)];},rubMoldingHeight);
   for(const side of ['left','right']){
    const s=side==='left'?1:-1,cx=s*.480,cy=rear?.440:.410;
    const holes=rear?[[s*.635,.436,.092,.039]]:[[s*.500,frontLampMount.height,frontLampMount.openingWidth,frontLampMount.openingHeight]];

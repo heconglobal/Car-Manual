@@ -1,5 +1,6 @@
 import * as T from 'three';
 import { shoulderWidth, shoulderDrop } from './body-contours.js';
+import {glazingSeal} from './window-seals.js';
 
 const lerp=T.MathUtils.lerp;
 const mix=(a,b,t)=>a.map((x,i)=>lerp(x,b[i],t));
@@ -25,20 +26,21 @@ export function buildRearClip(h,deckHeight,roofPoint,sideWindow){
  // Rounded header reveal, with a visible painted lip above recessed glass.
  surface(id,44,16,(u,v)=>{const a=header(u),b=backlight(u,1),p=mix(a,b,v);p[2]+=.018*Math.sin(v*Math.PI);return p;});
  surface(id,40,10,(u,v)=>mix(backlight(u,0),[(2*u-1)*.551,.827,.771],v),'blackPaint');
- for(const v of [0,1])tube('rear-window',Array.from({length:44},(_,i)=>backlight(i/43,v)),.004,'rubber');
+ glazingSeal(h,'rear-window',backlight,[0,.35,1]);
  for(const s of [-1,1]){
   const signed=p=>[s*p[0],p[1],p[2]];
-  const front=v=>[lerp(.812,.613,v),lerp(.812,1.157,v),lerp(.605,.480,v)];
-  const trailing=v=>bezier([.824,deckHeight(1.215)-.011,1.215],[.819,.818,1.085],[.694,1.110,.790],[.596,1.138,.663],v);
+  const front=v=>mix([.812,.812,.605],roofReturn(1,0),v);
+  const trailing=v=>bezier([.824,deckHeight(1.115)-.011,1.115],[.819,.830,1.005],[.694,1.110,.790],[.596,1.138,.663],v);
   const skin=(u,v)=>{
    const p=mix(front(v),trailing(v),u),root=mix(front(0),trailing(0),u);
    const t=T.MathUtils.clamp((root[0]-.654)/(shoulderWidth(root[2])-.654),0,1);
    const shoulderY=deckHeight(root[2])-shoulderDrop(root[2],true)*(1-Math.sqrt(1-t*t));
-   p[0]+=.012*Math.sin(u*Math.PI)*Math.sin(v*Math.PI);
-   p[1]+=.003*Math.sin(u*Math.PI)*Math.sin(v*Math.PI)+(shoulderY-root[1])*(1-v)**4;
-   // Share the roof-return edge; an independent line left an open crown.
+   p[0]+=.004*Math.sin(u*Math.PI)*Math.sin(v*Math.PI);
+   p[1]+=.002*Math.sin(u*Math.PI)*Math.sin(v*Math.PI)+(shoulderY-root[1])*(1-v);
+   // Coons boundary correction: share the crown without the old fourth-power
+   // pinch. The forward post is straight and the rear return rolls onto deck.
    const edge=roofReturn(1,u),oldTop=mix(front(1),trailing(1),u);
-   for(let k=0;k<3;k++)p[k]+=(edge[k]-oldTop[k])*v**4;
+   for(let k=0;k<3;k++)p[k]+=(edge[k]-oldTop[k])*v;
    return signed(p);
   };
   // Broad, crowned C-pillar outer skin with a horizontal shoulder at its top.
@@ -50,27 +52,40 @@ export function buildRearClip(h,deckHeight,roofPoint,sideWindow){
   });
   // Side reveal connects the rear glass to the painted pillar, closing the
   // recessed window well. It no longer reads as a full-width glass wall.
-  surface(id,32,16,(u,v)=>{
+  surface('backlight-filler-'+(s>0?'left':'right'),32,16,(u,v)=>{
    const a=backlight(s>0?1:0,u),b=signed([lerp(.586,.596,u),lerp(.827,1.138,u),lerp(.783,.663,u)]);
    const p=mix(a,b,v);p[2]+=.009*Math.sin(v*Math.PI);return p;
   });
-  tube('rear-window',Array.from({length:32},(_,i)=>backlight(s>0?1:0,i/31)),.004,'rubber');
   // The B-pillar strip is distinct from the small triangular sail window.
-  surface(id,24,8,(u,v)=>mix(sideWindow(s,1,u),skin(0,u),v),'blackPaint');
+  surface(id,24,8,(u,v)=>mix(sideWindow(s,1,u),skin(0,u),v),'windowTrim');
   const windowId=s>0?'sail-left':'sail-right';
   // Rounded triangle in the local C-pillar surface coordinates. This framed
   // applique is opaque on the notchback; it does not open into the cabin.
-  const outline=new T.Shape();outline.moveTo(.055,.070);
-  outline.quadraticCurveTo(.022,.070,.025,.120);
-  outline.lineTo(.025,.862);outline.quadraticCurveTo(.025,.919,.079,.919);
-  outline.quadraticCurveTo(.115,.918,.133,.864);
-  outline.lineTo(.447,.111);outline.quadraticCurveTo(.471,.070,.413,.070);outline.closePath();
-  const points=outline.getPoints(18),centre=new T.Vector2(.165,.365);
-  const panelPoint=(p,scale,offset)=>{const uv=p.clone().sub(centre).multiplyScalar(scale).add(centre);uv.x*=lerp(1.16,1.32,uv.y);const q=skin(uv.x,uv.y);q[0]+=s*offset;return q;};
+  // Draw the rounded applique in the physical elevation, then project back
+  // onto the crowned pillar. A triangle drawn in loft UV coordinates bowed
+  // its rear edge; Pontiac's p12 photograph shows an essentially straight edge.
+  const corners=[[.038,.055],[.052,.925],[.790,.055]].map(([u,v])=>{const p=skin(u,v);return new T.Vector2(p[2],p[1]);});
+  const centre=corners.reduce((p,q)=>p.add(q),new T.Vector2()).multiplyScalar(1/3),outline=new T.Shape();
+  const rounded=corners.map((p,i)=>{const a=corners[(i+2)%3],b=corners[(i+1)%3],r=i===1?.013:.009;return{p,a:p.clone().lerp(a,r/p.distanceTo(a)),b:p.clone().lerp(b,r/p.distanceTo(b))};});
+  outline.moveTo(rounded[0].a.x,rounded[0].a.y);
+  for(const c of rounded){outline.lineTo(c.a.x,c.a.y);outline.quadraticCurveTo(c.p.x,c.p.y,c.b.x,c.b.y);}outline.closePath();
+  const points=outline.getPoints(18);
+  const panelPoint=(p,scale,offset)=>{
+   const target=p.clone().sub(centre).multiplyScalar(scale).add(centre);let u=.3,v=.4;
+   for(let i=0;i<10;i++){
+    const q=skin(u,v),a=skin(u+.0001,v),b=skin(u,v+.0001),dy=target.y-q[1],dz=target.x-q[2];
+    if(Math.hypot(dy,dz)<1e-9)break;
+    const uy=(a[1]-q[1])/.0001,uz=(a[2]-q[2])/.0001,vy=(b[1]-q[1])/.0001,vz=(b[2]-q[2])/.0001,d=uy*vz-uz*vy;
+    u=T.MathUtils.clamp(u+(dy*vz-dz*vy)/d,0,1);v=T.MathUtils.clamp(v+(uy*dz-uz*dy)/d,0,1);
+   }
+   const q=skin(u,v);q[0]+=s*offset;return q;
+  };
   surface(windowId,72,18,(u,v)=>panelPoint(centre.clone().lerp(outline.getPointAt(u),v),1,.006),'sailGlass');
-  tube(windowId,points.map(p=>panelPoint(p,1.025,.007)),.006,'rubber');
-  tube(windowId,points.map(p=>panelPoint(p,.965,.008)),.0015,'dark');
-  const badge=panelPoint(new T.Vector2(.339,.116),1,.010);
+  // Linear segments preserve the molded triangle's rounded corners without
+  // a spline shooting past the closed seam and producing black spikes.
+  const rim=(scale,offset,r,mat)=>{const path=new T.CurvePath(),ps=points.map(p=>new T.Vector3(...panelPoint(p,scale,offset)));for(let i=0;i<ps.length-1;i++)path.add(new T.LineCurve3(ps[i],ps[i+1]));h.add(windowId,new T.TubeGeometry(path,192,r,8,true),mat);};
+  rim(1.025,.007,.004,'rubber');rim(.965,.008,.0015,'dark');
+  const badgePoint=skin(.36,.13),badge=panelPoint(new T.Vector2(badgePoint[2],badgePoint[1]),1,.010);
   label(windowId,'SE',[.035,.015],badge,[0,s*Math.PI/2,0],{background:'transparent',foreground:'#c1c4c4',font:'bold 68px Arial'});
  }
  for(let i=0;i<9;i++){

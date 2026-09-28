@@ -1,14 +1,25 @@
 import * as T from 'three';
 import {mergeVertices} from 'three/addons/utils/BufferGeometryUtils.js';
 import {sideWidth,doorAt,exteriorBeltHeight} from './body-contours.js';
+import {buildBeltSeal} from './window-seals.js';
+import {windshield} from './glazing-contours.js';
+import {surfaceNormal} from './window-seals.js';
 const lerp=T.MathUtils.lerp;
 
 // Closed molded cross-section, not three round wires laid on the paint.
-export function rubMolding(h,id,path,normal,height=.021){
+export const rubMoldingHeight=.028;
+export function rubMolding(h,id,path,normal,height=rubMoldingHeight){
  const standOff=id.endsWith('-fascia-molding')?.001:.0005;
- const section=[[-1,0],[-.91,.003],[-.64,.0048],[-.30,.0034],[0,.0042],[.30,.0034],[.64,.0048],[.91,.003],[1,0]];
- h.surface(id,64,section.length-1,(u,v)=>{const n=Math.round(v*(section.length-1)),q=section[n],p=path(u,q[0]*height/2);const dir=normal(u);return p.map((x,i)=>x+dir[i]*(standOff+q[1]));},'blackPaint');
- for(const u of [0,1])h.surface(id,2,section.length-1,(_,v)=>{const q=section[Math.round(v*(section.length-1))],p=path(u,q[0]*height/2),dir=normal(u);return p.map((x,i)=>x+dir[i]*(standOff+q[1]*_));},'blackPaint');
+ const section=[[-1,0],[-.94,.004],[-.76,.006],[-.45,.006],[-.36,.003],[-.24,.003],[-.16,.0058],[.16,.0058],[.24,.003],[.36,.003],[.45,.006],[.76,.006],[.94,.004],[1,0]];
+ h.surface(id,96,section.length-1,(u,v)=>{const n=Math.round(v*(section.length-1)),q=section[n],p=path(u,q[0]*height/2);const dir=normal(u);return p.map((x,i)=>x+dir[i]*(standOff+q[1]));},'windowTrim');
+ for(const u of [0,1])h.surface(id,2,section.length-1,(_,v)=>{const q=section[Math.round(v*(section.length-1))],p=path(u,q[0]*height/2),dir=normal(u);return p.map((x,i)=>x+dir[i]*(standOff+q[1]*_));},'windowTrim');
+}
+// Trim ends follow the real wheel-opening intersection at every section
+// height. Fixed Z endpoints left 50–190 mm of bare panel beside the arches.
+export function moldingArchEnd(centre,direction,dy=0){
+ let lo=0,hi=.339;
+ for(let i=0;i<32;i++){const d=(lo+hi)/2,z=centre+direction*d,arch=.308+Math.sqrt(Math.max(0,.339**2-d*d));if(arch>exteriorBeltHeight(z)+dy)lo=d;else hi=d;}
+ return centre+direction*((lo+hi)/2+.001);
 }
 function roundRect(w,h,r){const s=new T.Shape(),x=-w/2,y=-h/2;s.moveTo(x+r,y);s.lineTo(x+w-r,y);s.quadraticCurveTo(x+w,y,x+w,y+r);s.lineTo(x+w,y+h-r);s.quadraticCurveTo(x+w,y+h,x+w-r,y+h);s.lineTo(x+r,y+h);s.quadraticCurveTo(x,y+h,x,y+h-r);s.lineTo(x,y+r);s.quadraticCurveTo(x,y,x+r,y);return s;}
 export function formedPatch(h,id,face,cx,cy,w,height,depth,mat='blackPaint',holes=[]){
@@ -34,18 +45,17 @@ export function buildExterior(h){
   const normal=()=>[s,0,0];
   // Handle lies in the protective molding; the pocket sits below it.
   const dp=(z,y,offset=0)=>{const p=doorAt(s,z,y);p[0]+=s*offset;return p;};
-  for(const [a,b]of [[-.614,.342],[.482,.570]])rubMolding(h,'door-molding-'+side,(u,dy=0)=>dp(lerp(a,b,u),exteriorBeltHeight(lerp(a,b,u))+dy),normal);
+  for(const [a,b]of [[-.616,.347],[.478,.578]])rubMolding(h,'door-molding-'+side,(u,dy=0)=>dp(lerp(a,b,u),exteriorBeltHeight(lerp(a,b,u))+dy),normal);
   const handle='handle-'+side,handleRise=exteriorBeltHeight(.414)-.520;
   surface(handle,28,12,(u,v)=>{const z=lerp(.348,.478,u),y=lerp(.475,.506,v)+handleRise;return dp(z,y,.001+.002*Math.sin(v*Math.PI));},'dark');
   surface(handle,28,12,(u,v)=>{const z=lerp(.351,.475,u),y=.515+(v-.5)*.019+handleRise;return dp(z,y,.005+.006*Math.sin(v*Math.PI));},'blackPaint');
   tube(handle,Array.from({length:24},(_,i)=>dp(lerp(.349,.477,i/23),.477+handleRise,.004)),.0014,'red');
   const key=dp(.508,.483+handleRise,.003);cyl('door-lock-'+side,.008,.003,key,'chrome');box('door-lock-'+side,[.004,.002,.009],[key[0]+s*.002,key[1],key[2]],'dark',[],{},.0005);
-  rubMolding(h,'belt-seal-'+side,(u,dy=0)=>[s*.800,.803+dy,lerp(-.590,.557,u)],normal,.014);
-  surface('belt-seal-'+side,48,5,(u,v)=>[s*lerp(.798,.784,v),.808+.001*Math.sin(v*Math.PI),lerp(-.590,.557,u)],'rubber');
+  buildBeltSeal(h,s);
   for(const rear of [false,true]){
    const id=(rear?'rear':'front')+'-molding-'+side,centre=rear?1.1865:-1.1865;
-   const ranges=rear?[[.599,.901],[1.48,1.695]]:[[-1.663,-1.482],[-.891,-.628]];
-   for(const [a,b]of ranges)rubMolding(h,id,(u,dy=0)=>{const z=lerp(a,b,u),y=exteriorBeltHeight(z)+dy;return [s*sideWidth(z,y,centre,rear),y,z];},normal);
+   const ranges=rear?[[.594,-1],[1,1.695]]:[[-1.663,-1],[1,-.629]];
+   for(const [a,b]of ranges)rubMolding(h,id,(u,dy=0)=>{const z=lerp(a===1?moldingArchEnd(centre,1,dy):a,b===-1?moldingArchEnd(centre,-1,dy):b,u),y=exteriorBeltHeight(z)+dy;return [s*sideWidth(z,y,centre,rear),y,z];},normal);
   }
   // Tapered mirror shell; rear-facing glass has its own closed rim and carrier.
   const shell='mirror-'+side,glass='mirror-glass-'+side,mount='mirror-mount-'+side;
@@ -59,9 +69,10 @@ export function buildExterior(h){
   // Both blades park across the base of the glass (not a V pointing outward).
   const pivotX=side==='left'?.16:-.48,midX=pivotX+.14;
   cyl('wiper-arm-'+side,.011,.011,[pivotX,.838,-.609],'blackPaint',[0,0,0]);
-  tube('wiper-arm-'+side,[[pivotX,.844,-.609],[pivotX+.055,.852,-.591],[midX,.861,-.568]],.0045,'blackPaint');
   const blade='wiper-blade-'+side,start=midX-.2286,end=midX+.2286;
-  const bladePoint=t=>[lerp(start,end,t),.850+.010*Math.sin(t*Math.PI),-.568+.012*Math.sin(t*Math.PI)];
+  const bladePoint=t=>{const v=.060+.014*Math.sin(t*Math.PI),x=lerp(start,end,t),u=(x/windshield(1,v)[0]+1)/2,p=windshield(u,v),n=surfaceNormal(windshield,u,v,[0,.8,-.6]);return p.map((a,k)=>a+n.getComponent(k)*.0025);};
+  const saddle=bladePoint(.5);saddle[1]+=.010;saddle[2]-=.007;
+  tube('wiper-arm-'+side,[[pivotX,.844,-.609],[pivotX+.055,.852,-.620],saddle],.0045,'blackPaint');
   tube(blade,Array.from({length:40},(_,i)=>bladePoint(i/39)),.0022,'rubber');
   for(const [a,b,lift]of [[.08,.92,.012],[.08,.46,.007],[.54,.92,.007]])tube(blade,Array.from({length:18},(_,i)=>{const t=i/17,p=bladePoint(lerp(a,b,t));p[1]+=lift*Math.sin(t*Math.PI)+.004;return p;}),.002,'blackPaint');
   for(const t of [.08,.27,.46,.54,.73,.92]){const p=bladePoint(t);box(blade,[.011,.008,.009],[p[0],p[1]+.004,p[2]],'dark',[],{},.001);}

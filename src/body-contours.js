@@ -16,7 +16,7 @@ export function shoulderDrop(z,rear){
 // Lower apron controls are reconstructed, distinct from the MVMA bumper
 // reference. Pontiac production profile (Performance Plus p46) shows the
 // lower return continuing below the impact face. These are not tooling data.
-export const fasciaProfile={frontLower:.270,rearLower:.245};
+export const fasciaProfile={frontLower:.270,rearLower:.315};
 // Lower fender/quarter edges meet the painted apron bottoms.
 // The wheel openings and door/rocker ground datums remain fixed.
 export function lowerPanelHeight(z,rear){
@@ -64,3 +64,9 @@ export function doorAt(s,z,y){const v=(y-.245)/.533,u=(z+.619)/(1.201-.074*(1-v)
 // Park/turn housing fit reconstructed from the production front photographs.
 // Only the 500 mm lateral bulb offset is a published MVMA datum.
 export const frontLampMount={height:.410,openingWidth:.176,openingHeight:.080};
+
+// The fender's transverse crown is also the attachment-height reference.
+export function fenderTopHeight(x,z,rear){
+ const inner=rear?.654:.663,t=Math.max(0,Math.min(1,(Math.abs(x)-inner)/(shoulderWidth(z)-inner)));
+ return panelUpper(z,rear)-shoulderDrop(z,rear)*(1-Math.sqrt(1-t*t));
+}

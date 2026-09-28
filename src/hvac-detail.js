@@ -91,10 +91,14 @@ function buildDucts(h){
  box(id('defrost-duct'),[.046,.023,.053],[0,.761,-.591],'plastic',[],{},.004);
  for(const s of [-1,1])frame(id('defrost-seal'),.508,.022,.003,.002,[s*.280,.771,-.619],'rubber');
  duct(id('dash-duct'),[[0,.691,-.566,1.070,.052],[0,.689,-.505,1.145,.049],[0,.699,-.455,1.166,.044]]);
- // Branches reach the outlets without filling their openings.
- for(const x of [-.514,.514]){duct(id('dash-duct'),[[x,.699,-.454,.137,.042],[x,.718,-.431,.142,.046]]);frame(id('duct-foam'),.150,.052,.006,.006,[x,.718,-.431],'rubber');}
+ // 1985 end outlets are vertical, outboard of the instrument pod.
+ for(const x of [-.622,.622]){duct(id('dash-duct'),[[x*.83,.699,-.454,.115,.042],[x,.680,-.476,.061,.142]]);frame(id('duct-foam'),.069,.151,.005,.005,[x,.680,-.475],'rubber');}
  duct(id('dash-duct'),[[0,.690,-.493,.149,.042],[0,.678,-.388,.149,.042]]);
- for(const [key,x,y,z,w]of [['left-outlet',.514,.718,-.422,.150],['right-outlet',-.514,.718,-.422,.150],['center-outlet',0,.678,-.376,.156]]){frame(id(key),w,.052,.006,.018,[x,y,z],'plastic');for(let i=0;i<4;i++)box(id(key),[w-.014,.0023,.021],[x,y-.015+i*.01,z+.004],'dark',[.12,0,0],{},.001);box(id(key),[.011,.006,.007],[x+.021,y-.005,z+.017],'plastic',[],{},.001);}
+ for(const [key,x,y,z,w,ht]of [['left-outlet',.622,.680,-.422,.060,.148],['right-outlet',-.622,.680,-.422,.060,.148],['center-outlet',0,.678,-.376,.156,.052]]){frame(id(key),w,ht,.005,.018,[x,y,z],'plastic');
+  if(key==='center-outlet')for(let i=0;i<4;i++)box(id(key),[w-.014,.0023,.021],[x,y-.015+i*.01,z+.004],'dark',[.12,0,0],{},.001);
+  else for(let i=0;i<5;i++)box(id(key),[.0023,ht-.014,.024],[x-.022+i*.011,y,z+.003],'dark',[0,.10,0],{},.001);
+  box(id(key),[.010,.006,.007],[x+.012,y-.005,z+.017],'plastic',[],{},.001);
+ }
  duct(id('floor-duct'),[[-.231,.522,-.491,.163,.039],[-.136,.447,-.472,.244,.037]]);for(const s of [-1,1])duct(id('floor-duct'),[[-.136+s*.073,.447,-.472,.092,.037],[-.136+s*.135,.405,-.415,.072,.040]]);
  for(const x of [-.56,-.32,.32,.56])bolt(id('duct-fasteners'),[x,.733,-.481],.003);for(const x of [-.50,.50])bolt(id('duct-fasteners'),[x,.781,-.618],.003);
 }

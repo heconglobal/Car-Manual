@@ -19,3 +19,7 @@
 @media(max-width:640px){.camera-views{top:123px;left:70px;right:15px;gap:2px}.stage:has(canvas[data-assembly]:not([data-assembly=""])) .camera-views{top:135px}.camera-views button{flex:1 0 30%;font-size:8px}}
 
 .source-card ul{padding-left:20px;margin:12px 0 16px;font-size:12px;line-height:1.65;color:var(--ink)}.source-card li{margin:8px 0}
+
+/* Keep the model unobstructed on phone and touch-first mobile views. */
+@media(max-width:640px),(pointer:coarse){.camera-views{display:none}}
+.stage:has(canvas[data-render-profile="mobile"]) .camera-views{display:none}

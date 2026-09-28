@@ -34,6 +34,8 @@ const {brakeParts,brakeCorners,brakeDimensions}=await import('../src/brake-catal
 const {createBrakeDetail,brakeRoutes,parkingCableRoutes}=await import('../src/brake-detail.js');
 const {detailParts,detailSections,detailMembers,detailSectionById}=await import('../src/inspection-catalog.js');
 const {createVehicle}=await import('../src/model.js');
+const {createInteriorDetail}=await import('../src/interior-detail.js');
+const {interiorParts}=await import('../src/interior-catalog.js');
 const vehicleModel=createVehicle();
 const brakeModel=createBrakeDetail();
 const suspensionModel=createSuspensionDetail();
@@ -43,7 +45,7 @@ const bodyModel=createBodyDetail();
 const hvacModel=createHvacDetail();
 const headlightModel=createHeadlightDetail();
 const results={date:new Date().toISOString(),sourceSha256:sourceFingerprint(),models:{}};
-for(const [name,model,catalog] of [['wiring',createWiringDetail(),wiringParts],['engine',createEngineDetail(),engineParts],['transmission',createTransmissionDetail(),transmissionParts],['cooling',createCoolingDetail(),coolingParts],['brakes',brakeModel,brakeParts],['suspension',suspensionModel,suspensionParts],['fuel',fuelModel,fuelParts],['exhaust',exhaustModel,exhaustParts],['body',bodyModel,bodyParts],['charging',createChargingDetail(),chargingParts],['lighting',createLightingDetail(),lightingParts],['headlights',headlightModel,headlightParts],['hvac',hvacModel,hvacParts],['vehicle',vehicleModel,parts]]){
+for(const [name,model,catalog] of [['interior',createInteriorDetail(),interiorParts],['wiring',createWiringDetail(),wiringParts],['engine',createEngineDetail(),engineParts],['transmission',createTransmissionDetail(),transmissionParts],['cooling',createCoolingDetail(),coolingParts],['brakes',brakeModel,brakeParts],['suspension',suspensionModel,suspensionParts],['fuel',fuelModel,fuelParts],['exhaust',exhaustModel,exhaustParts],['body',bodyModel,bodyParts],['charging',createChargingDetail(),chargingParts],['lighting',createLightingDetail(),lightingParts],['headlights',headlightModel,headlightParts],['hvac',hvacModel,hvacParts],['vehicle',vehicleModel,parts]]){
  assert.equal(new Set(catalog.map(p=>p.id)).size,catalog.length,'duplicate catalog IDs');
  assert.equal(model.groups.size,catalog.length);
  let meshes=0,triangles=0;

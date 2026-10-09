@@ -1,0 +1,471 @@
+{
+  "createdAt": "2026-10-03T00:32:37.265849+00:00",
+  "scope": "Read-only implementation mapping addendum for the eleven GM04-238 gaps; no app/tests/scripts/central-register changes, builders or browsers.",
+  "baseReport": "references/completion-gearbox-callouts-20261003T001613Z/findings.json",
+  "filesRead": [
+    {
+      "path": "src/transmission-catalog.js",
+      "sha256": "7f3ae8070fa5a9e7fa296f3229c6e537ad2af8ce98eb22550b6cde38006a8141",
+      "bytes": 10192
+    },
+    {
+      "path": "src/transmission-detail.js",
+      "sha256": "77d526df81746fde27d4235bcfb5f6a274ca35c33722051ce0c1ea6d06e05bfc",
+      "bytes": 14086
+    },
+    {
+      "path": "src/powertrain-layout.js",
+      "sha256": "7f3279868170c411812c31121cbe0af2c5a7af08b767beb922dffe1f8113f2c9",
+      "bytes": 1733
+    },
+    {
+      "path": "src/mechanical-geometry.js",
+      "sha256": "bab6ed8b7fa632a49d523dc6795da7281280d4afb4ad96104e489c1f8323c418",
+      "bytes": 3642
+    },
+    {
+      "path": "src/geometry.js",
+      "sha256": "6d489e6e077527a6374e112d3faf26aa9cff86e144f584c19c2f031204400d9d",
+      "bytes": 5726
+    },
+    {
+      "path": "references/completion-callout-register.json",
+      "sha256": "33297541cf3bfa0c6e97a658b198f8dd1f10b48a1a00018d8d7ac377e85e0a33",
+      "bytes": 60061
+    }
+  ],
+  "additionalPrimarySource": {
+    "path": "references/1986-service.pdf",
+    "sha256": "a03a875d114c444447433d9b78a44d19f1120dc57445c0834350e722fe06a05b",
+    "bytes": 79842817,
+    "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf#page=802",
+    "pdfPagesOpened": [
+      802,
+      803
+    ],
+    "printedPages": [
+      "7B1-2",
+      "7B1-3"
+    ],
+    "year": 1986,
+    "qualification": "Adjacent-year original service figure used only to explain the existing catalog attribution. It does not replace an original 1985 manual or establish blanket interchange."
+  },
+  "openedEvidence": [
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/addendum-20261003T002815Z/1986-service-pdf-802.png",
+      "sha256": "6c61ca01a2214219e88940e3808e7e5a8ec24b25bab3a93629a57ef5e3114691",
+      "bytes": 371915,
+      "opened": true,
+      "pdfPage": 802
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/addendum-20261003T002815Z/1986-service-pdf-803.png",
+      "sha256": "821445748e662c35897da7abe514d33fe80baba68df1aa78c1b36f213f8aecf5",
+      "bytes": 320908,
+      "opened": true,
+      "pdfPage": 803
+    }
+  ],
+  "caseBearingRetainerReconciliation": {
+    "gmPartsIdentity": {
+      "figure": "GM04-238",
+      "callout": 24,
+      "serviceNumber": "14073782",
+      "name": "Transmission case bearing retainer",
+      "tableApplication": [
+        1985,
+        1986
+      ],
+      "illustratedOccurrences": 2,
+      "locations": [
+        "Input-cluster outer shaft end",
+        "Output outer shaft end"
+      ]
+    },
+    "adjacentServiceIdentity": {
+      "year": 1986,
+      "printedFigurePages": [
+        "7B1-2",
+        "7B1-3"
+      ],
+      "callout": 24,
+      "name": "SLEEVE, Oil Shield",
+      "illustratedOccurrences": 3,
+      "locations": [
+        "Input outer end",
+        "Output outer end",
+        "Output inner/bearing end"
+      ]
+    },
+    "importantNumberingDifference": "The 1986 service figure uses 24 at three positions. GM04-238 uses 24 at the two outer ends and separately identifies the output inner-end oil-shield sleeve as97. Thus equal callout24 is insufficient to merge identity names or assign original-year quantities.",
+    "existingCandidates": [
+      {
+        "id": "tx-input-sleeve",
+        "section": "trans-input",
+        "catalogName": "Input shaft oil-shield sleeve",
+        "catalogCallout": 24,
+        "catalogSourceYear": 1986,
+        "builderLocation": [
+          0.402,
+          0.59,
+          0
+        ],
+        "builderAnnulus": {
+          "outerRadiusMetres": 0.014,
+          "innerRadiusMetres": 0.012,
+          "widthMetres": 0.0017
+        },
+        "neighbors": [
+          {
+            "id": "tx-input-end-bearing",
+            "authoringX": 0.388
+          },
+          {
+            "id": "tx-input-shield",
+            "authoringX": 0.399
+          },
+          {
+            "id": "tx-case",
+            "endWebAuthoringX": 0.395
+          }
+        ],
+        "placementIntent": "Small thin annulus just beyond the outboard bearing/oil-shield/case-end stack, on the input axis. Matches the region of the GM row24 input occurrence, not the distinct output inner-end row97."
+      },
+      {
+        "id": "tx-output-sleeve",
+        "section": "trans-output",
+        "catalogName": "Output shaft oil-shield sleeve",
+        "catalogCallout": 24,
+        "catalogSourceYear": 1986,
+        "builderLocation": [
+          0.403,
+          0.514,
+          0
+        ],
+        "builderAnnulus": {
+          "outerRadiusMetres": 0.016,
+          "innerRadiusMetres": 0.012,
+          "widthMetres": 0.0017
+        },
+        "neighbors": [
+          {
+            "id": "tx-output-end-bearing",
+            "authoringX": 0.388
+          },
+          {
+            "id": "tx-output-end-shield",
+            "authoringX": 0.4
+          },
+          {
+            "id": "tx-case",
+            "endWebAuthoringX": 0.395
+          }
+        ],
+        "placementIntent": "Small thin annulus just beyond the output outboard bearing/oil-shield/case-end stack. Matches the region of the GM row24 output occurrence, not the distinct output inner-end row97."
+      }
+    ],
+    "coordinateQualification": "All coordinates/radii above are current code authoring values in metres, not measured factory data. Builder +X runs from engine toward outboard; physical handedness is corrected once at the boundary. No builder or scene was executed to infer final installed coordinates.",
+    "recommendedIdPolicy": "Keep tx-input-sleeve in trans-input and tx-output-sleeve in trans-output as compatibility IDs while reconciling the source identity; do not create another pair of retainer meshes in those same positions. If confirmed, use displayed names Input case-bearing retainer and Output case-bearing retainer with both the GM24 retainer attribution and the distinct 1986 service24 oil-shield-sleeve wording documented.",
+    "doNotConfuseWith": [
+      "tx-input-retainer is the front input-bearing retainer/guide at authoringX .055/.089, source38/39 area; it is not this outer-end pair.",
+      "tx-output-retainer is the output bearing oil-shield retainer at authoringX .091, source29, not case-bearing retainer24."
+    ],
+    "row97FollowUp": {
+      "callout": 97,
+      "serviceNumber": "14020900",
+      "explicitYears": [
+        1984,
+        1985
+      ],
+      "figureLocation": "Output inner/bearing end, opposite the current tx-output-sleeve location.",
+      "currentRegisterCandidates": [
+        "tx-input-sleeve",
+        "tx-output-sleeve"
+      ],
+      "finding": "These two existing IDs are only outer-end candidates by code placement; do not mark row97 complete from them. Reconcile this separate inner-end sleeve against the existing front stack: tx-output-bearing X.110, tx-output-shim X.098, tx-output-shield X.094, tx-output-retainer X.091.",
+      "conditionalFutureId": "tx-output-inner-oil-shield-sleeve",
+      "conditionalFutureSection": "trans-output",
+      "notAuthorizedOrImplemented": "This is a reserved proposal only; actual original-year sleeve identity, fit, position and quantity need the source check below."
+    },
+    "furtherEvidence": "Original-year case-bearing/sleeve installation or disassembly detail plus parts groups4.104 and4.422 application/quantity entries. Needed to settle nomenclature/retention form, exact fitted positions, sleeve/retainer geometry and1984–85 vs1986 applicability. The current thin annuli do not prove retention function or exact original shape."
+  },
+  "genericFastenerCorrection": {
+    "currentId": "tx-detent-bolt",
+    "sourceCallout": 60,
+    "builderCall": "bolt(id(\"detent-bolt\"),[.23,.734,.007],.005)",
+    "helperReality": "src/geometry.js bolt creates a six-sided head and a second generic cylindrical washer under the same ID. It does not create a separately named source58 lockwasher or source63 bolt/nut.",
+    "implication": "Do not describe this group as washer-free, but do not count its generic washer as the exact missing row58. Future work must split/reattribute or preserve a qualified generic washer to avoid physical duplication."
+  },
+  "proposedIndependentParts": [
+    {
+      "callout": 58,
+      "proposedId": "tx-detent-lockwasher",
+      "proposedSection": "trans-selector",
+      "proposedName": "Detent-lever lockwasher",
+      "sourceServiceNumber": "474700",
+      "sourceNominalSpecification": null,
+      "currentNeighborIds": [
+        "tx-detent-lever",
+        "tx-shift-shaft",
+        "tx-detent-bolt"
+      ],
+      "proposedNeighborIds": [
+        "tx-detent-lever-bolt",
+        "tx-detent-lever-nut"
+      ],
+      "neighborQualification": "The neighbors identify the mechanism region and prevent false identity substitution; they do not prescribe exact attachment or coordinates.",
+      "physicalVersusServiceGrouping": "Physical washer, separately cataloged. The current bolt helper generates a generic washer shape under tx-detent-bolt, but this is not an independently attributed row58 washer. Do not add a second washer at the same coordinates without separating/reconciling the existing generic geometry.",
+      "geometryStatus": "Independent visible physical hardware proposed for a later implementation window; no mesh built or rendered in this source-only task.",
+      "unresolved": "Exact relationship to bolt63 versus spring bolt60, washer form, diameters, thickness and installed stack.",
+      "installedQuantity": null,
+      "illustratedOccurrences": 1,
+      "quantityQualification": "One drawn occurrence; no per-vehicle quantity column or verified complete inventory.",
+      "yearApplication": "Printed 1985–1986 MY8/M17 application; no new installed option chosen."
+    },
+    {
+      "callout": 63,
+      "proposedId": "tx-detent-lever-bolt",
+      "proposedSection": "trans-selector",
+      "proposedName": "Detent-lever bolt",
+      "sourceServiceNumber": "474699",
+      "sourceNominalSpecification": "M6 × 1 × 31",
+      "currentNeighborIds": [
+        "tx-detent-lever",
+        "tx-shift-shaft",
+        "tx-interlock",
+        "tx-detent-bolt"
+      ],
+      "proposedNeighborIds": [
+        "tx-detent-lever-nut",
+        "tx-detent-lockwasher"
+      ],
+      "neighborQualification": "The neighbors identify the mechanism region and prevent false identity substitution; they do not prescribe exact attachment or coordinates.",
+      "physicalVersusServiceGrouping": "Physical bolt. Preserve existing tx-detent-bolt as the source60 M6×1×14 position; row63 is a distinct nominally longer fastener. The current generic bolt is not a source63 bolt by name similarity.",
+      "geometryStatus": "Independent visible physical hardware proposed for a later implementation window; no mesh built or rendered in this source-only task.",
+      "unresolved": "Head, shoulder, shank/thread extent, installed axis/engagement, washer relationship, torque and quantity.",
+      "installedQuantity": null,
+      "illustratedOccurrences": 1,
+      "quantityQualification": "One drawn occurrence; no per-vehicle quantity column or verified complete inventory.",
+      "yearApplication": "Printed 1985–1986 MY8/M17 application; no new installed option chosen."
+    },
+    {
+      "callout": 64,
+      "proposedId": "tx-detent-lever-nut",
+      "proposedSection": "trans-selector",
+      "proposedName": "Detent-lever hex nut",
+      "sourceServiceNumber": null,
+      "sourceNominalSpecification": "M6 × 1 × 5.1 THK",
+      "currentNeighborIds": [
+        "tx-detent-lever",
+        "tx-shift-shaft",
+        "tx-interlock"
+      ],
+      "proposedNeighborIds": [
+        "tx-detent-lever-bolt",
+        "tx-detent-lockwasher"
+      ],
+      "neighborQualification": "The neighbors identify the mechanism region and prevent false identity substitution; they do not prescribe exact attachment or coordinates.",
+      "physicalVersusServiceGrouping": "Physical standard nut, not a kit or assembly. No GM service number is printed. Nominal M6×1 corresponds to the nearby source63 bolt, but installed stack must still be verified.",
+      "geometryStatus": "Independent visible physical hardware proposed for a later implementation window; no mesh built or rendered in this source-only task.",
+      "unresolved": "Wrench size, locking form, exact orientation/engagement and torque; do not derive these from thread/thickness alone.",
+      "installedQuantity": null,
+      "illustratedOccurrences": 1,
+      "quantityQualification": "One drawn occurrence; no per-vehicle quantity column or verified complete inventory.",
+      "yearApplication": "Printed 1985–1986 MY8/M17 application; no new installed option chosen."
+    },
+    {
+      "callout": 90,
+      "proposedId": "tx-control-selector-spring-retainer",
+      "proposedSection": "trans-selector",
+      "proposedName": "Control-selector spring retainer",
+      "sourceServiceNumber": null,
+      "sourceNominalSpecification": "Type B; 1/16 × 7/16",
+      "currentNeighborIds": [
+        "tx-case",
+        "tx-shift-shaft"
+      ],
+      "proposedNeighborIds": [
+        "tx-control-selector-lever",
+        "tx-control-selector-pin"
+      ],
+      "neighborQualification": "The neighbors identify the mechanism region and prevent false identity substitution; they do not prescribe exact attachment or coordinates.",
+      "physicalVersusServiceGrouping": "Physical retainer drawn next to the external selector lever and pin. Generic shift roll pins are different identities. No GM service number is printed.",
+      "geometryStatus": "Independent visible physical hardware proposed for a later implementation window; no mesh built or rendered in this source-only task.",
+      "unresolved": "Type-B standard-hardware cross section and exact retention geometry; original installed orientation/quantity and replacement practice.",
+      "installedQuantity": null,
+      "illustratedOccurrences": 1,
+      "quantityQualification": "One drawn occurrence; no per-vehicle quantity column or verified complete inventory.",
+      "yearApplication": "Printed 1985–1986 MY8/M17 application; no new installed option chosen."
+    },
+    {
+      "callout": 91,
+      "proposedId": "tx-control-selector-lever",
+      "proposedSection": "trans-selector",
+      "proposedName": "External control-selector lever",
+      "sourceServiceNumber": "10035025",
+      "sourceNominalSpecification": null,
+      "currentNeighborIds": [
+        "tx-case",
+        "tx-shift-shaft",
+        "tx-shift-seal"
+      ],
+      "proposedNeighborIds": [
+        "tx-control-selector-spring-retainer",
+        "tx-control-selector-pin",
+        "tx-shift-adjustment-clip"
+      ],
+      "neighborQualification": "The neighbors identify the mechanism region and prevent false identity substitution; they do not prescribe exact attachment or coordinates.",
+      "physicalVersusServiceGrouping": "Physical external formed lever. It must remain distinct from internal detent lever57 and reverse lever55; no complete selector service kit is added.",
+      "geometryStatus": "Independent visible physical hardware proposed for a later implementation window; no mesh built or rendered in this source-only task.",
+      "unresolved": "Lever profile, pivot/slot dimensions, indexing, linkage engagement, motion and installed position.",
+      "installedQuantity": null,
+      "illustratedOccurrences": 1,
+      "quantityQualification": "One drawn occurrence; no per-vehicle quantity column or verified complete inventory.",
+      "yearApplication": "Printed 1985–1986 MY8/M17 application; no new installed option chosen."
+    },
+    {
+      "callout": 92,
+      "proposedId": "tx-shift-adjustment-clip",
+      "proposedSection": "trans-selector",
+      "proposedName": "Shift-shaft adjustment clip",
+      "sourceServiceNumber": "14046584",
+      "sourceNominalSpecification": null,
+      "currentNeighborIds": [
+        "tx-shift-shaft",
+        "tx-shift-seal"
+      ],
+      "proposedNeighborIds": [
+        "tx-control-selector-lever",
+        "tx-external-shift-lever"
+      ],
+      "neighborQualification": "The neighbors identify the mechanism region and prevent false identity substitution; they do not prescribe exact attachment or coordinates.",
+      "physicalVersusServiceGrouping": "Physical adjustment clip between the drawn external lever elements. Distinct from source54 roll pins or a guessed cable-retaining clip.",
+      "geometryStatus": "Independent visible physical hardware proposed for a later implementation window; no mesh built or rendered in this source-only task.",
+      "unresolved": "Exact interface, clip section, installed engagement and adjustment procedure. Figure proximity does not establish adjustment setting.",
+      "installedQuantity": null,
+      "illustratedOccurrences": 1,
+      "quantityQualification": "One drawn occurrence; no per-vehicle quantity column or verified complete inventory.",
+      "yearApplication": "Printed 1985–1986 MY8/M17 application; no new installed option chosen."
+    },
+    {
+      "callout": 93,
+      "proposedId": "tx-external-shift-lever",
+      "proposedSection": "trans-selector",
+      "proposedName": "External shift lever",
+      "sourceServiceNumber": "10035021",
+      "sourceNominalSpecification": null,
+      "currentNeighborIds": [
+        "tx-shift-shaft",
+        "tx-shift-seal",
+        "tx-case"
+      ],
+      "proposedNeighborIds": [
+        "tx-shift-adjustment-clip",
+        "tx-shift-lever-washer",
+        "tx-shift-lever-nut"
+      ],
+      "neighborQualification": "The neighbors identify the mechanism region and prevent false identity substitution; they do not prescribe exact attachment or coordinates.",
+      "physicalVersusServiceGrouping": "Physical external lever, separate from source61 shaft. Do not silently count the existing shaft as the lever or model a complete linkage kit over individual pieces.",
+      "geometryStatus": "Independent visible physical hardware proposed for a later implementation window; no mesh built or rendered in this source-only task.",
+      "unresolved": "Arm/stud shape, indexing/attachment, cable connection and travel. Existing shaft coordinates are reconstructed and cannot certify the new installed position.",
+      "installedQuantity": null,
+      "illustratedOccurrences": 1,
+      "quantityQualification": "One drawn occurrence; no per-vehicle quantity column or verified complete inventory.",
+      "yearApplication": "Printed 1985–1986 MY8/M17 application; no new installed option chosen."
+    },
+    {
+      "callout": 94,
+      "proposedId": "tx-shift-lever-washer",
+      "proposedSection": "trans-selector",
+      "proposedName": "Shift-lever washer",
+      "sourceServiceNumber": "14091790",
+      "sourceNominalSpecification": null,
+      "currentNeighborIds": [
+        "tx-shift-shaft"
+      ],
+      "proposedNeighborIds": [
+        "tx-external-shift-lever",
+        "tx-shift-lever-nut"
+      ],
+      "neighborQualification": "The neighbors identify the mechanism region and prevent false identity substitution; they do not prescribe exact attachment or coordinates.",
+      "physicalVersusServiceGrouping": "Physical washer drawn between lever93 and nut95. Distinct from detent lockwasher58 and the generic washer under source60.",
+      "geometryStatus": "Independent visible physical hardware proposed for a later implementation window; no mesh built or rendered in this source-only task.",
+      "unresolved": "Outer/inner diameter, thickness, locking form and contact surfaces.",
+      "installedQuantity": null,
+      "illustratedOccurrences": 1,
+      "quantityQualification": "One drawn occurrence; no per-vehicle quantity column or verified complete inventory.",
+      "yearApplication": "Printed 1985–1986 MY8/M17 application; no new installed option chosen."
+    },
+    {
+      "callout": 95,
+      "proposedId": "tx-shift-lever-nut",
+      "proposedSection": "trans-selector",
+      "proposedName": "Shift-lever hex nut",
+      "sourceServiceNumber": null,
+      "sourceNominalSpecification": "M14 × 2",
+      "currentNeighborIds": [
+        "tx-shift-shaft"
+      ],
+      "proposedNeighborIds": [
+        "tx-external-shift-lever",
+        "tx-shift-lever-washer"
+      ],
+      "neighborQualification": "The neighbors identify the mechanism region and prevent false identity substitution; they do not prescribe exact attachment or coordinates.",
+      "physicalVersusServiceGrouping": "Physical standard nut above washer94. No printed service number; no extra fastening kit is implied.",
+      "geometryStatus": "Independent visible physical hardware proposed for a later implementation window; no mesh built or rendered in this source-only task.",
+      "unresolved": "Wrench size, nut thickness, locking method, installed axis, thread engagement and torque.",
+      "installedQuantity": null,
+      "illustratedOccurrences": 1,
+      "quantityQualification": "One drawn occurrence; no per-vehicle quantity column or verified complete inventory.",
+      "yearApplication": "Printed 1985–1986 MY8/M17 application; no new installed option chosen."
+    },
+    {
+      "callout": 96,
+      "proposedId": "tx-control-selector-pin",
+      "proposedSection": "trans-selector",
+      "proposedName": "Control-selector lever pin",
+      "sourceServiceNumber": "477095",
+      "sourceNominalSpecification": null,
+      "currentNeighborIds": [
+        "tx-case",
+        "tx-shift-shaft"
+      ],
+      "proposedNeighborIds": [
+        "tx-control-selector-lever",
+        "tx-control-selector-spring-retainer"
+      ],
+      "neighborQualification": "The neighbors identify the mechanism region and prevent false identity substitution; they do not prescribe exact attachment or coordinates.",
+      "physicalVersusServiceGrouping": "Physical separate selector pin shown at the case top. Do not reuse tx-roll-pins (source54) or tx-shift-shaft (source61) merely because each contains cylindrical geometry.",
+      "geometryStatus": "Independent visible physical hardware proposed for a later implementation window; no mesh built or rendered in this source-only task.",
+      "unresolved": "Length, shoulders, diameters, attachment and fit, installed engagement and travel.",
+      "installedQuantity": null,
+      "illustratedOccurrences": 1,
+      "quantityQualification": "One drawn occurrence; no per-vehicle quantity column or verified complete inventory.",
+      "yearApplication": "Printed 1985–1986 MY8/M17 application; no new installed option chosen."
+    }
+  ],
+  "proposedSourceMetadata": {
+    "source": "GM22P GM04-238 ·1985–1986 four-speed application",
+    "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=128",
+    "applicationTableUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=129",
+    "calloutPolicy": "For each proposed part, use the GM04-238 callout with this parts-figure source. Do not silently inherit transmission-catalog add() defaults that cite1986 PDF802; especially90–96 are absent from that service figure. Existing 1986 numbering remains unchanged for existing parts unless explicitly reconciled.",
+    "limitations": "Native reconstructed geometry only until measurements/primary installed views establish exact profile, quantity, fit and operation; no new installed equipment or ratio selected."
+  },
+  "kitAndAssemblyPolicy": {
+    "targetRows": "All ten new proposals are physical hardware, not service kits or extra aggregate assemblies.",
+    "leaveGrouped": [
+      "Synchronizer22/31 service assemblies include20/21; do not add duplicate installed units over independent keys/springs.",
+      "Input retainer39 includes37/38; preserve grouped service-unit relationship.",
+      "Reverse fastener42 explicitly includes washer; existing tx-reverse-bolt can remain a qualified group.",
+      "Differential76 is serviced by components; do not create an extra solid assembly mesh.",
+      "Differential gear kit note1 groups82–85 for service; do not add duplicate gear sets."
+    ]
+  },
+  "counts": {
+    "newIndependentIdProposals": 10,
+    "existingIdsToReconcileFor24": 2,
+    "conditionalAdditionalRow97Proposal": 1,
+    "newMeshesBuilt": 0,
+    "installedQuantitiesVerified": 0
+  }
+}

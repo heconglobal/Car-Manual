@@ -1,6 +1,7 @@
 import * as T from 'three';
 import {buildInteriorTrimRetainers} from './interior-geometry.js';
 import {buildDoorOpeningWeatherstrip} from './window-seals.js';
+import {buildDoorMechanisms} from './door-mechanism-detail.js';
 import {createMaterials} from './materials.js';
 import {geometryTools} from './geometry.js';
 import {mechanicalTools} from './mechanical-geometry.js';
@@ -27,7 +28,7 @@ function tools(h){
  function seal(id,points,r=.007){const path=new T.CatmullRomCurve3(points.map(p=>new T.Vector3(...p)),true,'centripetal');const m=add(id,new T.TubeGeometry(path,180,r,10,true),'rubber');return m;}
  return{...mechanicalTools(h),sleeve,roundedPath,flat,link,latch,clip,seal};
 }
-export function buildBodyHardware(h){h.mapAdded(()=>{buildHood(h);buildDeck(h);for(const s of [-1,1])buildDoor(h,s);buildPanelHardware(h);},bodyPoint);}
+export function buildBodyHardware(h){h.mapAdded(()=>{buildHood(h);buildDeck(h);for(const s of [-1,1])buildDoor(h,s);buildDoorMechanisms(h);buildPanelHardware(h);},bodyPoint);}
 function buildHood(h){
  const {box,cyl,tube,bolt,surface}=h,{flat,link,plate,latch,seal,sleeve}=tools(h),id=k=>'bd-hood-'+k;
  flat(id('inner'),[[-.635,-1.76],[.635,-1.76],[.635,-.645],[-.635,-.645]],[[-.35,-1.69,.35,-1.405],[-.632,-1.684,-.384,-1.376],[.384,-1.684,.632,-1.376],[-.57,-1.29,.57,-.698]],0,'dark',(x,z)=>.601+(z+1.786)/1.176*.193+.005*(1-(x/.659)**2));

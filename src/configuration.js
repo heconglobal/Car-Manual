@@ -3,7 +3,7 @@
 export const defaultConfiguration = {
  paint:'red', exhaustFinish:'bright', interior:'gray', roof:'solid', deck:'clean', wheelFinish:'machined',
  headlights:false, windows:'closed', airConditioning:false, cruise:false,
- powerWindows:false, powerMirrors:false, rearDefrost:false, floorMats:false,
+ powerWindows:false, powerLocks:false, delayWipers:false, powerMirrors:false, rearDefrost:false, floorMats:false,
  mapPockets:false, vanityMirror:false, lampGroup:false, radio:'amfm',
  speakerSeats:true, steeringWheel:'formula', dimensions:false, studio:'light'
 };
@@ -22,9 +22,11 @@ export const options = [
  {key:'wheelFinish',label:'14-inch alloy finish',type:'select',choices:[['machined','Machined alloy'],['dark','Dark recesses']],note:'Reference-inspired Hi-Tech wheel. WS6 brochure lists P215/60R14 tires; finish variants are visualization choices.'},
  {key:'steeringWheel',label:'Steering wheel',type:'select',choices:[['formula','Formula style'],['leather','Leather-wrapped style']],note:'Both listed in the period option chart. Shape and finish are reconstructed from reference views.'},
  {key:'radio',label:'Audio unit',type:'select',choices:[['am','AM'],['amfm','AM/FM stereo'],['cassette','AM/FM cassette'],['equalizer','Cassette + graphic equalizer']],note:'Period sound-system choices, brochure p. 6. Faceplates are reconstructed; wiring and connector differences are not modeled.'},
- {key:'airConditioning',label:'Air conditioning',type:'toggle',note:'Switches the heater core/control preview and adds the C60 evaporator, accumulator and electric air-door actuators. Compressor, condenser and long plumbing remain coarse previews; a complete conversion and wiring are not validated.'},
+ {key:'airConditioning',label:'Air conditioning',type:'toggle',note:'Switches to C60 controls and adds the evaporator, accumulator, electric air-door actuators, compressor, condenser and refrigerant loop. Installed variants, dimensions and routing require vehicle confirmation.'},
  {key:'cruise',label:'Electronic cruise control',type:'toggle',note:'Adds a reference-inspired servo and stalk details. Cable / electrical compatibility is pending.'},
- {key:'powerWindows',label:'Power windows',type:'toggle',note:'Changes the cabin controls and door crank representation; internal regulators are not yet modeled.'},
+ {key:'powerWindows',label:'Power windows',type:'toggle',note:'Switches manual and electric regulator geometry, door cranks and controls. Measured travel, motor internals and complete wiring remain unverified.'},
+ {key:'powerLocks',label:'Power door locks',type:'toggle',note:'Adds the AU3 actuator and mechanical linkage preview. Factory circuits, complete lock internals and actual installed equipment remain unverified.'},
+ {key:'delayWipers',label:'Controlled-cycle wipers',type:'toggle',note:'Switches between the catalogued 1984–85 standard motor and 1985–87 CD4 pulse motor, board and cover. Delay calibration, circuit details and your original option remain unverified.'},
  {key:'powerMirrors',label:'Electric sport mirrors',type:'toggle',note:'Adds the mirror control. Mirror drive motors and wiring remain unmodeled.'},
  {key:'rearDefrost',label:'Rear window defroster',type:'toggle',note:'Adds conductive traces to the rear glass. The required switch, circuit and glass must be checked for a real conversion.'},
  {key:'speakerSeats',label:'Headrest speaker seats',type:'toggle',note:'Headrest speaker arrangement shown in brochure p. 4; visible mesh changes with this option.'},
@@ -35,8 +37,6 @@ export const options = [
 ];
 export const referenceOptions = [
  ['Tilt steering column','Requires column and control details; mechanical animation not implemented.'],
- ['Power door locks','Actuators, rods, switches and wiring need detailed modeling.'],
- ['Controlled-cycle wipers','Switch and delay-module differences need factory wiring references.'],
  ['Engine block heater','Electrical heater and cable routing are not yet modeled.'],
  ['Front compartment power release','Latch, actuator, switch and circuit details are pending.'],
  ['Rear compartment power release','Latch, actuator, switch and circuit details are pending.'],

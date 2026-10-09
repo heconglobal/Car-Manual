@@ -1,0 +1,3892 @@
+{
+  "generatedAt": "2026-10-03T02:44:37.942Z",
+  "sourceSha256": "3b8745845c9f39979f3eb85a2eef5b102475e16b84af9e540ab916c8bc482435",
+  "status": "passed",
+  "meaning": "Passed means the indexed part IDs and locally mapped PDF page bounds are consistent. It does not accept unresolved source, geometry, original-equipment, workshop or owner-review requirements.",
+  "documents": {
+    "1985-fiero-diy.pdf": {
+      "pages": 66,
+      "bytes": 16820213,
+      "sha256": "7bc46753c5c90f25bd898b08e215e2f75b55ff3dca2b8e9eb22851193656932e",
+      "usable": true
+    },
+    "1985-owners-boomtastic.pdf": {
+      "pages": 107,
+      "bytes": 33867178,
+      "sha256": "912382ad0d177f8833f614aa697aab535e0c46cc6b69c4dc9b46050d95ac34b1",
+      "usable": true
+    },
+    "1985-owners.pdf": {
+      "pages": 0,
+      "bytes": 9442792,
+      "sha256": "bc4cb62a4c57d18ecb723669f177a80d019206c73683a4d747bc15935dda10ab",
+      "usable": false
+    },
+    "1985-fiero-6e3.pdf": {
+      "pages": 110,
+      "bytes": 36199480,
+      "sha256": "a6ae4b6c3a61b46f0aed16bdb77e8e3c3f2ff4f9dd88d3aff4ddc6a6cc5fe414",
+      "usable": true
+    },
+    "fiero-parts-cd.pdf": {
+      "pages": 356,
+      "bytes": 20135960,
+      "sha256": "8cc8ba63654dd1892b7be90d2d12729803745303ec5e55d89c584010e0b5048c",
+      "usable": true
+    },
+    "fiero-22p-parts.pdf": {
+      "pages": 355,
+      "bytes": 20277711,
+      "sha256": "63b9e573d3c5fe4e9096b77a4e09c0d863f6f2ba5c03e11277fdf411fdf0f40b",
+      "usable": true
+    },
+    "1986-service.pdf": {
+      "pages": 1303,
+      "bytes": 79842817,
+      "sha256": "a03a875d114c444447433d9b78a44d19f1120dc57445c0834350e722fe06a05b",
+      "usable": true
+    },
+    "1985-86-specifications.pdf": {
+      "pages": 35,
+      "bytes": 978595,
+      "sha256": "cb22b53a5172da99d22b0b46c153ed4d8e6aeea60c9dbe32e5dd83dcda796e07",
+      "usable": true
+    },
+    "1985-fiero-brochure.pdf": {
+      "pages": 7,
+      "bytes": 8023372,
+      "sha256": "1483707d7d03504bfe0e65bf587af5493529eb312ec2acd69541297d157007f6",
+      "usable": true
+    },
+    "chevrolet-60v6-power.pdf": {
+      "pages": 32,
+      "bytes": 30674920,
+      "sha256": "94420fc52297222a30031db4e43ca986dbd4eccce3220b93bb28381942d9cae3",
+      "usable": true
+    }
+  },
+  "vehicleRecords": 166,
+  "detailedSelections": 2278,
+  "linkedPageChecks": 2542,
+  "invalidLinks": [],
+  "missingIds": [],
+  "families": [
+    {
+      "id": "spare-system",
+      "name": "Spare & tools",
+      "selections": 25,
+      "withCallout": 24,
+      "withoutCallout": [
+        "sp-wrench-clip"
+      ],
+      "withoutSourceUrl": [],
+      "groupedSelectionCandidates": [
+        "sp-jack-lower-arms",
+        "sp-jack-upper-arms",
+        "sp-jack-pins",
+        "sp-jack-thrust"
+      ],
+      "sourceClasses": {
+        "original-1985": 3,
+        "factory-multi-year-catalog": 22
+      },
+      "remaining": "Actual compact-spare label, wheel/retainer/jack condition and dimensional fit must be checked on the vehicle.",
+      "coverageDescription": "1985–88 catalogued compact 15 × 4-inch wheel, open mounting center, separate tire, valve, cross-compartment retaining rod and supports, jack screw/pivots and lug wrench. Catalog service identities do not prove this car’s installed tire, every internal part, measured mounting coordinates, lifting capacity or hood/sunroof-stowage clearance. This is a static construction view; follow the factory procedure for vehicle lifting."
+    },
+    {
+      "id": "wiper-system",
+      "name": "Wipers & washer",
+      "selections": 36,
+      "withCallout": 28,
+      "withoutCallout": [
+        "ww-washer-bottle",
+        "ww-washer-cap",
+        "ww-washer-pump",
+        "ww-washer-pump-seal",
+        "ww-washer-check-valve",
+        "ww-washer-feed-hose",
+        "ww-washer-branches",
+        "ww-washer-nozzles"
+      ],
+      "withoutSourceUrl": [],
+      "groupedSelectionCandidates": [
+        "ww-motor-mounts",
+        "ww-motor-washers",
+        "ww-motor-gear",
+        "ww-motor-bearings",
+        "ww-motor-field",
+        "ww-pulse-cover"
+      ],
+      "sourceClasses": {
+        "factory-multi-year-catalog": 28,
+        "adjacent-year-1986": 8
+      },
+      "remaining": "Standard/pulse application is a source-backed preview. Actual installed equipment, connector/pump variants and measured linkage travel remain unverified.",
+      "coverageDescription": "Shared parked arms/blades, separate LH/RH links and pivots, standard motor field/armature/gear/park construction, option-specific CD4 pulse motor/board/cover, and washer bottle/bottom pump/check valve/hoses/nozzles. Original measured tooling, sweep, clearance, delay calibration, pump internals, full wiring and rear-defroster circuit remain unverified. Adjacent-year washer construction is identified separately."
+    },
+    {
+      "id": "interior-system",
+      "name": "Interior",
+      "selections": 313,
+      "withCallout": 252,
+      "withoutCallout": [
+        "in-seat-left-adjust-handle",
+        "in-seat-left-inner-hinge",
+        "in-seat-left-floor-nut-0",
+        "in-seat-left-floor-nut-1",
+        "in-seat-left-floor-nut-2",
+        "in-seat-left-floor-nut-3",
+        "in-belt-left-bolt-0",
+        "in-belt-left-bolt-1",
+        "in-belt-left-bolt-2",
+        "in-belt-left-bolt-3",
+        "in-seat-right-adjust-handle",
+        "in-seat-right-inner-hinge",
+        "in-seat-right-floor-nut-0",
+        "in-seat-right-floor-nut-1",
+        "in-seat-right-floor-nut-2",
+        "in-seat-right-floor-nut-3",
+        "in-belt-right-bolt-0",
+        "in-belt-right-bolt-1",
+        "in-belt-right-bolt-2",
+        "in-belt-right-bolt-3",
+        "in-dash-screw-0",
+        "in-dash-screw-1",
+        "in-dash-screw-2",
+        "in-dash-screw-3",
+        "in-dash-screw-4",
+        "in-dash-screw-5",
+        "in-door-left-armrest-screw-0",
+        "in-door-left-armrest-screw-1",
+        "in-door-left-handle-screw",
+        "in-door-right-armrest-screw-0",
+        "in-door-right-armrest-screw-1",
+        "in-door-right-handle-screw",
+        "in-trim-headliner",
+        "in-steering-rim",
+        "in-steering-horn",
+        "in-steering-contact",
+        "in-steering-nut",
+        "in-steering-upper-shroud",
+        "in-steering-lower-shroud",
+        "in-steering-column",
+        "in-steering-stalk",
+        "in-steering-ignition",
+        "in-steering-hazard",
+        "in-steering-screw-0",
+        "in-steering-screw-1",
+        "in-steering-screw-2",
+        "in-pedal-clutch-arm",
+        "in-pedal-clutch-pad",
+        "in-pedal-clutch-pivot",
+        "in-pedal-clutch-spring",
+        "in-pedal-accelerator",
+        "in-pedal-throttle-cable",
+        "in-parking-lever",
+        "in-parking-boot",
+        "in-shared-light-controls",
+        "in-shared-cluster",
+        "in-shared-outlets",
+        "in-shared-heater",
+        "in-shared-ecm",
+        "in-shared-brake",
+        "in-shared-dome"
+      ],
+      "withoutSourceUrl": [],
+      "groupedSelectionCandidates": [
+        "in-seat-left-cushion-springs",
+        "in-seat-left-hog-rings",
+        "in-seat-right-cushion-springs",
+        "in-seat-right-hog-rings",
+        "in-door-left-pocket-clips",
+        "in-door-left-armrest-nuts",
+        "in-door-right-pocket-clips",
+        "in-door-right-armrest-nuts",
+        "in-console-shift-clips",
+        "in-console-carpet-retainers",
+        "in-dash-mount-unuts"
+      ],
+      "sourceClasses": {
+        "unclassified-reference": 313
+      },
+      "remaining": "Original trim/RPO codes, upholstery patterns, hidden mechanisms and full hardware count are unresolved; appearance approval remains owner-held.",
+      "coverageDescription": "Separate two-tone AR9 seat covers, foam, frames, supports, tracks, recliner controls, headrest speakers and mounting hardware; belts, dashboard/map pocket, vertical outlets, console skeleton, ashtrays, radio, rear storage, door trim/pulls, carpet, early pillar garnish, headliner, visors, mirror and steering-wheel trim. Existing instrument, HVAC, ECM, brake and lamp assemblies link to their detailed explorers. Local forms, exact fastener inventory, hidden mechanism internals, material codes and physical operation remain unverified. Riveted/bonded construction views are not removal procedures."
+    },
+    {
+      "id": "wiring-system",
+      "name": "Wiring & controls",
+      "selections": 99,
+      "withCallout": 0,
+      "withoutCallout": [
+        "wr-fuse-carrier",
+        "wr-fuse-contacts",
+        "wr-fuse-bracket",
+        "wr-fuse-pivot",
+        "wr-fuse-latches",
+        "wr-fuse-spares",
+        "wr-fuse-rear-plugs",
+        "wr-fuse-mounts",
+        "wr-fuse-1",
+        "wr-fuse-2",
+        "wr-fuse-3",
+        "wr-fuse-4",
+        "wr-fuse-5",
+        "wr-fuse-6",
+        "wr-fuse-7",
+        "wr-fuse-8",
+        "wr-fuse-9",
+        "wr-fuse-10",
+        "wr-fuse-11",
+        "wr-fuse-12",
+        "wr-fuse-13",
+        "wr-fuse-14",
+        "wr-fuse-15",
+        "wr-fuse-16",
+        "wr-fuse-17",
+        "wr-ecm-base",
+        "wr-ecm-lid",
+        "wr-ecm-cover",
+        "wr-ecm-screws",
+        "wr-ecm-board",
+        "wr-ecm-prom",
+        "wr-ecm-calpak",
+        "wr-ecm-sockets",
+        "wr-ecm-header-ab",
+        "wr-ecm-header-cd",
+        "wr-ecm-plug-ab",
+        "wr-ecm-plug-cd",
+        "wr-ecm-mount",
+        "wr-ecm-mount-bolts",
+        "wr-junction-base",
+        "wr-junction-studs",
+        "wr-junction-leads",
+        "wr-junction-mount",
+        "wr-ground-body",
+        "wr-ground-engine",
+        "wr-turn-flasher",
+        "wr-turn-flasher-clip",
+        "wr-turn-flasher-plug",
+        "wr-convenience-base",
+        "wr-hazard-flasher",
+        "wr-horn-relay",
+        "wr-convenience-plugs",
+        "wr-cluster-shell",
+        "wr-cluster-cover",
+        "wr-cluster-bezel",
+        "wr-cluster-lens",
+        "wr-cluster-carrier",
+        "wr-cluster-flex",
+        "wr-cluster-plugs",
+        "wr-cluster-mounts",
+        "wr-cluster-speed-face",
+        "wr-cluster-speed-pointer",
+        "wr-cluster-speed-unit",
+        "wr-cluster-odometer",
+        "wr-cluster-trip",
+        "wr-cluster-trip-reset",
+        "wr-cluster-tach-face",
+        "wr-cluster-tach-pointer",
+        "wr-cluster-tach-unit",
+        "wr-cluster-oil-face",
+        "wr-cluster-oil-pointer",
+        "wr-cluster-oil-unit",
+        "wr-cluster-temperature-face",
+        "wr-cluster-temperature-pointer",
+        "wr-cluster-temperature-unit",
+        "wr-cluster-fuel-face",
+        "wr-cluster-fuel-pointer",
+        "wr-cluster-fuel-unit",
+        "wr-cluster-illumination",
+        "wr-cluster-warning-deck",
+        "wr-cluster-bulb-deck",
+        "wr-cluster-warning-left-turn",
+        "wr-cluster-bulb-left-turn",
+        "wr-cluster-warning-door",
+        "wr-cluster-bulb-door",
+        "wr-cluster-warning-beam",
+        "wr-cluster-bulb-beam",
+        "wr-cluster-warning-brake",
+        "wr-cluster-bulb-brake",
+        "wr-cluster-warning-shift",
+        "wr-cluster-bulb-shift",
+        "wr-cluster-warning-right-turn",
+        "wr-cluster-bulb-right-turn",
+        "wr-cluster-warning-generator",
+        "wr-cluster-bulb-generator",
+        "wr-cluster-warning-belt",
+        "wr-cluster-bulb-belt",
+        "wr-cluster-warning-engine",
+        "wr-cluster-bulb-engine"
+      ],
+      "withoutSourceUrl": [],
+      "groupedSelectionCandidates": [
+        "wr-fuse-contacts",
+        "wr-ecm-screws",
+        "wr-junction-studs"
+      ],
+      "sourceClasses": {
+        "original-1985": 76,
+        "original-1985-L44-section": 14,
+        "adjacent-year-1986": 6,
+        "factory-multi-year-catalog": 3
+      },
+      "remaining": "VIN does not identify ECM calibration, all harness terminals or installed equipment. Several supporting location views are explicitly adjacent-year.",
+      "coverageDescription": "Original 1985 cluster with separate dials, pointers, pod/lens, center gauges, lower tach oil scale and ten indicator/bulb pairs. Numbered fuse panel and ratings checked against the 1985 owner’s manual; separate fuse elements, sockets, hinge and releases, rear-console ECM enclosure/calibration carriers and 24/32-cavity plugs, battery junction/grounds and distinct turn/hazard flashers. Whole loom circuits, instrument internals, horn units, exact connector tooling, circuit boards and wire lengths remain incomplete. These are static construction views."
+    },
+    {
+      "id": "charging-system",
+      "name": "Starting / charging",
+      "selections": 63,
+      "withCallout": 59,
+      "withoutCallout": [
+        "ch-ground-strap",
+        "ch-starter-mount-bolts",
+        "ch-starter-leads",
+        "ch-alt-plug"
+      ],
+      "withoutSourceUrl": [],
+      "groupedSelectionCandidates": [
+        "ch-battery-terminals",
+        "ch-battery-shield-screws",
+        "ch-starter-brush-springs",
+        "ch-starter-through-bolts",
+        "ch-starter-retainers",
+        "ch-solenoid-fasteners",
+        "ch-starter-mount-bolts",
+        "ch-alt-bearing-retainer",
+        "ch-alt-collars",
+        "ch-alt-brushes",
+        "ch-alt-through-bolts",
+        "ch-alt-bracket-bolts"
+      ],
+      "sourceClasses": {
+        "factory-multi-year-catalog": 63
+      },
+      "remaining": "Original battery/alternator/starter identity and ratings require installed labels; internal winding and local casting detail are reconstructed.",
+      "coverageDescription": "Side-terminal battery with heat shield and hold-down; Delco starter, solenoid and drive construction; early generator cast frames, rotor/stator, regulator/rectifier, brushes, bearings and bracket. Original unit stamping/rating, measured castings, exact windings, cable routes, belt interfaces and electrical diagnostics remain to verify."
+    },
+    {
+      "id": "lighting-system",
+      "name": "Lighting",
+      "selections": 112,
+      "withCallout": 76,
+      "withoutCallout": [
+        "lt-rear-left-seal",
+        "lt-rear-right-seal",
+        "lt-dome-housing",
+        "lt-dome-screws",
+        "lt-dome-left-map-lens",
+        "lt-dome-left-map-bulb",
+        "lt-dome-left-map-socket",
+        "lt-dome-left-map-switch",
+        "lt-dome-left-dome-lens",
+        "lt-dome-left-dome-bulb",
+        "lt-dome-left-dome-socket",
+        "lt-dome-left-dome-switch",
+        "lt-dome-right-dome-lens",
+        "lt-dome-right-dome-bulb",
+        "lt-dome-right-dome-socket",
+        "lt-dome-right-dome-switch",
+        "lt-dome-right-map-lens",
+        "lt-dome-right-map-bulb",
+        "lt-dome-right-map-socket",
+        "lt-dome-right-map-switch",
+        "lt-courtesy-foot-left-housing",
+        "lt-courtesy-foot-left-bulb",
+        "lt-courtesy-foot-left-contacts",
+        "lt-courtesy-foot-right-housing",
+        "lt-courtesy-foot-right-bulb",
+        "lt-courtesy-foot-right-contacts",
+        "lt-courtesy-front-compartment-housing",
+        "lt-courtesy-front-compartment-bulb",
+        "lt-courtesy-front-compartment-contacts",
+        "lt-courtesy-rear-compartment-housing",
+        "lt-courtesy-rear-compartment-bulb",
+        "lt-courtesy-rear-compartment-contacts",
+        "lt-console-left-bulb",
+        "lt-console-left-socket",
+        "lt-console-right-bulb",
+        "lt-console-right-socket"
+      ],
+      "withoutSourceUrl": [],
+      "groupedSelectionCandidates": [
+        "lt-front-left-screws",
+        "lt-front-left-bracket",
+        "lt-marker-front-left-screws",
+        "lt-marker-rear-left-screws",
+        "lt-rear-left-retainers",
+        "lt-license-left-screws",
+        "lt-front-right-screws",
+        "lt-front-right-bracket",
+        "lt-marker-front-right-screws",
+        "lt-marker-rear-right-screws",
+        "lt-rear-right-retainers",
+        "lt-license-right-screws",
+        "lt-dome-screws",
+        "lt-dome-left-map-socket",
+        "lt-dome-left-dome-socket",
+        "lt-dome-right-dome-socket",
+        "lt-dome-right-map-socket",
+        "lt-courtesy-foot-left-contacts",
+        "lt-courtesy-foot-right-contacts",
+        "lt-courtesy-front-compartment-contacts",
+        "lt-courtesy-rear-compartment-contacts"
+      ],
+      "sourceClasses": {
+        "factory-multi-year-catalog": 78,
+        "original-1985": 34
+      },
+      "remaining": "Lamp optical tooling, harness terminal details, local dimensions and actual option content remain unverified.",
+      "coverageDescription": "Separate front park/turn lamps, four side markers, early notchback rear lamp layers and bulb chambers, license lamps, four overhead reading/dome lamps, manual ashtray lamps and optional courtesy/compartment lighting. Shared native geometry replaces former surface proxies. Exact optical tooling, dimensions, circuit routing, detailed instrument lighting and seal profiles remain unverified."
+    },
+    {
+      "id": "headlight-system",
+      "name": "Headlights",
+      "selections": 189,
+      "withCallout": 65,
+      "withoutCallout": [
+        "hl-left-door-spring",
+        "hl-left-case-half",
+        "hl-left-case-rivets",
+        "hl-left-field",
+        "hl-left-armature",
+        "hl-left-bearings",
+        "hl-left-knob",
+        "hl-left-intermediate",
+        "hl-left-output-gear",
+        "hl-left-drive-plate",
+        "hl-left-output-shaft",
+        "hl-left-switch-cover",
+        "hl-left-switch-screws",
+        "hl-left-motor-leads",
+        "hl-left-bumper-1",
+        "hl-left-bumper-2",
+        "hl-left-bumper-3",
+        "hl-left-bumper-4",
+        "hl-right-door-spring",
+        "hl-right-case-half",
+        "hl-right-case-rivets",
+        "hl-right-field",
+        "hl-right-armature",
+        "hl-right-bearings",
+        "hl-right-knob",
+        "hl-right-intermediate",
+        "hl-right-output-gear",
+        "hl-right-drive-plate",
+        "hl-right-output-shaft",
+        "hl-right-switch-cover",
+        "hl-right-switch-screws",
+        "hl-right-motor-leads",
+        "hl-right-bumper-1",
+        "hl-right-bumper-2",
+        "hl-right-bumper-3",
+        "hl-right-bumper-4",
+        "hl-left-ground",
+        "hl-right-ground",
+        "hl-left-relay-base",
+        "hl-left-relay-coil",
+        "hl-left-relay-core",
+        "hl-left-relay-armature",
+        "hl-left-relay-contacts",
+        "hl-left-relay-diode",
+        "hl-left-relay-socket-contacts",
+        "hl-left-relay-socket-latches",
+        "hl-left-relay-pigtails",
+        "hl-left-relay-motor-socket",
+        "hl-left-relay-terminal-c1-a",
+        "hl-left-relay-terminal-c1-b",
+        "hl-left-relay-terminal-c1-c",
+        "hl-left-relay-terminal-c2-a",
+        "hl-left-relay-terminal-c2-b",
+        "hl-right-relay-base",
+        "hl-right-relay-coil",
+        "hl-right-relay-core",
+        "hl-right-relay-armature",
+        "hl-right-relay-contacts",
+        "hl-right-relay-diode",
+        "hl-right-relay-socket-contacts",
+        "hl-right-relay-socket-latches",
+        "hl-right-relay-pigtails",
+        "hl-right-relay-motor-socket",
+        "hl-right-relay-terminal-c1-a",
+        "hl-right-relay-terminal-c1-b",
+        "hl-right-relay-terminal-c1-c",
+        "hl-right-relay-terminal-c2-a",
+        "hl-right-relay-terminal-c2-b",
+        "hl-isolation-base",
+        "hl-isolation-coil",
+        "hl-isolation-core",
+        "hl-isolation-armature",
+        "hl-isolation-contacts",
+        "hl-isolation-diode",
+        "hl-isolation-socket-contacts",
+        "hl-isolation-socket-latches",
+        "hl-isolation-pigtails",
+        "hl-isolation-steering-diode",
+        "hl-isolation-socket",
+        "hl-isolation-terminal-c1-a",
+        "hl-isolation-terminal-c1-b",
+        "hl-isolation-terminal-c1-c",
+        "hl-isolation-terminal-c2-a",
+        "hl-isolation-terminal-c2-b",
+        "hl-isolation-terminal-c2-c",
+        "hl-left-lead-white",
+        "hl-left-lead-green",
+        "hl-left-lead-gray",
+        "hl-left-disconnect",
+        "hl-left-disconnect-contacts",
+        "hl-left-lead-grommet",
+        "hl-left-motor-breaker",
+        "hl-right-lead-white",
+        "hl-right-lead-green",
+        "hl-right-lead-gray",
+        "hl-right-disconnect",
+        "hl-right-disconnect-contacts",
+        "hl-right-lead-grommet",
+        "hl-right-motor-breaker",
+        "hl-isolation-left-output",
+        "hl-isolation-right-output",
+        "hl-link-c-insulation",
+        "hl-link-c-conductor",
+        "hl-link-c-splices",
+        "hl-link-c-feed",
+        "hl-link-d-insulation",
+        "hl-link-d-conductor",
+        "hl-link-d-splices",
+        "hl-link-d-feed",
+        "hl-control-bezel",
+        "hl-switch-case",
+        "hl-switch-rocker",
+        "hl-park-button",
+        "hl-switch-contacts",
+        "hl-switch-plug",
+        "hl-control-screws",
+        "hl-panel-dimmer",
+        "hl-dimmer-carrier",
+        "hl-panel-transistor",
+        "hl-beam-switch",
+        "hl-beam-rod",
+        "hl-beam-plug",
+        "hl-beam-mount",
+        "hl-control-wiring"
+      ],
+      "withoutSourceUrl": [],
+      "groupedSelectionCandidates": [
+        "hl-left-terminals",
+        "hl-left-ring-screws",
+        "hl-left-aim-screws",
+        "hl-left-bezel-screws",
+        "hl-left-pivot-bolts",
+        "hl-left-cover-fasteners",
+        "hl-left-mount-bolts",
+        "hl-left-link-clip",
+        "hl-left-switch",
+        "hl-left-switch-screws",
+        "hl-right-terminals",
+        "hl-right-ring-screws",
+        "hl-right-aim-screws",
+        "hl-right-bezel-screws",
+        "hl-right-pivot-bolts",
+        "hl-right-cover-fasteners",
+        "hl-right-mount-bolts",
+        "hl-right-link-clip",
+        "hl-right-switch",
+        "hl-right-switch-screws",
+        "hl-left-relay-bracket",
+        "hl-right-relay-bracket",
+        "hl-left-relay-contacts",
+        "hl-left-relay-socket-contacts",
+        "hl-right-relay-contacts",
+        "hl-right-relay-socket-contacts",
+        "hl-isolation-contacts",
+        "hl-isolation-socket-contacts",
+        "hl-left-disconnect",
+        "hl-left-disconnect-contacts",
+        "hl-right-disconnect",
+        "hl-right-disconnect-contacts",
+        "hl-control-screws",
+        "hl-beam-mount"
+      ],
+      "sourceClasses": {
+        "factory-multi-year-catalog": 67,
+        "unclassified-reference": 34,
+        "adjacent-year-1986": 88
+      },
+      "remaining": "Original actuator gear/contact variants, measured pivots/stops, original connector faces and aiming/service evidence remain separate checks.",
+      "coverageDescription": "Separate LH/RH sealed beams, retaining and aiming hardware, buckets, spring-loaded covers, pivots and links, early motors with gear/cushion/brush/contact construction, two actuator relays and driver-side isolation relay with nested coils, armatures, contacts, diodes, open connector shells and 16 individually selectable blades. Separate white/green/gray motor conductors, blue disconnect branches and front-harness C/D fusible links. Raised and closed endpoint poses preserve the low exterior profile. Exact dimensions, optical tooling, gear ratios, measured switch geometry, complete harness circuits and linkage travel remain unverified. Sealed-lamp and riveted-motor separation illustrates construction."
+    },
+    {
+      "id": "hvac-system",
+      "name": "HVAC",
+      "selections": 101,
+      "withCallout": 96,
+      "withoutCallout": [
+        "hv-ac-crank-groove",
+        "hv-motor-gasket",
+        "hv-connector",
+        "hv-resistor-seal",
+        "hv-control-screws"
+      ],
+      "withoutSourceUrl": [],
+      "groupedSelectionCandidates": [
+        "hv-ac-compressor-head-seals",
+        "hv-ac-compressor-through-bolts",
+        "hv-ac-compressor-hoses",
+        "hv-ac-compressor-port-seals",
+        "hv-ac-underbody-tubes",
+        "hv-motor-screws",
+        "hv-resistor",
+        "hv-duct-foam",
+        "hv-duct-fasteners",
+        "hv-control-screws",
+        "hv-orifice"
+      ],
+      "sourceClasses": {
+        "factory-multi-year-catalog": 101
+      },
+      "remaining": "C41/C60 variants must follow the actual vehicle equipment. Original compressor identity, refrigerant system routing/charge and internals remain unresolved.",
+      "coverageDescription": "Heater case, option-specific core and controls, air doors, blower cage/motor/resistor, open distribution ducts and C60 evaporator/accumulator/electric actuators, plus compressor/clutch/mounts, condenser and refrigerant pipes/hoses. Configure air conditioning to switch C41 and C60 previews; the VIN does not identify this option. Original compressor identity, complete internal construction and circuits, measured housings/routing and calibrated travel remain unverified. Adjacent-year service diagrams supplement the catalog applications with their year limits recorded."
+    },
+    {
+      "id": "body-system",
+      "name": "Body",
+      "selections": 255,
+      "withCallout": 216,
+      "withoutCallout": [
+        "bd-skin-mirror-left",
+        "bd-skin-mirror-glass-left",
+        "bd-skin-mirror-mount-left",
+        "bd-skin-handle-left",
+        "bd-skin-door-lock-left",
+        "bd-skin-door-molding-left",
+        "bd-skin-belt-seal-left",
+        "bd-skin-front-molding-left",
+        "bd-skin-rear-molding-left",
+        "bd-skin-front-pad-left",
+        "bd-skin-rear-pad-left",
+        "bd-skin-wiper-arm-left",
+        "bd-skin-wiper-blade-left",
+        "bd-skin-mirror-right",
+        "bd-skin-mirror-glass-right",
+        "bd-skin-mirror-mount-right",
+        "bd-skin-handle-right",
+        "bd-skin-door-lock-right",
+        "bd-skin-door-molding-right",
+        "bd-skin-belt-seal-right",
+        "bd-skin-front-molding-right",
+        "bd-skin-rear-molding-right",
+        "bd-skin-front-pad-right",
+        "bd-skin-rear-pad-right",
+        "bd-skin-wiper-arm-right",
+        "bd-skin-wiper-blade-right",
+        "bd-skin-front-fascia-molding",
+        "bd-skin-front-plate-mount",
+        "bd-skin-rear-fascia-molding",
+        "bd-skin-rear-plate-mount",
+        "bd-skin-rear-emblems",
+        "bd-skin-deck-carrier",
+        "bd-skin-deck-wing",
+        "bd-skin-rear-window",
+        "bd-skin-glass",
+        "bd-door-left-inner-frame",
+        "bd-door-left-seal",
+        "bd-door-right-inner-frame",
+        "bd-door-right-seal"
+      ],
+      "withoutSourceUrl": [],
+      "groupedSelectionCandidates": [
+        "bd-door-left-glass-rear-stops",
+        "bd-door-left-glass-stabilizers",
+        "bd-door-left-glass-bushing-retainers",
+        "bd-door-left-glass-inner-buttons",
+        "bd-door-left-glass-stabilizer-buttons",
+        "bd-door-left-glass-outer-buttons",
+        "bd-door-left-glass-bushings",
+        "bd-door-right-glass-rear-stops",
+        "bd-door-right-glass-stabilizers",
+        "bd-door-right-glass-bushing-retainers",
+        "bd-door-right-glass-inner-buttons",
+        "bd-door-right-glass-stabilizer-buttons",
+        "bd-door-right-glass-outer-buttons",
+        "bd-door-right-glass-bushings",
+        "bd-skin-sunroof-hinge-nuts",
+        "bd-skin-sunroof-handle-screws",
+        "bd-skin-sunroof-latch-screws",
+        "bd-skin-glass",
+        "bd-hood-hinge-bolts",
+        "bd-hood-hinge-nuts",
+        "bd-hood-stay-bolts",
+        "bd-hood-stay-nuts",
+        "bd-hood-latch-bolts",
+        "bd-hood-striker-nuts",
+        "bd-deck-lid-bolts",
+        "bd-deck-body-nuts",
+        "bd-deck-latch-bolts",
+        "bd-deck-striker-bolts",
+        "bd-deck-lock-screws",
+        "bd-vent-left-fasteners",
+        "bd-door-left-hinge-bolts",
+        "bd-vent-right-fasteners",
+        "bd-door-right-hinge-bolts",
+        "bd-roof-fasteners",
+        "bd-clip-side-bolts",
+        "bd-clip-roof-nuts",
+        "bd-clip-pillar-bolts",
+        "bd-clip-fuel-pocket-bolts"
+      ],
+      "sourceClasses": {
+        "factory-multi-year-catalog": 227,
+        "adjacent-year-1986": 28
+      },
+      "remaining": "Tooling surfaces, fastener inventory, seals, hidden mechanisms and original trim options require further evidence and owner appearance approval.",
+      "coverageDescription": "Shared exterior skins, separate rockers/door trim/side glass, hood mechanical stay and release, rear decklid torque rods and latch, door hinge straps/pins/latches, wheelhouse liners and panel retaining sets. Revised exterior includes independent mirrors, handles, moldings, bumper pads, fuel door, intake, antenna, wiper arms/blades, roof glass and spoiler previews, plus separate AD3 hinge tongues/bushings, rear release housing/button, trim frames and air deflector. Exact panel sections, body datums, attachment coordinates, mechanism travel, option-specific torque rods, calibrated window/lock travel, motor and latch internals, measured mechanism tooling and complete lock wiring remain incomplete. This is a static construction explorer, not a body-alignment or repair procedure."
+    },
+    {
+      "id": "exhaust-system",
+      "name": "Exhaust",
+      "selections": 44,
+      "withCallout": 40,
+      "withoutCallout": [
+        "ex-front-gaskets",
+        "ex-front-bolts",
+        "ex-rear-gaskets",
+        "ex-rear-bolts"
+      ],
+      "withoutSourceUrl": [],
+      "groupedSelectionCandidates": [
+        "ex-front-gaskets",
+        "ex-front-bolts",
+        "ex-rear-gaskets",
+        "ex-rear-bolts",
+        "ex-cross-shield-screws",
+        "ex-cross-joint-bolts",
+        "ex-cross-joint-springs",
+        "ex-cat-shield-screws",
+        "ex-rear-shield-screws",
+        "ex-rear-tail-clamps",
+        "ex-rear-hanger-bolts",
+        "ex-rear-fascia-nuts",
+        "ex-rear-left-springs",
+        "ex-rear-right-springs"
+      ],
+      "sourceClasses": {
+        "adjacent-year-1986": 14,
+        "factory-multi-year-catalog": 30
+      },
+      "remaining": "SE black versus selected bright tailpipe appearance is explicit. Original exhaust measurements, catalyst/muffler internals and full hot-movement clearance remain unverified.",
+      "coverageDescription": "Manifolds, crossover and shields, spring-loaded downpipe joint, early pellet converter cutaway, transverse muffler, twin tailpipes, clamps, shields and spring hangers. Catalogued 1985–86 assemblies are distinguished from later applications. Local bends, exact profiles, clearances, pellet count and muffler internals remain unverified. Welded-part separation illustrates construction, not a removal procedure."
+    },
+    {
+      "id": "fuel-system",
+      "name": "Fuel",
+      "selections": 53,
+      "withCallout": 50,
+      "withoutCallout": [
+        "fu-sender-pump-pad",
+        "fu-sender-wires",
+        "fu-vapor-filter"
+      ],
+      "withoutSourceUrl": [],
+      "groupedSelectionCandidates": [
+        "fu-tank-strap-bolts",
+        "fu-tank-strap-nuts",
+        "fu-tank-reinforcement-bolts",
+        "fu-line-clamps",
+        "fu-line-seals",
+        "fu-vapor-purge"
+      ],
+      "sourceClasses": {
+        "factory-multi-year-catalog": 44,
+        "adjacent-year-1986": 9
+      },
+      "remaining": "Original pump/sender calibration, dimensions, tank internals and exact tube/hose routing require further evidence.",
+      "coverageDescription": "Early tank shells, straps, pump/sender, driver-side filler, filter, distinct feed/return routes, vapor canister and pump relay. Welded shell separation is an illustrative cutaway. Detailed dimensions, factory routing, pump internals and sender calibration remain unverified; the typical 1986 pump drawing is adjacent-year evidence."
+    },
+    {
+      "id": "suspension-system",
+      "name": "Suspension",
+      "selections": 216,
+      "withCallout": 194,
+      "withoutCallout": [
+        "su-fl-upper-stud",
+        "su-fl-upper-boot",
+        "su-fl-lower-stud",
+        "su-fl-lower-boot",
+        "su-fr-upper-stud",
+        "su-fr-upper-boot",
+        "su-fr-lower-stud",
+        "su-fr-lower-boot",
+        "su-rl-lower-bush-front",
+        "su-rl-lower-bush-rear",
+        "su-rl-lower-joint",
+        "su-rl-lower-stud",
+        "su-rl-lower-boot",
+        "su-rl-lower-cotter",
+        "su-rr-lower-bush-front",
+        "su-rr-lower-bush-rear",
+        "su-rr-lower-joint",
+        "su-rr-lower-stud",
+        "su-rr-lower-boot",
+        "su-rr-lower-cotter",
+        "su-rack-bolts",
+        "su-crossmember-shock-brackets"
+      ],
+      "withoutSourceUrl": [],
+      "groupedSelectionCandidates": [
+        "su-fl-upper-pivot-bolts",
+        "su-fl-upper-pivot-washers",
+        "su-fl-upper-pivot-nuts",
+        "su-fl-upper-joint-fasteners",
+        "su-fl-lower-pivot-bolts",
+        "su-fl-lower-pivot-washers",
+        "su-fl-lower-pivot-nuts",
+        "su-fl-shock-bolts",
+        "su-fl-shock-nuts",
+        "su-fr-upper-pivot-bolts",
+        "su-fr-upper-pivot-washers",
+        "su-fr-upper-pivot-nuts",
+        "su-fr-upper-joint-fasteners",
+        "su-fr-lower-pivot-bolts",
+        "su-fr-lower-pivot-washers",
+        "su-fr-lower-pivot-nuts",
+        "su-fr-shock-bolts",
+        "su-fr-shock-nuts",
+        "su-rl-lower-pivot-bolts",
+        "su-rl-lower-pivot-washers",
+        "su-rl-lower-pivot-nuts",
+        "su-rl-mount-washers",
+        "su-rl-mount-nuts",
+        "su-rl-knuckle-bolts",
+        "su-rl-knuckle-washers",
+        "su-rl-knuckle-nuts",
+        "su-rr-lower-pivot-bolts",
+        "su-rr-lower-pivot-washers",
+        "su-rr-lower-pivot-nuts",
+        "su-rr-mount-washers",
+        "su-rr-mount-nuts",
+        "su-rr-knuckle-bolts",
+        "su-rr-knuckle-washers",
+        "su-rr-knuckle-nuts",
+        "su-stab-bolts",
+        "su-stab-left-grommets",
+        "su-stab-left-washers",
+        "su-stab-right-grommets",
+        "su-stab-right-washers",
+        "su-rack-mounts",
+        "su-rack-bolts",
+        "su-rack-damper",
+        "su-rack-damper-washers",
+        "su-rack-damper-nuts",
+        "su-crossmember-upper-bolts",
+        "su-crossmember-lower-bolts",
+        "su-crossmember-washers",
+        "su-cradle-front-bolts",
+        "su-cradle-rear-bolts",
+        "su-cradle-captive-nuts"
+      ],
+      "sourceClasses": {
+        "factory-multi-year-catalog": 216
+      },
+      "remaining": "Owner reports WS6. Actual spring tags/rates, bushing stiffness, measured pivots and full-travel interference remain unverified.",
+      "coverageDescription": "Separate front shocks and coils, formed control arms, ball joints, bushings, rear strut stacks and toe links, early cradle, 23 mm front stabilizer, manual steering rack and passenger-side damper. Spring rates/codes, tooth counts, local pivot coordinates and exact stamped/cast profiles remain unverified. Hubs and knuckles can be inspected in the Brakes explorer."
+    },
+    {
+      "id": "engine",
+      "name": "Engine",
+      "selections": 429,
+      "withCallout": 238,
+      "withoutCallout": [
+        "eng-block",
+        "eng-crankshaft",
+        "eng-main-cap-1",
+        "eng-main-cap-2",
+        "eng-main-cap-3",
+        "eng-main-cap-4",
+        "eng-main-bearing-1",
+        "eng-main-bearing-2",
+        "eng-main-bearing-3",
+        "eng-main-bearing-4",
+        "eng-front-head",
+        "eng-front-head-gasket",
+        "eng-front-cover",
+        "eng-front-cover-gasket",
+        "eng-front-head-bolts",
+        "eng-piston-front-1",
+        "eng-rings-front-1",
+        "eng-pin-front-1",
+        "eng-rod-front-1",
+        "eng-rod-cap-front-1",
+        "eng-rod-bearing-front-1",
+        "eng-valve-front-1-intake",
+        "eng-spring-front-1-intake",
+        "eng-rocker-front-1-intake",
+        "eng-pushrod-front-1-intake",
+        "eng-valve-front-1-exhaust",
+        "eng-spring-front-1-exhaust",
+        "eng-rocker-front-1-exhaust",
+        "eng-pushrod-front-1-exhaust",
+        "eng-spark-front-1",
+        "eng-piston-front-2",
+        "eng-rings-front-2",
+        "eng-pin-front-2",
+        "eng-rod-front-2",
+        "eng-rod-cap-front-2",
+        "eng-rod-bearing-front-2",
+        "eng-valve-front-2-intake",
+        "eng-spring-front-2-intake",
+        "eng-rocker-front-2-intake",
+        "eng-pushrod-front-2-intake",
+        "eng-valve-front-2-exhaust",
+        "eng-spring-front-2-exhaust",
+        "eng-rocker-front-2-exhaust",
+        "eng-pushrod-front-2-exhaust",
+        "eng-spark-front-2",
+        "eng-piston-front-3",
+        "eng-rings-front-3",
+        "eng-pin-front-3",
+        "eng-rod-front-3",
+        "eng-rod-cap-front-3",
+        "eng-rod-bearing-front-3",
+        "eng-valve-front-3-intake",
+        "eng-spring-front-3-intake",
+        "eng-rocker-front-3-intake",
+        "eng-pushrod-front-3-intake",
+        "eng-valve-front-3-exhaust",
+        "eng-spring-front-3-exhaust",
+        "eng-rocker-front-3-exhaust",
+        "eng-pushrod-front-3-exhaust",
+        "eng-spark-front-3",
+        "eng-front-exhaust",
+        "eng-front-exhaust-gasket",
+        "eng-rear-head",
+        "eng-rear-head-gasket",
+        "eng-rear-cover",
+        "eng-rear-cover-gasket",
+        "eng-rear-head-bolts",
+        "eng-piston-rear-1",
+        "eng-rings-rear-1",
+        "eng-pin-rear-1",
+        "eng-rod-rear-1",
+        "eng-rod-cap-rear-1",
+        "eng-rod-bearing-rear-1",
+        "eng-valve-rear-1-intake",
+        "eng-spring-rear-1-intake",
+        "eng-rocker-rear-1-intake",
+        "eng-pushrod-rear-1-intake",
+        "eng-valve-rear-1-exhaust",
+        "eng-spring-rear-1-exhaust",
+        "eng-rocker-rear-1-exhaust",
+        "eng-pushrod-rear-1-exhaust",
+        "eng-spark-rear-1",
+        "eng-piston-rear-2",
+        "eng-rings-rear-2",
+        "eng-pin-rear-2",
+        "eng-rod-rear-2",
+        "eng-rod-cap-rear-2",
+        "eng-rod-bearing-rear-2",
+        "eng-valve-rear-2-intake",
+        "eng-spring-rear-2-intake",
+        "eng-rocker-rear-2-intake",
+        "eng-pushrod-rear-2-intake",
+        "eng-valve-rear-2-exhaust",
+        "eng-spring-rear-2-exhaust",
+        "eng-rocker-rear-2-exhaust",
+        "eng-pushrod-rear-2-exhaust",
+        "eng-spark-rear-2",
+        "eng-piston-rear-3",
+        "eng-rings-rear-3",
+        "eng-pin-rear-3",
+        "eng-rod-rear-3",
+        "eng-rod-cap-rear-3",
+        "eng-rod-bearing-rear-3",
+        "eng-valve-rear-3-intake",
+        "eng-spring-rear-3-intake",
+        "eng-rocker-rear-3-intake",
+        "eng-pushrod-rear-3-intake",
+        "eng-valve-rear-3-exhaust",
+        "eng-spring-rear-3-exhaust",
+        "eng-rocker-rear-3-exhaust",
+        "eng-pushrod-rear-3-exhaust",
+        "eng-spark-rear-3",
+        "eng-rear-exhaust",
+        "eng-rear-exhaust-gasket",
+        "eng-lower-intake",
+        "eng-middle-intake",
+        "eng-plenum",
+        "eng-intake-gaskets",
+        "eng-throttle",
+        "eng-fuel-rail",
+        "eng-injector-1",
+        "eng-injector-2",
+        "eng-injector-3",
+        "eng-injector-4",
+        "eng-injector-5",
+        "eng-injector-6",
+        "eng-camshaft",
+        "eng-cam-bearings",
+        "eng-cam-gear",
+        "eng-crank-gear",
+        "eng-chain",
+        "eng-timing-cover",
+        "eng-balancer",
+        "eng-crank-pulley",
+        "eng-pan",
+        "eng-pan-gasket",
+        "eng-oil-filter",
+        "eng-alternator",
+        "eng-belt",
+        "eng-flywheel",
+        "eng-rear-seal",
+        "eng-oil-pump-mount-bolt",
+        "eng-pickup-screen",
+        "eng-distributor-clamp",
+        "eng-ignition-coil",
+        "eng-coil-bracket",
+        "eng-coil-fasteners",
+        "eng-coil-primary-harness",
+        "eng-est-harness",
+        "eng-coil-feed-harness",
+        "eng-tach-filter",
+        "eng-coil-lead",
+        "eng-wire-separators",
+        "eng-est-a",
+        "eng-est-b",
+        "eng-est-c",
+        "eng-est-d",
+        "eng-wire-front-1",
+        "eng-wire-front-2",
+        "eng-wire-front-3",
+        "eng-wire-rear-1",
+        "eng-wire-rear-2",
+        "eng-wire-rear-3",
+        "eng-tps",
+        "eng-iac",
+        "eng-throttle-gasket",
+        "eng-cold-start-injector",
+        "eng-cold-start-pipe",
+        "eng-cold-start-seals",
+        "eng-fuel-feed-return",
+        "eng-fuel-test-port",
+        "eng-injector-harness",
+        "eng-map",
+        "eng-map-bracket",
+        "eng-map-hose",
+        "eng-pcv",
+        "eng-pcv-hose",
+        "eng-egr-valve",
+        "eng-egr-tube",
+        "eng-egr-gaskets",
+        "eng-egr-solenoid",
+        "eng-vacuum-lines",
+        "eng-coolant-sensor",
+        "eng-cold-start-switch",
+        "eng-oil-pump-drive",
+        "eng-pan-drain-plug",
+        "eng-water-pump-bolts",
+        "eng-water-pump-hub",
+        "eng-water-pump-bearing",
+        "eng-water-pump-seal",
+        "eng-water-pump-impeller"
+      ],
+      "withoutSourceUrl": [
+        "eng-block",
+        "eng-crankshaft",
+        "eng-main-cap-1",
+        "eng-main-cap-2",
+        "eng-main-cap-3",
+        "eng-main-cap-4",
+        "eng-main-bearing-1",
+        "eng-main-bearing-2",
+        "eng-main-bearing-3",
+        "eng-main-bearing-4",
+        "eng-front-head",
+        "eng-front-head-gasket",
+        "eng-front-cover",
+        "eng-front-cover-gasket",
+        "eng-front-head-bolts",
+        "eng-piston-front-1",
+        "eng-rings-front-1",
+        "eng-pin-front-1",
+        "eng-rod-front-1",
+        "eng-rod-cap-front-1",
+        "eng-rod-bearing-front-1",
+        "eng-valve-front-1-intake",
+        "eng-spring-front-1-intake",
+        "eng-rocker-front-1-intake",
+        "eng-pushrod-front-1-intake",
+        "eng-valve-front-1-exhaust",
+        "eng-spring-front-1-exhaust",
+        "eng-rocker-front-1-exhaust",
+        "eng-pushrod-front-1-exhaust",
+        "eng-piston-front-2",
+        "eng-rings-front-2",
+        "eng-pin-front-2",
+        "eng-rod-front-2",
+        "eng-rod-cap-front-2",
+        "eng-rod-bearing-front-2",
+        "eng-valve-front-2-intake",
+        "eng-spring-front-2-intake",
+        "eng-rocker-front-2-intake",
+        "eng-pushrod-front-2-intake",
+        "eng-valve-front-2-exhaust",
+        "eng-spring-front-2-exhaust",
+        "eng-rocker-front-2-exhaust",
+        "eng-pushrod-front-2-exhaust",
+        "eng-piston-front-3",
+        "eng-rings-front-3",
+        "eng-pin-front-3",
+        "eng-rod-front-3",
+        "eng-rod-cap-front-3",
+        "eng-rod-bearing-front-3",
+        "eng-valve-front-3-intake",
+        "eng-spring-front-3-intake",
+        "eng-rocker-front-3-intake",
+        "eng-pushrod-front-3-intake",
+        "eng-valve-front-3-exhaust",
+        "eng-spring-front-3-exhaust",
+        "eng-rocker-front-3-exhaust",
+        "eng-pushrod-front-3-exhaust",
+        "eng-front-exhaust",
+        "eng-front-exhaust-gasket",
+        "eng-rear-head",
+        "eng-rear-head-gasket",
+        "eng-rear-cover",
+        "eng-rear-cover-gasket",
+        "eng-rear-head-bolts",
+        "eng-piston-rear-1",
+        "eng-rings-rear-1",
+        "eng-pin-rear-1",
+        "eng-rod-rear-1",
+        "eng-rod-cap-rear-1",
+        "eng-rod-bearing-rear-1",
+        "eng-valve-rear-1-intake",
+        "eng-spring-rear-1-intake",
+        "eng-rocker-rear-1-intake",
+        "eng-pushrod-rear-1-intake",
+        "eng-valve-rear-1-exhaust",
+        "eng-spring-rear-1-exhaust",
+        "eng-rocker-rear-1-exhaust",
+        "eng-pushrod-rear-1-exhaust",
+        "eng-piston-rear-2",
+        "eng-rings-rear-2",
+        "eng-pin-rear-2",
+        "eng-rod-rear-2",
+        "eng-rod-cap-rear-2",
+        "eng-rod-bearing-rear-2",
+        "eng-valve-rear-2-intake",
+        "eng-spring-rear-2-intake",
+        "eng-rocker-rear-2-intake",
+        "eng-pushrod-rear-2-intake",
+        "eng-valve-rear-2-exhaust",
+        "eng-spring-rear-2-exhaust",
+        "eng-rocker-rear-2-exhaust",
+        "eng-pushrod-rear-2-exhaust",
+        "eng-piston-rear-3",
+        "eng-rings-rear-3",
+        "eng-pin-rear-3",
+        "eng-rod-rear-3",
+        "eng-rod-cap-rear-3",
+        "eng-rod-bearing-rear-3",
+        "eng-valve-rear-3-intake",
+        "eng-spring-rear-3-intake",
+        "eng-rocker-rear-3-intake",
+        "eng-pushrod-rear-3-intake",
+        "eng-valve-rear-3-exhaust",
+        "eng-spring-rear-3-exhaust",
+        "eng-rocker-rear-3-exhaust",
+        "eng-pushrod-rear-3-exhaust",
+        "eng-rear-exhaust",
+        "eng-rear-exhaust-gasket",
+        "eng-lower-intake",
+        "eng-middle-intake",
+        "eng-plenum",
+        "eng-intake-gaskets",
+        "eng-throttle",
+        "eng-fuel-rail",
+        "eng-injector-1",
+        "eng-injector-2",
+        "eng-injector-3",
+        "eng-injector-4",
+        "eng-injector-5",
+        "eng-injector-6",
+        "eng-camshaft",
+        "eng-cam-bearings",
+        "eng-cam-gear",
+        "eng-crank-gear",
+        "eng-chain",
+        "eng-timing-cover",
+        "eng-balancer",
+        "eng-crank-pulley",
+        "eng-pan",
+        "eng-pan-gasket",
+        "eng-oil-filter",
+        "eng-alternator",
+        "eng-belt",
+        "eng-flywheel",
+        "eng-rear-seal"
+      ],
+      "groupedSelectionCandidates": [
+        "eng-main-bearing-1",
+        "eng-main-bearing-2",
+        "eng-main-bearing-3",
+        "eng-main-bearing-4",
+        "eng-front-head-bolts",
+        "eng-front-exhaust-gasket",
+        "eng-rear-head-bolts",
+        "eng-rear-exhaust-gasket",
+        "eng-intake-gaskets",
+        "eng-cam-bearings",
+        "eng-oil-pump-cover-bolts",
+        "eng-icm-screws",
+        "eng-cap-screws",
+        "eng-cold-start-seals",
+        "eng-thermostat-bolts",
+        "eng-pan-bolts",
+        "eng-water-pump-bolts",
+        "eng-water-pulley-bolts",
+        "eng-water-pump-seal",
+        "eng-valve-keepers-front-1-intake",
+        "eng-valve-keepers-front-1-exhaust",
+        "eng-valve-keepers-front-2-intake",
+        "eng-valve-keepers-front-2-exhaust",
+        "eng-valve-keepers-front-3-intake",
+        "eng-valve-keepers-front-3-exhaust",
+        "eng-valve-keepers-rear-1-intake",
+        "eng-valve-keepers-rear-1-exhaust",
+        "eng-valve-keepers-rear-2-intake",
+        "eng-valve-keepers-rear-2-exhaust",
+        "eng-valve-keepers-rear-3-intake",
+        "eng-valve-keepers-rear-3-exhaust"
+      ],
+      "sourceClasses": {
+        "source-label-only": 135,
+        "adjacent-year-1986": 120,
+        "original-1985-L44-section": 43,
+        "factory-multi-year-catalog": 127,
+        "unclassified-reference": 4
+      },
+      "remaining": "Original casting/part variants, dimensional tolerances, all passages, complete fastener quantities and accessory internals remain unverified. Published nominal values do not establish full measured geometry.",
+      "coverageDescription": "Engine internals, ignition and service hardware, including nine-piece nested hydraulic lifters and separate water-pump construction selections. Measured castings, complete passages, original pump internal variants, routing and some accessory internals remain incomplete."
+    },
+    {
+      "id": "transmission",
+      "name": "Transmission",
+      "selections": 95,
+      "withCallout": 95,
+      "withoutCallout": [],
+      "withoutSourceUrl": [],
+      "groupedSelectionCandidates": [
+        "tx-case",
+        "tx-case-bolts",
+        "tx-axle-seals",
+        "tx-retainer-screws",
+        "tx-keys34",
+        "tx-springs34",
+        "tx-keys12",
+        "tx-springs12",
+        "tx-ring-bolts",
+        "tx-diff-bearings",
+        "tx-spider-gears",
+        "tx-spider-washers",
+        "tx-side-gears",
+        "tx-side-washers",
+        "tx-cover-bolts",
+        "tx-flywheel-bolts",
+        "tx-fork-bearings"
+      ],
+      "sourceClasses": {
+        "adjacent-year-1986": 89,
+        "factory-multi-year-catalog": 6
+      },
+      "remaining": "Owner reports four-speed. Installed gearbox code, speedometer gear variant, shift cable geometry, shim thicknesses and bearing fits require further evidence.",
+      "coverageDescription": "Case, gear trains, reverse idler, synchronizers, bearings, differential, selector and clutch. Gear profiles and casting dimensions are reconstructed. Detailed hydraulics, CV joints and mounting hardware remain incomplete."
+    },
+    {
+      "id": "cooling-system",
+      "name": "Cooling",
+      "selections": 36,
+      "withCallout": 16,
+      "withoutCallout": [
+        "cool-isolators",
+        "cool-upper-support",
+        "cool-fan-shroud",
+        "cool-fan-blade",
+        "cool-fan-motor",
+        "cool-fan-support",
+        "cool-fan-fasteners",
+        "cool-fan-connector",
+        "cool-drain",
+        "cool-pipe-drains",
+        "cool-recovery-tank",
+        "cool-recovery-cap",
+        "cool-recovery-hose",
+        "cool-recovery-bracket",
+        "cool-pressure-cap",
+        "cool-heater-core",
+        "cool-heater-tanks",
+        "cool-heater-seals",
+        "cool-heater-pipes",
+        "cool-heater-hoses"
+      ],
+      "withoutSourceUrl": [],
+      "groupedSelectionCandidates": [
+        "cool-tank-seals",
+        "cool-upper-support",
+        "cool-fan-blade",
+        "cool-clamps",
+        "cool-recovery-bracket",
+        "cool-heater-seals",
+        "cool-heater-pipes",
+        "cool-heater-hoses"
+      ],
+      "sourceClasses": {
+        "factory-multi-year-catalog": 31,
+        "original-1985": 5
+      },
+      "remaining": "Original fan/cap/hose variants, measured pipe bends and complete fluid-path validation require physical checks.",
+      "coverageDescription": "Radiator, fan, asymmetric inlet and return pipes, recovery bottle and heater circuit preview. Hose bends, fan variant, clearances and local dimensions need further verification. Thermostat and water pump can be opened through the engine service views."
+    },
+    {
+      "id": "braking-system",
+      "name": "Brakes",
+      "selections": 212,
+      "withCallout": 189,
+      "withoutCallout": [
+        "br-fl-grease-seal",
+        "br-fl-studs",
+        "br-fl-guide-covers",
+        "br-fl-bleeder-cap",
+        "br-fr-grease-seal",
+        "br-fr-studs",
+        "br-fr-guide-covers",
+        "br-fr-bleeder-cap",
+        "br-rl-axle-nut",
+        "br-rl-studs",
+        "br-rl-shield-bolts",
+        "br-rl-pad-inner",
+        "br-rl-pad-outer",
+        "br-rl-wear-tab",
+        "br-rr-axle-nut",
+        "br-rr-studs",
+        "br-rr-shield-bolts",
+        "br-rr-pad-inner",
+        "br-rr-pad-outer",
+        "br-rr-wear-tab",
+        "br-master-mounting-nuts",
+        "br-booster-mounting",
+        "br-park-grommet"
+      ],
+      "withoutSourceUrl": [],
+      "groupedSelectionCandidates": [
+        "br-fl-bracket-bolts",
+        "br-fl-studs",
+        "br-fl-guide-bolts",
+        "br-fl-guide-sleeves",
+        "br-fl-guide-bushings",
+        "br-fl-guide-small-bushings",
+        "br-fl-guide-covers",
+        "br-fr-bracket-bolts",
+        "br-fr-studs",
+        "br-fr-guide-bolts",
+        "br-fr-guide-sleeves",
+        "br-fr-guide-bushings",
+        "br-fr-guide-small-bushings",
+        "br-fr-guide-covers",
+        "br-rl-hub",
+        "br-rl-hub-bolts",
+        "br-rl-studs",
+        "br-rl-guide-bolts",
+        "br-rl-guide-sleeves",
+        "br-rl-guide-bushings",
+        "br-rl-guide-covers",
+        "br-rr-hub",
+        "br-rr-hub-bolts",
+        "br-rr-studs",
+        "br-rr-guide-bolts",
+        "br-rr-guide-sleeves",
+        "br-rr-guide-bushings",
+        "br-rr-guide-covers",
+        "br-master-grommets",
+        "br-master-primary",
+        "br-master-take-up-valve",
+        "br-master-mounting-nuts",
+        "br-booster-mounting",
+        "br-banjos",
+        "br-park-bolts"
+      ],
+      "sourceClasses": {
+        "factory-multi-year-catalog": 144,
+        "adjacent-year-1986": 30,
+        "unclassified-reference": 38
+      },
+      "remaining": "Original casting identities, complete hose travel, piston internals, hydraulic calibration and torque/service sequences require separate verification.",
+      "coverageDescription": "Four separate corners, front integral rotor/hubs, rear hub units, calipers and parking actuators, composite master, tandem booster, lines and cables. Nominal rotor dimensions follow the 1985 DIY manual. Casting profiles, detailed fits, hose clearances, rear piston clutch internals and valve calibration remain unverified."
+    }
+  ],
+  "reviewedFigures": [
+    {
+      "id": "2P02-005",
+      "title": "1984–1987 P battery mounting and cables",
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=67",
+      "application": "Positive and negative cable table rows explicitly distinguish 1985–87 L44. Battery rating and installed identity remain unknown. Drawing has no vehicle-wide quantity column.",
+      "reviewedCallouts": 10,
+      "rows": [
+        {
+          "callout": 1,
+          "name": "L44 positive battery cable",
+          "modelIds": [
+            "ch-positive-cable"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "service-unit; model includes terminal bolt",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 2,
+          "name": "Battery heat-shield screw",
+          "modelIds": [
+            "ch-battery-shield-screws"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped hardware; original count not established",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 3,
+          "name": "Battery heat shield",
+          "modelIds": [
+            "ch-battery-heat-shield"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 4,
+          "name": "Battery",
+          "modelIds": [
+            "ch-battery-case",
+            "ch-battery-lid",
+            "ch-battery-terminals",
+            "ch-battery-indicator"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "one catalog unit split into four model selections",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 5,
+          "name": "Battery hold-down bolt",
+          "modelIds": [
+            "ch-battery-retainer-bolt"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 6,
+          "name": "Battery hold-down retainer",
+          "modelIds": [
+            "ch-battery-retainer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 7,
+          "name": "L44 negative battery cable",
+          "modelIds": [
+            "ch-negative-cable"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "service-unit; body ground branch grouped",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 8,
+          "name": "Negative-cable body-ground attachment bolt",
+          "modelIds": [
+            "ch-battery-ground-bolt"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "GM12337828 tapping bolt; scan supports nominal M6.3×1.81×20, not standard M6×1; one illustrated attachment, vehicle-wide quantity not established",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 9,
+          "name": "Battery hold-down support",
+          "modelIds": [
+            "ch-battery-support"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 10,
+          "name": "Battery tray",
+          "modelIds": [
+            "ch-battery-tray"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        }
+      ]
+    },
+    {
+      "id": "GM04-203",
+      "title": "1985–1988 P Moraine brake master cylinder",
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=170",
+      "application": "Figure explicitly includes 1985. Table directs reader to group usage chart; exact installed service part and original casting identity are unverified. Catalog kits overlap callouts; do not sum kit entries as physical pieces.",
+      "reviewedCallouts": 13,
+      "rows": [
+        {
+          "callout": 1,
+          "name": "Reservoir cover",
+          "modelIds": [
+            "br-master-cover"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 2,
+          "name": "Reservoir diaphragm",
+          "modelIds": [
+            "br-master-diaphragm"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 3,
+          "name": "Reservoir",
+          "modelIds": [
+            "br-master-reservoir"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 4,
+          "name": "Reservoir grommets",
+          "modelIds": [
+            "br-master-grommets"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "two drawn; grouped selection",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 5,
+          "name": "Piston retaining ring",
+          "modelIds": [
+            "br-master-lock-ring"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 6,
+          "name": "Primary piston assembly",
+          "modelIds": [
+            "br-master-primary"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "service-unit internals grouped",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 7,
+          "name": "Secondary seal",
+          "modelIds": [
+            "br-master-secondary-seal"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 8,
+          "name": "Secondary spring retainer",
+          "modelIds": [
+            "br-master-retainer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 9,
+          "name": "Primary seal",
+          "modelIds": [
+            "br-master-primary-seal"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 10,
+          "name": "Secondary piston",
+          "modelIds": [
+            "br-master-secondary"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 11,
+          "name": "Secondary piston spring",
+          "modelIds": [
+            "br-master-spring"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "spring calibration unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 12,
+          "name": "Master-cylinder body",
+          "modelIds": [
+            "br-master-body"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "bores and port dimensions reconstructed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 13,
+          "name": "Quick-take-up valve",
+          "modelIds": [
+            "br-master-take-up-valve"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "internal calibration and complete separate pieces unverified",
+          "physicalQuantity": null
+        }
+      ]
+    },
+    {
+      "id": "GM04-238",
+      "title": "1985–1986 P four-speed manual transaxle (MY8/M17)",
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=128",
+      "application": "This is an identity crosswalk by the factory table names, NOT reuse of the catalog's model callout numbers. src/transmission-catalog.js callout numbers refer to the separately cited 1986 service drawing, whose differential numbering differs. Installed M17 identity, speedometer gearing and shim sizes need vehicle evidence. Several table rows contain alternate ratios; no interchangeability is inferred.",
+      "reviewedCallouts": 97,
+      "rows": [
+        {
+          "callout": 1,
+          "name": "Case assembly",
+          "modelIds": [
+            "tx-case"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "casting geometry reconstructed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 2,
+          "name": "Case vent",
+          "modelIds": [
+            "tx-vent"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 3,
+          "name": "Chip magnet",
+          "modelIds": [
+            "tx-magnet"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 4,
+          "name": "Housing dowel",
+          "modelIds": [
+            "tx-dowels"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 5,
+          "name": "Drain washer",
+          "modelIds": [
+            "tx-drain-washer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 6,
+          "name": "Drain screw",
+          "modelIds": [
+            "tx-drain"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 7,
+          "name": "Case bolt",
+          "modelIds": [
+            "tx-case-bolts"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped; complete lengths/count unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 8,
+          "name": "Fill-plug washer",
+          "modelIds": [
+            "tx-fill-washer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 9,
+          "name": "Fill plug",
+          "modelIds": [
+            "tx-fill"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 10,
+          "name": "Axle seals",
+          "modelIds": [
+            "tx-axle-seals"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "paired selection",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 11,
+          "name": "Case plug",
+          "modelIds": [
+            "tx-case-plug"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 12,
+          "name": "Case bearing oil shields",
+          "modelIds": [
+            "tx-input-shield",
+            "tx-output-end-shield"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "same table identity split by shaft",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 13,
+          "name": "Case bearings",
+          "modelIds": [
+            "tx-input-end-bearing",
+            "tx-output-end-bearing"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "same table identity split by shaft",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 14,
+          "name": "Fourth-speed output gear",
+          "modelIds": [
+            "tx-fourth-output"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "MY8/M19 alternates listed; installed ratio identity unresolved",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 15,
+          "name": "Third output gear retaining ring",
+          "modelIds": [
+            "tx-third-retainer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 16,
+          "name": "Third output gear",
+          "modelIds": [
+            "tx-third-output"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "gear profile reconstructed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 17,
+          "name": "Second output gear",
+          "modelIds": [
+            "tx-second-output"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "gear profile reconstructed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 18,
+          "name": "Synchronizer blocking rings",
+          "modelIds": [
+            "tx-block1",
+            "tx-block2",
+            "tx-block3",
+            "tx-block4"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "same table identity split into four positions",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 19,
+          "name": "Synchronizer retaining rings",
+          "modelIds": [
+            "tx-retainer12",
+            "tx-retainer34"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "some rings grouped",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 20,
+          "name": "Synchronizer springs",
+          "modelIds": [
+            "tx-springs12",
+            "tx-springs34"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped by synchronizer",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 21,
+          "name": "Synchronizer keys",
+          "modelIds": [
+            "tx-keys12",
+            "tx-keys34"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped by synchronizer",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 22,
+          "name": "First/second synchronizer assembly",
+          "modelIds": [
+            "tx-sync12"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "hub and sleeve grouped; listed assembly includes callouts20–21",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 23,
+          "name": "First output gear",
+          "modelIds": [
+            "tx-first-output"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "gear profile reconstructed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 24,
+          "name": "Case bearing retainers",
+          "modelIds": [],
+          "allModelIdsExist": true,
+          "qualification": "14073782, group 4.104: two illustrated LH/outer shaft-end case-bearing retainers. Existing tx-input-sleeve and tx-output-sleeve are location candidates; keep those compatibility IDs and do not add duplicate outer-end rings. Original 1986 service Figure 1 (PDF 802 / 7B1-2) uses 24 for these and a third RH/inner output sleeve; PDF 809 / 7B1-9 defines RH as nearest clutch and LH as farthest. Equal callout numbers do not establish identical parts. Exact retention form, dimensions and installed quantity remain unresolved. See references/completion-gearbox-callouts-20261003T001613Z/addendum-20261003T002815Z/implementation-map.json and references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/findings.json",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 25,
+          "name": "Final-drive output shaft",
+          "modelIds": [
+            "tx-output-shaft"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "3.32/3.65 alternate rows; factory nominal M17 23 teeth independently sourced",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 26,
+          "name": "Output bearing",
+          "modelIds": [
+            "tx-output-bearing"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 27,
+          "name": "Output adjustment shim",
+          "modelIds": [
+            "tx-output-shim"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "actual shim thickness unknown",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 28,
+          "name": "Output bearing oil shield",
+          "modelIds": [
+            "tx-output-shield"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 29,
+          "name": "Output shield retainer",
+          "modelIds": [
+            "tx-output-retainer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 30,
+          "name": "Fourth input gear",
+          "modelIds": [
+            "tx-fourth-input"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "MY8/M19 alternates listed; application needs row-level reconciliation",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 31,
+          "name": "Third/fourth synchronizer assembly",
+          "modelIds": [
+            "tx-sync34"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "hub and sleeve grouped",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 32,
+          "name": "Third input gear",
+          "modelIds": [
+            "tx-third-input"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "gear profile reconstructed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 33,
+          "name": "Input cluster shaft",
+          "modelIds": [
+            "tx-input-shaft"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "integral gears grouped",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 34,
+          "name": "Input bearing",
+          "modelIds": [
+            "tx-input-bearing"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 35,
+          "name": "Input-retainer screw",
+          "modelIds": [
+            "tx-retainer-screws"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped hardware",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 36,
+          "name": "Input adjustment shim",
+          "modelIds": [
+            "tx-input-shim"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "actual shim thickness unknown",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 37,
+          "name": "Input seal",
+          "modelIds": [
+            "tx-input-seal"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 38,
+          "name": "Input retainer component",
+          "modelIds": [
+            "tx-input-retainer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped with guide",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 39,
+          "name": "Input bearing retainer assembly",
+          "modelIds": [
+            "tx-input-retainer",
+            "tx-input-seal"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "overlapping assembly contains37–38; do not count again",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 40,
+          "name": "Input retainer seal ring",
+          "modelIds": [
+            "tx-retainer-seal"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 41,
+          "name": "Clutch release bearing",
+          "modelIds": [
+            "tx-release-bearing"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "modeled in separate clutch scope",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 42,
+          "name": "Reverse-idler screw/washer",
+          "modelIds": [
+            "tx-reverse-bolt"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 43,
+          "name": "Reverse-idler shaft",
+          "modelIds": [
+            "tx-reverse-shaft"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 44,
+          "name": "Reverse-idler gear",
+          "modelIds": [
+            "tx-reverse-gear"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "gear profile reconstructed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 45,
+          "name": "Reverse-idler spacer",
+          "modelIds": [
+            "tx-reverse-spacer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 46,
+          "name": "Clutch/differential housing",
+          "modelIds": [
+            "tx-bellhousing"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "casting geometry reconstructed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 47,
+          "name": "Speed-sensor screw",
+          "modelIds": [
+            "tx-speed-retainer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped with retainer",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 48,
+          "name": "Speed-sensor retainer",
+          "modelIds": [
+            "tx-speed-retainer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped with screw47",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 49,
+          "name": "Speed sensor",
+          "modelIds": [
+            "tx-speed-sensor"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 50,
+          "name": "Speed-sensor sleeve seal",
+          "modelIds": [
+            "tx-speed-seal"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 51,
+          "name": "Speedometer driven gear",
+          "modelIds": [
+            "tx-speed-gear"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "29/30/31-tooth variants listed; actual installed variant unknown",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 52,
+          "name": "Reverse-inhibitor spring seat",
+          "modelIds": [
+            "tx-inhibitor"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped with spring and washer",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 53,
+          "name": "Reverse-inhibitor spring",
+          "modelIds": [
+            "tx-inhibitor"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped with seat and washer",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 54,
+          "name": "Spring pin",
+          "modelIds": [
+            "tx-roll-pins"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped; exact quantity unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 55,
+          "name": "Reverse shift lever",
+          "modelIds": [
+            "tx-reverse-lever"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 56,
+          "name": "Reverse lever locating stud",
+          "modelIds": [
+            "tx-reverse-stud"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 57,
+          "name": "Detent lever",
+          "modelIds": [
+            "tx-detent-lever"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 58,
+          "name": "Detent lever lockwasher",
+          "modelIds": [],
+          "allModelIdsExist": true,
+          "qualification": "exact separately indexed washer missing; do not assume grouped bolt is the same position",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 59,
+          "name": "Detent spring",
+          "modelIds": [
+            "tx-detent-spring"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "calibration unknown",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 60,
+          "name": "Detent bolt",
+          "modelIds": [
+            "tx-detent-bolt"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped with illustrative washer",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 61,
+          "name": "Shift shaft",
+          "modelIds": [
+            "tx-shift-shaft"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 62,
+          "name": "Shift shaft seal",
+          "modelIds": [
+            "tx-shift-seal"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 63,
+          "name": "Detent-lever bolt",
+          "modelIds": [],
+          "allModelIdsExist": true,
+          "qualification": "not separately attributed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 64,
+          "name": "Detent-lever nut",
+          "modelIds": [],
+          "allModelIdsExist": true,
+          "qualification": "not separately attributed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 65,
+          "name": "Shift interlock",
+          "modelIds": [
+            "tx-interlock"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 66,
+          "name": "Shift-shaft shim",
+          "modelIds": [
+            "tx-shift-shim"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "actual thickness unknown",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 67,
+          "name": "Reverse-inhibitor washer",
+          "modelIds": [
+            "tx-inhibitor"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped with spring/seat",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 68,
+          "name": "Third/fourth shift fork",
+          "modelIds": [
+            "tx-fork34"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 69,
+          "name": "Shift-fork shaft",
+          "modelIds": [
+            "tx-fork-rail"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 70,
+          "name": "Shift-rail screw",
+          "modelIds": [
+            "tx-rail-screw"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 71,
+          "name": "Oil guide",
+          "modelIds": [
+            "tx-oil-guide"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 72,
+          "name": "First/second shift fork",
+          "modelIds": [
+            "tx-fork12"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 73,
+          "name": "Clutch fork-shaft seal",
+          "modelIds": [
+            "tx-fork-seal"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 74,
+          "name": "Clutch fork-shaft bearings",
+          "modelIds": [
+            "tx-fork-bearings"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 75,
+          "name": "Clutch fork and shaft",
+          "modelIds": [
+            "tx-release-fork"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped service unit",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 76,
+          "name": "Differential assembly",
+          "modelIds": [],
+          "allModelIdsExist": true,
+          "qualification": "assembly heading serviced by components; not a missing single-piece selection",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 77,
+          "name": "Differential bearings",
+          "modelIds": [
+            "tx-diff-bearings"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "paired; adjacent-year model callout76 differs",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 78,
+          "name": "Differential case",
+          "modelIds": [
+            "tx-diff-carrier"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table specifies3.34 case row; verify exact M17 application independently",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 79,
+          "name": "Differential pinion shaft",
+          "modelIds": [
+            "tx-diff-pin"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented; numbering differs from adjacent-year drawing",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 80,
+          "name": "35-tooth speedometer drive gear",
+          "modelIds": [
+            "tx-speed-drive"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "35-tooth factory table count applied and counted from actual model mesh; gear profile, dimensions and separate driven-gear application remain unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 81,
+          "name": "Differential bearing shim",
+          "modelIds": [
+            "tx-diff-shim"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "actual thickness unknown",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 82,
+          "name": "Pinion thrust washers",
+          "modelIds": [
+            "tx-spider-washers"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "paired selection",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 83,
+          "name": "Differential pinion gears",
+          "modelIds": [
+            "tx-spider-gears"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "paired selection",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 84,
+          "name": "Side-gear thrust washers",
+          "modelIds": [
+            "tx-side-washers"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "paired selection",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 85,
+          "name": "Side gears",
+          "modelIds": [
+            "tx-side-gears"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "paired selection",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 86,
+          "name": "Pinion-shaft lockwasher",
+          "modelIds": [
+            "tx-diff-pin-washer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 87,
+          "name": "Pinion-shaft screw",
+          "modelIds": [
+            "tx-diff-pin-screw"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 88,
+          "name": "Differential ring-gear kit",
+          "modelIds": [
+            "tx-ring-gear"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table offers3.32/4.10 kits; do not label either as this M17's3.65 gear",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 89,
+          "name": "Ring-gear bolts",
+          "modelIds": [
+            "tx-ring-bolts"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped; complete original count/torque unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 90,
+          "name": "Control-selector spring retainer",
+          "modelIds": [],
+          "allModelIdsExist": true,
+          "qualification": "not separately attributed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 91,
+          "name": "Control-selector lever",
+          "modelIds": [],
+          "allModelIdsExist": true,
+          "qualification": "not separately attributed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 92,
+          "name": "Shift-shaft adjustment clip",
+          "modelIds": [],
+          "allModelIdsExist": true,
+          "qualification": "not separately attributed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 93,
+          "name": "External shift lever",
+          "modelIds": [],
+          "allModelIdsExist": true,
+          "qualification": "not separately attributed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 94,
+          "name": "Shift-lever washer",
+          "modelIds": [],
+          "allModelIdsExist": true,
+          "qualification": "not separately attributed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 95,
+          "name": "Shift-lever nut",
+          "modelIds": [],
+          "allModelIdsExist": true,
+          "qualification": "not separately attributed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 96,
+          "name": "Control-selector pin",
+          "modelIds": [],
+          "allModelIdsExist": true,
+          "qualification": "not separately attributed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 97,
+          "name": "1984–85 oil-shield sleeve",
+          "modelIds": [],
+          "allModelIdsExist": true,
+          "qualification": "14020900, group 4.422: separate output RH/inner oil-shield sleeve, explicitly 1984–85 in GM04-238 table PDF 130 / H-10. Parts Figure GM04-238 and original 1986 service Figure 1 (PDF 802 / 7B1-2, service callout 24) place a small sleeve between output shaft 25 and RH bearing 26 in the exploded sequence; service PDF 809 / 7B1-9 identifies this as the clutch-side end. This establishes relative neighborhood, not seating depth or a 1986 part-number interchange. Existing outer-end tx-input-sleeve/tx-output-sleeve and separate bearing-shield retainer tx-output-retainer do not cover this row. Exact original-year fit/form, dimensions, installed variant and quantity remain open; no selection mapped. See references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/findings.json",
+          "physicalQuantity": null
+        }
+      ]
+    },
+    {
+      "id": "2P10-008",
+      "title": "1984–1987 P windshield wiper system",
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=284",
+      "application": "Original application table distinguishes 1984–85 standard motor excluding CD4 and 1985–87 CD4 motor. The listed 16-inch and 18-inch blade rows specifically say1984; the1985 blade identity is not established by those two rows. Hood release and lamp appear on this drawing but belong to other model families.",
+      "reviewedCallouts": 8,
+      "rows": [
+        {
+          "callout": 1,
+          "name": "Wiper blade/insert assembly",
+          "modelIds": [
+            "ww-blade-left",
+            "ww-blade-right"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "paired construction; exact1985 Trico blade/refill identity and tooling unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 2,
+          "name": "Right and left wiper arms",
+          "modelIds": [
+            "ww-arm-right",
+            "ww-arm-left"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table20302339 RH/20302338 LH; caps/springs grouped, geometry unmeasured",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 3,
+          "name": "Rear transmission-link deflector",
+          "modelIds": [
+            "ww-link-deflector"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table20451044; identity represented",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 4,
+          "name": "Right and left wiper transmissions",
+          "modelIds": [
+            "ww-pivot-right",
+            "ww-link-right",
+            "ww-joint-right",
+            "ww-pivot-left",
+            "ww-link-left",
+            "ww-joint-left"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "two catalog service units22039336 RH/22039337 LH subdivided into pivot/link/socket selections; bearings grouped",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 5,
+          "name": "Front-compartment lid lock and actuating cable",
+          "modelIds": [
+            "bd-hood-latch",
+            "bd-hood-release-cable"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "cross-family identity candidates; exact combined service unit20389893 and original release route unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 6,
+          "name": "Front-compartment release handle",
+          "modelIds": [],
+          "allModelIdsExist": true,
+          "qualification": "20318496, group 8.075, black front-compartment release handle; figure heading 1984–1987 with no narrower row restriction. Original 1985 owner scan PDF 105 / printed 7-1 locates it left of steering column beneath the instrument-panel air vent and identifies an auxiliary release cable with cylindrical end clipped behind the handle. Adjacent 1986 service PDF 1207 / 4-3 and Figure 4 / PDF 1209 confirm the cable-operated center-cowl latch and hood-mounted striker relationship. Separate handle identity/location is established, but no independently selectable handle exists yet; exact mounting, dimensions, main/auxiliary cable fit, installed quantity and original vehicle condition remain unresolved. No 1988 interchange or power-release option inferred. See references/completion-front-release/2026-10-03T02-31-59Z/findings.json",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 7,
+          "name": "Windshield wiper motor",
+          "modelIds": [
+            "ww-motor-housing",
+            "ww-motor-seal",
+            "ww-motor-mounts",
+            "ww-motor-washers",
+            "ww-motor-gear",
+            "ww-motor-bearings",
+            "ww-motor-brush-holder",
+            "ww-motor-bearing-straps",
+            "ww-motor-armature",
+            "ww-motor-cover",
+            "ww-motor-field",
+            "ww-motor-park",
+            "ww-pulse-motor"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "mutually exclusive service variants:22062915 standard1984–85 exceptCD4;22062913 CD4 1985–87; do not sum variants or internal selections as original pieces",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 8,
+          "name": "Front-compartment lamp housing",
+          "modelIds": [
+            "lt-courtesy-front-compartment-housing"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "cross-family optional lamp-group preview; table20432645 housing identity not assigned as measured/original tooling",
+          "physicalQuantity": null
+        }
+      ]
+    },
+    {
+      "id": "GM10-066",
+      "title": "1984–1988 P Delco pulse windshield-wiper motor",
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=286",
+      "application": "Drawing carries1984–1988 family title, but directs additional application to the catalog. Figure2P10-008 supplies the narrower1985–87 CD4 motor applicability; the family title alone is not a blanket interchange claim.",
+      "reviewedCallouts": 4,
+      "rows": [
+        {
+          "callout": 1,
+          "name": "Motor cover kit",
+          "modelIds": [
+            "ww-pulse-cover"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table22039315; screws/seal are grouped in the kit, original individual quantities unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 2,
+          "name": "Motor circuit board",
+          "modelIds": [
+            "ww-pulse-board"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table22102002; board/connector substrate only, component population and circuitry unresolved",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 3,
+          "name": "Wiper motor service assembly",
+          "modelIds": [
+            "ww-pulse-motor"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table22062913; grouped motor internals, not an independently complete internal inventory",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 4,
+          "name": "Motor crank arm",
+          "modelIds": [
+            "ww-motor-crank",
+            "ww-motor-nut"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table22039338; crank and locknut separated in model; throw/park calibration unverified",
+          "physicalQuantity": null
+        }
+      ]
+    },
+    {
+      "id": "GM10-068",
+      "title": "1984–1988 P Delco standard windshield-wiper motor",
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=287",
+      "application": "Family drawing is titled1984–1988 and explicitly excludes pulse. Use figure2P10-008 to retain1984–85 application of service motor22062915. Footnote screw package22029895 is required for reassembly; its exact contents and independently selectable original screw count remain unresolved. High-resolution inspection confirms brush-holder22029825.",
+      "reviewedCallouts": 14,
+      "rows": [
+        {
+          "callout": 1,
+          "name": "Standard motor service unit",
+          "modelIds": [
+            "ww-motor-housing",
+            "ww-motor-seal",
+            "ww-motor-mounts",
+            "ww-motor-washers",
+            "ww-motor-gear",
+            "ww-motor-bearings",
+            "ww-motor-brush-holder",
+            "ww-motor-bearing-straps",
+            "ww-motor-armature",
+            "ww-motor-cover",
+            "ww-motor-field",
+            "ww-motor-park"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table22062915 denotes complete motor service unit; it is not a separate bare-housing part number",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 2,
+          "name": "Seal",
+          "modelIds": [
+            "ww-motor-seal"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "not separately serviced in table; cross-section and operating fit unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 3,
+          "name": "Motor crank arm",
+          "modelIds": [
+            "ww-motor-crank"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table22039338; shared standard/pulse construction",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 4,
+          "name": "Crank locknut",
+          "modelIds": [
+            "ww-motor-nut"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "not separately serviced; part of crank item3",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 5,
+          "name": "Mounting grommet",
+          "modelIds": [
+            "ww-motor-mounts"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped with mounting hardware; exact original grommet and screw count unresolved",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 6,
+          "name": "Thrust washer",
+          "modelIds": [
+            "ww-motor-washers"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "paired modeled set; original stack/endplay unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 7,
+          "name": "Motor kit, drawn gear and shaft group",
+          "modelIds": [
+            "ww-motor-gear"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table22062915 remains a service-unit reference, not a verified standalone gear number; teeth/profile intentionally unspecified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 8,
+          "name": "Armature bearing",
+          "modelIds": [
+            "ww-motor-bearings"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "part of armature item11; separate modeled bearing pair, fits unmeasured",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 9,
+          "name": "Wiper-motor brush holder",
+          "modelIds": [
+            "ww-motor-brush-holder"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table22029825 confirmed from high-resolution page; brushes/protector grouped, not a calibrated electrical reconstruction",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 10,
+          "name": "Bearing retaining strap",
+          "modelIds": [
+            "ww-motor-bearing-straps"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "grouped strap pair; original tooling unmeasured",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 11,
+          "name": "Armature",
+          "modelIds": [
+            "ww-motor-armature"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table22030808; winding/worm details not calibrated",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 12,
+          "name": "Motor cover kit",
+          "modelIds": [
+            "ww-motor-cover"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table22038937; exact cover-kit contents and screw package22029895 accounting unresolved",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 13,
+          "name": "Magnet kit",
+          "modelIds": [
+            "ww-motor-field"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table22030807; field shell/magnets grouped, physical magnetic specification unknown",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 14,
+          "name": "Park-switch actuator",
+          "modelIds": [
+            "ww-motor-park"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table22029824; contact and park timing are not electrically validated",
+          "physicalQuantity": null
+        }
+      ]
+    },
+    {
+      "id": "2P08-009",
+      "title": "1985–1988 P compact spare wheel stowage and jack parts",
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=251",
+      "application": "The table explicitly covers1985–1988. Wheel9590503 is15×4 RK; earlier1984 variants are retained separately in the year notes. The ten jack subdivisions are illustrative construction of one service unit, not ten catalog parts. No load capacity, original tire identity, bore/bolt-circle/offset or internal dimensions are inferred.",
+      "reviewedCallouts": 10,
+      "rows": [
+        {
+          "callout": 1,
+          "name": "Spare wheel stowage retainer",
+          "modelIds": [
+            "sp-retaining-rod"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table10023232; hooked cross-compartment retainer, routing/contour reconstructed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 2,
+          "name": "Spare wheel retaining bolt",
+          "modelIds": [
+            "sp-spare-bolt"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table10024098; hand screw modeled; thread/engagement unmeasured",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 3,
+          "name": "Vehicle jack service assembly",
+          "modelIds": [
+            "sp-jack-base",
+            "sp-jack-lower-arms",
+            "sp-jack-upper-arms",
+            "sp-jack-head",
+            "sp-jack-leg",
+            "sp-jack-pins",
+            "sp-jack-screw",
+            "sp-jack-trunnion",
+            "sp-jack-thrust",
+            "sp-jack-drive"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table10030932 is complete jack; construction subdivisions do not establish separate service numbers or lifting capacity",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 4,
+          "name": "Jack stowage bolt",
+          "modelIds": [
+            "sp-jack-bolt"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table10030929; separate hand screw",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 5,
+          "name": "U-shaped nut",
+          "modelIds": [
+            "sp-u-nut"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table12337966 specifiesM8×1.25; exact clip/tooling unmeasured",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 6,
+          "name": "Hex nut with conical washer",
+          "modelIds": [
+            "sp-bracket-nut"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table11508277 specifiesM6×1; grouped nut/washer construction",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 7,
+          "name": "Jack stowage bracket",
+          "modelIds": [
+            "sp-bracket"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table10041843; original production stamping/coordinates unmeasured",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 8,
+          "name": "Hex/washer-head retaining screw",
+          "modelIds": [
+            "sp-bracket-screw"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table11508800 specifiesM6×1×20; measured fit unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 9,
+          "name": "Wheel wrench",
+          "modelIds": [
+            "sp-wrench"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table14036400 specifies19.56mm; bends and jack-drive engagement reconstructed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 10,
+          "name": "Compact spare wheel",
+          "modelIds": [
+            "sp-rim"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table9590503 specifies15×4 RK; tire, valve and markings are additional modeled constructions, not separately numbered by this wheel callout",
+          "physicalQuantity": null
+        }
+      ]
+    },
+    {
+      "id": "2P10-004",
+      "title": "1984–1988 P front-door hardware",
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=300",
+      "application": "Drawing 2P10-004/FBS-1865 (printed mark 052286) and PDF 301–302 application tables were independently opened and inspected again. The 1984–88 heading is not blanket interchange evidence. Preserve 1984–85 RH 20352606/LH 20352607 versus 1986–88 RH 20350876/LH 20350877 belt retainers, 1984 push-in versus 1984–88 black hang-on outer seals, 1984 steel versus 1985–88 glass bushings, clear(P37)/tinted glass, manual(P37)/electric regulators and AU3 annotations. Item 34 is now classified as a window-regulator bumper without powerLocks gating; regulator variant and installed position remain unverified. The window-motor W/AU3 annotation remains unresolved. Manual/electric and option alternatives must not be summed as original installed parts. Relay 19 remains missing rather than replaced by another-family relay.",
+      "reviewedCallouts": 54,
+      "rows": [
+        {
+          "callout": 1,
+          "name": "Door window glass",
+          "modelIds": [
+            "bd-skin-door-glass-left",
+            "bd-skin-door-glass-right"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "identity represented by shared Body glass selections; table distinguishes clear glass annotated P37 from tinted glass; original installed variant, lower glass tail/attachment shape and calibrated lowering remain unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 2,
+          "name": "Window-glass regulator cam",
+          "modelIds": [
+            "bd-door-left-glass-cam",
+            "bd-door-right-glass-cam"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "RH 20364928 / LH 20364929; separately selectable open cam channel; attachment geometry reconstructed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 3,
+          "name": "Rear glass-mounted window stop",
+          "modelIds": [
+            "bd-door-left-glass-rear-stops",
+            "bd-door-right-glass-rear-stops"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20085501; grouped reconstructed stop set for each side; illustrated multiple positions do not establish the complete original per-door quantity",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 4,
+          "name": "Lock over-center spring",
+          "modelIds": [
+            "bd-door-left-lock-overcenter-spring",
+            "bd-door-right-lock-overcenter-spring"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "RH 20047022 / LH 20047023; identity represented; shape and spring calibration unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 5,
+          "name": "Lock-cylinder-to-lock rod",
+          "modelIds": [
+            "bd-door-left-lock-rod",
+            "bd-door-right-lock-rod"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "existing Body selection; RH 20318484 / LH 20318485 table identities; installed bend radii, clips and routing not factory-measured",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 6,
+          "name": "Outside-handle-to-lock rod",
+          "modelIds": [
+            "bd-door-left-handle-rod",
+            "bd-door-right-handle-rod"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "existing Body selection; RH 20318482 / LH 20318483 table identities; complete routing and engagement unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 7,
+          "name": "Complete outside lift-bar handle",
+          "modelIds": [
+            "bd-skin-handle-left",
+            "bd-skin-handle-right"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "crosswalk to visible outer handle/recess; catalog complete-handle service unit is not an exhaustive inventory of modeled pivot, spring or attachment internals",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 8,
+          "name": "Outside lift-bar handle clip",
+          "modelIds": [
+            "bd-door-left-handle-rod-clip",
+            "bd-door-right-handle-rod-clip"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20158344; separate clip identity; attachment fit unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 9,
+          "name": "Lock-cylinder retainer",
+          "modelIds": [
+            "bd-door-left-lock-cylinder-retainer",
+            "bd-door-right-lock-cylinder-retainer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20318476; separate forked retainer; outer key-cylinder bezel is a different selection and is not counted as this retainer",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 10,
+          "name": "Front-door lock assembly",
+          "modelIds": [
+            "bd-door-left-latch",
+            "bd-door-right-latch"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "existing grouped latch/catch construction; catalog 16008172 RH /16008173 LH; internal lock completeness and service-fit orientation unverified. Table note 1 requires removing and reinserting a clip at 180 degrees; the static model does not validate that operation",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 11,
+          "name": "Trim retainer at window belt",
+          "modelIds": [
+            "bd-door-left-belt-trim-retainer",
+            "bd-door-right-belt-trim-retainer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Independent belt trim retainer selections use 1984–85 RH 20352606 / LH 20352607. Distinct 1986–88 RH 20350876 / LH 20350877 retained as reference applications, not substituted. Cross section, attachment inventory and dimensions reconstructed.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 12,
+          "name": "Outer window-belt sealing strip",
+          "modelIds": [
+            "bd-skin-belt-seal-left",
+            "bd-skin-belt-seal-right"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "outer wiping lip represented as a shared exterior selection; table preserves 1984 push-in type 20320532 RH /20320533 LH and black 1984–88 hang-on type 20608220 RH /20608221 LH (notes 2/3). Exact original attachment type and retainer completeness unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 13,
+          "name": "Inner window-belt sealing strip",
+          "modelIds": [
+            "bd-door-left-inner-belt-seal",
+            "bd-door-right-inner-belt-seal"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Independent inner belt-strip selections, RH 20320534 / LH 20320535, distinct from the outer seal and trim panel. Wiping-lip profile, material and attachment details remain unverified.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 14,
+          "name": "Lock push-button return spring",
+          "modelIds": [
+            "bd-door-left-lock-return-spring",
+            "bd-door-right-lock-return-spring"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20888089; separate illustrative coil; winding, preload and original installed form unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 15,
+          "name": "Inner-panel glass stop, first illustrated position",
+          "modelIds": [
+            "bd-door-left-glass-inner-stop",
+            "bd-door-right-glass-inner-stop"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20179560; separate selection; do not merge with the different illustrated position 48 merely because the service number is shared",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 16,
+          "name": "Inside lock-rod-to-inner-panel clip",
+          "modelIds": [
+            "bd-door-left-inside-lock-clip",
+            "bd-door-right-inside-lock-clip"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20474324; separate placement from remote-control rod clip 39 despite shared service number",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 17,
+          "name": "Inside lock-rod-to-lock clip",
+          "modelIds": [
+            "bd-door-left-inside-latch-clip",
+            "bd-door-right-inside-latch-clip"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20474900; separate rod-retaining clip identity",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 18,
+          "name": "Lock remote-control-to-lock rod",
+          "modelIds": [
+            "bd-door-left-inside-release-rod",
+            "bd-door-right-inside-release-rod"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "RH 20318486 / LH 20318487; separate inside-release rod; exact routing and engagement unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 19,
+          "name": "Electric door-lock relay, W/AU3",
+          "modelIds": [],
+          "allModelIdsExist": true,
+          "qualification": "Original parts table identifies AU3 electric door-lock relay20306058; no independently attributed model geometry yet. Separate original1986 service evidence (PDF1018–1020,1053) and1987 evidence (PDF1013–1016,1049,1060) depict one shared, case-grounded assembly near upper RH shroud, containing lock/unlock relays and C1/C2 connectors; five terminal functions are independently recorded in references/completion-door-lock-relay-20261003T0234Z/findings.json. These adjacent-year circuits do not establish1985 installation or service-part interchange: their CTSY/LID ratings differ (1986 20A;1987 25A) and C201 cavity counts differ (6 versus8). Exact1985 applicability, installed option, production geometry, attachment quantities and routing remain unverified. Empty selection mapping is retained; no relay is duplicated into both doors or substituted from another family.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 20,
+          "name": "Lock striker",
+          "modelIds": [
+            "bd-door-left-striker",
+            "bd-door-right-striker"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20464563; shared selection groups striker and washer 21; exact service fit and original installed identity unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 21,
+          "name": "Striker flat washer",
+          "modelIds": [
+            "bd-door-left-striker",
+            "bd-door-right-striker"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 11500367, nominal 11×40×3 PHOS; grouped in the same selection as striker 20, not independently selectable. Reconstructed modeled dimensions are not those factory nominal dimensions",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 22,
+          "name": "Lock-striker anchor plate",
+          "modelIds": [
+            "bd-door-left-striker-anchor",
+            "bd-door-right-striker-anchor"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20277001; separate body-side anchor; position and thread fit unmeasured",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 23,
+          "name": "Door outer-panel attachment block",
+          "modelIds": [
+            "bd-door-left-outer-panel-block",
+            "bd-door-right-outer-panel-block"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Independent attachment-block selections identify 20505072, separate from the latch and inner reinforcement. Reconstructed block and boss outline only; exact mounting interface, material, dimensions and original quantity unverified.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 24,
+          "name": "Inside lock-control-to-lock rod",
+          "modelIds": [
+            "bd-door-left-inside-lock-rod",
+            "bd-door-right-inside-lock-rod"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "RH 20807584 / LH 20807585; separate rod; installed geometry and travel unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 25,
+          "name": "Window-regulator stop bumper, first illustrated position",
+          "modelIds": [
+            "bd-door-left-regulator-stop",
+            "bd-door-right-regulator-stop"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20269755; separate bumper with reconstructed grouped attachment; same service number at 34 does not establish identical position or option application",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 26,
+          "name": "Door inside-lock bell-crank plate, W/AU3",
+          "modelIds": [
+            "bd-door-left-power-lock-bellcrank",
+            "bd-door-right-power-lock-bellcrank"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "RH 20426398 / LH 20426399; powerLocks preview only; stamped tooling, pivots and original installed equipment unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 27,
+          "name": "Electric-lock-actuator-to-lock rod, W/AU3",
+          "modelIds": [
+            "bd-door-left-power-lock-rod",
+            "bd-door-right-power-lock-rod"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "RH 20344920 / LH 20344921; powerLocks preview only; travel/routing unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 28,
+          "name": "Black inside lock-rod knob",
+          "modelIds": [
+            "in-door-left-lock-slider",
+            "in-door-right-lock-slider"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "cross-family identity candidate in Interior; table knob 20332681 corresponds to the modeled manual lock control. The Interior catalog cites a different drawing/callout; exact service-unit identity and dimensions are not verified by that catalog number",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 29,
+          "name": "Manual window regulator, table annotation P37",
+          "modelIds": [
+            "bd-door-left-manual-regulator",
+            "bd-door-right-manual-regulator"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "RH 20302330 / LH 20302331; mutually exclusive with electric regulator 36 in the preview. Catalog service assembly groups arms, pivot and drive; tooth count/profile, glass travel and adjustment remain unverified. P37 annotation is preserved without inferring an option code",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 30,
+          "name": "Rear window-guide cam support",
+          "modelIds": [
+            "bd-door-left-rear-cam-support",
+            "bd-door-right-rear-cam-support"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20325470; separate folded support; geometry and hardware quantities reconstructed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 31,
+          "name": "Window-guide cam",
+          "modelIds": [
+            "bd-door-left-guide-cam",
+            "bd-door-right-guide-cam"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "RH 20349666 / LH 20349667; separate open guide; curvature and attachment fit unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 32,
+          "name": "Inner-panel regulator cam",
+          "modelIds": [
+            "bd-door-left-inner-cam",
+            "bd-door-right-inner-cam"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "RH 20325482 / LH 20325483; separate fixed cam; shape and mounting dimensions unmeasured",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 33,
+          "name": "Electric-lock actuator and actuator bracket",
+          "modelIds": [
+            "bd-door-left-power-lock-actuator",
+            "bd-door-right-power-lock-actuator",
+            "bd-door-left-power-lock-bracket",
+            "bd-door-right-power-lock-bracket"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table lists actuator 22020256 and bracket 22049760 under one callout; model splits both sides into separate actuator and bracket selections. PowerLocks preview is not proof of original equipment; actuator internals and electrical topology remain unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 34,
+          "name": "Door-window regulator stop bumper, second illustrated position",
+          "modelIds": [
+            "bd-door-left-power-lock-stop",
+            "bd-door-right-power-lock-stop"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Table identity 20269755 is a door-window regulator stop bumper. Now classified in the window scope without unsupported powerLocks gating; historical ID retained for compatibility. Original regulator variant, quantity and installed placement remain unresolved. Sharing item 25 service number does not establish identical location or duplicate fitted quantity.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 35,
+          "name": "Window-regulator motor, table annotation W/AU3",
+          "modelIds": [
+            "bd-door-left-window-motor",
+            "bd-door-right-window-motor"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 22082528; separate exterior can/gearbox/mounts in powerWindows preview. The W/AU3 annotation is unresolved and is not treated as a verified window-option code; motor internals and electrical topology not supplied by this exterior drawing",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 36,
+          "name": "Electric window regulator",
+          "modelIds": [
+            "bd-door-left-power-regulator",
+            "bd-door-right-power-regulator"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "RH 20311752 / LH 20311753; mutually exclusive with manual regulator 29 in preview; separately selectable motor 35. Static reconstructed mechanism does not validate adjustment or full travel",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 37,
+          "name": "Window-guide run-channel retainer",
+          "modelIds": [
+            "bd-door-left-guide-retainer",
+            "bd-door-right-guide-retainer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "RH 20325456 / LH 20325457; separate open guide-run retainer; exact original section unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 38,
+          "name": "Window-guide run-channel retainer support",
+          "modelIds": [
+            "bd-door-left-guide-support",
+            "bd-door-right-guide-support"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20356700; separate bracket; reconstructed attachment geometry",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 39,
+          "name": "Door-lock remote-control rod clip",
+          "modelIds": [
+            "bd-door-left-remote-rod-clip",
+            "bd-door-right-remote-rod-clip"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20474324; distinct illustrated position from item 16 despite common service number; exact clip count unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 40,
+          "name": "Front door outer-panel attachment block",
+          "modelIds": [
+            "bd-door-left-front-panel-block",
+            "bd-door-right-front-panel-block"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Independent front attachment-block selections identify 20505073. Reconstructed outline only; exact placement, material, dimensions, fastening and original quantity unverified.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 41,
+          "name": "Body-side lower hinge strap",
+          "modelIds": [
+            "bd-door-left-lower-body",
+            "bd-door-right-lower-body"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "existing Body lower body-side strap selection on each side; catalog distinguishes RH/LH; actual stampings, hinge bores and fit remain reconstructed",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 42,
+          "name": "Door-side lower hinge strap",
+          "modelIds": [
+            "bd-door-left-lower-door",
+            "bd-door-right-lower-door"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "existing Body lower door-side strap selections; RH/LH table identities do not establish measured factory geometry",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 43,
+          "name": "Body-side upper hinge strap",
+          "modelIds": [
+            "bd-door-left-upper-body",
+            "bd-door-right-upper-body"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20475145 is one listed service identity; model has a selection at each door. Installed handedness/interchange and quantities are not inferred from the single row",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 44,
+          "name": "Lower hinge spring",
+          "modelIds": [
+            "bd-door-left-hinge-spring",
+            "bd-door-right-hinge-spring"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20361482; separate spring selection for each modeled side; preload, force, coil geometry and operation unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 45,
+          "name": "Door-side upper hinge strap",
+          "modelIds": [
+            "bd-door-left-upper-door",
+            "bd-door-right-upper-door"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20475146 RH /20475147 LH; existing separate Body strap selections; tooling and fits unmeasured",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 46,
+          "name": "Lower-hinge-to-door/body bolt",
+          "modelIds": [
+            "bd-door-left-hinge-bolts",
+            "bd-door-right-hinge-bolts"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20408249; current selection groups modeled upper and lower hinge bolts/washer geometry. The figure names the lower attachment; complete upper hardware attribution, original lengths and per-vehicle counts remain unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 47,
+          "name": "Upper and lower hinge pin",
+          "modelIds": [
+            "bd-door-left-upper-pin",
+            "bd-door-right-upper-pin",
+            "bd-door-left-lower-pin",
+            "bd-door-right-lower-pin"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20430773; one source identity split across the modeled upper/lower positions on each side. Exact original pin dimensions, bushings, fits and retained hardware inventory remain unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 48,
+          "name": "Inner-panel glass stop, second illustrated position",
+          "modelIds": [
+            "bd-door-left-front-glass-stop",
+            "bd-door-right-front-glass-stop"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20179560; independently represented second stop position; same service number as item 15 is not evidence that their placements or counts are interchangeable",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 49,
+          "name": "Glass stabilizer at belt",
+          "modelIds": [
+            "bd-door-left-glass-stabilizers",
+            "bd-door-right-glass-stabilizers"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20514937; grouped felt-faced stabilizer set for each door; exact original count, felt and tooling unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 50,
+          "name": "Window-glass bushing retainer",
+          "modelIds": [
+            "bd-door-left-glass-bushing-retainers",
+            "bd-door-right-glass-bushing-retainers"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20095585; grouped retainers independently selected from buttons/bushings; complete original quantity unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 51,
+          "name": "Inner window-glass button",
+          "modelIds": [
+            "bd-door-left-glass-inner-buttons",
+            "bd-door-right-glass-inner-buttons"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20216819; grouped inner-button set; tooling, fit and original quantity unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 52,
+          "name": "Window-glass stabilizer button",
+          "modelIds": [
+            "bd-door-left-glass-stabilizer-buttons",
+            "bd-door-right-glass-stabilizer-buttons"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20146473; grouped stabilizer-button set; tooling, fit and original quantity unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 53,
+          "name": "Outer window-glass button",
+          "modelIds": [
+            "bd-door-left-glass-outer-buttons",
+            "bd-door-right-glass-outer-buttons"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "table 20216820; grouped outer-button set, distinct from inner buttons 51; complete original quantity unverified",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 54,
+          "name": "Window-glass bushing",
+          "modelIds": [
+            "bd-door-left-glass-bushings",
+            "bd-door-right-glass-bushings"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "1985–88 service identity 20562754 represented as a grouped set. Distinct 1984 steel-type 20178799 is preserved as a separate source application and is not substituted; later-row material, dimensions, fit and original quantity unverified",
+          "physicalQuantity": null
+        }
+      ]
+    },
+    {
+      "id": "GM02-056",
+      "title": "1985–1988 L44 distributor and ignition",
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=65",
+      "application": "1990 GM22P revision11-90, printed K-13; illustration GM02-056 dated093086, table GM02-0563. Table explicitly covers1985–1988 P2.8L V6 L44/2.8-9. Historical service catalog evidence; installed distributor identity and quantities remain unverified.",
+      "reviewedCallouts": 17,
+      "rows": [
+        {
+          "callout": 1,
+          "name": "Distributor cap",
+          "modelIds": [
+            "eng-cap"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Single selection includes contacts and centre brush; local tooling remains reconstructed.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 2,
+          "name": "Cap attaching screw with lock washer",
+          "modelIds": [
+            "eng-cap-screws"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Grouped screws/washers. The drawing shows one representative fastener, not a verified per-vehicle quantity.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 3,
+          "name": "Distributor rotor",
+          "modelIds": [
+            "eng-rotor"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Grouped rotor service component includes its conductor. No separate conductor replacement is inferred.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 4,
+          "name": "Main shaft",
+          "modelIds": [
+            "eng-distributor-shaft"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Table distinguishes1985 from1986–1988 shaft application. Rotating pole is grouped with the modeled shaft; installed variant remains unknown.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 5,
+          "name": "Pickup-coil shield",
+          "modelIds": [
+            "eng-pickup-shield"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Separate selection; formed shape and placement are reconstructed.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 6,
+          "name": "Housing seal",
+          "modelIds": [
+            "eng-distributor-seal"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Separate annular housing seal; this row does not identify a cap gasket.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 7,
+          "name": "Distributor housing",
+          "modelIds": [
+            "eng-distributor"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Separate housing selection; casting, bore and bushing dimensions remain unmeasured.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 8,
+          "name": "Housing slotted spring pin",
+          "modelIds": [
+            "eng-distributor-housing-pin"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Table specifies1/8×1/2PL; independent pin selection. Nominal source size is not yet an audited model dimension.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 9,
+          "name": "Distributor module",
+          "modelIds": [
+            "eng-icm"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Table distinguishes1985 OEM1103633 from1985 OEM1103694/1986–1988. Both historical applications are preserved; installed module/distributor variant is unknown.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 10,
+          "name": "Module attaching screw with lock washer",
+          "modelIds": [
+            "eng-icm-screws"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Grouped screws/washers. No quantity column appears; drawing occurrence is not installed quantity verification.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 11,
+          "name": "Pickup coil",
+          "modelIds": [
+            "eng-pickup-coil"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Separate coil/carrier selection; winding is not destructively separated.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 12,
+          "name": "Pickup-coil retainer",
+          "modelIds": [
+            "eng-pickup-retainer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Independent annular retainer selection; shape and fit remain reconstructed.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 13,
+          "name": "Stationary pole piece",
+          "modelIds": [
+            "eng-pole-piece"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Separate stationary pole piece; source relation does not establish measured magnetic gaps.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 14,
+          "name": "Gear coiled spring pin",
+          "modelIds": [
+            "eng-distributor-roll-pin"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Table specifies3/16×3/4PL and coiled construction. Existing descriptive/model treatment is a generic hollow spring pin; exact coiled wall construction and nominal dimensions remain unverified.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 15,
+          "name": "Distributor gear",
+          "modelIds": [
+            "eng-distributor-gear"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Separate gear; factory tooth count/profile, helix and engagement remain unverified.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 16,
+          "name": "Washer under gear",
+          "modelIds": [
+            "eng-distributor-washer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Independent flat washer selection; measured thickness and end play remain unverified.",
+          "physicalQuantity": null
+        },
+        {
+          "callout": 17,
+          "name": "Tanged washer under gear",
+          "modelIds": [
+            "eng-distributor-tang-washer"
+          ],
+          "allModelIdsExist": true,
+          "qualification": "Table lists1985 OEM1103633 and1985 OEM1103694/1986–1988 application rows. One reconstructed selection does not establish installed variant or exact formed shape.",
+          "physicalQuantity": null
+        }
+      ]
+    }
+  ],
+  "acquisition": {
+    "full1985ServiceManual": {
+      "identifier": "S-8510P",
+      "status": "not-acquired",
+      "publisherUrl": "https://www.detroitironis.com/1985-pontiac-fiero-service-manual-print.html",
+      "publisherPageCount": 1146,
+      "note": "Publisher identifies the chassis/body factory reprint. No validated free complete primary PDF located in this research pass. A purchase listing is not source-content verification."
+    },
+    "originalOptions": {
+      "status": "owner/vehicle-evidence-required",
+      "known": "VIN identity and owner-reported four-speed/WS6 profile are recorded in src/data.js.",
+      "needed": [
+        "Service Parts Identification label / RPO codes",
+        "Paint and trim codes",
+        "Spring tags",
+        "Installed gearbox ID and speedometer gears",
+        "Starter/alternator/distributor/ECM labels",
+        "Compressor and fan identification if equipped"
+      ]
+    },
+    "corruptDownload": {
+      "file": "references/1985-owners.pdf",
+      "status": "zero-page-unusable-preserved",
+      "preferredFile": "references/1985-owners-boomtastic.pdf",
+      "note": "Do not replace the archive silently. Existing ownersSource already links the usable 107-page Boomtastic edition; PDF page numbers refer to that edition."
+    },
+    "secondaryLead": {
+      "url": "https://charm.li/Pontiac/1985/Fiero%20V6-173%202.8L/",
+      "status": "research-lead-only",
+      "note": "Compiled repair tree includes generic/other-application entries and later bulletins. Each primary GM diagram and application must be verified individually; the tree is not accepted as the complete original S8510P."
+    }
+  },
+  "limits": "Independently inspected drawing-to-selection identity reconciliation. An identity match does not verify factory dimensions, tooling, quantities, original installed variants or workshop access. Callout numbers belong only to their named figure. A drawing selection can contain multiple physical pieces; multiple selections can subdivide one catalog service unit."
+}

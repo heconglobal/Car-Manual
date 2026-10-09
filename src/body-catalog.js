@@ -1,4 +1,5 @@
 import {exteriorParts} from './exterior-catalog.js';
+import {doorMechanismParts,doorMechanismSections} from './door-mechanism-catalog.js';
 const cd='https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf';
 const service='https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf';
 export const bodySections=[
@@ -13,8 +14,9 @@ export const bodySections=[
  {id:'body-roof',parent:'body-system',name:'Roof, A-pillars & retainers',spread:[0,.38,0]},
  {id:'body-rear-clip',parent:'body-system',name:'Rear roof clip, sails & backlight',spread:[0,.3,.18]},
  {id:'body-glazing',parent:'body-system',name:'Windshield, seals & wipers',spread:[0,.28,-.1]},
+ ...doorMechanismSections,
 ];
-export const bodyParts=[];
+export const bodyParts=[...doorMechanismParts];
 function add(key,section,name,description,spread,vehiclePart,page,callout,extra={}){bodyParts.push({id:'bd-'+key,section,system:'body',name,description,spread,vehiclePart,callout,location:bodySections.find(s=>s.id===section).name,source:page<1000?'GM 22P · 1985 body / panel hardware':'1986 Pontiac service · body hardware',sourceUrl:(page<1000?cd:service)+'#page='+page,referenceNote:'Panel and mechanism identity follows the 1985 application rows, with adjacent-year service figures for attachment relationships. Exterior curves are revised against owner photographs and GM panel illustrations. Local surfaces, hinge axes, fastener coordinates and weatherstrip profiles are reconstructed, not tooling or body-alignment data.',...extra});}
 export const bodySurfaceOwners=[
  ...exteriorParts.map(e=>[e.id,e.section,e.name,e.spread,e.page,e.callout]),

@@ -1,0 +1,355 @@
+{
+  "reviewedAt": "2026-10-03T02:12:48.659116+00:00",
+  "reviewer": "/root/browser_performance/mobile_ux",
+  "scope": "Bounded reference-only follow-up: distinguish GM04-238 row97 inner output sleeve14020900 from row24 outer retainers14073782. No app/tests/scripts/current central-register edits, browser/native build or new downloads.",
+  "outcome": "Separate inner output sleeve identity and clutch-side/RH relative position are supported by the preserved GM parts figure plus original adjacent-year service figure and orientation text. Exact fit, dimensions, installed quantity and part-number interchange remain unresolved.",
+  "sources": [
+    {
+      "path": "references/fiero-parts-cd.pdf",
+      "bytes": 20135960,
+      "sha256": "8cc8ba63654dd1892b7be90d2d12729803745303ec5e55d89c584010e0b5048c",
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf",
+      "pagesUsed": [
+        128,
+        129,
+        130
+      ],
+      "pagesReopenedThisFollowup": [
+        128,
+        130
+      ],
+      "figure": "GM04-238",
+      "printedTablePages": [
+        "H-9",
+        "H-10"
+      ],
+      "yearQualification": "Drawing mark082785; printed 1985–86 P four-speed MY8/M17 heading; row97 explicitly1984–85; table footer1990 GM Service Parts Operations Pontiac22P revision11-90. PDF129 row24 table identity reused from the preserved earlier direct review; PDF129 was not reopened in this follow-up.",
+      "coverQualification": "Preserved original GM compilation and prior review provenance; no cover was newly inspected in this follow-up."
+    },
+    {
+      "path": "references/1986-service.pdf",
+      "bytes": 79842817,
+      "sha256": "a03a875d114c444447433d9b78a44d19f1120dc57445c0834350e722fe06a05b",
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf",
+      "pagesOpened": [
+        801,
+        802,
+        803,
+        804,
+        805,
+        806,
+        807,
+        808,
+        809,
+        810,
+        811,
+        812,
+        813,
+        814,
+        815,
+        816,
+        817,
+        818
+      ],
+      "printedPages": "7B1-1 through7B1-18",
+      "year": 1986,
+      "coverQualification": "Preserved original1986 factory manual already qualified in prior review; this follow-up opened only the listed transmission section pages. No new cover review.",
+      "applicationQualification": "Adjacent-year corroboration only. Generic section includes conditional MX6 instructions; no installed variant is selected and no blanket interchange is asserted."
+    }
+  ],
+  "priorReportsRead": [
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/findings.json",
+      "bytes": 23188,
+      "sha256": "846ee11f0de9e614fe13e49a467d867f8ffa938433856e3268e43c7b2c1c43c4"
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/addendum-20261003T002815Z/implementation-map.json",
+      "bytes": 24598,
+      "sha256": "e591a97ef0245522b0413445907630fe52d85085150d7cdbf772974a11ce7e4b"
+    }
+  ],
+  "openedEvidence": [
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/1986-service-pdf-801.png",
+      "bytes": 305812,
+      "sha256": "7d8337984dce32e211fae74da607fa988cb060486a9db58270853532d55f8c56",
+      "pdfPage": 801,
+      "printedPage": "7B1-1",
+      "opened": true,
+      "method": "Existing original PDF page rendered at 1.5x and opened with view_image",
+      "observation": "Printed 7B1-1: 76 mm four-speed section contents and general bearing arrangement. No row-97 part number or dimensions."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/1986-service-pdf-804.png",
+      "bytes": 324117,
+      "sha256": "0d23d6625c34374558e2262a0bae045c37c9949b200ce76ca4daaa9d2749efad",
+      "pdfPage": 804,
+      "printedPage": "7B1-4",
+      "opened": true,
+      "method": "Existing original PDF page rendered at 1.5x and opened with view_image",
+      "observation": "Printed 7B1-4, Figure 3 (100170): assembled cross-section establishes overall shaft/case/clutch topology. No sleeve-24/97 callout or part number. Do not identify an unlabeled section feature as PN 14020900."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/1986-service-pdf-805.png",
+      "bytes": 399135,
+      "sha256": "c1faebdd954fc785e53d690a290af4c24bd8f9fdee101939876293b32f7cae61",
+      "pdfPage": 805,
+      "printedPage": "7B1-5",
+      "opened": true,
+      "method": "Existing original PDF page rendered at 1.5x and opened with view_image",
+      "observation": "Printed 7B1-5: maintenance/fill-plug instructions and Figures 4–5; no sleeve-specific evidence."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/1986-service-pdf-806.png",
+      "bytes": 348962,
+      "sha256": "05fb2c9a5a414ccb86fe36d7b9ca3b24882ebb3cebc79b70fdd3328b4288adfe",
+      "pdfPage": 806,
+      "printedPage": "7B1-6",
+      "opened": true,
+      "method": "Existing original PDF page rendered at 1.5x and opened with view_image",
+      "observation": "Printed 7B1-6: diagnosis text; no sleeve-specific evidence."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/1986-service-pdf-807.png",
+      "bytes": 225900,
+      "sha256": "02801b9352e0d56a2ffc4f503fe5d3726f30f23ac8bc9f3f62fdab1ff4258eb0",
+      "pdfPage": 807,
+      "printedPage": "7B1-7",
+      "opened": true,
+      "method": "Existing original PDF page rendered at 1.5x and opened with view_image",
+      "observation": "Printed 7B1-7, Figure 6: diagnosis chart; no sleeve-specific evidence."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/1986-service-pdf-808.png",
+      "bytes": 367898,
+      "sha256": "2376a3410e4cd0f4649f89aa523ea7233156528a07f560bd97c837533d893c81",
+      "pdfPage": 808,
+      "printedPage": "7B1-8",
+      "opened": true,
+      "method": "Existing original PDF page rendered at 1.5x and opened with view_image",
+      "observation": "Printed 7B1-8, Figures 7–10: case disassembly and clutch-cover removal show assembly orientation. No separate inner-sleeve part number."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/1986-service-pdf-809.png",
+      "bytes": 373154,
+      "sha256": "16f77943bba830c9b2caa0958265c9e8950963753f4943ab8532fc80d365bebd",
+      "pdfPage": 809,
+      "printedPage": "7B1-9",
+      "opened": true,
+      "method": "Existing original PDF page rendered at 1.5x and opened with view_image",
+      "observation": "Printed 7B1-9, shaft-disassembly paragraph explicitly defines RH as end nearest clutch, LH as end farthest from clutch. Figures 11–14 and separate MX6/except-MX6 procedures do not specify inner oil-shield sleeve fit."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/1986-service-pdf-810.png",
+      "bytes": 268585,
+      "sha256": "ea6879764743e73132a80f39c1af74339a8f71af27cd8613e7fa2f1681418963",
+      "pdfPage": 810,
+      "printedPage": "7B1-10",
+      "opened": true,
+      "method": "Existing original PDF page rendered at 1.5x and opened with view_image",
+      "observation": "Printed 7B1-10, Figure 15 (100230): input/output shaft assemblies; output bearing central opening is visible but no separately labeled inner sleeve, part number or measured dimensions."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/1986-service-pdf-811.png",
+      "bytes": 144712,
+      "sha256": "da35f97f96555a8d8ec0751f74cf7eecaec32956a7669cd576114a075030c2f1",
+      "pdfPage": 811,
+      "printedPage": "7B1-11",
+      "opened": true,
+      "method": "Existing original PDF page rendered at 1.5x and opened with view_image",
+      "observation": "Printed 7B1-11, Figures 16–19: shaft/bearing pressing views; no oil-shield sleeve identity. Figure 19 is explicitly MX6 only and must not be generalized to an unidentified installed variant."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/1986-service-pdf-812.png",
+      "bytes": 234433,
+      "sha256": "72a9da289b39c659c9c1574e99b6cab3aec6999b9dbeb15721d5586b1e7546a8",
+      "pdfPage": 812,
+      "printedPage": "7B1-12",
+      "opened": true,
+      "method": "Existing original PDF page rendered at 1.5x and opened with view_image",
+      "observation": "Printed 7B1-12, Figures 20–22: output gear and RH-bearing removal; Figure 22 labels press tooling J26943/J22227, not sleeve 14020900. No sleeve-specific dimension or installation step."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/1986-service-pdf-813.png",
+      "bytes": 449571,
+      "sha256": "fa2a51f773ac62909a8555f3b986abe289f7f42f74ac6f6130411c1c2ef34fa3",
+      "pdfPage": 813,
+      "printedPage": "7B1-13",
+      "opened": true,
+      "method": "Existing original PDF page rendered at 1.5x and opened with view_image",
+      "observation": "Printed 7B1-13: case overhaul removes input/output LH bearing cups and oil slingers; clutch-cover disassembly removes RH cups and separately identifies oil shield, shim and retainer behind output bearing cup. This is the larger shield/retainer stack, not explicit identification of the small shaft-end sleeve. MX6-only LH-retainer procedure/torque is not a sleeve-97 instruction."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/1986-service-pdf-814.png",
+      "bytes": 259240,
+      "sha256": "f6121ae7320f65d45c42c0f9468680b0649ef8432dc0976e099f5e877bf8d543",
+      "pdfPage": 814,
+      "printedPage": "7B1-14",
+      "opened": true,
+      "method": "Existing original PDF page rendered at 1.5x and opened with view_image",
+      "observation": "Printed 7B1-14, Figures 23–25: synchronizer and input-shaft assembly; no sleeve-97 evidence."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/1986-service-pdf-815.png",
+      "bytes": 251028,
+      "sha256": "f2c8ddd1cd81bd6077da72fca0d1af12a9f564a3a421c0e9bc57f65dba1d8d3f",
+      "pdfPage": 815,
+      "printedPage": "7B1-15",
+      "opened": true,
+      "method": "Existing original PDF page rendered at 1.5x and opened with view_image",
+      "observation": "Printed 7B1-15, Figures 26–29: output RH bearing/gear installation. Clutch-cover continuation refers to seal and oil ring on input release-bearing sleeve, a different component from output oil-shield sleeve."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/1986-service-pdf-816.png",
+      "bytes": 236471,
+      "sha256": "48212d783eb9d4472b5d481c324b8ead679d31226635f682e0298abf9eba2278",
+      "pdfPage": 816,
+      "printedPage": "7B1-16",
+      "opened": true,
+      "method": "Existing original PDF page rendered at 1.5x and opened with view_image",
+      "observation": "Printed 7B1-16, Figures 30–34: output LH-bearing installation, case cups and oil-slinger removal. Figure 34 depicts a larger cup/disc; no label establishes it as the small shaft-end sleeve, so no such equivalence is asserted."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/1986-service-pdf-817.png",
+      "bytes": 335123,
+      "sha256": "d7dddf8c2f55cf513c3d98e26293c942c522095a983eca2533768c3907a35c24",
+      "pdfPage": 817,
+      "printedPage": "7B1-17",
+      "opened": true,
+      "method": "Existing original PDF page rendered at 1.5x and opened with view_image",
+      "observation": "Printed 7B1-17, Figures 35–38: input release-bearing sleeve, its seals, oil scoop and clutch-fork bushings. Input release-bearing sleeve is not item 97. Shim tools are service tools, not installed sleeves."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/1986-service-pdf-818.png",
+      "bytes": 440611,
+      "sha256": "15ecff90599b14509886827dcc3cc87b2786f52509be0942434582b313c0f76d",
+      "pdfPage": 818,
+      "printedPage": "7B1-18",
+      "opened": true,
+      "method": "Existing original PDF page rendered at 1.5x and opened with view_image",
+      "observation": "Printed 7B1-18, shim selection and Figure 39: output oil-shield retainer enters gauge J26935-4 during measurement; subsequent shim/shield/bearing-cup installation described. No PN 14020900 or exact small-sleeve seat."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/gm-pdf-128.png",
+      "bytes": 543150,
+      "sha256": "1086aa39e0411895499837f19f31b8795d112d055f6f3228aaa1de15c789d44c",
+      "pdfPages": [
+        128
+      ],
+      "opened": true,
+      "method": "Previously preserved source image reopened for this follow-up",
+      "observation": "GM04-238 exploded drawing: two callout-24 outer-end occurrences plus distinct output inner-end callout 97, between output shaft 25 and bearing 26 in the exploded sequence."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/gm-pdf-130-rows-90-97-detail.png",
+      "bytes": 41269,
+      "sha256": "d00ab1cb8f894c54e3556ed0a23cdeb887d5a87f4b2b3e936838f874c7ac926e",
+      "pdfPages": [
+        130
+      ],
+      "opened": true,
+      "method": "Previously preserved source image reopened for this follow-up",
+      "observation": "Table detail explicitly prints row97 group4.422, service number14020900 and1984–85 application."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/addendum-20261003T002815Z/1986-service-pdf-802.png",
+      "bytes": 371915,
+      "sha256": "6c61ca01a2214219e88940e3808e7e5a8ec24b25bab3a93629a57ef5e3114691",
+      "pdfPages": [
+        802
+      ],
+      "opened": true,
+      "method": "Previously preserved source image reopened for this follow-up",
+      "observation": "Original service Figure1 draws three small sleeves under callout24; third is at output RH/clutch-side end between shaft25 and bearing26."
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/addendum-20261003T002815Z/1986-service-pdf-803.png",
+      "bytes": 320908,
+      "sha256": "821445748e662c35897da7abe514d33fe80baba68df1aa78c1b36f213f8aecf5",
+      "pdfPages": [
+        803
+      ],
+      "opened": true,
+      "method": "Previously preserved source image reopened for this follow-up",
+      "observation": "Original service Figure2 legend calls24 oil-shield sleeve,26 output bearing,27 adjustment shim,28 output-bearing oil shield and29 its retainer; these are separately numbered identities."
+    }
+  ],
+  "distinctions": [
+    {
+      "gmCallout": 24,
+      "partNumber": "14073782",
+      "group": "4.104",
+      "partsName": "Transmission case bearing retainer",
+      "partsApplication": "1985–86 as printed in figure/table heading; no additional row restriction",
+      "drawnOccurrences": 2,
+      "location": "Input LH/outer end and output LH/outer end, opposite clutch; orientation is derived by comparing exploded parts/service diagrams with the explicit service RH/LH definition.",
+      "modelCandidatesFromPriorAddendum": [
+        "tx-input-sleeve",
+        "tx-output-sleeve"
+      ],
+      "limit": "Existing thin-annulus geometry is a reconstruction. The service figure calls these24 oil-shield sleeves; retain both source wordings rather than interpreting equal callout numbers as universal identity."
+    },
+    {
+      "gmCallout": 97,
+      "partNumber": "14020900",
+      "group": "4.422",
+      "partsName": "Oil-shield sleeve",
+      "partsApplication": [
+        1984,
+        1985
+      ],
+      "drawnOccurrences": 1,
+      "location": "Output shaft RH/inner end nearest clutch; drawn as a separate small sleeve between output shaft25 and RH bearing26 in the exploded sequence. This establishes assembly neighborhood, not axial seating depth or press-fit specification.",
+      "serviceCrossReference": "1986 Figure1 uses24 at this third position; Figure2 names24 oil-shield sleeve but supplies no service part number.",
+      "modelProposal": {
+        "id": "tx-output-inner-oil-shield-sleeve",
+        "section": "trans-output",
+        "status": "Previously reserved proposal only; no geometry or source register changed.",
+        "neighborsFromPriorCodeReview": [
+          "tx-output-bearing",
+          "tx-output-shim",
+          "tx-output-shield",
+          "tx-output-retainer"
+        ],
+        "doNotDo": "Do not mark row97 covered by the two existing outer-end IDs; do not create another outer-end pair or assign14073782 to the inner component."
+      }
+    },
+    {
+      "gmCallout": 29,
+      "identity": "Output-bearing oil-shield retainer",
+      "location": "Clutch-cover bearing-cup shield/shim/retainer stack",
+      "modelCandidateFromPriorAddendum": "tx-output-retainer",
+      "limit": "Distinct from small shaft-end sleeve97; procedures naming this retainer or inserting it in shim-selection toolJ26935-4 do not establish sleeve97 shape."
+    },
+    {
+      "gmCallouts": [
+        38,
+        39
+      ],
+      "identity": "Input gear bearing retainer/release-bearing sleeve assembly",
+      "limit": "Large input-side release-bearing guide and its seals are unrelated to output oil-shield sleeve97; do not use Figures35–36 to model97."
+    }
+  ],
+  "evidenceStrength": {
+    "supported": [
+      "Separate physical identity in GM parts figure/table, rather than a grouped service kit.",
+      "Relative RH/clutch-side location distinct from both LH outer-end retainers.",
+      "1984–85 part-number application as printed; preservation of broader adjacent-year service diagram separately."
+    ],
+    "notEstablished": [
+      "Measured sleeve ID/OD/length, flange/lip or slit details, material, wall thickness, press fit, bore engagement, seating depth or retention method.",
+      "Per-vehicle quantity: the tables supply no quantity column; one illustrated inner occurrence is not certified installed inventory.",
+      "Whether1986 service24 represents the same14020900, a revised part, generic artwork or an application not covered by the parts row.",
+      "Which transaxle/ratio/variant is installed in the owner vehicle."
+    ],
+    "independenceLimit": "Parts and service exploded drawings share much illustration structure. They provide distinct original GM labels/context, not independent measured geometry; the section and pressing figures do not resolve the small sleeve seat."
+  },
+  "nextEvidenceToSettleRemainingQuestions": [
+    "Obtain the original1984 S-8410P or1985 S-8510P 76mm four-speed case/output-shaft disassembly and reassembly pages, especially an explicitly labeled shaft-end oil-shield sleeve installation/detail. These complete original manuals remain library gaps; do not replace them with the1986 manual.",
+    "Obtain original GM parts-group4.422 application/quantity and supersession listing for14020900 and group4.104 listing for14073782, tied to the relevant transaxle/RPO and years. A service drawing, engineering drawing or original dimensioned part would settle exact form and seating.",
+    "For owner validation, first record the actual transaxle identification and vehicle/RPO evidence. If that unit is already open for planned service, photograph the RH output-shaft center/end and removed small sleeve beside a scale, plus the separate bearing-cup shield/shim/retainer stack. Record ID,OD,length,wall thickness and any flange/shoulder/slit, installed projection/seat depth and part marks. Do not dismantle a functioning unit solely for this model or infer the installed version from the car model year."
+  ],
+  "recommendedIntegration": "Root may use the evidence to reserve the separate inner sleeve identity and relative clutch-side neighborhood, with explicit1984–85 application and reconstructed geometry status. Do not close exact factory shape/fit/installed-option or quantity acceptance. No central register update was made by this review.",
+  "stopReason": "All nearby preserved original service section pages relevant to shaft/case assembly were inspected. No sleeve-specific dimension or part-number interchange evidence appears. Further generic web searching or adjacent-year substitution would not close the identified source gap."
+}

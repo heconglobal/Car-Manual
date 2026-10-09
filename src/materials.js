@@ -1,7 +1,7 @@
 import * as T from 'three';
 
 // Authored procedural material detail, not photographs of another vehicle.
-function texture(kind,size=256){
+export function texture(kind,size=256){
  const canvas=document.createElement('canvas');canvas.width=canvas.height=size;const ctx=canvas.getContext('2d');
  const img=ctx.createImageData(size,size);let seed=8193;
  const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
@@ -14,7 +14,7 @@ function texture(kind,size=256){
   if(kind==='brushed'){const r=Math.hypot(x-size/2,y-size/2);value=125+Math.sin(r*4)*16+grain*8;}
   const i=(y*size+x)*4;img.data[i]=img.data[i+1]=img.data[i+2]=value;img.data[i+3]=255;
  }
- ctx.putImageData(img,0,0);const t=new T.CanvasTexture(canvas);t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(kind==='cloth'?4:2,kind==='cloth'?4:2);t.anisotropy=4;return t;
+ ctx.putImageData(img,0,0);const t=new T.CanvasTexture(canvas);t.userData.recipe={kind:'grain',grain:kind,size};t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(kind==='cloth'?4:2,kind==='cloth'?4:2);t.anisotropy=4;return t;
 }
 export function createMaterials(){
  const cast=texture('cast'),vinyl=texture('vinyl'),cloth=texture('cloth'),rubber=texture('rubber'),brushed=texture('brushed');
@@ -75,5 +75,11 @@ export function createMaterials(){
 }
 export function textMaterial(text,{background='#161a1c',foreground='#c9cbd0',width=512,height=128,font='bold 62px Arial',border=false}={}){
  const c=document.createElement('canvas');c.width=width;c.height=height;const ctx=c.getContext('2d');ctx.fillStyle=background;ctx.fillRect(0,0,width,height);if(border){ctx.strokeStyle=foreground;ctx.lineWidth=4;ctx.strokeRect(8,8,width-16,height-16);}ctx.fillStyle=foreground;ctx.font=font;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,width/2,height/2,width-20);
- const map=new T.CanvasTexture(c);map.colorSpace=T.SRGBColorSpace;map.anisotropy=4;return new T.MeshStandardMaterial({map,roughness:.55,metalness:.15,side:T.DoubleSide,transparent:background==='transparent',alphaTest:background==='transparent'?.1:0});
+ const map=new T.CanvasTexture(c);map.userData.recipe={kind:'text',text,options:{background,foreground,width,height,font,border}};map.colorSpace=T.SRGBColorSpace;map.anisotropy=4;return new T.MeshStandardMaterial({map,roughness:.55,metalness:.15,side:T.DoubleSide,transparent:background==='transparent',alphaTest:background==='transparent'?.1:0});
+}
+
+export function textureFromRecipe(recipe){
+ if(recipe.kind==='grain')return texture(recipe.grain,recipe.size);
+ if(recipe.kind==='text'){const material=textMaterial(recipe.text,recipe.options),map=material.map;material.dispose();return map;}
+ throw Error('Unsupported procedural texture recipe');
 }

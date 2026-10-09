@@ -1,0 +1,21 @@
+{
+  "createdAt": "2026-10-03T02:40:11.079815+00:00",
+  "centralFile": "references/completion-callout-register.json",
+  "baseSha256": "847764f05766e4874a1d74d51b7e9994291470049ebbfeb4db70f3b0432256e9",
+  "operation": "Replace only the fourth element of figure2P10-004 callout19; no identity, array, option, count or source/application fingerprint changes.",
+  "locator": {
+    "figureId": "2P10-004",
+    "callout": 19,
+    "arrayIndex": 3
+  },
+  "before": "Original table identifies AU3 electric door-lock relay 20306058. No independently attributed geometry yet: the drawing alone does not establish installed location, wiring or per-car quantity. Not duplicated into both doors, and no other-family relay is substituted.",
+  "after": "Original parts table identifies AU3 electric door-lock relay20306058; no independently attributed model geometry yet. Separate original1986 service evidence (PDF1018\u20131020,1053) and1987 evidence (PDF1013\u20131016,1049,1060) depict one shared, case-grounded assembly near upper RH shroud, containing lock/unlock relays and C1/C2 connectors; five terminal functions are independently recorded in references/completion-door-lock-relay-20261003T0234Z/findings.json. These adjacent-year circuits do not establish1985 installation or service-part interchange: their CTSY/LID ratings differ (1986 20A;1987 25A) and C201 cavity counts differ (6 versus8). Exact1985 applicability, installed option, production geometry, attachment quantities and routing remain unverified. Empty selection mapping is retained; no relay is duplicated into both doors or substituted from another family.",
+  "unchangedRowPrefix": [
+    19,
+    "Electric door-lock relay, W/AU3",
+    []
+  ],
+  "evidence": "references/completion-door-lock-relay-20261003T0234Z/findings.json",
+  "evidenceSha256": "0e6ff26fc176073408704bf28978c608b9b963edddf14ccf3502087c3badc259",
+  "promotionRule": "Root owns promotion. Reread latest register and check row before text; preserve prior file and reconcile unrelated subsequent edits rather than overwriting. No promotion performed by this agent."
+}

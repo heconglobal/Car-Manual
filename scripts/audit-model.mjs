@@ -1,7 +1,9 @@
 import {sourceFingerprint} from './source-fingerprint.mjs';
 import assert from 'node:assert/strict';
 import {writeFile} from 'node:fs/promises';
+import {preserveFiles} from './preserve-files.mjs';
 import * as T from 'three';
+const initialSource=sourceFingerprint(),startedAt=new Date().toISOString();
 // Texture creation is stubbed for a geometry-only audit. Browser checks cover
 // rendering/materials separately; this does not pretend to be a render test.
 globalThis.document={createElement:()=>({getContext:()=>({createImageData:(w,h)=>({data:new Uint8ClampedArray(w*h*4)}),putImageData(){},fillRect(){},strokeRect(){},fillText(){}})})};
@@ -36,6 +38,10 @@ const {detailParts,detailSections,detailMembers,detailSectionById}=await import(
 const {createVehicle}=await import('../src/model.js');
 const {createInteriorDetail}=await import('../src/interior-detail.js');
 const {interiorParts}=await import('../src/interior-catalog.js');
+const {createWiperDetail}=await import('../src/wiper-detail.js');
+const {wiperParts}=await import('../src/wiper-catalog.js');
+const {createSpareDetail}=await import('../src/spare-detail.js');
+const {spareParts}=await import('../src/spare-catalog.js');
 const vehicleModel=createVehicle();
 const brakeModel=createBrakeDetail();
 const suspensionModel=createSuspensionDetail();
@@ -44,8 +50,8 @@ const exhaustModel=createExhaustDetail();
 const bodyModel=createBodyDetail();
 const hvacModel=createHvacDetail();
 const headlightModel=createHeadlightDetail();
-const results={date:new Date().toISOString(),sourceSha256:sourceFingerprint(),models:{}};
-for(const [name,model,catalog] of [['interior',createInteriorDetail(),interiorParts],['wiring',createWiringDetail(),wiringParts],['engine',createEngineDetail(),engineParts],['transmission',createTransmissionDetail(),transmissionParts],['cooling',createCoolingDetail(),coolingParts],['brakes',brakeModel,brakeParts],['suspension',suspensionModel,suspensionParts],['fuel',fuelModel,fuelParts],['exhaust',exhaustModel,exhaustParts],['body',bodyModel,bodyParts],['charging',createChargingDetail(),chargingParts],['lighting',createLightingDetail(),lightingParts],['headlights',headlightModel,headlightParts],['hvac',hvacModel,hvacParts],['vehicle',vehicleModel,parts]]){
+const results={startedAt,date:new Date().toISOString(),sourceSha256:initialSource,models:{}};
+for(const [name,model,catalog] of [['interior',createInteriorDetail(),interiorParts],['wipers',createWiperDetail(),wiperParts],['spare',createSpareDetail(),spareParts],['wiring',createWiringDetail(),wiringParts],['engine',createEngineDetail(),engineParts],['transmission',createTransmissionDetail(),transmissionParts],['cooling',createCoolingDetail(),coolingParts],['brakes',brakeModel,brakeParts],['suspension',suspensionModel,suspensionParts],['fuel',fuelModel,fuelParts],['exhaust',exhaustModel,exhaustParts],['body',bodyModel,bodyParts],['charging',createChargingDetail(),chargingParts],['lighting',createLightingDetail(),lightingParts],['headlights',headlightModel,headlightParts],['hvac',hvacModel,hvacParts],['vehicle',vehicleModel,parts]]){
  assert.equal(new Set(catalog.map(p=>p.id)).size,catalog.length,'duplicate catalog IDs');
  assert.equal(model.groups.size,catalog.length);
  let meshes=0,triangles=0;
@@ -76,7 +82,16 @@ for(const side of ['left','right']){
 }
 assert(new T.Box3().setFromObject(headlightModel.groups.get('hl-isolation-relay')).max.x<0,'isolation relay must be driver-side');
 const allClosed=visibleHeadBounds(vehicleModel,'headlights',false),allRaised=visibleHeadBounds(vehicleModel,'headlights',true);
-assert(allRaised.max.y<.82,'lower nominal headlight profile');assert(allRaised.max.y-allClosed.max.y>.08,'raised cover must stand clear of its closed pose');
+// The reconstructed 0.62-radian cover stop clears the raised bezel/aim
+// hardware. Its curved outer surface reaches about 848 mm; the former
+// 820 mm cap belonged to the earlier stop that intersected that hardware.
+// Protect agreement with the actual shared cover, with the same provisional
+// 870 mm envelope used by the separate raised-mesh clearance audit.
+const raisedCoverMax=Math.max(...['left','right'].map(side=>visibleHeadBounds(headlightModel,'hl-'+side+'-cover',true).max.y));
+assert(raisedCoverMax<.87,'reconstructed raised cover envelope');
+assert(Math.abs(allRaised.max.y-raisedCoverMax)<.0001,'vehicle raised envelope differs from shared detailed cover');
+assert(allRaised.max.y-allClosed.max.y>.08,'raised cover must stand clear of its closed pose');
+results.headlightEnvelope={closedMaxY:allClosed.max.y,raisedMaxY:allRaised.max.y,detailedCoverMaxY:raisedCoverMax,provisionalLimitY:.87};
 results.headlights='passed: dual poses, real bucket rotation, early four-cushion gears, fixed motors/relays, independent cover, LHD identity and low raised envelope';
 // Heater and blower stay on the passenger side in actual vehicle coordinates.
 const hb=id=>new T.Box3().setFromObject(hvacModel.groups.get('hv-'+id));
@@ -216,4 +231,7 @@ results.hvac='passed: passenger-side module, coaxial blower, LHD outlets/control
 results.leftHandDrive='passed: signed component positions, front/rear and positive determinant';
 results.detailParts=detailParts.length;
 results.ignitionParts=engineMembers('ignition').length;results.engineControls=engineMembers('engine-controls').length;
+assert.equal(sourceFingerprint(),initialSource,'Source changed while models were being constructed; this run cannot certify the new source');
+results.unchanged=true;results.status='passed';results.finishedAt=new Date().toISOString();
+await preserveFiles(['artifacts/model-audit.json'],'before-model-audit');
 await writeFile('artifacts/model-audit.json',JSON.stringify(results,null,2)+'\n');console.log(JSON.stringify(results,null,2));

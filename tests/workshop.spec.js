@@ -1,3 +1,4 @@
+import {waitForViewer,evaluateViewer} from './viewer-ready.js';
 import { test, expect } from '@playwright/test';
 import { parts, sources, tours } from '../src/data.js';
 import {defaultConfiguration} from '../src/configuration.js';
@@ -8,7 +9,7 @@ test('renders 3D vehicle without runtime errors or external image requests',asyn
  await page.goto('/');await expect(page.locator('#viewport canvas')).toBeVisible();await page.waitForFunction(count=>window.__fiero?.partCount===count,parts.length);
  await page.waitForTimeout(1600);expect(errors).toEqual([]);expect(images).toEqual([]);
  const pixels=await page.locator('canvas').evaluate(c=>{const gl=c.getContext('webgl2');const arr=new Uint8Array(4*50*50);gl.readPixels(Math.floor(c.width/2)-25,Math.floor(c.height/2)-25,50,50,gl.RGBA,gl.UNSIGNED_BYTE,arr);return new Set(arr).size;});expect(pixels).toBeGreaterThan(10);
- await page.screenshot({path:'artifacts/desktop-overview.png'});
+ await waitForViewer(page);await page.screenshot({path:'artifacts/desktop-overview.png'});
 });
 
 test('system filtering, global search, focus, isolation and reset work',async({page})=>{
@@ -16,13 +17,13 @@ test('system filtering, global search, focus, isolation and reset work',async({p
  test.setTimeout(360000);
  await page.goto('/');await expect(page.locator('canvas')).toBeVisible();
  for(const id of ['body','engine','drivetrain','suspension','brakes','cooling','fuel','electrical','interior']){
-  await page.locator(`[data-system="${id}"]`).click();await expect(page.locator('canvas')).toHaveAttribute('data-system',id);expect(await page.locator('.part-button').count()).toBeGreaterThan(0);
+  await page.locator(`[data-system="${id}"]`).click();await waitForViewer(page);await expect(page.locator('canvas')).toHaveAttribute('data-system',id);expect(await page.locator('.part-button').count()).toBeGreaterThan(0);
  }
  await page.getByRole('searchbox').fill('radiator');await expect(page.locator('.part-button[data-part="radiator"]')).toBeVisible();await expect(page.locator('.part-button[data-part="cool-core"]')).toHaveCount(1);
- await page.locator('.part-button[data-part="radiator"]').click();await expect(page.locator('.component-heading')).toContainText('Radiator & fan');await expect(page.locator('canvas')).toHaveAttribute('data-selected','radiator');
- await page.getByRole('button',{name:'Isolate',exact:true}).click();expect(await page.evaluate(()=>window.__fiero.getModelState().isolate)).toBe(true);
+ await page.locator('.part-button[data-part="radiator"]').click();await expect(page.locator('.component-heading')).toContainText('Radiator & fan');await waitForViewer(page);await expect(page.locator('canvas')).toHaveAttribute('data-selected','radiator');
+ await page.getByRole('button',{name:'Isolate',exact:true}).click();expect(await evaluateViewer(page,()=>window.__fiero.getModelState().isolate)).toBe(true);
  await page.getByRole('button',{name:'Show context',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();
- await page.getByRole('button',{name:'Reset view',exact:true}).click();await expect(page.locator('canvas')).toHaveAttribute('data-system','all');await expect(page.locator('canvas')).toHaveAttribute('data-selected','');await expect(page.getByRole('searchbox')).toHaveValue('');
+ await page.getByRole('button',{name:'Reset view',exact:true}).click();await waitForViewer(page);await expect(page.locator('canvas')).toHaveAttribute('data-system','all');await waitForViewer(page);await expect(page.locator('canvas')).toHaveAttribute('data-selected','');await expect(page.getByRole('searchbox')).toHaveValue('');
  await page.getByRole('searchbox').fill('nonexistent-part-xyz');await expect(page.locator('.empty-state')).toBeVisible();await page.locator('#clear-search').click();await expect(page.locator('.part-button')).toHaveCount(parts.filter(p=>detailAvailable(p,defaultConfiguration)).length);
 });
 
@@ -34,15 +35,15 @@ test('camera presets and keyboard controls update the viewer',async({page})=>{
 
 test('visibility, labels, wireframe and exploded views work',async({page})=>{
  await page.goto('/');await expect(page.locator('canvas')).toBeVisible();
- for(const [action,key] of [['body','hideBody'],['labels','labels'],['wireframe','wireframe']]){await page.locator(`[data-action="${action}"]`).click();expect(await page.evaluate(k=>window.__fiero.getModelState()[k],key)).toBe(true);await page.locator(`[data-action="${action}"]`).click();}
- await page.locator('#explode').fill('65');await expect(page.locator('#explode-value')).toHaveText('65%');expect(await page.evaluate(()=>window.__fiero.getModelState().explode)).toBe(.65);
- await page.locator('[data-action="body"]').click();await page.waitForTimeout(1500);await page.screenshot({path:'artifacts/exploded-chassis.png'});
+ for(const [action,key] of [['body','hideBody'],['labels','labels'],['wireframe','wireframe']]){await page.locator(`[data-action="${action}"]`).click();expect(await evaluateViewer(page,k=>window.__fiero.getModelState()[k],key)).toBe(true);await page.locator(`[data-action="${action}"]`).click();}
+ await page.locator('#explode').fill('65');await expect(page.locator('#explode-value')).toHaveText('65%');expect(await evaluateViewer(page,()=>window.__fiero.getModelState().explode)).toBe(.65);
+ await page.locator('[data-action="body"]').click();await page.waitForTimeout(1500);await waitForViewer(page);await page.screenshot({path:'artifacts/exploded-chassis.png'});
 });
 
 test('direct 3D picking selects a part',async({page})=>{
  await page.goto('/');await expect(page.locator('canvas')).toBeVisible();await page.waitForTimeout(1200);
  const rect=await page.locator('canvas').boundingBox();let selected=false;
- for(const [x,y] of [[.50,.51],[.52,.57],[.45,.55],[.60,.55],[.42,.48]]){await page.mouse.click(rect.x+rect.width*x,rect.y+rect.height*y);selected=await page.evaluate(()=>!!window.__fiero.getState().selected);if(selected)break;}
+ for(const [x,y] of [[.50,.51],[.52,.57],[.45,.55],[.60,.55],[.42,.48]]){await page.mouse.click(rect.x+rect.width*x,rect.y+rect.height*y);selected=await evaluateViewer(page,()=>!!window.__fiero.getState().selected);if(selected)break;}
  expect(selected).toBe(true);await expect(page.locator('.component-heading')).toBeVisible();
 });
 
@@ -62,12 +63,12 @@ test('specification provenance and source dialog remain accessible',async({page}
 });
 
 test('UAT feedback persists, is safely rendered, and exports valid JSON',async({page})=>{
- await page.goto('/');await page.locator('[data-tab="uat"]').click();await page.locator('[data-check="0"]').check();await page.locator('#feedback').fill('<script>window.compromised=true</script> Orbit is smooth.');await page.getByRole('button',{name:'Save note',exact:true}).click();await expect(page.locator('.saved-notes')).toContainText('<script>');expect(await page.evaluate(()=>window.compromised)).toBeUndefined();
+ await page.goto('/');await page.locator('[data-tab="uat"]').click();await page.locator('[data-check="0"]').check();await page.locator('#feedback').fill('<script>window.compromised=true</script> Orbit is smooth.');await page.getByRole('button',{name:'Save note',exact:true}).click();await expect(page.locator('.saved-notes')).toContainText('<script>');expect(await evaluateViewer(page,()=>window.compromised)).toBeUndefined();
  await page.reload();await page.locator('[data-tab="uat"]').click();await expect(page.locator('[data-check="0"]')).toBeChecked();await expect(page.locator('.saved-notes')).toContainText('Orbit is smooth.');
  const downloadPromise=page.waitForEvent('download');await page.locator('[data-action="export"]').click();const download=await downloadPromise;expect(download.suggestedFilename()).toBe('fiero-uat-feedback.json');const stream=await download.createReadStream();let body='';for await(const chunk of stream)body+=chunk;const data=JSON.parse(body);expect(data.notes).toHaveLength(1);expect(data.checkedItems).toHaveLength(1);expect(data.vehicle.vin).toBe('1G2PF3796FP217611');
 });
 
 test('mobile layout renders without overflow and opens assembly navigation',async({page})=>{
- await page.setViewportSize({width:390,height:844});await page.goto('/');await expect(page.locator('canvas')).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
- await page.getByRole('button',{name:'Open assemblies'}).click();await expect(page.locator('.sidebar')).toHaveClass(/mobile-open/);await page.getByRole('searchbox').fill('air filter');await page.locator('.part-button[data-part="air-filter"]').click();await expect(page.locator('.sidebar')).not.toHaveClass(/mobile-open/);await expect(page.locator('.component-heading')).toContainText('Air filter element');await page.waitForTimeout(1200);await page.screenshot({path:'artifacts/mobile-explorer.png',fullPage:true});
+ await page.setViewportSize({width:390,height:844});await page.goto('/');await expect(page.locator('canvas')).toBeVisible();expect(await evaluateViewer(page,()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+ await page.getByRole('button',{name:'Open assemblies'}).click();await expect(page.locator('.sidebar')).toHaveClass(/mobile-open/);await page.getByRole('searchbox').fill('air filter');await page.locator('.part-button[data-part="air-filter"]').click();await expect(page.locator('.sidebar')).not.toHaveClass(/mobile-open/);await expect(page.locator('.component-heading')).toContainText('Air filter element');await page.waitForTimeout(1200);await waitForViewer(page);await page.screenshot({path:'artifacts/mobile-explorer.png',fullPage:true});
 });

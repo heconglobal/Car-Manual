@@ -29,7 +29,7 @@ export function formedPatch(h,id,face,cx,cy,w,height,depth,mat='blackPaint',hole
  // Tessellate BEFORE wrapping. Long triangulated caps otherwise cut straight
  // through the curved fascia and expose large red triangular patches.
  const input=raw.attributes.position,positions=[];
- for(let i=0;i<input.count;i+=3){const a=new T.Vector3().fromBufferAttribute(input,i),b=new T.Vector3().fromBufferAttribute(input,i+1),c=new T.Vector3().fromBufferAttribute(input,i+2),n=Math.max(1,Math.ceil(Math.max(a.distanceTo(b),b.distanceTo(c),c.distanceTo(a))/.016));
+ for(let i=0;i<input.count;i+=3){const a=new T.Vector3().fromBufferAttribute(input,i),b=new T.Vector3().fromBufferAttribute(input,i+1),c=new T.Vector3().fromBufferAttribute(input,i+2),n=Math.max(1,Math.ceil(Math.max(a.distanceTo(b),b.distanceTo(c),c.distanceTo(a))/(.016/(h.resolution||1))));
   const at=(u,v)=>a.clone().addScaledVector(b.clone().sub(a),u/n).addScaledVector(c.clone().sub(a),v/n);
   for(let u=0;u<n;u++)for(let v=0;v<n-u;v++){positions.push(...at(u,v).toArray(),...at(u+1,v).toArray(),...at(u,v+1).toArray());if(u+v<n-1)positions.push(...at(u+1,v).toArray(),...at(u+1,v+1).toArray(),...at(u,v+1).toArray());}
  }
@@ -66,16 +66,7 @@ export function buildExterior(h){
   surface(shell,64,14,(u,v)=>{const p=perimeter(u*Math.PI*2);return [lerp(s*.885,p[0],.62*v),lerp(.850,p[1],.65*v),-.568+.018*v*v];},'blackPaint');
   surface(shell,64,5,(u,v)=>{const p=perimeter(u*Math.PI*2,1-.12*v);p[2]-=.006*v;return p;},'blackPaint');
   surface(glass,64,12,(u,v)=>{const p=perimeter(u*Math.PI*2,.87*v);p[2]-=.008+.002*(1-v*v);return p;},'chrome');
-  // Both blades park across the base of the glass (not a V pointing outward).
-  const pivotX=side==='left'?.16:-.48,midX=pivotX+.14;
-  cyl('wiper-arm-'+side,.011,.011,[pivotX,.838,-.609],'blackPaint',[0,0,0]);
-  const blade='wiper-blade-'+side,start=midX-.2286,end=midX+.2286;
-  const bladePoint=t=>{const v=.060+.014*Math.sin(t*Math.PI),x=lerp(start,end,t),u=(x/windshield(1,v)[0]+1)/2,p=windshield(u,v),n=surfaceNormal(windshield,u,v,[0,.8,-.6]);return p.map((a,k)=>a+n.getComponent(k)*.0025);};
-  const saddle=bladePoint(.5);saddle[1]+=.010;saddle[2]-=.007;
-  tube('wiper-arm-'+side,[[pivotX,.844,-.609],[pivotX+.055,.852,-.620],saddle],.0045,'blackPaint');
-  tube(blade,Array.from({length:40},(_,i)=>bladePoint(i/39)),.0022,'rubber');
-  for(const [a,b,lift]of [[.08,.92,.012],[.08,.46,.007],[.54,.92,.007]])tube(blade,Array.from({length:18},(_,i)=>{const t=i/17,p=bladePoint(lerp(a,b,t));p[1]+=lift*Math.sin(t*Math.PI)+.004;return p;}),.002,'blackPaint');
-  for(const t of [.08,.27,.46,.54,.73,.92]){const p=bladePoint(t);box(blade,[.011,.008,.009],[p[0],p[1]+.004,p[2]],'dark',[],{},.001);}
+  buildWiperSide(h,side);
  }
  // Intake aperture is cut from the quarter; grating sits inside its lip.
  const intake=(u,v,depth=0)=>{const z=.633+.194*u,y=exteriorBeltHeight(z)-.133+.103*v;return [sideWidth(z,y,1.1865,true)+depth,y,z];};
@@ -99,4 +90,19 @@ export function buildExterior(h){
  cyl('antenna',.007,.025,[-.747,.828,-.681],'blackPaint',[0,0,0]);
  const mast=new T.CylinderGeometry(.0010,.0021,.635,12);add('antenna',mast,'dark',[-.747,1.153,-.681]);
  cyl('antenna',.0021,.006,[-.747,1.473,-.681],'dark',[0,0,0]);
+}
+
+// Shared parked surfaces for the body and dedicated wiper explorer.
+export function buildWiperSide(h,side){
+ const {cyl,tube,box}=h;
+  // Both blades park across the base of the glass (not a V pointing outward).
+  const pivotX=side==='left'?.16:-.48,midX=pivotX+.14;
+  cyl('wiper-arm-'+side,.011,.011,[pivotX,.838,-.609],'blackPaint',[0,0,0]);
+  const blade='wiper-blade-'+side,start=midX-.2286,end=midX+.2286;
+  const bladePoint=t=>{const v=.060+.014*Math.sin(t*Math.PI),x=lerp(start,end,t),u=(x/windshield(1,v)[0]+1)/2,p=windshield(u,v),n=surfaceNormal(windshield,u,v,[0,.8,-.6]);return p.map((a,k)=>a+n.getComponent(k)*.0025);};
+  const saddle=bladePoint(.5);saddle[1]+=.010;saddle[2]-=.007;
+  tube('wiper-arm-'+side,[[pivotX,.844,-.609],[pivotX+.055,.852,-.620],saddle],.0045,'blackPaint');
+  tube(blade,Array.from({length:40},(_,i)=>bladePoint(i/39)),.0022,'rubber');
+  for(const [a,b,lift]of [[.08,.92,.012],[.08,.46,.007],[.54,.92,.007]])tube(blade,Array.from({length:18},(_,i)=>{const t=i/17,p=bladePoint(lerp(a,b,t));p[1]+=lift*Math.sin(t*Math.PI)+.004;return p;}),.002,'blackPaint');
+  for(const t of [.08,.27,.46,.54,.73,.92]){const p=bladePoint(t);box(blade,[.011,.008,.009],[p[0],p[1]+.004,p[2]],'dark',[],{},.001);}
 }

@@ -1,4 +1,4 @@
-import {buildMappedInterior} from './interior-detail.js';
+import {buildMappedInterior} from './interior-mapped.js';
 import { buildWheelFace } from './wheels.js';
 import * as T from 'three';
 import {engineToVehicle,transmissionAttachment,installationAngle} from './powertrain-layout.js';
@@ -59,18 +59,7 @@ export function buildMechanics(h){
  // Front service compartment: factory DIY manual, printed 2-4 and 2-14.
  box('spaceframe',[1.09,.030,.87],[0,.261,-1.14],'plastic',[],{},.015);
  for(const s of [-1,1])profile('spaceframe',[[-1.58,.275],[-1.58,.45],[-.77,.55],[-.71,.28]],.023,s*.554,'plastic');
- const spareCentre=new T.Vector3(0,.45,-1.09),spareRotation=.48;
- const sparePoint=p=>new T.Vector3(...p).applyAxisAngle(new T.Vector3(1,0,0),spareRotation).add(spareCentre).toArray();
- const spareProfile=[[-.052,.159],[-.058,.205],[-.045,.254],[-.027,.267],[.027,.267],[.045,.254],[.058,.205],[.052,.159]];
- const spareTire=new T.LatheGeometry(spareProfile.map(([a,r])=>new T.Vector2(r,a)),72);add('spare-wheel',spareTire,'rubber',spareCentre.toArray(),[spareRotation,0,0]);
- cyl('spare-wheel',.164,.065,spareCentre.toArray(),'dark',[spareRotation,0,0]);
- ring('spare-wheel',.161,.005,sparePoint([0,.038,0]),'metal',[Math.PI/2+spareRotation,0,0]);
- cyl('spare-wheel',.064,.015,sparePoint([0,.04,0]),'metal',[spareRotation,0,0]);
- for(let i=0;i<8;i++){const a=i/8*Math.PI*2;cyl('spare-wheel',.023,.002,sparePoint([Math.cos(a)*.118,.037,Math.sin(a)*.118]),'rubber',[spareRotation,0,0]);}
- cyl('spare-wheel',.012,.115,spareCentre.toArray(),'metal',[spareRotation,0,0]);
- box('spare-wheel',[.09,.012,.027],sparePoint([0,.064,0]),'dark',[spareRotation,0,0]);
- box('spare-wheel',[.08,.057,.29],[-.45,.335,-1.03],'metal',[0,.1,.05]);
- tube('spare-wheel',[[-.49,.368,-1.15],[-.42,.40,-1.05],[-.49,.368,-.91]],.012,'dark');
+ // Spare, jack and stowage hardware share the dedicated native explorer.
  cyl('clutch-hydraulics',.023,.14,[.59,.578,-.737],'metal',[Math.PI/2,0,0]);
  cyl('clutch-hydraulics',.033,.081,[.59,.632,-.728],'reservoir',[0,0,0]);
  cyl('clutch-hydraulics',.037,.013,[.59,.678,-.728],'plastic',[0,0,0]);
@@ -78,10 +67,6 @@ export function buildMechanics(h){
  cyl('clutch-hydraulics',.021,.132,transmissionAttachment([.45,.541,1.13]),'metal',[Math.PI/2+installationAngle,0,0]);
  cyl('clutch-hydraulics',.011,.067,transmissionAttachment([.45,.541,1.224]),'alloy',[Math.PI/2+installationAngle,0,0]);
  box('clutch-hydraulics',[.074,.017,.069],transmissionAttachment([.45,.518,1.14]),'dark',[installationAngle,0,0]);
- box('washer-reservoir',[.16,.155,.245],[.43,.43,-1.24],'reservoir',[],{},.034);
- cyl('washer-reservoir',.031,.024,[.43,.518,-1.29],'plastic',[0,0,0]);
- cyl('washer-reservoir',.017,.055,[.50,.412,-1.15],'plastic',[0,0,0]);
- tube('washer-reservoir',[[.5,.437,-1.15],[.54,.52,-.96],[.54,.71,-.67],[.30,.81,-.59]],.003,'rubber');
  // Detailed thermostat assembly is shared with the engine explorer.
  // Exhaust geometry is shared with its dedicated component explorer.
  // Battery, charging components, power harness and optional equipment.
@@ -89,11 +74,7 @@ export function buildMechanics(h){
  tube('harness',[[-.58,.66,.79],[-.45,.62,.64],[.54,.52,.58],[.55,.32,-.59],[.59,.48,-1.55]],.014,'wire');
  for(const x of [-.10,.11,.31])tube('harness',[[.54,.52,.58],[x,.60,.8],[x,.74,1.05]],.006,'wire');
  for(let i=0;i<8;i++)box('harness',[.020,.023,.008],[.55,.34,-.45+i*.095],'rubber');
- // Optional compressor and condenser are attached to related existing records.
- cyl('ac-compressor',.069,.17,engineToVehicle([-.24,1.03,-.18]),'metal',[0,0,Math.PI/2],.069,{option:'airConditioning',value:true});
- cyl('ac-compressor',.067,.034,engineToVehicle([-.34,1.03,-.18]),'dark',[0,0,Math.PI/2],.067,{option:'airConditioning',value:true});
- box('radiator',[.64,.30,.027],[0,.456,-1.78],'metal',[-.13,0,0],{option:'airConditioning',value:true});
- tube('coolant-pipes',[engineToVehicle([-.24,1.03,-.18]),[-.51,.28,.8],[-.49,.18,-1.45],[-.25,.4,-1.79]],.009,'metal',{option:'airConditioning',value:true});
+ // C60 refrigeration geometry is shared with its dedicated detail explorer.
  cyl('shift-linkage',.057,.070,[.59,.637,1.64],'dark',[Math.PI/2,0,0],.057,{option:'cruise',value:true});
  tube('shift-linkage',[[.59,.637,1.64],[.42,.72,1.48],[.01,.82,1.20]],.006,'rubber',{option:'cruise',value:true});
 }

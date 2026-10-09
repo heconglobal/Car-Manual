@@ -4,6 +4,7 @@ import {geometryTools} from './geometry.js';
 import {mechanicalTools} from './mechanical-geometry.js';
 import {correctLegacyHandedness} from './vehicle-frame.js';
 import {hvacParts,hvacSections} from './hvac-catalog.js';
+import {buildRefrigeration} from './hvac-refrigeration.js';
 export function hvacMaterials(base=createMaterials()){const m={...base};for(const k of ['plastic','rubber','metal','dark','copper'])m[k]=base[k].clone();m.plastic.bumpScale=.000035;m.plastic.roughness=.53;m.rubber.bumpScale=.00004;m.metal.bumpScale=.00005;m.dark.bumpScale=.00002;m.copper.roughness=.37;return m;}
 export function createHvacDetail(){const root=new T.Group(),groups=new Map();for(const p of hvacParts){const g=new T.Group();g.name=p.id;g.userData={partId:p.id,system:'cooling',section:p.section,spread:new T.Vector3(...p.spread),assemblySpread:new T.Vector3(...(hvacSections.find(s=>s.id===p.section).spread||[0,0,0]))};groups.set(p.id,g);root.add(g);}const h=geometryTools(groups,hvacMaterials());buildHvac(h);for(const p of hvacParts)if(p.option)for(const mesh of groups.get(p.id).children)Object.assign(mesh.userData,{option:p.option,value:p.value});h.optimize();correctLegacyHandedness(groups);return{root,groups};}
 const pfx=k=>'hv-'+k;
@@ -35,7 +36,7 @@ export function buildHvacCore(h,ids={core:'hv-core',tanks:'hv-core-tanks',seals:
   for(const [i,x]of [[0,cx-w/2-.012],[1,cx+w/2+.012]]){const points=[[x,cy+.040,z],[x,cy+.060,z-.025],[i?-.19:-.35,.642,-.618],[i?-.19:-.35,.642,-.678]];tube(ids.tanks,points,i?.008:.009,'copper',flags);const end=points.at(-1);h.ring(ids.tanks,i?.0088:.0098,.001,end,'copper',[0,0,0],flags);}
  }
 }
-export function buildHvac(h){buildHvacCore(h);buildModule(h);buildBlower(h);buildDucts(h);buildControls(h);buildEvaporator(h);}
+export function buildHvac(h){buildHvacCore(h);buildModule(h);buildBlower(h);buildDucts(h);buildControls(h);buildEvaporator(h);buildRefrigeration(h);}
 function buildModule(h){
  const {box,cyl,tube,bolt,surface}=h,{sheet,frame,sleeve,rim,walls,duct}=hvacTools(h),id=pfx;
  const outline=[[-.701,.541],[-.692,.682],[-.663,.721],[-.610,.739],[-.552,.727],[-.491,.692],[-.141,.692],[-.113,.650],[-.112,.466],[-.246,.443],[-.382,.462],[-.479,.489],[-.659,.502]];

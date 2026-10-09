@@ -1,0 +1,1089 @@
+{
+  "generatedAt": "2026-10-03T02:44:37.942Z",
+  "sourceSha256": "3b8745845c9f39979f3eb85a2eef5b102475e16b84af9e540ab916c8bc482435",
+  "primaryDocument": {
+    "file": "references/1985-fiero-diy.pdf",
+    "pages": 66,
+    "bytes": 16820213,
+    "sha256": "7bc46753c5c90f25bd898b08e215e2f75b55ff3dca2b8e9eb22851193656932e",
+    "usable": true
+  },
+  "reviewedPages": [
+    {
+      "page": 2,
+      "path": "references/service-source-review-20261001/diy-pdf-02.png",
+      "sha256": "85ff4b8efc421359014257cd7f01d2f14b5c69637ddea7712678da288ba47165",
+      "reviewed": true
+    },
+    {
+      "page": 3,
+      "path": "references/service-source-review-20261001/diy-pdf-03.png",
+      "sha256": "9a7e45b683a46435d866925a56c7821339a480a9ca0c49e8900081b2f8e3cb10",
+      "reviewed": true
+    },
+    {
+      "page": 4,
+      "path": "references/service-source-review-20261001/diy-pdf-04.png",
+      "sha256": "b0de734dc01719b7f5a321b818a79bf50ec139d325d935161b9fc1288a70fca5",
+      "reviewed": true
+    },
+    {
+      "page": 9,
+      "path": "references/service-source-review-20261001/diy-pdf-09.png",
+      "sha256": "b43f53a55e2b2c5c5994af6aa3603379738f0b0ad65860bed63c1aaf96a6a530",
+      "reviewed": true
+    },
+    {
+      "page": 10,
+      "path": "references/service-source-review-20261001/diy-pdf-10.png",
+      "sha256": "0284167e9e9b3b4f39857f548b5f80ef2386d1f3e7f8371104dac20f5b8d19d3",
+      "reviewed": true
+    },
+    {
+      "page": 11,
+      "path": "references/service-source-review-20261001/diy-pdf-11.png",
+      "sha256": "00c83209dd02be1f617de076daef582da65af09b03c105c5c889053dedb2f25c",
+      "reviewed": true
+    },
+    {
+      "page": 12,
+      "path": "references/service-source-review-20261001/diy-pdf-12.png",
+      "sha256": "0ecde28d1e1487580c4192fe849c2af2da95b70bb2e570f29895d3786f220bf0",
+      "reviewed": true
+    },
+    {
+      "page": 15,
+      "path": "references/service-source-review-20261001/diy-pdf-15.png",
+      "sha256": "f4c15f14d9a83c3714290ea4d3cdbe7eda2737b061233b46b9f6e0e09dcd6c43",
+      "reviewed": true
+    },
+    {
+      "page": 16,
+      "path": "references/service-source-review-20261001/diy-pdf-16.png",
+      "sha256": "2984d3a240d7b28b81e5c3a792440b573a4e4a2851bd7b0e6a069c51b675dc6d",
+      "reviewed": true
+    },
+    {
+      "page": 17,
+      "path": "references/service-source-review-20261001/diy-pdf-17.png",
+      "sha256": "ff27f7e4a99c50f9c81d97bb62487a0bc80a7028382ef1d0b7b1fd276cf4008f",
+      "reviewed": true
+    },
+    {
+      "page": 19,
+      "path": "references/service-source-review-20261001/diy-pdf-19.png",
+      "sha256": "5fd326ac69a2a3e7f4c63735f7d4e8f6d98b94cc6baa8f370e84e83f29bfccc3",
+      "reviewed": true
+    },
+    {
+      "page": 21,
+      "path": "references/service-source-review-20261001/diy-pdf-21.png",
+      "sha256": "6732cc235f12bffaa84a345ce804a9b5ffcca33c7fd6d48347c9219e4a084635",
+      "reviewed": true
+    },
+    {
+      "page": 22,
+      "path": "references/service-source-review-20261001/diy-pdf-22.png",
+      "sha256": "94729e6d3c92d818e98d92dd2152862943efe4ceec594f535b69401835c817ec",
+      "reviewed": true
+    },
+    {
+      "page": 23,
+      "path": "references/service-source-review-20261001/diy-pdf-23.png",
+      "sha256": "636794e54c2be35ce0c2c632ee8b2090b1c2b5b5e25dba81121ebcb50b3ae0df",
+      "reviewed": true
+    },
+    {
+      "page": 24,
+      "path": "references/service-source-review-20261001/diy-pdf-24.png",
+      "sha256": "8c85d5aff242fda1dc3a1331bc813ea1f1ebbeaf1aa06cec832f61062ac92d27",
+      "reviewed": true
+    },
+    {
+      "page": 25,
+      "path": "references/service-source-review-20261001/diy-pdf-25.png",
+      "sha256": "8eab6cef8c4c4e50988a7501e52849e0f91343d518cdbcee069935a773c363be",
+      "reviewed": true
+    },
+    {
+      "page": 26,
+      "path": "references/service-source-review-20261001/diy-pdf-26.png",
+      "sha256": "54ca73bcab247eefa83fda6e25e6ffd0d3569029b47e3b6d3ce5bfe463c898b5",
+      "reviewed": true
+    },
+    {
+      "page": 27,
+      "path": "references/service-source-review-20261001/diy-pdf-27.png",
+      "sha256": "3b5fe2ccf2b0a57f476e1730072a4627aef2d9e9c81c843898657a6e1c05285e",
+      "reviewed": true
+    },
+    {
+      "page": 30,
+      "path": "references/service-source-review-20261001/diy-pdf-30.png",
+      "sha256": "b3d810e9e6b084f968f0544202809f2f05ed3ed5588c06d0eebb46bc2f47c07e",
+      "reviewed": true
+    },
+    {
+      "page": 31,
+      "path": "references/service-source-review-20261001/diy-pdf-31.png",
+      "sha256": "844e70f563f010bf995069a33262213d80dbe5d5a603cf15e090c04be99c27ea",
+      "reviewed": true
+    },
+    {
+      "page": 32,
+      "path": "references/service-source-review-20261001/diy-pdf-32.png",
+      "sha256": "9934a096dc66ecd790b9dfe3b1656bf87fb0d19d34edeef09e19d8c4c37230df",
+      "reviewed": true
+    },
+    {
+      "page": 39,
+      "path": "references/service-source-review-20261001/diy-pdf-39.png",
+      "sha256": "34b72e147c6ead2f8b921833894d97ddc70359cc6726d27369c947203e58aa6e",
+      "reviewed": true
+    },
+    {
+      "page": 40,
+      "path": "references/service-source-review-20261001/diy-pdf-40.png",
+      "sha256": "c48a1d157d78626ccc129276d932a83774a9d777783aff5846d6e0bb410c2a1d",
+      "reviewed": true
+    },
+    {
+      "page": 41,
+      "path": "references/service-source-review-20261001/diy-pdf-41.png",
+      "sha256": "9f3efe5968a6ab8b41b42e80a6e71dc51434be3f011014e97278b7ea97289d3c",
+      "reviewed": true
+    },
+    {
+      "page": 42,
+      "path": "references/service-source-review-20261001/diy-pdf-42.png",
+      "sha256": "a371d148c1f73959a7fda0fd2a44bbc83e0ebb0dc2fb3f631d2564fbf15c1681",
+      "reviewed": true
+    },
+    {
+      "page": 53,
+      "path": "references/service-source-review-20261001/diy-pdf-53.png",
+      "sha256": "424eb74f484ee8340aecf96155f6553982897477b309a85a9aebe9540ebf3848",
+      "reviewed": true
+    },
+    {
+      "page": 54,
+      "path": "references/service-source-review-20261001/diy-pdf-54.png",
+      "sha256": "f3ff327f845680a1c7a31d4fd26e17270640e8368aeba47928ccfd137384eff7",
+      "reviewed": true
+    },
+    {
+      "page": 55,
+      "path": "references/service-source-review-20261001/diy-pdf-55.png",
+      "sha256": "4210b157029d04d50ca26c001005c0ab7ce8283596ddbe951fd1d716adb1a0b6",
+      "reviewed": true
+    },
+    {
+      "page": 57,
+      "path": "references/service-source-review-20261001/diy-pdf-57.png",
+      "sha256": "e8cc7e7dd0ad01ff0b1638126111b5b46bcb9821fe3776d1d23ef16aa6d0a00e",
+      "reviewed": true
+    },
+    {
+      "page": 59,
+      "path": "references/service-source-review-20261001/diy-pdf-59.png",
+      "sha256": "02d1af7c2259990da6e7c116a8eae44a2b552b5f57b82790fdccc0a1da02ddab",
+      "reviewed": true
+    },
+    {
+      "page": 60,
+      "path": "references/service-source-review-20261001/diy-pdf-60.png",
+      "sha256": "bed41535f336f02c5bc91d599b867d0349de8ab59952594e8b094d89b1e477bb",
+      "reviewed": true
+    },
+    {
+      "page": 61,
+      "path": "references/service-source-review-20261001/diy-pdf-61.png",
+      "sha256": "e04b789949c7a666cd9c9441e667a6165ed11e032eba143cda50769986f71281",
+      "reviewed": true
+    }
+  ],
+  "guides": [
+    {
+      "id": "headlight-replacement",
+      "title": "Replace a sealed headlamp",
+      "stepCount": 9,
+      "source": "1985 Pontiac DIY · printed 2-28–2-30",
+      "sourceUrl": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=37",
+      "applicability": "1985 Fiero SE with the L44 2.8L V6; confirm the installed parts still match the original equipment.",
+      "validation": {
+        "sourceChecked": true,
+        "workshopValidated": false
+      },
+      "references": [
+        {
+          "step": 1,
+          "part": "hl-left-upper-bezel",
+          "assembly": "headlight-left",
+          "pdfPage": 37,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=37"
+        },
+        {
+          "step": 2,
+          "part": "hl-left-disconnect",
+          "assembly": "headlight-left",
+          "pdfPage": 37,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=37"
+        },
+        {
+          "step": 3,
+          "part": "hl-left-bezel-screws",
+          "assembly": "headlight-left",
+          "pdfPage": 37,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=37"
+        },
+        {
+          "step": 4,
+          "part": "hl-left-upper-bezel",
+          "assembly": "headlight-left",
+          "pdfPage": 38,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=38"
+        },
+        {
+          "step": 5,
+          "part": "hl-left-aim-spring",
+          "assembly": "headlight-left",
+          "pdfPage": 38,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=38"
+        },
+        {
+          "step": 6,
+          "part": "hl-left-ring-screws",
+          "assembly": "headlight-left",
+          "pdfPage": 38,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=38"
+        },
+        {
+          "step": 7,
+          "part": "hl-left-mounting-ring",
+          "assembly": "headlight-left",
+          "pdfPage": 39,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=39"
+        },
+        {
+          "step": 8,
+          "part": "hl-left-bezel-screws",
+          "assembly": "headlight-left",
+          "pdfPage": 39,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=39"
+        },
+        {
+          "step": 9,
+          "part": "hl-left-disconnect",
+          "assembly": "headlight-left",
+          "pdfPage": 39,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=39"
+        }
+      ],
+      "physicalLimits": "Keep hands and clothing clear of powered headlamp mechanisms. The model highlights parts; it does not demonstrate removal clearances."
+    },
+    {
+      "id": "coolant-replacement",
+      "title": "Replace engine coolant",
+      "stepCount": 20,
+      "source": "1985 Pontiac DIY · printed 2-38–2-40",
+      "sourceUrl": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=47",
+      "applicability": "1985 Fiero SE with the L44 2.8L V6; confirm the installed parts still match the original equipment.",
+      "validation": {
+        "sourceChecked": true,
+        "workshopValidated": false
+      },
+      "references": [
+        {
+          "step": 1,
+          "part": "eng-thermostat-housing",
+          "assembly": "thermostat-detail",
+          "pdfPage": 47,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=47"
+        },
+        {
+          "step": 2,
+          "part": "eng-thermostat-cap",
+          "assembly": "thermostat-detail",
+          "pdfPage": 47,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=47"
+        },
+        {
+          "step": 3,
+          "part": "eng-thermostat-cap",
+          "assembly": "thermostat-detail",
+          "pdfPage": 47,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=47"
+        },
+        {
+          "step": 4,
+          "part": "eng-thermostat-element",
+          "assembly": "thermostat-detail",
+          "pdfPage": 47,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=47"
+        },
+        {
+          "step": 5,
+          "part": "eng-thermostat-cap",
+          "assembly": "thermostat-detail",
+          "pdfPage": 48,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=48"
+        },
+        {
+          "step": 6,
+          "part": "cool-drain",
+          "assembly": "cool-radiator",
+          "pdfPage": 48,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=48"
+        },
+        {
+          "step": 7,
+          "part": "eng-thermostat-housing",
+          "assembly": "thermostat-detail",
+          "pdfPage": 48,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=48"
+        },
+        {
+          "step": 8,
+          "part": "cool-pipe-drains",
+          "assembly": "cool-pipes",
+          "pdfPage": 48,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=48"
+        },
+        {
+          "step": 9,
+          "part": "cool-pressure-cap",
+          "assembly": "cool-recovery",
+          "pdfPage": 48,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=48"
+        },
+        {
+          "step": 10,
+          "part": "eng-thermostat-cap",
+          "assembly": "thermostat-detail",
+          "pdfPage": 48,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=48"
+        },
+        {
+          "step": 11,
+          "part": "cool-rear-inlet",
+          "assembly": "cool-pipes",
+          "pdfPage": 48,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=48"
+        },
+        {
+          "step": 12,
+          "part": "cool-pipe-drains",
+          "assembly": "cool-pipes",
+          "pdfPage": 49,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=49"
+        },
+        {
+          "step": 13,
+          "part": "cool-recovery-tank",
+          "assembly": "cool-recovery",
+          "pdfPage": 49,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=49"
+        },
+        {
+          "step": 14,
+          "part": "eng-thermostat-housing",
+          "assembly": "thermostat-detail",
+          "pdfPage": 49,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=49"
+        },
+        {
+          "step": 15,
+          "part": "eng-thermostat-cap",
+          "assembly": "thermostat-detail",
+          "pdfPage": 49,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=49"
+        },
+        {
+          "step": 16,
+          "part": "cool-recovery-tank",
+          "assembly": "cool-recovery",
+          "pdfPage": 49,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=49"
+        },
+        {
+          "step": 17,
+          "part": "eng-thermostat-housing",
+          "assembly": "thermostat-detail",
+          "pdfPage": 49,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=49"
+        },
+        {
+          "step": 18,
+          "part": "eng-thermostat-housing",
+          "assembly": "thermostat-detail",
+          "pdfPage": 49,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=49"
+        },
+        {
+          "step": 19,
+          "part": "eng-thermostat-element",
+          "assembly": "thermostat-detail",
+          "pdfPage": 49,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=49"
+        },
+        {
+          "step": 20,
+          "part": "cool-recovery-tank",
+          "assembly": "cool-recovery",
+          "pdfPage": 49,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=49"
+        }
+      ],
+      "physicalLimits": "Let the engine and radiator cool before opening any cap. Keep clear of the automatic electric fan and avoid coolant on hot engine or exhaust parts. Monitor temperature during each engine-running stage; stop if it overheats. The model does not demonstrate safe underbody access or removal paths. Optional engine-block drain plugs are not yet separately modeled."
+    },
+    {
+      "id": "engine-oil-check",
+      "title": "Check and add engine oil",
+      "stepCount": 5,
+      "source": "1985 Pontiac DIY · printed 2-6–2-7",
+      "sourceUrl": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=15",
+      "applicability": "1985 Fiero SE with the L44 2.8L V6 and original four-speed manual transaxle.",
+      "validation": {
+        "sourceChecked": true,
+        "workshopValidated": false
+      },
+      "references": [
+        {
+          "step": 1,
+          "part": "eng-dipstick",
+          "assembly": "dipstick-detail",
+          "pdfPage": 15,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=15"
+        },
+        {
+          "step": 2,
+          "part": "eng-dipstick",
+          "assembly": "dipstick-detail",
+          "pdfPage": 15,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=15"
+        },
+        {
+          "step": 3,
+          "part": "eng-dipstick",
+          "assembly": "dipstick-detail",
+          "pdfPage": 16,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=16"
+        },
+        {
+          "step": 4,
+          "part": "eng-rear-cover",
+          "assembly": "head-rear",
+          "pdfPage": 15,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=15"
+        },
+        {
+          "step": 5,
+          "part": "eng-dipstick",
+          "assembly": "dipstick-detail",
+          "pdfPage": 15,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=15"
+        }
+      ],
+      "physicalLimits": "Stop the engine before reaching into the engine bay. Use the physical dipstick markings; the reconstructed blade is not a calibrated level gauge. Do not overfill. Select oil quality and viscosity from the applicable owner manual and installed-engine requirements."
+    },
+    {
+      "id": "engine-oil-replacement",
+      "title": "Replace engine oil and filter",
+      "stepCount": 9,
+      "source": "1985 Pontiac DIY · printed 2-7–2-8; 3-4",
+      "sourceUrl": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=16",
+      "applicability": "1985 Fiero SE with the L44 2.8L V6 and original four-speed manual transaxle.",
+      "validation": {
+        "sourceChecked": true,
+        "workshopValidated": false
+      },
+      "references": [
+        {
+          "step": 1,
+          "part": "eng-pan-drain-plug",
+          "assembly": "lubrication",
+          "pdfPage": 16,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=16"
+        },
+        {
+          "step": 2,
+          "part": "eng-pan-drain-plug",
+          "assembly": "lubrication",
+          "pdfPage": 17,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=17"
+        },
+        {
+          "step": 3,
+          "part": "eng-oil-filter",
+          "assembly": "lubrication",
+          "pdfPage": 17,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=17"
+        },
+        {
+          "step": 4,
+          "part": "eng-oil-filter",
+          "assembly": "lubrication",
+          "pdfPage": 17,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=17"
+        },
+        {
+          "step": 5,
+          "part": "eng-oil-filter-fitting",
+          "assembly": "lubrication",
+          "pdfPage": 17,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=17"
+        },
+        {
+          "step": 6,
+          "part": "eng-oil-filter",
+          "assembly": "lubrication",
+          "pdfPage": 17,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=17"
+        },
+        {
+          "step": 7,
+          "part": "eng-pan-drain-plug",
+          "assembly": "lubrication",
+          "pdfPage": 17,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=17"
+        },
+        {
+          "step": 8,
+          "part": "eng-rear-cover",
+          "assembly": "head-rear",
+          "pdfPage": 61,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=61"
+        },
+        {
+          "step": 9,
+          "part": "eng-dipstick",
+          "assembly": "dipstick-detail",
+          "pdfPage": 17,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=17"
+        }
+      ],
+      "physicalLimits": "Park on level ground, apply the parking brake and secure the vehicle against rolling. Wear eye protection. For a step requiring engine operation, select Neutral before starting and run only in a ventilated place; stop the engine before reaching into the work area. Never work beneath a car supported only by its jack; use suitable safety stands when underbody access is needed. Warm oil and nearby exhaust parts can burn. The V6 filter heat shield is described in the instructions but is not separately modeled. No numerical drain-plug torque is specified by these DIY pages; do not invent one."
+    },
+    {
+      "id": "air-filter-replacement",
+      "title": "Replace the V6 air filter",
+      "stepCount": 6,
+      "source": "1985 Pontiac DIY · printed 2-15–2-16",
+      "sourceUrl": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=25",
+      "applicability": "1985 Fiero SE with the L44 2.8L V6 and original four-speed manual transaxle.",
+      "validation": {
+        "sourceChecked": true,
+        "workshopValidated": false
+      },
+      "references": [
+        {
+          "step": 1,
+          "part": "air-cleaner",
+          "assembly": null,
+          "pdfPage": 25,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=25"
+        },
+        {
+          "step": 2,
+          "part": "air-lid",
+          "assembly": null,
+          "pdfPage": 24,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=24"
+        },
+        {
+          "step": 3,
+          "part": "air-filter",
+          "assembly": null,
+          "pdfPage": 24,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=24"
+        },
+        {
+          "step": 4,
+          "part": "air-cleaner",
+          "assembly": null,
+          "pdfPage": 25,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=25"
+        },
+        {
+          "step": 5,
+          "part": "air-filter",
+          "assembly": null,
+          "pdfPage": 25,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=25"
+        },
+        {
+          "step": 6,
+          "part": "air-lid",
+          "assembly": null,
+          "pdfPage": 25,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=25"
+        }
+      ],
+      "physicalLimits": "Keep the engine off with the air cleaner open. The air-cleaner assembly also limits flame escape during a backfire. Do not allow dirt or foreign objects into the intake. The crankcase-separator steps on these pages apply to the four-cylinder engine, not this V6."
+    },
+    {
+      "id": "manual-fluid-check",
+      "title": "Check four-speed transaxle fluid",
+      "stepCount": 5,
+      "source": "1985 Pontiac DIY · printed 2-10",
+      "sourceUrl": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=19",
+      "applicability": "1985 Fiero SE with the L44 2.8L V6 and original four-speed manual transaxle.",
+      "validation": {
+        "sourceChecked": true,
+        "workshopValidated": false
+      },
+      "references": [
+        {
+          "step": 1,
+          "part": "tx-case",
+          "assembly": "trans-case",
+          "pdfPage": 19,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=19"
+        },
+        {
+          "step": 2,
+          "part": "tx-speed-sensor",
+          "assembly": "trans-case",
+          "pdfPage": 19,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=19"
+        },
+        {
+          "step": 3,
+          "part": "tx-speed-sensor",
+          "assembly": "trans-case",
+          "pdfPage": 19,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=19"
+        },
+        {
+          "step": 4,
+          "part": "tx-speed-sensor",
+          "assembly": "trans-case",
+          "pdfPage": 19,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=19"
+        },
+        {
+          "step": 5,
+          "part": "tx-speed-retainer",
+          "assembly": "trans-case",
+          "pdfPage": 19,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=19"
+        }
+      ],
+      "physicalLimits": "Engine off; vehicle level; transaxle cool enough to touch. Remove the speedometer fitting carefully. The physical fitting provides the level marks; the 3D part is not a calibrated dipstick. The lubricant specification quoted here is historical, not a current replacement-product recommendation."
+    },
+    {
+      "id": "manual-fluid-replacement",
+      "title": "Replace four-speed transaxle fluid",
+      "stepCount": 6,
+      "source": "1985 Pontiac DIY · printed 2-10; 2-12; 3-4",
+      "sourceUrl": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=21",
+      "applicability": "1985 Fiero SE with the L44 2.8L V6 and original four-speed manual transaxle.",
+      "validation": {
+        "sourceChecked": true,
+        "workshopValidated": false
+      },
+      "references": [
+        {
+          "step": 1,
+          "part": "tx-drain",
+          "assembly": "trans-case",
+          "pdfPage": 21,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=21"
+        },
+        {
+          "step": 2,
+          "part": "tx-drain",
+          "assembly": "trans-case",
+          "pdfPage": 21,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=21"
+        },
+        {
+          "step": 3,
+          "part": "tx-drain",
+          "assembly": "trans-case",
+          "pdfPage": 21,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=21"
+        },
+        {
+          "step": 4,
+          "part": "tx-speed-sensor",
+          "assembly": "trans-case",
+          "pdfPage": 61,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=61"
+        },
+        {
+          "step": 5,
+          "part": "tx-speed-sensor",
+          "assembly": "trans-case",
+          "pdfPage": 19,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=19"
+        },
+        {
+          "step": 6,
+          "part": "tx-speed-retainer",
+          "assembly": "trans-case",
+          "pdfPage": 21,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=21"
+        }
+      ],
+      "physicalLimits": "Park on level ground, apply the parking brake and secure the vehicle against rolling. Wear eye protection. For a step requiring engine operation, select Neutral before starting and run only in a ventilated place; stop the engine before reaching into the work area. Never work beneath a car supported only by its jack; use suitable safety stands when underbody access is needed. Drain warm fluid carefully. Final level checking requires the engine off and the case cool enough to touch. The DIY source gives no numerical drain-plug torque. Its SAE 5W-30 SF/SF-CC/SF-CD oil designation is historical; confirm present-day lubricant applicability."
+    },
+    {
+      "id": "brake-fluid-check",
+      "title": "Check brake-fluid reservoir",
+      "stepCount": 5,
+      "source": "1985 Pontiac DIY · printed 2-13",
+      "sourceUrl": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=22",
+      "applicability": "1985 Fiero SE with the L44 2.8L V6 and original four-speed manual transaxle.",
+      "validation": {
+        "sourceChecked": true,
+        "workshopValidated": false
+      },
+      "references": [
+        {
+          "step": 1,
+          "part": "br-master-reservoir",
+          "assembly": "brake-master",
+          "pdfPage": 22,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=22"
+        },
+        {
+          "step": 2,
+          "part": "br-master-cover",
+          "assembly": "brake-master",
+          "pdfPage": 22,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=22"
+        },
+        {
+          "step": 3,
+          "part": "br-master-cover",
+          "assembly": "brake-master",
+          "pdfPage": 22,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=22"
+        },
+        {
+          "step": 4,
+          "part": "br-master-reservoir",
+          "assembly": "brake-master",
+          "pdfPage": 22,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=22"
+        },
+        {
+          "step": 5,
+          "part": "br-master-diaphragm",
+          "assembly": "brake-master",
+          "pdfPage": 22,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=22"
+        }
+      ],
+      "physicalLimits": "Do not press the brake pedal with the reservoir cover removed. Protect eyes, skin and painted surfaces from brake fluid. Low fluid or a brake warning requires inspection for leakage and brake wear; topping up is not a brake-system repair. This guide does not cover bleeding or hydraulic repairs."
+    },
+    {
+      "id": "clutch-fluid-check",
+      "title": "Check clutch-fluid reservoir",
+      "stepCount": 4,
+      "source": "1985 Pontiac DIY · printed 2-14",
+      "sourceUrl": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=23",
+      "applicability": "1985 Fiero SE with the L44 2.8L V6 and original four-speed manual transaxle.",
+      "validation": {
+        "sourceChecked": true,
+        "workshopValidated": false
+      },
+      "references": [
+        {
+          "step": 1,
+          "part": "clutch-hydraulics",
+          "assembly": null,
+          "pdfPage": 23,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=23"
+        },
+        {
+          "step": 2,
+          "part": "clutch-hydraulics",
+          "assembly": null,
+          "pdfPage": 23,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=23"
+        },
+        {
+          "step": 3,
+          "part": "clutch-hydraulics",
+          "assembly": null,
+          "pdfPage": 23,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=23"
+        },
+        {
+          "step": 4,
+          "part": "clutch-hydraulics",
+          "assembly": null,
+          "pdfPage": 23,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=23"
+        }
+      ],
+      "physicalLimits": "Do not press the clutch pedal with its reservoir cover removed. Protect eyes, skin and paint from brake fluid. The master, reservoir and cap remain grouped in the vehicle model. This level check does not diagnose a failing clutch or replace a hydraulic bleeding procedure."
+    },
+    {
+      "id": "spark-plug-replacement",
+      "title": "Replace the V6 spark plugs",
+      "stepCount": 8,
+      "source": "1985 Pontiac DIY · printed 2-21–2-23; 3-3",
+      "sourceUrl": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=30",
+      "applicability": "1985 Fiero SE with the L44 2.8L V6 and original four-speed manual transaxle.",
+      "validation": {
+        "sourceChecked": true,
+        "workshopValidated": false
+      },
+      "references": [
+        {
+          "step": 1,
+          "part": "eng-spark-rear-1",
+          "assembly": "plug-wires",
+          "pdfPage": 30,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=30"
+        },
+        {
+          "step": 2,
+          "part": "eng-wire-rear-1",
+          "assembly": "plug-wires",
+          "pdfPage": 31,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=31"
+        },
+        {
+          "step": 3,
+          "part": "eng-wire-rear-1",
+          "assembly": "plug-wires",
+          "pdfPage": 31,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=31"
+        },
+        {
+          "step": 4,
+          "part": "eng-spark-rear-1",
+          "assembly": "plug-wires",
+          "pdfPage": 31,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=31"
+        },
+        {
+          "step": 5,
+          "part": "eng-spark-rear-1",
+          "assembly": "plug-wires",
+          "pdfPage": 31,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=31"
+        },
+        {
+          "step": 6,
+          "part": "eng-spark-rear-1",
+          "assembly": "plug-wires",
+          "pdfPage": 31,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=31"
+        },
+        {
+          "step": 7,
+          "part": "eng-wire-separators",
+          "assembly": "plug-wires",
+          "pdfPage": 32,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=32"
+        },
+        {
+          "step": 8,
+          "part": "eng-wire-separators",
+          "assembly": "plug-wires",
+          "pdfPage": 32,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=32"
+        }
+      ],
+      "physicalLimits": "Work with the engine stopped and cool. Replace one plug at a time to preserve wire order. Pull the boot, never the wire. The model’s lead routing and distributor clocking are reconstructed, not a wiring installation diagram. The original R42CTS listing is a period reference; verify current replacement applicability."
+    },
+    {
+      "id": "battery-replacement",
+      "title": "Replace the side-terminal battery",
+      "stepCount": 10,
+      "source": "1985 Pontiac DIY · printed 2-30–2-32",
+      "sourceUrl": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=40",
+      "applicability": "1985 Fiero SE with the L44 2.8L V6 and original four-speed manual transaxle.",
+      "validation": {
+        "sourceChecked": true,
+        "workshopValidated": false
+      },
+      "references": [
+        {
+          "step": 1,
+          "part": "bd-skin-deck-vent-right",
+          "assembly": "body-decklid",
+          "pdfPage": 40,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=40"
+        },
+        {
+          "step": 2,
+          "part": "ch-negative-cable",
+          "assembly": "charging-battery",
+          "pdfPage": 40,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=40"
+        },
+        {
+          "step": 3,
+          "part": "ch-positive-cable",
+          "assembly": "charging-battery",
+          "pdfPage": 40,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=40"
+        },
+        {
+          "step": 4,
+          "part": "ch-battery-retainer-bolt",
+          "assembly": "charging-battery",
+          "pdfPage": 40,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=40"
+        },
+        {
+          "step": 5,
+          "part": "ch-battery-heat-shield",
+          "assembly": "charging-battery",
+          "pdfPage": 40,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=40"
+        },
+        {
+          "step": 6,
+          "part": "ch-battery-tray",
+          "assembly": "charging-battery",
+          "pdfPage": 40,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=40"
+        },
+        {
+          "step": 7,
+          "part": "ch-battery-retainer-bolt",
+          "assembly": "charging-battery",
+          "pdfPage": 40,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=40"
+        },
+        {
+          "step": 8,
+          "part": "ch-battery-shield-screws",
+          "assembly": "charging-battery",
+          "pdfPage": 40,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=40"
+        },
+        {
+          "step": 9,
+          "part": "ch-positive-cable",
+          "assembly": "charging-battery",
+          "pdfPage": 40,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=40"
+        },
+        {
+          "step": 10,
+          "part": "ch-negative-cable",
+          "assembly": "charging-battery",
+          "pdfPage": 41,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=41"
+        }
+      ],
+      "physicalLimits": "Turn the ignition off and remove the key. Batteries contain corrosive acid and can emit explosive gas. Keep sparks/flames away, protect eyes and skin, and never bridge terminals with metal. Remove negative first; reconnect positive first. The physical tray, cables and replacement battery must be serviceable and correctly sized."
+    },
+    {
+      "id": "wiper-blade-replacement",
+      "title": "Replace a wiper blade",
+      "stepCount": 6,
+      "source": "1985 Pontiac DIY · printed 2-44–2-45",
+      "sourceUrl": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=53",
+      "applicability": "1985 Fiero with the original pin-mounted wiper arms and matching replacement blades.",
+      "validation": {
+        "sourceChecked": true,
+        "workshopValidated": false
+      },
+      "references": [
+        {
+          "step": 1,
+          "part": "bd-skin-wiper-blade-left",
+          "assembly": "body-glazing",
+          "pdfPage": 53,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=53"
+        },
+        {
+          "step": 2,
+          "part": "bd-skin-wiper-blade-left",
+          "assembly": "body-glazing",
+          "pdfPage": 53,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=53"
+        },
+        {
+          "step": 3,
+          "part": "bd-skin-wiper-arm-left",
+          "assembly": "body-glazing",
+          "pdfPage": 54,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=54"
+        },
+        {
+          "step": 4,
+          "part": "bd-skin-wiper-arm-left",
+          "assembly": "body-glazing",
+          "pdfPage": 54,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=54"
+        },
+        {
+          "step": 5,
+          "part": "bd-skin-wiper-blade-left",
+          "assembly": "body-glazing",
+          "pdfPage": 54,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=54"
+        },
+        {
+          "step": 6,
+          "part": "bd-skin-wiper-blade-right",
+          "assembly": "body-glazing",
+          "pdfPage": 54,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=54"
+        }
+      ],
+      "physicalLimits": "Remove the ignition key before touching the blades. Support the spring-loaded arm throughout; do not let it snap against the windshield. The model identifies the parked components and does not animate a service position or prove compatibility with an aftermarket arm."
+    },
+    {
+      "id": "wiper-refill-replacement",
+      "title": "Replace a wiper rubber refill",
+      "stepCount": 5,
+      "source": "1985 Pontiac DIY · printed 2-44–2-46",
+      "sourceUrl": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=54",
+      "applicability": "Original-style 1985 Fiero serviceable blade with a replaceable rubber element; does not apply to sealed replacement blades.",
+      "validation": {
+        "sourceChecked": true,
+        "workshopValidated": false
+      },
+      "references": [
+        {
+          "step": 1,
+          "part": "bd-skin-wiper-blade-left",
+          "assembly": "body-glazing",
+          "pdfPage": 54,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=54"
+        },
+        {
+          "step": 2,
+          "part": "bd-skin-wiper-blade-left",
+          "assembly": "body-glazing",
+          "pdfPage": 55,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=55"
+        },
+        {
+          "step": 3,
+          "part": "bd-skin-wiper-blade-left",
+          "assembly": "body-glazing",
+          "pdfPage": 55,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=55"
+        },
+        {
+          "step": 4,
+          "part": "bd-skin-wiper-blade-left",
+          "assembly": "body-glazing",
+          "pdfPage": 55,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=55"
+        },
+        {
+          "step": 5,
+          "part": "bd-skin-wiper-blade-left",
+          "assembly": "body-glazing",
+          "pdfPage": 55,
+          "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf#page=55"
+        }
+      ],
+      "physicalLimits": "Remove the key and support the wiper arm. Follow the blade-removal procedure before working on the refill. The model groups the rubber with the blade and does not verify an aftermarket refill’s fit."
+    }
+  ],
+  "note": "The new source review adds eleven procedures to the two previously checked guides. Pages 37–38 and 47–49 supporting the existing guides were reviewed in earlier project records, not re-claimed as newly opened here. Final inspection checks that extend the factory sequence are editorial completion checks. No physical workshop validation is claimed."
+}

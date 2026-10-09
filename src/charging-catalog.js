@@ -20,8 +20,10 @@ for(const [key,name,desc,spread,callout]of[
  ['battery-support','Retainer support bracket','Formed support below the hold-down, attached to the tray area.',[0,-.24,.10],9],
  ['positive-cable','Positive battery cable & terminal bolt','Side-terminal positive lead to the starter battery stud. GM lists a 35-inch L44 cable; the visible bends are reconstructed.',[-.15,.04,.12],1],
  ['negative-cable','Negative battery cable & terminal bolt','Side-terminal negative lead to the engine ground with body-ground branch. Catalog lists a 25-inch L44 negative cable; exact routing is unverified.',[.15,.04,-.12],7],
+ ['battery-ground-bolt','Negative-cable body ground tapping bolt','Separate hex washer-head tapping bolt at the negative cable body-ground eyelet. GM figure 2P02-005 callout 8 identifies 12337828 and nominal M6.3 × 1.81 × 20. The head, thread profile, installed position and finish are reconstructed; one illustrated location is not a complete vehicle fastener quantity.',[.19,.14,-.12],8],
  ['ground-strap','Engine-to-body ground strap','Braided engine/body bond and eyelets. The local path remains a reference reconstruction.',[.14,.10,.12],null],
 ])part('battery',key,name,desc,spread,callout);
+chargingParts.find(p=>p.id==='ch-battery-ground-bolt').serviceReference={title:'Factory battery ground attachment',rows:[['GM catalog part','12337828'],['Figure / callout','2P02-005 / 8'],['Nominal tapping bolt','M6.3 × 1.81 × 20']],note:'GM CD PDF 67 battery mounting table. This is the body-ground branch attachment, not a side-terminal battery bolt. No tightening torque or complete vehicle quantity is supplied here; do not substitute a standard M6 × 1 fastener.',links:[['GM battery mounting drawing and table',chargingSource+'#page=67']]};
 for(const [key,name,desc,spread,callout]of[
  ['starter-yoke','Starter field frame','Open cylindrical steel field frame with pole shoes; original field construction requires the motor stamping for exact selection.',[0,-.16,0],25],
  ['starter-field','Field coils & pole shoes','Separate pole shoes, insulated copper field loops and internal field-to-brush lead. Turn count is illustrative.',[0,0,-.16],25],

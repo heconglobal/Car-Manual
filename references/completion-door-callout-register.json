@@ -1,0 +1,509 @@
+{
+  "reviewedAt": "2026-10-02T23:58:58.630574+00:00",
+  "scope": "Independent visual review of original GM PDF 300 drawing and PDF 301–302 application tables, followed by catalog and builder identity inspection. All 54 callout numbers are accounted for; this does not mean all physical pieces, service kits or installed variants are modeled. Empty selection arrays mean missing independently attributed identities; notes distinguish partial, grouped and unverified candidates. Callout numbers apply only to figure 2P10-004 and are not inherited from Interior or adjacent-year service figures. Original quantities, factory dimensions, tooling, calibrated movement and workshop access remain unverified.",
+  "figures": [
+    {
+      "id": "2P10-004",
+      "title": "1984–1988 P front-door hardware",
+      "document": "fiero-parts-cd.pdf",
+      "pdfPages": [
+        300,
+        301,
+        302
+      ],
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=300",
+      "evidenceImage": "references/completion-doors/gm22p-p300.png",
+      "application": "Drawing 2P10-004/FBS-1865 (printed mark 052286) and PDF 301–302 application tables were independently opened and inspected again. The 1984–88 heading is not blanket interchange evidence. Preserve 1984–85 RH 20352606/LH 20352607 versus 1986–88 RH 20350876/LH 20350877 belt retainers, 1984 push-in versus 1984–88 black hang-on outer seals, 1984 steel versus 1985–88 glass bushings, clear(P37)/tinted glass, manual(P37)/electric regulators and AU3 annotations. Item 34 is now classified as a window-regulator bumper without powerLocks gating; regulator variant and installed position remain unverified. The window-motor W/AU3 annotation remains unresolved. Manual/electric and option alternatives must not be summed as original installed parts. Relay 19 remains missing rather than replaced by another-family relay.",
+      "callouts": [
+        [
+          1,
+          "Door window glass",
+          [
+            "bd-skin-door-glass-left",
+            "bd-skin-door-glass-right"
+          ],
+          "identity represented by shared Body glass selections; table distinguishes clear glass annotated P37 from tinted glass; original installed variant, lower glass tail/attachment shape and calibrated lowering remain unverified"
+        ],
+        [
+          2,
+          "Window-glass regulator cam",
+          [
+            "bd-door-left-glass-cam",
+            "bd-door-right-glass-cam"
+          ],
+          "RH 20364928 / LH 20364929; separately selectable open cam channel; attachment geometry reconstructed"
+        ],
+        [
+          3,
+          "Rear glass-mounted window stop",
+          [
+            "bd-door-left-glass-rear-stops",
+            "bd-door-right-glass-rear-stops"
+          ],
+          "table 20085501; grouped reconstructed stop set for each side; illustrated multiple positions do not establish the complete original per-door quantity"
+        ],
+        [
+          4,
+          "Lock over-center spring",
+          [
+            "bd-door-left-lock-overcenter-spring",
+            "bd-door-right-lock-overcenter-spring"
+          ],
+          "RH 20047022 / LH 20047023; identity represented; shape and spring calibration unverified"
+        ],
+        [
+          5,
+          "Lock-cylinder-to-lock rod",
+          [
+            "bd-door-left-lock-rod",
+            "bd-door-right-lock-rod"
+          ],
+          "existing Body selection; RH 20318484 / LH 20318485 table identities; installed bend radii, clips and routing not factory-measured"
+        ],
+        [
+          6,
+          "Outside-handle-to-lock rod",
+          [
+            "bd-door-left-handle-rod",
+            "bd-door-right-handle-rod"
+          ],
+          "existing Body selection; RH 20318482 / LH 20318483 table identities; complete routing and engagement unverified"
+        ],
+        [
+          7,
+          "Complete outside lift-bar handle",
+          [
+            "bd-skin-handle-left",
+            "bd-skin-handle-right"
+          ],
+          "crosswalk to visible outer handle/recess; catalog complete-handle service unit is not an exhaustive inventory of modeled pivot, spring or attachment internals"
+        ],
+        [
+          8,
+          "Outside lift-bar handle clip",
+          [
+            "bd-door-left-handle-rod-clip",
+            "bd-door-right-handle-rod-clip"
+          ],
+          "table 20158344; separate clip identity; attachment fit unverified"
+        ],
+        [
+          9,
+          "Lock-cylinder retainer",
+          [
+            "bd-door-left-lock-cylinder-retainer",
+            "bd-door-right-lock-cylinder-retainer"
+          ],
+          "table 20318476; separate forked retainer; outer key-cylinder bezel is a different selection and is not counted as this retainer"
+        ],
+        [
+          10,
+          "Front-door lock assembly",
+          [
+            "bd-door-left-latch",
+            "bd-door-right-latch"
+          ],
+          "existing grouped latch/catch construction; catalog 16008172 RH /16008173 LH; internal lock completeness and service-fit orientation unverified. Table note 1 requires removing and reinserting a clip at 180 degrees; the static model does not validate that operation"
+        ],
+        [
+          11,
+          "Trim retainer at window belt",
+          [
+            "bd-door-left-belt-trim-retainer",
+            "bd-door-right-belt-trim-retainer"
+          ],
+          "Independent belt trim retainer selections use 1984–85 RH 20352606 / LH 20352607. Distinct 1986–88 RH 20350876 / LH 20350877 retained as reference applications, not substituted. Cross section, attachment inventory and dimensions reconstructed."
+        ],
+        [
+          12,
+          "Outer window-belt sealing strip",
+          [
+            "bd-skin-belt-seal-left",
+            "bd-skin-belt-seal-right"
+          ],
+          "outer wiping lip represented as a shared exterior selection; table preserves 1984 push-in type 20320532 RH /20320533 LH and black 1984–88 hang-on type 20608220 RH /20608221 LH (notes 2/3). Exact original attachment type and retainer completeness unverified"
+        ],
+        [
+          13,
+          "Inner window-belt sealing strip",
+          [
+            "bd-door-left-inner-belt-seal",
+            "bd-door-right-inner-belt-seal"
+          ],
+          "Independent inner belt-strip selections, RH 20320534 / LH 20320535, distinct from the outer seal and trim panel. Wiping-lip profile, material and attachment details remain unverified."
+        ],
+        [
+          14,
+          "Lock push-button return spring",
+          [
+            "bd-door-left-lock-return-spring",
+            "bd-door-right-lock-return-spring"
+          ],
+          "table 20888089; separate illustrative coil; winding, preload and original installed form unverified"
+        ],
+        [
+          15,
+          "Inner-panel glass stop, first illustrated position",
+          [
+            "bd-door-left-glass-inner-stop",
+            "bd-door-right-glass-inner-stop"
+          ],
+          "table 20179560; separate selection; do not merge with the different illustrated position 48 merely because the service number is shared"
+        ],
+        [
+          16,
+          "Inside lock-rod-to-inner-panel clip",
+          [
+            "bd-door-left-inside-lock-clip",
+            "bd-door-right-inside-lock-clip"
+          ],
+          "table 20474324; separate placement from remote-control rod clip 39 despite shared service number"
+        ],
+        [
+          17,
+          "Inside lock-rod-to-lock clip",
+          [
+            "bd-door-left-inside-latch-clip",
+            "bd-door-right-inside-latch-clip"
+          ],
+          "table 20474900; separate rod-retaining clip identity"
+        ],
+        [
+          18,
+          "Lock remote-control-to-lock rod",
+          [
+            "bd-door-left-inside-release-rod",
+            "bd-door-right-inside-release-rod"
+          ],
+          "RH 20318486 / LH 20318487; separate inside-release rod; exact routing and engagement unverified"
+        ],
+        [
+          19,
+          "Electric door-lock relay, W/AU3",
+          [],
+          "Original table identifies AU3 electric door-lock relay 20306058. No independently attributed geometry yet: the drawing alone does not establish installed location, wiring or per-car quantity. Not duplicated into both doors, and no other-family relay is substituted."
+        ],
+        [
+          20,
+          "Lock striker",
+          [
+            "bd-door-left-striker",
+            "bd-door-right-striker"
+          ],
+          "table 20464563; shared selection groups striker and washer 21; exact service fit and original installed identity unverified"
+        ],
+        [
+          21,
+          "Striker flat washer",
+          [
+            "bd-door-left-striker",
+            "bd-door-right-striker"
+          ],
+          "table 11500367, nominal 11×40×3 PHOS; grouped in the same selection as striker 20, not independently selectable. Reconstructed modeled dimensions are not those factory nominal dimensions"
+        ],
+        [
+          22,
+          "Lock-striker anchor plate",
+          [
+            "bd-door-left-striker-anchor",
+            "bd-door-right-striker-anchor"
+          ],
+          "table 20277001; separate body-side anchor; position and thread fit unmeasured"
+        ],
+        [
+          23,
+          "Door outer-panel attachment block",
+          [
+            "bd-door-left-outer-panel-block",
+            "bd-door-right-outer-panel-block"
+          ],
+          "Independent attachment-block selections identify 20505072, separate from the latch and inner reinforcement. Reconstructed block and boss outline only; exact mounting interface, material, dimensions and original quantity unverified."
+        ],
+        [
+          24,
+          "Inside lock-control-to-lock rod",
+          [
+            "bd-door-left-inside-lock-rod",
+            "bd-door-right-inside-lock-rod"
+          ],
+          "RH 20807584 / LH 20807585; separate rod; installed geometry and travel unverified"
+        ],
+        [
+          25,
+          "Window-regulator stop bumper, first illustrated position",
+          [
+            "bd-door-left-regulator-stop",
+            "bd-door-right-regulator-stop"
+          ],
+          "table 20269755; separate bumper with reconstructed grouped attachment; same service number at 34 does not establish identical position or option application"
+        ],
+        [
+          26,
+          "Door inside-lock bell-crank plate, W/AU3",
+          [
+            "bd-door-left-power-lock-bellcrank",
+            "bd-door-right-power-lock-bellcrank"
+          ],
+          "RH 20426398 / LH 20426399; powerLocks preview only; stamped tooling, pivots and original installed equipment unverified"
+        ],
+        [
+          27,
+          "Electric-lock-actuator-to-lock rod, W/AU3",
+          [
+            "bd-door-left-power-lock-rod",
+            "bd-door-right-power-lock-rod"
+          ],
+          "RH 20344920 / LH 20344921; powerLocks preview only; travel/routing unverified"
+        ],
+        [
+          28,
+          "Black inside lock-rod knob",
+          [
+            "in-door-left-lock-slider",
+            "in-door-right-lock-slider"
+          ],
+          "cross-family identity candidate in Interior; table knob 20332681 corresponds to the modeled manual lock control. The Interior catalog cites a different drawing/callout; exact service-unit identity and dimensions are not verified by that catalog number"
+        ],
+        [
+          29,
+          "Manual window regulator, table annotation P37",
+          [
+            "bd-door-left-manual-regulator",
+            "bd-door-right-manual-regulator"
+          ],
+          "RH 20302330 / LH 20302331; mutually exclusive with electric regulator 36 in the preview. Catalog service assembly groups arms, pivot and drive; tooth count/profile, glass travel and adjustment remain unverified. P37 annotation is preserved without inferring an option code"
+        ],
+        [
+          30,
+          "Rear window-guide cam support",
+          [
+            "bd-door-left-rear-cam-support",
+            "bd-door-right-rear-cam-support"
+          ],
+          "table 20325470; separate folded support; geometry and hardware quantities reconstructed"
+        ],
+        [
+          31,
+          "Window-guide cam",
+          [
+            "bd-door-left-guide-cam",
+            "bd-door-right-guide-cam"
+          ],
+          "RH 20349666 / LH 20349667; separate open guide; curvature and attachment fit unverified"
+        ],
+        [
+          32,
+          "Inner-panel regulator cam",
+          [
+            "bd-door-left-inner-cam",
+            "bd-door-right-inner-cam"
+          ],
+          "RH 20325482 / LH 20325483; separate fixed cam; shape and mounting dimensions unmeasured"
+        ],
+        [
+          33,
+          "Electric-lock actuator and actuator bracket",
+          [
+            "bd-door-left-power-lock-actuator",
+            "bd-door-right-power-lock-actuator",
+            "bd-door-left-power-lock-bracket",
+            "bd-door-right-power-lock-bracket"
+          ],
+          "table lists actuator 22020256 and bracket 22049760 under one callout; model splits both sides into separate actuator and bracket selections. PowerLocks preview is not proof of original equipment; actuator internals and electrical topology remain unverified"
+        ],
+        [
+          34,
+          "Door-window regulator stop bumper, second illustrated position",
+          [
+            "bd-door-left-power-lock-stop",
+            "bd-door-right-power-lock-stop"
+          ],
+          "Table identity 20269755 is a door-window regulator stop bumper. Now classified in the window scope without unsupported powerLocks gating; historical ID retained for compatibility. Original regulator variant, quantity and installed placement remain unresolved. Sharing item 25 service number does not establish identical location or duplicate fitted quantity."
+        ],
+        [
+          35,
+          "Window-regulator motor, table annotation W/AU3",
+          [
+            "bd-door-left-window-motor",
+            "bd-door-right-window-motor"
+          ],
+          "table 22082528; separate exterior can/gearbox/mounts in powerWindows preview. The W/AU3 annotation is unresolved and is not treated as a verified window-option code; motor internals and electrical topology not supplied by this exterior drawing"
+        ],
+        [
+          36,
+          "Electric window regulator",
+          [
+            "bd-door-left-power-regulator",
+            "bd-door-right-power-regulator"
+          ],
+          "RH 20311752 / LH 20311753; mutually exclusive with manual regulator 29 in preview; separately selectable motor 35. Static reconstructed mechanism does not validate adjustment or full travel"
+        ],
+        [
+          37,
+          "Window-guide run-channel retainer",
+          [
+            "bd-door-left-guide-retainer",
+            "bd-door-right-guide-retainer"
+          ],
+          "RH 20325456 / LH 20325457; separate open guide-run retainer; exact original section unverified"
+        ],
+        [
+          38,
+          "Window-guide run-channel retainer support",
+          [
+            "bd-door-left-guide-support",
+            "bd-door-right-guide-support"
+          ],
+          "table 20356700; separate bracket; reconstructed attachment geometry"
+        ],
+        [
+          39,
+          "Door-lock remote-control rod clip",
+          [
+            "bd-door-left-remote-rod-clip",
+            "bd-door-right-remote-rod-clip"
+          ],
+          "table 20474324; distinct illustrated position from item 16 despite common service number; exact clip count unverified"
+        ],
+        [
+          40,
+          "Front door outer-panel attachment block",
+          [
+            "bd-door-left-front-panel-block",
+            "bd-door-right-front-panel-block"
+          ],
+          "Independent front attachment-block selections identify 20505073. Reconstructed outline only; exact placement, material, dimensions, fastening and original quantity unverified."
+        ],
+        [
+          41,
+          "Body-side lower hinge strap",
+          [
+            "bd-door-left-lower-body",
+            "bd-door-right-lower-body"
+          ],
+          "existing Body lower body-side strap selection on each side; catalog distinguishes RH/LH; actual stampings, hinge bores and fit remain reconstructed"
+        ],
+        [
+          42,
+          "Door-side lower hinge strap",
+          [
+            "bd-door-left-lower-door",
+            "bd-door-right-lower-door"
+          ],
+          "existing Body lower door-side strap selections; RH/LH table identities do not establish measured factory geometry"
+        ],
+        [
+          43,
+          "Body-side upper hinge strap",
+          [
+            "bd-door-left-upper-body",
+            "bd-door-right-upper-body"
+          ],
+          "table 20475145 is one listed service identity; model has a selection at each door. Installed handedness/interchange and quantities are not inferred from the single row"
+        ],
+        [
+          44,
+          "Lower hinge spring",
+          [
+            "bd-door-left-hinge-spring",
+            "bd-door-right-hinge-spring"
+          ],
+          "table 20361482; separate spring selection for each modeled side; preload, force, coil geometry and operation unverified"
+        ],
+        [
+          45,
+          "Door-side upper hinge strap",
+          [
+            "bd-door-left-upper-door",
+            "bd-door-right-upper-door"
+          ],
+          "table 20475146 RH /20475147 LH; existing separate Body strap selections; tooling and fits unmeasured"
+        ],
+        [
+          46,
+          "Lower-hinge-to-door/body bolt",
+          [
+            "bd-door-left-hinge-bolts",
+            "bd-door-right-hinge-bolts"
+          ],
+          "table 20408249; current selection groups modeled upper and lower hinge bolts/washer geometry. The figure names the lower attachment; complete upper hardware attribution, original lengths and per-vehicle counts remain unverified"
+        ],
+        [
+          47,
+          "Upper and lower hinge pin",
+          [
+            "bd-door-left-upper-pin",
+            "bd-door-right-upper-pin",
+            "bd-door-left-lower-pin",
+            "bd-door-right-lower-pin"
+          ],
+          "table 20430773; one source identity split across the modeled upper/lower positions on each side. Exact original pin dimensions, bushings, fits and retained hardware inventory remain unverified"
+        ],
+        [
+          48,
+          "Inner-panel glass stop, second illustrated position",
+          [
+            "bd-door-left-front-glass-stop",
+            "bd-door-right-front-glass-stop"
+          ],
+          "table 20179560; independently represented second stop position; same service number as item 15 is not evidence that their placements or counts are interchangeable"
+        ],
+        [
+          49,
+          "Glass stabilizer at belt",
+          [
+            "bd-door-left-glass-stabilizers",
+            "bd-door-right-glass-stabilizers"
+          ],
+          "table 20514937; grouped felt-faced stabilizer set for each door; exact original count, felt and tooling unverified"
+        ],
+        [
+          50,
+          "Window-glass bushing retainer",
+          [
+            "bd-door-left-glass-bushing-retainers",
+            "bd-door-right-glass-bushing-retainers"
+          ],
+          "table 20095585; grouped retainers independently selected from buttons/bushings; complete original quantity unverified"
+        ],
+        [
+          51,
+          "Inner window-glass button",
+          [
+            "bd-door-left-glass-inner-buttons",
+            "bd-door-right-glass-inner-buttons"
+          ],
+          "table 20216819; grouped inner-button set; tooling, fit and original quantity unverified"
+        ],
+        [
+          52,
+          "Window-glass stabilizer button",
+          [
+            "bd-door-left-glass-stabilizer-buttons",
+            "bd-door-right-glass-stabilizer-buttons"
+          ],
+          "table 20146473; grouped stabilizer-button set; tooling, fit and original quantity unverified"
+        ],
+        [
+          53,
+          "Outer window-glass button",
+          [
+            "bd-door-left-glass-outer-buttons",
+            "bd-door-right-glass-outer-buttons"
+          ],
+          "table 20216820; grouped outer-button set, distinct from inner buttons 51; complete original quantity unverified"
+        ],
+        [
+          54,
+          "Window-glass bushing",
+          [
+            "bd-door-left-glass-bushings",
+            "bd-door-right-glass-bushings"
+          ],
+          "1985–88 service identity 20562754 represented as a grouped set. Distinct 1984 steel-type 20178799 is preserved as a separate source application and is not substituted; later-row material, dimensions, fit and original quantity unverified"
+        ]
+      ],
+      "independentReview": "references/completion-doors/2026-10-02T23-50-24Z-independent-callout-review/findings-and-implementation.json"
+    }
+  ]
+}

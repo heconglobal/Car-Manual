@@ -116,7 +116,8 @@ export const remainingWork=[
   },
   {
     "name": "Wheels, tires, spare and tools",
-    "stage": "Refinement and detail missing",
+    "stage": "Spare, jack and tool construction added; original detail and measured stowage remain to verify",
+    "assembly": "spare-system",
     "items": [
       "Accurate original wheel faces, inner barrels, center caps, lug seats/nuts, valve stems and balance weights.",
       "Correct tire profiles, tread and sidewall markings for each verified factory wheel/tire preview.",
@@ -173,7 +174,7 @@ export const remainingWork=[
   },
   {
     "name": "Doors, windows, locks and mirrors",
-    "stage": "Detail missing",
+    "stage": "Regulator, guide and lock-linkage construction added; internals, measured travel and mirrors remain",
     "assembly": "body-system",
     "items": [
       "Manual/power window regulators, motors, rollers, stops, glass channels, felt guides and seals.",
@@ -185,7 +186,8 @@ export const remainingWork=[
   },
   {
     "name": "Wipers, washer and defroster",
-    "stage": "Detail missing",
+    "stage": "Wiper motor, linkage and washer construction added; measured tooling, calibration and defroster circuits remain",
+    "assembly": "wiper-system",
     "items": [
       "Wiper motor/gearbox, transmission links, pivots, delay control and exact blade/arm construction.",
       "Washer pump, bottle details, hoses, clips, nozzles and wiring.",

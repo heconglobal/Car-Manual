@@ -1,0 +1,24 @@
+{
+  "createdAt": "2026-10-03T02:41:55.538537+00:00",
+  "status": "Artifact-only proposed note update; root owns promotion after freeze.",
+  "target": "references/completion-callout-register.json",
+  "observedTargetSha256": "847764f05766e4874a1d74d51b7e9994291470049ebbfeb4db70f3b0432256e9",
+  "sourceReview": {
+    "path": "references/completion-front-release/2026-10-03T02-31-59Z/findings.json",
+    "sha256": "874c6cd24cc4078b2c39873f61139636cf1076d79a7c91c4595ea16c32f026fd"
+  },
+  "selector": {
+    "figureId": "2P10-008",
+    "calloutNumber": 6,
+    "columnIndex": 3
+  },
+  "oldValue": "table20318496; no independently identified selectable handle; missing source reconciliation remains explicit",
+  "proposedValue": "20318496, group 8.075, black front-compartment release handle; figure heading 1984–1987 with no narrower row restriction. Original 1985 owner scan PDF 105 / printed 7-1 locates it left of steering column beneath the instrument-panel air vent and identifies an auxiliary release cable with cylindrical end clipped behind the handle. Adjacent 1986 service PDF 1207 / 4-3 and Figure 4 / PDF 1209 confirm the cable-operated center-cowl latch and hood-mounted striker relationship. Separate handle identity/location is established, but no independently selectable handle exists yet; exact mounting, dimensions, main/auxiliary cable fit, installed quantity and original vehicle condition remain unresolved. No 1988 interchange or power-release option inferred. See references/completion-front-release/2026-10-03T02-31-59Z/findings.json",
+  "requiredUnchangedMapping": [],
+  "promotionInstructions": [
+    "Preserve latest central register, re-read at write time, select figure by id and row by number.",
+    "Require old note/mapping to match or reconcile later edits; only replace this note string.",
+    "Keep row6 mapped-ID array empty and completion counts unchanged.",
+    "Separate row5 number mismatch is reported in source findings, not silently bundled in this row6 edit."
+  ]
+}

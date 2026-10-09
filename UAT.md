@@ -4,7 +4,19 @@ Open http://localhost:5185/ in a WebGL-capable browser.
 
 **Final acceptance is pending.** See the [current verification report](artifacts/current-UAT.md) and [all 20 areas mapped to test coverage](artifacts/checklist-test-matrix.md). The checklist requires complete parts/geometry/manual coverage; this walkthrough alone does not establish it.
 
-This UAT evaluates the **interactive 3D experience and the revised appearance**. Factory overall dimensions anchor the reconstruction; detailed component contours and service procedures remain unverified. The requested photorealistic, fully accurate model is not signed off. Record appearance issues under **Model accuracy** in the UAT tab.
+This UAT evaluates the **interactive 3D experience and the revised appearance**. Published overall dimensions anchor the reconstruction; detailed contours remain approximate and source-checked service procedures still need physical workshop validation. The requested photorealistic, fully accurate model is not signed off. Record appearance issues under **Model accuracy** in the UAT tab.
+
+## Loading and mobile review
+
+On a fresh visit, the overview should appear before detailed mechanical assemblies are requested. Open an assembly, switch to another while it loads, then return to the vehicle. The latest selection must win and a loading message must remain visible while construction is in progress. Only the overview and the active detailed assembly are retained; see [measured loading and memory behavior](references/browser-loading.md).
+
+Check phone portrait, phone landscape and tablet layouts. Camera perspective presets should be hidden in the mobile layout. Assembly navigation, Reset view and More view tools remain immediately available, with secondary view tools inside the menu. Check Escape, outside-click dismissal, readable headings, accessible Back to vehicle, and no horizontal overflow. Landscape panels scroll independently. Desktop retains its visible camera presets and view tools. These checks do not substitute for testing the owner's physical phone.
+
+## New assembly and maintenance review
+
+Search for window-regulator hardware and compare manual/electric windows and power-lock previews on both doors. Inspect the standard/CD4 wiper motor alternatives and washer components. Open the spare wheel and jack scopes; isolate the valve cap and jack screw. In the C60 air-conditioning preview, inspect compressor, condenser and refrigerant-line scopes, then disable A/C and confirm a populated applicable view returns. Compare assembled and exploded states and use Back to vehicle after each family.
+
+Guides now include thirteen source-checked service sequences plus three orientation tours. Check the applicability, prerequisites, original-page links, selected component, Previous/Next and completion behavior. The independent callout register records missing and grouped identities explicitly; selectable detail does not establish complete original hardware or measured fit.
 
 ## Oil-pump and coolant-guide review
 
@@ -42,13 +54,13 @@ Open Guides → Replace a sealed headlamp. Check the T-15/Phillips/hook tools, b
 ## Acceptance walkthrough
 
 1. Confirm the header identifies the 1985 Fiero SE 2M6, four-speed manual and WS6 configuration.
-2. Drag to orbit and scroll / pinch to zoom. Switch through the six named views, including Driver side and Passenger side. Keyboard users can focus the canvas and use arrow keys and +/-.
+2. Drag to orbit and scroll / pinch to zoom. On desktop, switch through the six named views, including Driver side and Passenger side. Mobile hides this toolbar; use touch orbit and Reset view. Keyboard users can focus the canvas and use arrow keys and +/-.
 3. Select each of the nine systems in the left sidebar. The system remains opaque while other components become context geometry.
 4. Search for `radiator`, `air filter` or `clutch`. Search is global, even when a system is selected. Select a result and confirm the correct part is highlighted and described.
 5. Click a visible component directly in the 3D model. Confirm the inspector opens that component. The component list is the keyboard-accessible equivalent.
 6. Use Focus part, Isolate / Show context, Hide body panels, labels and wireframe. Reset view should restore the assembled full vehicle.
 7. Move the exploded-view slider to 100%, then back to 0%. Components should move smoothly and return to their assembled positions.
-8. In Guides, complete the three orientation tours and the headlamp service guide. Check Previous, numbered-step buttons, Next step, Finish tour and All guides.
+8. In Guides, review the three orientation tours and the thirteen service guides. Check Previous, numbered-step buttons, Next step, Finish tour and All guides.
 9. In Specs, review the separation between NHTSA-confirmed identity, owner configuration and pending service data. Open and close the reference library.
 10. In UAT, check an item and save a note. Reload and confirm both persist. Export feedback and confirm a JSON file is downloaded.
 11. At phone width, open the assembly menu, search and select a part, then scroll to its inspector. Confirm there is no horizontal page overflow.
@@ -166,8 +178,8 @@ Choose the glass roof in Configure and search for “Sunroof glass-side latch ha
 
 Whole-body calibration: [published dimensions, actual-mesh before/after measurements and limits](references/body-dimension-reconstruction-20260924.md). Review all six exterior views and each body section; selected nominal dimensions now match, while complete factory panel contours and physical acceptance remain unverified.
 
-Body R4 follow-up: the owner rejected the earlier rear bumper and proportions. Confirm **BODY R4** in the manual header, then use the [local photo comparison](http://localhost:5185/body-review.html) and review the [R4 changes and limits](references/body-r4-owner-review-20260924.md). Exact body appearance remains unaccepted.
+Body R4 follow-up: the owner rejected the earlier rear bumper and proportions. That historical build showed **BODY R4**; use the [local photo comparison](http://localhost:5185/body-review.html) and review the [R4 changes and limits](references/body-r4-owner-review-20260924.md). Exact body appearance remains unaccepted.
 
-Body R5: factory coupe/SE bumper heights, lamp offsets, side molding/handle line and rear deck are revised. Confirm **BODY R5** in the header. The [factory specification review](references/body-r5-factory-specification-review.md) separates published values from reconstructed surfaces and load conversion; the [comparison workspace](http://localhost:5185/body-review.html) links the original tables and SE brochure. Earlier R4 records are historical.
+Body R5: factory coupe/SE bumper heights, lamp offsets, side molding/handle line and rear deck are revised. That historical build showed **BODY R5**; the current header shows **BODY R12**. The [factory specification review](references/body-r5-factory-specification-review.md) separates published values from reconstructed surfaces and load conversion; the [comparison workspace](http://localhost:5185/body-review.html) links the original tables and SE brochure. Earlier R4 records are historical.
 
-Body R6 corrects the rear combination-lamp construction and missing bulb chamber while retaining the selected factory body/bulb datums. Confirm **BODY R6** in the header. [Lamp sources and limitations](references/body-r6-tail-lamp-review.md) · [Focused lamp review](http://localhost:5185/tail-review.html). R5 captures/results are historical.
+Body R6 corrects the rear combination-lamp construction and missing bulb chamber while retaining the selected factory body/bulb datums. That historical build showed **BODY R6**; the current header shows **BODY R12**. [Lamp sources and limitations](references/body-r6-tail-lamp-review.md) · [Focused lamp review](http://localhost:5185/tail-review.html). R5 captures/results are historical.

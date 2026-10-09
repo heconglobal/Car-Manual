@@ -1,3 +1,4 @@
+import {waitForViewer,evaluateViewer} from './viewer-ready.js';
 import {test,expect} from '@playwright/test';
 import {sunroofHardware} from '../src/sunroof-catalog.js';
 
@@ -5,16 +6,16 @@ test('sunroof hardware follows panel removal and remains inspectable on desktop 
  test.setTimeout(540000);page.setDefaultTimeout(60000);page.setDefaultNavigationTimeout(240000);
  const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');
  await page.waitForFunction(()=>window.__fiero&&document.querySelector('canvas').dataset.ready==='true');
- const bounds=ids=>page.evaluate(ids=>Object.fromEntries(ids.map(id=>[id,window.__fiero.getPartBounds(id)])),ids);
+ const bounds=ids=>evaluateViewer(page,ids=>Object.fromEntries(ids.map(id=>[id,window.__fiero.getPartBounds(id)])),ids);
  const configure=async value=>{await page.getByRole('button',{name:'Configure',exact:true}).click();await page.locator('#config-roof').selectOption(value);};
- const capture=async name=>{await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await page.screenshot({path:'artifacts/'+name+'.png',fullPage:true});};
+ const capture=async name=>{await evaluateViewer(page,()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await waitForViewer(page);await page.screenshot({path:'artifacts/'+name+'.png',fullPage:true});};
  const ids=sunroofHardware.map(p=>p.id);
  expect(Object.values(await bounds(ids)).every(b=>b===null)).toBe(true);
  await configure('glass');expect(Object.values(await bounds(ids)).every(Boolean)).toBe(true);
  await page.locator('[data-view="top"]').click();await capture('sunroof-installed-vehicle');
  await page.locator('[data-tab="component"]').click();
  await page.getByRole('searchbox').fill('Sunroof glass-side latch handle');await page.locator('.part-button[data-part="sunroof-glass-handle"]').click();
- await page.getByRole('button',{name:'Explode this assembly',exact:true}).click();await expect(page.locator('canvas')).toHaveAttribute('data-assembly','body-roof');
+ await page.getByRole('button',{name:'Explode this assembly',exact:true}).click();await waitForViewer(page);await expect(page.locator('canvas')).toHaveAttribute('data-assembly','body-roof');
  await page.getByRole('button',{name:'Reset view',exact:true}).click();await capture('sunroof-hardware-assembled');
  await page.locator('.part-button[data-part="bd-skin-sunroof-glass-handle"]').click();
  const assembled=(await bounds(['bd-skin-sunroof-glass-handle']))['bd-skin-sunroof-glass-handle'];
@@ -22,7 +23,7 @@ test('sunroof hardware follows panel removal and remains inspectable on desktop 
  await expect.poll(async()=>{const b=(await bounds(['bd-skin-sunroof-glass-handle']))['bd-skin-sunroof-glass-handle'];return Math.hypot(...b.min.map((x,i)=>x-assembled.min[i]));}).toBeGreaterThan(.1);
  await capture('sunroof-hardware-exploded');
  await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();await capture('sunroof-handle-isolated');
- expect(await page.evaluate(()=>window.__fiero.getVisibleParts())).toEqual(['bd-skin-sunroof-glass-handle']);
+ expect(await evaluateViewer(page,()=>window.__fiero.getVisibleParts())).toEqual(['bd-skin-sunroof-glass-handle']);
  await configure('removed');await expect(page.locator('canvas')).not.toHaveAttribute('data-selected','bd-skin-sunroof-glass-handle');
  await page.locator('[data-tab="component"]').click();await page.getByRole('button',{name:'Reset view',exact:true}).click();
  const removed=await bounds(ids.map(id=>'bd-skin-'+id));for(const p of sunroofHardware)expect(Boolean(removed['bd-skin-'+p.id]),p.id).toBe(Boolean(p.values));
@@ -34,5 +35,5 @@ test('sunroof hardware follows panel removal and remains inspectable on desktop 
  const vehicleRemoved=await bounds(ids);for(const p of sunroofHardware)expect(Boolean(vehicleRemoved[p.id]),p.id).toBe(Boolean(p.values));
  await page.setViewportSize({width:390,height:740});await page.getByRole('button',{name:'Open assemblies',exact:true}).click();await page.getByRole('searchbox').fill('Sunroof release push button');await page.locator('.part-button[data-part="sunroof-release-button"]').click();await page.getByRole('button',{name:'Explode this assembly',exact:true}).click();
  await page.getByRole('button',{name:'Open assemblies',exact:true}).click();await page.locator('.part-button[data-part="bd-skin-sunroof-release-button"]').click();await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();await capture('sunroof-release-mobile');
- expect(await page.evaluate(()=>window.__fiero.getVisibleParts())).toEqual(['bd-skin-sunroof-release-button']);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);expect(errors).toEqual([]);
+ expect(await evaluateViewer(page,()=>window.__fiero.getVisibleParts())).toEqual(['bd-skin-sunroof-release-button']);expect(await evaluateViewer(page,()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);expect(errors).toEqual([]);
 });

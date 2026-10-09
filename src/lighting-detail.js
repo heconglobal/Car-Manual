@@ -26,10 +26,15 @@ export function lightingMaterials(base=createMaterials()){
 }
 function makeGroups(){const root=new T.Group(),groups=new Map();for(const p of lightingParts){const g=new T.Group();g.name=p.id;g.userData={partId:p.id,system:'electrical',section:p.section,spread:new T.Vector3(...p.spread),assemblySpread:new T.Vector3()};groups.set(p.id,g);root.add(g);}return{root,groups};}
 export function createLightingDetail(){const model=makeGroups(),h=geometryTools(model.groups,lightingMaterials());buildLighting(h,model.groups);h.optimize();correctLegacyHandedness(model.groups);return model;}
-export function buildVehicleLighting(groups,materials){const d=makeGroups(),h=geometryTools(d.groups,lightingMaterials(materials));buildLighting(h,d.groups);h.optimize();for(const p of lightingParts){const owner=p.section.startsWith('lighting-rear-')?'taillights':p.section.startsWith('lighting-front-')?'front-signals':p.section.startsWith('lighting-marker-')?'marker-lamps':p.section.startsWith('lighting-license-')?'license-lamps':'cabin-lamps';for(const m of [...d.groups.get(p.id).children]){m.userData.partId=owner;groups.get(owner).add(m);}}}
-export function buildLighting(h,groups){h.mapAdded(()=>buildAuthoredLighting(h,groups),bodyPoint);}
-function buildAuthoredLighting(h,groups){
- const {box,cyl,tube,ring}=h,{plate,frame,sleeve,screw,bulb,socket,lens,bowl}=electricalTools(h);
+export function buildVehicleLighting(groups,materials,{overview=false,resolution=1}={}){const d=makeGroups(),h=geometryTools(d.groups,lightingMaterials(materials),{resolution});buildLighting(h,d.groups,{overview});h.optimize();for(const p of lightingParts){const owner=p.section.startsWith('lighting-rear-')?'taillights':p.section.startsWith('lighting-front-')?'front-signals':p.section.startsWith('lighting-marker-')?'marker-lamps':p.section.startsWith('lighting-license-')?'license-lamps':'cabin-lamps';for(const m of [...d.groups.get(p.id).children]){if(overview&&p.id.endsWith('-contacts')){m.geometry.dispose();m.material.dispose();continue;}if(overview)m.userData.detailPartId=p.id;m.userData.partId=owner;groups.get(owner).add(m);}}}
+export function buildLightingOverview(groups,materials,{resolution=1}={}){buildVehicleLighting(groups,materials,{overview:true,resolution});}
+export function buildLighting(h,groups,options={}){h.mapAdded(()=>buildAuthoredLighting(h,groups,options),bodyPoint);}
+function buildAuthoredLighting(h,groups,{overview=false}={}){
+ const {box,cyl,tube,ring}=h,{plate,frame,sleeve,screw,bulb:detailBulb,socket:detailSocket,lens,bowl}=electricalTools(h);
+ // Preserve all visible lenses, optical grids, reflectors, housings and caps.
+ // Enclosed bulb/socket construction is deferred with the detailed family.
+ const bulb=(id,...args)=>{if(!overview||id.startsWith('lt-courtesy-'))return detailBulb(id,...args);};
+ const socket=(...args)=>{if(!overview)return detailSocket(...args);};
  const markerFits=new Map();
  function markerFit(end,cy,cz){
   if(markerFits.has(end))return markerFits.get(end);
@@ -39,7 +44,7 @@ function buildAuthoredLighting(h,groups){
   const fit=(z,y)=>{const u=T.MathUtils.clamp((z-cz+.1)/.005,0,nz),v=T.MathUtils.clamp((y-cy+.05)/.005,0,ny),i=Math.min(nz-1,Math.floor(u)),j=Math.min(ny-1,Math.floor(v));return T.MathUtils.lerp(T.MathUtils.lerp(grid[j][i],grid[j][i+1],u-i),T.MathUtils.lerp(grid[j+1][i],grid[j+1][i+1],u-i),v-j);};
   markerFits.set(end,fit);return fit;
  }
- function bake(scope,map){const ids=lightingParts.filter(p=>p.section==='lighting-'+scope).map(p=>p.id);if(scope.startsWith('marker-'))for(const id of ids)for(const m of groups.get(id).children){const old=m.geometry;m.geometry=tessellateForWrap(old);old.dispose();}bakeElectrical(groups,ids,map);}
+ function bake(scope,map){const ids=lightingParts.filter(p=>p.section==='lighting-'+scope).map(p=>p.id);if(scope.startsWith('marker-'))for(const id of ids)for(const m of groups.get(id).children){const old=m.geometry;m.geometry=tessellateForWrap(old,.012/(h.resolution||1));old.dispose();}bakeElectrical(groups,ids,map);}
  for(const [side,s]of[['left',1],['right',-1]]){
   let scope='front-'+side,id=k=>`lt-${scope}-${k}`;
   // Recessed black well surrounds the smaller amber lens in the SE pad.
@@ -72,7 +77,7 @@ function buildAuthoredLighting(h,groups){
  const xs=[.104,.033,-.033,-.104],keys=['left-map','left-dome','right-dome','right-map'];
  frame(id('housing'),.313,.110,.011,.018,[0,0,-.007],'vinyl',.012);plate(id('housing'),.296,.093,.003,[0,0,-.020],'plastic',xs.map(x=>[x,.010,.011]));
  const trim=electricalTools(h).rounded(.313,.110,.012);for(let i=0;i<4;i++){const x=xs[i],w=i===0||i===3?.084:.045;for(const [cy,ww,hh]of[[.013,w,.060],[-.034,.024,.013]]){const hole=electricalTools(h).rounded(ww,hh,.003,T.Path);for(const curve of hole.curves){for(const k of ['v1','v2','v0'])if(curve[k]?.isVector2)curve[k].add(new T.Vector2(x,cy));}trim.holes.push(hole);}}
- const trimGeo=new T.ExtrudeGeometry(trim,{depth:.002,bevelEnabled:false,curveSegments:16});h.add(id('housing'),trimGeo,'vinyl',[0,0,.002]);
+ const trimGeo=new T.ExtrudeGeometry(trim,{depth:.002,bevelEnabled:false,curveSegments:Math.max(4,Math.round(16*(h.resolution||1)))});h.add(id('housing'),trimGeo,'vinyl',[0,0,.002]);
  for(let i=0;i<4;i++){const x=xs[i],key=keys[i],w=i===0||i===3?.083:.044;frame(id('housing'),w+.006,.066,.003,.016,[x,.013,-.003],'plastic',.006);bowl(id('housing'),w-.001,.057,.021,[x,.013,-.003],'chrome',.009);lens(id(key+'-lens'),w,.060,[x,.013,.005]);bulb(id(key+'-bulb'),[x,.013,-.025],'906');socket(id(key+'-socket'),[x,.013,-.031],false,true);box(id(key+'-switch'),[.023,.012,.008],[x,-.034,.003],'plastic',[],{},.002);tube(id(key+'-switch'),[[x-.007,-.034,-.017],[x,-.034,-.010],[x+.007,-.034,-.017]],.0007,'copper');}
  for(const x of[-.125,.125])for(const y of[-.041,.031])screw(id('screws'),[x,y,-.005],.003,.016);
  bake(scope,(x,y,z)=>[x,1.139-z,-.027+y]);

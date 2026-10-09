@@ -39,8 +39,8 @@ await run('Verified compressed bytes stream into a configurable native model',as
 await run('Integrity failure rejects before the decoder allocates resources',async()=>{
  let decoded=false;await assert.rejects(loadVehicleAsset({entry:{...asset.entry,sha256:'0'.repeat(64)},request:async()=>response(),decode:async()=>{decoded=true;}}),error=>error.workshopLoad&&/integrity/.test(error.message));assert.equal(decoded,false);
 });
-await run('HTTP failures and transformed or incomplete responses are explicit',async()=>{
- for(const [make,pattern]of [[()=>response(undefined,{},503),/downloaded/],[()=>response(undefined,{'content-encoding':'gzip'}),/transformed/],[()=>response(undefined,{'content-length':'1'}),/unexpected size/],[()=>response(asset.compressed.subarray(0,-1)),/interrupted/],[()=>response(new Uint8Array(asset.compressed.length+1)),/exceeds/]])await assert.rejects(loadVehicleAsset({entry:asset.entry,request:async()=>make()}),pattern);
+await run('HTTP failures and incomplete responses are explicit',async()=>{
+ for(const [make,pattern]of [[()=>response(undefined,{},503),/downloaded/],[()=>response(undefined,{'content-length':'1'}),/unexpected size/],[()=>response(asset.compressed.subarray(0,-1)),/interrupted/],[()=>response(new Uint8Array(asset.compressed.length+1)),/exceeds/]])await assert.rejects(loadVehicleAsset({entry:asset.entry,request:async()=>make()}),pattern);
 });
 await run('Unvalidated descriptors fail before downloading',async()=>{
  let requested=false;await assert.rejects(loadVehicleAsset({entry:{...asset.entry,validation:{nativeRoundTrip:true}},request:async()=>{requested=true;}}),/native validation/);assert.equal(requested,false);
@@ -69,4 +69,15 @@ await run('Missing Web Crypto uses mandatory portable verification and still rej
   const model=await loadVehicleAsset({entry:asset.entry,request:async()=>response()});assert.equal(model.deliveryStats.verifyMethod,'portable');assert.equal(model.groups.size,1);disposeModel(model);
   let decoded=false;await assert.rejects(loadVehicleAsset({entry:{...asset.entry,sha256:'0'.repeat(64)},request:async()=>response(),decode:async()=>{decoded=true;}}),/integrity/);assert.equal(decoded,false);
  }finally{if(previous)Object.defineProperty(globalThis,'crypto',previous);else delete globalThis.crypto;}
+});
+
+await run('HTTP transport compression accepts verified browser-decoded model bytes',async()=>{
+ for(const encoding of ['gzip','br']){
+  const model=await loadVehicleAsset({entry:asset.entry,request:async()=>response(undefined,{'content-encoding':encoding,'content-length':'1'})});
+  assert.equal(model.groups.size,1);disposeModel(model);
+ }
+});
+await run('HTTP transport compression cannot bypass model integrity checks',async()=>{
+ const altered=asset.compressed.slice();altered[0]^=1;let decoded=false;
+ await assert.rejects(loadVehicleAsset({entry:asset.entry,request:async()=>response(altered,{'content-encoding':'gzip'}),decode:async()=>{decoded=true;}}),/integrity/);assert.equal(decoded,false);
 });

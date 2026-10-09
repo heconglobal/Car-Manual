@@ -23,9 +23,9 @@ async function readCompressed(response,entry,signal,onProgress){
  if(!response.ok)throw new Error('The complete vehicle could not be downloaded. Check the connection and reload.');
  if(!response.body?.getReader)throw new Error('This browser cannot stream the complete vehicle.');
  const encoding=response.headers.get('content-encoding');
- if(encoding&&encoding!=='identity')throw new Error('The vehicle file was transformed by the server. Reload or check the asset server configuration.');
+ // Fetch decodes HTTP transport compression; verify the resulting model bytes below.
  const declared=response.headers.get('content-length');
- if(declared!==null&&Number(declared)!==entry.bytes)throw new Error('The complete vehicle download has an unexpected size.');
+ if((!encoding||encoding==='identity')&&declared!==null&&Number(declared)!==entry.bytes)throw new Error('The complete vehicle download has an unexpected size.');
  }catch(error){try{await response.body?.cancel(error);}catch{}throw error;}
  const reader=response.body.getReader(),bytes=new Uint8Array(entry.bytes);let offset=0,lastProgress=-Infinity;
  const aborted=()=>{void reader.cancel(abortError(signal)).catch(()=>{});};

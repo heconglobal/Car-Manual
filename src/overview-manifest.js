@@ -3,7 +3,7 @@ export default {
   "format": 1,
   "positionQuantizationBits": 16,
   "normalQuantizationBits": 16,
-  "inputsSha256": "1375c6535d097c75f69032b4d98e67472bde95787a25bf53e804aa7d87a15a4a",
+  "inputsSha256": "758333dd18f086a1db10b7e51afb422a5fc2c0363d786ebea48150d06f216687",
   "url": "/models/overview-b6fa06e57f7a4ad4ff78be47.bin.gz",
   "sha256": "b6fa06e57f7a4ad4ff78be476456eb3da7635ea15d34db531e2f617a0be08bea",
   "bytes": 4849495,
@@ -12,6 +12,6 @@ export default {
   "triangles": 992700,
   "meshes": 948,
   "parts": 166,
-  "generatedAt": "2026-10-09T21:26:24.273Z",
-  "buildMs": 13763.806775000001
+  "generatedAt": "2026-10-09T21:29:49.892Z",
+  "buildMs": 21047.821989
 };

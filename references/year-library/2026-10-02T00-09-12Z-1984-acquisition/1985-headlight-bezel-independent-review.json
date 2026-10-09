@@ -1,0 +1,15 @@
+{
+  "reviewedAt": "2026-10-02T00:14:14.942743+00:00",
+  "reviewerTask": "/root/browser_performance/mobile_ux",
+  "sourceImage": "references/service-source-review-20261001/diy-pdf-39.png",
+  "sourceImageSha256": "34b72e147c6ead2f8b921833894d97ddc70359cc6726d27369c947203e58aa6e",
+  "openedAndInspected": true,
+  "document": "1985 Pontiac Fiero Do It Yourself manual",
+  "pdfPage": 39,
+  "printedPage": "2-30",
+  "step": 15,
+  "finding": "Step 15 explicitly prints 8 N·m (6 ft. lbs.) for the black plastic outer bezel’s two side retaining screws, then repeats 8 N·m (6 ft. lbs.) for the two front bezel retaining screws after closing the front compartment lid. The visible numeral is 8, not 0.8.",
+  "context": "Step 14 separately discusses locating the headlight retainer tabs in aiming-screw slots. The torque stated in step 15 is for bezel retaining screws, not aiming screws.",
+  "status": "Existing guide value agrees with this printed primary page; no app or source-guide change made.",
+  "limits": "Independent reading of this original printed page does not establish the absence of later factory corrections or validate tightening on the physical car."
+}

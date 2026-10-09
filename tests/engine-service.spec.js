@@ -1,3 +1,4 @@
+import {waitForViewer,evaluateViewer} from './viewer-ready.js';
 import {test,expect} from '@playwright/test';
 import {engineMembers} from '../src/engine-catalog.js';
 
@@ -5,17 +6,17 @@ test('cooling assembly opens detailed service parts, separates them and restores
  test.setTimeout(420000);
  const errors=[],images=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.resourceType()==='image')images.push(r.url());});
  await page.goto('/');await page.waitForFunction(()=>window.__fiero);
- const settle=()=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
- const capture=async name=>{await settle();await page.screenshot({path:`artifacts/${name}.png`});};
+ const settle=()=>evaluateViewer(page,()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+ const capture=async name=>{await settle();await waitForViewer(page);await page.screenshot({path:`artifacts/${name}.png`});};
  await page.locator('#systems [data-system="cooling"]').click();
  await page.locator('.part-button[data-part="thermostat"]').click();
  await page.getByRole('button',{name:'Explode this assembly',exact:true}).click();
- await expect(page.locator('canvas')).toHaveAttribute('data-assembly','thermostat-detail');
+ await waitForViewer(page);await expect(page.locator('canvas')).toHaveAttribute('data-assembly','thermostat-detail');
  await expect(page.locator('.part-button')).toHaveCount(5);
  await page.getByRole('button',{name:'Reset view',exact:true}).click();await capture('service-thermostat-assembled');
- const before=await page.evaluate(()=>Object.fromEntries(['eng-thermostat-housing','eng-thermostat-element','eng-thermostat-cap','eng-thermostat-gasket'].map(id=>[id,window.__fiero.getPartBounds(id)])));
+ const before=await evaluateViewer(page,()=>Object.fromEntries(['eng-thermostat-housing','eng-thermostat-element','eng-thermostat-cap','eng-thermostat-gasket'].map(id=>[id,window.__fiero.getPartBounds(id)])));
  await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await settle();
- const after=await page.evaluate(()=>Object.fromEntries(['eng-thermostat-housing','eng-thermostat-element','eng-thermostat-cap','eng-thermostat-gasket'].map(id=>[id,window.__fiero.getPartBounds(id)])));
+ const after=await evaluateViewer(page,()=>Object.fromEntries(['eng-thermostat-housing','eng-thermostat-element','eng-thermostat-cap','eng-thermostat-gasket'].map(id=>[id,window.__fiero.getPartBounds(id)])));
  expect(after['eng-thermostat-housing']).toEqual(before['eng-thermostat-housing']);
  expect(after['eng-thermostat-cap'].min[1]-before['eng-thermostat-cap'].min[1]).toBeCloseTo(.29,3);
  expect(after['eng-thermostat-element'].min[1]-before['eng-thermostat-element'].min[1]).toBeCloseTo(.17,3);
@@ -27,10 +28,10 @@ test('cooling assembly opens detailed service parts, separates them and restores
  await expect(page.locator('.part-service-reference')).toContainText('93.22 mm');
  await expect(page.locator('.part-service-reference a').last()).toHaveAttribute('href','https://motorad.com/part/211-195/');
  await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();
- expect(await page.evaluate(()=>window.__fiero.getVisibleParts())).toEqual(['eng-thermostat-element']);
+ expect(await evaluateViewer(page,()=>window.__fiero.getVisibleParts())).toEqual(['eng-thermostat-element']);
  await capture('service-thermostat-element');
  await page.locator('#systems [data-assembly="water-pump-detail"]').click();
- expect((await page.evaluate(()=>window.__fiero.getVisibleParts())).sort()).toEqual(engineMembers('water-pump-detail').map(p=>p.id).sort());
+ expect((await evaluateViewer(page,()=>window.__fiero.getVisibleParts())).sort()).toEqual(engineMembers('water-pump-detail').map(p=>p.id).sort());
  await page.getByRole('button',{name:'Reset view',exact:true}).click();await capture('service-water-pump-assembled');
  await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await capture('service-water-pump-exploded');
  await expect(page.locator('.part-button')).toHaveCount(10);
@@ -38,7 +39,7 @@ test('cooling assembly opens detailed service parts, separates them and restores
  await expect(page.locator('#inspector-content')).toContainText('Six-vane count');
  await expect(page.locator('#inspector-content')).toContainText('not a pump overhaul procedure');
  await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();
- expect(await page.evaluate(()=>window.__fiero.getVisibleParts())).toEqual(['eng-water-pump-impeller']);
+ expect(await evaluateViewer(page,()=>window.__fiero.getVisibleParts())).toEqual(['eng-water-pump-impeller']);
  await capture('service-water-pump-impeller');
  await page.locator('#systems [data-assembly="lubrication"]').click();
  await page.locator('#systems [data-assembly="dipstick-detail"]').click();
@@ -48,16 +49,16 @@ test('cooling assembly opens detailed service parts, separates them and restores
  await expect(page.locator('#inspector-content')).toContainText('non-A/C routing is not modeled');
  await page.getByRole('button',{name:'Isolate',exact:true}).click();await page.getByRole('button',{name:'Focus part',exact:true}).click();await capture('service-oil-pressure-sender');
  await page.getByRole('button',{name:'Back to vehicle',exact:false}).click();
- await expect(page.locator('canvas')).toHaveAttribute('data-selected','thermostat');
- expect(await page.evaluate(()=>window.__fiero.getState().system)).toBe('cooling');
+ await waitForViewer(page);await expect(page.locator('canvas')).toHaveAttribute('data-selected','thermostat');
+ expect(await evaluateViewer(page,()=>window.__fiero.getState().system)).toBe('cooling');
  // Global search must also expose service internals on a short mobile screen.
  await page.setViewportSize({width:390,height:600});
  await page.getByRole('button',{name:'Open assemblies',exact:true}).click();
  await page.getByRole('searchbox').fill('dipstick');
  await page.locator('.part-button[data-part="eng-dipstick"]').click();
- await expect(page.locator('canvas')).toHaveAttribute('data-assembly','dipstick-detail');
+ await waitForViewer(page);await expect(page.locator('canvas')).toHaveAttribute('data-assembly','dipstick-detail');
  await expect(page.locator('.sidebar')).not.toHaveClass(/mobile-open/);
- expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
- await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await page.locator('canvas').scrollIntoViewIfNeeded();await settle();await page.screenshot({path:'artifacts/service-mobile-dipstick.png',fullPage:true});
+ expect(await evaluateViewer(page,()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+ await page.getByRole('button',{name:'Explode assembly',exact:true}).click();await page.locator('canvas').scrollIntoViewIfNeeded();await settle();await waitForViewer(page);await page.screenshot({path:'artifacts/service-mobile-dipstick.png',fullPage:true});
  expect(errors).toEqual([]);expect(images).toEqual([]);
 });

@@ -76,7 +76,7 @@ export function buildTransmission(h){
  for(const s of [-1,1])surface(id('diff-carrier'),36,12,(u,v)=>{const a=s>0?u*.9-.45:u*.9+Math.PI-.45;const r=.043+.008*Math.sin(v*Math.PI);return [.068+v*.10,dy+Math.cos(a)*r,dz+Math.sin(a)*r];},'iron');
  gear(id('ring-gear'),.090,.023,m17Nominal.finalRingTeeth,D(.104),.18,'rotor',.040);annulus(id('ring-gear'),.075,.040,.009,D(.123),'iron');
  for(let i=0;i<8;i++){const a=i*Math.PI/4;bolt(id('ring-bolts'),[.132,dy+Math.cos(a)*.057,dz+Math.sin(a)*.057],.005,'x');}
- for(const x of [.05,.19])bearing(id('diff-bearings'),.031,.019,.014,D(x));annulus(id('diff-shim'),.032,.020,.0015,D(.201),'zinc');gear(id('speed-drive'),.036,.009,38,D(.036),.10,'pickupPlastic',.02);
+ for(const x of [.05,.19])bearing(id('diff-bearings'),.031,.019,.014,D(x));annulus(id('diff-shim'),.032,.020,.0015,D(.201),'zinc');gear(id('speed-drive'),.036,.009,35,D(.036),.10,'pickupPlastic',.02);
  cyl(id('diff-pin'),.005,.086,D(.12),'rotor',[0,0,0]);bolt(id('diff-pin-screw'),[.12,dy+.052,dz],.003);annulus(id('diff-pin-washer'),.0045,.002,.001,[.12,dy+.048,dz],'zinc',[0,0,Math.PI/2]);
  for(const s of [-1,1]){
   const p=D(.12+s*.026);gear(id('side-gears'),.025,.012,16,p,0,'rotor',.012);annulus(id('side-washers'),.027,.013,.0015,D(.12+s*.034),'gold');

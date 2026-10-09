@@ -1,0 +1,35 @@
+# Finalized native vehicle delivery: configuration boundary
+
+This is a read-only integration proposal, following the isolated [final performance measurement](browser-loading.md). The restored complete vehicle and persistent explorer cache remain the production behavior. Native lossless packing is being evaluated separately; its transfer size, browser decoding time and peak memory must be measured before promotion. The earlier Body-stage worker proposal remains preserved as an alternative.
+
+## Reuse the existing adapter
+
+`src/vehicle-state.js` already exports `vehicleConfiguration(groups)`. Its implementation matches the independent closure in `src/model.js`: sanitization, option visibility, body/headlamp paint color and metalness/roughness, interior and vinyl colors, `interiorColor()` variants, wheel finish, `original.color`, and both current and retained `surfaceMaterial` colors. No extraction of `model.js` is necessary.
+
+After decoding an asset produced from the **finished** native `createVehicle()` result, the minimal attachment is `{...model, ...vehicleConfiguration(model.groups)}`. Apply the saved, sanitized configuration through this callback before the first visible frame. The adapter initializes defaults; it does not rebuild, transform or merge geometry. Do **not** call `setVehicleSpreads()`, `correctLegacyHandedness()`, `bodyPoint`, `enginePlacement` or geometry optimization again. Final group spreads, US-LHD geometry, label UVs, indices and owner metadata are already encoded.
+
+The payload must include hidden option variants as well as default-visible meshes. Preserve each owner/system, `partId`/`detailPartId`, `option`/`value`, `finish`, `materialName`, original material metadata, mesh/group transforms and visibility, geometry groups/draw ranges, material properties and procedural texture recipes. The native codec traverses hidden meshes too. Retain complete vehicle ownership, including distributor, coil and ignition leads; no system-specific geometry substitution is needed. Existing detail-family persistent caches and their configuration/motion callbacks remain separate.
+
+## Independent acceptance fixtures
+
+Compare the decoded model plus `vehicleConfiguration()` with snapshots from the **original** `createVehicle().configure()` closure. The verifier is constructing this baseline independently, before any adapter replacement, under `artifacts/vehicle-delivery-validation/2026-10-03T01-00-27Z/`.
+
+Enumerate all 24 configuration keys, including keys outside the options panel. Exercise all 54 individual supported key/value choices over defaults, the combined alternate configuration, then return to defaults. These include all four paints; roof solid/glass/removed; deck clean/rack/wing; all four radios; interior, exhaust, wheel, steering-wheel, windows and studio alternatives; and both values of each Boolean. UI-only keys may correctly leave vehicle geometry/materials unchanged. Also compare partial and invalid input sanitization, unknown-key rejection and detached `getConfiguration()` return values. A caller must not be able to mutate stored configuration through the returned object.
+
+For every case compare per-mesh visibility, owner bounds, original colors/emissive, current material properties and texture recipes/settings. Assert that complete typed geometry bytes, indices, UVs, transforms and spreads stay unchanged. Record the independent baseline before running the candidate. Add a focused retained-surface check by simulating the viewer's ghost/wire material swap: changing paint or trim must update `surfaceMaterial` and `original`, and returning to the surface material must show the new finish without altering another model's materials. This supplements, rather than replaces, rendered configuration, electrical visibility, door/headlamp, explode/return and mobile guide checks.
+
+## Resource ownership and failures
+
+Use integrity-checked, versioned active assets and an abortable fetch. Handle raw gzip and HTTP-decoded responses explicitly, validating the corresponding length and SHA. A rejected or truncated asset must produce a visible, recoverable loading error, never a partially populated vehicle. The existing native startup is the baseline until the candidate passes; any procedural fallback should be explicit in its progress and performance reporting.
+
+`decodeModel()` currently creates textures and materials before validating all mesh buffers, and can throw after allocating unattached geometry. A safe promotion needs cleanup covering these partial allocations, not only `disposeModel()` on a successfully returned root. Track owned resources during decode and dispose them on failure; once the model is returned, transfer ownership to existing viewer disposal. On closure/cancellation or a stale async result, discard the model rather than attaching it. Do not dispose a retained complete vehicle or cached explorer during navigation.
+
+Native lossless packing retains the approximately 395 MB geometry allocation. Unpacking creates new typed arrays; the roughly 398 MB encoded container can coexist with those arrays during decode, plus Body/Engine staging buffers, texture canvases and GPU resources. Releasing a JavaScript reference does not establish immediate garbage collection. Measure peak allocations, and avoid promising a RAM reduction from compressed transfer bytes. Decide prefetch sequencing from these measurements: overlapping all three decoded payloads may produce an avoidable peak even if their network downloads become smaller.
+
+## Work that remains after decoding
+
+`textureFromRecipe()` still generates grain and text canvases on the main thread. Grain recipes use deterministic seed 8193; text recipes preserve local font strings, dimensions and colors. The codec deduplicates equivalent texture recipes/settings and must retain repeat, offset, wrap, color space and anisotropy. Existing reflected text UVs must not be reflected again. The native Node fixture uses a canvas stub, so it validates recipes/properties, not painted pixels, browser text rasterization or GPU upload cost.
+
+Browser decoding also performs JSON parsing, byte-plane unpacking, Three.js allocations and per-mesh bounding-box/sphere calculations. Environment-map creation, shader compilation, geometry/texture uploads and the first rendered frame still cost time after construction has been removed. Instrument transfer/decompression/integrity, decode (including recipe generation), viewer setup and first-frame intervals separately. The earlier 1.83 s Node decode of an unpacked full-vehicle asset is not a browser prediction for a packed asset.
+
+The final current-browser measurement was 175.169 s cold readiness, 147.582 s preparation and a 64.629 s longest main-thread task on localhost with software WebGL. A candidate must materially reduce those observed pauses without losing geometry, configuration behavior or warm navigation. Keep exact timings, payload bytes, CPU geometry/staging/heap figures and device limitations visible in the result; a passing smoke test alone is insufficient.

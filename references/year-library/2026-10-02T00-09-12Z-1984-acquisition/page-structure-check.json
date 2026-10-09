@@ -1,0 +1,879 @@
+{
+  "pageCount": 109,
+  "pagesWithoutTextImageOrVectorObjects": [],
+  "method": "Render every PDF page at 0.2 scale in grayscale; variation checks detect blank/uniform downloads, not missing or misordered printed pages.",
+  "pages": [
+    {
+      "pdfPage": 1,
+      "width": 86,
+      "height": 102,
+      "pixelMinimum": 74,
+      "pixelMaximum": 254,
+      "pixelStddev": 23.591
+    },
+    {
+      "pdfPage": 2,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 30,
+      "pixelMaximum": 255,
+      "pixelStddev": 29.82
+    },
+    {
+      "pdfPage": 3,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 43,
+      "pixelMaximum": 255,
+      "pixelStddev": 34.567
+    },
+    {
+      "pdfPage": 4,
+      "width": 82,
+      "height": 100,
+      "pixelMinimum": 29,
+      "pixelMaximum": 255,
+      "pixelStddev": 41.2
+    },
+    {
+      "pdfPage": 5,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 55,
+      "pixelMaximum": 255,
+      "pixelStddev": 35.184
+    },
+    {
+      "pdfPage": 6,
+      "width": 80,
+      "height": 100,
+      "pixelMinimum": 46,
+      "pixelMaximum": 255,
+      "pixelStddev": 34.871
+    },
+    {
+      "pdfPage": 7,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 53,
+      "pixelMaximum": 255,
+      "pixelStddev": 32.44
+    },
+    {
+      "pdfPage": 8,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 52,
+      "pixelMaximum": 255,
+      "pixelStddev": 32.917
+    },
+    {
+      "pdfPage": 9,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 45,
+      "pixelMaximum": 255,
+      "pixelStddev": 34.817
+    },
+    {
+      "pdfPage": 10,
+      "width": 88,
+      "height": 100,
+      "pixelMinimum": 47,
+      "pixelMaximum": 255,
+      "pixelStddev": 33.035
+    },
+    {
+      "pdfPage": 11,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 66,
+      "pixelMaximum": 255,
+      "pixelStddev": 34.986
+    },
+    {
+      "pdfPage": 12,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 48,
+      "pixelMaximum": 255,
+      "pixelStddev": 26.374
+    },
+    {
+      "pdfPage": 13,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 123,
+      "pixelMaximum": 255,
+      "pixelStddev": 27.013
+    },
+    {
+      "pdfPage": 14,
+      "width": 88,
+      "height": 100,
+      "pixelMinimum": 97,
+      "pixelMaximum": 255,
+      "pixelStddev": 17.377
+    },
+    {
+      "pdfPage": 15,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 65,
+      "pixelMaximum": 255,
+      "pixelStddev": 34.145
+    },
+    {
+      "pdfPage": 16,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 120,
+      "pixelMaximum": 255,
+      "pixelStddev": 31.171
+    },
+    {
+      "pdfPage": 17,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 134,
+      "pixelMaximum": 255,
+      "pixelStddev": 28.649
+    },
+    {
+      "pdfPage": 18,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 116,
+      "pixelMaximum": 255,
+      "pixelStddev": 26.531
+    },
+    {
+      "pdfPage": 19,
+      "width": 84,
+      "height": 100,
+      "pixelMinimum": 125,
+      "pixelMaximum": 255,
+      "pixelStddev": 27.163
+    },
+    {
+      "pdfPage": 20,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 117,
+      "pixelMaximum": 255,
+      "pixelStddev": 30.285
+    },
+    {
+      "pdfPage": 21,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 119,
+      "pixelMaximum": 255,
+      "pixelStddev": 29.558
+    },
+    {
+      "pdfPage": 22,
+      "width": 88,
+      "height": 100,
+      "pixelMinimum": 91,
+      "pixelMaximum": 255,
+      "pixelStddev": 33.73
+    },
+    {
+      "pdfPage": 23,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 117,
+      "pixelMaximum": 255,
+      "pixelStddev": 28.684
+    },
+    {
+      "pdfPage": 24,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 107,
+      "pixelMaximum": 255,
+      "pixelStddev": 31.153
+    },
+    {
+      "pdfPage": 25,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 125,
+      "pixelMaximum": 255,
+      "pixelStddev": 26.094
+    },
+    {
+      "pdfPage": 26,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 104,
+      "pixelMaximum": 255,
+      "pixelStddev": 21.413
+    },
+    {
+      "pdfPage": 27,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 55,
+      "pixelMaximum": 255,
+      "pixelStddev": 33.193
+    },
+    {
+      "pdfPage": 28,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 96,
+      "pixelMaximum": 255,
+      "pixelStddev": 33.289
+    },
+    {
+      "pdfPage": 29,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 107,
+      "pixelMaximum": 255,
+      "pixelStddev": 28.503
+    },
+    {
+      "pdfPage": 30,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 108,
+      "pixelMaximum": 255,
+      "pixelStddev": 29.348
+    },
+    {
+      "pdfPage": 31,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 117,
+      "pixelMaximum": 255,
+      "pixelStddev": 27.21
+    },
+    {
+      "pdfPage": 32,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 142,
+      "pixelMaximum": 255,
+      "pixelStddev": 9.162
+    },
+    {
+      "pdfPage": 33,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 28,
+      "pixelMaximum": 255,
+      "pixelStddev": 34.513
+    },
+    {
+      "pdfPage": 34,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 110,
+      "pixelMaximum": 255,
+      "pixelStddev": 28.333
+    },
+    {
+      "pdfPage": 35,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 51,
+      "pixelMaximum": 255,
+      "pixelStddev": 34.527
+    },
+    {
+      "pdfPage": 36,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 109,
+      "pixelMaximum": 255,
+      "pixelStddev": 28.404
+    },
+    {
+      "pdfPage": 37,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 99,
+      "pixelMaximum": 255,
+      "pixelStddev": 26.55
+    },
+    {
+      "pdfPage": 38,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 103,
+      "pixelMaximum": 255,
+      "pixelStddev": 30.534
+    },
+    {
+      "pdfPage": 39,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 37,
+      "pixelMaximum": 255,
+      "pixelStddev": 31.378
+    },
+    {
+      "pdfPage": 40,
+      "width": 86,
+      "height": 101,
+      "pixelMinimum": 42,
+      "pixelMaximum": 255,
+      "pixelStddev": 29.185
+    },
+    {
+      "pdfPage": 41,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 131,
+      "pixelMaximum": 255,
+      "pixelStddev": 23.602
+    },
+    {
+      "pdfPage": 42,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 47,
+      "pixelMaximum": 255,
+      "pixelStddev": 36.717
+    },
+    {
+      "pdfPage": 43,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 59,
+      "pixelMaximum": 255,
+      "pixelStddev": 32.946
+    },
+    {
+      "pdfPage": 44,
+      "width": 86,
+      "height": 101,
+      "pixelMinimum": 55,
+      "pixelMaximum": 255,
+      "pixelStddev": 25.207
+    },
+    {
+      "pdfPage": 45,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 40,
+      "pixelMaximum": 255,
+      "pixelStddev": 27.272
+    },
+    {
+      "pdfPage": 46,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 34,
+      "pixelMaximum": 255,
+      "pixelStddev": 35.455
+    },
+    {
+      "pdfPage": 47,
+      "width": 85,
+      "height": 99,
+      "pixelMinimum": 36,
+      "pixelMaximum": 255,
+      "pixelStddev": 34.068
+    },
+    {
+      "pdfPage": 48,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 29,
+      "pixelMaximum": 255,
+      "pixelStddev": 29.656
+    },
+    {
+      "pdfPage": 49,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 130,
+      "pixelMaximum": 255,
+      "pixelStddev": 27.723
+    },
+    {
+      "pdfPage": 50,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 47,
+      "pixelMaximum": 255,
+      "pixelStddev": 28.074
+    },
+    {
+      "pdfPage": 51,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 34,
+      "pixelMaximum": 255,
+      "pixelStddev": 34.171
+    },
+    {
+      "pdfPage": 52,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 85,
+      "pixelMaximum": 255,
+      "pixelStddev": 29.18
+    },
+    {
+      "pdfPage": 53,
+      "width": 89,
+      "height": 100,
+      "pixelMinimum": 50,
+      "pixelMaximum": 255,
+      "pixelStddev": 32.479
+    },
+    {
+      "pdfPage": 54,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 125,
+      "pixelMaximum": 255,
+      "pixelStddev": 25.575
+    },
+    {
+      "pdfPage": 55,
+      "width": 88,
+      "height": 101,
+      "pixelMinimum": 52,
+      "pixelMaximum": 255,
+      "pixelStddev": 30.554
+    },
+    {
+      "pdfPage": 56,
+      "width": 87,
+      "height": 101,
+      "pixelMinimum": 54,
+      "pixelMaximum": 255,
+      "pixelStddev": 28.61
+    },
+    {
+      "pdfPage": 57,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 119,
+      "pixelMaximum": 255,
+      "pixelStddev": 28.179
+    },
+    {
+      "pdfPage": 58,
+      "width": 87,
+      "height": 99,
+      "pixelMinimum": 121,
+      "pixelMaximum": 255,
+      "pixelStddev": 27.888
+    },
+    {
+      "pdfPage": 59,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 49,
+      "pixelMaximum": 255,
+      "pixelStddev": 28.522
+    },
+    {
+      "pdfPage": 60,
+      "width": 86,
+      "height": 99,
+      "pixelMinimum": 88,
+      "pixelMaximum": 255,
+      "pixelStddev": 26.24
+    },
+    {
+      "pdfPage": 61,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 75,
+      "pixelMaximum": 255,
+      "pixelStddev": 23.475
+    },
+    {
+      "pdfPage": 62,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 45,
+      "pixelMaximum": 255,
+      "pixelStddev": 29.011
+    },
+    {
+      "pdfPage": 63,
+      "width": 88,
+      "height": 100,
+      "pixelMinimum": 106,
+      "pixelMaximum": 255,
+      "pixelStddev": 34.222
+    },
+    {
+      "pdfPage": 64,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 130,
+      "pixelMaximum": 255,
+      "pixelStddev": 27.8
+    },
+    {
+      "pdfPage": 65,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 96,
+      "pixelMaximum": 255,
+      "pixelStddev": 27.938
+    },
+    {
+      "pdfPage": 66,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 135,
+      "pixelMaximum": 255,
+      "pixelStddev": 27.365
+    },
+    {
+      "pdfPage": 67,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 137,
+      "pixelMaximum": 255,
+      "pixelStddev": 26.704
+    },
+    {
+      "pdfPage": 68,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 135,
+      "pixelMaximum": 255,
+      "pixelStddev": 24.704
+    },
+    {
+      "pdfPage": 69,
+      "width": 89,
+      "height": 100,
+      "pixelMinimum": 122,
+      "pixelMaximum": 255,
+      "pixelStddev": 28.647
+    },
+    {
+      "pdfPage": 70,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 123,
+      "pixelMaximum": 255,
+      "pixelStddev": 25.488
+    },
+    {
+      "pdfPage": 71,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 123,
+      "pixelMaximum": 255,
+      "pixelStddev": 21.418
+    },
+    {
+      "pdfPage": 72,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 151,
+      "pixelMaximum": 255,
+      "pixelStddev": 9.51
+    },
+    {
+      "pdfPage": 73,
+      "width": 90,
+      "height": 100,
+      "pixelMinimum": 34,
+      "pixelMaximum": 255,
+      "pixelStddev": 41.17
+    },
+    {
+      "pdfPage": 74,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 47,
+      "pixelMaximum": 255,
+      "pixelStddev": 36.992
+    },
+    {
+      "pdfPage": 75,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 104,
+      "pixelMaximum": 255,
+      "pixelStddev": 31.932
+    },
+    {
+      "pdfPage": 76,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 105,
+      "pixelMaximum": 255,
+      "pixelStddev": 28.694
+    },
+    {
+      "pdfPage": 77,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 98,
+      "pixelMaximum": 255,
+      "pixelStddev": 30.033
+    },
+    {
+      "pdfPage": 78,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 111,
+      "pixelMaximum": 255,
+      "pixelStddev": 28.482
+    },
+    {
+      "pdfPage": 79,
+      "width": 88,
+      "height": 100,
+      "pixelMinimum": 82,
+      "pixelMaximum": 255,
+      "pixelStddev": 32.593
+    },
+    {
+      "pdfPage": 80,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 107,
+      "pixelMaximum": 255,
+      "pixelStddev": 29.798
+    },
+    {
+      "pdfPage": 81,
+      "width": 88,
+      "height": 100,
+      "pixelMinimum": 125,
+      "pixelMaximum": 255,
+      "pixelStddev": 32.526
+    },
+    {
+      "pdfPage": 82,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 111,
+      "pixelMaximum": 255,
+      "pixelStddev": 29.235
+    },
+    {
+      "pdfPage": 83,
+      "width": 90,
+      "height": 100,
+      "pixelMinimum": 107,
+      "pixelMaximum": 255,
+      "pixelStddev": 30.876
+    },
+    {
+      "pdfPage": 84,
+      "width": 87,
+      "height": 99,
+      "pixelMinimum": 88,
+      "pixelMaximum": 255,
+      "pixelStddev": 30.326
+    },
+    {
+      "pdfPage": 85,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 95,
+      "pixelMaximum": 255,
+      "pixelStddev": 32.278
+    },
+    {
+      "pdfPage": 86,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 30,
+      "pixelMaximum": 255,
+      "pixelStddev": 37.227
+    },
+    {
+      "pdfPage": 87,
+      "width": 89,
+      "height": 100,
+      "pixelMinimum": 106,
+      "pixelMaximum": 255,
+      "pixelStddev": 33.417
+    },
+    {
+      "pdfPage": 88,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 97,
+      "pixelMaximum": 255,
+      "pixelStddev": 30.81
+    },
+    {
+      "pdfPage": 89,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 77,
+      "pixelMaximum": 255,
+      "pixelStddev": 34.161
+    },
+    {
+      "pdfPage": 90,
+      "width": 86,
+      "height": 99,
+      "pixelMinimum": 119,
+      "pixelMaximum": 255,
+      "pixelStddev": 29.082
+    },
+    {
+      "pdfPage": 91,
+      "width": 89,
+      "height": 100,
+      "pixelMinimum": 106,
+      "pixelMaximum": 255,
+      "pixelStddev": 33.187
+    },
+    {
+      "pdfPage": 92,
+      "width": 86,
+      "height": 99,
+      "pixelMinimum": 109,
+      "pixelMaximum": 255,
+      "pixelStddev": 29.96
+    },
+    {
+      "pdfPage": 93,
+      "width": 88,
+      "height": 100,
+      "pixelMinimum": 66,
+      "pixelMaximum": 255,
+      "pixelStddev": 36.16
+    },
+    {
+      "pdfPage": 94,
+      "width": 86,
+      "height": 99,
+      "pixelMinimum": 108,
+      "pixelMaximum": 255,
+      "pixelStddev": 30.122
+    },
+    {
+      "pdfPage": 95,
+      "width": 89,
+      "height": 100,
+      "pixelMinimum": 89,
+      "pixelMaximum": 255,
+      "pixelStddev": 31.647
+    },
+    {
+      "pdfPage": 96,
+      "width": 86,
+      "height": 99,
+      "pixelMinimum": 108,
+      "pixelMaximum": 255,
+      "pixelStddev": 27.484
+    },
+    {
+      "pdfPage": 97,
+      "width": 85,
+      "height": 100,
+      "pixelMinimum": 58,
+      "pixelMaximum": 255,
+      "pixelStddev": 34.128
+    },
+    {
+      "pdfPage": 98,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 92,
+      "pixelMaximum": 255,
+      "pixelStddev": 33.756
+    },
+    {
+      "pdfPage": 99,
+      "width": 81,
+      "height": 100,
+      "pixelMinimum": 111,
+      "pixelMaximum": 255,
+      "pixelStddev": 33.752
+    },
+    {
+      "pdfPage": 100,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 78,
+      "pixelMaximum": 255,
+      "pixelStddev": 23.618
+    },
+    {
+      "pdfPage": 101,
+      "width": 87,
+      "height": 100,
+      "pixelMinimum": 106,
+      "pixelMaximum": 255,
+      "pixelStddev": 33.768
+    },
+    {
+      "pdfPage": 102,
+      "width": 87,
+      "height": 99,
+      "pixelMinimum": 69,
+      "pixelMaximum": 255,
+      "pixelStddev": 28.614
+    },
+    {
+      "pdfPage": 103,
+      "width": 87,
+      "height": 99,
+      "pixelMinimum": 109,
+      "pixelMaximum": 255,
+      "pixelStddev": 26.697
+    },
+    {
+      "pdfPage": 104,
+      "width": 87,
+      "height": 99,
+      "pixelMinimum": 74,
+      "pixelMaximum": 255,
+      "pixelStddev": 26.743
+    },
+    {
+      "pdfPage": 105,
+      "width": 90,
+      "height": 100,
+      "pixelMinimum": 123,
+      "pixelMaximum": 255,
+      "pixelStddev": 24.999
+    },
+    {
+      "pdfPage": 106,
+      "width": 86,
+      "height": 97,
+      "pixelMinimum": 130,
+      "pixelMaximum": 255,
+      "pixelStddev": 15.596
+    },
+    {
+      "pdfPage": 107,
+      "width": 87,
+      "height": 99,
+      "pixelMinimum": 75,
+      "pixelMaximum": 255,
+      "pixelStddev": 31.67
+    },
+    {
+      "pdfPage": 108,
+      "width": 86,
+      "height": 100,
+      "pixelMinimum": 129,
+      "pixelMaximum": 255,
+      "pixelStddev": 27.968
+    },
+    {
+      "pdfPage": 109,
+      "width": 86,
+      "height": 99,
+      "pixelMinimum": 73,
+      "pixelMaximum": 254,
+      "pixelStddev": 28.678
+    }
+  ]
+}

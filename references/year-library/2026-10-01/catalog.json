@@ -1,0 +1,429 @@
+{
+  "createdAt": "2026-10-01T22:07:28.755447+00:00",
+  "purpose": "Preserve Fiero model-year sources for expansion beyond the original1985SE2M6 project.",
+  "archiveIndex": "https://www.fieroinfo.com/manuals/",
+  "policy": [
+    "Never delete or overwrite original acquisitions; retain replacements as new files.",
+    "A source model year is not blanket applicability to another year, engine, transmission, trim or RPO.",
+    "Indexing/download/cover review does not establish completeness or verify every service value.",
+    "Reference scans stay outside the app distribution; authored notes and source links may be published."
+  ],
+  "documents": [
+    {
+      "id": "1984-diy",
+      "modelYears": [
+        1984
+      ],
+      "documentType": "DIY",
+      "publisher": "Pontiac/GM, archived scan",
+      "archive": "FieroInfo",
+      "sourceUrl": "https://www.fieroinfo.com/manuals/1984_Fiero_Do_It_Yourself.pdf",
+      "localPath": "references/year-library/2026-10-01/1984-diy.pdf",
+      "pages": 48,
+      "bytes": 13093764,
+      "sha256": "7e3be88258eaff0f12b5d15fb3f184bc6dd62dc2253ec38cd3f6687400ed274e",
+      "acquiredAt": "2026-10-01T22:04:31.125934+00:00",
+      "usable": true,
+      "review": "Cover opened; internal pages require section-by-section review before use.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1984-electrical-troubleshooting",
+      "modelYears": [
+        1984
+      ],
+      "documentType": "Revised section8A electrical troubleshooting",
+      "publisher": "Pontiac/GM, archived scan",
+      "archive": "FieroInfo",
+      "sourceUrl": "https://www.fieroinfo.com/manuals/1984_Fiero_Electrical_Troubleshooting.pdf",
+      "localPath": "references/year-library/2026-10-01/1984-electrical-troubleshooting.pdf",
+      "pages": 40,
+      "bytes": 5359698,
+      "sha256": "46a62e415504f4096eb4c040e315e1b342f59bd76de93a5c17aab0b155b09dc9",
+      "acquiredAt": "2026-10-01T22:04:17.690613+00:00",
+      "usable": true,
+      "review": "Cover opened; internal pages require section-by-section review before use.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1984-owners",
+      "modelYears": [
+        1984
+      ],
+      "documentType": "Owners",
+      "publisher": "Pontiac/GM, archived scan",
+      "archive": "FieroInfo",
+      "sourceUrl": "https://www.fieroinfo.com/manuals/1984_Fiero_Owners_Manual.pdf",
+      "localPath": "references/year-library/2026-10-01/1984-owners.pdf",
+      "pages": 1,
+      "bytes": 415,
+      "sha256": "4a756dfd83816c8680b9def66eb282d1639436a59d19c5321bd020dd9dc8fda9",
+      "acquiredAt": "2026-10-01T22:04:30.645445+00:00",
+      "usable": false,
+      "review": "Preserved blank one-page 415-byte archive response; not usable owner-manual evidence.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1984-maintenance",
+      "modelYears": [
+        1984
+      ],
+      "documentType": "Maintenance",
+      "publisher": "Pontiac/GM, archived scan",
+      "archive": "FieroInfo",
+      "sourceUrl": "https://www.fieroinfo.com/manuals/1984_Fiero_Maintenance_Schedule.pdf",
+      "localPath": "references/year-library/2026-10-01/1984-maintenance.pdf",
+      "pages": 17,
+      "bytes": 4242045,
+      "sha256": "2f11f62135d636fb5ed490404b553ac841a5becfad318096281390036196ad08",
+      "acquiredAt": "2026-10-01T22:04:31.664609+00:00",
+      "usable": true,
+      "review": "Cover opened; internal pages require section-by-section review before use.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1986-diy",
+      "modelYears": [
+        1986
+      ],
+      "documentType": "DIY",
+      "publisher": "Pontiac/GM, archived scan",
+      "archive": "FieroInfo",
+      "sourceUrl": "https://www.fieroinfo.com/manuals/1986_Fiero_Do_It_Yourself.pdf",
+      "localPath": "references/year-library/2026-10-01/1986-diy.pdf",
+      "pages": 60,
+      "bytes": 47755998,
+      "sha256": "6de422f364d8cf5aa859769eb6263a2294d0ac38dfa090a176b69ddce88a537e",
+      "acquiredAt": "2026-10-01T22:04:47.109792+00:00",
+      "usable": true,
+      "review": "Cover opened; internal pages require section-by-section review before use.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1986-owners",
+      "modelYears": [
+        1986
+      ],
+      "documentType": "Owners",
+      "publisher": "Pontiac/GM, archived scan",
+      "archive": "FieroInfo",
+      "sourceUrl": "https://www.fieroinfo.com/manuals/1986_Fiero_Owners_Manual.pdf",
+      "localPath": "references/year-library/2026-10-01/1986-owners.pdf",
+      "pages": 111,
+      "bytes": 9143936,
+      "sha256": "1148cdd53de4528aaed87d091fe85fba342d6ce6a9634851f2ad622592ca78ed",
+      "acquiredAt": "2026-10-01T22:04:32.932830+00:00",
+      "usable": true,
+      "review": "Cover opened; internal pages require section-by-section review before use.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1986-maintenance",
+      "modelYears": [
+        1986
+      ],
+      "documentType": "Maintenance",
+      "publisher": "Pontiac/GM, archived scan",
+      "archive": "FieroInfo",
+      "sourceUrl": "https://www.fieroinfo.com/manuals/1986_Fiero_Maintenance_Schedule.pdf",
+      "localPath": "references/year-library/2026-10-01/1986-maintenance.pdf",
+      "pages": 18,
+      "bytes": 4377032,
+      "sha256": "0880d85e67ef6f88c396c926fd883f1abfb816a74058e48de35d698c9fa79eb1",
+      "acquiredAt": "2026-10-01T22:04:31.503439+00:00",
+      "usable": true,
+      "review": "Cover opened; internal pages require section-by-section review before use.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1987-owners",
+      "modelYears": [
+        1987
+      ],
+      "documentType": "Owners",
+      "publisher": "Pontiac/GM, archived scan",
+      "archive": "FieroInfo",
+      "sourceUrl": "https://www.fieroinfo.com/manuals/1987_Fiero_Owners_Manual.pdf",
+      "localPath": "references/year-library/2026-10-01/1987-owners.pdf",
+      "pages": 186,
+      "bytes": 54387280,
+      "sha256": "bea8d62637b42c4ebaa84da732d1b6d954892d7e6168908135d8c34ea398dddf",
+      "acquiredAt": "2026-10-01T22:04:33.464270+00:00",
+      "usable": true,
+      "review": "Cover opened; internal pages require section-by-section review before use.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1987-service",
+      "modelYears": [
+        1987
+      ],
+      "documentType": "Service manual",
+      "publisher": "Pontiac/GM, archived scan",
+      "archive": "FieroInfo",
+      "sourceUrl": "https://www.fieroinfo.com/manuals/1987_Pontiac_Fiero_GM_Service_Manual.pdf",
+      "localPath": "references/year-library/2026-10-01/1987-service.pdf",
+      "pages": 1273,
+      "bytes": 135062320,
+      "sha256": "891ada480abb6e4ac24476419e346261820b79e6e3018cabfb8b76b0b2c9f89c",
+      "acquiredAt": "2026-10-01T22:04:47.848776+00:00",
+      "usable": true,
+      "review": "Cover opened; internal pages require section-by-section review before use.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1988-owners",
+      "modelYears": [
+        1988
+      ],
+      "documentType": "Owners",
+      "publisher": "Pontiac/GM, archived scan",
+      "archive": "FieroInfo",
+      "sourceUrl": "https://www.fieroinfo.com/manuals/1988_Fiero_Owners_Manual.pdf",
+      "localPath": "references/year-library/2026-10-01/1988-owners.pdf",
+      "pages": 126,
+      "bytes": 31955634,
+      "sha256": "357f742cee8d4476983693d0091f2fb828de9763b19787c744360d3754ef9976",
+      "acquiredAt": "2026-10-01T22:04:39.525727+00:00",
+      "usable": true,
+      "review": "Cover opened; internal pages require section-by-section review before use.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1988-maintenance",
+      "modelYears": [
+        1988
+      ],
+      "documentType": "Maintenance",
+      "publisher": "Pontiac/GM, archived scan",
+      "archive": "FieroInfo",
+      "sourceUrl": "https://www.fieroinfo.com/manuals/1988_Fiero_Maintenance_Schedule.pdf",
+      "localPath": "references/year-library/2026-10-01/1988-maintenance.pdf",
+      "pages": 15,
+      "bytes": 3578981,
+      "sha256": "79a5ff2d13f6d80e384905955f27a01aa0a1184cb3bd63a370a8af14f93945e3",
+      "acquiredAt": "2026-10-01T22:04:32.199809+00:00",
+      "usable": true,
+      "review": "Cover opened; internal pages require section-by-section review before use.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1988-service",
+      "modelYears": [
+        1988
+      ],
+      "documentType": "Service manual",
+      "publisher": "Pontiac/GM, archived scan",
+      "archive": "FieroInfo",
+      "sourceUrl": "https://www.fieroinfo.com/manuals/1988_Fiero_Service_Manual.pdf",
+      "localPath": "references/year-library/2026-10-01/1988-service.pdf",
+      "pages": 1392,
+      "bytes": 57191781,
+      "sha256": "91ed1ea3c497fb9ef49811349553fc5eb1f12adfa0c3d4482e024a7fc3b78395",
+      "acquiredAt": "2026-10-01T22:04:40.126012+00:00",
+      "usable": true,
+      "review": "Cover opened; internal pages require section-by-section review before use.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1985-fiero-diy",
+      "modelYears": [
+        1985
+      ],
+      "documentType": "DIY",
+      "publisher": "Pontiac/GM, archived scan",
+      "sourceUrl": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf",
+      "localPath": "references/1985-fiero-diy.pdf",
+      "pages": 66,
+      "bytes": 16820213,
+      "sha256": "7bc46753c5c90f25bd898b08e215e2f75b55ff3dca2b8e9eb22851193656932e",
+      "usable": true,
+      "review": "Existing project document retained in place; see original section-specific reference and inspection records.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1985-fiero-6e3",
+      "modelYears": [
+        1985
+      ],
+      "documentType": "L44 engine-control section6E3 only",
+      "publisher": "Pontiac/GM, archived scan",
+      "sourceUrl": "https://fieroinfo.com/manuals/1985_Fiero_6E3_Emissions_and_Drivability.pdf",
+      "localPath": "references/1985-fiero-6e3.pdf",
+      "pages": 110,
+      "bytes": 36199480,
+      "sha256": "a6ae4b6c3a61b46f0aed16bdb77e8e3c3f2ff4f9dd88d3aff4ddc6a6cc5fe414",
+      "usable": true,
+      "review": "Existing project document retained in place; see original section-specific reference and inspection records.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1985-owners-boomtastic",
+      "modelYears": [
+        1985
+      ],
+      "documentType": "Owners",
+      "publisher": "Pontiac/GM, archived scan",
+      "sourceUrl": "https://www.boomtastic.com/files/01%20Service%20Manuals%2C%20Guides%2C%20and%20Tips/Owners%20Manuals/1985/1985%20Fiero%20Owners%20Manual.pdf",
+      "localPath": "references/1985-owners-boomtastic.pdf",
+      "pages": 107,
+      "bytes": 33867178,
+      "sha256": "912382ad0d177f8833f614aa697aab535e0c46cc6b69c4dc9b46050d95ac34b1",
+      "usable": true,
+      "review": "Existing project document retained in place; see original section-specific reference and inspection records.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1986-service",
+      "modelYears": [
+        1986
+      ],
+      "documentType": "Service manual",
+      "publisher": "Pontiac/GM, archived scan",
+      "sourceUrl": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf",
+      "localPath": "references/1986-service.pdf",
+      "pages": 1303,
+      "bytes": 79842817,
+      "sha256": "a03a875d114c444447433d9b78a44d19f1120dc57445c0834350e722fe06a05b",
+      "usable": true,
+      "review": "Existing project document retained in place; see original section-specific reference and inspection records.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "fiero-parts-cd",
+      "modelYears": [
+        1984,
+        1985,
+        1986,
+        1987,
+        1988
+      ],
+      "documentType": "GM parts and illustrations CD",
+      "publisher": "Pontiac/GM, archived scan",
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf",
+      "localPath": "references/fiero-parts-cd.pdf",
+      "pages": 356,
+      "bytes": 20135960,
+      "sha256": "8cc8ba63654dd1892b7be90d2d12729803745303ec5e55d89c584010e0b5048c",
+      "usable": true,
+      "review": "Existing project document retained in place; see original section-specific reference and inspection records.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "fiero-22p-parts",
+      "modelYears": [
+        1984,
+        1985,
+        1986,
+        1987,
+        1988
+      ],
+      "documentType": "GM22P parts catalog",
+      "publisher": "Pontiac/GM, archived scan",
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_P22.pdf",
+      "localPath": "references/fiero-22p-parts.pdf",
+      "pages": 355,
+      "bytes": 20277711,
+      "sha256": "63b9e573d3c5fe4e9096b77a4e09c0d863f6f2ba5c03e11277fdf411fdf0f40b",
+      "usable": true,
+      "review": "Existing project document retained in place; see original section-specific reference and inspection records.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1985-86-specifications",
+      "modelYears": [
+        1985,
+        1986
+      ],
+      "documentType": "Pontiac nominal specification sheets",
+      "publisher": "Pontiac/GM, archived scan",
+      "sourceUrl": "https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FMotor+Vehicle+Specifcations%2F1985-86+Pontiac+Fiero.PDF",
+      "localPath": "references/1985-86-specifications.pdf",
+      "pages": 35,
+      "bytes": 978595,
+      "sha256": "cb22b53a5172da99d22b0b46c153ed4d8e6aeea60c9dbe32e5dd83dcda796e07",
+      "usable": true,
+      "review": "Existing project document retained in place; see original section-specific reference and inspection records.",
+      "contentCompletenessVerified": false
+    },
+    {
+      "id": "1984-owners-boomtastic-third-printing",
+      "modelYears": [
+        1984
+      ],
+      "archive": "Boomtastic",
+      "sourceUrl": "https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FOwners+Manuals%2F1984%2F1984+Fiero+Owners+Manual.pdf",
+      "discoveryUrl": "https://www.boomtastic.com/files/?dir=Service+Manuals%2C+Guides%2C+and+Tips%2FOwners+Manuals%2F1984",
+      "localPath": "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/1984-owners-boomtastic.pdf",
+      "pages": 109,
+      "bytes": 31869797,
+      "sha256": "00a40a81b1f41c6f6fdebfda188c52cff3fb0dc66431269163a01bc3d1a37e8e",
+      "acquiredAt": "2026-10-02T00:11:47.850914+00:00",
+      "usable": true,
+      "publicationNumber": "10028873 C",
+      "printing": "3rd Printing, explicitly printed on PDF page 108 (manual page 7-2)",
+      "reviewedPages": [
+        {
+          "pdfPage": 1,
+          "localImage": "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/1984-owners-page-001.png",
+          "sha256": "3f8197615ea20bb596b0d04732ef2af4833e79984796c19218e069fc6a8e65be",
+          "openedAndInspected": true,
+          "finding": "Cover explicitly reads 1984 Fiero Owner’s Manual with Pontiac branding."
+        },
+        {
+          "pdfPage": 2,
+          "localImage": "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/1984-owners-page-002.png",
+          "sha256": "5f1ab91d128850e665d467474b77d2616c1db2ab4b8b002ddf31dd7aab4f49c7",
+          "openedAndInspected": true,
+          "finding": "Original Pontiac/GM title and contents page explicitly names 1984 Pontiac Fiero; covers introduction and sections 1, 2, 2A–2D, 3–7."
+        },
+        {
+          "pdfPage": 108,
+          "localImage": "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/1984-owners-page-108.png",
+          "sha256": "fcbc8e8427f301bae11c779261e6fa7b7496b02831f2d3657e133a0a868c2af7",
+          "openedAndInspected": true,
+          "finding": "Original printed page 7-2 Service Station Information; footer identifies Part No. 10028873 C, 3rd Printing."
+        },
+        {
+          "pdfPage": 109,
+          "localImage": "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/1984-owners-page-109.png",
+          "sha256": "50394239368612ba107d458fbdc0fac3fd67bba4640b608ba9f46649f33e3503",
+          "openedAndInspected": true,
+          "finding": "Back cover carries Pontiac/GM marks and Part No. 10028873 C."
+        }
+      ],
+      "structureCheck": "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/page-structure-check.json",
+      "contentCompletenessVerified": false,
+      "documentType": "Owners",
+      "publisher": "Pontiac/GM, archived scan",
+      "review": "Usable nonblank original-year scan: all 109 PDF pages render with image content and non-uniform grayscale pixels; cover, contents, final printed service-station page and back cover opened. This does not verify page-by-page sequence/completeness, every technical value, later errata, or applicability to 1985 or other years.",
+      "acquisitionRecord": "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/acquisition.json"
+    }
+  ],
+  "knownGaps": [
+    {
+      "modelYear": 1984,
+      "type": "Complete factory service manual",
+      "identity": "S-8410P",
+      "status": "not acquired",
+      "acquisitionLead": "https://www.helminc.com/helm/product2.asp?Sku=S8410P&class_2=PON&itemtype=N"
+    },
+    {
+      "modelYear": 1985,
+      "type": "Complete chassis/body factory service manual",
+      "identity": "S-8510P",
+      "status": "not acquired; retained6E3 is only one section",
+      "acquisitionLead": "https://www.detroitironis.com/1985-pontiac-fiero-service-manual-print.html"
+    },
+    {
+      "modelYear": 1984,
+      "type": "Usable owner manual",
+      "status": "resolved: usable original 1984 owner-manual scan acquired; original blank archive response retained",
+      "priorStatus": "archive response blank; preserved for provenance",
+      "resolvedAt": "2026-10-02T00:17:12.430624+00:00",
+      "documentId": "1984-owners-boomtastic-third-printing",
+      "acquisitionRecord": "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/acquisition.json"
+    }
+  ],
+  "updatedAt": "2026-10-02T00:17:12.430624+00:00"
+}

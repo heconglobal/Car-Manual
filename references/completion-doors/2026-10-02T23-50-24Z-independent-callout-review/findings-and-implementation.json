@@ -1,0 +1,254 @@
+{
+  "reviewedAt": "2026-10-03T00:01:13.194539+00:00",
+  "reviewer": "/root/browser_performance/mobile_ux",
+  "status": "source review and bounded implementation complete; current browser/render acceptance pending root-coordinated asset regeneration and tests",
+  "source": {
+    "path": "references/fiero-parts-cd.pdf",
+    "sha256": "8cc8ba63654dd1892b7be90d2d12729803745303ec5e55d89c584010e0b5048c",
+    "bytes": 20135960,
+    "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf",
+    "pageCount": 356,
+    "openedPdfPages": [
+      1,
+      300,
+      301,
+      302
+    ],
+    "figure": "2P10-004",
+    "drawingCode": "FBS-1865",
+    "printedDrawingMark": "052286",
+    "coverQualification": "Opened PDF page 1 identifies the public compilation as 84–88 Pontiac Fiero Parts & Illustrations CD. It is a compilation cover, not an original GM manual cover. This review uses the reproduced catalog drawing and adjacent application tables on PDF 300–302; no new claim authenticates an original printed volume or every page of the compilation.",
+    "visualInspection": "All four saved renders were actually opened. PDF 300 drawing, PDF 301 table rows 1–43, and PDF 302 rows 44–54 plus notes were inspected. The six target rows were read against current catalogs and builder."
+  },
+  "openedEvidence": [
+    {
+      "path": "references/completion-doors/2026-10-02T23-50-24Z-independent-callout-review/gm-pdf-page-001.png",
+      "sha256": "77d4ef1ba1ea36a4bd0d0a74061cd763832759bc6d98ecd3a23ebc4a93085c39",
+      "bytes": 1650189,
+      "pdfPage": 1,
+      "opened": true
+    },
+    {
+      "path": "references/completion-doors/2026-10-02T23-50-24Z-independent-callout-review/gm-pdf-page-300.png",
+      "sha256": "fe7ba910885ea96394a8e1ee7f61d18b9abf0366b0b7114f83130e9ce8ade109",
+      "bytes": 285152,
+      "pdfPage": 300,
+      "opened": true
+    },
+    {
+      "path": "references/completion-doors/2026-10-02T23-50-24Z-independent-callout-review/gm-pdf-page-301.png",
+      "sha256": "7824bc6a70a9b168996db5640f63ef76570a3460023e0cd919b2a6cd3d1f6c57",
+      "bytes": 460220,
+      "pdfPage": 301,
+      "opened": true
+    },
+    {
+      "path": "references/completion-doors/2026-10-02T23-50-24Z-independent-callout-review/gm-pdf-page-302.png",
+      "sha256": "9d1bb378cb818105509dab7336f68ebcda529319f1044f4ffe37b4e444ced9f2",
+      "bytes": 102031,
+      "pdfPage": 302,
+      "opened": true
+    }
+  ],
+  "rows": [
+    {
+      "callout": 11,
+      "group": "14.683",
+      "identity": "Trim retainer at belt",
+      "sourceApplications": [
+        {
+          "years": [
+            1984,
+            1985
+          ],
+          "RH": "20352606",
+          "LH": "20352607"
+        },
+        {
+          "years": [
+            1986,
+            1987,
+            1988
+          ],
+          "RH": "20350876",
+          "LH": "20350877"
+        }
+      ],
+      "priorDetailIds": [],
+      "finalDetailIds": [
+        "bd-door-left-belt-trim-retainer",
+        "bd-door-right-belt-trim-retainer"
+      ],
+      "implementation": "Independent early-year trim retainers; later identities preserved in the catalog description. Reconstructed long open section; no guessed fastener pattern. Distinct from outer seal item 12, inner seal item 13 and trim-board clips.",
+      "limits": "Exact section, attachment details, dimensions and fitted original variant unverified."
+    },
+    {
+      "callout": 13,
+      "group": "10.710",
+      "identity": "Inner window belt sealing strip",
+      "sourceApplications": [
+        {
+          "tableYears": [
+            1984,
+            1985,
+            1986,
+            1987,
+            1988
+          ],
+          "RH": "20320534",
+          "LH": "20320535",
+          "yearRestrictionPrintedOnRow": false
+        }
+      ],
+      "priorDetailIds": [],
+      "finalDetailIds": [
+        "bd-door-left-inner-belt-seal",
+        "bd-door-right-inner-belt-seal"
+      ],
+      "implementation": "Independent inner strip with reconstructed backing and wiping lip. Separate from item 12 exterior seal and the full interior trim panel.",
+      "limits": "Material, extrusion profile, attachment method and dimensions unverified; table heading does not prove universal interchange."
+    },
+    {
+      "callout": 19,
+      "group": "10.095",
+      "identity": "Electric door-lock relay",
+      "serviceNumber": "20306058",
+      "sourceOptionAnnotation": "W/AU3",
+      "priorDetailIds": [],
+      "finalDetailIds": [],
+      "implementation": "Kept explicitly missing. Do not duplicate a relay at both door assemblies or use a lighting/headlamp relay as a substitute.",
+      "limits": "The parts drawing alone does not establish installed location, per-car quantity, terminal topology or wiring. Need original-year electrical/component-location evidence before an installed model."
+    },
+    {
+      "callout": 23,
+      "group": "12.895",
+      "identity": "Door outer-panel attachment block",
+      "serviceNumber": "20505072",
+      "sourceOptionAnnotation": null,
+      "priorDetailIds": [],
+      "finalDetailIds": [
+        "bd-door-left-outer-panel-block",
+        "bd-door-right-outer-panel-block"
+      ],
+      "implementation": "Independent panel-hardware selection per modeled side, with a reconstructed block and boss outline. Does not attribute the existing latch or inner reinforcement to this row.",
+      "limits": "No RH/LH distinction is printed in this row. Per-side model instances do not establish exact original quantity, material, interface or interchange; outline and location unmeasured."
+    },
+    {
+      "callout": 34,
+      "group": "10.716",
+      "identity": "Door-window regulator stop bumper",
+      "serviceNumber": "20269755",
+      "sourceOptionAnnotation": null,
+      "priorDetailIds": [
+        "bd-door-left-power-lock-stop",
+        "bd-door-right-power-lock-stop"
+      ],
+      "finalDetailIds": [
+        "bd-door-left-power-lock-stop",
+        "bd-door-right-power-lock-stop"
+      ],
+      "implementation": "Retained compatibility IDs; moved to window scope and removed powerLocks option gating from catalog and resulting mesh metadata. Application label says regulator variant unverified. Existing reconstructed position retained without claiming verified installation.",
+      "limits": "Same service number also appears at item 25. This does not establish duplicate fitted quantity, identical placement, or manual/electric regulator applicability. Proximity to actuator 33 does not justify AU3 gating."
+    },
+    {
+      "callout": 40,
+      "group": "12.895",
+      "identity": "Front door outer-panel attachment block",
+      "serviceNumber": "20505073",
+      "sourceOptionAnnotation": null,
+      "priorDetailIds": [],
+      "finalDetailIds": [
+        "bd-door-left-front-panel-block",
+        "bd-door-right-front-panel-block"
+      ],
+      "implementation": "Independent front block in a dedicated panel-hardware scope, with a reconstructed shouldered outline.",
+      "limits": "No RH/LH distinction is printed in this row. Material, exact mounting, fasteners, dimensions and original quantity unverified."
+    }
+  ],
+  "sourceFactsPreservedBeyond1985": [
+    "Item 11 1984–85 versus 1986–88 distinct RH/LH retainers",
+    "Item 12 1984 push-in versus 1984–88 black hang-on outer strips, notes 2/3",
+    "Item 54 1984 steel-type 20178799 versus 1985–88 20562754",
+    "Clear glass/manual-regulator P37 annotations, tinted glass, electric regulator alternatives",
+    "AU3 annotations retained without inferring complete installed equipment or a window-option code from the unresolved motor row 35"
+  ],
+  "changedFiles": [
+    {
+      "path": "src/door-mechanism-catalog.js",
+      "sha256": "e3d5032fe598628570b667cb6393b849c5f4bda6dc53b250ee27d214ec610ca0",
+      "bytes": 10134
+    },
+    {
+      "path": "src/door-mechanism-detail.js",
+      "sha256": "624fff3ffb42d9e3cfafab356aa942f46b5cc9f93e880a6e3fc937a7977fc6e4",
+      "bytes": 8387
+    },
+    {
+      "path": "scripts/audit-completion-doors.mjs",
+      "sha256": "59e79822b6750db5a3b2956d61e9dcc45d72d812df297d5266fbb7066183f86f",
+      "bytes": 6183
+    },
+    {
+      "path": "tests/completion-doors.spec.js",
+      "sha256": "a89bfab34ec6419bedd8f56a8882ac9066895458822e768a5708cdc111b5457c",
+      "bytes": 7254
+    },
+    {
+      "path": "references/completion-door-callout-register.json",
+      "sha256": "e23369ab5cf70f3b0f3543e5d2fbbf0f0edf12f3e2fe4f1fd9ec63377313ce66",
+      "bytes": 21334
+    },
+    {
+      "path": "references/completion-callout-register.json",
+      "sha256": "e2d8dc7123ecfa3a617b9d09c1115d86894c300adc4956c5eb6e05d88c94c5fa",
+      "bytes": 55229
+    },
+    {
+      "path": "references/completion-doors/source-and-construction.md",
+      "sha256": "cb70c43d9b96d6b61cbf8eb83a636a8fb43efc3ba7f6b5b451a444c9443881c0",
+      "bytes": 4660
+    }
+  ],
+  "preservedPriorVersions": [
+    "preserved/2026-10-02T23-53-38Z-before-door-callout-completion",
+    "preserved/2026-10-02T23-58-58Z-before-door-central-register-merge"
+  ],
+  "verification": {
+    "nativeAudit": {
+      "path": "artifacts/completion-doors/2026-10-02T23-57-12-155Z/audit.json",
+      "sha256": "7afecf3e4f10f094b3f0c798c3391e7350b1269dc858f5bbc6060996efc3b9b9",
+      "bytes": 921
+    },
+    "nativeAuditSourceSha256": "fbed4da2ddf0b39dbd0364d1599af3cc1511616623fa7ab0800beceadd58ba2b",
+    "nativeAuditStatus": "passed",
+    "mechanismSelections": 76,
+    "mechanismScopes": 6,
+    "meshes": 104,
+    "vertices": 248894,
+    "checks": "Every selection has finite nonempty native mesh geometry, correct mirror/body side, positive transforms and door-envelope bounds. Independent table numbers assert early belt trim identities, inner strips and both blocks; stop bumper is in window scope with no option tag. Existing regulator, bushing and open-channel assertions passed.",
+    "browserTestSyntax": "node --check tests/completion-doors.spec.js passed",
+    "browserRunByThisAgent": false,
+    "browserCoverageAdded": [
+      "Actual finite nonzero bounds after UI selection/isolation for all newly added left-side identities and item 34",
+      "Both right panel blocks have visible bounds",
+      "Window stop available with powerLocks off and on, excluded from lock scope",
+      "Visible scope membership follows catalog and configuration instead of fixed totals",
+      "Mobile right inner strip selected, isolated, focused, with actual bounds and service number"
+    ],
+    "currentImageAcceptance": false
+  },
+  "inventoryResult": {
+    "doorFigureCalloutRows": 54,
+    "rowsWithSelectionMappings": 53,
+    "unmatchedCalloutRows": [
+      19
+    ],
+    "qualification": "Mapped rows include grouped and provisional parts; 53 mapped rows are not a complete factory-parts or service-completeness claim."
+  },
+  "followUp": [
+    "Root must regenerate Body delivery asset from final geometry before browser acceptance.",
+    "Run the updated completion-doors test in the coordinated browser batch and actually inspect its new screenshots.",
+    "Source AU3 relay location/wiring and quantity before constructing an installed model.",
+    "Validate reconstructed dimensions, attachment counts, regulator application of item 34, travel and original vehicle equipment against primary service evidence or the owner vehicle."
+  ]
+}

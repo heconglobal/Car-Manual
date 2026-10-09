@@ -1,0 +1,373 @@
+{
+  "reviewedAt": "2026-10-03T02:41:55.534611+00:00",
+  "reviewer": "/root/browser_performance/mobile_ux",
+  "scope": "Bounded original-source front-compartment release-handle research only. No downloads, app/test/script/helper/central-register changes or browser/native jobs.",
+  "outcome": "Independent handle identity and cabin location are established by the original parts table and1985 owner instructions. Main mechanical cable-to-center-cowl latch relationship is corroborated by1986 original service text/figure. Auxiliary cable cylinder/clip behind handle is documented. Exact handle dimensions, mounting/fit details and installed inventory remain unresolved.",
+  "sources": [
+    {
+      "path": "references/1985-owners-boomtastic.pdf",
+      "bytes": 33867178,
+      "sha256": "912382ad0d177f8833f614aa697aab535e0c46cc6b69c4dc9b46050d95ac34b1",
+      "url": "https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FOwners+Manuals%2F1985%2F1985+Fiero+Owners+Manual.pdf",
+      "modelYear": 1985,
+      "pdfPagesOpened": [
+        1,
+        3,
+        4,
+        99,
+        100,
+        103,
+        104,
+        105,
+        106
+      ],
+      "qualification": "Cover explicitly1985; service-station information footer part10036895C revisedJune1990. Preserve revision separately from vehicle model year. Complete preserved scan107pages; original owner instructions, not the missing full1985 S-8510P shop manual."
+    },
+    {
+      "path": "references/fiero-parts-cd.pdf",
+      "bytes": 20135960,
+      "sha256": "8cc8ba63654dd1892b7be90d2d12729803745303ec5e55d89c584010e0b5048c",
+      "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf",
+      "modelYear": null,
+      "pdfPagesOpened": [
+        284
+      ],
+      "qualification": "Reproduced originalGM2P10-008 drawing/table; heading1984–1987 P, figure mark050785, FBS-1864. Only relevant page reopened this task; prior catalog-cover provenance retained. Broad heading is not proven installed-option/quantity or1988 interchange."
+    },
+    {
+      "path": "references/1986-service.pdf",
+      "bytes": 79842817,
+      "sha256": "a03a875d114c444447433d9b78a44d19f1120dc57445c0834350e722fe06a05b",
+      "url": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf",
+      "modelYear": 1986,
+      "pdfPagesOpened": [
+        1205,
+        1206,
+        1207,
+        1208,
+        1209,
+        1210
+      ],
+      "qualification": "Adjacent-year original service Section4 Front End, printed4-1 through4-6. Previously qualified cover; only listed body pages read now. Do not present as an original1985 full service manual."
+    },
+    {
+      "path": "references/1985-fiero-diy.pdf",
+      "bytes": 16820213,
+      "sha256": "7bc46753c5c90f25bd898b08e215e2f75b55ff3dca2b8e9eb22851193656932e",
+      "url": "https://fieroinfo.com/manuals/1985_Fiero_Do_It_Yourself.pdf",
+      "modelYear": 1985,
+      "pdfPagesOpened": [
+        11,
+        12,
+        13
+      ],
+      "qualification": "Original factory DIY manual; listed pages reopened via preserved images. No additional handle fitting/geometry evidence found."
+    }
+  ],
+  "openedEvidence": [
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/owners-pdf-0001.png",
+      "bytes": 305829,
+      "sha256": "d43382295e239e75e4a24832dadbbc444f31308dd364d58af7f8a2049b8d0786",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Cover actually opened: Pontiac Fiero1985 Owner’s Manual."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/owners-pdf-0003.png",
+      "bytes": 743352,
+      "sha256": "045ea02b8768b8f61024eadcbcd681016420c577269330b88f06607517c53dce",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Introduction identifies owner-operation/maintenance purpose; no handle dimensions."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/owners-pdf-0004.png",
+      "bytes": 763230,
+      "sha256": "0048eacade69979da9d5342efde8349e31b7bd20645bb09578b7c8599451358b",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Printed introduction2 distinguishes front-compartment hood-release symbol from rear-compartment trunk-release symbol."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/owners-pdf-0099.png",
+      "bytes": 679642,
+      "sha256": "6058971a6620fd16800a2244339f199f3f85d2f844fed695d45cdff76646a361",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Index first page; no release-specific item in this alphabet range."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/owners-pdf-0100.png",
+      "bytes": 714652,
+      "sha256": "7cd67d1add57f7c034e5911f078b4668f36d0484eda91d2a798174515e0f581d",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Printed index2 directs Hood(Front Compartment) Release to7-1."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/owners-pdf-0103.png",
+      "bytes": 487880,
+      "sha256": "7aadf25286505e17bb4e3b0cf936455f48e3d6d37971470226fd12e242ea46cb",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Printed index5; no additional handle fit details."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/owners-pdf-0104.png",
+      "bytes": 373514,
+      "sha256": "ac5b35572b1df4457d8bc8ee1add8267c3dc41c0319bb8e09c1227e1cf7363bf",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Notes page, no release-specific content."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/owners-pdf-0105.png",
+      "bytes": 734888,
+      "sha256": "ace68c1ce426fab3387554700ccebfce3bc22ae8c90149d7813a747f7769526f",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Printed7-1: main front-compartment release handle is left of steering column beneath instrument-panel air vent. Pulling it opens lid, which is raised from rear until its support locks. An auxiliary release cable has a round-cylinder end held in a clip behind the handle. Drawing shows handle region and auxiliary cable pull. Closing description begins with slightly lifting lid and moving hold-open-support lever rearward."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/owners-pdf-0106.png",
+      "bytes": 725848,
+      "sha256": "96f8a64ffdb09b5b23fc713de0396fb646dc4f12ea7d56fdda7d3442d9e74d52",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Printed7-2: front-lid closing paragraph continues; lower to about12inches from latch and release. Rear-lid key/closing instructions are separately headed and must not be applied to front hood. Footer part10036895C, Rev.June1990 qualifies this preserved1985 owner-manual scan as a revised publication."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/owners-pdf-0105-handle-detail.png",
+      "bytes": 584332,
+      "sha256": "4ea99fbaf1c6cbf5fd1a3551366dbcfb0a73c95ba17cb1522269ff019e7d9c69",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Actually opened4x crop of original PDF105, points[201.0768017578125,74.46750183105469,410.5318035888672,210.9912551879883]. Shows auxiliary cable/clip/cylinder behind main pull-handle region beneath left instrument panel. No dimensions or mounting-fastener detail."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/parts-pdf-0284.png",
+      "bytes": 282343,
+      "sha256": "c0adbbc6e5b167324b291bd369811732ff61d1271fe189315737359702257bb9",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Original2P10-008 drawing dated050785/FBS-1864 and1984–1987 P heading: row5 lock/lid actuator with cable20389893 group8.080; row6 black front-compartment handle20318496 group8.075. Separate handle is drawn at cabin cable end. No quantity column or row-specific year exception."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/parts-pdf-0284-handle-rows-detail.png",
+      "bytes": 6187,
+      "sha256": "7058e73d432b1b9e22a70c43ae8ea4e6b21f737013fc71eec2f2c31f8493f853",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Actually opened7x original PDF284 crop points[355,422,505,456]; unequivocally reads row5 service number20389893 and row6 number20318496. Current central row5 transcription20388993 differs."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/service-pdf-1205.png",
+      "bytes": 344010,
+      "sha256": "ceb9e878ecd9b6a9184bfbb6c1cbb75e0595ae14932ecc2e5f106f9305b3b7b1",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Printed4-1 contents: hood latch on4-3; general SMC/body instructions. No handle fit detail."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/service-pdf-1206.png",
+      "bytes": 305541,
+      "sha256": "232023822828e69b9948ad4cb792b81edd28aaf4db6addd28f93e26c3461752b",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Printed4-2 Figures1–2: cowl vent/headlamp doors. Cowl screen is an access layer for latch service, not handle mounting evidence."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/service-pdf-1207.png",
+      "bytes": 301926,
+      "sha256": "0bcce1c341d9ec95c8b1fad4366707353e88940eb13b40f0fe5de54dd88bb447",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Printed4-3 Hood Latch paragraph: cable-released positive latch at center cowl, hood-mounted striker; cabin release left of instrument panel beneath ventilation duct. Once pulled hood opens by hand, with no additional hood latch described. Alignment matters; automatic latch adjustment is mentioned. This is1986 corroboration, not complete1985 service instructions."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/service-pdf-1208.png",
+      "bytes": 266609,
+      "sha256": "534a7bc95a8ca4895b046dfa4d33cf0244a71d4f5795fdb9dc98a48149ed96f8",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Printed4-4: latch removal/installation lists top shroud screen, optional glass-roof storage cover, two latch bolts, latch and cable connector. Reinstallation reconnects cable then latch/bolts and self-aligns before final tightening. No specific torque for latch/handle printed here; unrelated optional-cover screw torque must not be reused."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/service-pdf-1209.png",
+      "bytes": 153440,
+      "sha256": "081e38172bc0c2b01bba1f3f823520ae2886d211ebb2eaa290a6553e65302975",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Printed4-5 Figure4/Hood Latch and Striker:24 latch,25 two latch bolts,26 release cable with driver-side route/loop inset,27 striker,28 two striker nuts,29 cable connector detail. Does not dimension the cabin handle or show its attachment hardware."
+    },
+    {
+      "path": "references/completion-front-release/2026-10-03T02-31-59Z/service-pdf-1210.png",
+      "bytes": 307572,
+      "sha256": "632cc3ae4e7fd2dd619e4fc93c123a97bb206c51454c264d79bd3d6bcbb2c960",
+      "opened": true,
+      "method": "Original preserved PDF render opened with view_image",
+      "observation": "Printed4-6 Figures5–6: weatherstrip and optional glass-roof storage cover; not additional handle evidence."
+    },
+    {
+      "path": "references/service-source-review-20261001/diy-pdf-11.png",
+      "bytes": 718496,
+      "sha256": "00c83209dd02be1f617de076daef582da65af09b03c105c5c889053dedb2f25c",
+      "opened": true,
+      "method": "Previously preserved original page render reopened",
+      "observation": "Printed2-2 general DIY introduction; no handle fitting details."
+    },
+    {
+      "path": "references/service-source-review-20261001/diy-pdf-12.png",
+      "bytes": 479482,
+      "sha256": "0ecde28d1e1487580c4192fe849c2af2da95b70bb2e570f29895d3786f220bf0",
+      "opened": true,
+      "method": "Previously preserved original page render reopened",
+      "observation": "Printed2-3 general maintenance/parts references; no release detail."
+    },
+    {
+      "path": "references/service-source-review-20261001/diy-pdf-13.png",
+      "bytes": 665055,
+      "sha256": "1708fd448a8c11d00594ecffc4660601926f02825a05760e2d31fd685fa0cbbe",
+      "opened": true,
+      "method": "Previously preserved original page render reopened",
+      "observation": "Printed2-4 front-compartment service-items view; supports compartment context but does not identify cabin handle or its mounting."
+    },
+    {
+      "path": "references/completion-wiper-callouts/parts-cd-pdf-284.png",
+      "bytes": 152852,
+      "sha256": "2cf5beefb806d14b14554ef9ca25184faae46d18ba1d49544609d16ec1348ea8",
+      "opened": true,
+      "method": "Previously preserved original page render reopened before fresh higher-resolution inspection",
+      "observation": "Same original2P10-008 source; fresh3x page and7x row-detail render above used for exact number reading."
+    }
+  ],
+  "factoryIdentity": {
+    "figure": "2P10-008",
+    "callout": 6,
+    "name": "Front-compartment handle, black",
+    "partNumber": "20318496",
+    "partsGroup": "8.075",
+    "application": "1984–1987 P figure heading, no narrower restriction printed on row6;1985 owner evidence directly supports location/operation for the project year. No1988 or other-variant interchange inferred.",
+    "illustratedOccurrences": 1,
+    "installedQuantity": null,
+    "quantityLimit": "No quantity column; one illustrated handle is not a certified vehicle-wide installed inventory."
+  },
+  "relationships": [
+    {
+      "component": "Main release handle",
+      "location": "Inside vehicle, left of steering column beneath instrument-panel air vent",
+      "mechanism": "Manual pull handle operating cable-released latch; this source evidence does not require an electrical power-release option.",
+      "evidence": [
+        "ownersPDF105/7-1",
+        "servicePDF1207/4-3"
+      ]
+    },
+    {
+      "component": "Auxiliary release cable",
+      "location": "Round cylindrical end secured in clip behind main release handle",
+      "mechanism": "Owner illustration identifies its accessible pull end separately. Exact complete cable route, branch interface and dimensions are not shown.",
+      "evidence": [
+        "ownersPDF105/7-1 and saved detail crop"
+      ]
+    },
+    {
+      "component": "Latch and actuating cable service unit",
+      "callout": 5,
+      "partNumber": "20389893",
+      "partsGroup": "8.080",
+      "scope": "Original table groups latch/actuator with cable; row6 is separately identified. Do not add a duplicate complete service unit over existing physical latch/cable selections."
+    },
+    {
+      "component": "Center-cowl latch and hood striker",
+      "serviceFigure": "1986 Figure4, printed4-5/PDF1209",
+      "callouts": {
+        "latch": 24,
+        "latchBolts": 25,
+        "releaseCable": 26,
+        "striker": 27,
+        "strikerNuts": 28,
+        "cableConnector": 29
+      },
+      "mechanism": "Cable connector releases center-cowl latch which engages hood-mounted striker. Driver-side cable loop/route shown schematically. Literal fastener counts are supplied in this1986 figure, but are not handle-mounting counts or independent1985 fit verification."
+    }
+  ],
+  "currentModelComparison": {
+    "filesRead": [
+      {
+        "path": "src/body-catalog.js",
+        "bytes": 13320,
+        "sha256": "903de9a3b4f3cef433207a375368bbc2a1e5968889792c5c5c03cc14fdf079d0"
+      },
+      {
+        "path": "src/body-detail.js",
+        "bytes": 15874,
+        "sha256": "f842de2d3c8755eee3def21527cd95b309487eb96117f5eadf182b001b007221"
+      },
+      {
+        "path": "src/interior-catalog.js",
+        "bytes": 27144,
+        "sha256": "a36b9abbeffad0c58a1655eb7d093fc0a8d27ed86aa52e25e95c46b166d00642"
+      },
+      {
+        "path": "src/configuration.js",
+        "bytes": 7029,
+        "sha256": "429f7dd50eef8c66c12ecca6c2c3c2ad87c68e182a6c63606b16d0b01bcf560d"
+      }
+    ],
+    "existingIds": [
+      "bd-hood-latch",
+      "bd-hood-release-cable",
+      "bd-hood-striker"
+    ],
+    "observations": "Body catalog already groups hood hinges/release under body-hood. Existing cable builder draws one reconstructed driver-side tube route and cylindrical latch connector. No separately cataloged front-compartment release handle found in body/interior catalogs. Source register row6 remains unmapped. Existing generic release words for seat adjuster/recliner are different mechanisms.",
+    "coordinateLimit": "Code coordinates are reconstructed and were read only; no builder executed, no exact cabin mounting position certified."
+  },
+  "modelProposal": {
+    "primaryNewId": "bd-hood-release-handle",
+    "section": "body-hood",
+    "vehicleOwner": "hood",
+    "name": "Front-compartment release handle",
+    "sourceIdentity": "GM2P10-008 row6/20318496; black finish from catalog",
+    "supportedGeometryIntent": "A separately selectable black handle with an open grip/pull region, positioned below the driver-side instrument-panel vent and connected to the existing release-cable owner. Owner drawing and parts silhouette guide an explicitly illustrative profile only.",
+    "auxiliaryFeature": "Preserve the documented round-cylinder auxiliary cable end and retaining clip behind handle in the design. Either identify it as a qualified owner-manual-derived subpart or retain it within the cable selection; do not invent a GM service number or duplicate the complete row5 cable unit.",
+    "unresolved": [
+      "Handle ID/OD/profile dimensions, pivot/hinge design, mounting fastener identities/counts and support bracket interfaces.",
+      "Main/auxiliary cable branching, lengths, sheath diameter, bend radii, actual installed route and connector engagement.",
+      "Original material, part marks/supersession, owner-car installed condition and variant.",
+      "Travel, pull force, latch engagement/clearance and physical actuation validation."
+    ],
+    "sourceWindowRequirement": "No implementation during runtime freeze. Any later geometry must remain labeled reconstructed and owner measurement/workshop validation pending."
+  },
+  "procedurePlan": {
+    "scope": "Plan for source-linked identification/opening/closing walkthrough; not a published repair procedure or verified simulation.",
+    "primarySource": "1985 owner manual PDF105–106, printed7-1/7-2; preserved revisionJune1990.",
+    "outline": [
+      "Identify driver-side front-hood pull handle under instrument-panel vent; distinguish it from fuel-door and rear-compartment release controls.",
+      "Highlight main handle/cable and center-cowl latch relationship. Retain the original documented auxiliary cable behind handle as a separate explanation, not an invented power-release circuit.",
+      "For opening, model highlights can follow owner sequence: main handle, rear edge of front lid, mechanical hold-open support. Model motion must not imply physically validated support engagement.",
+      "For closing, preserve the original distinction between front mechanical-support procedure and separately headed rear-decklid procedure; link exact owner pages rather than transplant a generic modern-hood instruction.",
+      "Keep latch repair/adjustment as a separate future guide: the currently opened removal/installation instructions are1986 and lack original1985 handle attachment/torque data."
+    ],
+    "limits": "No fabricated handle torque, number of handle mounting screws, pull travel or power-release option. A walkthrough would still need independent procedure review and physical validation."
+  },
+  "additionalTranscriptionFinding": {
+    "target": "references/completion-callout-register.json,2P10-008,row5 note",
+    "currentTextNumber": "20388993",
+    "sourceNumber": "20389893",
+    "evidenceImage": "references/completion-front-release/2026-10-03T02-31-59Z/parts-pdf-0284-handle-rows-detail.png",
+    "status": "Root requested a separate exact row5 number correction alongside row6 provenance. Both are proposed only in central-callout-note-proposal.json; no central-register changes applied."
+  },
+  "nextEvidence": [
+    "Photograph owner-car handle installed beneath driver vent and its cable-end/auxiliary clip from below; include a ruler and visible part marks without dismantling solely for this model.",
+    "Original-year1985 service handle/cable removal or GM group8.075 application/installation drawing would settle mounting attachment and service-unit boundaries; group8.080 supports latch/cable identity.",
+    "Measure an already-removed original handle/bracket and cable if available: profile dimensions, mounting-hole centers, pivot/travel and main/auxiliary routing. Do not infer fit or quantity from one exploded drawing."
+  ],
+  "centralRegisterAtProposal": {
+    "path": "references/completion-callout-register.json",
+    "sha256": "847764f05766e4874a1d74d51b7e9994291470049ebbfeb4db70f3b0432256e9"
+  },
+  "stopReason": "Identity, driver location and cable/latch relationship now have original-source support; opened adjacent service section gives no exact cabin-handle attachment dimensions. Bounded task stopped without broad external searching or unverified modeling.",
+  "latestNoteProposal": "references/completion-front-release/2026-10-03T02-31-59Z/central-callout-note-proposal.json",
+  "supersededDraftProposal": "references/completion-front-release/2026-10-03T02-31-59Z/central-row6-note-proposal.json"
+}

@@ -1,0 +1,104 @@
+{
+  "reviewedAt": "2026-10-03T00:06:20.391233+00:00",
+  "task": "Bounded targeted follow-up for publicly accessible complete original 1984 S-8410P and 1985 S-8510P factory service manuals.",
+  "priorNotesChecked": [
+    "references/year-library/README.md",
+    "references/year-library/2026-10-01/catalog.json",
+    "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/acquisition.json"
+  ],
+  "queries": [
+    "\"1985\" \"Fiero\" \"S-8510P\" pdf",
+    "\"1984\" \"Fiero\" \"S-8410P\" pdf",
+    "\"1985 Fiero\" \"service manual\" filetype:pdf",
+    "\"1984 Fiero\" \"service manual\" filetype:pdf",
+    "\"1985 Fiero\" \"service manual\" \"download\" -site:staff.ces.funai.edu.ng -site:ebay.com",
+    "\"1984 Fiero\" \"factory service manual\" \"pdf\" -site:staff.ces.funai.edu.ng",
+    "site:archive.org \"Fiero\" \"1985\" \"service\"",
+    "site:boomtastic.com \"1985 Factory Service Manual\""
+  ],
+  "sources": [
+    {
+      "url": "https://www.boomtastic.com/files/?dir=Service+Manuals%2C+Guides%2C+and+Tips%2FService+Manuals%2FRepair+Manuals",
+      "snapshot": "references/year-library/2026-10-03T00-04-03Z-factory-service-search/boomtastic-repair-index.html",
+      "sha256": "4ef942f6c2b5b8ee941df20b0c1c72f1c0ac1c277102179c48d49a787f2e73d8",
+      "bytes": 23470,
+      "httpStatus": 200,
+      "finding": "Public directory has year-labeled factory-service folders; folder names do not prove completeness."
+    },
+    {
+      "url": "https://www.boomtastic.com/files/?dir=Service+Manuals%2C+Guides%2C+and+Tips%2FService+Manuals%2FRepair+Manuals%2F1984+Factory+Service+Manual",
+      "snapshot": "references/year-library/2026-10-03T00-04-03Z-factory-service-search/boomtastic-1984-factory-index.html",
+      "sha256": "52c10cdb106bc59a2851cc8416643eb774b4991914f68433792055f7011d45e6",
+      "bytes": 14997,
+      "httpStatus": 200,
+      "finding": "Only downloadable manual entry is 1984 Fiero Electrical Troubleshooting.pdf; existing section already retained. No complete S-8410P in this index."
+    },
+    {
+      "url": "https://www.boomtastic.com/files/?dir=Service+Manuals%2C+Guides%2C+and+Tips%2FService+Manuals%2FRepair+Manuals%2F1985+Factory+Service+Manual",
+      "snapshot": "references/year-library/2026-10-03T00-04-03Z-factory-service-search/boomtastic-1985-factory-index.html",
+      "sha256": "044ef86b37b7d6da174104a0ba982eb1913f04b174591ee47703ede814071577",
+      "bytes": 15021,
+      "httpStatus": 200,
+      "finding": "Only downloadable manual entry is 1985 Fiero 6E3 Emissions and Drivability.pdf; existing section already retained. No complete S-8510P in this index."
+    },
+    {
+      "url": "https://fieroinfo.com/manuals/",
+      "snapshot": "references/year-library/2026-10-03T00-04-03Z-factory-service-search/fieroinfo-manuals-index.html",
+      "sha256": "60dbc848782b6e979f135ca83ee9e9775f34f368ebd16c16e1f63a6012567422",
+      "bytes": 2492,
+      "httpStatus": 200,
+      "finding": "1984 entries are DIY, electrical, maintenance and owner publications; 1985 entries are 6E3, DIY and owner publications. Complete later-year 1986, 1987 and 1988 service files are separately listed and already preserved; they are not replacements for the missing years."
+    },
+    {
+      "url": "https://www.detroitironis.com/1985-pontiac-fiero-service-manual-print.html",
+      "snapshot": "references/year-library/2026-10-03T00-04-03Z-factory-service-search/detroit-iron-1985-listing.html",
+      "sha256": "e76231c9f73e348db24bb2e92b4d4699ece1273788508516f9758e86f3783849",
+      "bytes": 98834,
+      "httpStatus": 200,
+      "finding": "Publisher lists a licensed print reproduction of S-8510P, 1146 pages. This is bibliographic/acquisition metadata from a listing, not a downloaded or inspected complete manual; no purchase made."
+    },
+    {
+      "url": "https://www.helminc.com/helm/product2.asp?Sku=S8410P&class_2=PON&itemtype=N",
+      "snapshot": "references/year-library/2026-10-03T00-04-03Z-factory-service-search/helm-1984-listing.html",
+      "sha256": "9938f2c1e864fbfd2f2c992c6491724d98cdcb83ea02f1e2e214fc8df6ccf231",
+      "bytes": 21323,
+      "httpStatus": 200,
+      "finding": "Publisher/distributor listing identifies paper S8410P for 1984 Fiero. No complete public scan obtained and no purchase made."
+    }
+  ],
+  "additionalCandidate": {
+    "url": "https://charm.li/Pontiac/1985/Fiero%20V6-173%202.8L/",
+    "webPageOpened": true,
+    "finding": "Vehicle-index HTML offers Repair and Diagnosis, Parts and Labor, and offline ZIP links. It was not identified as a cover-to-cover original S-8510P scan, so it is not counted as satisfying the factory-manual gap. No technical claim taken from this aggregator and no ZIP acquired.",
+    "directSnapshotAttempt": "curl timed out after 30 seconds with zero bytes; no access controls bypassed or alternate-domain workaround attempted."
+  },
+  "outcome": {
+    "newUsableOriginalManuals": 0,
+    "newManualPdfFiles": 0,
+    "remainingGaps": [
+      {
+        "year": 1984,
+        "identity": "S-8410P",
+        "scope": "Complete original chassis/body factory service manual"
+      },
+      {
+        "year": 1985,
+        "identity": "S-8510P",
+        "scope": "Complete original chassis/body factory service manual"
+      }
+    ],
+    "qualification": "Targeted search did not locate a usable complete public original scan. This is a bounded acquisition result, not proof no such scan exists. No PDF cover or full page inventory was newly available to validate; therefore no new manual completeness or original-year application claim is made."
+  },
+  "libraryUnchanged": {
+    "indexedDocuments": 20,
+    "usable": 19,
+    "unusableIndexed": 1,
+    "catalogEdited": false,
+    "existingDamagedAndOtherYearSourcesRetained": true
+  },
+  "futureAcquisitionCriteria": [
+    "Require original-year cover/identity, chassis/body contents, usable page renders and completeness review; do not relabel owner, DIY, revised 8A electrical or 6E3-only publications as a full service manual.",
+    "Preserve preliminary/final distinctions if a 1985 original is later acquired; retain all prior sections and damaged responses.",
+    "Any future purchased/manual-owner acquisition requires a separate concrete authorized action; none was initiated here."
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "sourceDocument": "references/fiero-parts-cd.pdf",
+  "documentSha256": "8cc8ba63654dd1892b7be90d2d12729803745303ec5e55d89c584010e0b5048c",
+  "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf",
+  "pages": [
+    {
+      "pdfPage": 263,
+      "render": "references/completion-hvac/parts-cd-pdf-263.png",
+      "sha256": "19ebaf1db6c2b418795aba9f9127bebfa06c8807d67ef1780e911053eed407bf",
+      "openedAndInspected": true,
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "pdfPage": 264,
+      "render": "references/completion-hvac/parts-cd-pdf-264.png",
+      "sha256": "ab7a707a8f29eb42d3bc2dcc405dc7ddcce64aa3307c596c69191e033c0b6d4d",
+      "openedAndInspected": true,
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "pdfPage": 265,
+      "render": "references/completion-hvac/parts-cd-pdf-265.png",
+      "sha256": "29d8dd0be73c4ecbdd422c84434e0d61151efe2b789e11ccf9a423f257b2e32a",
+      "openedAndInspected": true,
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "pdfPage": 266,
+      "render": "references/completion-hvac/parts-cd-pdf-266.png",
+      "sha256": "1d798965159692cd67687022d7c27031495a3dea58692e60d12e2e1a276e6054",
+      "openedAndInspected": true,
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "pdfPage": 267,
+      "render": "references/completion-hvac/parts-cd-pdf-267.png",
+      "sha256": "bf0817477ec9facc9f35ddfbeee1e8037e0b1bb6dbd9b5b636f320593e0101e8",
+      "openedAndInspected": true,
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "pdfPage": 268,
+      "render": "references/completion-hvac/parts-cd-pdf-268.png",
+      "sha256": "eab6e6f19e970f072e6d18a602e3d16aa15879c1d5b2b7067405e12719ce7db9",
+      "openedAndInspected": true,
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "pdfPage": 269,
+      "render": "references/completion-hvac/parts-cd-pdf-269.png",
+      "sha256": "cf5e0b1e91c3e9fb7a892426c66da6b2888045f6c473bc0287db84d13162fa4b",
+      "openedAndInspected": true,
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "pdfPage": 270,
+      "render": "references/completion-hvac/parts-cd-pdf-270.png",
+      "sha256": "19dcf48d46eaa32d64bc852fb4ba6f3f51b28cd6d50fd0afa56b22ea4b2fab46",
+      "openedAndInspected": true,
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "pdfPage": 271,
+      "render": "references/completion-hvac/parts-cd-pdf-271.png",
+      "sha256": "9a6d32def8ad696cd44690ed5d62122444ace7597247e41347f89c87aae4511b",
+      "openedAndInspected": true,
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "pdfPage": 272,
+      "render": "references/completion-hvac/parts-cd-pdf-272.png",
+      "sha256": "674fd9736ac7e61b85f23aa87887fd08f776ac11eb0dc103ce8318a70b06272d",
+      "openedAndInspected": true,
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "pdfPage": 273,
+      "render": "references/completion-hvac/parts-cd-pdf-273.png",
+      "sha256": "7d79ed06a1d14eb79d0e4e5148f34c243c0e1abac4d86c73f95b098b77382608",
+      "openedAndInspected": true,
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "pdfPage": 274,
+      "render": "references/completion-hvac/parts-cd-pdf-274.png",
+      "sha256": "4ca4e23d6bd904e237262cc56da27bf29446d78a772f65f4deaa27e69a95edd1",
+      "openedAndInspected": true,
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "pdfPage": 275,
+      "render": "references/completion-hvac/parts-cd-pdf-275.png",
+      "sha256": "b5363dc3ea57bb6275d4d5617a94daedb266782213d8fd3874d7aa27102863a5",
+      "openedAndInspected": true,
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "pdfPage": 276,
+      "render": "references/completion-hvac/parts-cd-pdf-276.png",
+      "sha256": "d960361ffcdc172414ec325422ecc018610ff97e122e878240347280750f3e57",
+      "openedAndInspected": true,
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "pdfPage": 277,
+      "render": "references/completion-hvac/parts-cd-pdf-277.png",
+      "sha256": "34c3fb48eefa961364e3c670ee04a9c51f3fad90676f7adb9ce36c3b8f314bff",
+      "openedAndInspected": true,
+      "reviewDate": "2026-10-01"
+    }
+  ],
+  "selected1985L44Pages": [
+    263,
+    264,
+    265,
+    266,
+    269,
+    274,
+    275
+  ],
+  "preservedOtherApplications": {
+    "1984_L4": [
+      268,
+      272,
+      273
+    ],
+    "1986_V5": [
+      267,
+      270
+    ],
+    "1987_1988_L4": [
+      271
+    ],
+    "1988_refrigeration": [
+      276,
+      277
+    ]
+  },
+  "limits": "Catalogue facsimile establishes identities and application rows, not original tooling dimensions or installed-equipment identity. DA-6/HR-6 combined construction is not proof of the actual original compressor variant."
+}

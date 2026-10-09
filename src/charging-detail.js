@@ -39,7 +39,14 @@ function buildBattery(h){
  for(const [key,p,mat]of[['positive-cable',pos,'cableRed'],['negative-cable',neg,'rubber']]){sleeve(id(key),.016,.006,.010,p,mat);bolt(id(key),[p[0],p[1],p[2]+.008],.006,'z');}
  tube(id('positive-cable'),[pos,[-.66,.658,.94],[-.54,.50,.91],[-.40,.397,.87],[-.18,.39,.87],[starterVehicle[0]-.086,starterVehicle[1]+.078,starterVehicle[2]+.014]],.006,'rubber');
  tube(id('negative-cable'),[neg,[-.48,.634,.94],[-.32,.62,1.05],[-.16,.612,1.07]],.006,'rubber');sleeve(id('negative-cable'),.009,.004,.002,[-.16,.612,1.07],'zinc','y');bolt(id('negative-cable'),[-.16,.616,1.07],.005);
- tube(id('negative-cable'),[neg,[-.53,.60,.84],[-.655,.60,.83]],.003,'wire');sleeve(id('negative-cable'),.007,.003,.002,[-.655,.60,.83],'zinc','y');bolt(id('negative-cable'),[-.655,.603,.83],.004);
+ tube(id('negative-cable'),[neg,[-.53,.60,.84],[-.648,.60,.83]],.003,'wire');sleeve(id('negative-cable'),.007,.0033,.002,[-.655,.60,.83],'zinc','y');
+ // Callout 8 is independently selectable instead of being hidden inside the
+ // negative cable. Nominal tapping diameter/pitch/length follow the table;
+ // head, crest/root shape and installed hard point remain reconstructed.
+ cyl(id('battery-ground-bolt'),.00270,.020,[-.655,.591,.83],'zinc',[0,0,0],.0019);
+ h.add(id('battery-ground-bolt'),new T.CylinderGeometry(.0055,.0055,.004,6),'zinc',[-.655,.604,.83]);
+ cyl(id('battery-ground-bolt'),.0066,.001,[-.655,.6015,.83],'zinc',[0,0,0]);
+ const turns=.018/.00181,threadSamples=Math.ceil(turns*24);tube(id('battery-ground-bolt'),Array.from({length:threadSamples+1},(_,i)=>{const u=i/threadSamples,angle=u*turns*Math.PI*2,r=.00290*Math.min(1,.76+u*2);return[-.655+Math.cos(angle)*r,.583+u*.018,.83+Math.sin(angle)*r];}),.00025,'zinc');
  // Parallel diagonal braid strands give the flat ground strap its woven form.
  const points=[[-.20,.613,1.02],[-.24,.648,.87],[-.32,.645,.70],[-.36,.630,.612]];
  for(let i=0;i<7;i++)tube(id('ground-strap'),points.map((p,j)=>[p[0]+(i-3)*.0012,p[1]+Math.sin(j*Math.PI/2+i)*.0006,p[2]]),.00045,'zinc');

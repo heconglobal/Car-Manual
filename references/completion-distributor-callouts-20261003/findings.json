@@ -1,0 +1,187 @@
+{
+  "reviewedAt": "2026-10-03T00:32:07.763Z",
+  "reviewer": "root",
+  "document": {
+    "path": "references/fiero-parts-cd.pdf",
+    "sha256": "8cc8ba63654dd1892b7be90d2d12729803745303ec5e55d89c584010e0b5048c",
+    "pdfPage": 65,
+    "printedPage": "K-13",
+    "edition": "1990 GM22P revision11-90"
+  },
+  "images": [
+    {
+      "path": "references/completion-distributor-callouts-20261003/gm-pdf-065.png",
+      "sha256": "045a72a2485932ca5dcb853afd6f242171bc06359066b0cc193eb54d4060a474",
+      "actuallyOpened": true
+    },
+    {
+      "path": "references/completion-distributor-callouts-20261003/embedded-0.png",
+      "sha256": "192e92e18bc4d9fb8bd886ce868e4a648ebe24473ab54b6d05c59120cb0bfcce",
+      "actuallyOpened": true
+    }
+  ],
+  "figure": {
+    "id": "GM02-056",
+    "title": "1985–1988 L44 distributor and ignition",
+    "document": "fiero-parts-cd.pdf",
+    "pdfPages": [
+      65
+    ],
+    "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=65",
+    "evidenceImage": "references/completion-distributor-callouts-20261003/embedded-0.png",
+    "application": "1990 GM22P revision11-90, printed K-13; illustration GM02-056 dated093086, table GM02-0563. Table explicitly covers1985–1988 P2.8L V6 L44/2.8-9. Historical service catalog evidence; installed distributor identity and quantities remain unverified.",
+    "callouts": [
+      [
+        1,
+        "Distributor cap",
+        [
+          "eng-cap"
+        ],
+        "Single selection includes contacts and centre brush; local tooling remains reconstructed."
+      ],
+      [
+        2,
+        "Cap attaching screw with lock washer",
+        [
+          "eng-cap-screws"
+        ],
+        "Grouped screws/washers. The drawing shows one representative fastener, not a verified per-vehicle quantity."
+      ],
+      [
+        3,
+        "Distributor rotor",
+        [
+          "eng-rotor"
+        ],
+        "Grouped rotor service component includes its conductor. No separate conductor replacement is inferred."
+      ],
+      [
+        4,
+        "Main shaft",
+        [
+          "eng-distributor-shaft"
+        ],
+        "Table distinguishes1985 from1986–1988 shaft application. Rotating pole is grouped with the modeled shaft; installed variant remains unknown."
+      ],
+      [
+        5,
+        "Pickup-coil shield",
+        [
+          "eng-pickup-shield"
+        ],
+        "Separate selection; formed shape and placement are reconstructed."
+      ],
+      [
+        6,
+        "Housing seal",
+        [
+          "eng-distributor-seal"
+        ],
+        "Separate annular housing seal; this row does not identify a cap gasket."
+      ],
+      [
+        7,
+        "Distributor housing",
+        [
+          "eng-distributor"
+        ],
+        "Separate housing selection; casting, bore and bushing dimensions remain unmeasured."
+      ],
+      [
+        8,
+        "Housing slotted spring pin",
+        [
+          "eng-distributor-housing-pin"
+        ],
+        "Table specifies1/8×1/2PL; independent pin selection. Nominal source size is not yet an audited model dimension."
+      ],
+      [
+        9,
+        "Distributor module",
+        [
+          "eng-icm"
+        ],
+        "Table distinguishes1985 OEM1103633 from1985 OEM1103694/1986–1988. Both historical applications are preserved; installed module/distributor variant is unknown."
+      ],
+      [
+        10,
+        "Module attaching screw with lock washer",
+        [
+          "eng-icm-screws"
+        ],
+        "Grouped screws/washers. No quantity column appears; drawing occurrence is not installed quantity verification."
+      ],
+      [
+        11,
+        "Pickup coil",
+        [
+          "eng-pickup-coil"
+        ],
+        "Separate coil/carrier selection; winding is not destructively separated."
+      ],
+      [
+        12,
+        "Pickup-coil retainer",
+        [
+          "eng-pickup-retainer"
+        ],
+        "Independent annular retainer selection; shape and fit remain reconstructed."
+      ],
+      [
+        13,
+        "Stationary pole piece",
+        [
+          "eng-pole-piece"
+        ],
+        "Separate stationary pole piece; source relation does not establish measured magnetic gaps."
+      ],
+      [
+        14,
+        "Gear coiled spring pin",
+        [
+          "eng-distributor-roll-pin"
+        ],
+        "Table specifies3/16×3/4PL and coiled construction. Existing descriptive/model treatment is a generic hollow spring pin; exact coiled wall construction and nominal dimensions remain unverified."
+      ],
+      [
+        15,
+        "Distributor gear",
+        [
+          "eng-distributor-gear"
+        ],
+        "Separate gear; factory tooth count/profile, helix and engagement remain unverified."
+      ],
+      [
+        16,
+        "Washer under gear",
+        [
+          "eng-distributor-washer"
+        ],
+        "Independent flat washer selection; measured thickness and end play remain unverified."
+      ],
+      [
+        17,
+        "Tanged washer under gear",
+        [
+          "eng-distributor-tang-washer"
+        ],
+        "Table lists1985 OEM1103633 and1985 OEM1103694/1986–1988 application rows. One reconstructed selection does not establish installed variant or exact formed shape."
+      ]
+    ]
+  },
+  "result": {
+    "numberedCalloutTypes": 17,
+    "mappedTypes": 17,
+    "missingTypes": 0,
+    "quantityVerified": false,
+    "installedVariantVerified": false,
+    "geometryVerified": false
+  },
+  "remaining": [
+    "Independently measure casting, cap, shaft/pole, coil and module shapes and all mounting interfaces.",
+    "Resolve installed1985 distributor identifier before selecting variant-specific shaft/module/washer details.",
+    "Audit exact spring-pin constructions and source nominal dimensions; source row14 is specifically coiled.",
+    "Reconcile complete hardware quantities, shaft end play, gear mesh and connector/lead routing."
+  ],
+  "limits": "Source-to-selection reconciliation only. Does not imply17 physical components, complete internal breakdown, current replacement availability or factory-dimensional acceptance."
+}

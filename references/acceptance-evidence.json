@@ -1,5 +1,5 @@
 {
-  "reviewedAt": "2026-09-28T01:09:26.433547+00:00",
+  "reviewedAt": "2026-10-03T00:05:23.388Z",
   "policy": "Only mark complete after all wording of the requirement is satisfied. Test passes for selection/explosion do not certify original geometry, electrical operation or service procedures. Evidence refers to actual inspected sources and executed reports; open items retain their original scope.",
   "items": {
     "01.1": {
@@ -76,12 +76,14 @@
     },
     "03.1": {
       "status": "partial",
-      "progress": "Side-terminal battery, tray, retainer, heat shield, cables and braid replace the top-post placeholder.",
+      "progress": "Side-terminal battery, tray, retainer, heat shield, cables and braid replace the top-post placeholder. All ten catalog drawing callouts are reconciled, including the separately selectable GM 12337828 ground tapping bolt. Battery wire/eyelet contact and bore alignment were corrected.",
       "evidence": [
         "artifacts/charging-review.json",
-        "artifacts/electrical-geometry-audit.json"
+        "artifacts/electrical-geometry-audit.json",
+        "references/completion-callout-register.json",
+        "scripts/audit-completion-battery.mjs"
       ],
-      "remaining": "Measured battery/tray geometry, original appearance, complete cable routes and interface validation."
+      "remaining": "Measured battery/tray geometry, original appearance, complete cable routes and physical interface validation."
     },
     "03.2": {
       "status": "partial",
@@ -121,7 +123,7 @@
     },
     "05.2": {
       "status": "partial",
-      "progress": "Four EST leads now independently selectable with verified A/G/453/B3, B/B/424/D5, C/R/430/B5 and D/E/423/B4 assignments. Cylinder bank identities and 1\u20132\u20133\u20134\u20135\u20136 firing order now have factory references.",
+      "progress": "Four EST leads now independently selectable with verified A/G/453/B3, B/B/424/D5, C/R/430/B5 and D/E/423/B4 assignments. Cylinder bank identities and 1–2–3–4–5–6 firing order now have factory references.",
       "evidence": [
         "references/wiring-reconstruction.md",
         "artifacts/wiring-audit.json"
@@ -181,16 +183,20 @@
     },
     "20.1": {
       "status": "partial",
-      "progress": "Intact 1985 owner manual acquired; fuse ratings, bulb identities and EST terminal assignments inspected and recorded.",
+      "progress": "Intact 1985 owner manual acquired; fuse ratings, bulb identities and EST terminal assignments inspected and recorded. The independent source register now reconciles battery/master-cylinder/gearbox drawings and records unresolved rows; a source audit checks selection IDs and local PDF-page bounds across all current families. Three independently reviewed wiper figures add standard/CD4 service boundaries and year-specific applications; high-resolution inspection corrected brush-holder identity to GM22029825. Independent original-page review now maps all 17 GM02-056 distributor callout types to existing selections, preserving 1985/1986–1988 variant distinctions and unknown quantities. Exact pin construction, dimensions and installed identity remain open.",
       "evidence": [
         "references/wiring-reconstruction.md",
-        "references/electrical-reconstruction.md"
+        "references/electrical-reconstruction.md",
+        "references/completion-callout-register.json",
+        "references/completion-source-audit.json",
+        "references/completion-factory-research.md",
+        "references/completion-distributor-callouts-20261003/findings.json"
       ],
-      "remaining": "All other identities, applications, quantities, torque, clearance, fluid and maintenance values across the full inventory."
+      "remaining": "All unresolved identities, applications, quantities, torque, clearance, fluid and maintenance values across the full inventory; complete original 1985 S-8510P acquisition."
     },
     "20.3": {
       "status": "partial",
-      "progress": "R10 corrects window-seal fit: formed side-opening profiles share glass/corner boundaries, belt wiping lips reach the pane, the inner gasket follows the aperture, and continuous windshield/backlight/sunroof surrounds replace mismatched strips. Dedicated actual-mesh contact and clear-pane tests detect the previous R9 defects. Exact factory sections, compression, water sealing and owner acceptance remain open. Previous scope: R9 adds ten separate glass-opening seals/retainers and corner/backlight fillers, corrects GM panel callouts, conforms marker lamps to the curved skin, refits wheelhouse liners and conceals fender attachments. The full exterior is reviewed in orthographic elevations and close views, with selected nominal dimensions and installed interfaces checked separately. Exact tooling, complete hidden mechanisms, two bumper-reference interpretations and owner acceptance remain open. R11 follows a fresh review of original Pontiac catalog body/bare-frame photographs and GM production/CAD profiles: revised painted and steel pillars, straight-edged sail appliques, increased rear-panel rake and rising lower bumper return. The new profile audit rejects the preserved R10 geometry. Local tooling and owner sign-off remain open. R12 adds actual-surface steel concealment, arch-molding coverage and grille construction regressions. All four fail on preserved R11 geometry and pass on R12. These are static exterior checks, not full vehicle articulation/routing validation.",
+      "progress": "R10 corrects window-seal fit: formed side-opening profiles share glass/corner boundaries, belt wiping lips reach the pane, the inner gasket follows the aperture, and continuous windshield/backlight/sunroof surrounds replace mismatched strips. Dedicated actual-mesh contact and clear-pane tests detect the previous R9 defects. Exact factory sections, compression, water sealing and owner acceptance remain open. Previous scope: R9 adds ten separate glass-opening seals/retainers and corner/backlight fillers, corrects GM panel callouts, conforms marker lamps to the curved skin, refits wheelhouse liners and conceals fender attachments. The full exterior is reviewed in orthographic elevations and close views, with selected nominal dimensions and installed interfaces checked separately. Exact tooling, complete hidden mechanisms, two bumper-reference interpretations and owner acceptance remain open. R11 follows a fresh review of original Pontiac catalog body/bare-frame photographs and GM production/CAD profiles: revised painted and steel pillars, straight-edged sail appliques, increased rear-panel rake and rising lower bumper return. The new profile audit rejects the preserved R10 geometry. Local tooling and owner sign-off remain open. R12 adds actual-surface steel concealment, arch-molding coverage and grille construction regressions. All four fail on preserved R11 geometry and pass on R12. These are static exterior checks, not full vehicle articulation/routing validation. Further static checks cover fuel/coolant/brake joins, battery-ground construction and headlight rigid-cover clearance. These are reconstructed interfaces, not measured whole-car travel certification.",
       "evidence": [
         "artifacts/model-audit.json",
         "artifacts/wiring-audit.json",
@@ -224,9 +230,12 @@
         "artifacts/exterior-reassessment-audit.json",
         "artifacts/exterior-reassessment-r11-baseline.json",
         "tests/body-exterior-reassessment.spec.js",
-        "tests/body-r12-manual.spec.js"
+        "tests/body-r12-manual.spec.js",
+        "scripts/audit-assembly-interfaces.mjs",
+        "scripts/audit-completion-battery.mjs",
+        "scripts/audit-completion-headlight-cover.mjs"
       ],
-      "remaining": "Calibrated full travel, complete routing and clash checks throughout the vehicle."
+      "remaining": "Calibrated full travel, complete factory routing and clash checks throughout the vehicle."
     },
     "20.4": {
       "status": "partial",
@@ -285,9 +294,13 @@
     },
     "01.3": {
       "status": "partial",
-      "progress": "Reconstructed operating link now retains constant length in 101 solved poses; sampled bucket clearance through the hood aperture is checked.",
+      "progress": "Reconstructed operating link retains constant length in 101 solved poses, and cover rigidity/link lengths are checked through 1,001 poses per side. Raised-endpoint actual mesh clearance is checked separately. A new actual-triangle contact audit samples 41 poses on each side, including lid, underside ribs, pads, fasteners and moving hinge arms; no intersections were found. Native negative controls detect both the earlier cover-angle defect and injected rib collisions. Continuous clearance and complete physical contact remain unverified.",
       "evidence": [
-        "artifacts/headlight-clearance-audit.json"
+        "artifacts/headlight-clearance-audit.json",
+        "references/completion-headlight-rigid-cover.md",
+        "scripts/audit-completion-headlight-cover.mjs",
+        "scripts/audit-headlight-motion.mjs",
+        "artifacts/headlight-motion/2026-10-02T23-57-30-400Z/motion-audit.json"
       ],
       "remaining": "Measured production hard points, motor end stops, cover contact and full mechanism interference calibration."
     },
@@ -313,16 +326,17 @@
     },
     "07.1": {
       "status": "partial",
-      "progress": "Final-drive mesh sections now contain the factory-specified 84 ring teeth and 23 pinion teeth; clutch facing corrected to nominal 232/155 mm.",
+      "progress": "Final-drive mesh sections now contain the factory-specified 84 ring teeth and 23 pinion teeth; clutch facing corrected to nominal 232/155 mm. The speedometer drive gear now has the original GM04-238 table's 35 teeth, counted from the actual mesh; the previous 38-tooth model fails the new assertion.",
       "evidence": [
         "references/1985-mvma-research.md",
-        "artifacts/factory-datums-audit.json"
+        "artifacts/factory-datums-audit.json",
+        "references/completion-transmission-speedometer.md"
       ],
       "remaining": "Individual speed-gear tooth counts, measured involute/helix profiles, synchronizer fits and case contours."
     },
     "20.2": {
       "status": "partial",
-      "progress": "Two source-checked interactive guides now provide the nine-step 1985 headlamp sequence and complete twenty-step coolant replacement sequence. All steps select actual modeled components across their respective inspection scopes. The coolant guide retains flushing, bottle cleaning, pressure-release stages, thermostat order and the qualified pipe-plug torque. Shared navigation supports per-step assembly changes and guide-specific temporary configuration. Browser results are recorded separately from physical workshop validation.",
+      "progress": "Thirteen source-checked service guides now contain 98 steps, including eleven new maintenance procedures. Each records source/application/prerequisites and pending workshop validation; whole-vehicle and detail steps share navigation.",
       "evidence": [
         "src/service-guides.js",
         "references/headlight-service-guide.md",
@@ -331,9 +345,12 @@
         "artifacts/regression-history/2026-09-22T09-05-41.350Z-b20197023539.json",
         "artifacts/regression-history/2026-09-24T00-48-35.203Z-267f7ce33b67.json",
         "references/coolant-service-guide.md",
-        "tests/coolant-guide.spec.js"
+        "tests/coolant-guide.spec.js",
+        "references/completion-service-evidence.json",
+        "tests/maintenance-guides.spec.js",
+        "scripts/service-guide-data.test.mjs"
       ],
-      "remaining": "Complete procedures for the remaining systems, optional coolant block-drain selections, verified tools/access and removal paths, and physical workshop validation of the finished guides."
+      "remaining": "Complete remaining-system procedures, verified tools/access and removal paths, applicable historical-fluid updates, and physical workshop validation of finished guides."
     },
     "13.3": {
       "status": "partial",
@@ -390,14 +407,19 @@
     },
     "20.6": {
       "status": "partial",
-      "progress": "Generated an index of every current detail selection with section, reference/callout and option metadata, and mapped each of the 13 families to the 20 checklist areas. Areas without dedicated complete explorers and grouped/overlapping selections are explicitly identified. Targeted distributor, valve and lifter callout checks exist.",
+      "progress": "Generated an index of every current detail selection with section, reference/callout and option metadata, and mapped each of the 16 families to the 20 checklist areas. Areas without dedicated complete explorers and grouped/overlapping selections are explicitly identified. Targeted distributor, valve and lifter callout checks exist. The source audit covers every selection ID and page link; an independently authored register accounts for 227 source drawing rows across nine figures: battery, master cylinder, gearbox, three wiper figures, spare/jack, doors and distributor with explicit gaps and grouped hardware. After the independent door review, 53 of its 54 drawing rows map to model identities; the AU3 relay remains unresolved for location, wiring and quantity. This is an identity crosswalk, not a complete measured parts inventory. Independent original-page review now maps all 17 GM02-056 distributor callout types to existing selections, preserving 1985/1986–1988 variant distinctions and unknown quantities. Exact pin construction, dimensions and installed identity remain open. Further gearbox review distinguishes outer-end retainer candidates from the separately drawn 1984–85 inner-end sleeve; the earlier candidate mapping for row 97 is withdrawn pending installation evidence.",
       "evidence": [
         "COMPONENT-COVERAGE.md",
         "artifacts/component-coverage.json",
         "artifacts/model-audit.json",
-        "artifacts/engine-internals-audit.json"
+        "artifacts/engine-internals-audit.json",
+        "references/completion-selection-evidence.csv",
+        "references/completion-callout-register.json",
+        "references/completion-source-audit.json",
+        "references/completion-distributor-callouts-20261003/findings.json",
+        "references/completion-gearbox-callouts-20261003T001613Z/addendum-20261003T002815Z/implementation-map.json"
       ],
-      "remaining": "Complete drawing-by-drawing reconciliation of all applicable GM callouts, service internals, physical hardware quantities and option/year variants. The authored catalog alone cannot prove a complete factory bill of materials."
+      "remaining": "Independent callout/quantity reconciliation for every other family and closure of unresolved gearbox, door, release-handle and other source identities; catalog presence alone is not full reconciliation."
     },
     "06.8": {
       "status": "partial",
@@ -557,14 +579,18 @@
     },
     "16.1": {
       "status": "partial",
-      "progress": "Separate left/right parked arms, pivot caps and 18-inch-envelope blade/refill assemblies replace the short windshield-line proxies; GM CD PDF 284 inspected.",
+      "progress": "Separate left/right parked arms, pivot caps and 18-inch-envelope blade/refill assemblies replace the short windshield-line proxies; GM CD PDF 284 inspected. The new 36-selection family adds standard and CD4 motor alternatives, shared linkage, pivots and motor construction. Standard and controlled-cycle part identities retain their original year ranges.",
       "evidence": [
         "references/exterior-reconstruction-20260924.md",
         "artifacts/exterior-audit.json",
         "artifacts/visual-inspection-manifest.json",
-        "tests/exterior.spec.js"
+        "tests/exterior.spec.js",
+        "references/completion-wipers.md",
+        "scripts/audit-completion-wipers.mjs",
+        "tests/completion-wipers.spec.js",
+        "references/completion-callout-register.json"
       ],
-      "remaining": "Motor/gearbox, hidden transmission/pivots, calibrated full sweep, delay controls, exact holder tooling and complete arm construction."
+      "remaining": "Measured original motor/gearbox tooling, gear count/profile, calibrated sweep/park, delay-board circuitry and complete arm/blade construction."
     },
     "18.1": {
       "status": "partial",
@@ -644,6 +670,106 @@
         "references/interior-i1-callout-reconciliation.csv"
       ],
       "remaining": "Every drawing callout and production fastener/rivet quantity, remaining pedal stop/return mechanisms, measured mounting coordinates and calibrated travel; grouped sets are not a complete physical BOM."
+    },
+    "08.4": {
+      "status": "partial",
+      "progress": "Actual modeled brake-hose/friction-annulus clearance is included in the static interface audit.",
+      "evidence": [
+        "scripts/audit-assembly-interfaces.mjs"
+      ],
+      "remaining": "Full steering/suspension-travel hose clearance and complete factory bleeding, adjustment and service specifications remain unverified."
+    },
+    "10.3": {
+      "status": "partial",
+      "progress": "Twenty-five spare/jack/tool selections add a 15 × 4 catalogued spare wheel, tire, open wheel holes, jack screw/pivots, wrench and retainers.",
+      "evidence": [
+        "references/completion-spare/source-and-construction.md",
+        "scripts/audit-completion-spare.mjs",
+        "tests/completion-spare.spec.js"
+      ],
+      "remaining": "Measured tire and jack geometry, original markings, complete retaining-hardware reconciliation and physical stowage fit."
+    },
+    "10.4": {
+      "status": "partial",
+      "progress": "Valve, retaining hardware, jack screw, pivots and tool engagement are separately inspectable. Higher rear assembled/exploded diagnostic views were opened and reviewed.",
+      "evidence": [
+        "references/completion-spare/source-and-construction.md"
+      ],
+      "remaining": "Original detailed bearing/handle interfaces, labels and measured hood/sunroof stowage clearances."
+    },
+    "11.3": {
+      "status": "partial",
+      "progress": "A dead fuel-return coupler branch and pipe/hose join gaps were corrected; static actual-mesh interface checks were added.",
+      "evidence": [
+        "scripts/audit-assembly-interfaces.mjs"
+      ],
+      "remaining": "Complete factory-verified fuel interfaces, routing, calibration and source-checked service content."
+    },
+    "14.3": {
+      "status": "partial",
+      "progress": "Thirty-seven C60 selections add compressor exterior/clutch/mounts, condenser and refrigerant pipes/hoses/seals/clips, sharing geometry between the vehicle and HVAC explorer. Seven reconstructed route joins and open head bores are checked.",
+      "evidence": [
+        "references/completion-hvac-refrigeration.md",
+        "references/completion-hvac-source-register.json",
+        "scripts/audit-completion-refrigeration.mjs",
+        "tests/refrigeration.spec.js"
+      ],
+      "remaining": "Measured original compressor/condenser forms, installed compressor identity, complete compressor/accumulator internals and verified refrigerant routing."
+    },
+    "15.1": {
+      "status": "partial",
+      "progress": "Manual/electric regulators, guides, cams, bushings, rollers and stops are included in 76 added door records across six side-specific window, lock and panel-hardware scopes. Source-backed inner belt strips, belt-trim retainers and two panel-block identities were added on both sides. The window-regulator stop bumper no longer depends on power-lock selection; its regulator application and measured placement remain unverified.",
+      "evidence": [
+        "references/completion-doors/source-and-construction.md",
+        "scripts/audit-completion-doors.mjs",
+        "tests/completion-doors.spec.js"
+      ],
+      "remaining": "Original regulator/motor construction, measured glass motion and stops, complete weatherstrip tooling and physical fit."
+    },
+    "15.2": {
+      "status": "partial",
+      "progress": "External lock linkages, rods/clips and optional AU3 actuator previews are separately selectable; manual and power alternatives have option checks.",
+      "evidence": [
+        "references/completion-doors/source-and-construction.md",
+        "scripts/audit-completion-doors.mjs"
+      ],
+      "remaining": "Complete original latch/key-cylinder/actuator internals, control switches and verified wiring/harnesses."
+    },
+    "16.2": {
+      "status": "partial",
+      "progress": "A reservoir with an open filler neck, cap, bottom-mounted pump/seal, check valve, connected hose branches and nozzle pair is separately inspectable.",
+      "evidence": [
+        "references/completion-wipers.md",
+        "scripts/audit-completion-wipers.mjs"
+      ],
+      "remaining": "Measured reservoir/pump tooling, pump internals, nozzle bores, all clips and verified original wiring/routing."
+    },
+    "16.4": {
+      "status": "partial",
+      "progress": "Separate brush holder, bearing stack, armature, park-contact reconstruction and CD4 board service boundary are represented; unspecified gear teeth and electronic components are not invented.",
+      "evidence": [
+        "references/completion-wipers.md"
+      ],
+      "remaining": "Original park/contact geometry, complete delay circuitry, brush springs, arm splines/springs, blade clips, washer impeller/check internals and nozzle passages."
+    },
+    "19.2": {
+      "status": "partial",
+      "progress": "Manual/power door-window and lock previews, plus standard/CD4 wiper alternatives, now have native selectable detail.",
+      "evidence": [
+        "references/completion-doors/source-and-construction.md",
+        "references/completion-wipers.md"
+      ],
+      "remaining": "Remaining tilt, mirror, release, cruise, defroster and roof dependencies, exact original option identities and complete supporting circuits."
+    },
+    "19.3": {
+      "status": "partial",
+      "progress": "Cross-year findings are retained as explicit year/option/side records. The year library preserves usable manuals and hashes rather than discarding documents outside the initial 1985 scope.",
+      "evidence": [
+        "references/completion-multiyear-applicability.json",
+        "references/year-library/2026-10-01/catalog.json",
+        "references/completion-hvac-source-register.json"
+      ],
+      "remaining": "Complete RPO/year/side compatibility evidence and all swap dependencies; the 1985 vehicle remains the only current application profile."
     }
   }
 }

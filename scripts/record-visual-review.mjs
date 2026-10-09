@@ -8,14 +8,16 @@ import {regressionManifest} from './regression-evidence.mjs';
 import {preserveFiles} from './preserve-files.mjs';
 const current=regressionManifest(),path='artifacts/visual-inspection-manifest.json';
 let prior;try{prior=JSON.parse(await readFile(path,'utf8'));}catch{}
-if(prior?.sourceSha256!==current.sourceSha256)prior=null;
-const captures=new Map((prior?.captures||[]).map(c=>[c.file,c]));
+// A test-only edit does not change already-reviewed pixels. Preserve each
+// capture's original source identity; changed application inputs still reset.
+if(prior?.applicationSha256!==current.applicationSha256)prior=null;
+const captures=new Map((prior?.captures||[]).map(c=>[c.file,{...c,sourceSha256:c.sourceSha256||prior.sourceSha256,applicationSha256:c.applicationSha256||prior.applicationSha256}]));
 assert(process.argv.length>2,'Supply only filenames of images actually inspected.');
 for(const name of process.argv.slice(2)){
  assert.equal(basename(name),name,'Use a capture filename, not an arbitrary path');
  const file='artifacts/'+name,s=await stat(file);assert(s.mtimeMs>=current.newestInputMtime,name+' predates the current application / test files');
- captures.set(name,{file:name,sha256:createHash('sha256').update(await readFile(file)).digest('hex'),capturedAt:s.mtime.toISOString(),reviewedAt:new Date().toISOString()});
+ captures.set(name,{file:name,sha256:createHash('sha256').update(await readFile(file)).digest('hex'),capturedAt:s.mtime.toISOString(),reviewedAt:new Date().toISOString(),sourceSha256:current.sourceSha256,applicationSha256:current.applicationSha256});
 }
 const report={reviewedAt:new Date().toISOString(),sourceSha256:current.sourceSha256,applicationSha256:current.applicationSha256,status:'Development visual inspection; not final dimensional or photorealistic acceptance',captures:[...captures.values()],limits:'Explicitly recorded after opening these captures. Passing screenshots do not prove complete physical parts, original tooling, electrical operation, all devices or owner acceptance.'};
 await preserveFiles([path],'before-recording-visual-review');
-await writeFile(path,JSON.stringify(report,null,2)+'\n');console.log('Recorded '+report.captures.length+' inspected current-source captures.');
+await writeFile(path,JSON.stringify(report,null,2)+'\n');console.log('Recorded '+report.captures.length+' inspected captures of the current application.');

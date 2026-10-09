@@ -1,3 +1,4 @@
+import {refrigerationParts,refrigerationSections} from './hvac-refrigeration-catalog.js';
 export const hvacSource='https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf';
 export const hvacSections=[
  {id:'hvac-system',name:'Heating & ventilation'},
@@ -6,8 +7,9 @@ export const hvacSections=[
  {id:'hvac-ducts',parent:'hvac-system',name:'Cabin ducts & outlets',spread:[0,.25,.10]},
  {id:'hvac-controls',parent:'hvac-system',name:'Heater / A/C controls',spread:[0,-.12,.25]},
  {id:'hvac-evaporator',parent:'hvac-system',name:'C60 evaporator & accumulator',spread:[-.10,0,-.35]},
+ ...refrigerationSections,
 ];
-export const hvacParts=[];
+export const hvacParts=[...refrigerationParts];
 const add=(key,section,name,description,spread,callout,page=254,option)=>hvacParts.push({id:'hv-'+key,section:'hvac-'+section,system:'cooling',name,description,spread,callout,source:'GM 22P · '+(page===254?'C41 heater / blower':page===263?'C60 heater / A/C module':page===261?'1985–88 C41 controls':page===280?'1985–88 C60 controls':'air distribution'),sourceUrl:hvacSource+'#page='+page,location:hvacSections.find(s=>s.id==='hvac-'+section).name,referenceNote:'Factory illustrations establish identity and construction. Housings, folds, blade count, local dimensions and connection paths are reconstructed, not measured tooling data. Options are previews, not a VIN-decoded build sheet. Exploded views are not a removal sequence.',...(option===undefined?{}:{option:'airConditioning',value:option})});
 for(const row of [
  ['case','Heater main case','Open molded case with a separate blower aperture, core pocket, partitions and mounting flange. The C60 preview adds its evaporator chamber.',[0,0,-.15],8],

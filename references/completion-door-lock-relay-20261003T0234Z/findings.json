@@ -1,0 +1,267 @@
+{
+  "reviewedAt": "2026-10-03T02:40:11.079815+00:00",
+  "reviewer": "/root/browser_performance",
+  "scope": "Bounded original1986/1987 service-manual review for unresolved GM2P10-004 row19. Existing local scans only; no acquisition or app/test/helper/central-register changes. Research stops after meaningful adjacent-year evidence.",
+  "sources": [
+    {
+      "modelYear": 1986,
+      "path": "references/1986-service.pdf",
+      "sourceUrl": "https://fieroinfo.com/manuals/1986_Fiero_Service_Manual.pdf",
+      "sha256": "a03a875d114c444447433d9b78a44d19f1120dc57445c0834350e722fe06a05b",
+      "bytes": 79842817
+    },
+    {
+      "modelYear": 1987,
+      "path": "references/year-library/2026-10-01/1987-service.pdf",
+      "sourceUrl": "https://www.fieroinfo.com/manuals/1987_Pontiac_Fiero_GM_Service_Manual.pdf",
+      "sha256": "891ada480abb6e4ac24476419e346261820b79e6e3018cabfb8b76b0b2c9f89c",
+      "bytes": 135062320
+    }
+  ],
+  "images": [
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1986-service-pdf-1018-readable.png",
+      "sha256": "bf18eaf6bb1eac9cd7b856449adcf9e46b20c2948d411d865258bdffeb4c0567",
+      "bytes": 219236,
+      "openedAndInspected": true,
+      "supportsFinding": true,
+      "role": "Same original PDF page rendered90degrees clockwise for readability, no changed source content"
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1986-service-pdf-1018.png",
+      "sha256": "9ae1a6de8cfd6da887b25d25c6e9e7a78b21bc8cd402b4415a1699fbc0010b57",
+      "bytes": 175154,
+      "openedAndInspected": true,
+      "supportsFinding": true,
+      "role": "8A130-0 AU3 schematic; relay pinout and1986 power protection"
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1986-service-pdf-1019.png",
+      "sha256": "e5fa91dc0c5e04293e32835d4b7decc60628b35e3ed4847eaffc93730b2225a3",
+      "bytes": 344821,
+      "openedAndInspected": true,
+      "supportsFinding": true,
+      "role": "8A130-1 location table, case ground and1986 C2016cavities"
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1986-service-pdf-1020.png",
+      "sha256": "9730c506f06bdabc81dada3db0c63313283f10ac3387b73b07bd101beada3029",
+      "bytes": 322220,
+      "openedAndInspected": true,
+      "supportsFinding": true,
+      "role": "8A130-2 relay diagnostic terminal chart and dual-relay polarity operation"
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1986-service-pdf-1021.png",
+      "sha256": "9da3a22b57943241d1fc06e57a1c5bf1929df45768f18943cd368eb9e653b168",
+      "bytes": 20679,
+      "openedAndInspected": true,
+      "supportsFinding": false,
+      "role": "Preserved navigation/adjacent-page render; not used to establish door-relay facts. The1986 PDF1087 cooling-fan/defogger relay screws and removal text are NOT door-lock relay instructions."
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1986-service-pdf-1053.png",
+      "sha256": "03d875bc955aae49e89bc3c1f8786d3fc32b91e668864890f530ce6efe7cdcde",
+      "bytes": 437019,
+      "openedAndInspected": true,
+      "supportsFinding": true,
+      "role": "8A201-15 FigureA; relay connectors near RH shroud behind instrument panel"
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1986-service-pdf-1054.png",
+      "sha256": "65238c3ba2e19a6e4e4d2d04c85c3dd77a555422c15cbd7b19524521c15f6d43",
+      "bytes": 303130,
+      "openedAndInspected": true,
+      "supportsFinding": false,
+      "role": "Preserved navigation/adjacent-page render; not used to establish door-relay facts. The1986 PDF1087 cooling-fan/defogger relay screws and removal text are NOT door-lock relay instructions."
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1986-service-pdf-1064.png",
+      "sha256": "bc852f13d7e8f5a2b70394aa52a43aeb24caecc94af28fb6c963d0b2a55f6a00",
+      "bytes": 132037,
+      "openedAndInspected": true,
+      "supportsFinding": false,
+      "role": "Preserved navigation/adjacent-page render; not used to establish door-relay facts. The1986 PDF1087 cooling-fan/defogger relay screws and removal text are NOT door-lock relay instructions."
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1986-service-pdf-1087.png",
+      "sha256": "6197d8d7d5a58509d895ade587800b5e7a72ad1122e194d5f0234c033645a03f",
+      "bytes": 436260,
+      "openedAndInspected": true,
+      "supportsFinding": false,
+      "role": "Preserved navigation/adjacent-page render; not used to establish door-relay facts. The1986 PDF1087 cooling-fan/defogger relay screws and removal text are NOT door-lock relay instructions."
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1986-service-pdf-853.png",
+      "sha256": "61805347080f2ff0615255702f0c0a162dd0ef1cbb6fd7dd52a45f98acc7bf0b",
+      "bytes": 165922,
+      "openedAndInspected": true,
+      "supportsFinding": false,
+      "role": "Preserved navigation/adjacent-page render; not used to establish door-relay facts. The1986 PDF1087 cooling-fan/defogger relay screws and removal text are NOT door-lock relay instructions."
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1986-service-pdf-854.png",
+      "sha256": "a63bf0beb6b6a324a306018838dc0f5200bce4bf3f7169c97aef20965e22d4cb",
+      "bytes": 483780,
+      "openedAndInspected": true,
+      "supportsFinding": false,
+      "role": "Preserved navigation/adjacent-page render; not used to establish door-relay facts. The1986 PDF1087 cooling-fan/defogger relay screws and removal text are NOT door-lock relay instructions."
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1987-service-pdf-1013.png",
+      "sha256": "cd457fe27118bfad07beaff2cc32f89768980803b7572e9d69ec1fbdc155c9ff",
+      "bytes": 357420,
+      "openedAndInspected": true,
+      "supportsFinding": true,
+      "role": "8A130-0 AU3 schematic; relay pinout and1987 power protection"
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1987-service-pdf-1014.png",
+      "sha256": "acc39de521ce9415df29261b5f081104c2da2db5ce0490ac6c33e2c63bc057c9",
+      "bytes": 749067,
+      "openedAndInspected": true,
+      "supportsFinding": true,
+      "role": "8A130-1 location table, case ground and1987 C2018cavities"
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1987-service-pdf-1015.png",
+      "sha256": "5ae155f25835c94dc1c618fe779fe24d5d282e46a793a5e43ef7bc836890bf6a",
+      "bytes": 807372,
+      "openedAndInspected": true,
+      "supportsFinding": true,
+      "role": "8A130-2 relay test tables pin assignments"
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1987-service-pdf-1016.png",
+      "sha256": "fa85f32412a9c952104cde825529a2685df8e9efc41c8649487a870e8b1035fd",
+      "bytes": 560629,
+      "openedAndInspected": true,
+      "supportsFinding": true,
+      "role": "8A130-3 two-relay operation and self-resetting motor protection"
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1987-service-pdf-1049.png",
+      "sha256": "df0e0640aca38bd3192c6ec48c9706d28d7acad093c11a0953004d18619cfc91",
+      "bytes": 804524,
+      "openedAndInspected": true,
+      "supportsFinding": true,
+      "role": "8A201-16 FigureA; relay connectors near RH shroud behind instrument panel"
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1987-service-pdf-1053.png",
+      "sha256": "93ba309424a0035c9fc0d62b2567957b98c75b9ffe56ff992ffadcf5d89a62c7",
+      "bytes": 638712,
+      "openedAndInspected": false,
+      "supportsFinding": false,
+      "role": "Preserved navigation/adjacent-page render; not used to establish door-relay facts. The1986 PDF1087 cooling-fan/defogger relay screws and removal text are NOT door-lock relay instructions."
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1987-service-pdf-1060.png",
+      "sha256": "b6ca517e3fcc8828d2bcd5a3fef63a7ecffc2be1d1b9c780550ef26e75b54547",
+      "bytes": 311391,
+      "openedAndInspected": true,
+      "supportsFinding": true,
+      "role": "8A202-8; C1black3cavities, C2gray2cavities connector faces"
+    },
+    {
+      "path": "references/completion-door-lock-relay-20261003T0234Z/1987-service-pdf-1080.png",
+      "sha256": "358443af88b10c20ade8b049d5df80698330db691c3b19d4cec1941904509cca",
+      "bytes": 957492,
+      "openedAndInspected": true,
+      "supportsFinding": false,
+      "role": "Preserved navigation/adjacent-page render; not used to establish door-relay facts. The1986 PDF1087 cooling-fan/defogger relay screws and removal text are NOT door-lock relay instructions."
+    }
+  ],
+  "findings": {
+    "assembly": "Both original-year circuits depict one common Door Lock Relay Assembly feeding both door motors, with two internal relays (lock and unlock). This is one depicted shared assembly, not two separate door-mounted units.",
+    "location": {
+      "1986": "Near upper RH shroud: PDF1019/8A130-1; connectors shown behind I/P at RH shroud in PDF1053/8A201-15 FigureA.",
+      "1987": "Near upper RH shroud: PDF1014/8A130-1; connectors shown behind I/P at RH shroud in PDF1049/8A201-16 FigureA."
+    },
+    "ground": "Both manuals specifically require good case grounding. Schematic shows relay contact/coil ground through the case; BLK194 at C2/A is the powered UNLOCK command, not an assumed chassis ground.",
+    "pinout": [
+      {
+        "connector": "C1",
+        "cavity": "A",
+        "schematicTerminal": 5,
+        "wire": "ORN/BLK",
+        "circuit": 60,
+        "function": "Battery supply from PWR ACC30A breaker"
+      },
+      {
+        "connector": "C1",
+        "cavity": "B",
+        "schematicTerminal": 3,
+        "wire": "TAN",
+        "circuit": 294,
+        "function": "Shared motor output; battery on UNLOCK, ground on LOCK"
+      },
+      {
+        "connector": "C1",
+        "cavity": "C",
+        "schematicTerminal": 4,
+        "wire": "GRY",
+        "circuit": 295,
+        "function": "Shared motor output; battery on LOCK, ground on UNLOCK"
+      },
+      {
+        "connector": "C2",
+        "cavity": "A",
+        "schematicTerminal": 2,
+        "wire": "BLK",
+        "circuit": 194,
+        "function": "UNLOCK command from door switches; not a chassis-ground lead"
+      },
+      {
+        "connector": "C2",
+        "cavity": "B",
+        "schematicTerminal": 1,
+        "wire": "LT BLU",
+        "circuit": 195,
+        "function": "LOCK command from door switches"
+      }
+    ],
+    "connectorFaces1987": {
+      "source": "PDF1060/8A202-8",
+      "C1": "Black three-cavity housing. Viewed exactly as printed: cavityA is left; C is upper right; B is lower right.",
+      "C2": "Gray two-cavity housing. Viewed exactly as printed: B left, A right.",
+      "limits": "Harness-connector face illustration; preserve the source view convention when modeling, rather than mirroring it into a component-terminal view. Connector service number not independently established here."
+    },
+    "operation": "LOCK energizes the lock relay, placing supply on GRY295 and ground on TAN294; UNLOCK reverses these. The other relay resting contact supplies the motor return. Both motors have self-resetting circuit breakers.",
+    "yearDifferences": [
+      {
+        "field": "CTSY/LID fuse in AU3 schematic",
+        "1986": "20A, PDF1018",
+        "1987": "25A, PDF1013"
+      },
+      {
+        "field": "C201 cavity count in component-location table",
+        "1986": "6, PDF1019",
+        "1987": "8, PDF1014"
+      },
+      {
+        "field": "Relay connector location illustration",
+        "1986": "8A201-15 FigureA",
+        "1987": "8A201-16 FigureA"
+      }
+    ]
+  },
+  "relationshipTo1985PartsRow": {
+    "figure": "2P10-004",
+    "callout": 19,
+    "catalogIdentity": "20306058, W/AU3, retained from existing independent original-parts review",
+    "modelSelectionIds": [],
+    "status": "Still unmodeled. Adjacent-year service diagrams do not independently print20306058 or prove the1985 installation/interchange. Original1985 circuit and installed option remain unverified."
+  },
+  "proposedWork": {
+    "sourceOnly": "Append qualified1986/1987 location, connector and circuit evidence to the existing missing-row note; keep empty model mapping, count and1985 uncertainty unchanged. Preserve the differing fuse/C201 entries for future-year profiles.",
+    "modelFollowup": "Once an applicable profile and source basis are selected, model one shared cabin-mounted case/grounding attachment with separate C1/C2 connectors and two functional relay circuits. Do not duplicate a generic relay into each door. Need production case/mount dimensions, fasteners, internal construction and exact routing evidence before factory-accurate modeling.",
+    "procedureFollowup": "A separate1986/1987 diagnostic reference could distinguish shared supply/case-ground faults from a single motor/harness fault using the original charts. Any1985 repair guide must first establish original-year applicability and validated access/removal/refit details; no door-relay replacement torque, fastener count or completed workshop procedure is established here."
+  },
+  "limits": [
+    "No1985 service diagram reviewed; no blanket1984\u20131988 interchange claim.",
+    "Shared circuit representation does not establish all original installed per-car hardware quantities.",
+    "No native geometry, physical wiring/operation, factory dimensions, removal access or owner validation performed.",
+    "Native/browser verification continued separately; this research supplies source evidence only."
+  ]
+}

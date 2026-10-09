@@ -1,0 +1,76 @@
+{
+  "createdAt": "2026-10-02T00:14:14.554167+00:00",
+  "purpose": "Preserve original 1984 Fiero documentation for future model-year expansion. No current app source or central catalog changed.",
+  "documents": [
+    {
+      "id": "1984-owners-boomtastic-third-printing",
+      "modelYears": [
+        1984
+      ],
+      "documentType": "Owner manual",
+      "publisher": "Pontiac Motor Division / General Motors, original publication scanned by archive",
+      "archive": "Boomtastic",
+      "sourceUrl": "https://www.boomtastic.com/files/?serve_file=Service+Manuals%2C+Guides%2C+and+Tips%2FOwners+Manuals%2F1984%2F1984+Fiero+Owners+Manual.pdf",
+      "discoveryUrl": "https://www.boomtastic.com/files/?dir=Service+Manuals%2C+Guides%2C+and+Tips%2FOwners+Manuals%2F1984",
+      "discoverySnapshot": "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/discovery-1984-owner-index.html",
+      "localPath": "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/1984-owners-boomtastic.pdf",
+      "pages": 109,
+      "bytes": 31869797,
+      "sha256": "00a40a81b1f41c6f6fdebfda188c52cff3fb0dc66431269163a01bc3d1a37e8e",
+      "acquiredAt": "2026-10-02T00:11:47.850914+00:00",
+      "usable": true,
+      "publicationNumber": "10028873 C",
+      "printing": "3rd Printing, explicitly printed on PDF page 108 (manual page 7-2)",
+      "reviewedPages": [
+        {
+          "pdfPage": 1,
+          "localImage": "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/1984-owners-page-001.png",
+          "sha256": "3f8197615ea20bb596b0d04732ef2af4833e79984796c19218e069fc6a8e65be",
+          "openedAndInspected": true,
+          "finding": "Cover explicitly reads 1984 Fiero Owner’s Manual with Pontiac branding."
+        },
+        {
+          "pdfPage": 2,
+          "localImage": "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/1984-owners-page-002.png",
+          "sha256": "5f1ab91d128850e665d467474b77d2616c1db2ab4b8b002ddf31dd7aab4f49c7",
+          "openedAndInspected": true,
+          "finding": "Original Pontiac/GM title and contents page explicitly names 1984 Pontiac Fiero; covers introduction and sections 1, 2, 2A–2D, 3–7."
+        },
+        {
+          "pdfPage": 108,
+          "localImage": "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/1984-owners-page-108.png",
+          "sha256": "fcbc8e8427f301bae11c779261e6fa7b7496b02831f2d3657e133a0a868c2af7",
+          "openedAndInspected": true,
+          "finding": "Original printed page 7-2 Service Station Information; footer identifies Part No. 10028873 C, 3rd Printing."
+        },
+        {
+          "pdfPage": 109,
+          "localImage": "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/1984-owners-page-109.png",
+          "sha256": "50394239368612ba107d458fbdc0fac3fd67bba4640b608ba9f46649f33e3503",
+          "openedAndInspected": true,
+          "finding": "Back cover carries Pontiac/GM marks and Part No. 10028873 C."
+        }
+      ],
+      "structureCheck": "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/page-structure-check.json",
+      "contentCompletenessVerified": false,
+      "qualification": "Usable nonblank original-year scan: all 109 PDF pages render with image content and non-uniform grayscale pixels; cover, contents, final printed service-station page and back cover opened. This does not verify page-by-page sequence/completeness, every technical value, later errata, or applicability to 1985 or other years.",
+      "replacesForUsabilityOnly": "references/year-library/2026-10-01/1984-owners.pdf remains preserved as the previously unusable blank archive response."
+    }
+  ],
+  "serviceManualSearch": {
+    "complete1984ServiceManualAcquired": false,
+    "checkedArchiveUrl": "https://www.boomtastic.com/files/?dir=Service+Manuals%2C+Guides%2C+and+Tips%2FService+Manuals%2FRepair+Manuals%2F1984+Factory+Service+Manual",
+    "indexSnapshot": "references/year-library/2026-10-02T00-09-12Z-1984-acquisition/discovery-1984-service-index.html",
+    "finding": "Archive folder titled 1984 Factory Service Manual lists only 1984 Fiero Electrical Troubleshooting.pdf. That section is not a complete S-8410P manual. Existing acquired 1984 electrical revision remains in the central library.",
+    "boundedSearchOutcome": "No full free original 1984 factory service PDF acquired. Public searches surfaced paid print/reproduction listings, which were not purchased or treated as downloaded evidence."
+  },
+  "otherDiscovery": {
+    "url": "https://manualzz.com/doc/65250728/pontiac-fiero-1984-owner-s-manual?lang=fi",
+    "finding": "Search/web text shows matching original-owner-manual content, but direct HTML download returned HTTP 403. No PDF acquired there and no access-control bypass attempted."
+  },
+  "policy": [
+    "Retain all previous acquisitions.",
+    "Preserved original scans are not app-distribution assets.",
+    "Preserve publication printing and model-year applicability separately; this is not a new year selector or an interchangeability claim."
+  ]
+}

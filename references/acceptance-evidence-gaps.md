@@ -1,6 +1,6 @@
 # Evidence needed for full acceptance
 
-The requested completion criterion remains all 73 requirements finished and tested. A selectable mesh, source link, or passing interaction test is not enough to establish a measured original component. The current ledger keeps those distinctions explicit.
+The requested completion criterion remains all 109 requirements finished and tested. A selectable mesh, source link, or passing interaction test is not enough to establish a measured original component. The current ledger keeps those distinctions explicit.
 
 | Requirement area | Available evidence | Remaining evidence or work |
 | --- | --- | --- |

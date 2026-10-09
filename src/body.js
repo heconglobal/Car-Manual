@@ -1,6 +1,6 @@
 import {buildDoorTrimSkin} from './interior-surfaces.js';
 import * as T from 'three';
-import {headlightHoodPoint} from './headlight-detail.js';
+import {headlightHoodPoint} from './headlight-kinematics.js';
 import { buildFascias } from './fascias.js';
 import { buildSpoilers } from './spoilers.js';
 import { buildGreenhouse } from './greenhouse.js';

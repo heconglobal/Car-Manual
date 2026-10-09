@@ -1,0 +1,2025 @@
+{
+  "reviewedAt": "2026-10-03T00:37:11.209Z",
+  "scope": "Independently inspected drawing-to-selection identity reconciliation. An identity match does not verify factory dimensions, tooling, quantities, original installed variants or workshop access. Callout numbers belong only to their named figure. A drawing selection can contain multiple physical pieces; multiple selections can subdivide one catalog service unit.",
+  "figures": [
+    {
+      "id": "2P02-005",
+      "title": "1984–1987 P battery mounting and cables",
+      "document": "fiero-parts-cd.pdf",
+      "pdfPages": [
+        67
+      ],
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=67",
+      "evidenceImage": "references/service-source-review-20261001/parts-cd-pdf-067.png",
+      "application": "Positive and negative cable table rows explicitly distinguish 1985–87 L44. Battery rating and installed identity remain unknown. Drawing has no vehicle-wide quantity column.",
+      "callouts": [
+        [
+          1,
+          "L44 positive battery cable",
+          [
+            "ch-positive-cable"
+          ],
+          "service-unit; model includes terminal bolt"
+        ],
+        [
+          2,
+          "Battery heat-shield screw",
+          [
+            "ch-battery-shield-screws"
+          ],
+          "grouped hardware; original count not established"
+        ],
+        [
+          3,
+          "Battery heat shield",
+          [
+            "ch-battery-heat-shield"
+          ],
+          "identity represented"
+        ],
+        [
+          4,
+          "Battery",
+          [
+            "ch-battery-case",
+            "ch-battery-lid",
+            "ch-battery-terminals",
+            "ch-battery-indicator"
+          ],
+          "one catalog unit split into four model selections"
+        ],
+        [
+          5,
+          "Battery hold-down bolt",
+          [
+            "ch-battery-retainer-bolt"
+          ],
+          "identity represented"
+        ],
+        [
+          6,
+          "Battery hold-down retainer",
+          [
+            "ch-battery-retainer"
+          ],
+          "identity represented"
+        ],
+        [
+          7,
+          "L44 negative battery cable",
+          [
+            "ch-negative-cable"
+          ],
+          "service-unit; body ground branch grouped"
+        ],
+        [
+          8,
+          "Negative-cable body-ground attachment bolt",
+          [
+            "ch-battery-ground-bolt"
+          ],
+          "GM12337828 tapping bolt; scan supports nominal M6.3×1.81×20, not standard M6×1; one illustrated attachment, vehicle-wide quantity not established"
+        ],
+        [
+          9,
+          "Battery hold-down support",
+          [
+            "ch-battery-support"
+          ],
+          "identity represented"
+        ],
+        [
+          10,
+          "Battery tray",
+          [
+            "ch-battery-tray"
+          ],
+          "identity represented"
+        ]
+      ]
+    },
+    {
+      "id": "GM04-203",
+      "title": "1985–1988 P Moraine brake master cylinder",
+      "document": "fiero-parts-cd.pdf",
+      "pdfPages": [
+        170
+      ],
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=170",
+      "evidenceImage": "references/service-source-review-20261001/parts-cd-pdf-170.png",
+      "application": "Figure explicitly includes 1985. Table directs reader to group usage chart; exact installed service part and original casting identity are unverified. Catalog kits overlap callouts; do not sum kit entries as physical pieces.",
+      "callouts": [
+        [
+          1,
+          "Reservoir cover",
+          [
+            "br-master-cover"
+          ],
+          "identity represented"
+        ],
+        [
+          2,
+          "Reservoir diaphragm",
+          [
+            "br-master-diaphragm"
+          ],
+          "identity represented"
+        ],
+        [
+          3,
+          "Reservoir",
+          [
+            "br-master-reservoir"
+          ],
+          "identity represented"
+        ],
+        [
+          4,
+          "Reservoir grommets",
+          [
+            "br-master-grommets"
+          ],
+          "two drawn; grouped selection"
+        ],
+        [
+          5,
+          "Piston retaining ring",
+          [
+            "br-master-lock-ring"
+          ],
+          "identity represented"
+        ],
+        [
+          6,
+          "Primary piston assembly",
+          [
+            "br-master-primary"
+          ],
+          "service-unit internals grouped"
+        ],
+        [
+          7,
+          "Secondary seal",
+          [
+            "br-master-secondary-seal"
+          ],
+          "identity represented"
+        ],
+        [
+          8,
+          "Secondary spring retainer",
+          [
+            "br-master-retainer"
+          ],
+          "identity represented"
+        ],
+        [
+          9,
+          "Primary seal",
+          [
+            "br-master-primary-seal"
+          ],
+          "identity represented"
+        ],
+        [
+          10,
+          "Secondary piston",
+          [
+            "br-master-secondary"
+          ],
+          "identity represented"
+        ],
+        [
+          11,
+          "Secondary piston spring",
+          [
+            "br-master-spring"
+          ],
+          "spring calibration unverified"
+        ],
+        [
+          12,
+          "Master-cylinder body",
+          [
+            "br-master-body"
+          ],
+          "bores and port dimensions reconstructed"
+        ],
+        [
+          13,
+          "Quick-take-up valve",
+          [
+            "br-master-take-up-valve"
+          ],
+          "internal calibration and complete separate pieces unverified"
+        ]
+      ]
+    },
+    {
+      "id": "GM04-238",
+      "title": "1985–1986 P four-speed manual transaxle (MY8/M17)",
+      "document": "fiero-parts-cd.pdf",
+      "pdfPages": [
+        128,
+        129,
+        130
+      ],
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=128",
+      "evidenceImage": "references/service-source-review-20261001/parts-cd-pdf-128.png",
+      "application": "This is an identity crosswalk by the factory table names, NOT reuse of the catalog's model callout numbers. src/transmission-catalog.js callout numbers refer to the separately cited 1986 service drawing, whose differential numbering differs. Installed M17 identity, speedometer gearing and shim sizes need vehicle evidence. Several table rows contain alternate ratios; no interchangeability is inferred.",
+      "callouts": [
+        [
+          1,
+          "Case assembly",
+          [
+            "tx-case"
+          ],
+          "casting geometry reconstructed"
+        ],
+        [
+          2,
+          "Case vent",
+          [
+            "tx-vent"
+          ],
+          "identity represented"
+        ],
+        [
+          3,
+          "Chip magnet",
+          [
+            "tx-magnet"
+          ],
+          "identity represented"
+        ],
+        [
+          4,
+          "Housing dowel",
+          [
+            "tx-dowels"
+          ],
+          "grouped"
+        ],
+        [
+          5,
+          "Drain washer",
+          [
+            "tx-drain-washer"
+          ],
+          "identity represented"
+        ],
+        [
+          6,
+          "Drain screw",
+          [
+            "tx-drain"
+          ],
+          "identity represented"
+        ],
+        [
+          7,
+          "Case bolt",
+          [
+            "tx-case-bolts"
+          ],
+          "grouped; complete lengths/count unverified"
+        ],
+        [
+          8,
+          "Fill-plug washer",
+          [
+            "tx-fill-washer"
+          ],
+          "identity represented"
+        ],
+        [
+          9,
+          "Fill plug",
+          [
+            "tx-fill"
+          ],
+          "identity represented"
+        ],
+        [
+          10,
+          "Axle seals",
+          [
+            "tx-axle-seals"
+          ],
+          "paired selection"
+        ],
+        [
+          11,
+          "Case plug",
+          [
+            "tx-case-plug"
+          ],
+          "identity represented"
+        ],
+        [
+          12,
+          "Case bearing oil shields",
+          [
+            "tx-input-shield",
+            "tx-output-end-shield"
+          ],
+          "same table identity split by shaft"
+        ],
+        [
+          13,
+          "Case bearings",
+          [
+            "tx-input-end-bearing",
+            "tx-output-end-bearing"
+          ],
+          "same table identity split by shaft"
+        ],
+        [
+          14,
+          "Fourth-speed output gear",
+          [
+            "tx-fourth-output"
+          ],
+          "MY8/M19 alternates listed; installed ratio identity unresolved"
+        ],
+        [
+          15,
+          "Third output gear retaining ring",
+          [
+            "tx-third-retainer"
+          ],
+          "identity represented"
+        ],
+        [
+          16,
+          "Third output gear",
+          [
+            "tx-third-output"
+          ],
+          "gear profile reconstructed"
+        ],
+        [
+          17,
+          "Second output gear",
+          [
+            "tx-second-output"
+          ],
+          "gear profile reconstructed"
+        ],
+        [
+          18,
+          "Synchronizer blocking rings",
+          [
+            "tx-block1",
+            "tx-block2",
+            "tx-block3",
+            "tx-block4"
+          ],
+          "same table identity split into four positions"
+        ],
+        [
+          19,
+          "Synchronizer retaining rings",
+          [
+            "tx-retainer12",
+            "tx-retainer34"
+          ],
+          "some rings grouped"
+        ],
+        [
+          20,
+          "Synchronizer springs",
+          [
+            "tx-springs12",
+            "tx-springs34"
+          ],
+          "grouped by synchronizer"
+        ],
+        [
+          21,
+          "Synchronizer keys",
+          [
+            "tx-keys12",
+            "tx-keys34"
+          ],
+          "grouped by synchronizer"
+        ],
+        [
+          22,
+          "First/second synchronizer assembly",
+          [
+            "tx-sync12"
+          ],
+          "hub and sleeve grouped; listed assembly includes callouts20–21"
+        ],
+        [
+          23,
+          "First output gear",
+          [
+            "tx-first-output"
+          ],
+          "gear profile reconstructed"
+        ],
+        [
+          24,
+          "Case bearing retainers",
+          [],
+          "14073782, group 4.104: two illustrated LH/outer shaft-end case-bearing retainers. Existing tx-input-sleeve and tx-output-sleeve are location candidates; keep those compatibility IDs and do not add duplicate outer-end rings. Original 1986 service Figure 1 (PDF 802 / 7B1-2) uses 24 for these and a third RH/inner output sleeve; PDF 809 / 7B1-9 defines RH as nearest clutch and LH as farthest. Equal callout numbers do not establish identical parts. Exact retention form, dimensions and installed quantity remain unresolved. See references/completion-gearbox-callouts-20261003T001613Z/addendum-20261003T002815Z/implementation-map.json and references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/findings.json"
+        ],
+        [
+          25,
+          "Final-drive output shaft",
+          [
+            "tx-output-shaft"
+          ],
+          "3.32/3.65 alternate rows; factory nominal M17 23 teeth independently sourced"
+        ],
+        [
+          26,
+          "Output bearing",
+          [
+            "tx-output-bearing"
+          ],
+          "identity represented"
+        ],
+        [
+          27,
+          "Output adjustment shim",
+          [
+            "tx-output-shim"
+          ],
+          "actual shim thickness unknown"
+        ],
+        [
+          28,
+          "Output bearing oil shield",
+          [
+            "tx-output-shield"
+          ],
+          "identity represented"
+        ],
+        [
+          29,
+          "Output shield retainer",
+          [
+            "tx-output-retainer"
+          ],
+          "identity represented"
+        ],
+        [
+          30,
+          "Fourth input gear",
+          [
+            "tx-fourth-input"
+          ],
+          "MY8/M19 alternates listed; application needs row-level reconciliation"
+        ],
+        [
+          31,
+          "Third/fourth synchronizer assembly",
+          [
+            "tx-sync34"
+          ],
+          "hub and sleeve grouped"
+        ],
+        [
+          32,
+          "Third input gear",
+          [
+            "tx-third-input"
+          ],
+          "gear profile reconstructed"
+        ],
+        [
+          33,
+          "Input cluster shaft",
+          [
+            "tx-input-shaft"
+          ],
+          "integral gears grouped"
+        ],
+        [
+          34,
+          "Input bearing",
+          [
+            "tx-input-bearing"
+          ],
+          "identity represented"
+        ],
+        [
+          35,
+          "Input-retainer screw",
+          [
+            "tx-retainer-screws"
+          ],
+          "grouped hardware"
+        ],
+        [
+          36,
+          "Input adjustment shim",
+          [
+            "tx-input-shim"
+          ],
+          "actual shim thickness unknown"
+        ],
+        [
+          37,
+          "Input seal",
+          [
+            "tx-input-seal"
+          ],
+          "identity represented"
+        ],
+        [
+          38,
+          "Input retainer component",
+          [
+            "tx-input-retainer"
+          ],
+          "grouped with guide"
+        ],
+        [
+          39,
+          "Input bearing retainer assembly",
+          [
+            "tx-input-retainer",
+            "tx-input-seal"
+          ],
+          "overlapping assembly contains37–38; do not count again"
+        ],
+        [
+          40,
+          "Input retainer seal ring",
+          [
+            "tx-retainer-seal"
+          ],
+          "identity represented"
+        ],
+        [
+          41,
+          "Clutch release bearing",
+          [
+            "tx-release-bearing"
+          ],
+          "modeled in separate clutch scope"
+        ],
+        [
+          42,
+          "Reverse-idler screw/washer",
+          [
+            "tx-reverse-bolt"
+          ],
+          "grouped"
+        ],
+        [
+          43,
+          "Reverse-idler shaft",
+          [
+            "tx-reverse-shaft"
+          ],
+          "identity represented"
+        ],
+        [
+          44,
+          "Reverse-idler gear",
+          [
+            "tx-reverse-gear"
+          ],
+          "gear profile reconstructed"
+        ],
+        [
+          45,
+          "Reverse-idler spacer",
+          [
+            "tx-reverse-spacer"
+          ],
+          "identity represented"
+        ],
+        [
+          46,
+          "Clutch/differential housing",
+          [
+            "tx-bellhousing"
+          ],
+          "casting geometry reconstructed"
+        ],
+        [
+          47,
+          "Speed-sensor screw",
+          [
+            "tx-speed-retainer"
+          ],
+          "grouped with retainer"
+        ],
+        [
+          48,
+          "Speed-sensor retainer",
+          [
+            "tx-speed-retainer"
+          ],
+          "grouped with screw47"
+        ],
+        [
+          49,
+          "Speed sensor",
+          [
+            "tx-speed-sensor"
+          ],
+          "identity represented"
+        ],
+        [
+          50,
+          "Speed-sensor sleeve seal",
+          [
+            "tx-speed-seal"
+          ],
+          "identity represented"
+        ],
+        [
+          51,
+          "Speedometer driven gear",
+          [
+            "tx-speed-gear"
+          ],
+          "29/30/31-tooth variants listed; actual installed variant unknown"
+        ],
+        [
+          52,
+          "Reverse-inhibitor spring seat",
+          [
+            "tx-inhibitor"
+          ],
+          "grouped with spring and washer"
+        ],
+        [
+          53,
+          "Reverse-inhibitor spring",
+          [
+            "tx-inhibitor"
+          ],
+          "grouped with seat and washer"
+        ],
+        [
+          54,
+          "Spring pin",
+          [
+            "tx-roll-pins"
+          ],
+          "grouped; exact quantity unverified"
+        ],
+        [
+          55,
+          "Reverse shift lever",
+          [
+            "tx-reverse-lever"
+          ],
+          "identity represented"
+        ],
+        [
+          56,
+          "Reverse lever locating stud",
+          [
+            "tx-reverse-stud"
+          ],
+          "identity represented"
+        ],
+        [
+          57,
+          "Detent lever",
+          [
+            "tx-detent-lever"
+          ],
+          "identity represented"
+        ],
+        [
+          58,
+          "Detent lever lockwasher",
+          [],
+          "exact separately indexed washer missing; do not assume grouped bolt is the same position"
+        ],
+        [
+          59,
+          "Detent spring",
+          [
+            "tx-detent-spring"
+          ],
+          "calibration unknown"
+        ],
+        [
+          60,
+          "Detent bolt",
+          [
+            "tx-detent-bolt"
+          ],
+          "grouped with illustrative washer"
+        ],
+        [
+          61,
+          "Shift shaft",
+          [
+            "tx-shift-shaft"
+          ],
+          "identity represented"
+        ],
+        [
+          62,
+          "Shift shaft seal",
+          [
+            "tx-shift-seal"
+          ],
+          "identity represented"
+        ],
+        [
+          63,
+          "Detent-lever bolt",
+          [],
+          "not separately attributed"
+        ],
+        [
+          64,
+          "Detent-lever nut",
+          [],
+          "not separately attributed"
+        ],
+        [
+          65,
+          "Shift interlock",
+          [
+            "tx-interlock"
+          ],
+          "identity represented"
+        ],
+        [
+          66,
+          "Shift-shaft shim",
+          [
+            "tx-shift-shim"
+          ],
+          "actual thickness unknown"
+        ],
+        [
+          67,
+          "Reverse-inhibitor washer",
+          [
+            "tx-inhibitor"
+          ],
+          "grouped with spring/seat"
+        ],
+        [
+          68,
+          "Third/fourth shift fork",
+          [
+            "tx-fork34"
+          ],
+          "identity represented"
+        ],
+        [
+          69,
+          "Shift-fork shaft",
+          [
+            "tx-fork-rail"
+          ],
+          "identity represented"
+        ],
+        [
+          70,
+          "Shift-rail screw",
+          [
+            "tx-rail-screw"
+          ],
+          "identity represented"
+        ],
+        [
+          71,
+          "Oil guide",
+          [
+            "tx-oil-guide"
+          ],
+          "identity represented"
+        ],
+        [
+          72,
+          "First/second shift fork",
+          [
+            "tx-fork12"
+          ],
+          "identity represented"
+        ],
+        [
+          73,
+          "Clutch fork-shaft seal",
+          [
+            "tx-fork-seal"
+          ],
+          "identity represented"
+        ],
+        [
+          74,
+          "Clutch fork-shaft bearings",
+          [
+            "tx-fork-bearings"
+          ],
+          "grouped"
+        ],
+        [
+          75,
+          "Clutch fork and shaft",
+          [
+            "tx-release-fork"
+          ],
+          "grouped service unit"
+        ],
+        [
+          76,
+          "Differential assembly",
+          [],
+          "assembly heading serviced by components; not a missing single-piece selection"
+        ],
+        [
+          77,
+          "Differential bearings",
+          [
+            "tx-diff-bearings"
+          ],
+          "paired; adjacent-year model callout76 differs"
+        ],
+        [
+          78,
+          "Differential case",
+          [
+            "tx-diff-carrier"
+          ],
+          "table specifies3.34 case row; verify exact M17 application independently"
+        ],
+        [
+          79,
+          "Differential pinion shaft",
+          [
+            "tx-diff-pin"
+          ],
+          "identity represented; numbering differs from adjacent-year drawing"
+        ],
+        [
+          80,
+          "35-tooth speedometer drive gear",
+          [
+            "tx-speed-drive"
+          ],
+          "35-tooth factory table count applied and counted from actual model mesh; gear profile, dimensions and separate driven-gear application remain unverified"
+        ],
+        [
+          81,
+          "Differential bearing shim",
+          [
+            "tx-diff-shim"
+          ],
+          "actual thickness unknown"
+        ],
+        [
+          82,
+          "Pinion thrust washers",
+          [
+            "tx-spider-washers"
+          ],
+          "paired selection"
+        ],
+        [
+          83,
+          "Differential pinion gears",
+          [
+            "tx-spider-gears"
+          ],
+          "paired selection"
+        ],
+        [
+          84,
+          "Side-gear thrust washers",
+          [
+            "tx-side-washers"
+          ],
+          "paired selection"
+        ],
+        [
+          85,
+          "Side gears",
+          [
+            "tx-side-gears"
+          ],
+          "paired selection"
+        ],
+        [
+          86,
+          "Pinion-shaft lockwasher",
+          [
+            "tx-diff-pin-washer"
+          ],
+          "identity represented"
+        ],
+        [
+          87,
+          "Pinion-shaft screw",
+          [
+            "tx-diff-pin-screw"
+          ],
+          "identity represented"
+        ],
+        [
+          88,
+          "Differential ring-gear kit",
+          [
+            "tx-ring-gear"
+          ],
+          "table offers3.32/4.10 kits; do not label either as this M17's3.65 gear"
+        ],
+        [
+          89,
+          "Ring-gear bolts",
+          [
+            "tx-ring-bolts"
+          ],
+          "grouped; complete original count/torque unverified"
+        ],
+        [
+          90,
+          "Control-selector spring retainer",
+          [],
+          "not separately attributed"
+        ],
+        [
+          91,
+          "Control-selector lever",
+          [],
+          "not separately attributed"
+        ],
+        [
+          92,
+          "Shift-shaft adjustment clip",
+          [],
+          "not separately attributed"
+        ],
+        [
+          93,
+          "External shift lever",
+          [],
+          "not separately attributed"
+        ],
+        [
+          94,
+          "Shift-lever washer",
+          [],
+          "not separately attributed"
+        ],
+        [
+          95,
+          "Shift-lever nut",
+          [],
+          "not separately attributed"
+        ],
+        [
+          96,
+          "Control-selector pin",
+          [],
+          "not separately attributed"
+        ],
+        [
+          97,
+          "1984–85 oil-shield sleeve",
+          [],
+          "14020900, group 4.422: separate output RH/inner oil-shield sleeve, explicitly 1984–85 in GM04-238 table PDF 130 / H-10. Parts Figure GM04-238 and original 1986 service Figure 1 (PDF 802 / 7B1-2, service callout 24) place a small sleeve between output shaft 25 and RH bearing 26 in the exploded sequence; service PDF 809 / 7B1-9 identifies this as the clutch-side end. This establishes relative neighborhood, not seating depth or a 1986 part-number interchange. Existing outer-end tx-input-sleeve/tx-output-sleeve and separate bearing-shield retainer tx-output-retainer do not cover this row. Exact original-year fit/form, dimensions, installed variant and quantity remain open; no selection mapped. See references/completion-gearbox-callouts-20261003T001613Z/2026-10-03T02-03-40Z-inner-sleeve-followup/findings.json"
+        ]
+      ],
+      "independentReview": "references/completion-gearbox-callouts-20261003T001613Z/addendum-20261003T002815Z/implementation-map.json"
+    },
+    {
+      "id": "2P10-008",
+      "title": "1984–1987 P windshield wiper system",
+      "document": "fiero-parts-cd.pdf",
+      "pdfPages": [
+        284
+      ],
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=284",
+      "evidenceImage": "references/completion-wiper-callouts/parts-cd-pdf-284.png",
+      "application": "Original application table distinguishes 1984–85 standard motor excluding CD4 and 1985–87 CD4 motor. The listed 16-inch and 18-inch blade rows specifically say1984; the1985 blade identity is not established by those two rows. Hood release and lamp appear on this drawing but belong to other model families.",
+      "callouts": [
+        [
+          1,
+          "Wiper blade/insert assembly",
+          [
+            "ww-blade-left",
+            "ww-blade-right"
+          ],
+          "paired construction; exact1985 Trico blade/refill identity and tooling unverified"
+        ],
+        [
+          2,
+          "Right and left wiper arms",
+          [
+            "ww-arm-right",
+            "ww-arm-left"
+          ],
+          "table20302339 RH/20302338 LH; caps/springs grouped, geometry unmeasured"
+        ],
+        [
+          3,
+          "Rear transmission-link deflector",
+          [
+            "ww-link-deflector"
+          ],
+          "table20451044; identity represented"
+        ],
+        [
+          4,
+          "Right and left wiper transmissions",
+          [
+            "ww-pivot-right",
+            "ww-link-right",
+            "ww-joint-right",
+            "ww-pivot-left",
+            "ww-link-left",
+            "ww-joint-left"
+          ],
+          "two catalog service units22039336 RH/22039337 LH subdivided into pivot/link/socket selections; bearings grouped"
+        ],
+        [
+          5,
+          "Front-compartment lid lock and actuating cable",
+          [
+            "bd-hood-latch",
+            "bd-hood-release-cable"
+          ],
+          "cross-family identity candidates; exact combined service unit20389893 and original release route unverified"
+        ],
+        [
+          6,
+          "Front-compartment release handle",
+          [],
+          "20318496, group 8.075, black front-compartment release handle; figure heading 1984–1987 with no narrower row restriction. Original 1985 owner scan PDF 105 / printed 7-1 locates it left of steering column beneath the instrument-panel air vent and identifies an auxiliary release cable with cylindrical end clipped behind the handle. Adjacent 1986 service PDF 1207 / 4-3 and Figure 4 / PDF 1209 confirm the cable-operated center-cowl latch and hood-mounted striker relationship. Separate handle identity/location is established, but no independently selectable handle exists yet; exact mounting, dimensions, main/auxiliary cable fit, installed quantity and original vehicle condition remain unresolved. No 1988 interchange or power-release option inferred. See references/completion-front-release/2026-10-03T02-31-59Z/findings.json"
+        ],
+        [
+          7,
+          "Windshield wiper motor",
+          [
+            "ww-motor-housing",
+            "ww-motor-seal",
+            "ww-motor-mounts",
+            "ww-motor-washers",
+            "ww-motor-gear",
+            "ww-motor-bearings",
+            "ww-motor-brush-holder",
+            "ww-motor-bearing-straps",
+            "ww-motor-armature",
+            "ww-motor-cover",
+            "ww-motor-field",
+            "ww-motor-park",
+            "ww-pulse-motor"
+          ],
+          "mutually exclusive service variants:22062915 standard1984–85 exceptCD4;22062913 CD4 1985–87; do not sum variants or internal selections as original pieces"
+        ],
+        [
+          8,
+          "Front-compartment lamp housing",
+          [
+            "lt-courtesy-front-compartment-housing"
+          ],
+          "cross-family optional lamp-group preview; table20432645 housing identity not assigned as measured/original tooling"
+        ]
+      ]
+    },
+    {
+      "id": "GM10-066",
+      "title": "1984–1988 P Delco pulse windshield-wiper motor",
+      "document": "fiero-parts-cd.pdf",
+      "pdfPages": [
+        286
+      ],
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=286",
+      "evidenceImage": "references/completion-wiper-callouts/parts-cd-pdf-286.png",
+      "application": "Drawing carries1984–1988 family title, but directs additional application to the catalog. Figure2P10-008 supplies the narrower1985–87 CD4 motor applicability; the family title alone is not a blanket interchange claim.",
+      "callouts": [
+        [
+          1,
+          "Motor cover kit",
+          [
+            "ww-pulse-cover"
+          ],
+          "table22039315; screws/seal are grouped in the kit, original individual quantities unverified"
+        ],
+        [
+          2,
+          "Motor circuit board",
+          [
+            "ww-pulse-board"
+          ],
+          "table22102002; board/connector substrate only, component population and circuitry unresolved"
+        ],
+        [
+          3,
+          "Wiper motor service assembly",
+          [
+            "ww-pulse-motor"
+          ],
+          "table22062913; grouped motor internals, not an independently complete internal inventory"
+        ],
+        [
+          4,
+          "Motor crank arm",
+          [
+            "ww-motor-crank",
+            "ww-motor-nut"
+          ],
+          "table22039338; crank and locknut separated in model; throw/park calibration unverified"
+        ]
+      ]
+    },
+    {
+      "id": "GM10-068",
+      "title": "1984–1988 P Delco standard windshield-wiper motor",
+      "document": "fiero-parts-cd.pdf",
+      "pdfPages": [
+        287
+      ],
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=287",
+      "evidenceImage": "references/completion-wiper-callouts/parts-cd-pdf-287.png",
+      "application": "Family drawing is titled1984–1988 and explicitly excludes pulse. Use figure2P10-008 to retain1984–85 application of service motor22062915. Footnote screw package22029895 is required for reassembly; its exact contents and independently selectable original screw count remain unresolved. High-resolution inspection confirms brush-holder22029825.",
+      "callouts": [
+        [
+          1,
+          "Standard motor service unit",
+          [
+            "ww-motor-housing",
+            "ww-motor-seal",
+            "ww-motor-mounts",
+            "ww-motor-washers",
+            "ww-motor-gear",
+            "ww-motor-bearings",
+            "ww-motor-brush-holder",
+            "ww-motor-bearing-straps",
+            "ww-motor-armature",
+            "ww-motor-cover",
+            "ww-motor-field",
+            "ww-motor-park"
+          ],
+          "table22062915 denotes complete motor service unit; it is not a separate bare-housing part number"
+        ],
+        [
+          2,
+          "Seal",
+          [
+            "ww-motor-seal"
+          ],
+          "not separately serviced in table; cross-section and operating fit unverified"
+        ],
+        [
+          3,
+          "Motor crank arm",
+          [
+            "ww-motor-crank"
+          ],
+          "table22039338; shared standard/pulse construction"
+        ],
+        [
+          4,
+          "Crank locknut",
+          [
+            "ww-motor-nut"
+          ],
+          "not separately serviced; part of crank item3"
+        ],
+        [
+          5,
+          "Mounting grommet",
+          [
+            "ww-motor-mounts"
+          ],
+          "grouped with mounting hardware; exact original grommet and screw count unresolved"
+        ],
+        [
+          6,
+          "Thrust washer",
+          [
+            "ww-motor-washers"
+          ],
+          "paired modeled set; original stack/endplay unverified"
+        ],
+        [
+          7,
+          "Motor kit, drawn gear and shaft group",
+          [
+            "ww-motor-gear"
+          ],
+          "table22062915 remains a service-unit reference, not a verified standalone gear number; teeth/profile intentionally unspecified"
+        ],
+        [
+          8,
+          "Armature bearing",
+          [
+            "ww-motor-bearings"
+          ],
+          "part of armature item11; separate modeled bearing pair, fits unmeasured"
+        ],
+        [
+          9,
+          "Wiper-motor brush holder",
+          [
+            "ww-motor-brush-holder"
+          ],
+          "table22029825 confirmed from high-resolution page; brushes/protector grouped, not a calibrated electrical reconstruction"
+        ],
+        [
+          10,
+          "Bearing retaining strap",
+          [
+            "ww-motor-bearing-straps"
+          ],
+          "grouped strap pair; original tooling unmeasured"
+        ],
+        [
+          11,
+          "Armature",
+          [
+            "ww-motor-armature"
+          ],
+          "table22030808; winding/worm details not calibrated"
+        ],
+        [
+          12,
+          "Motor cover kit",
+          [
+            "ww-motor-cover"
+          ],
+          "table22038937; exact cover-kit contents and screw package22029895 accounting unresolved"
+        ],
+        [
+          13,
+          "Magnet kit",
+          [
+            "ww-motor-field"
+          ],
+          "table22030807; field shell/magnets grouped, physical magnetic specification unknown"
+        ],
+        [
+          14,
+          "Park-switch actuator",
+          [
+            "ww-motor-park"
+          ],
+          "table22029824; contact and park timing are not electrically validated"
+        ]
+      ]
+    },
+    {
+      "id": "2P08-009",
+      "title": "1985–1988 P compact spare wheel stowage and jack parts",
+      "document": "fiero-parts-cd.pdf",
+      "pdfPages": [
+        251
+      ],
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=251",
+      "evidenceImage": "references/completion-spare/gm22p-p251.png",
+      "application": "The table explicitly covers1985–1988. Wheel9590503 is15×4 RK; earlier1984 variants are retained separately in the year notes. The ten jack subdivisions are illustrative construction of one service unit, not ten catalog parts. No load capacity, original tire identity, bore/bolt-circle/offset or internal dimensions are inferred.",
+      "callouts": [
+        [
+          1,
+          "Spare wheel stowage retainer",
+          [
+            "sp-retaining-rod"
+          ],
+          "table10023232; hooked cross-compartment retainer, routing/contour reconstructed"
+        ],
+        [
+          2,
+          "Spare wheel retaining bolt",
+          [
+            "sp-spare-bolt"
+          ],
+          "table10024098; hand screw modeled; thread/engagement unmeasured"
+        ],
+        [
+          3,
+          "Vehicle jack service assembly",
+          [
+            "sp-jack-base",
+            "sp-jack-lower-arms",
+            "sp-jack-upper-arms",
+            "sp-jack-head",
+            "sp-jack-leg",
+            "sp-jack-pins",
+            "sp-jack-screw",
+            "sp-jack-trunnion",
+            "sp-jack-thrust",
+            "sp-jack-drive"
+          ],
+          "table10030932 is complete jack; construction subdivisions do not establish separate service numbers or lifting capacity"
+        ],
+        [
+          4,
+          "Jack stowage bolt",
+          [
+            "sp-jack-bolt"
+          ],
+          "table10030929; separate hand screw"
+        ],
+        [
+          5,
+          "U-shaped nut",
+          [
+            "sp-u-nut"
+          ],
+          "table12337966 specifiesM8×1.25; exact clip/tooling unmeasured"
+        ],
+        [
+          6,
+          "Hex nut with conical washer",
+          [
+            "sp-bracket-nut"
+          ],
+          "table11508277 specifiesM6×1; grouped nut/washer construction"
+        ],
+        [
+          7,
+          "Jack stowage bracket",
+          [
+            "sp-bracket"
+          ],
+          "table10041843; original production stamping/coordinates unmeasured"
+        ],
+        [
+          8,
+          "Hex/washer-head retaining screw",
+          [
+            "sp-bracket-screw"
+          ],
+          "table11508800 specifiesM6×1×20; measured fit unverified"
+        ],
+        [
+          9,
+          "Wheel wrench",
+          [
+            "sp-wrench"
+          ],
+          "table14036400 specifies19.56mm; bends and jack-drive engagement reconstructed"
+        ],
+        [
+          10,
+          "Compact spare wheel",
+          [
+            "sp-rim"
+          ],
+          "table9590503 specifies15×4 RK; tire, valve and markings are additional modeled constructions, not separately numbered by this wheel callout"
+        ]
+      ]
+    },
+    {
+      "id": "2P10-004",
+      "title": "1984–1988 P front-door hardware",
+      "document": "fiero-parts-cd.pdf",
+      "pdfPages": [
+        300,
+        301,
+        302
+      ],
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=300",
+      "evidenceImage": "references/completion-doors/gm22p-p300.png",
+      "application": "Drawing 2P10-004/FBS-1865 (printed mark 052286) and PDF 301–302 application tables were independently opened and inspected again. The 1984–88 heading is not blanket interchange evidence. Preserve 1984–85 RH 20352606/LH 20352607 versus 1986–88 RH 20350876/LH 20350877 belt retainers, 1984 push-in versus 1984–88 black hang-on outer seals, 1984 steel versus 1985–88 glass bushings, clear(P37)/tinted glass, manual(P37)/electric regulators and AU3 annotations. Item 34 is now classified as a window-regulator bumper without powerLocks gating; regulator variant and installed position remain unverified. The window-motor W/AU3 annotation remains unresolved. Manual/electric and option alternatives must not be summed as original installed parts. Relay 19 remains missing rather than replaced by another-family relay.",
+      "callouts": [
+        [
+          1,
+          "Door window glass",
+          [
+            "bd-skin-door-glass-left",
+            "bd-skin-door-glass-right"
+          ],
+          "identity represented by shared Body glass selections; table distinguishes clear glass annotated P37 from tinted glass; original installed variant, lower glass tail/attachment shape and calibrated lowering remain unverified"
+        ],
+        [
+          2,
+          "Window-glass regulator cam",
+          [
+            "bd-door-left-glass-cam",
+            "bd-door-right-glass-cam"
+          ],
+          "RH 20364928 / LH 20364929; separately selectable open cam channel; attachment geometry reconstructed"
+        ],
+        [
+          3,
+          "Rear glass-mounted window stop",
+          [
+            "bd-door-left-glass-rear-stops",
+            "bd-door-right-glass-rear-stops"
+          ],
+          "table 20085501; grouped reconstructed stop set for each side; illustrated multiple positions do not establish the complete original per-door quantity"
+        ],
+        [
+          4,
+          "Lock over-center spring",
+          [
+            "bd-door-left-lock-overcenter-spring",
+            "bd-door-right-lock-overcenter-spring"
+          ],
+          "RH 20047022 / LH 20047023; identity represented; shape and spring calibration unverified"
+        ],
+        [
+          5,
+          "Lock-cylinder-to-lock rod",
+          [
+            "bd-door-left-lock-rod",
+            "bd-door-right-lock-rod"
+          ],
+          "existing Body selection; RH 20318484 / LH 20318485 table identities; installed bend radii, clips and routing not factory-measured"
+        ],
+        [
+          6,
+          "Outside-handle-to-lock rod",
+          [
+            "bd-door-left-handle-rod",
+            "bd-door-right-handle-rod"
+          ],
+          "existing Body selection; RH 20318482 / LH 20318483 table identities; complete routing and engagement unverified"
+        ],
+        [
+          7,
+          "Complete outside lift-bar handle",
+          [
+            "bd-skin-handle-left",
+            "bd-skin-handle-right"
+          ],
+          "crosswalk to visible outer handle/recess; catalog complete-handle service unit is not an exhaustive inventory of modeled pivot, spring or attachment internals"
+        ],
+        [
+          8,
+          "Outside lift-bar handle clip",
+          [
+            "bd-door-left-handle-rod-clip",
+            "bd-door-right-handle-rod-clip"
+          ],
+          "table 20158344; separate clip identity; attachment fit unverified"
+        ],
+        [
+          9,
+          "Lock-cylinder retainer",
+          [
+            "bd-door-left-lock-cylinder-retainer",
+            "bd-door-right-lock-cylinder-retainer"
+          ],
+          "table 20318476; separate forked retainer; outer key-cylinder bezel is a different selection and is not counted as this retainer"
+        ],
+        [
+          10,
+          "Front-door lock assembly",
+          [
+            "bd-door-left-latch",
+            "bd-door-right-latch"
+          ],
+          "existing grouped latch/catch construction; catalog 16008172 RH /16008173 LH; internal lock completeness and service-fit orientation unverified. Table note 1 requires removing and reinserting a clip at 180 degrees; the static model does not validate that operation"
+        ],
+        [
+          11,
+          "Trim retainer at window belt",
+          [
+            "bd-door-left-belt-trim-retainer",
+            "bd-door-right-belt-trim-retainer"
+          ],
+          "Independent belt trim retainer selections use 1984–85 RH 20352606 / LH 20352607. Distinct 1986–88 RH 20350876 / LH 20350877 retained as reference applications, not substituted. Cross section, attachment inventory and dimensions reconstructed."
+        ],
+        [
+          12,
+          "Outer window-belt sealing strip",
+          [
+            "bd-skin-belt-seal-left",
+            "bd-skin-belt-seal-right"
+          ],
+          "outer wiping lip represented as a shared exterior selection; table preserves 1984 push-in type 20320532 RH /20320533 LH and black 1984–88 hang-on type 20608220 RH /20608221 LH (notes 2/3). Exact original attachment type and retainer completeness unverified"
+        ],
+        [
+          13,
+          "Inner window-belt sealing strip",
+          [
+            "bd-door-left-inner-belt-seal",
+            "bd-door-right-inner-belt-seal"
+          ],
+          "Independent inner belt-strip selections, RH 20320534 / LH 20320535, distinct from the outer seal and trim panel. Wiping-lip profile, material and attachment details remain unverified."
+        ],
+        [
+          14,
+          "Lock push-button return spring",
+          [
+            "bd-door-left-lock-return-spring",
+            "bd-door-right-lock-return-spring"
+          ],
+          "table 20888089; separate illustrative coil; winding, preload and original installed form unverified"
+        ],
+        [
+          15,
+          "Inner-panel glass stop, first illustrated position",
+          [
+            "bd-door-left-glass-inner-stop",
+            "bd-door-right-glass-inner-stop"
+          ],
+          "table 20179560; separate selection; do not merge with the different illustrated position 48 merely because the service number is shared"
+        ],
+        [
+          16,
+          "Inside lock-rod-to-inner-panel clip",
+          [
+            "bd-door-left-inside-lock-clip",
+            "bd-door-right-inside-lock-clip"
+          ],
+          "table 20474324; separate placement from remote-control rod clip 39 despite shared service number"
+        ],
+        [
+          17,
+          "Inside lock-rod-to-lock clip",
+          [
+            "bd-door-left-inside-latch-clip",
+            "bd-door-right-inside-latch-clip"
+          ],
+          "table 20474900; separate rod-retaining clip identity"
+        ],
+        [
+          18,
+          "Lock remote-control-to-lock rod",
+          [
+            "bd-door-left-inside-release-rod",
+            "bd-door-right-inside-release-rod"
+          ],
+          "RH 20318486 / LH 20318487; separate inside-release rod; exact routing and engagement unverified"
+        ],
+        [
+          19,
+          "Electric door-lock relay, W/AU3",
+          [],
+          "Original parts table identifies AU3 electric door-lock relay20306058; no independently attributed model geometry yet. Separate original1986 service evidence (PDF1018–1020,1053) and1987 evidence (PDF1013–1016,1049,1060) depict one shared, case-grounded assembly near upper RH shroud, containing lock/unlock relays and C1/C2 connectors; five terminal functions are independently recorded in references/completion-door-lock-relay-20261003T0234Z/findings.json. These adjacent-year circuits do not establish1985 installation or service-part interchange: their CTSY/LID ratings differ (1986 20A;1987 25A) and C201 cavity counts differ (6 versus8). Exact1985 applicability, installed option, production geometry, attachment quantities and routing remain unverified. Empty selection mapping is retained; no relay is duplicated into both doors or substituted from another family."
+        ],
+        [
+          20,
+          "Lock striker",
+          [
+            "bd-door-left-striker",
+            "bd-door-right-striker"
+          ],
+          "table 20464563; shared selection groups striker and washer 21; exact service fit and original installed identity unverified"
+        ],
+        [
+          21,
+          "Striker flat washer",
+          [
+            "bd-door-left-striker",
+            "bd-door-right-striker"
+          ],
+          "table 11500367, nominal 11×40×3 PHOS; grouped in the same selection as striker 20, not independently selectable. Reconstructed modeled dimensions are not those factory nominal dimensions"
+        ],
+        [
+          22,
+          "Lock-striker anchor plate",
+          [
+            "bd-door-left-striker-anchor",
+            "bd-door-right-striker-anchor"
+          ],
+          "table 20277001; separate body-side anchor; position and thread fit unmeasured"
+        ],
+        [
+          23,
+          "Door outer-panel attachment block",
+          [
+            "bd-door-left-outer-panel-block",
+            "bd-door-right-outer-panel-block"
+          ],
+          "Independent attachment-block selections identify 20505072, separate from the latch and inner reinforcement. Reconstructed block and boss outline only; exact mounting interface, material, dimensions and original quantity unverified."
+        ],
+        [
+          24,
+          "Inside lock-control-to-lock rod",
+          [
+            "bd-door-left-inside-lock-rod",
+            "bd-door-right-inside-lock-rod"
+          ],
+          "RH 20807584 / LH 20807585; separate rod; installed geometry and travel unverified"
+        ],
+        [
+          25,
+          "Window-regulator stop bumper, first illustrated position",
+          [
+            "bd-door-left-regulator-stop",
+            "bd-door-right-regulator-stop"
+          ],
+          "table 20269755; separate bumper with reconstructed grouped attachment; same service number at 34 does not establish identical position or option application"
+        ],
+        [
+          26,
+          "Door inside-lock bell-crank plate, W/AU3",
+          [
+            "bd-door-left-power-lock-bellcrank",
+            "bd-door-right-power-lock-bellcrank"
+          ],
+          "RH 20426398 / LH 20426399; powerLocks preview only; stamped tooling, pivots and original installed equipment unverified"
+        ],
+        [
+          27,
+          "Electric-lock-actuator-to-lock rod, W/AU3",
+          [
+            "bd-door-left-power-lock-rod",
+            "bd-door-right-power-lock-rod"
+          ],
+          "RH 20344920 / LH 20344921; powerLocks preview only; travel/routing unverified"
+        ],
+        [
+          28,
+          "Black inside lock-rod knob",
+          [
+            "in-door-left-lock-slider",
+            "in-door-right-lock-slider"
+          ],
+          "cross-family identity candidate in Interior; table knob 20332681 corresponds to the modeled manual lock control. The Interior catalog cites a different drawing/callout; exact service-unit identity and dimensions are not verified by that catalog number"
+        ],
+        [
+          29,
+          "Manual window regulator, table annotation P37",
+          [
+            "bd-door-left-manual-regulator",
+            "bd-door-right-manual-regulator"
+          ],
+          "RH 20302330 / LH 20302331; mutually exclusive with electric regulator 36 in the preview. Catalog service assembly groups arms, pivot and drive; tooth count/profile, glass travel and adjustment remain unverified. P37 annotation is preserved without inferring an option code"
+        ],
+        [
+          30,
+          "Rear window-guide cam support",
+          [
+            "bd-door-left-rear-cam-support",
+            "bd-door-right-rear-cam-support"
+          ],
+          "table 20325470; separate folded support; geometry and hardware quantities reconstructed"
+        ],
+        [
+          31,
+          "Window-guide cam",
+          [
+            "bd-door-left-guide-cam",
+            "bd-door-right-guide-cam"
+          ],
+          "RH 20349666 / LH 20349667; separate open guide; curvature and attachment fit unverified"
+        ],
+        [
+          32,
+          "Inner-panel regulator cam",
+          [
+            "bd-door-left-inner-cam",
+            "bd-door-right-inner-cam"
+          ],
+          "RH 20325482 / LH 20325483; separate fixed cam; shape and mounting dimensions unmeasured"
+        ],
+        [
+          33,
+          "Electric-lock actuator and actuator bracket",
+          [
+            "bd-door-left-power-lock-actuator",
+            "bd-door-right-power-lock-actuator",
+            "bd-door-left-power-lock-bracket",
+            "bd-door-right-power-lock-bracket"
+          ],
+          "table lists actuator 22020256 and bracket 22049760 under one callout; model splits both sides into separate actuator and bracket selections. PowerLocks preview is not proof of original equipment; actuator internals and electrical topology remain unverified"
+        ],
+        [
+          34,
+          "Door-window regulator stop bumper, second illustrated position",
+          [
+            "bd-door-left-power-lock-stop",
+            "bd-door-right-power-lock-stop"
+          ],
+          "Table identity 20269755 is a door-window regulator stop bumper. Now classified in the window scope without unsupported powerLocks gating; historical ID retained for compatibility. Original regulator variant, quantity and installed placement remain unresolved. Sharing item 25 service number does not establish identical location or duplicate fitted quantity."
+        ],
+        [
+          35,
+          "Window-regulator motor, table annotation W/AU3",
+          [
+            "bd-door-left-window-motor",
+            "bd-door-right-window-motor"
+          ],
+          "table 22082528; separate exterior can/gearbox/mounts in powerWindows preview. The W/AU3 annotation is unresolved and is not treated as a verified window-option code; motor internals and electrical topology not supplied by this exterior drawing"
+        ],
+        [
+          36,
+          "Electric window regulator",
+          [
+            "bd-door-left-power-regulator",
+            "bd-door-right-power-regulator"
+          ],
+          "RH 20311752 / LH 20311753; mutually exclusive with manual regulator 29 in preview; separately selectable motor 35. Static reconstructed mechanism does not validate adjustment or full travel"
+        ],
+        [
+          37,
+          "Window-guide run-channel retainer",
+          [
+            "bd-door-left-guide-retainer",
+            "bd-door-right-guide-retainer"
+          ],
+          "RH 20325456 / LH 20325457; separate open guide-run retainer; exact original section unverified"
+        ],
+        [
+          38,
+          "Window-guide run-channel retainer support",
+          [
+            "bd-door-left-guide-support",
+            "bd-door-right-guide-support"
+          ],
+          "table 20356700; separate bracket; reconstructed attachment geometry"
+        ],
+        [
+          39,
+          "Door-lock remote-control rod clip",
+          [
+            "bd-door-left-remote-rod-clip",
+            "bd-door-right-remote-rod-clip"
+          ],
+          "table 20474324; distinct illustrated position from item 16 despite common service number; exact clip count unverified"
+        ],
+        [
+          40,
+          "Front door outer-panel attachment block",
+          [
+            "bd-door-left-front-panel-block",
+            "bd-door-right-front-panel-block"
+          ],
+          "Independent front attachment-block selections identify 20505073. Reconstructed outline only; exact placement, material, dimensions, fastening and original quantity unverified."
+        ],
+        [
+          41,
+          "Body-side lower hinge strap",
+          [
+            "bd-door-left-lower-body",
+            "bd-door-right-lower-body"
+          ],
+          "existing Body lower body-side strap selection on each side; catalog distinguishes RH/LH; actual stampings, hinge bores and fit remain reconstructed"
+        ],
+        [
+          42,
+          "Door-side lower hinge strap",
+          [
+            "bd-door-left-lower-door",
+            "bd-door-right-lower-door"
+          ],
+          "existing Body lower door-side strap selections; RH/LH table identities do not establish measured factory geometry"
+        ],
+        [
+          43,
+          "Body-side upper hinge strap",
+          [
+            "bd-door-left-upper-body",
+            "bd-door-right-upper-body"
+          ],
+          "table 20475145 is one listed service identity; model has a selection at each door. Installed handedness/interchange and quantities are not inferred from the single row"
+        ],
+        [
+          44,
+          "Lower hinge spring",
+          [
+            "bd-door-left-hinge-spring",
+            "bd-door-right-hinge-spring"
+          ],
+          "table 20361482; separate spring selection for each modeled side; preload, force, coil geometry and operation unverified"
+        ],
+        [
+          45,
+          "Door-side upper hinge strap",
+          [
+            "bd-door-left-upper-door",
+            "bd-door-right-upper-door"
+          ],
+          "table 20475146 RH /20475147 LH; existing separate Body strap selections; tooling and fits unmeasured"
+        ],
+        [
+          46,
+          "Lower-hinge-to-door/body bolt",
+          [
+            "bd-door-left-hinge-bolts",
+            "bd-door-right-hinge-bolts"
+          ],
+          "table 20408249; current selection groups modeled upper and lower hinge bolts/washer geometry. The figure names the lower attachment; complete upper hardware attribution, original lengths and per-vehicle counts remain unverified"
+        ],
+        [
+          47,
+          "Upper and lower hinge pin",
+          [
+            "bd-door-left-upper-pin",
+            "bd-door-right-upper-pin",
+            "bd-door-left-lower-pin",
+            "bd-door-right-lower-pin"
+          ],
+          "table 20430773; one source identity split across the modeled upper/lower positions on each side. Exact original pin dimensions, bushings, fits and retained hardware inventory remain unverified"
+        ],
+        [
+          48,
+          "Inner-panel glass stop, second illustrated position",
+          [
+            "bd-door-left-front-glass-stop",
+            "bd-door-right-front-glass-stop"
+          ],
+          "table 20179560; independently represented second stop position; same service number as item 15 is not evidence that their placements or counts are interchangeable"
+        ],
+        [
+          49,
+          "Glass stabilizer at belt",
+          [
+            "bd-door-left-glass-stabilizers",
+            "bd-door-right-glass-stabilizers"
+          ],
+          "table 20514937; grouped felt-faced stabilizer set for each door; exact original count, felt and tooling unverified"
+        ],
+        [
+          50,
+          "Window-glass bushing retainer",
+          [
+            "bd-door-left-glass-bushing-retainers",
+            "bd-door-right-glass-bushing-retainers"
+          ],
+          "table 20095585; grouped retainers independently selected from buttons/bushings; complete original quantity unverified"
+        ],
+        [
+          51,
+          "Inner window-glass button",
+          [
+            "bd-door-left-glass-inner-buttons",
+            "bd-door-right-glass-inner-buttons"
+          ],
+          "table 20216819; grouped inner-button set; tooling, fit and original quantity unverified"
+        ],
+        [
+          52,
+          "Window-glass stabilizer button",
+          [
+            "bd-door-left-glass-stabilizer-buttons",
+            "bd-door-right-glass-stabilizer-buttons"
+          ],
+          "table 20146473; grouped stabilizer-button set; tooling, fit and original quantity unverified"
+        ],
+        [
+          53,
+          "Outer window-glass button",
+          [
+            "bd-door-left-glass-outer-buttons",
+            "bd-door-right-glass-outer-buttons"
+          ],
+          "table 20216820; grouped outer-button set, distinct from inner buttons 51; complete original quantity unverified"
+        ],
+        [
+          54,
+          "Window-glass bushing",
+          [
+            "bd-door-left-glass-bushings",
+            "bd-door-right-glass-bushings"
+          ],
+          "1985–88 service identity 20562754 represented as a grouped set. Distinct 1984 steel-type 20178799 is preserved as a separate source application and is not substituted; later-row material, dimensions, fit and original quantity unverified"
+        ]
+      ],
+      "independentReview": "references/completion-doors/2026-10-02T23-50-24Z-independent-callout-review/findings-and-implementation.json"
+    },
+    {
+      "id": "GM02-056",
+      "title": "1985–1988 L44 distributor and ignition",
+      "document": "fiero-parts-cd.pdf",
+      "pdfPages": [
+        65
+      ],
+      "sourceUrl": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=65",
+      "evidenceImage": "references/completion-distributor-callouts-20261003/embedded-0.png",
+      "application": "1990 GM22P revision11-90, printed K-13; illustration GM02-056 dated093086, table GM02-0563. Table explicitly covers1985–1988 P2.8L V6 L44/2.8-9. Historical service catalog evidence; installed distributor identity and quantities remain unverified.",
+      "callouts": [
+        [
+          1,
+          "Distributor cap",
+          [
+            "eng-cap"
+          ],
+          "Single selection includes contacts and centre brush; local tooling remains reconstructed."
+        ],
+        [
+          2,
+          "Cap attaching screw with lock washer",
+          [
+            "eng-cap-screws"
+          ],
+          "Grouped screws/washers. The drawing shows one representative fastener, not a verified per-vehicle quantity."
+        ],
+        [
+          3,
+          "Distributor rotor",
+          [
+            "eng-rotor"
+          ],
+          "Grouped rotor service component includes its conductor. No separate conductor replacement is inferred."
+        ],
+        [
+          4,
+          "Main shaft",
+          [
+            "eng-distributor-shaft"
+          ],
+          "Table distinguishes1985 from1986–1988 shaft application. Rotating pole is grouped with the modeled shaft; installed variant remains unknown."
+        ],
+        [
+          5,
+          "Pickup-coil shield",
+          [
+            "eng-pickup-shield"
+          ],
+          "Separate selection; formed shape and placement are reconstructed."
+        ],
+        [
+          6,
+          "Housing seal",
+          [
+            "eng-distributor-seal"
+          ],
+          "Separate annular housing seal; this row does not identify a cap gasket."
+        ],
+        [
+          7,
+          "Distributor housing",
+          [
+            "eng-distributor"
+          ],
+          "Separate housing selection; casting, bore and bushing dimensions remain unmeasured."
+        ],
+        [
+          8,
+          "Housing slotted spring pin",
+          [
+            "eng-distributor-housing-pin"
+          ],
+          "Table specifies1/8×1/2PL; independent pin selection. Nominal source size is not yet an audited model dimension."
+        ],
+        [
+          9,
+          "Distributor module",
+          [
+            "eng-icm"
+          ],
+          "Table distinguishes1985 OEM1103633 from1985 OEM1103694/1986–1988. Both historical applications are preserved; installed module/distributor variant is unknown."
+        ],
+        [
+          10,
+          "Module attaching screw with lock washer",
+          [
+            "eng-icm-screws"
+          ],
+          "Grouped screws/washers. No quantity column appears; drawing occurrence is not installed quantity verification."
+        ],
+        [
+          11,
+          "Pickup coil",
+          [
+            "eng-pickup-coil"
+          ],
+          "Separate coil/carrier selection; winding is not destructively separated."
+        ],
+        [
+          12,
+          "Pickup-coil retainer",
+          [
+            "eng-pickup-retainer"
+          ],
+          "Independent annular retainer selection; shape and fit remain reconstructed."
+        ],
+        [
+          13,
+          "Stationary pole piece",
+          [
+            "eng-pole-piece"
+          ],
+          "Separate stationary pole piece; source relation does not establish measured magnetic gaps."
+        ],
+        [
+          14,
+          "Gear coiled spring pin",
+          [
+            "eng-distributor-roll-pin"
+          ],
+          "Table specifies3/16×3/4PL and coiled construction. Existing descriptive/model treatment is a generic hollow spring pin; exact coiled wall construction and nominal dimensions remain unverified."
+        ],
+        [
+          15,
+          "Distributor gear",
+          [
+            "eng-distributor-gear"
+          ],
+          "Separate gear; factory tooth count/profile, helix and engagement remain unverified."
+        ],
+        [
+          16,
+          "Washer under gear",
+          [
+            "eng-distributor-washer"
+          ],
+          "Independent flat washer selection; measured thickness and end play remain unverified."
+        ],
+        [
+          17,
+          "Tanged washer under gear",
+          [
+            "eng-distributor-tang-washer"
+          ],
+          "Table lists1985 OEM1103633 and1985 OEM1103694/1986–1988 application rows. One reconstructed selection does not establish installed variant or exact formed shape."
+        ]
+      ]
+    }
+  ]
+}

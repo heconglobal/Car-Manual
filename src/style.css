@@ -19,3 +19,72 @@
 @media(max-width:640px){.camera-views{top:123px;left:70px;right:15px;gap:2px}.stage:has(canvas[data-assembly]:not([data-assembly=""])) .camera-views{top:135px}.camera-views button{flex:1 0 30%;font-size:8px}}
 
 .source-card ul{padding-left:20px;margin:12px 0 16px;font-size:12px;line-height:1.65;color:var(--ink)}.source-card li{margin:8px 0}
+
+/* Match the mobile drawer breakpoint, including landscape phones/tablets. */
+.view-tools-extra{display:flex;flex-direction:column;gap:3px}
+.mobile-tools-toggle,.mobile-tool-label{display:none}
+@media(max-width:960px){
+ .camera-views{display:none}
+ .view-tools{flex-direction:row;gap:4px}
+ .view-tools .icon-button{width:44px;height:44px}
+ .view-tools .mobile-tools-toggle{display:flex}
+ .view-tools-extra{display:none;position:absolute;left:0;top:calc(100% + 8px);width:228px;max-width:calc(100vw - 30px);padding:5px;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px;background:#f6f7f1;border:1px solid #d3d9d0;border-radius:6px;box-shadow:0 5px 20px #2c3d3526}
+ .view-tools[data-expanded=true] .view-tools-extra{display:grid}
+ .view-tools-extra .tool-separator{display:none}
+ .view-tools-extra .icon-button{width:auto;justify-content:flex-start;gap:7px;padding:0 9px}
+ .mobile-tool-label{display:inline;font-size:10px}
+ .mobile-close{width:44px;height:44px}
+}
+@media(max-width:360px){
+ .header{gap:10px;padding:0 12px}
+ .brand-type{font-size:17px;letter-spacing:2px}
+ .vehicle-title>span{display:none}
+ .header-actions{gap:6px}
+}
+
+/* Wrapped assembly titles reserve their own space above mobile navigation. */
+@media(max-width:960px){
+ .stage-heading{position:relative;top:auto;left:auto;right:auto;margin:22px 18px 0}
+ .assembly-return{position:relative;top:auto;left:auto;display:flex;width:max-content;margin:4px 18px 0}
+ .view-tools,.stage:has(canvas[data-assembly]:not([data-assembly=""])) .view-tools{position:relative;top:auto;left:auto;margin:10px 15px 0;width:max-content}
+}
+
+/* Wide, short phones keep the canvas in the viewport; panels scroll inside. */
+@media(min-width:641px) and (max-width:960px) and (max-height:520px){
+ #app{height:100dvh;min-height:0}
+ .header{height:50px;padding:0 14px;gap:14px}
+ .brand-mark{width:29px;height:34px;line-height:31px;font-size:25px}
+ .brand-mark>span{font-size:12px}
+ .brand-type{font-size:18px;letter-spacing:3px}
+ .brand-type>span{font-size:6px;letter-spacing:1.5px}
+ .header-divider{height:24px}
+ .vehicle-title{gap:4px}
+ .vehicle-title>strong{font-size:11px}
+ .vehicle-title>span{font-size:9px}
+ .workspace-bar{height:28px;padding:0 14px}
+ .workspace-label{font-size:8px}
+ .bottom-bar{height:24px;padding:0 14px}
+ .stage-heading{margin:10px 12px 0;min-width:0}
+ .stage-heading>div:first-child{min-width:0;width:100%}
+ .stage-heading .eyebrow,#stage-subtitle{display:none}
+ .stage-heading h2{font-size:16px;line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .view-tools,.stage:has(canvas[data-assembly]:not([data-assembly=""])) .view-tools{position:absolute;top:37px;left:12px;margin:0}
+ .assembly-return{position:absolute;top:37px;left:auto;right:12px;margin:0;min-height:44px;font-size:9px;padding:6px 7px}
+ .stage-bottom{left:auto;right:12px;bottom:10px;gap:0}
+ .explode-control{width:170px;max-width:170px;padding:8px 10px 6px}
+ .explode-control input{margin:8px 0 5px}
+ .interaction-hint,.stage-footnote{display:none}
+ .sidebar{top:78px;bottom:24px;overflow-y:auto}
+ .sidebar-heading,#systems{flex-shrink:0}
+ .part-list{flex:0 0 auto;overflow:visible}
+}
+
+/* Reserve one compact control row so the mobile model has room to be read. */
+@media(max-width:960px){
+ .stage-heading .eyebrow,#stage-subtitle,.interaction-hint,.stage-footnote{display:none}
+ .view-tools,.stage:has(canvas[data-assembly]:not([data-assembly=""])) .view-tools{position:absolute;top:auto;left:12px;bottom:12px;margin:0}
+ .view-tools-extra{top:auto;bottom:calc(100% + 8px)}
+ .stage-bottom{left:auto;right:12px;bottom:12px;gap:0}
+ .explode-control{width:132px;max-width:132px;padding:8px 10px 6px}
+ .explode-control input{margin:8px 0 5px}
+}

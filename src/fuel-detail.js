@@ -83,17 +83,24 @@ function buildFiller(h){
  for(const [p,r] of [[[.173,.412,.64],.025],[[.072,.393,.638],.025],[[.155,.439,.623],.0075],[[.046,.429,.633],.0075]])clamp(id('clamps'),p,r,[1,0,0]);
  tube(id('ground'),[[.69,.587,.90],[.67,.62,.87],[.70,.66,.87]],.0018,'metal');sleeve(id('ground'),.005,.0025,.001,[.70,.66,.87],'zinc',[1,0,0]);
 }
+// Shared reconstructed fitting seats prevent disconnected route ends. These
+// coordinates establish local continuity, not measured 1985 production bends.
+const filterCentre=[-.235,.326,.63],filterHalfLength=.051;
+const filterSeats={inlet:[filterCentre[0],filterCentre[1],filterCentre[2]-filterHalfLength],outlet:[filterCentre[0],filterCentre[1],filterCentre[2]+filterHalfLength]};
+const couplerRoutes={feed:[[-.20,.32,.565],filterSeats.inlet],return:[[-.20,.34,.70],[-.21,.36,.72]]};
 const routes={
  feed:[[-.015,.455,.54],[-.10,.419,.60],[-.20,.32,.565]],return:[[.015,.455,.54],[-.09,.414,.57],[-.16,.32,.62],[-.20,.34,.70]],
- 'feed-hose':[[-.235,.326,.680],[-.28,.37,.73],[-.30,.48,.75],[-.34,.49,.89],engineToVehicle([-.23,1.30-upperEngineDrop,-.085])],
- 'return-hose':[[-.20,.34,.70],[-.23,.41,.76],[-.33,.48,.87],engineToVehicle([-.23,1.30-upperEngineDrop,-.108])],
+ 'feed-hose':[filterSeats.outlet,[-.28,.37,.73],[-.30,.48,.75],[-.34,.49,.89],engineToVehicle([-.23,1.30-upperEngineDrop,-.085])],
+ 'return-hose':[couplerRoutes.return.at(-1),[-.23,.41,.76],[-.33,.48,.87],engineToVehicle([-.23,1.30-upperEngineDrop,-.108])],
 };
 export const fuelRoutes=Object.fromEntries(Object.entries(routes).map(([k,p])=>[k,p.map(([x,y,z])=>[-x,y,z])]));
+export const fuelCouplerRoutes=Object.fromEntries(Object.entries(couplerRoutes).map(([k,p])=>[k,p.map(([x,y,z])=>[-x,y,z])]));
+export const fuelFilterSeats=Object.fromEntries(Object.entries(filterSeats).map(([k,[x,y,z]])=>[k,[-x,y,z]]));
 function buildPlumbing(h){
  const {box,cyl,tube,bolt}=h,{hose,clamp,sleeve,lathe,plate}=fuelTools(h),id=k=>'fu-line-'+k;
  for(const [key,p] of Object.entries(routes))hose(id(key),p,key.startsWith('feed')?.00476:.00397,key.endsWith('hose')?'rubber':'metal');
- for(const [p,r] of [[[[-.20,.32,.565],[-.235,.326,.585]],.00476],[[[-.20,.34,.70],[-.21,.36,.72]],.00397]]){hose(id('couplers'),p,r+.002);for(const point of p)clamp(id('clamps'),point,r+.002,[0,0,1]);}
- const pos=[-.235,.326,.63];lathe(id('filter'),[[-.051,.005],[-.043,.012],[-.039,.024],[-.035,.026],[.035,.026],[.039,.024],[.043,.012],[.051,.005],[.051,.003],[-.051,.003],[-.051,.005]],pos,'zinc',[0,0,1]);
+ for(const [p,r] of [[couplerRoutes.feed,.00476],[couplerRoutes.return,.00397]]){hose(id('couplers'),p,r+.002);for(const point of p)clamp(id('clamps'),point,r+.002,[0,0,1]);}
+ const pos=filterCentre;lathe(id('filter'),[[-filterHalfLength,.005],[-.043,.012],[-.039,.024],[-.035,.026],[.035,.026],[.039,.024],[.043,.012],[filterHalfLength,.005],[filterHalfLength,.003],[-filterHalfLength,.003],[-filterHalfLength,.005]],pos,'zinc',[0,0,1]);
  for(const z of [.594,.666])sleeve(id('filter'),.0267,.025,.003,[-.235,.326,z],'metal',[0,0,1]);for(const z of [.579,.681]){sleeve(id('seals'),.0058,.0035,.0015,[-.235,.326,z],'rubber',[0,0,1]);h.add(id('filter'),new T.CylinderGeometry(.010,.010,.011,6),'zinc',[-.235,.326,z],[Math.PI/2,0,0]);}
  sleeve(id('filter-bracket'),.028,.026,.027,pos,'dark',[0,0,1]);box(id('filter-bracket'),[.04,.003,.068],[-.254,.300,.63],'dark',[],{},.002);for(const z of [.607,.653])bolt(id('fasteners'),[-.264,.306,z],.004);
  for(const p of [[-.105,.416,.60],[-.153,.32,.62],[-.284,.39,.744],[-.225,.62,.94]]){clamp(id('pipe-clips'),p,.006,[0,1,0]);box(id('pipe-clips'),[.025,.004,.012],[p[0]+.012,p[1],p[2]],'zinc');bolt(id('fasteners'),[p[0]+.023,p[1]+.003,p[2]],.003);}

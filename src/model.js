@@ -1,3 +1,5 @@
+import {buildVehicleSpare} from './spare-detail.js';
+import {buildVehicleWipers} from './wiper-detail.js';
 import {interiorColor} from './interior-surfaces.js';
 import {buildVehicleWiring} from './wiring-detail.js';
 import {buildVehicleCharging} from './charging-detail.js';
@@ -20,27 +22,34 @@ import {buildVehicleFuel} from './vehicle-fuel.js';
 import {buildVehicleBrakes} from './vehicle-brakes.js';
 import { defaultConfiguration, paints, sanitizeConfiguration } from './configuration.js';
 
-export function createVehicle() {
+function vehicleConstruction() {
  const root=new T.Group(),groups=new Map();
  const materials=createMaterials();
  for(const part of parts){const g=new T.Group();g.name=part.id;g.userData={partId:part.id,system:part.system,spread:new T.Vector3(0,.2,0)};groups.set(part.id,g);root.add(g);}
  const h=geometryTools(groups,materials);
- buildBody(h);buildMechanics(h);buildInterior(h);
- // Legacy authoring frame uses +X for the driver side; vehicle-frame.js
- // converts all groups to true US LHD (-X) once construction is complete.
- buildVehicleEngine(groups);
- buildVehiclePowertrain(groups,materials);
- buildVehicleBrakes(groups,materials);
- buildVehicleSuspension(groups,materials);
- buildVehicleFuel(groups,materials);
- buildVehicleExhaust(groups,materials);
- buildVehicleBodyHardware(groups,materials);
- buildVehicleHvac(groups,materials);
- buildVehicleHeadlights(groups,materials);
- buildVehicleLighting(groups,materials);
- buildVehicleCharging(groups,materials);
- buildVehicleWiring(groups,materials);
- h.optimize();
+ // Share these native stages with the synchronous audit constructor. Browser
+ // startup yields between stages; no stage is deferred until user navigation.
+ const stages=[
+  ['Body surfaces',()=>buildBody(h)],
+  ['Chassis and mechanical context',()=>buildMechanics(h)],
+  ['Cabin',()=>buildInterior(h)],
+  ['Engine and ignition',()=>buildVehicleEngine(groups)],
+  ['Transmission and cooling',()=>buildVehiclePowertrain(groups,materials)],
+  ['Brakes',()=>buildVehicleBrakes(groups,materials)],
+  ['Suspension',()=>buildVehicleSuspension(groups,materials)],
+  ['Fuel system',()=>buildVehicleFuel(groups,materials)],
+  ['Exhaust',()=>buildVehicleExhaust(groups,materials)],
+  ['Body mechanisms',()=>buildVehicleBodyHardware(groups,materials)],
+  ['Heating and refrigeration',()=>buildVehicleHvac(groups,materials)],
+  ['Headlights',()=>buildVehicleHeadlights(groups,materials)],
+  ['Exterior and cabin lighting',()=>buildVehicleLighting(groups,materials)],
+  ['Battery, starter and alternator',()=>buildVehicleCharging(groups,materials)],
+  ['Wiring and instruments',()=>buildVehicleWiring(groups,materials)],
+  ['Wipers and washer',()=>buildVehicleWipers(groups,materials)],
+  ['Spare wheel and tools',()=>buildVehicleSpare(groups,materials)],
+  ['Finishing vehicle geometry',()=>h.optimize()],
+ ];
+ function finish(){
  for(const [id,g] of groups){
   const s=g.userData.system;
   if(s==='body')g.userData.spread.set(id.includes('left')?.65:id.includes('right')?-.65:0,id==='spaceframe'?0:1,id==='nose'?-.65:id==='rear-fascia'?.65:0);
@@ -84,4 +93,22 @@ export function createVehicle() {
  }
  configure(configuration);
  return {root,groups,configure,getConfiguration:()=>({...configuration})};
+}
+ return {stages,finish};
+}
+
+export function createVehicle(){
+ const {stages,finish}=vehicleConstruction();
+ for(const [,build] of stages)build();
+ return finish();
+}
+
+export async function createVehicleTiered(beforeStage=async()=>{}){
+ const {stages,finish}=vehicleConstruction();
+ for(let index=0;index<stages.length;index++){
+  const [label,build]=stages[index];
+  await beforeStage({label,index,total:stages.length});
+  build();
+ }
+ return finish();
 }

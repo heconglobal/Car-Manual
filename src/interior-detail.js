@@ -10,21 +10,7 @@ import {createHvacDetail} from './hvac-detail.js';
 import {createBrakeDetail} from './brake-detail.js';
 import {createHeadlightControls} from './headlight-detail.js';
 import {createLightingDetail} from './lighting-detail.js';
-const byId=new Map(interiorParts.map(p=>[p.id,p]));
-// Map the exact detail builder into the vehicle's assembly groups. Keeping
-// detailPartId prevents the geometry merger from erasing the shared identity.
-export function buildMappedInterior(h){
- const mapped={...h};
- for(const name of ['add','box','cyl','tube','surface','profile','bolt','label','ring'])mapped[name]=(id,...args)=>{
-  const p=byId.get(id);if(!p)throw new Error('Uncatalogued interior mesh '+id);
-  const tagged=(flags={})=>({...flags,detailPartId:id,...(p.option?{option:p.option,value:p.value}:{})});
-  // bolt creates two meshes and intentionally has no return value. Route it
-  // through this wrapper's add, so both the head and washer retain identity.
-  if(name==='bolt'){const [pos,r=.007,axis='y',mat='alloy']=args,rot=axis==='x'?[0,0,Math.PI/2]:axis==='z'?[Math.PI/2,0,0]:[0,0,0];mapped.add(id,new T.CylinderGeometry(r,r,r*.85,6),mat,pos,rot);const washer=pos.slice();washer[{x:0,y:1,z:2}[axis]]-=r*.5;mapped.add(id,new T.CylinderGeometry(r*1.3,r*1.3,r*.2,20),mat,washer,rot);return;}
-  const m=h[name](p.vehiclePart,...args);Object.assign(m.userData,tagged());return m;
- };
- buildInteriorNative(mapped,{doorPanels:false});
-}
+export {buildMappedInterior} from './interior-mapped.js';
 export function createInteriorDetail({shared=true}={}){
  const root=new T.Group(),groups=new Map();
  for(const p of interiorParts){const g=new T.Group();g.name=p.id;g.userData={partId:p.id,system:'interior',section:p.section,spread:new T.Vector3(...p.spread),assemblySpread:new T.Vector3(...(interiorSections.find(s=>s.id===p.section).spread||[0,0,0]))};groups.set(p.id,g);root.add(g);}

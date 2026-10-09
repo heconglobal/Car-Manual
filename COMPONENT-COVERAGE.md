@@ -2,11 +2,406 @@
 
 Selection inventory only. Grouped fasteners and service units may contain multiple physical pieces; overlapping vehicle/detail views are not additional parts. Source links and callouts identify references, not verified dimensions. Final completeness requires item 20.6: a drawing-by-drawing reconciliation of applicable GM callouts and service internals. All 20 areas retain unfinished requirements.
 
-**152 vehicle records, 1780 detail selections, 109 requirements across 20 areas.** [Acceptance checklist](REMAINING-WORK.md) · [Machine-readable inventory](artifacts/component-coverage.json)
+**166 vehicle records, 2278 detail selections, 109 requirements across 20 areas.** [Acceptance checklist](REMAINING-WORK.md) · [Machine-readable inventory](artifacts/component-coverage.json)
 
-## Areas without a dedicated complete explorer
+## Coverage boundaries
 
-Wheels/spare/tools (10), wipers/washer/defroster (16), seats/restraints/trim (18), options/interchange (19) and procedures/acceptance (20) currently span other views or have substantial missing detail. An empty dedicated-family mapping is not an accepted area.
+Spare/tools (10), wipers/washer (16) and interior/restraints/trim (18) now have dedicated families. Each still retains measured-detail and validation requirements. Options/interchange (19) and procedures/acceptance (20) span multiple views and source records. A dedicated family or populated inventory does not establish complete acceptance.
+
+## Spare & tools — 25 selections
+
+Related checklist areas: 10.
+
+| Part ID | Selection | Scope | Reference / callout |
+| --- | --- | --- | --- |
+| sp-tire | Compact spare tire | Compact spare, jack & stowage → Compact tire, steel wheel & valve | 1985 Pontiac owner · compact spare / 10 |
+| sp-rim | 15 × 4-inch compact steel wheel | Compact spare, jack & stowage → Compact tire, steel wheel & valve | GM 22P · 1985–88 spare stowage / 10 |
+| sp-valve | Compact-spare valve stem | Compact spare, jack & stowage → Compact tire, steel wheel & valve | GM 22P · 1985–88 spare stowage / 10 |
+| sp-valve-core | Valve-core construction | Compact spare, jack & stowage → Compact tire, steel wheel & valve | GM 22P · 1985–88 spare stowage / 10 |
+| sp-valve-cap | Valve dust cap | Compact spare, jack & stowage → Compact tire, steel wheel & valve | GM 22P · 1985–88 spare stowage / 10 |
+| sp-markings | Compact-spare use / pressure markings | Compact spare, jack & stowage → Compact tire, steel wheel & valve | 1985 Pontiac owner · printed 3-4 / 10 |
+| sp-retaining-rod | Spare-wheel retaining rod | Compact spare, jack & stowage → Retainers, bracket & wheel wrench | GM 22P · 1985–88 spare stowage / 1 |
+| sp-spare-bolt | Spare retaining hand screw | Compact spare, jack & stowage → Retainers, bracket & wheel wrench | GM 22P · 1985–88 spare stowage / 2 |
+| sp-jack-bolt | Jack retaining hand screw | Compact spare, jack & stowage → Retainers, bracket & wheel wrench | GM 22P · 1985–88 spare stowage / 4 |
+| sp-u-nut | Jack bracket U-shaped nut | Compact spare, jack & stowage → Retainers, bracket & wheel wrench | GM 22P · 1985–88 spare stowage / 5 |
+| sp-bracket-nut | Jack bracket M6 nut | Compact spare, jack & stowage → Retainers, bracket & wheel wrench | GM 22P · 1985–88 spare stowage / 6 |
+| sp-bracket | Jack stowage bracket | Compact spare, jack & stowage → Retainers, bracket & wheel wrench | GM 22P · 1985–88 spare stowage / 7 |
+| sp-bracket-screw | Jack bracket retaining screw | Compact spare, jack & stowage → Retainers, bracket & wheel wrench | GM 22P · 1985–88 spare stowage / 8 |
+| sp-wrench | Wheel-nut wrench / jack handle | Compact spare, jack & stowage → Retainers, bracket & wheel wrench | GM 22P · 1985–88 spare stowage / 9 |
+| sp-wrench-clip | Wheel-wrench retaining clip | Compact spare, jack & stowage → Retainers, bracket & wheel wrench | 1985 Pontiac owner · printed 3-8 |
+| sp-jack-base | Jack base / lower shoe | Compact spare, jack & stowage → Factory jack construction | GM 22P · 1985–88 spare stowage / 3 |
+| sp-jack-lower-arms | Lower jack arm pair | Compact spare, jack & stowage → Factory jack construction | GM 22P · 1985–88 spare stowage / 3 |
+| sp-jack-upper-arms | Upper jack arm pair | Compact spare, jack & stowage → Factory jack construction | GM 22P · 1985–88 spare stowage / 3 |
+| sp-jack-head | Grooved jack head | Compact spare, jack & stowage → Factory jack construction | GM 22P · 1985–88 spare stowage / 3 |
+| sp-jack-leg | Folding jack positioning leg | Compact spare, jack & stowage → Factory jack construction | GM 22P · 1985–88 spare stowage / 3 |
+| sp-jack-pins | Jack pivot pin set | Compact spare, jack & stowage → Factory jack construction | GM 22P · 1985–88 spare stowage / 3 |
+| sp-jack-screw | Jack lead screw | Compact spare, jack & stowage → Factory jack construction | GM 22P · 1985–88 spare stowage / 3 |
+| sp-jack-trunnion | Threaded jack trunnion | Compact spare, jack & stowage → Factory jack construction | GM 22P · 1985–88 spare stowage / 3 |
+| sp-jack-thrust | Jack thrust collar / washer set | Compact spare, jack & stowage → Factory jack construction | GM 22P · 1985–88 spare stowage / 3 |
+| sp-jack-drive | Jack screw drive eye | Compact spare, jack & stowage → Factory jack construction | GM 22P · 1985–88 spare stowage / 3 |
+
+## Wipers & washer — 36 selections
+
+Related checklist areas: 16.
+
+| Part ID | Selection | Scope | Reference / callout |
+| --- | --- | --- | --- |
+| ww-arm-left | Driver wiper arm & cap | Wipers & washer → Arms, blades & transmission links | GM parts catalog · PDF 284 / 2 |
+| ww-blade-left | Driver 18-inch blade & refill | Wipers & washer → Arms, blades & transmission links | GM parts catalog · PDF 284 / 1 |
+| ww-pivot-left | Driver transmission pivot & support | Wipers & washer → Arms, blades & transmission links | GM parts catalog · PDF 284 / 4 |
+| ww-link-left | Driver transmission operating link | Wipers & washer → Arms, blades & transmission links | GM parts catalog · PDF 284 / 4 |
+| ww-joint-left | Driver linkage socket ends | Wipers & washer → Arms, blades & transmission links | GM parts catalog · PDF 284 / 4 |
+| ww-arm-right | Passenger wiper arm & cap | Wipers & washer → Arms, blades & transmission links | GM parts catalog · PDF 284 / 2 |
+| ww-blade-right | Passenger 18-inch blade & refill | Wipers & washer → Arms, blades & transmission links | GM parts catalog · PDF 284 / 1 |
+| ww-pivot-right | Passenger transmission pivot & support | Wipers & washer → Arms, blades & transmission links | GM parts catalog · PDF 284 / 4 |
+| ww-link-right | Passenger transmission operating link | Wipers & washer → Arms, blades & transmission links | GM parts catalog · PDF 284 / 4 |
+| ww-joint-right | Passenger linkage socket ends | Wipers & washer → Arms, blades & transmission links | GM parts catalog · PDF 284 / 4 |
+| ww-link-deflector | Rear transmission-link deflector | Wipers & washer → Arms, blades & transmission links | GM parts catalog · PDF 284 / 3 |
+| ww-motor-housing | Standard motor die-cast housing | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 287 / 1 |
+| ww-motor-seal | Output-shaft seal | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 287 / 2 |
+| ww-motor-mounts | Motor mounting grommets & fasteners | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 287 / 5 |
+| ww-motor-washers | Gear thrust washers | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 287 / 6 |
+| ww-motor-gear | Reduction gear assembly | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 287 / 7 |
+| ww-motor-bearings | Armature shaft bearings | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 287 / 8 |
+| ww-motor-brush-holder | Brush holder, brushes & thermal protector | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 287 / 9 |
+| ww-motor-bearing-straps | Armature bearing retaining straps | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 287 / 10 |
+| ww-motor-armature | Armature, commutator & worm shaft | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 287 / 11 |
+| ww-motor-cover | Standard motor cover | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 287 / 12 |
+| ww-motor-field | Permanent-magnet field assembly | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 287 / 13 |
+| ww-motor-park | Park-switch actuator | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 287 / 14 |
+| ww-motor-crank | Motor output crank | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 286 / 4 |
+| ww-motor-nut | Output-crank locknut | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 287 / 4 |
+| ww-pulse-motor | CD4 pulse motor service unit | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 284 / 7 |
+| ww-pulse-board | CD4 pulse circuit-board substrate | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 286 / 2 |
+| ww-pulse-cover | CD4 motor cover kit | Wipers & washer → Motor, park mechanism & pulse preview | GM parts catalog · PDF 286 / 1 |
+| ww-washer-bottle | Washer-fluid container | Wipers & washer → Washer bottle, pump & nozzles | 1986 Pontiac 8E2 · adjacent-year construction |
+| ww-washer-cap | Washer bottle cap | Wipers & washer → Washer bottle, pump & nozzles | 1986 Pontiac 8E2 · adjacent-year construction |
+| ww-washer-pump | Bottom-mounted washer pump | Wipers & washer → Washer bottle, pump & nozzles | 1986 Pontiac 8E2 · adjacent-year construction |
+| ww-washer-pump-seal | Pump inlet seal | Wipers & washer → Washer bottle, pump & nozzles | 1986 Pontiac 8E2 · adjacent-year construction |
+| ww-washer-check-valve | Washer check valve | Wipers & washer → Washer bottle, pump & nozzles | 1986 Pontiac 8E2 · adjacent-year construction |
+| ww-washer-feed-hose | Pump-to-valve hose | Wipers & washer → Washer bottle, pump & nozzles | 1986 Pontiac 8E2 · adjacent-year construction |
+| ww-washer-branches | Washer distribution hoses | Wipers & washer → Washer bottle, pump & nozzles | 1986 Pontiac 8E2 · adjacent-year construction |
+| ww-washer-nozzles | Left & right washer nozzles | Wipers & washer → Washer bottle, pump & nozzles | 1986 Pontiac 8E2 · adjacent-year construction |
+
+## Interior — 313 selections
+
+Related checklist areas: 18.
+
+| Part ID | Selection | Scope | Reference / callout |
+| --- | --- | --- | --- |
+| in-seat-left-pan | Driver Cushion steel pan | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 17 |
+| in-seat-left-back-frame | Driver Integrated-headrest back frame | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 25 |
+| in-seat-left-cushion-springs | Driver Cushion support springs | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 17 |
+| in-seat-left-back-springs | Driver Backrest support wires | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 25 |
+| in-seat-left-cushion-foam | Driver Molded cushion pad | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 18 |
+| in-seat-left-back-foam | Driver Molded backrest/headrest pad | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 25 |
+| in-seat-left-cushion-cover | Driver Two-tone cushion upholstery | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 5 |
+| in-seat-left-back-cover | Driver Two-tone backrest upholstery | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 26 |
+| in-seat-left-rear-cover | Driver Seat-back rear upholstery | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 26 |
+| in-seat-left-listing | Driver Cover listing wires | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 26 |
+| in-seat-left-hog-rings | Driver Upholstery hog-ring set | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 26 |
+| in-seat-left-track-inner | Driver Inboard fixed seat track | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 11 |
+| in-seat-left-track-outer | Driver Outboard fixed seat track | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 10 |
+| in-seat-left-slider-inner | Driver Inboard sliding rail | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 11 |
+| in-seat-left-slider-outer | Driver Outboard sliding rail | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 10 |
+| in-seat-left-adjust-handle | Driver Seat slide release handle | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats |
+| in-seat-left-adjust-wire | Driver Track latch connecting wire | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 8 |
+| in-seat-left-adjust-spring | Driver Track return spring | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 7 |
+| in-seat-left-recliner | Driver Outboard recliner control | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 19 |
+| in-seat-left-inner-hinge | Driver Inboard backrest hinge | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats |
+| in-seat-left-recliner-cover | Driver Recliner lower cover | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 20 |
+| in-seat-left-hinge-protector | Driver Recliner hinge protector | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 21 |
+| in-seat-left-recliner-knob | Driver Recliner release handle | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 22 |
+| in-seat-left-floor-nut-0 | Driver track floor nut · front inner | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats |
+| in-seat-left-rail-bolt-0 | Driver rail-to-pan bolt · front inner | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 17 |
+| in-seat-left-floor-nut-1 | Driver track floor nut · front outer | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats |
+| in-seat-left-rail-bolt-1 | Driver rail-to-pan bolt · front outer | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 17 |
+| in-seat-left-floor-nut-2 | Driver track floor nut · rear inner | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats |
+| in-seat-left-rail-bolt-2 | Driver rail-to-pan bolt · rear inner | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 17 |
+| in-seat-left-floor-nut-3 | Driver track floor nut · rear outer | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats |
+| in-seat-left-rail-bolt-3 | Driver rail-to-pan bolt · rear outer | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 17 |
+| in-seat-left-pivot-0 | Driver hinge pivot pin · inner | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 19 |
+| in-seat-left-cover-screw-0 | Driver recliner cover screw 1 | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 20 |
+| in-seat-left-pivot-1 | Driver hinge pivot pin · outer | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 19 |
+| in-seat-left-cover-screw-1 | Driver recliner cover screw 2 | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 20 |
+| in-seat-left-speaker-inner-basket | Driver headrest inner speaker basket | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 24 |
+| in-seat-left-speaker-inner-cone | Driver headrest inner speaker cone | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 24 |
+| in-seat-left-speaker-inner-magnet | Driver headrest inner speaker magnet | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 24 |
+| in-seat-left-speaker-inner-leads | Driver headrest inner speaker leads | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 24 |
+| in-seat-left-speaker-outer-basket | Driver headrest outer speaker basket | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 24 |
+| in-seat-left-speaker-outer-cone | Driver headrest outer speaker cone | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 24 |
+| in-seat-left-speaker-outer-magnet | Driver headrest outer speaker magnet | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 24 |
+| in-seat-left-speaker-outer-leads | Driver headrest outer speaker leads | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 24 |
+| in-belt-left-retractor | Driver Belt retractor | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 23 |
+| in-belt-left-webbing | Driver Three-point belt webbing | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 23 |
+| in-belt-left-guide | Driver Upper belt guide | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 23 |
+| in-belt-left-guide-cover | Driver Upper guide cover | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 27 |
+| in-belt-left-latchplate | Driver Sliding belt tongue | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 23 |
+| in-belt-left-buckle | Driver Inboard buckle | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 3 |
+| in-belt-left-button | Driver Buckle release button | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 3 |
+| in-belt-left-buckle-stalk | Driver Buckle anchor stalk | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 3 |
+| in-belt-left-retractor-cover | Driver Lower retractor cover | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 23 |
+| in-belt-left-warning-wire | Driver Buckle warning lead | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 7 |
+| in-belt-left-bolt-0 | Driver belt upper guide bolt | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats |
+| in-belt-left-bolt-1 | Driver belt retractor bolt | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats |
+| in-belt-left-bolt-2 | Driver belt lower outer anchor bolt | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats |
+| in-belt-left-bolt-3 | Driver belt buckle anchor bolt | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats |
+| in-seat-right-pan | Passenger Cushion steel pan | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 17 |
+| in-seat-right-back-frame | Passenger Integrated-headrest back frame | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 25 |
+| in-seat-right-cushion-springs | Passenger Cushion support springs | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 17 |
+| in-seat-right-back-springs | Passenger Backrest support wires | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 25 |
+| in-seat-right-cushion-foam | Passenger Molded cushion pad | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 18 |
+| in-seat-right-back-foam | Passenger Molded backrest/headrest pad | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 25 |
+| in-seat-right-cushion-cover | Passenger Two-tone cushion upholstery | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 5 |
+| in-seat-right-back-cover | Passenger Two-tone backrest upholstery | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 26 |
+| in-seat-right-rear-cover | Passenger Seat-back rear upholstery | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 26 |
+| in-seat-right-listing | Passenger Cover listing wires | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 26 |
+| in-seat-right-hog-rings | Passenger Upholstery hog-ring set | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 26 |
+| in-seat-right-track-inner | Passenger Inboard fixed seat track | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 15 |
+| in-seat-right-track-outer | Passenger Outboard fixed seat track | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 16 |
+| in-seat-right-slider-inner | Passenger Inboard sliding rail | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 15 |
+| in-seat-right-slider-outer | Passenger Outboard sliding rail | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 16 |
+| in-seat-right-adjust-handle | Passenger Seat slide release handle | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats |
+| in-seat-right-adjust-wire | Passenger Track latch connecting wire | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 8 |
+| in-seat-right-adjust-spring | Passenger Track return spring | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 7 |
+| in-seat-right-recliner | Passenger Outboard recliner control | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 19 |
+| in-seat-right-inner-hinge | Passenger Inboard backrest hinge | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats |
+| in-seat-right-recliner-cover | Passenger Recliner lower cover | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 20 |
+| in-seat-right-hinge-protector | Passenger Recliner hinge protector | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 21 |
+| in-seat-right-recliner-knob | Passenger Recliner release handle | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 22 |
+| in-seat-right-floor-nut-0 | Passenger track floor nut · front inner | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats |
+| in-seat-right-rail-bolt-0 | Passenger rail-to-pan bolt · front inner | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 17 |
+| in-seat-right-floor-nut-1 | Passenger track floor nut · front outer | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats |
+| in-seat-right-rail-bolt-1 | Passenger rail-to-pan bolt · front outer | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 17 |
+| in-seat-right-floor-nut-2 | Passenger track floor nut · rear inner | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats |
+| in-seat-right-rail-bolt-2 | Passenger rail-to-pan bolt · rear inner | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 17 |
+| in-seat-right-floor-nut-3 | Passenger track floor nut · rear outer | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats |
+| in-seat-right-rail-bolt-3 | Passenger rail-to-pan bolt · rear outer | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 17 |
+| in-seat-right-pivot-0 | Passenger hinge pivot pin · inner | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 19 |
+| in-seat-right-cover-screw-0 | Passenger recliner cover screw 1 | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 20 |
+| in-seat-right-pivot-1 | Passenger hinge pivot pin · outer | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 19 |
+| in-seat-right-cover-screw-1 | Passenger recliner cover screw 2 | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 20 |
+| in-seat-right-speaker-inner-basket | Passenger headrest inner speaker basket | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 24 |
+| in-seat-right-speaker-inner-cone | Passenger headrest inner speaker cone | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 24 |
+| in-seat-right-speaker-inner-magnet | Passenger headrest inner speaker magnet | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 24 |
+| in-seat-right-speaker-inner-leads | Passenger headrest inner speaker leads | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 24 |
+| in-seat-right-speaker-outer-basket | Passenger headrest outer speaker basket | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 24 |
+| in-seat-right-speaker-outer-cone | Passenger headrest outer speaker cone | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 24 |
+| in-seat-right-speaker-outer-magnet | Passenger headrest outer speaker magnet | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 24 |
+| in-seat-right-speaker-outer-leads | Passenger headrest outer speaker leads | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 24 |
+| in-belt-right-retractor | Passenger Belt retractor | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 23 |
+| in-belt-right-webbing | Passenger Three-point belt webbing | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 23 |
+| in-belt-right-guide | Passenger Upper belt guide | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 23 |
+| in-belt-right-guide-cover | Passenger Upper guide cover | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 27 |
+| in-belt-right-latchplate | Passenger Sliding belt tongue | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 23 |
+| in-belt-right-buckle | Passenger Inboard buckle | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 3 |
+| in-belt-right-button | Passenger Buckle release button | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 3 |
+| in-belt-right-buckle-stalk | Passenger Buckle anchor stalk | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 3 |
+| in-belt-right-retractor-cover | Passenger Lower retractor cover | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 23 |
+| in-belt-right-warning-wire | Passenger Buckle warning lead | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats / 7 |
+| in-belt-right-bolt-0 | Passenger belt upper guide bolt | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats |
+| in-belt-right-bolt-1 | Passenger belt retractor bolt | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats |
+| in-belt-right-bolt-2 | Passenger belt lower outer anchor bolt | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats |
+| in-belt-right-bolt-3 | Passenger belt buckle anchor bolt | 1985 SE cabin & removable trim → Belts, buckles & anchors | GM 22P · early AR9 seats |
+| in-dash-pad | Instrument-panel molded pad | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 1 |
+| in-dash-pocket | Passenger map-pocket tub | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 7 |
+| in-dash-pocket-lip | Passenger map-pocket retaining lip | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 8 |
+| in-dash-left-end | Driver end-vent surround | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 27 |
+| in-dash-right-end | Passenger end-vent surround | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 5 |
+| in-dash-carrier | Instrument-panel carrier | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 1 |
+| in-dash-lower-trim | Lower driver hush trim | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 17 |
+| in-dash-left-grille | Driver dash speaker grille | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 2 |
+| in-dash-left-speaker-basket | Driver dash speaker basket | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 3 |
+| in-dash-left-speaker-cone | Driver dash speaker cone | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 3 |
+| in-dash-left-speaker-magnet | Driver dash speaker magnet | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 3 |
+| in-dash-left-speaker-plug | Driver dash speaker plug | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 3 |
+| in-dash-right-grille | Passenger dash speaker grille | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 2 |
+| in-dash-right-speaker-basket | Passenger dash speaker basket | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 3 |
+| in-dash-right-speaker-cone | Passenger dash speaker cone | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 3 |
+| in-dash-right-speaker-magnet | Passenger dash speaker magnet | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 3 |
+| in-dash-right-speaker-plug | Passenger dash speaker plug | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 3 |
+| in-dash-screw-0 | Instrument-panel attachment screw 1 | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin |
+| in-dash-screw-1 | Instrument-panel attachment screw 2 | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin |
+| in-dash-screw-2 | Instrument-panel attachment screw 3 | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin |
+| in-dash-screw-3 | Instrument-panel attachment screw 4 | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin |
+| in-dash-screw-4 | Instrument-panel attachment screw 5 | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin |
+| in-dash-screw-5 | Instrument-panel attachment screw 6 | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin |
+| in-console-skeleton | Console mounting skeleton | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 17 |
+| in-console-front | Radio/HVAC console surround | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 1 |
+| in-console-face | Oxford-gray radio/HVAC trim plate | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 32 |
+| in-console-shift-surround | Manual shift surround | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 9 |
+| in-console-shift-plate | Four-speed shift trim plate | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 9 |
+| in-console-boot | Four-speed shift boot | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 9 |
+| in-console-boot-ring | Shift-boot retainer | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 9 |
+| in-console-lever | Manual shift lever | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 9 |
+| in-console-knob | Four-speed shift knob | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 9 |
+| in-console-knob-clip | Shift-knob retaining clip | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 9 |
+| in-console-rear-pad | Rear console padded shell | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 19 |
+| in-console-storage | Rear console storage tub | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 25 |
+| in-console-storage-door | Rear storage door | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 29 |
+| in-console-storage-hinge | Storage-door hinge | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 30 |
+| in-console-storage-latch | Storage-door latch | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 28 |
+| in-console-storage-spring | Storage-door latch spring | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 26 |
+| in-console-storage-striker | Storage-door striker | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 27 |
+| in-console-lighter | Cigarette lighter insert | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 34 |
+| in-console-lighter-socket | Lighter socket and insulator | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 35 |
+| in-console-lighter-retainer | Lighter retaining ring | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 35 |
+| in-console-left-ashtray | Left removable ashtray | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 3 |
+| in-console-left-ashtray-door | Left ashtray lid | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 3 |
+| in-console-left-ashtray-spring | Left ashtray hinge spring | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 3 |
+| in-console-left-vent | Left rear-console side vent | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 23 |
+| in-console-window-left | Driver power-window switch | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · P37 cabin / 44 |
+| in-console-blank-left | Driver manual-window blank | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 12 |
+| in-console-right-ashtray | Right removable ashtray | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 3 |
+| in-console-right-ashtray-door | Right ashtray lid | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 3 |
+| in-console-right-ashtray-spring | Right ashtray hinge spring | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 3 |
+| in-console-right-vent | Right rear-console side vent | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 18 |
+| in-console-window-right | Passenger power-window switch | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · P37 cabin / 45 |
+| in-console-blank-right | Passenger manual-window blank | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 12 |
+| in-console-mirror-switch | Power-mirror control | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 13 |
+| in-console-screw-0 | Console trim screw 1 | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 2 |
+| in-console-screw-1 | Console trim screw 2 | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 2 |
+| in-console-screw-2 | Console trim screw 3 | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 2 |
+| in-console-screw-3 | Console trim screw 4 | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 2 |
+| in-console-screw-4 | Console trim screw 5 | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 2 |
+| in-console-screw-5 | Console trim screw 6 | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 2 |
+| in-console-screw-6 | Console trim screw 7 | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 2 |
+| in-console-screw-7 | Console trim screw 8 | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 2 |
+| in-console-screw-8 | Console trim screw 9 | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 2 |
+| in-console-screw-9 | Console trim screw 10 | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 2 |
+| in-radio-case | Delco receiver case | 1985 SE cabin & removable trim → Four-speed console & rear storage → Delco radio & controls | GM 22P · P37 cabin / 11 |
+| in-radio-face | Delco radio face and display | 1985 SE cabin & removable trim → Four-speed console & rear storage → Delco radio & controls | GM 22P · P37 cabin / 11 |
+| in-radio-bracket | Radio mounting bracket | 1985 SE cabin & removable trim → Four-speed console & rear storage → Delco radio & controls | GM 22P · P37 cabin / 11 |
+| in-radio-plugs | Radio connectors and antenna lead | 1985 SE cabin & removable trim → Four-speed console & rear storage → Delco radio & controls | GM 22P · P37 cabin / 11 |
+| in-radio-knob-0 | Radio volume knob | 1985 SE cabin & removable trim → Four-speed console & rear storage → Delco radio & controls | GM 22P · P37 cabin / 11 |
+| in-radio-knob-1 | Radio tuning knob | 1985 SE cabin & removable trim → Four-speed console & rear storage → Delco radio & controls | GM 22P · P37 cabin / 11 |
+| in-radio-screw-0 | Radio attachment screw 1 | 1985 SE cabin & removable trim → Four-speed console & rear storage → Delco radio & controls | GM 22P · P37 cabin / 11 |
+| in-radio-screw-1 | Radio attachment screw 2 | 1985 SE cabin & removable trim → Four-speed console & rear storage → Delco radio & controls | GM 22P · P37 cabin / 11 |
+| in-radio-screw-2 | Radio attachment screw 3 | 1985 SE cabin & removable trim → Four-speed console & rear storage → Delco radio & controls | GM 22P · P37 cabin / 11 |
+| in-radio-screw-3 | Radio attachment screw 4 | 1985 SE cabin & removable trim → Four-speed console & rear storage → Delco radio & controls | GM 22P · P37 cabin / 11 |
+| in-door-left-panel | Driver door-trim board and upholstery | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim / 37 |
+| in-door-left-armrest | Driver door armrest and pull | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim / 25 |
+| in-door-left-armrest-bracket | Driver armrest support bracket | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim / 33 |
+| in-door-left-handle-cup | Driver inside handle escutcheon | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim / 21 |
+| in-door-left-handle | Driver inside release lever | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim / 23 |
+| in-door-left-lock-slider | Driver manual lock slider | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim / 21 |
+| in-door-left-water-shield | Driver door water deflector | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim / 37 |
+| in-door-left-retainers | Driver door-trim retaining clips | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim / 37 |
+| in-door-left-crank | Driver window crank | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim / 28 |
+| in-door-left-crank-clip | Driver window-crank retaining clip | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim / 27 |
+| in-door-left-pocket | Driver door map pocket | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim / 31 |
+| in-door-left-armrest-screw-0 | Driver armrest screw 1 | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim |
+| in-door-left-armrest-screw-1 | Driver armrest screw 2 | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim |
+| in-door-left-handle-screw | Driver handle-bezel screw | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim |
+| in-door-right-panel | Passenger door-trim board and upholstery | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim / 37 |
+| in-door-right-armrest | Passenger door armrest and pull | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim / 25 |
+| in-door-right-armrest-bracket | Passenger armrest support bracket | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim / 33 |
+| in-door-right-handle-cup | Passenger inside handle escutcheon | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim / 21 |
+| in-door-right-handle | Passenger inside release lever | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim / 23 |
+| in-door-right-lock-slider | Passenger manual lock slider | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim / 21 |
+| in-door-right-water-shield | Passenger door water deflector | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim / 37 |
+| in-door-right-retainers | Passenger door-trim retaining clips | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim / 37 |
+| in-door-right-crank | Passenger window crank | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim / 28 |
+| in-door-right-crank-clip | Passenger window-crank retaining clip | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim / 27 |
+| in-door-right-pocket | Passenger door map pocket | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim / 31 |
+| in-door-right-armrest-screw-0 | Passenger armrest screw 1 | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim |
+| in-door-right-armrest-screw-1 | Passenger armrest screw 2 | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim |
+| in-door-right-handle-screw | Passenger handle-bezel screw | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim |
+| in-trim-bulkhead | Carpeted rear bulkhead panel | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 1 |
+| in-trim-headliner | Molded fabric headliner | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim |
+| in-trim-mirror | Interior rear-view mirror | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 11 |
+| in-trim-mirror-stem | Interior mirror stalk | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 11 |
+| in-trim-mirror-button | Windshield mirror button | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 11 |
+| in-trim-left-carpet | Driver formed footwell carpet | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · early AR9 seats / 12 |
+| in-trim-left-underlay | Driver floor sound pad | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · early AR9 seats / 12 |
+| in-trim-left-sill | Driver door-sill plate | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 14 |
+| in-trim-left-a-pillar | Driver A-pillar interior garnish | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 15 |
+| in-trim-left-b-pillar | Driver rear pillar garnish | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 17 |
+| in-trim-left-visor | Driver sun visor | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 9 |
+| in-trim-left-visor-pivot | Driver visor pivot and bracket | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 8 |
+| in-trim-left-visor-clip | Driver visor support clip | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 8 |
+| in-trim-right-carpet | Passenger formed footwell carpet | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · early AR9 seats / 12 |
+| in-trim-right-underlay | Passenger floor sound pad | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · early AR9 seats / 12 |
+| in-trim-right-sill | Passenger door-sill plate | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 14 |
+| in-trim-right-a-pillar | Passenger A-pillar interior garnish | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 15 |
+| in-trim-right-b-pillar | Passenger rear pillar garnish | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 17 |
+| in-trim-right-visor | Passenger sun visor | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 9 |
+| in-trim-right-visor-pivot | Passenger visor pivot and bracket | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 8 |
+| in-trim-right-visor-clip | Passenger visor support clip | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 8 |
+| in-trim-left-sill-screw-0 | left sill screw 1 | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 14 |
+| in-trim-left-sill-screw-1 | left sill screw 2 | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 14 |
+| in-trim-left-sill-screw-2 | left sill screw 3 | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 14 |
+| in-trim-left-sill-screw-3 | left sill screw 4 | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 14 |
+| in-trim-left-visor-screw-0 | left visor bracket screw 1 | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 9 |
+| in-trim-left-visor-screw-1 | left visor bracket screw 2 | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 9 |
+| in-trim-left-visor-screw-2 | left visor bracket screw 3 | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 9 |
+| in-trim-left-mat | left removable floor mat | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · early AR9 seats / 12 |
+| in-trim-right-sill-screw-0 | right sill screw 1 | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 14 |
+| in-trim-right-sill-screw-1 | right sill screw 2 | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 14 |
+| in-trim-right-sill-screw-2 | right sill screw 3 | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 14 |
+| in-trim-right-sill-screw-3 | right sill screw 4 | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 14 |
+| in-trim-right-visor-screw-0 | right visor bracket screw 1 | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 9 |
+| in-trim-right-visor-screw-1 | right visor bracket screw 2 | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 9 |
+| in-trim-right-visor-screw-2 | right visor bracket screw 3 | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 9 |
+| in-trim-right-mat | right removable floor mat | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · early AR9 seats / 12 |
+| in-trim-vanity | Passenger visor vanity mirror | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 12 |
+| in-steering-rim | Three-spoke steering wheel | 1985 SE cabin & removable trim → Steering wheel & column trim | GM 22P · P37 cabin |
+| in-steering-horn | Horn button | 1985 SE cabin & removable trim → Steering wheel & column trim | GM 22P · P37 cabin |
+| in-steering-contact | Horn contact plate and spring | 1985 SE cabin & removable trim → Steering wheel & column trim | GM 22P · P37 cabin |
+| in-steering-nut | Steering wheel shaft nut | 1985 SE cabin & removable trim → Steering wheel & column trim | GM 22P · P37 cabin |
+| in-steering-upper-shroud | Upper column shroud | 1985 SE cabin & removable trim → Steering wheel & column trim | GM 22P · P37 cabin |
+| in-steering-lower-shroud | Lower column shroud | 1985 SE cabin & removable trim → Steering wheel & column trim | GM 22P · P37 cabin |
+| in-steering-column | Column jacket and shaft | 1985 SE cabin & removable trim → Steering wheel & column trim | GM 22P · P37 cabin |
+| in-steering-stalk | Turn-signal/dimmer stalk | 1985 SE cabin & removable trim → Steering wheel & column trim | GM 22P · P37 cabin |
+| in-steering-ignition | Ignition lock cylinder | 1985 SE cabin & removable trim → Steering wheel & column trim | GM 22P · P37 cabin |
+| in-steering-hazard | Hazard switch button | 1985 SE cabin & removable trim → Steering wheel & column trim | GM 22P · P37 cabin |
+| in-steering-screw-0 | Column shroud screw 1 | 1985 SE cabin & removable trim → Steering wheel & column trim | GM 22P · P37 cabin |
+| in-steering-screw-1 | Column shroud screw 2 | 1985 SE cabin & removable trim → Steering wheel & column trim | GM 22P · P37 cabin |
+| in-steering-screw-2 | Column shroud screw 3 | 1985 SE cabin & removable trim → Steering wheel & column trim | GM 22P · P37 cabin |
+| in-pedal-clutch-arm | Clutch pedal arm | 1985 SE cabin & removable trim → Driver pedals & parking brake | GM 22P · P37 cabin |
+| in-pedal-clutch-pad | Clutch pedal rubber pad | 1985 SE cabin & removable trim → Driver pedals & parking brake | GM 22P · P37 cabin |
+| in-pedal-clutch-pivot | Clutch pedal pivot and bushes | 1985 SE cabin & removable trim → Driver pedals & parking brake | GM 22P · P37 cabin |
+| in-pedal-clutch-spring | Clutch pedal return spring | 1985 SE cabin & removable trim → Driver pedals & parking brake | GM 22P · P37 cabin |
+| in-pedal-accelerator | Accelerator pedal | 1985 SE cabin & removable trim → Driver pedals & parking brake | GM 22P · P37 cabin |
+| in-pedal-throttle-cable | Accelerator cable end | 1985 SE cabin & removable trim → Driver pedals & parking brake | GM 22P · P37 cabin |
+| in-parking-lever | Parking-brake lever | 1985 SE cabin & removable trim → Driver pedals & parking brake | GM 22P · P37 cabin |
+| in-parking-boot | Parking-brake trim boot | 1985 SE cabin & removable trim → Driver pedals & parking brake | GM 22P · P37 cabin |
+| in-shared-light-controls | Headlight switch and panel dimmer · open components | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin |
+| in-shared-cluster | 1985 instrument pod · open component explorer | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin |
+| in-shared-outlets | Cabin vents · open HVAC explorer | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin |
+| in-shared-heater | Heater/A/C control · open component explorer | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console |
+| in-shared-ecm | Rear-console ECM · open component explorer | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console |
+| in-shared-brake | Brake pedal · open component explorer | 1985 SE cabin & removable trim → Driver pedals & parking brake | GM 22P · P37 cabin |
+| in-shared-dome | Overhead lamps · open component explorer | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim |
+| in-seat-left-pivot-bushes | Seat left hinge bushings | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 4 |
+| in-seat-left-stereo-harness | Seat left stereo harness | 1985 SE cabin & removable trim → Driver bucket seat | GM 22P · early AR9 seats / 6 |
+| in-door-left-crank-bearing | Driver window-crank bearing plate | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim / 32 |
+| in-door-left-pocket-clips | Driver map-pocket clip set | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim / 30 |
+| in-door-left-armrest-plug | Driver armrest screw-access plug | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim / 34 |
+| in-door-left-upper-bracket | Driver upper armrest hanger plate | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim / 36 |
+| in-door-left-armrest-nuts | Driver armrest hanger nut set | 1985 SE cabin & removable trim → Driver door trim & fittings | GM 22P · 1984–85 door trim / 35 |
+| in-trim-left-lower-garnish | Driver lower windshield-side molding | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 14 |
+| in-console-left-carpet-support | Driver console carpet support | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 41 |
+| in-seat-right-pivot-bushes | Seat right hinge bushings | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 4 |
+| in-seat-right-stereo-harness | Seat right stereo harness | 1985 SE cabin & removable trim → Passenger bucket seat | GM 22P · early AR9 seats / 6 |
+| in-door-right-crank-bearing | Passenger window-crank bearing plate | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim / 32 |
+| in-door-right-pocket-clips | Passenger map-pocket clip set | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim / 30 |
+| in-door-right-armrest-plug | Passenger armrest screw-access plug | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim / 34 |
+| in-door-right-upper-bracket | Passenger upper armrest hanger plate | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim / 36 |
+| in-door-right-armrest-nuts | Passenger armrest hanger nut set | 1985 SE cabin & removable trim → Passenger door trim & fittings | GM 22P · 1984–85 door trim / 35 |
+| in-trim-right-lower-garnish | Passenger lower windshield-side molding | 1985 SE cabin & removable trim → Carpet, pillars, headliner & visors | GM 22P · 1984–85 door trim / 14 |
+| in-console-right-carpet-support | Passenger console carpet support | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 41 |
+| in-console-storage-strap | Storage-door retaining strap | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 24 |
+| in-console-shift-seal | Shift-trim/carrier seal | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 11 |
+| in-console-shift-clips | Shift-plate spring clip set | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 10 |
+| in-console-lighter-plate | Lighter console trim plate | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 33 |
+| in-console-lighter-lamp | Cigarette-lighter lamp | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 36 |
+| in-console-carpet-retainers | Console carpet retaining set | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 38 |
+| in-dash-accessory-panel | Right instrument-pod accessory plate | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 15 |
+| in-dash-column-filler | Column-opening filler | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 17 |
+| in-dash-mount-unuts | Dashboard U-nut set | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 4 |
+| in-dash-defrost-switch | Rear-window defogger switch | 1985 SE cabin & removable trim → Dashboard, speakers & instrument pod | GM 22P · P37 cabin / 18 |
+| in-shared-center-outlet | Centre adjustable air outlet · open HVAC explorer | 1985 SE cabin & removable trim → Four-speed console & rear storage | GM 22P · 1984–85 console / 42 |
 
 ## Wiring & controls — 99 selections
 
@@ -114,7 +509,7 @@ Related checklist areas: 4.
 | wr-cluster-warning-engine | Check engine indicator window | Instruments, fuses & electronics → 1985 instrument cluster | 1985 Pontiac owner’s manual · 2C-1 |
 | wr-cluster-bulb-engine | Check engine bulb & twist socket | Instruments, fuses & electronics → 1985 instrument cluster | 1985 Pontiac owner’s manual · 2C-1 |
 
-## Starting / charging — 62 selections
+## Starting / charging — 63 selections
 
 Related checklist areas: 3.
 
@@ -132,6 +527,7 @@ Related checklist areas: 3.
 | ch-battery-support | Retainer support bracket | Battery, starter & alternator → Side-terminal battery, tray & cables | GM 22P · battery mounting / 9 |
 | ch-positive-cable | Positive battery cable & terminal bolt | Battery, starter & alternator → Side-terminal battery, tray & cables | GM 22P · battery mounting / 1 |
 | ch-negative-cable | Negative battery cable & terminal bolt | Battery, starter & alternator → Side-terminal battery, tray & cables | GM 22P · battery mounting / 7 |
+| ch-battery-ground-bolt | Negative-cable body ground tapping bolt | Battery, starter & alternator → Side-terminal battery, tray & cables | GM 22P · battery mounting / 8 |
 | ch-ground-strap | Engine-to-body ground strap | Battery, starter & alternator → Side-terminal battery, tray & cables | GM 22P · battery mounting |
 | ch-starter-yoke | Starter field frame | Battery, starter & alternator → Delco starter & solenoid | GM 22P · starter construction / 25 |
 | ch-starter-field | Field coils & pole shoes | Battery, starter & alternator → Delco starter & solenoid | GM 22P · starter construction / 25 |
@@ -498,12 +894,49 @@ Related checklist areas: 1.
 | hl-beam-mount | Beam-dimmer mounting screws & strap | 1985 headlight assemblies → Dash switch, illumination wheel & beam dimmer | GM service · lighting / column controls |
 | hl-control-wiring | Lighting control harness branches | 1985 headlight assemblies → Dash switch, illumination wheel & beam dimmer | GM service · lighting / column controls |
 
-## HVAC — 64 selections
+## HVAC — 101 selections
 
 Related checklist areas: 14.
 
 | Part ID | Selection | Scope | Reference / callout |
 | --- | --- | --- | --- |
+| hv-ac-compressor-body | Compressor cylinder housing | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · DA-6 / HR-6 construction · GM09-090 / 15 |
+| hv-ac-compressor-front | Compressor front head | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · DA-6 / HR-6 construction · GM09-090 / 10 |
+| hv-ac-compressor-rear | Compressor rear head | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · DA-6 / HR-6 construction · GM09-090 / 17 |
+| hv-ac-compressor-head-seals | Compressor head O-ring pair | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · DA-6 / HR-6 construction · GM09-090 / 14 |
+| hv-ac-compressor-through-bolts | Compressor head bolt set | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · DA-6 / HR-6 construction · GM09-090 / 8 |
+| hv-ac-compressor-coil | A/C clutch field coil | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · DA-6 / HR-6 construction · GM09-090 / 1 |
+| hv-ac-compressor-pulley | Compressor pulley | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · DA-6 / HR-6 construction · GM09-090 / 2 |
+| hv-ac-compressor-bearing | Pulley bearing | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · DA-6 / HR-6 construction · GM09-090 / 3 |
+| hv-ac-compressor-bearing-ring | Pulley bearing retaining ring | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · DA-6 / HR-6 construction · GM09-090 / 4 |
+| hv-ac-compressor-clutch | Compressor clutch drive plate | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · DA-6 / HR-6 construction · GM09-090 / 5 |
+| hv-ac-compressor-shaft-nut | Compressor clutch shaft nut | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · DA-6 / HR-6 construction · GM09-090 / 6 |
+| hv-ac-compressor-relief | Compressor pressure-relief valve | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · DA-6 / HR-6 construction · GM09-090 / 21 |
+| hv-ac-compressor-switch | Compressor rear-head switch | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · DA-6 / HR-6 construction · GM09-090 / 19 |
+| hv-ac-compressor-pivot | L44 compressor pivot bracket | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · 1985–88 L44 mounting · 2P09-009 / 1 |
+| hv-ac-compressor-rear-bracket | L44 compressor rear bracket | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · 1985–88 L44 mounting · 2P09-009 / 2 |
+| hv-ac-compressor-adjuster | 1985–87 L44 compressor adjuster | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · 1985–88 L44 mounting · 2P09-009 / 10 |
+| hv-ac-compressor-mounts | L44 compressor mounting hardware | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · 1985–88 L44 mounting · 2P09-009 / 3,4,5,7,8,9,12 |
+| hv-ac-compressor-belt | L44 A/C drive belt | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · 1985–88 L44 mounting · 2P09-009 / 11 |
+| hv-ac-crank-groove | Crankshaft A/C pulley groove | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · 1985–88 L44 mounting · 2P09-009 |
+| hv-ac-condenser-tubes | Condenser serpentine tubes | Heating & ventilation → C60 refrigerant circuit → Condenser & air seals | GM 22P · 1985–87 refrigeration · 2P09-008 / 21 |
+| hv-ac-condenser-fins | Condenser cooling fins | Heating & ventilation → C60 refrigerant circuit → Condenser & air seals | GM 22P · 1985–87 refrigeration · 2P09-008 / 21 |
+| hv-ac-condenser-frame | Condenser side and mounting rails | Heating & ventilation → C60 refrigerant circuit → Condenser & air seals | GM 22P · 1985–87 refrigeration · 2P09-008 / 21 |
+| hv-ac-condenser-seal | Radiator-to-condenser air seal | Heating & ventilation → C60 refrigerant circuit → Condenser & air seals | GM 22P · 1985–87 refrigeration · 2P09-008 / 19 |
+| hv-ac-condenser-retainers | Condenser air-seal retainers | Heating & ventilation → C60 refrigerant circuit → Condenser & air seals | GM 22P · 1985–87 refrigeration · 2P09-008 / 20 |
+| hv-ac-condenser-mounts | Condenser support hardware | Heating & ventilation → C60 refrigerant circuit → Condenser & air seals | GM 22P · 1985–87 refrigeration · 2P09-008 / 4,18 |
+| hv-ac-compressor-hoses | L44 compressor suction/discharge hose set | Heating & ventilation → C60 refrigerant circuit → Refrigerant hoses, pipes & joints | GM 22P · 1985–87 refrigeration · 2P09-008 / 1 |
+| hv-ac-compressor-manifold | Compressor hose manifold and fastener | Heating & ventilation → C60 refrigerant circuit → Refrigerant hoses, pipes & joints | GM 22P · 1985–87 refrigeration · 2P09-008 / 1,7 |
+| hv-ac-compressor-port-seals | Compressor manifold seal pair | Heating & ventilation → C60 refrigerant circuit → Refrigerant hoses, pipes & joints | GM 22P · 1985–87 refrigeration · 2P09-008 / 8,9 |
+| hv-ac-underbody-tubes | 1985–86 refrigerant pipe pair | Heating & ventilation → C60 refrigerant circuit → Refrigerant hoses, pipes & joints | GM 22P · 1985–87 refrigeration · 2P09-008 / 2 |
+| hv-ac-front-discharge-tube | Front compressor-discharge tube | Heating & ventilation → C60 refrigerant circuit → Refrigerant hoses, pipes & joints | GM 22P · 1985–87 refrigeration · 2P09-008 / 14 |
+| hv-ac-front-liquid-tube | Condenser-to-evaporator tube | Heating & ventilation → C60 refrigerant circuit → Refrigerant hoses, pipes & joints | GM 22P · 1985–87 refrigeration · 2P09-008 / 15 |
+| hv-ac-front-suction-tube | Accumulator suction-return connection | Heating & ventilation → C60 refrigerant circuit → Refrigerant hoses, pipes & joints | GM 22P · 1985–87 refrigeration · 2P09-008 / 2 |
+| hv-ac-line-joint-seals | Refrigerant tube-joint O-rings | Heating & ventilation → C60 refrigerant circuit → Refrigerant hoses, pipes & joints | GM 22P · 1985–87 refrigeration · 2P09-008 / 8,9,30,31 |
+| hv-ac-line-clamps | Underbody tube clamps and attachments | Heating & ventilation → C60 refrigerant circuit → Refrigerant hoses, pipes & joints | GM 22P · 1985–87 refrigeration · 2P09-008 / 3,4,29 |
+| hv-ac-front-line-clip | Front evaporator-tube rail clip | Heating & ventilation → C60 refrigerant circuit → Refrigerant hoses, pipes & joints | GM 22P · 1985–87 refrigeration · 2P09-008 / 16 |
+| hv-ac-line-shield | Compressor-tube shield | Heating & ventilation → C60 refrigerant circuit → Refrigerant hoses, pipes & joints | GM 22P · 1985–87 refrigeration · 2P09-008 / 28 |
+| hv-ac-compressor-splash-shield | Compressor splash shield | Heating & ventilation → C60 refrigerant circuit → L44 compressor, clutch & brackets | GM 22P · 1985–87 refrigeration · 2P09-008 / 22 |
 | hv-case | Heater main case | Heating & ventilation → Heater case, core & doors | GM 22P · C41 heater / blower / 8 |
 | hv-cover | Core access cover | Heating & ventilation → Heater case, core & doors | GM 22P · C41 heater / blower / 25 |
 | hv-cover-seal | Core-cover gasket | Heating & ventilation → Heater case, core & doors | GM 22P · C41 heater / blower / 24 |
@@ -569,12 +1002,88 @@ Related checklist areas: 14.
 | hv-orifice | Fixed orifice tube & seals | Heating & ventilation → C60 evaporator & accumulator | GM 22P · C60 heater / A/C module / 30 |
 | hv-evaporator-pipes | Evaporator / accumulator connecting tubes | Heating & ventilation → C60 evaporator & accumulator | GM 22P · C60 heater / A/C module / 29 |
 
-## Body — 169 selections
+## Body — 255 selections
 
 Related checklist areas: 15, 17.
 
 | Part ID | Selection | Scope | Reference / callout |
 | --- | --- | --- | --- |
+| bd-door-left-glass-cam | Driver glass-mounted regulator cam | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 2 |
+| bd-door-left-belt-trim-retainer | Driver 1984–85 belt trim retainer | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 11 |
+| bd-door-left-inner-belt-seal | Driver inner window belt sealing strip | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 13 |
+| bd-door-left-glass-rear-stops | Driver rear glass stop pair | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 3 |
+| bd-door-left-glass-inner-stop | Driver inner-panel glass stop | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 15 |
+| bd-door-left-regulator-stop | Driver regulator stop bumper | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 25 |
+| bd-door-left-power-lock-stop | Driver window-regulator stop bumper · item 34 | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 34 |
+| bd-door-left-rear-cam-support | Driver rear glass-cam support | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 30 |
+| bd-door-left-guide-cam | Driver vertical glass guide cam | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 31 |
+| bd-door-left-inner-cam | Driver inner-panel regulator cam | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 32 |
+| bd-door-left-guide-retainer | Driver guide-run channel retainer | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 37 |
+| bd-door-left-guide-support | Driver guide-run retainer support | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 38 |
+| bd-door-left-front-glass-stop | Driver forward inner-panel glass stop | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 48 |
+| bd-door-left-glass-stabilizers | Driver belt glass stabilizer set | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 49 |
+| bd-door-left-glass-bushing-retainers | Driver glass bushing retainer set | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 50 |
+| bd-door-left-glass-inner-buttons | Driver inner glass button set | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 51 |
+| bd-door-left-glass-stabilizer-buttons | Driver glass stabilizer button set | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 52 |
+| bd-door-left-glass-outer-buttons | Driver outer glass button set | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 53 |
+| bd-door-left-glass-bushings | Driver 1985–88 glass bushing set | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 54 |
+| bd-door-left-manual-regulator | Driver manual scissor regulator | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 29 |
+| bd-door-left-power-regulator | Driver electric scissor regulator | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 36 |
+| bd-door-left-window-motor | Driver window regulator motor | Body panels & attachment hardware → Driver door & hinge hardware → Driver window regulator, cams & guides | GM 22P · door hardware / 1985 application / 35 |
+| bd-door-left-lock-overcenter-spring | Driver lock over-center spring | Body panels & attachment hardware → Driver door & hinge hardware → Driver door lock controls & linkage | GM 22P · door hardware / 1985 application / 4 |
+| bd-door-left-handle-rod-clip | Driver outside-handle rod retaining clip | Body panels & attachment hardware → Driver door & hinge hardware → Driver door lock controls & linkage | GM 22P · door hardware / 1985 application / 8 |
+| bd-door-left-lock-cylinder-retainer | Driver key-cylinder spring retainer | Body panels & attachment hardware → Driver door & hinge hardware → Driver door lock controls & linkage | GM 22P · door hardware / 1985 application / 9 |
+| bd-door-left-lock-return-spring | Driver inside lock-control return spring | Body panels & attachment hardware → Driver door & hinge hardware → Driver door lock controls & linkage | GM 22P · door hardware / 1985 application / 14 |
+| bd-door-left-inside-lock-clip | Driver inside lock-rod panel clip | Body panels & attachment hardware → Driver door & hinge hardware → Driver door lock controls & linkage | GM 22P · door hardware / 1985 application / 16 |
+| bd-door-left-inside-latch-clip | Driver inside lock-rod latch clip | Body panels & attachment hardware → Driver door & hinge hardware → Driver door lock controls & linkage | GM 22P · door hardware / 1985 application / 17 |
+| bd-door-left-inside-release-rod | Driver inside release-control rod | Body panels & attachment hardware → Driver door & hinge hardware → Driver door lock controls & linkage | GM 22P · door hardware / 1985 application / 18 |
+| bd-door-left-striker-anchor | Driver striker anchor plate | Body panels & attachment hardware → Driver door & hinge hardware → Driver door lock controls & linkage | GM 22P · door hardware / 1985 application / 22 |
+| bd-door-left-inside-lock-rod | Driver inside lock-control rod | Body panels & attachment hardware → Driver door & hinge hardware → Driver door lock controls & linkage | GM 22P · door hardware / 1985 application / 24 |
+| bd-door-left-power-lock-bellcrank | Driver electric-lock bell-crank plate | Body panels & attachment hardware → Driver door & hinge hardware → Driver door lock controls & linkage | GM 22P · door hardware / 1985 application / 26 |
+| bd-door-left-power-lock-rod | Driver electric-lock actuator rod | Body panels & attachment hardware → Driver door & hinge hardware → Driver door lock controls & linkage | GM 22P · door hardware / 1985 application / 27 |
+| bd-door-left-power-lock-actuator | Driver electric-lock actuator | Body panels & attachment hardware → Driver door & hinge hardware → Driver door lock controls & linkage | GM 22P · door hardware / 1985 application / 33 |
+| bd-door-left-power-lock-bracket | Driver electric-lock actuator bracket | Body panels & attachment hardware → Driver door & hinge hardware → Driver door lock controls & linkage | GM 22P · door hardware / 1985 application / 33 |
+| bd-door-left-remote-rod-clip | Driver remote-control rod clip | Body panels & attachment hardware → Driver door & hinge hardware → Driver door lock controls & linkage | GM 22P · door hardware / 1985 application / 39 |
+| bd-door-left-outer-panel-block | Driver outer-panel attachment block | Body panels & attachment hardware → Driver door & hinge hardware → Driver outer-panel attachment hardware | GM 22P · door hardware / 1985 application / 23 |
+| bd-door-left-front-panel-block | Driver front outer-panel attachment block | Body panels & attachment hardware → Driver door & hinge hardware → Driver outer-panel attachment hardware | GM 22P · door hardware / 1985 application / 40 |
+| bd-door-right-glass-cam | Passenger glass-mounted regulator cam | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 2 |
+| bd-door-right-belt-trim-retainer | Passenger 1984–85 belt trim retainer | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 11 |
+| bd-door-right-inner-belt-seal | Passenger inner window belt sealing strip | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 13 |
+| bd-door-right-glass-rear-stops | Passenger rear glass stop pair | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 3 |
+| bd-door-right-glass-inner-stop | Passenger inner-panel glass stop | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 15 |
+| bd-door-right-regulator-stop | Passenger regulator stop bumper | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 25 |
+| bd-door-right-power-lock-stop | Passenger window-regulator stop bumper · item 34 | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 34 |
+| bd-door-right-rear-cam-support | Passenger rear glass-cam support | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 30 |
+| bd-door-right-guide-cam | Passenger vertical glass guide cam | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 31 |
+| bd-door-right-inner-cam | Passenger inner-panel regulator cam | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 32 |
+| bd-door-right-guide-retainer | Passenger guide-run channel retainer | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 37 |
+| bd-door-right-guide-support | Passenger guide-run retainer support | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 38 |
+| bd-door-right-front-glass-stop | Passenger forward inner-panel glass stop | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 48 |
+| bd-door-right-glass-stabilizers | Passenger belt glass stabilizer set | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 49 |
+| bd-door-right-glass-bushing-retainers | Passenger glass bushing retainer set | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 50 |
+| bd-door-right-glass-inner-buttons | Passenger inner glass button set | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 51 |
+| bd-door-right-glass-stabilizer-buttons | Passenger glass stabilizer button set | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 52 |
+| bd-door-right-glass-outer-buttons | Passenger outer glass button set | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 53 |
+| bd-door-right-glass-bushings | Passenger 1985–88 glass bushing set | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 54 |
+| bd-door-right-manual-regulator | Passenger manual scissor regulator | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 29 |
+| bd-door-right-power-regulator | Passenger electric scissor regulator | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 36 |
+| bd-door-right-window-motor | Passenger window regulator motor | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger window regulator, cams & guides | GM 22P · door hardware / 1985 application / 35 |
+| bd-door-right-lock-overcenter-spring | Passenger lock over-center spring | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger door lock controls & linkage | GM 22P · door hardware / 1985 application / 4 |
+| bd-door-right-handle-rod-clip | Passenger outside-handle rod retaining clip | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger door lock controls & linkage | GM 22P · door hardware / 1985 application / 8 |
+| bd-door-right-lock-cylinder-retainer | Passenger key-cylinder spring retainer | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger door lock controls & linkage | GM 22P · door hardware / 1985 application / 9 |
+| bd-door-right-lock-return-spring | Passenger inside lock-control return spring | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger door lock controls & linkage | GM 22P · door hardware / 1985 application / 14 |
+| bd-door-right-inside-lock-clip | Passenger inside lock-rod panel clip | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger door lock controls & linkage | GM 22P · door hardware / 1985 application / 16 |
+| bd-door-right-inside-latch-clip | Passenger inside lock-rod latch clip | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger door lock controls & linkage | GM 22P · door hardware / 1985 application / 17 |
+| bd-door-right-inside-release-rod | Passenger inside release-control rod | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger door lock controls & linkage | GM 22P · door hardware / 1985 application / 18 |
+| bd-door-right-striker-anchor | Passenger striker anchor plate | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger door lock controls & linkage | GM 22P · door hardware / 1985 application / 22 |
+| bd-door-right-inside-lock-rod | Passenger inside lock-control rod | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger door lock controls & linkage | GM 22P · door hardware / 1985 application / 24 |
+| bd-door-right-power-lock-bellcrank | Passenger electric-lock bell-crank plate | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger door lock controls & linkage | GM 22P · door hardware / 1985 application / 26 |
+| bd-door-right-power-lock-rod | Passenger electric-lock actuator rod | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger door lock controls & linkage | GM 22P · door hardware / 1985 application / 27 |
+| bd-door-right-power-lock-actuator | Passenger electric-lock actuator | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger door lock controls & linkage | GM 22P · door hardware / 1985 application / 33 |
+| bd-door-right-power-lock-bracket | Passenger electric-lock actuator bracket | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger door lock controls & linkage | GM 22P · door hardware / 1985 application / 33 |
+| bd-door-right-remote-rod-clip | Passenger remote-control rod clip | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger door lock controls & linkage | GM 22P · door hardware / 1985 application / 39 |
+| bd-door-right-outer-panel-block | Passenger outer-panel attachment block | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger outer-panel attachment hardware | GM 22P · door hardware / 1985 application / 23 |
+| bd-door-right-front-panel-block | Passenger front outer-panel attachment block | Body panels & attachment hardware → Passenger door & hinge hardware → Passenger outer-panel attachment hardware | GM 22P · door hardware / 1985 application / 40 |
 | bd-skin-mirror-left | Driver exterior mirror housing | Body panels & attachment hardware → Driver door & hinge hardware | GM 22P · 1985 body / panel hardware |
 | bd-skin-mirror-glass-left | Driver mirror glass & carrier | Body panels & attachment hardware → Driver door & hinge hardware | GM 22P · 1985 body / panel hardware |
 | bd-skin-mirror-mount-left | Driver mirror pedestal & pad | Body panels & attachment hardware → Driver door & hinge hardware | GM 22P · 1985 body / panel hardware |
@@ -582,6 +1091,11 @@ Related checklist areas: 15, 17.
 | bd-skin-door-lock-left | Driver door key cylinder bezel | Body panels & attachment hardware → Driver door & hinge hardware | GM 22P · 1985 body / panel hardware |
 | bd-skin-door-molding-left | Driver door rub molding | Body panels & attachment hardware → Driver door & hinge hardware | GM 22P · 1985 body / panel hardware |
 | bd-skin-belt-seal-left | Driver outer window belt seal | Body panels & attachment hardware → Driver door & hinge hardware | GM 22P · 1985 body / panel hardware |
+| bd-skin-a-pillar-seal-left | Driver A-pillar glass seal & retainer | Body panels & attachment hardware → Windshield, seals & wipers | GM 22P · 1985 body / panel hardware / 28 |
+| bd-skin-upper-window-seal-left | Driver upper window seal, retainer & stop | Body panels & attachment hardware → Roof, A-pillars & retainers | GM 22P · 1985 body / panel hardware / 27 |
+| bd-skin-b-pillar-seal-left | Driver lock-pillar glass seal & retainer | Body panels & attachment hardware → Rear roof clip, sails & backlight | GM 22P · 1985 body / panel hardware / 26 |
+| bd-skin-windshield-belt-filler-left | Driver windshield belt corner filler | Body panels & attachment hardware → Windshield, seals & wipers | GM 22P · 1985 body / panel hardware / 29 |
+| bd-skin-backlight-filler-left | Driver rear-window side filler | Body panels & attachment hardware → Rear roof clip, sails & backlight | GM 22P · 1985 body / panel hardware / 39 |
 | bd-skin-front-molding-left | Driver front fender moldings | Body panels & attachment hardware → Front fascia, fenders & liners | GM 22P · 1985 body / panel hardware |
 | bd-skin-rear-molding-left | Driver quarter moldings | Body panels & attachment hardware → Rear fascia, quarters & liners | GM 22P · 1985 body / panel hardware |
 | bd-skin-front-pad-left | Driver front bumper pad | Body panels & attachment hardware → Front fascia, fenders & liners | GM 22P · 1985 body / panel hardware |
@@ -595,6 +1109,11 @@ Related checklist areas: 15, 17.
 | bd-skin-door-lock-right | Passenger door key cylinder bezel | Body panels & attachment hardware → Passenger door & hinge hardware | GM 22P · 1985 body / panel hardware |
 | bd-skin-door-molding-right | Passenger door rub molding | Body panels & attachment hardware → Passenger door & hinge hardware | GM 22P · 1985 body / panel hardware |
 | bd-skin-belt-seal-right | Passenger outer window belt seal | Body panels & attachment hardware → Passenger door & hinge hardware | GM 22P · 1985 body / panel hardware |
+| bd-skin-a-pillar-seal-right | Passenger A-pillar glass seal & retainer | Body panels & attachment hardware → Windshield, seals & wipers | GM 22P · 1985 body / panel hardware / 28 |
+| bd-skin-upper-window-seal-right | Passenger upper window seal, retainer & stop | Body panels & attachment hardware → Roof, A-pillars & retainers | GM 22P · 1985 body / panel hardware / 27 |
+| bd-skin-b-pillar-seal-right | Passenger lock-pillar glass seal & retainer | Body panels & attachment hardware → Rear roof clip, sails & backlight | GM 22P · 1985 body / panel hardware / 26 |
+| bd-skin-windshield-belt-filler-right | Passenger windshield belt corner filler | Body panels & attachment hardware → Windshield, seals & wipers | GM 22P · 1985 body / panel hardware / 29 |
+| bd-skin-backlight-filler-right | Passenger rear-window side filler | Body panels & attachment hardware → Rear roof clip, sails & backlight | GM 22P · 1985 body / panel hardware / 39 |
 | bd-skin-front-molding-right | Passenger front fender moldings | Body panels & attachment hardware → Front fascia, fenders & liners | GM 22P · 1985 body / panel hardware |
 | bd-skin-rear-molding-right | Passenger quarter moldings | Body panels & attachment hardware → Rear fascia, quarters & liners | GM 22P · 1985 body / panel hardware |
 | bd-skin-front-pad-right | Passenger front bumper pad | Body panels & attachment hardware → Front fascia, fenders & liners | GM 22P · 1985 body / panel hardware |
@@ -640,7 +1159,7 @@ Related checklist areas: 15, 17.
 | bd-skin-nose | SE front fascia | Body panels & attachment hardware → Front fascia, fenders & liners | GM 22P · 1985 body / panel hardware / 16 |
 | bd-skin-fender-left | Driver-side front fender | Body panels & attachment hardware → Front fascia, fenders & liners | GM 22P · 1985 body / panel hardware / 7 |
 | bd-skin-fender-right | Passenger-side front fender | Body panels & attachment hardware → Front fascia, fenders & liners | GM 22P · 1985 body / panel hardware / 7 |
-| bd-skin-rear-fascia | SE rear fascia | Body panels & attachment hardware → Rear fascia, quarters & liners | GM 22P · 1985 body / panel hardware / 36 |
+| bd-skin-rear-fascia | SE rear fascia | Body panels & attachment hardware → Rear fascia, quarters & liners | GM 22P · 1985 body / panel hardware / 38 |
 | bd-skin-quarter-left | Driver-side rear quarter & intake | Body panels & attachment hardware → Rear fascia, quarters & liners | GM 22P · 1985 body / panel hardware / 23 |
 | bd-skin-quarter-right | Passenger-side rear quarter | Body panels & attachment hardware → Rear fascia, quarters & liners | GM 22P · 1985 body / panel hardware / 23 |
 | bd-skin-door-left | Driver door exterior skin | Body panels & attachment hardware → Driver door & hinge hardware | GM 22P · 1985 body / panel hardware / 25 |
@@ -651,11 +1170,11 @@ Related checklist areas: 15, 17.
 | bd-skin-door-glass-right | Passenger door glass | Body panels & attachment hardware → Passenger door & hinge hardware | GM 22P · 1985 body / panel hardware / 1 |
 | bd-skin-rocker-left | Driver-side rocker cover | Body panels & attachment hardware → Rocker covers & retainers | GM 22P · 1985 body / panel hardware / 17 |
 | bd-skin-rocker-right | Passenger-side rocker cover | Body panels & attachment hardware → Rocker covers & retainers | GM 22P · 1985 body / panel hardware / 17 |
-| bd-skin-roof | Roof skin, A-pillars & roof preview | Body panels & attachment hardware → Roof, A-pillars & retainers | GM 22P · 1985 body / panel hardware / 38 |
+| bd-skin-roof | Roof skin, A-pillars & roof preview | Body panels & attachment hardware → Roof, A-pillars & retainers | GM 22P · 1985 body / panel hardware / 36 |
 | bd-skin-rear-clip | Rear roof clip & buttresses | Body panels & attachment hardware → Rear roof clip, sails & backlight | GM 22P · 1985 body / panel hardware / 3 |
 | bd-skin-sail-left | Driver-side sail applique | Body panels & attachment hardware → Rear roof clip, sails & backlight | GM 22P · 1985 body / panel hardware / 24 |
 | bd-skin-sail-right | Passenger-side sail applique | Body panels & attachment hardware → Rear roof clip, sails & backlight | GM 22P · 1985 body / panel hardware / 24 |
-| bd-skin-rear-window | Recessed backlight | Body panels & attachment hardware → Rear roof clip, sails & backlight | GM 22P · 1985 body / panel hardware / 39 |
+| bd-skin-rear-window | Recessed backlight | Body panels & attachment hardware → Rear roof clip, sails & backlight | GM 22P · 1985 body / panel hardware |
 | bd-skin-glass | Windshield & perimeter seals | Body panels & attachment hardware → Windshield, seals & wipers | GM 22P · 1985 body / panel hardware |
 | bd-hood-inner | Hood bonded inner reinforcement | Body panels & attachment hardware → Front hood, hinges & release | GM 22P · 1985 body / panel hardware / 1 |
 | bd-hood-left-hinge | Driver-side front hood hinge | Body panels & attachment hardware → Front hood, hinges & release | 1986 Pontiac service · body hardware / 21 |
@@ -739,7 +1258,7 @@ Related checklist areas: 15, 17.
 | bd-rocker-right-retainers | Passenger rocker retaining strip & clips | Body panels & attachment hardware → Rocker covers & retainers | GM 22P · 1985 body / panel hardware / 14 |
 | bd-front-fascia-retainers | Front fascia retaining strip & fasteners | Body panels & attachment hardware → Front fascia, fenders & liners | GM 22P · 1985 body / panel hardware / 3 |
 | bd-rear-fascia-retainers | Rear fascia retaining strip & fasteners | Body panels & attachment hardware → Rear fascia, quarters & liners | GM 22P · 1985 body / panel hardware / 37 |
-| bd-roof-fasteners | Front roof attachment bolts | Body panels & attachment hardware → Roof, A-pillars & retainers | GM 22P · 1985 body / panel hardware / 38 |
+| bd-roof-fasteners | Front roof attachment bolts | Body panels & attachment hardware → Roof, A-pillars & retainers | GM 22P · 1985 body / panel hardware / 36 |
 | bd-clip-side-bolts | Rear roof clip side and frame bolts | Body panels & attachment hardware → Rear roof clip, sails & backlight | GM 22P · 1985 body / panel hardware / 3 |
 | bd-clip-roof-nuts | Rear roof clip roof nuts | Body panels & attachment hardware → Rear roof clip, sails & backlight | GM 22P · 1985 body / panel hardware / 3 |
 | bd-clip-pillar-bolts | Rear roof clip pillar bolts | Body panels & attachment hardware → Rear roof clip, sails & backlight | GM 22P · 1985 body / panel hardware / 3 |

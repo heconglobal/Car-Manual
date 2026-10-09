@@ -1,0 +1,55 @@
+{
+  "createdAt": "2026-10-03T02:42:52.682629+00:00",
+  "status": "Latest artifact-only two-note proposal, supersedes retained row6-only draft. Root owns promotion.",
+  "target": "references/completion-callout-register.json",
+  "observedTargetSha256": "df5316d6714cda33cf5758bc221f0e95827adcf0c9697dcd2930ea59aeed598d",
+  "sourceReview": {
+    "path": "references/completion-front-release/2026-10-03T02-31-59Z/findings.json",
+    "bytes": 22530,
+    "sha256": "a3f8e55884ddb31e282cff9dd83e04d8cf4cefc61360fc53009e7ba4b79c7891"
+  },
+  "edits": [
+    {
+      "selector": {
+        "figureId": "2P10-008",
+        "calloutNumber": 5,
+        "columnIndex": 3
+      },
+      "oldValue": "cross-family identity candidates; exact combined service unit20388993 and original release route unverified",
+      "proposedValue": "cross-family identity candidates; exact combined service unit20389893 and original release route unverified",
+      "requiredUnchangedName": "Front-compartment lid lock and actuating cable",
+      "requiredUnchangedMapping": [
+        "bd-hood-latch",
+        "bd-hood-release-cable"
+      ],
+      "sourceEvidence": {
+        "path": "references/completion-front-release/2026-10-03T02-31-59Z/parts-pdf-0284-handle-rows-detail.png",
+        "bytes": 6187,
+        "sha256": "7058e73d432b1b9e22a70c43ae8ea4e6b21f737013fc71eec2f2c31f8493f853"
+      },
+      "scope": "Change only the transposed service-number digits; retain candidate status, IDs, name and geometry/completion counts."
+    },
+    {
+      "selector": {
+        "figureId": "2P10-008",
+        "calloutNumber": 6,
+        "columnIndex": 3
+      },
+      "oldValue": "table20318496; no independently identified selectable handle; missing source reconciliation remains explicit",
+      "proposedValue": "20318496, group 8.075, black front-compartment release handle; figure heading 1984–1987 with no narrower row restriction. Original 1985 owner scan PDF 105 / printed 7-1 locates it left of steering column beneath the instrument-panel air vent and identifies an auxiliary release cable with cylindrical end clipped behind the handle. Adjacent 1986 service PDF 1207 / 4-3 and Figure 4 / PDF 1209 confirm the cable-operated center-cowl latch and hood-mounted striker relationship. Separate handle identity/location is established, but no independently selectable handle exists yet; exact mounting, dimensions, main/auxiliary cable fit, installed quantity and original vehicle condition remain unresolved. No 1988 interchange or power-release option inferred. See references/completion-front-release/2026-10-03T02-31-59Z/findings.json",
+      "requiredUnchangedName": "Front-compartment release handle",
+      "requiredUnchangedMapping": []
+    }
+  ],
+  "promotionInstructions": [
+    "Preserve latest central register, re-read it at write time, and match each figure id plus callout number.",
+    "Require old values/names/mappings to match, or reconcile any later edits. Replace only the two note strings.",
+    "Keep row5 candidate IDs and row6 empty mapping exactly unchanged. No geometry or completion-count change.",
+    "Root independently opens the cited source-number crop before applying row5 correction."
+  ],
+  "retainedSupersededDraft": {
+    "path": "references/completion-front-release/2026-10-03T02-31-59Z/central-row6-note-proposal.json",
+    "bytes": 2007,
+    "sha256": "49b4027aa0fdae1c02a41459bf15b6da5631c1a5b6448a2d2ec528313513ef77"
+  }
+}

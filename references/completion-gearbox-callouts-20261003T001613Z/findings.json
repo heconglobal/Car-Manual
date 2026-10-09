@@ -1,0 +1,407 @@
+{
+  "reviewedAt": "2026-10-03T00:23:38.859901+00:00",
+  "reviewer": "/root/browser_performance/mobile_ux",
+  "scope": "Source-only audit of GM04-238 callouts 24, 58, 63–64 and 90–96. No app, test, script, current register, builder or browser changes.",
+  "source": {
+    "path": "references/fiero-parts-cd.pdf",
+    "sha256": "8cc8ba63654dd1892b7be90d2d12729803745303ec5e55d89c584010e0b5048c",
+    "bytes": 20135960,
+    "url": "https://fieroinfo.com/manuals/84-88_Fiero_Parts_%26_Illustrations_CD.pdf#page=128",
+    "pdfPagesOpened": [
+      128,
+      129,
+      130
+    ],
+    "figure": "GM04-238",
+    "drawingMark": "082785",
+    "printedTablePages": [
+      "H-9",
+      "H-10"
+    ],
+    "tableFooter": "1990 General Motors Service Parts Operations — Pontiac 22P; revision mark 11-90",
+    "sourceQualification": "A reproduced GM parts figure/application table in the preserved Parts & Illustrations CD. 1990 table revision is retained separately from the printed 1985–1986 vehicle application. This is not the missing complete 1985 S-8510P service manual. The compilation cover was opened in the prior door review."
+  },
+  "openedEvidence": [
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/gm-pdf-128.png",
+      "sha256": "1086aa39e0411895499837f19f31b8795d112d055f6f3228aaa1de15c789d44c",
+      "bytes": 543150,
+      "opened": true,
+      "method": "PDF page raster render at 3×"
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/gm-pdf-129-original-image.png",
+      "sha256": "e5858776c96d3dd890cce3edede0f332bab23412f4f74f147a1f3353a54442a0",
+      "bytes": 99494,
+      "opened": true,
+      "method": "Original embedded PDF image extracted without transformation"
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/gm-pdf-129.png",
+      "sha256": "d5b7c0ba586b3b218874c3c52a369a24bb4798dd1e812f5a30c08697ff1361d6",
+      "bytes": 586962,
+      "opened": true,
+      "method": "PDF page raster render at 3×"
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/gm-pdf-130-original-image.png",
+      "sha256": "caa456a876c72524b906c3f77b9ab7ab880df85d05b20b017a3b66be4375d704",
+      "bytes": 51683,
+      "opened": true,
+      "method": "Original embedded PDF image extracted without transformation"
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/gm-pdf-130-rows-90-97-detail.png",
+      "sha256": "d00ab1cb8f894c54e3556ed0a23cdeb887d5a87f4b2b3e936838f874c7ac926e",
+      "bytes": 41269,
+      "opened": true,
+      "method": "PDF raster render; detail image is source page 130 clip Rect(47,182,510,260) at 6×"
+    },
+    {
+      "path": "references/completion-gearbox-callouts-20261003T001613Z/gm-pdf-130.png",
+      "sha256": "b3fc03b6f50e8544427e9c94199445d2fce19c54742d3ab0bf8add5818a582ae",
+      "bytes": 266027,
+      "opened": true,
+      "method": "PDF page raster render at 3×"
+    }
+  ],
+  "comparisonFilesRead": [
+    {
+      "path": "src/transmission-catalog.js",
+      "sha256": "7f3ae8070fa5a9e7fa296f3229c6e537ad2af8ce98eb22550b6cde38006a8141",
+      "bytes": 10192
+    },
+    {
+      "path": "src/transmission-detail.js",
+      "sha256": "77d526df81746fde27d4235bcfb5f6a274ca35c33722051ce0c1ea6d06e05bfc",
+      "bytes": 14086
+    },
+    {
+      "path": "references/completion-callout-register.json",
+      "sha256": "e2d8dc7123ecfa3a617b9d09c1115d86894c300adc4956c5eb6e05d88c94c5fa",
+      "bytes": 55229
+    }
+  ],
+  "rows": [
+    {
+      "tableApplication": "1985–1986 P four-speed manual transaxle (MY8/M17), as printed; no additional year/option restriction printed on this row.",
+      "handedness": "No RH/LH or vehicle-side distinction printed. Identify by mechanism/shaft location, not mirrored vehicle side.",
+      "installedQuantity": null,
+      "quantityQualification": "These pages have no per-vehicle quantity column. An illustrated occurrence is not proof of a complete installed quantity.",
+      "callout": 24,
+      "name": "Transmission case bearing retainer",
+      "group": "4.104",
+      "serviceNumber": "14073782",
+      "nominalDescription": null,
+      "illustratedOccurrences": 2,
+      "figureLocation": "One at the input-cluster shaft end and one at the output shaft end.",
+      "inventoryClassification": "Separate part identity; current-model reconciliation required before adding duplicates",
+      "currentModelCandidates": [
+        "tx-input-sleeve",
+        "tx-output-sleeve"
+      ],
+      "modelingImplication": "The factory table calls this a case-bearing retainer, not an oil-shield sleeve. Existing IDs are described as oil-shield sleeves and carry adjacent-year service callout 24; builder uses thin annuli at each shaft end. Matching number alone is not a valid crosswalk. Reconcile or relabel these existing candidates before adding two more annuli. Row 97 separately identifies an oil-shield sleeve 14020900 for 1984–85.",
+      "furtherEvidenceNeeded": "Original-year case-bearing installation/disassembly view and parts-group 4.104 usage/quantity table; compare group 4.422 oil-shield sleeve application and actual sleeve/retainer attachment details. No factory diameter or retention form is supplied here."
+    },
+    {
+      "tableApplication": "1985–1986 P four-speed manual transaxle (MY8/M17), as printed; no additional year/option restriction printed on this row.",
+      "handedness": "No RH/LH or vehicle-side distinction printed. Identify by mechanism/shaft location, not mirrored vehicle side.",
+      "installedQuantity": null,
+      "quantityQualification": "These pages have no per-vehicle quantity column. An illustrated occurrence is not proof of a complete installed quantity.",
+      "callout": 58,
+      "name": "Detent-lever lockwasher",
+      "group": "4.302",
+      "serviceNumber": "474700",
+      "nominalDescription": null,
+      "illustratedOccurrences": 1,
+      "figureLocation": "Separate washer in the detent/reverse-lever cluster near item 57.",
+      "inventoryClassification": "Independently identified missing selection",
+      "currentModelCandidates": [
+        "tx-detent-bolt (only a possible grouped-name candidate)"
+      ],
+      "modelingImplication": "Can receive an independent washer identity. Do not mark it present solely because tx-detent-bolt says bolt & lockwasher: that catalog ID points to item 60 and its builder invokes one generic bolt at the spring location. The source gives item 58 its own callout and service number.",
+      "furtherEvidenceNeeded": "1985 selector exploded/installed detail to settle exact relationship to item 63 versus item 60, washer type, dimensions, load face and installed quantity."
+    },
+    {
+      "tableApplication": "1985–1986 P four-speed manual transaxle (MY8/M17), as printed; no additional year/option restriction printed on this row.",
+      "handedness": "No RH/LH or vehicle-side distinction printed. Identify by mechanism/shaft location, not mirrored vehicle side.",
+      "installedQuantity": null,
+      "quantityQualification": "These pages have no per-vehicle quantity column. An illustrated occurrence is not proof of a complete installed quantity.",
+      "callout": 63,
+      "name": "Detent-lever bolt",
+      "group": "4.032",
+      "serviceNumber": "474699",
+      "nominalDescription": "M6 × 1 × 31",
+      "illustratedOccurrences": 1,
+      "figureLocation": "Independent fastener at the detent-lever/shift-shaft cluster.",
+      "inventoryClassification": "Independently identified missing selection",
+      "currentModelCandidates": [],
+      "modelingImplication": "Separate identity from existing item-60 bolt. The nominal thread and length are printed; head shape, shoulder, unthreaded length and coating are not established by the abbreviated row. Do not reuse the generic M6 × 1 × 14 item-60 fastener.",
+      "furtherEvidenceNeeded": "Original-year selector procedure/installed figure and fastener specification or dimensioned original part to establish orientation, head/shoulder, engagement and torque. The drawing does not provide torque."
+    },
+    {
+      "tableApplication": "1985–1986 P four-speed manual transaxle (MY8/M17), as printed; no additional year/option restriction printed on this row.",
+      "handedness": "No RH/LH or vehicle-side distinction printed. Identify by mechanism/shaft location, not mirrored vehicle side.",
+      "installedQuantity": null,
+      "quantityQualification": "These pages have no per-vehicle quantity column. An illustrated occurrence is not proof of a complete installed quantity.",
+      "callout": 64,
+      "name": "Hex nut",
+      "group": "8.915",
+      "serviceNumber": null,
+      "nominalDescription": "M6 × 1 × 5.1 THK",
+      "illustratedOccurrences": 1,
+      "figureLocation": "Separate nut adjacent to the item-63 detent-lever fastener.",
+      "inventoryClassification": "Independently identified missing hardware; no service number printed",
+      "currentModelCandidates": [],
+      "modelingImplication": "A separate nominal nut identity is supported. Blank service-number cell is not a not-serviced (N.S.) declaration and does not justify inventing a service number.",
+      "furtherEvidenceNeeded": "Standard-hardware group 8.915 row or original-year selector procedure for exact specification, locking method, installed relationship and torque."
+    },
+    {
+      "tableApplication": "1985–1986 P four-speed manual transaxle (MY8/M17), as printed; no additional year/option restriction printed on this row.",
+      "handedness": "No RH/LH or vehicle-side distinction printed. Identify by mechanism/shaft location, not mirrored vehicle side.",
+      "installedQuantity": null,
+      "quantityQualification": "These pages have no per-vehicle quantity column. An illustrated occurrence is not proof of a complete installed quantity.",
+      "callout": 90,
+      "name": "Spring retainer, Type B",
+      "group": "8.934",
+      "serviceNumber": null,
+      "nominalDescription": "1/16 × 7/16 (fractional notation printed)",
+      "illustratedOccurrences": 1,
+      "figureLocation": "Small retainer adjacent to external selector lever 91 and case-top pin 96 in the exploded drawing.",
+      "inventoryClassification": "Independently identified missing hardware; no service number printed",
+      "currentModelCandidates": [],
+      "modelingImplication": "Independent external selector-retainer identity is supported. Preserve Type B and the printed fractional dimensions without asserting a generic cotter/clip design or converting them into an unverified exact shape.",
+      "furtherEvidenceNeeded": "Group 8.934 Type B standard-hardware illustration/specification plus original-year selector installation detail for cross section, engagement and replacement practice."
+    },
+    {
+      "tableApplication": "1985–1986 P four-speed manual transaxle (MY8/M17), as printed; no additional year/option restriction printed on this row.",
+      "handedness": "No RH/LH or vehicle-side distinction printed. Identify by mechanism/shaft location, not mirrored vehicle side.",
+      "installedQuantity": null,
+      "quantityQualification": "These pages have no per-vehicle quantity column. An illustrated occurrence is not proof of a complete installed quantity.",
+      "callout": 91,
+      "name": "Control-selector lever",
+      "group": "4.045",
+      "serviceNumber": "10035025",
+      "nominalDescription": null,
+      "illustratedOccurrences": 1,
+      "figureLocation": "Separate forked/formed lever above the case near items 90 and 96.",
+      "inventoryClassification": "Independently identified missing selection",
+      "currentModelCandidates": [],
+      "modelingImplication": "A standalone external control-selector lever is supported; it is not the existing internal detent lever (57), reverse lever (55), or shift shaft (61). Reconstructed outline may be developed after the source window opens, with shape and placement limits explicit.",
+      "furtherEvidenceNeeded": "Original-year external shift/select linkage figure, dimensions or owner-part photographs to establish exact arm profile, attachment and operating travel."
+    },
+    {
+      "tableApplication": "1985–1986 P four-speed manual transaxle (MY8/M17), as printed; no additional year/option restriction printed on this row.",
+      "handedness": "No RH/LH or vehicle-side distinction printed. Identify by mechanism/shaft location, not mirrored vehicle side.",
+      "installedQuantity": null,
+      "quantityQualification": "These pages have no per-vehicle quantity column. An illustrated occurrence is not proof of a complete installed quantity.",
+      "callout": 92,
+      "name": "Shift-shaft adjustment clip",
+      "group": "4.047",
+      "serviceNumber": "14046584",
+      "nominalDescription": null,
+      "illustratedOccurrences": 1,
+      "figureLocation": "Independent clip in the external shift/control lever stack between the drawn lever elements.",
+      "inventoryClassification": "Independently identified missing selection",
+      "currentModelCandidates": [],
+      "modelingImplication": "Separate adjustment-clip identity is supported. Do not substitute grouped shift roll pins (54), an internal detent washer, or a generic cable clip solely by appearance.",
+      "furtherEvidenceNeeded": "Original-year adjustment procedure/installed figure to establish clip engagement, calibration position, retention form and whether replacement is required after service."
+    },
+    {
+      "tableApplication": "1985–1986 P four-speed manual transaxle (MY8/M17), as printed; no additional year/option restriction printed on this row.",
+      "handedness": "No RH/LH or vehicle-side distinction printed. Identify by mechanism/shaft location, not mirrored vehicle side.",
+      "installedQuantity": null,
+      "quantityQualification": "These pages have no per-vehicle quantity column. An illustrated occurrence is not proof of a complete installed quantity.",
+      "callout": 93,
+      "name": "Shift lever",
+      "group": "4.006",
+      "serviceNumber": "10035021",
+      "nominalDescription": null,
+      "illustratedOccurrences": 1,
+      "figureLocation": "External lever with separate washer 94 and nut 95 above the case.",
+      "inventoryClassification": "Independently identified missing selection",
+      "currentModelCandidates": [],
+      "modelingImplication": "A separate external shift lever is supported, distinct from the existing modeled shift shaft 61. An arm/shaft combination must not silently count as both independent service identities.",
+      "furtherEvidenceNeeded": "Original-year external linkage/adjustment figure and a measured/photo reference for spline/index orientation, attachment and cable connection; drawing alone does not set adjustment."
+    },
+    {
+      "tableApplication": "1985–1986 P four-speed manual transaxle (MY8/M17), as printed; no additional year/option restriction printed on this row.",
+      "handedness": "No RH/LH or vehicle-side distinction printed. Identify by mechanism/shaft location, not mirrored vehicle side.",
+      "installedQuantity": null,
+      "quantityQualification": "These pages have no per-vehicle quantity column. An illustrated occurrence is not proof of a complete installed quantity.",
+      "callout": 94,
+      "name": "Shift-lever washer",
+      "group": "4.046",
+      "serviceNumber": "14091790",
+      "nominalDescription": null,
+      "illustratedOccurrences": 1,
+      "figureLocation": "Separate washer immediately below nut 95 at lever 93.",
+      "inventoryClassification": "Independently identified missing selection",
+      "currentModelCandidates": [],
+      "modelingImplication": "Independent washer identity supported. Keep distinct from detent lockwasher 58. No inside/outside diameter, thickness or locking form is printed.",
+      "furtherEvidenceNeeded": "Group 4.046 hardware/application entry or measured original component, plus installed linkage detail."
+    },
+    {
+      "tableApplication": "1985–1986 P four-speed manual transaxle (MY8/M17), as printed; no additional year/option restriction printed on this row.",
+      "handedness": "No RH/LH or vehicle-side distinction printed. Identify by mechanism/shaft location, not mirrored vehicle side.",
+      "installedQuantity": null,
+      "quantityQualification": "These pages have no per-vehicle quantity column. An illustrated occurrence is not proof of a complete installed quantity.",
+      "callout": 95,
+      "name": "Hex nut",
+      "group": "8.915",
+      "serviceNumber": null,
+      "nominalDescription": "M14 × 2",
+      "illustratedOccurrences": 1,
+      "figureLocation": "Separate nut above shift-lever washer 94.",
+      "inventoryClassification": "Independently identified missing hardware; no service number printed",
+      "currentModelCandidates": [],
+      "modelingImplication": "Independent nominal nut identity supported. Do not invent a GM number, torque, wrench size, nut thickness or locking method from the abbreviated row.",
+      "furtherEvidenceNeeded": "Group 8.915 standard-hardware listing and original-year external shift-lever service procedure for nut form, retention and torque."
+    },
+    {
+      "tableApplication": "1985–1986 P four-speed manual transaxle (MY8/M17), as printed; no additional year/option restriction printed on this row.",
+      "handedness": "No RH/LH or vehicle-side distinction printed. Identify by mechanism/shaft location, not mirrored vehicle side.",
+      "installedQuantity": null,
+      "quantityQualification": "These pages have no per-vehicle quantity column. An illustrated occurrence is not proof of a complete installed quantity.",
+      "callout": 96,
+      "name": "Control-selector lever pin",
+      "group": "4.008",
+      "serviceNumber": "477095",
+      "nominalDescription": null,
+      "illustratedOccurrences": 1,
+      "figureLocation": "Long separate pin at the upper case near external selector lever 91.",
+      "inventoryClassification": "Independently identified missing selection",
+      "currentModelCandidates": [],
+      "modelingImplication": "Independent selector-pin identity supported; not the same as grouped shift mechanism roll pins 54 or the long shift shaft 61. Exact attachment, fit, shoulders and pin dimensions remain unresolved.",
+      "furtherEvidenceNeeded": "Original-year selector lever installation detail and group 4.008 usage/dimensional reference or original-part measurement."
+    }
+  ],
+  "groupedServiceAssemblies": [
+    {
+      "callout": 22,
+      "identity": "First/second synchronizer assembly",
+      "serviceNumber": "14085536",
+      "explicitInclusions": [
+        20,
+        21
+      ],
+      "implication": "Assembly includes springs and keys; independent modeled construction pieces should not become duplicate installed assemblies."
+    },
+    {
+      "callout": 31,
+      "identity": "Third/fourth synchronizer assembly",
+      "serviceNumber": "14085537",
+      "explicitInclusions": [
+        20,
+        21
+      ],
+      "implication": "Same inclusion caution as item 22; not a reason to omit separately inspectable pieces or double-count service units."
+    },
+    {
+      "callout": 39,
+      "identity": "Input-gear bearing retainer assembly",
+      "serviceNumber": "14020834",
+      "explicitInclusions": [
+        37,
+        38
+      ],
+      "implication": "Item 38 is printed N.S. and part of 39; item 37 is also part of 39. Do not treat all three rows as separate complete installed assemblies."
+    },
+    {
+      "callout": 42,
+      "identity": "Reverse-idler screw with washer",
+      "implication": "Source explicitly groups screw and washer; existing tx-reverse-bolt is a grouped selection, unlike separate row 58."
+    },
+    {
+      "callout": 76,
+      "identity": "Differential assembly",
+      "sourceNotation": "N.S.; serviced by components",
+      "implication": "Aggregate label, not an additional missing monolithic part or an extra installed unit over its carrier/gears/bearings."
+    },
+    {
+      "callouts": [
+        82,
+        83,
+        84,
+        85
+      ],
+      "sourceNote": "Note 1 says these parts are also serviced in group 5.527 gear kit 14045031.",
+      "implication": "Service kit is not another physical gear set to add on top of its individual components. Preserve N.S. on pinion-gear row 83."
+    }
+  ],
+  "otherYearAndVariantFacts": [
+    {
+      "callout": 97,
+      "identity": "Oil-shield sleeve",
+      "serviceNumber": "14020900",
+      "explicitYears": [
+        1984,
+        1985
+      ],
+      "implication": "Do not spread this explicit 1984–85 row to every year implied by the broader figure heading; also do not confuse it with case-bearing retainer 24."
+    },
+    {
+      "callouts": [
+        14,
+        30
+      ],
+      "fact": "Fourth-gear rows preserve MY8 and M19 labels even though the heading says MY8/M17.",
+      "implication": "Preserve the source wording; do not silently convert M19 to M17 or choose an installed ratio from this overview."
+    },
+    {
+      "callouts": [
+        27,
+        36,
+        66,
+        81
+      ],
+      "fact": "Adjustment shims reference note 2: see chart in group for usage.",
+      "implication": "Exact shim sizes/quantities cannot be determined from these pages; the referenced usage charts and original service preload/endplay procedure are required."
+    }
+  ],
+  "incidentalCorrectedReading": {
+    "callout": 51,
+    "sourcePdfPage": 129,
+    "variants": [
+      {
+        "teeth": 29,
+        "color": "GRN",
+        "serviceNumber": "10041031"
+      },
+      {
+        "teeth": 30,
+        "color": "NAT",
+        "serviceNumber": "10041032"
+      },
+      {
+        "teeth": 30,
+        "color": "BLU",
+        "serviceNumber": "25519845"
+      },
+      {
+        "teeth": 31,
+        "color": "WHT",
+        "serviceNumber": "25519846"
+      }
+    ],
+    "finding": "NAT is 30 teeth, not a second 29-tooth color entry. Root independently opened the new render and corrected completion-transmission-speedometer.md; no app variant was selected.",
+    "installedVariant": "Unverified"
+  },
+  "conclusion": {
+    "targetCalloutRows": 11,
+    "independentPartIdentities": 11,
+    "clearlyMissingIndependentSelectionsExcludingRetainerCandidates": 10,
+    "retainerMappingRequiresReconciliation": [
+      24
+    ],
+    "targetRowsThatAreAggregateServiceAssemblies": [],
+    "nominalHardwareWithoutPrintedServiceNumbers": [
+      64,
+      90,
+      95
+    ],
+    "quantityFinding": "The drawing shows two separate occurrences of 24 and one target occurrence for each other row. No quantity-per-vehicle column is supplied; installed quantity remains unverified.",
+    "nextImplementationPriority": "Correct source identities/avoid duplicate bearing-retainer geometry; then the distinct external selector lever/clip/pin/washer/nut group (90–96) and detent fastener group (58,63,64). Exact installation, adjustment and hardware dimensions require the further references named per row.",
+    "currentAcceptance": "Source report only. No claim that any missing geometry or service procedure has been completed."
+  }
+}

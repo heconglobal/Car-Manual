@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import {createHash} from 'node:crypto';
-import {gzipSync} from 'node:zlib';
+import {gzipSync,gunzipSync} from 'node:zlib';
 import * as T from 'three';
 import {encodeModel} from '../src/model-codec.js';
 import {packAttribute} from '../src/model-buffer-codec.js';
@@ -10,8 +10,9 @@ import {loadVehicleAsset} from '../src/vehicle-asset-loader.js';
 import {disposeModel} from '../src/model-resources.js';
 
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
-function fixture(){
+function fixture(extraMetadata=''){
  const root=new T.Group(),group=new T.Group();group.name='nose';group.userData={partId:'nose',system:'body',spread:new T.Vector3(0,1,-.65)};root.add(group);
+ if(extraMetadata)group.userData.padding=extraMetadata;
  const geometry=new T.BufferGeometry();geometry.setAttribute('position',new T.BufferAttribute(new Float32Array([0,0,0,1,0,0,0,1,0]),3));geometry.setIndex([0,1,2]);
  const material=new T.MeshStandardMaterial({color:'#a80912',polygonOffset:true,polygonOffsetFactor:-1}),mesh=new T.Mesh(geometry,material);
  mesh.userData={partId:'nose',materialName:'red',option:'powerWindows',value:false,original:{color:material.color.clone(),emissive:material.emissive.clone()}};group.add(mesh);
@@ -26,6 +27,26 @@ function fixture(){
 const asset=fixture();
 function response(bytes=asset.compressed,headers={},status=200){let offset=0;return new Response(new ReadableStream({pull(controller){if(offset===bytes.length){controller.close();return;}const end=Math.min(offset+17,bytes.length);controller.enqueue(bytes.subarray(offset,end));offset=end;}}),{status,headers});}
 const run=(name,fn)=>test(name,{concurrency:false},fn);
+
+await run('Browser decompression chunks above 1 MiB load without weakening decoder limits',async()=>{
+ const large=fixture('x'.repeat(1024*1024+17)),inflated=gunzipSync(large.compressed);
+ assert(inflated.length>1024*1024);
+ // Model a browser emitting one large decompression result, independently of
+ // Node's own gzip output boundaries. The downloaded bytes are still verified.
+ const previous=globalThis.DecompressionStream;
+ globalThis.DecompressionStream=class extends TransformStream{
+  constructor(){super({transform(){},flush(controller){controller.enqueue(inflated);}});}
+ };
+ try{
+  const model=await loadVehicleAsset({entry:large.entry,request:async()=>response(large.compressed)});
+  try{
+   assert.equal(model.streamingStats.bytesConsumed,inflated.length);
+   assert(model.streamingStats.maxChunkBytes<=64*1024);
+   assert.equal(model.groups.get('nose').userData.padding.length,1024*1024+17);
+   assert.deepEqual([...model.groups.get('nose').children[0].geometry.attributes.position.array],[0,0,0,1,0,0,0,1,0]);
+  }finally{disposeModel(model);}
+ }finally{globalThis.DecompressionStream=previous;}
+});
 
 await run('Verified compressed bytes stream into a configurable native model',async()=>{
  const progress=[],model=await loadVehicleAsset({entry:asset.entry,request:async()=>response(),onProgress:p=>progress.push(p)}),mesh=model.groups.get('nose').children[0];

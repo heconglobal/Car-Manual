@@ -4,6 +4,7 @@ import {textureFromRecipe} from './materials.js';
 import {vehicleConfiguration} from './vehicle-state.js';
 import {disposeModel} from './model-resources.js';
 import {hashBytesSha256} from './sha256.js';
+import {boundedByteStream} from './bounded-byte-stream.js';
 
 const abortError=signal=>signal?.reason instanceof Error?signal.reason:new DOMException('Workshop loading cancelled','AbortError');
 const checkAbort=signal=>{if(signal?.aborted)throw abortError(signal);};
@@ -75,7 +76,7 @@ export async function loadVehicleAsset({signal,onProgress=()=>{},entry=manifest,
   }});
   checkAbort(signal);if(digest!==entry.sha256)throw new Error('The complete vehicle download failed its integrity check. Reload to retry.');
   const verifyMs=performance.now()-verifyStarted,decodeStarted=performance.now();
-  const stream=compressedStream(compressed,signal).pipeThrough(new DecompressionStream('gzip'));compressed=null;
+  const stream=boundedByteStream(compressedStream(compressed,signal).pipeThrough(new DecompressionStream('gzip')));compressed=null;
   let lastProgress=-Infinity;
   model=await decode(stream,makeTexture,{signal,onProgress:state=>{
    if(performance.now()-lastProgress<100&&state.phase!=='complete')return;
